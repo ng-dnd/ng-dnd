@@ -1,0 +1,19 @@
+{
+  "name": "@ng-dnd/core",
+  "version": "0.0.1",
+  "description": "Drag and Drop for Angular",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ng-dnd/ng-dnd.git"
+  },
+  "author": "nzbin<nzb329@163.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ng-dnd/ng-dnd/issues"
+  },
+  "homepage": "https://github.com/ng-dnd/ng-dnd#readme"
+}
