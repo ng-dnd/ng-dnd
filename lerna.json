@@ -12,7 +12,7 @@
             "message": "chore(release): publish",
             "contents": "dist",
             "allowBranch": [
-                "master",
+                "main",
                 "release/*"
             ],
             "noCommitHooks": true,
