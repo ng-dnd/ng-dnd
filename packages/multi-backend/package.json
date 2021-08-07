@@ -1,6 +1,7 @@
 {
     "name": "@ng-dnd/multi-backend",
     "version": "0.1.0",
+    "description": "Multiple backend for Angular DnD",
     "publishConfig": {
         "access": "public"
     },

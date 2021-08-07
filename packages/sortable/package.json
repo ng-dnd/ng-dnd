@@ -1,6 +1,7 @@
 {
     "name": "@ng-dnd/sortable",
     "version": "0.1.0",
+    "description": "Sortable for Angular DnD",
     "publishConfig": {
         "access": "public"
     },
