@@ -1,5 +1,5 @@
 import { Input, Component, OnInit } from '@angular/core';
-import { SkyhookDndService } from "@angular-skyhook/core";
+import { SkyhookDndService } from "@ng-dnd/core";
 import { Colors } from './colors';
 
 @Component({

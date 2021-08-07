@@ -1,8 +1,8 @@
 import { Observable } from 'rxjs';
-import {DropTargetMonitor, DragSourceMonitor} from '@angular-skyhook/core';
+import {DropTargetMonitor, DragSourceMonitor} from '@ng-dnd/core';
 
 export interface SortableSpec<Data, Type = string|symbol> {
-    /** The underlying @angular-skyhook/core / dnd-core type.
+    /** The underlying @ng-dnd/core / dnd-core type.
      * String or symbol, if that's not clear from the documentation output.. */
     type: Type;
 

@@ -1,6 +1,6 @@
 import { Component, ElementRef } from '@angular/core';
-import { SkyhookDndService } from "@angular-skyhook/core";
-import { spillTarget } from "@angular-skyhook/sortable";
+import { SkyhookDndService } from "@ng-dnd/core";
+import { spillTarget } from "@ng-dnd/sortable";
 import { ItemTypes } from './item-types';
 import { Store } from '@ngrx/store';
 import { Card } from './specs';

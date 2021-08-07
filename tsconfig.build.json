@@ -3,10 +3,10 @@
     "compilerOptions": {
         "declaration": true,
         "paths": {
-            "@angular-skyhook/*/testing": [
+            "@ng-dnd/*/testing": [
                 "packages/*/dist/testing"
             ],
-            "@angular-skyhook/*": [
+            "@ng-dnd/*": [
                 "packages/*/dist"
             ]
         }

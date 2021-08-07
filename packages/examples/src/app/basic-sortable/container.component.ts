@@ -23,7 +23,7 @@ import { Component } from '@angular/core';
     </ul>
 
     <p>If that sounds like too much effort, this pattern is made easy and
-    reusable in <code>@angular-skyhook/sortable</code>. You can do it without introducing a new component, too.</p>
+    reusable in <code>@ng-dnd/sortable</code>. You can do it without introducing a new component, too.</p>
 
     <p>You can compare the source code of this example to equivalent using that abstraction, <a [routerLink]="['/sortable', 'simple']">Simple list</a>.</p>
 

@@ -8,7 +8,7 @@ import {
 import {
     SkyhookDndService,
     DragSource, DropTarget, DragSourceMonitor, DropTargetMonitor
-} from "@angular-skyhook/core";
+} from "@ng-dnd/core";
 import { DraggedItem, Size, RenderContext } from "../types";
 import { Observable, Subscription } from 'rxjs';
 import { getSuggester } from '../hoverTriggers';
@@ -178,7 +178,7 @@ export class SkyhookSortableRenderer<Data> implements OnInit, OnDestroy {
         if (suggestedIndex < 0) {
             // console.warn('this.listId',this.listId, 'hover.listId', hover.listId)
             // suggestedIndex = 0;
-            throw new Error("@angular-skyhook/sortable: Cannot move a card to an index < 0.");
+            throw new Error("@ng-dnd/sortable: Cannot move a card to an index < 0.");
         }
 
         // move the item if its new position is different
@@ -201,7 +201,7 @@ export class SkyhookSortableRenderer<Data> implements OnInit, OnDestroy {
     /** @ignore */
     private rect() {
         if (!this.el) {
-            throw new Error("@angular-skyhook/sortable: [ssRender] expected to be attached to a real DOM element");
+            throw new Error("@ng-dnd/sortable: [ssRender] expected to be attached to a real DOM element");
         }
         const rect = (this.el.nativeElement as Element).getBoundingClientRect();
         return rect;

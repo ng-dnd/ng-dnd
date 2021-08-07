@@ -6,10 +6,10 @@ import {
     ChangeDetectionStrategy,
     Optional,
 } from "@angular/core";
-import { DragSource } from "@angular-skyhook/core";
+import { DragSource } from "@ng-dnd/core";
 import {
     DraggedItem, SortableSpec, SkyhookSortableRenderer
-} from "@angular-skyhook/sortable";
+} from "@ng-dnd/sortable";
 import { Card } from "../card";
 import { KanbanList } from "../lists";
 import { Observable } from "rxjs";

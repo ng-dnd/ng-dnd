@@ -1,5 +1,5 @@
 import { Component, Input, Output, Optional, EventEmitter } from '@angular/core';
-import { SkyhookSortableRenderer } from '@angular-skyhook/sortable';
+import { SkyhookSortableRenderer } from '@ng-dnd/sortable';
 import { Question } from './Question';
 
 @Component({

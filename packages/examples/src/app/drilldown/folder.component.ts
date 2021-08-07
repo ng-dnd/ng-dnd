@@ -1,7 +1,7 @@
 import { Component, Input, ChangeDetectionStrategy, ChangeDetectorRef, NgZone } from '@angular/core';
 import { ItemTypes } from './itemTypes';
 import { TreeService } from './tree.service';
-import { SkyhookDndService } from "@angular-skyhook/core";
+import { SkyhookDndService } from "@ng-dnd/core";
 import { Observable } from 'rxjs';
 import { map, tap } from 'rxjs/operators';
 import { activatorDropTarget } from './activatorDropTarget';
@@ -18,7 +18,7 @@ import { activatorDropTarget } from './activatorDropTarget';
     </ul>
   </ng-container>
   <ng-template #node>
-    <li [class.root]="keys.length === 0" 
+    <li [class.root]="keys.length === 0"
       [class.is-open]="isOpen$|async"
       [class.is-over]="isOver$|async"
       [class.has-children]="anyChildren$|async" >
@@ -63,7 +63,7 @@ export class Folder {
   // this one will observe the 'hover' callback for us, and use Rx
   // to wait 600ms before firing onActivate, with appropriate cancellation
   // if you provide your own hover: () => callback, it will also be run.
-  // the returned object is the same DropTargetConnection, which you should 
+  // the returned object is the same DropTargetConnection, which you should
   // connect to the DOM, and then unsubscribe() from later.
   target = activatorDropTarget(this.dnd, ItemTypes.EMAIL, 600, {
     onActivate: a => {

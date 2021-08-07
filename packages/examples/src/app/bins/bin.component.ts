@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { SkyhookDndService } from "@angular-skyhook/core";
+import { SkyhookDndService } from "@ng-dnd/core";
 
 @Component({
   selector: 'app-bin',

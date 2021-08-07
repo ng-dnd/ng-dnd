@@ -35,7 +35,7 @@ export function DefaultMultiBackend(manager: DragDropManager, context: any) {
  * Prefer providing HTML5ToTouch directly as `options` to `forRoot`.
  *
  * ```typescript
- * import { MultiBackend, HTML5ToTouch } from '@angular-skyhook/multi-backend';
+ * import { MultiBackend, HTML5ToTouch } from '@ng-dnd/multi-backend';
  *
  * imports: [
  *     ...,

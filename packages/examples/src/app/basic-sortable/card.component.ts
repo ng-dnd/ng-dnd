@@ -10,7 +10,7 @@ import {
     OnDestroy,
     Directive
 } from "@angular/core";
-import { SkyhookDndService } from "@angular-skyhook/core";
+import { SkyhookDndService } from "@ng-dnd/core";
 
 interface Card {
     id: number;

@@ -1,5 +1,5 @@
 import { Component, ChangeDetectionStrategy } from "@angular/core";
-import { SkyhookDndService, Offset } from "@angular-skyhook/core";
+import { SkyhookDndService, Offset } from "@ng-dnd/core";
 import { map } from "rxjs/operators";
 // @ts-ignore
 import { Observable } from 'rxjs';

@@ -1,10 +1,10 @@
 {
-    "name": "@angular-skyhook/core",
-    "version": "1.4.0-rc.0",
+    "name": "@ng-dnd/core",
+    "version": "0.1.0",
     "publishConfig": {
         "access": "public"
     },
-    "repository": "https://github.com/cormacrelf/angular-skyhook",
+    "repository": "https://github.com/ng-dnd/ng-dnd",
     "dependencies": {
         "dnd-core": "^9.0.0",
         "tslib": "^1.9.0"

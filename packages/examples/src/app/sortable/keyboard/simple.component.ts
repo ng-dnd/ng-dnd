@@ -1,5 +1,5 @@
 import { Component, ChangeDetectionStrategy } from "@angular/core";
-import { NgRxSortable } from "@angular-skyhook/sortable";
+import { NgRxSortable } from "@ng-dnd/sortable";
 import { Store } from '@ngrx/store';
 import { Blob } from './store/blob';
 import { ActionTypes, SelectBlob, LiftSelected, DropSelected, MoveSelectedUp, MoveSelectedDown } from './store/reducer';

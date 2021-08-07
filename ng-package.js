@@ -12,7 +12,7 @@ module.exports = {
             "react-dnd-touch-backend": "dndTouchBackend",
 
             // local
-            "@angular-skyhook/core": "angularSkyhook",
+            "@ng-dnd/core": "angularSkyhook",
         }
     },
     whitelistedNonPeerDependencies: [

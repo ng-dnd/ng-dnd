@@ -1,5 +1,5 @@
 import { HoverTrigger } from './types';
-import { Offset } from '@angular-skyhook/core';
+import { Offset } from '@ng-dnd/core';
 import { RenderContext, DraggedItem } from './types';
 
 //     ~ List ~

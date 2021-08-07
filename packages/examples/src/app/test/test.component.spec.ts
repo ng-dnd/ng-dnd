@@ -4,7 +4,7 @@ import {
     default as createTestBackend,
     TestBackend
 } from 'react-dnd-test-backend';
-import { SkyhookDndModule, DRAG_DROP_MANAGER } from "@angular-skyhook/core";
+import { SkyhookDndModule, DRAG_DROP_MANAGER } from "@ng-dnd/core";
 import { By } from '@angular/platform-browser';
 
 describe(TestComponent.name, () => {

@@ -5,7 +5,7 @@ import { Component } from '@angular/core';
     template: `
     <app-example-link path="chessboard"></app-example-link>
 
-    <p>Welcome to <code>@angular-skyhook</code>.</p>
+    <p>Welcome to <code>@ng-dnd</code>.</p>
     <p>This is a re-implementation of the original, classic <a href="http://react-dnd.github.io/react-dnd/examples-chessboard-tutorial-app.html">react-dnd demo</a>.</p>
     <p>The whole tutorial has been re-written so you can <a href="https://cormacrelf.github.io/angular-skyhook/additional-documentation/chess-tutorial.html">follow along</a> and build this yourself.</p>
 

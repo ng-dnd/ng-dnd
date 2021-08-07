@@ -1,7 +1,7 @@
 import { Component, Input  } from "@angular/core";
 import { Coord } from './coord';
 import { GameService } from "./game.service";
-import { SkyhookDndService } from "@angular-skyhook/core";
+import { SkyhookDndService } from "@ng-dnd/core";
 import { ItemTypes } from "./constants";
 import { map } from 'rxjs/operators';
 
@@ -46,7 +46,7 @@ export class BoardSquareComponent {
         canDrop: m.canDrop(),
         isOver: m.isOver(),
     }));
-    
+
     showOverlay$ = this.collected$.pipe(map(c => c.isOver || c.canDrop));
 
     overlayStyle$ = this.collected$.pipe(map(coll => {

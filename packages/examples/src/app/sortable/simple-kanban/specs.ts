@@ -1,5 +1,5 @@
 import { Injectable } from "@angular/core";
-import { SortableSpec, DraggedItem } from "@angular-skyhook/sortable";
+import { SortableSpec, DraggedItem } from "@ng-dnd/sortable";
 import { ItemTypes } from "./item-types";
 import { produce } from 'immer';
 

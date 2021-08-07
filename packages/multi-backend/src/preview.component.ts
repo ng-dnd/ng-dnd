@@ -6,7 +6,7 @@ import {
     Inject,
     ChangeDetectionStrategy
 } from "@angular/core";
-import { SkyhookDndService, DRAG_DROP_MANAGER } from "@angular-skyhook/core";
+import { SkyhookDndService, DRAG_DROP_MANAGER } from "@ng-dnd/core";
 import { DragDropManager, Backend } from "dnd-core";
 // @ts-ignore
 import { Observable } from 'rxjs';

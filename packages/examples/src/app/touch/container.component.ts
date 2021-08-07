@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { ItemTypes } from './itemTypes';
-import { SkyhookDndService } from "@angular-skyhook/core";
+import { SkyhookDndService } from "@ng-dnd/core";
 
 @Component({
     selector: 'touch-container',
@@ -11,7 +11,7 @@ import { SkyhookDndService } from "@angular-skyhook/core";
         This demo won't be very impressive, but read the code to find out how to use
         a &lt;skyhook-preview&gt; to easily render touch previews.
     </p>
-    
+
         <skyhook-preview>
             <ng-template let-type let-item="item">
                 <ng-container [ngSwitch]="type">

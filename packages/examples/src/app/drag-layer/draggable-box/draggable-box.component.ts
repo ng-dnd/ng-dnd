@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { SkyhookDndService, DragPreviewOptions } from "@angular-skyhook/core";
+import { SkyhookDndService, DragPreviewOptions } from "@ng-dnd/core";
 import { getEmptyImage } from 'react-dnd-html5-backend';
 import { map } from 'rxjs/operators';
 import { ChangeDetectionStrategy } from '@angular/core';

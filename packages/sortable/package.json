@@ -1,15 +1,15 @@
 {
-    "name": "@angular-skyhook/sortable",
-    "version": "1.4.0-rc.0",
+    "name": "@ng-dnd/sortable",
+    "version": "0.1.0",
     "publishConfig": {
         "access": "public"
     },
-    "repository": "https://github.com/cormacrelf/angular-skyhook",
+    "repository": "https://github.com/ng-dnd/ng-dnd",
     "dependencies": {
         "tslib": "^1.9.0"
     },
     "peerDependencies": {
-        "@angular-skyhook/core": "^1.0.0",
+        "@ng-dnd/core": "^1.0.0",
         "@angular/common": ">= 6.0.0",
         "@angular/core": ">= 6.0.0",
         "rxjs": ">= 6.0.0"
@@ -20,6 +20,6 @@
     },
     "license": "MIT",
     "devDependencies": {
-        "@angular-skyhook/core": "^1.4.0-rc.0"
+        "@ng-dnd/core": "^0.1.0"
     }
 }

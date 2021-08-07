@@ -13,7 +13,7 @@ import {
     SimpleChanges,
     ContentChildren,
 } from "@angular/core";
-import { SkyhookDndService } from "@angular-skyhook/core";
+import { SkyhookDndService } from "@ng-dnd/core";
 // @ts-ignore
 import { Observable, Subscription } from "rxjs";
 import {

@@ -1,5 +1,5 @@
 import { Input, Component, OnInit } from '@angular/core';
-import { SkyhookDndService } from "@angular-skyhook/core";
+import { SkyhookDndService } from "@ng-dnd/core";
 import { ItemTypes } from './itemTypes';
 
 @Component({
@@ -57,7 +57,7 @@ export class Target {
       if (hasDroppedOnChild && !this.greedy) {
         return;
       }
-  
+
       this.hasDropped = true,
       this.hasDroppedOnChild = hasDroppedOnChild;
     }

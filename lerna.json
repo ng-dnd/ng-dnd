@@ -1,6 +1,6 @@
 {
     "lerna": "3.1.1",
-    "version": "1.4.0-rc.0",
+    "version": "0.1.0",
     "npmClient": "yarn",
     "useWorkspaces": true,
     "packages": [
@@ -25,12 +25,12 @@
         },
         "bootstrap": {
             "scope": [
-                "@angular-skyhook/*"
+                "@ng-dnd/*"
             ]
         },
         "exec": {
             "scope": [
-                "@angular-skyhook/*"
+                "@ng-dnd/*"
             ]
         },
         "clean": {

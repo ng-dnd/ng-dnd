@@ -30,7 +30,7 @@
             "zone.js"
         ],
         "paths": {
-            "@angular-skyhook/*": [
+            "@ng-dnd/*": [
                 "packages/*/index.ts"
             ]
         }

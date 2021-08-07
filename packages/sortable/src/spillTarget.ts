@@ -1,4 +1,4 @@
-import { SkyhookDndService, DropTarget } from "@angular-skyhook/core";
+import { SkyhookDndService, DropTarget } from "@ng-dnd/core";
 import { DraggedItem } from "./types";
 import { Subject } from 'rxjs';
 import { filter, distinctUntilChanged } from 'rxjs/operators';

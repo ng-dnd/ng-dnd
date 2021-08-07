@@ -11,7 +11,7 @@ import {
 } from '@angular/core';
 // @ts-ignore
 import { Subscription, Observable, BehaviorSubject } from "rxjs";
-import { DropTarget, SkyhookDndService, DropTargetMonitor } from "@angular-skyhook/core";
+import { DropTarget, SkyhookDndService, DropTargetMonitor } from "@ng-dnd/core";
 import { SortableSpec, DraggedItem, RenderContext, HoverTrigger } from "../types";
 import { isEmpty } from '../isEmpty';
 

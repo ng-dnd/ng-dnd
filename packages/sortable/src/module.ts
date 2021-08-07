@@ -5,7 +5,7 @@ import { SkyhookSortableTemplate } from "./directives/template.directive";
 import { SkyhookSortableRenderer } from "./directives/render.directive";
 import { SkyhookSortableExternal } from "./directives/external.directive";
 import { CommonModule } from "@angular/common";
-import { SkyhookDndModule } from "@angular-skyhook/core";
+import { SkyhookDndModule } from "@ng-dnd/core";
 
 /** @ignore */
 const EXPORTS = [

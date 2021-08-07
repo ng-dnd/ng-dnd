@@ -1,6 +1,6 @@
 import { Component } from "@angular/core";
-import { SkyhookDndService } from '@angular-skyhook/core';
-import { SortableSpec, DraggedItem, spillTarget } from "@angular-skyhook/sortable";
+import { SkyhookDndService } from '@ng-dnd/core';
+import { SortableSpec, DraggedItem, spillTarget } from "@ng-dnd/sortable";
 import { Question, MathQuestion, NameQuestion } from './Question';
 import { produce } from 'immer';
 

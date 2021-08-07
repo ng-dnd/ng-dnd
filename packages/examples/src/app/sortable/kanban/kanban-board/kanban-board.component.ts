@@ -1,5 +1,5 @@
 import { Component, Input, ChangeDetectionStrategy } from "@angular/core";
-import { DraggedItem } from "@angular-skyhook/sortable";
+import { DraggedItem } from "@ng-dnd/sortable";
 import { Card } from "../card";
 import { ItemTypes } from "../item-types";
 import { AddCard, RemoveCard } from "../store";

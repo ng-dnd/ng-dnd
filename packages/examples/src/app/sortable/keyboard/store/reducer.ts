@@ -1,4 +1,4 @@
-import { DraggedItem, SortableEvents, SortableAction } from '@angular-skyhook/sortable';
+import { DraggedItem, SortableEvents, SortableAction } from '@ng-dnd/sortable';
 import { List, Record } from 'immutable';
 import { Blob } from './blob';
 import * as faker from 'faker';

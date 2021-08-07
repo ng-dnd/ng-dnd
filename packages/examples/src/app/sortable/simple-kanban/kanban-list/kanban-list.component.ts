@@ -6,7 +6,7 @@ import {
     ChangeDetectionStrategy,
     Optional,
 } from "@angular/core";
-import { SortableSpec, SkyhookSortableRenderer } from "@angular-skyhook/sortable";
+import { SortableSpec, SkyhookSortableRenderer } from "@ng-dnd/sortable";
 import { Card, CardList, SortableSpecService } from "../specs";
 
 @Component({

@@ -13,7 +13,7 @@ module.exports = {
     '<rootDir>/test/test-setup.ts',
   ],
   moduleNameMapper: {
-    '@angular-skyhook/(.*)': '<rootDir>/packages/$1',
+    '@ng-dnd/(.*)': '<rootDir>/packages/$1',
     // https://react-dnd.github.io/react-dnd/docs/testing
     "^dnd-core$": "dnd-core/dist/cjs",
     "^react-dnd$": "react-dnd/dist/cjs",

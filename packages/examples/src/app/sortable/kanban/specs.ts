@@ -1,5 +1,5 @@
 import { Injectable } from "@angular/core";
-import { NgRxSortable } from "@angular-skyhook/sortable";
+import { NgRxSortable } from "@ng-dnd/sortable";
 import { KanbanList } from './lists';
 import { Card } from "./card";
 import { ItemTypes } from "./item-types";

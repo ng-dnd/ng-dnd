@@ -1,12 +1,12 @@
 import { NgModule } from "@angular/core";
 import { CommonModule } from "@angular/common";
 import { UtilityModule } from "app/utility.module";
-import { SkyhookDndModule } from "@angular-skyhook/core";
+import { SkyhookDndModule } from "@ng-dnd/core";
 import { RouterModule } from "@angular/router";
 import { StoreModule } from '@ngrx/store';
 import { ReactiveFormsModule } from "@angular/forms";
-import { SkyhookMultiBackendModule } from "@angular-skyhook/multi-backend";
-import { SkyhookSortableModule } from "@angular-skyhook/sortable";
+import { SkyhookMultiBackendModule } from "@ng-dnd/multi-backend";
+import { SkyhookSortableModule } from "@ng-dnd/sortable";
 
 import { ContainerComponent } from "./container.component";
 import { KanbanBoardComponent } from "./kanban-board/kanban-board.component";
