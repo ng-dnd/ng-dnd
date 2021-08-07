@@ -2,13 +2,6 @@ declare module "dnd-multi-backend" {
     import { Backend } from 'dnd-core';
     import { BackendFactory } from 'dnd-core';
     import { DragDropManager } from 'dnd-core';
-    export module PreviewManager {
-        export function register(preview: BackendWatcher): void;
-        export function unregister(preview: BackendWatcher): void;
-    }
-    export interface BackendWatcher {
-        backendChanged(backend: Backend): void;
-    }
     export interface Transition {
         event: string;
         check: (event: Event) => boolean;
