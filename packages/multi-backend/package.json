@@ -1,6 +1,6 @@
 {
     "name": "@ng-dnd/multi-backend",
-    "version": "0.1.0",
+    "version": "0.1.1",
     "description": "Multiple backend for Angular DnD",
     "publishConfig": {
         "access": "public"
@@ -25,6 +25,6 @@
     },
     "license": "MIT",
     "devDependencies": {
-        "@ng-dnd/core": "^0.1.0"
+        "@ng-dnd/core": "^0.1.1"
     }
 }
