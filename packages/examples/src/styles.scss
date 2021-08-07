@@ -1,0 +1,120 @@
+* {
+    box-sizing: border-box;
+}
+
+// https://stackoverflow.com/questions/41869122/touch-events-within-iframe-are-not-working-on-ios:W
+html, body {
+    touch-action: auto;
+}
+
+// don't put anything else in here,
+// it's not imported by the typedoc output
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+        Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji",
+        "Segoe UI Symbol";
+    font-size: 14px;
+    text-rendering: optimizeLegibility;
+    min-height: 100vh;
+    margin: 0;
+}
+
+.pad {
+    max-width: 300px;
+    padding: 20px;
+}
+
+.dustbin {
+    border: 2px dashed black;
+}
+
+a:link, {
+    color: #0004b4;
+}
+
+a:visited {
+    color: #542ca0;
+}
+
+a:hover, a:active {
+    color: #373cc8;
+}
+
+pre, code {
+    font-family: "SF Mono", "Consolas", "Source Code Pro", "Menlo", "Bitstream Vera Sans Mono", "Courier New", Courier, monospace;
+}
+
+html {font-size: 1em;}
+
+body {
+  font-weight: 400;
+  line-height: 1.45;
+  color: #262626;
+}
+
+p {margin-bottom: 1.3em;}
+
+h1, h2, h3, h4 {
+  margin: 0.5em 0 0.5em;
+  line-height: 1.2;
+}
+
+h1 {
+  margin-top: 0;
+  font-size: 2.441em;
+  font-weight: 400;
+}
+
+h2 {font-size: 1.953em;}
+
+// h3 {font-size: 1.563em;}
+
+h4 {font-size: 1.0em;}
+
+small, .font_small {font-size: 0.8em;}
+
+code {
+    font-weight: 700;
+}
+
+code,
+pre {
+    color: #484A4C;
+    font-family: "SF Mono", "Consolas", "Source Code Pro", "Menlo", "Bitstream Vera Sans Mono", "Courier New", Courier, monospace;
+    direction: ltr;
+    text-align: left;
+    white-space: pre;
+    word-spacing: normal;
+    word-break: normal;
+    font-size: 1em;
+    line-height: 130%;
+    -moz-tab-size: 4;
+    -o-tab-size: 4;
+    tab-size: 4;
+    -webkit-hyphens: none;
+    -moz-hyphens: none;
+    -ms-hyphens: none;
+    hyphens: none;
+    margin: 0;
+    margin-top: 0.5em;
+    margin-bottom: 0.5em;
+    background-color: #FCFBFA;
+}
+
+pre {
+  padding: 10px;
+  border-left: solid 3px #ECEAE9;
+}
+
+pre code {
+  padding: 0;
+  font-size: 100%;
+  background-color: transparent;
+}
+
+/* Inline code */
+:not(pre) > code {
+    padding: .2em;
+    padding-top: 1px; padding-bottom: 1px;
+    background: #f8f8f8;
+}

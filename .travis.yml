@@ -1,0 +1,31 @@
+# https://developers.google.com/web/updates/2017/06/headless-karma-mocha-chai
+dist: trusty
+sudo: required
+addons:
+  chrome: stable
+language: node_js
+node_js:
+  - "10"
+# cache: yarn
+before_install:
+  - curl -o- -L https://yarnpkg.com/install.sh | bash -s -- -version 1.7.0
+  - export PATH=$HOME/.yarn/bin:$PATH
+cache:
+  directories:
+    - node_modules
+    - ~/.yarn
+script:
+  - yarn
+  - yarn clean
+  - yarn build
+  - yarn test
+  # builds examples app quickly if $TRAVIS_PULL_REQUEST / not-master
+  # else assembles entire docs output in prod mode
+  - ./build-docs.sh
+deploy:
+  provider:     pages
+  skip_cleanup: true
+  local_dir:    out-docs
+  github_token: $GH_TOKEN # Set in travis-ci.org dashboard
+  on:
+    branch: master

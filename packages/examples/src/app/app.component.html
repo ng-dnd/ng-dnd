@@ -1,0 +1,100 @@
+<header>
+    <hotkeys-cheatsheet></hotkeys-cheatsheet>
+  <h2>
+    @angular-skyhook examples
+  </h2>
+</header>
+<div class="wrapper">
+  <nav class="outer">
+    <p class="back">
+      <a href="https://cormacrelf.github.io/angular-skyhook/"><i class="fas fa-arrow-left"></i> Back to the documentation</a>
+    </p>
+    <p class="menu">
+      <a href="#" (click)="toggle($event)"><i class="fas fa-arrow-{{open ? 'up' : 'down'}}"></i> {{open ? 'Hide' : 'Show' }} menu</a>
+    </p>
+    <nav class="nav-grid" [class.hide]="!open">
+      <section>
+        <h3>Applications</h3>
+        <ul>
+          <li>
+            <a [routerLink]="['chessboard']" routerLinkActive="active">Chessboard (tutorial)</a>
+          </li>
+          <li>
+            <a [routerLink]="['basic-sortable']" routerLinkActive="active">Sortable from scratch</a>
+          </li>
+          <li>
+            <a [routerLink]="['drilldown']" routerLinkActive="active">Drilldown</a>
+          </li>
+          <li>
+            <a [routerLink]="['bins']" routerLinkActive="active">Mail sorting</a>
+          </li>
+          <li>
+            <a [routerLink]="['calendar']" routerLinkActive="active">Calendar</a>
+          </li>
+        </ul>
+      </section>
+      <section>
+        <h3>Nesting</h3>
+        <ul>
+          <li>
+            <a [routerLink]="['nested', 'sources']" routerLinkActive="active">Nested sources</a>
+          </li>
+          <li>
+            <a [routerLink]="['nested', 'targets']" routerLinkActive="active">Nested targets</a>
+          </li>
+        </ul>
+      </section>
+      <section>
+        <h3>Drag layers</h3>
+        <ul>
+          <li>
+            <a [routerLink]="['drag-layer', 'simple']" routerLinkActive="active">Drag layer</a>
+          </li>
+          <li>
+            <a [routerLink]="['drag-layer', 'xy-pad']" routerLinkActive="active">XY Pad</a>
+          </li>
+        </ul>
+      </section>
+      <!-- <li><a [routerLink]="['touch']">Touch backend</a></li> -->
+      <section>
+        <h3>HTML5 features</h3>
+        <ul>
+          <li>
+            <a [routerLink]="['html5', 'handles-previews']" routerLinkActive="active">Handles and previews</a>
+          </li>
+          <li>
+            <a [routerLink]="['html5', 'native-types']" routerLinkActive="active">Native types</a>
+          </li>
+          <li>
+            <a [routerLink]="['html5', 'drop-effects']" routerLinkActive="active">Drop effects</a>
+          </li>
+        </ul>
+      </section>
+      <section>
+      <h3>Sortable</h3>
+        <ul>
+          <li>
+            <a [routerLink]="['sortable', 'simple']" routerLinkActive="active">Simple list</a>
+          </li>
+          <li>
+            <a [routerLink]="['sortable', 'fixed-height']" routerLinkActive="active">Fixed height</a>
+          </li>
+          <li>
+              <a [routerLink]="['sortable', 'kanban']" routerLinkActive="active">Kanban board (@ngrx)</a>
+          </li>
+          <li>
+            <a [routerLink]="['sortable', 'simple-kanban']" routerLinkActive="active">Kanban board (simple)</a>
+          </li>
+          <li>
+            <a [routerLink]="['sortable', 'quiz']" routerLinkActive="active">Quiz builder</a>
+          </li>
+          <li>
+            <a [routerLink]="['sortable', 'keyboard']" routerLinkActive="active">Keyboard driven</a>
+          </li>
+        </ul>
+      </section>
+    </nav>
+  </nav>
+  <router-outlet>
+  </router-outlet>
+</div>

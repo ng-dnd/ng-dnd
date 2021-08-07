@@ -1,0 +1,25 @@
+{
+    "name": "@angular-skyhook/sortable",
+    "version": "1.4.0-rc.0",
+    "publishConfig": {
+        "access": "public"
+    },
+    "repository": "https://github.com/cormacrelf/angular-skyhook",
+    "dependencies": {
+        "tslib": "^1.9.0"
+    },
+    "peerDependencies": {
+        "@angular-skyhook/core": "^1.0.0",
+        "@angular/common": ">= 6.0.0",
+        "@angular/core": ">= 6.0.0",
+        "rxjs": ">= 6.0.0"
+    },
+    "scripts": {
+        "clean": "rimraf dist",
+        "docs": "compodoc -p tsconfig.docs.json -c compodoc.json src"
+    },
+    "license": "MIT",
+    "devDependencies": {
+        "@angular-skyhook/core": "^1.4.0-rc.0"
+    }
+}
