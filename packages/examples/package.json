@@ -57,11 +57,5 @@
     "jest-localstorage-mock": "^2.2.0",
     "lerna": "^3.2.1",
     "protractor": "~6.0.0"
-  },
-  "browserslist": [
-    "> 1%",
-    "last 2 versions",
-    "not ie > 0",
-    "not ie_mob > 0"
-  ]
+  }
 }
