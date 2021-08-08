@@ -5,21 +5,21 @@ import { Store } from '@ngrx/store';
 import { SortableSpecService, Card, CardList, CardTree } from '../specs';
 
 @Component({
-    selector: "kanban-board",
-    templateUrl: "./kanban-board.component.html",
-    styleUrls: ["./kanban-board.component.scss"]
+  selector: "kanban-board",
+  templateUrl: "./kanban-board.component.html",
+  styleUrls: ["./kanban-board.component.scss"]
 })
 export class KanbanBoardComponent {
-    ItemTypes = ItemTypes;
+  ItemTypes = ItemTypes;
 
-    constructor(public specs: SortableSpecService) { }
+  constructor(public specs: SortableSpecService) { }
 
-    addCard(listId: number, title: string) {
-        // this.store.dispatch(new AddCard(listId, title));
-    }
+  addCard(listId: number, title: string) {
+    // this.store.dispatch(new AddCard(listId, title));
+  }
 
-    removeCard(ev: DraggedItem<Card>) {
-        // this.store.dispatch(new RemoveCard(ev));
-    }
+  removeCard(ev: DraggedItem<Card>) {
+    // this.store.dispatch(new RemoveCard(ev));
+  }
 
 }

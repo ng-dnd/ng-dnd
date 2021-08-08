@@ -15,25 +15,25 @@ import { KanbanCardComponent } from "./kanban-card/kanban-card.component";
 import { SortableSpecService } from './specs';
 
 @NgModule({
-    declarations: [
-        ContainerComponent,
-        KanbanBoardComponent,
-        KanbanListComponent,
-        KanbanCardComponent,
-    ],
-    imports: [
-        CommonModule,
-        UtilityModule,
-        SkyhookDndModule,
-        SkyhookMultiBackendModule,
-        SkyhookSortableModule,
-        ReactiveFormsModule,
-        RouterModule.forChild([
-            { path: "", component: ContainerComponent }
-        ])
-    ],
-    providers: [
-        SortableSpecService
-    ]
+  declarations: [
+    ContainerComponent,
+    KanbanBoardComponent,
+    KanbanListComponent,
+    KanbanCardComponent,
+  ],
+  imports: [
+    CommonModule,
+    UtilityModule,
+    SkyhookDndModule,
+    SkyhookMultiBackendModule,
+    SkyhookSortableModule,
+    ReactiveFormsModule,
+    RouterModule.forChild([
+      { path: "", component: ContainerComponent }
+    ])
+  ],
+  providers: [
+    SortableSpecService
+  ]
 })
 export class KanbanModule { }

@@ -11,13 +11,13 @@ import { Trash } from "./trash.component";
 import { ContainerComponent } from "./container.component";
 
 @NgModule({
-    declarations: [Bin, TrashPile, Trash, ContainerComponent],
-    imports: [
-        CommonModule,
-        SkyhookDndModule,
-        SkyhookMultiBackendModule,
-        RouterModule.forChild([{ path: "", component: ContainerComponent }]),
-        UtilityModule
-    ]
+  declarations: [Bin, TrashPile, Trash, ContainerComponent],
+  imports: [
+    CommonModule,
+    SkyhookDndModule,
+    SkyhookMultiBackendModule,
+    RouterModule.forChild([{ path: "", component: ContainerComponent }]),
+    UtilityModule
+  ]
 })
-export class BinsModule {}
+export class BinsModule { }

@@ -7,24 +7,24 @@ import { Moment } from "moment-mini-ts";
 import { ResetCalendar } from "../store/calendar.actions";
 
 @Component({
-    selector: 'cal-calendar',
-    changeDetection: ChangeDetectionStrategy.OnPush,
-    templateUrl: './calendar.component.html',
-    styleUrls: ['./calendar.component.scss']
+  selector: 'cal-calendar',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  templateUrl: './calendar.component.html',
+  styleUrls: ['./calendar.component.scss']
 })
 export class CalendarComponent implements OnInit {
 
-    weeks$ = this.store.pipe(select(weeksSelector));
+  weeks$ = this.store.pipe(select(weeksSelector));
 
-    constructor (private store: Store<CalendarState>) {}
+  constructor(private store: Store<CalendarState>) { }
 
-    trackWeek(_, week: Week) {
-        return week.uniqueId;
-    }
-    trackDay(i: number, day: Moment) {
-        return i;
-    }
-    ngOnInit() {
-        this.store.dispatch(new ResetCalendar());
-    }
+  trackWeek(_, week: Week) {
+    return week.uniqueId;
+  }
+  trackDay(i: number, day: Moment) {
+    return i;
+  }
+  ngOnInit() {
+    this.store.dispatch(new ResetCalendar());
+  }
 }

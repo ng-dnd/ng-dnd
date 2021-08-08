@@ -1,4 +1,4 @@
-import { Input, Component, OnInit } from '@angular/core';
+import { Input, Component, OnInit, OnDestroy } from '@angular/core';
 import { SkyhookDndService } from "@ng-dnd/core";
 import { ItemTypes } from './item-types';
 
@@ -19,7 +19,7 @@ import { ItemTypes } from './item-types';
   `,
   styleUrls: ['./dustbin.component.scss']
 })
-export class Dustbin {
+export class Dustbin implements OnDestroy {
 
   @Input() greedy = false;
 
@@ -37,7 +37,7 @@ export class Dustbin {
       }
 
       this.hasDropped = true,
-      this.hasDroppedOnChild = hasDroppedOnChild;
+        this.hasDroppedOnChild = hasDroppedOnChild;
     }
   });
 
@@ -47,16 +47,16 @@ export class Dustbin {
   }));
 
   text() {
-    return this.hasDropped && `dropped${ this.hasDroppedOnChild ? ' on child' : ''}` || '';
+    return this.hasDropped && `dropped${this.hasDroppedOnChild ? ' on child' : ''}` || '';
   }
 
-  getColor({ isOver, isOverCurrent}) {
+  getColor({ isOver, isOverCurrent }) {
     if (isOverCurrent || (isOver && this.greedy)) {
       return 'darkgreen';
     }
   }
 
-  constructor (private dnd: SkyhookDndService) {}
+  constructor(private dnd: SkyhookDndService) { }
 
   ngOnDestroy() {
     this.target.unsubscribe();

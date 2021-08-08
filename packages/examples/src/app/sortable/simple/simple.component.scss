@@ -1,18 +1,17 @@
 .priority {
-    min-width: 0;
-    width: 100%;
-    max-width: 400px;
-    margin: 4px 0;
-    cursor: move;
+  min-width: 0;
+  width: 100%;
+  max-width: 400px;
+  margin: 4px 0;
+  cursor: move;
 }
 pre {
-    margin: 0;
-    color: #5b0481;
-    background: rgb(239, 224, 252);
-    border-bottom: 1px solid #bb86e9;
-    border-left: none;
+  margin: 0;
+  color: #5b0481;
+  background: rgb(239, 224, 252);
+  border-bottom: 1px solid #bb86e9;
+  border-left: none;
 }
 .priority--placeholder pre {
-    opacity: 0.4;
+  opacity: 0.4;
 }
-

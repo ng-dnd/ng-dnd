@@ -1,11 +1,11 @@
 import { NgModule } from "@angular/core";
 import { CommonModule } from "@angular/common";
-import { UtilityModule } from "../utility.module";
-import { SkyhookDndModule } from "@ng-dnd/core";
 import { RouterModule } from "@angular/router";
 import { ReactiveFormsModule } from "@angular/forms";
-import { SkyhookMultiBackendModule } from "@ng-dnd/multi-backend";
 import { StoreModule } from '@ngrx/store';
+import { SkyhookDndModule } from "@ng-dnd/core";
+import { SkyhookMultiBackendModule } from "@ng-dnd/multi-backend";
+import { UtilityModule } from "../utility.module";
 import { CalendarService } from "./store/service";
 import * as fromCalendar from './store/calendar.reducer';
 
@@ -15,24 +15,24 @@ import { CalendarDayComponent } from "./components/day.component";
 import { CalendarEventComponent } from "./components/event.component";
 
 @NgModule({
-    declarations: [
-        CalendarContainerComponent,
-        CalendarComponent,
-        CalendarDayComponent,
-        CalendarEventComponent,
-    ],
-    imports: [
-        CommonModule,
-        UtilityModule,
-        SkyhookDndModule,
-        SkyhookMultiBackendModule,
-        ReactiveFormsModule,
-        StoreModule,
-        RouterModule.forChild([
-            { path: "", component: CalendarContainerComponent }
-        ]),
-        StoreModule.forFeature('calendar', fromCalendar.reducer),
-    ],
-    providers: [ CalendarService ]
+  declarations: [
+    CalendarContainerComponent,
+    CalendarComponent,
+    CalendarDayComponent,
+    CalendarEventComponent,
+  ],
+  imports: [
+    CommonModule,
+    UtilityModule,
+    SkyhookDndModule,
+    SkyhookMultiBackendModule,
+    ReactiveFormsModule,
+    StoreModule,
+    RouterModule.forChild([
+      { path: "", component: CalendarContainerComponent }
+    ]),
+    StoreModule.forFeature('calendar', fromCalendar.reducer),
+  ],
+  providers: [CalendarService]
 })
 export class CalendarModule { }

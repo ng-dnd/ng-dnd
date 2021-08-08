@@ -14,10 +14,10 @@ import { SkyhookMultiBackendModule } from '@ng-dnd/multi-backend';
 
 @NgModule({
   declarations: [
-      ContainerComponent,
-      CardComponent,
-      CardInnerDirective,
-      BasicSortableComponent
+    ContainerComponent,
+    CardComponent,
+    CardInnerDirective,
+    BasicSortableComponent
   ],
   imports: [
     CommonModule,

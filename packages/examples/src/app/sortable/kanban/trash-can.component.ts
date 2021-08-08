@@ -6,21 +6,21 @@ import { Output } from "@angular/core";
 import { Card } from './card';
 
 @Component({
-    selector: 'kanban-trash-can',
-    changeDetection: ChangeDetectionStrategy.OnPush,
-    template: `
+  selector: 'kanban-trash-can',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  template: `
     <div *ngIf="collect$|async as c"
         class="trash-can"
         [class.isOver]="c.isOver"
         [dropTarget]="target">
-        <div>
-            <i class="fas fa-trash-alt"></i>
-            <span>Drop here to delete</span>
-        </div>
-        <div class="space" [ngStyle]="getStyle(c.isOver, c.item)"></div>
+      <div>
+        <i class="fas fa-trash-alt"></i>
+        <span>Drop here to delete</span>
+      </div>
+      <div class="space" [ngStyle]="getStyle(c.isOver, c.item)"></div>
     </div>
-    `,
-    styles: [`
+  `,
+  styles: [`
     .fas { margin-right: 8px; }
     .trash-can {
         margin: 8px;
@@ -46,25 +46,25 @@ import { Card } from './card';
     `]
 })
 export class TrashCanComponent {
-    @Output() dropped = new EventEmitter<DraggedItem<Card>>();
-    target = this.dnd.dropTarget<DraggedItem<Card>>(ItemTypes.CARD, {
-        canDrop: monitor => {
-            return monitor.getItem().isInternal;
-        },
-        drop: monitor => {
-            this.dropped.emit(monitor.getItem());
-        }
-    });
-    collect$ = this.target.listen(m => ({
-        item: m.getItem(),
-        isOver: m.isOver() && m.canDrop()
-    }));
-    constructor(private dnd: SkyhookDndService) { }
-    getStyle(isOver: boolean, item: DraggedItem<Card>) {
-        if (!isOver || !item) { return {} }
-        return {
-            ...item.size.style(),
-            transition: 'all 50ms ease-in'
-        };
+  @Output() dropped = new EventEmitter<DraggedItem<Card>>();
+  target = this.dnd.dropTarget<DraggedItem<Card>>(ItemTypes.CARD, {
+    canDrop: monitor => {
+      return monitor.getItem().isInternal;
+    },
+    drop: monitor => {
+      this.dropped.emit(monitor.getItem());
     }
+  });
+  collect$ = this.target.listen(m => ({
+    item: m.getItem(),
+    isOver: m.isOver() && m.canDrop()
+  }));
+  constructor(private dnd: SkyhookDndService) { }
+  getStyle(isOver: boolean, item: DraggedItem<Card>) {
+    if (!isOver || !item) { return {}; }
+    return {
+      ...item.size.style(),
+      transition: 'all 50ms ease-in'
+    };
+  }
 }

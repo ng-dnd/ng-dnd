@@ -10,18 +10,18 @@ import { CopyTargetComponent } from "./copy-target.component";
 import { BoxComponent } from "./box.component";
 
 @NgModule({
-    declarations: [
-        ContainerComponent,
-        CopyTargetComponent,
-        BoxComponent
-    ],
-    imports: [
-        CommonModule,
-        UtilityModule,
-        SkyhookDndModule,
-        SkyhookMultiBackendModule,
-        RouterModule.forChild([{ path: "", component: ContainerComponent }]),
-    ],
+  declarations: [
+    ContainerComponent,
+    CopyTargetComponent,
+    BoxComponent
+  ],
+  imports: [
+    CommonModule,
+    UtilityModule,
+    SkyhookDndModule,
+    SkyhookMultiBackendModule,
+    RouterModule.forChild([{ path: "", component: ContainerComponent }]),
+  ],
 })
 export class DropEffectsModule {
 }

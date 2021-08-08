@@ -10,19 +10,19 @@ import { FixedHeightComponent } from "./fixed-height.component";
 import { ContainerComponent } from "./container.component";
 
 @NgModule({
-    declarations: [
-        ContainerComponent,
-        FixedHeightComponent,
-    ],
-    imports: [
-        CommonModule,
-        UtilityModule,
-        SkyhookDndModule,
-        SkyhookMultiBackendModule,
-        SkyhookSortableModule,
-        RouterModule.forChild([
-            { path: "", component: ContainerComponent }
-        ])
-    ]
+  declarations: [
+    ContainerComponent,
+    FixedHeightComponent,
+  ],
+  imports: [
+    CommonModule,
+    UtilityModule,
+    SkyhookDndModule,
+    SkyhookMultiBackendModule,
+    SkyhookSortableModule,
+    RouterModule.forChild([
+      { path: "", component: ContainerComponent }
+    ])
+  ]
 })
 export class FixedHeightModule { }

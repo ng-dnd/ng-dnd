@@ -14,22 +14,22 @@ import { ContainerComponent } from "./container.component";
 import { reducer } from './store/reducer';
 
 @NgModule({
-    declarations: [
-        ContainerComponent,
-        SimpleComponent,
-        SummaryComponent,
-    ],
-    imports: [
-        CommonModule,
-        UtilityModule,
-        SkyhookDndModule,
-        SkyhookMultiBackendModule,
-        SkyhookSortableModule,
-        StoreModule.forFeature('simple-ngrx', reducer),
-        RouterModule.forChild([
-            { path: "", component: ContainerComponent }
-        ]),
-        HotkeyModule,
-    ]
+  declarations: [
+    ContainerComponent,
+    SimpleComponent,
+    SummaryComponent,
+  ],
+  imports: [
+    CommonModule,
+    UtilityModule,
+    SkyhookDndModule,
+    SkyhookMultiBackendModule,
+    SkyhookSortableModule,
+    StoreModule.forFeature('simple-ngrx', reducer),
+    RouterModule.forChild([
+      { path: "", component: ContainerComponent }
+    ]),
+    HotkeyModule,
+  ]
 })
 export class KeyboardModule { }

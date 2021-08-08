@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { SkyhookDndService } from "@ng-dnd/core";
 import { ItemTypes } from './item-types';
 
@@ -18,9 +18,9 @@ import { ItemTypes } from './item-types';
       margin-bottom: 1rem;
     }
     p { display: inline-block;, padding: 3px; margin: 0; }
-    `]
+  `]
 })
-export class Box {
+export class Box implements OnDestroy {
 
   source = this.dnd.dragSource(ItemTypes.BOX, {
     beginDrag: () => ({}),
@@ -28,7 +28,7 @@ export class Box {
 
   opacity = this.source.listen(m => m.isDragging() ? 0.4 : 1);
 
-  constructor( private dnd: SkyhookDndService ) {}
+  constructor(private dnd: SkyhookDndService) { }
 
   ngOnDestroy() {
     this.source.unsubscribe();

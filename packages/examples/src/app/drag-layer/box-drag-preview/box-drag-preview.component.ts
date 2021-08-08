@@ -27,7 +27,7 @@ import { Observable ,  Subject } from 'rxjs';
   `]
 })
 export class BoxDragPreviewComponent implements OnInit {
-  @Input() title;
+  @Input() title: any;
 
   constructor() {}
 

@@ -1,4 +1,4 @@
-import { Input, Component, OnInit } from '@angular/core';
+import { Input, Component, OnInit, OnDestroy } from '@angular/core';
 import { SkyhookDndService } from "@ng-dnd/core";
 import { Colors } from './colors';
 import { map, filter, startWith } from 'rxjs/operators';
@@ -13,8 +13,7 @@ import { map, filter, startWith } from 'rxjs/operators';
       </ng-container>
     </div>
   `,
-  styles: [
-    `
+  styles: [`
     .box {
       font-size: 120%;
       color: #777;
@@ -28,10 +27,9 @@ import { map, filter, startWith } from 'rxjs/operators';
     .fade {
       opacity: 0.5;
     }
-    `
-  ]
+  `]
 })
-export class TargetBox {
+export class TargetBox implements OnDestroy {
 
   Colors = Colors;
 
@@ -50,9 +48,9 @@ export class TargetBox {
     .listen(m => m.getItemType())
     .pipe(map(t => this.cssColor(t)));
 
-  constructor (private dnd: SkyhookDndService) {}
+  constructor(private dnd: SkyhookDndService) { }
 
-  cssColor(c: string|symbol) {
+  cssColor(c: string | symbol) {
     switch (c) {
       case Colors.YELLOW:
         return 'lightgoldenrodyellow';

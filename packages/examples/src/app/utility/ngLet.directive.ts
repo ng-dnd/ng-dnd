@@ -2,36 +2,36 @@
 // https://github.com/ngrx-utils/ngrx-utils
 
 import {
-    NgModule,
-    Directive,
-    Input,
-    TemplateRef,
-    ViewContainerRef,
-    OnInit
+  NgModule,
+  Directive,
+  Input,
+  TemplateRef,
+  ViewContainerRef,
+  OnInit
 } from "@angular/core";
 
 export class NgLetContext {
-    $implicit: any = null;
-    ngLet: any = null;
+  $implicit: any = null;
+  ngLet: any = null;
 }
 
 @Directive({
-    selector: "[ngLet]"
+  selector: "[ngLet]"
 })
 export class NgLetDirective implements OnInit {
-    private _context = new NgLetContext();
+  private _context = new NgLetContext();
 
-    @Input()
-    set ngLet(value: any) {
-        this._context.$implicit = this._context.ngLet = value;
-    }
+  @Input()
+  set ngLet(value: any) {
+    this._context.$implicit = this._context.ngLet = value;
+  }
 
-    constructor(
-        private _vcr: ViewContainerRef,
-        private _templateRef: TemplateRef<NgLetContext>
-    ) {}
+  constructor(
+    private _vcr: ViewContainerRef,
+    private _templateRef: TemplateRef<NgLetContext>
+  ) { }
 
-    ngOnInit() {
-        this._vcr.createEmbeddedView(this._templateRef, this._context);
-    }
+  ngOnInit() {
+    this._vcr.createEmbeddedView(this._templateRef, this._context);
+  }
 }

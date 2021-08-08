@@ -25,7 +25,7 @@ import { Component, OnInit } from '@angular/core';
     .nested-targets-wrapper > * {
       margin: 20px;
     }
-    `]
+  `]
 })
 export class ContainerComponent {
 }

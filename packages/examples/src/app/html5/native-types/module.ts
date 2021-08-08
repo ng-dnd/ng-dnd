@@ -9,17 +9,17 @@ import { ContainerComponent } from './container.component';
 import { TargetComponent } from './target.component';
 
 @NgModule({
-    declarations: [
-        ContainerComponent,
-        TargetComponent,
-    ],
-    imports: [
-        CommonModule,
-        UtilityModule,
-        SkyhookDndModule,
-        SkyhookMultiBackendModule,
-        RouterModule.forChild([{ path: "", component: ContainerComponent }]),
-    ],
+  declarations: [
+    ContainerComponent,
+    TargetComponent,
+  ],
+  imports: [
+    CommonModule,
+    UtilityModule,
+    SkyhookDndModule,
+    SkyhookMultiBackendModule,
+    RouterModule.forChild([{ path: "", component: ContainerComponent }]),
+  ],
 })
 export class NativeTypesModule {
 }

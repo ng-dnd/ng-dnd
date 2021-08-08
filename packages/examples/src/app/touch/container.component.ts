@@ -3,8 +3,8 @@ import { ItemTypes } from './itemTypes';
 import { SkyhookDndService } from "@ng-dnd/core";
 
 @Component({
-    selector: 'touch-container',
-    template: `
+  selector: 'touch-container',
+  template: `
     <div>
     <app-example-link path="touch"></app-example-link>
     <p>
@@ -27,5 +27,5 @@ import { SkyhookDndService } from "@ng-dnd/core";
     </div>`
 })
 export class ContainerComponent {
-    ItemTypes = ItemTypes;
+  ItemTypes = ItemTypes;
 }

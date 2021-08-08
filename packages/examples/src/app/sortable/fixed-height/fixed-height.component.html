@@ -1,29 +1,31 @@
 <skyhook-preview [allBackends]="true">
-    <ng-template let-type let-item="item">
-        <ng-container [ngSwitch]="type">
-            <div class="fixer" *ngSwitchCase="'FIXER'" [ngStyle]="item.size.style()">
-                <pre>{{item.index+1}}. {{ item.data.name }}</pre>
-            </div>
-        </ng-container>
-    </ng-template>
+  <ng-template let-type let-item="item">
+    <ng-container [ngSwitch]="type">
+      <div class="fixer" *ngSwitchCase="'FIXER'" [ngStyle]="item.size.style()">
+        <pre>{{item.index+1}}. {{ item.data.name }}</pre>
+      </div>
+    </ng-container>
+  </ng-template>
 </skyhook-preview>
 
 <div class="list">
-    <h4>Broken things to fix</h4>
+  <h4>Broken things to fix</h4>
 
-    <skyhook-sortable-list ssSortableListId="simple-demo"
-                           [ssSortableChildren]="tempList"
-                           [ssSortableSpec]="simpleSpec"
-                           ssSortableTrigger="fixed"> <!-- ALTERS THE HOVER ALGORITHM -->
-        <ng-template ssTemplate let-context>
-            <!-- ssRender configures a DragSource for you, but you have to attach it. -->
-            <div class="fixer"
-                 [ssRender]="context"
-                 #render="ssRender"
-                 [class.fixer--placeholder]="render.isDragging$|async"
-                 [dragSource]="render.source" [noHTML5Preview]="true"> <!-- <<< attached here! -->
-                 <pre>{{render.index+1}}. {{ render.data.name }}</pre>
-            </div>
-        </ng-template>
-    </skyhook-sortable-list>
+  <skyhook-sortable-list ssSortableListId="simple-demo"
+                         [ssSortableChildren]="tempList"
+                         [ssSortableSpec]="simpleSpec"
+                         ssSortableTrigger="fixed">
+    <!-- ALTERS THE HOVER ALGORITHM -->
+    <ng-template ssTemplate let-context>
+      <!-- ssRender configures a DragSource for you, but you have to attach it. -->
+      <div class="fixer"
+           [ssRender]="context"
+           #render="ssRender"
+           [class.fixer--placeholder]="render.isDragging$|async"
+           [dragSource]="render.source" [noHTML5Preview]="true">
+        <!-- <<< attached here! -->
+        <pre>{{render.index+1}}. {{ render.data.name }}</pre>
+      </div>
+    </ng-template>
+  </skyhook-sortable-list>
 </div>

@@ -9,18 +9,18 @@ import { ContainerComponent } from "./container.component";
 import { ItemComponent, DraggableItemComponent } from "./item.component";
 
 @NgModule({
-    declarations: [
-        ContainerComponent,
-        ItemComponent,
-        DraggableItemComponent
-    ],
-    imports: [
-        CommonModule,
-        UtilityModule,
-        SkyhookDndModule,
-        SkyhookMultiBackendModule,
-        RouterModule.forChild([{ path: "", component: ContainerComponent }]),
-    ],
+  declarations: [
+    ContainerComponent,
+    ItemComponent,
+    DraggableItemComponent
+  ],
+  imports: [
+    CommonModule,
+    UtilityModule,
+    SkyhookDndModule,
+    SkyhookMultiBackendModule,
+    RouterModule.forChild([{ path: "", component: ContainerComponent }]),
+  ],
 })
 export class TouchModule {
 }

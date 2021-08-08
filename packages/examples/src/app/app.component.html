@@ -1,5 +1,5 @@
 <header>
-    <hotkeys-cheatsheet></hotkeys-cheatsheet>
+  <hotkeys-cheatsheet></hotkeys-cheatsheet>
   <h2>
     @ng-dnd examples
   </h2>
@@ -7,10 +7,12 @@
 <div class="wrapper">
   <nav class="outer">
     <p class="back">
-      <a href="https://cormacrelf.github.io/angular-skyhook/"><i class="fas fa-arrow-left"></i> Back to the documentation</a>
+      <a href="https://cormacrelf.github.io/angular-skyhook/"><i class="fas fa-arrow-left"></i> Back
+        to the documentation</a>
     </p>
     <p class="menu">
-      <a href="#" (click)="toggle($event)"><i class="fas fa-arrow-{{open ? 'up' : 'down'}}"></i> {{open ? 'Hide' : 'Show' }} menu</a>
+      <a href="#" (click)="toggle($event)"><i class="fas fa-arrow-{{open ? 'up' : 'down'}}"></i>
+        {{open ? 'Hide' : 'Show' }} menu</a>
     </p>
     <nav class="nav-grid" [class.hide]="!open">
       <section>
@@ -60,7 +62,8 @@
         <h3>HTML5 features</h3>
         <ul>
           <li>
-            <a [routerLink]="['html5', 'handles-previews']" routerLinkActive="active">Handles and previews</a>
+            <a [routerLink]="['html5', 'handles-previews']" routerLinkActive="active">Handles and
+              previews</a>
           </li>
           <li>
             <a [routerLink]="['html5', 'native-types']" routerLinkActive="active">Native types</a>
@@ -71,19 +74,22 @@
         </ul>
       </section>
       <section>
-      <h3>Sortable</h3>
+        <h3>Sortable</h3>
         <ul>
           <li>
             <a [routerLink]="['sortable', 'simple']" routerLinkActive="active">Simple list</a>
           </li>
           <li>
-            <a [routerLink]="['sortable', 'fixed-height']" routerLinkActive="active">Fixed height</a>
+            <a [routerLink]="['sortable', 'fixed-height']" routerLinkActive="active">Fixed
+              height</a>
           </li>
           <li>
-              <a [routerLink]="['sortable', 'kanban']" routerLinkActive="active">Kanban board (@ngrx)</a>
+            <a [routerLink]="['sortable', 'kanban']" routerLinkActive="active">Kanban board
+              (@ngrx)</a>
           </li>
           <li>
-            <a [routerLink]="['sortable', 'simple-kanban']" routerLinkActive="active">Kanban board (simple)</a>
+            <a [routerLink]="['sortable', 'simple-kanban']" routerLinkActive="active">Kanban board
+              (simple)</a>
           </li>
           <li>
             <a [routerLink]="['sortable', 'quiz']" routerLinkActive="active">Quiz builder</a>

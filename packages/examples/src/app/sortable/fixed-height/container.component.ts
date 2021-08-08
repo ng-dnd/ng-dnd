@@ -1,9 +1,8 @@
 import { Component } from "@angular/core";
 
 @Component({
-    selector: 'simple-sortable-container',
-    template:
-    `
+  selector: 'simple-sortable-container',
+  template: `
     <app-example-link path="sortable/fixed-height"></app-example-link>
 
     <p>If you know all the elements have the same height,

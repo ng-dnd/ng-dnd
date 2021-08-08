@@ -5,7 +5,7 @@ import { CalendarState } from "./calendar.reducer";
 
 @Injectable()
 export class CalendarService {
-    feat = createFeatureSelector<CalendarState>('calendar');
-    calendar = this.store.pipe(select(this.feat))
-    constructor(private store: Store<State>) {}
+  feat = createFeatureSelector<CalendarState>('calendar');
+  calendar = this.store.pipe(select(this.feat));
+  constructor(private store: Store<State>) { }
 }

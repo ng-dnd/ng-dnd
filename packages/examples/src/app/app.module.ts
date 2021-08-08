@@ -37,24 +37,24 @@ import { CustomTransitions } from './customMultiBackend';
 import { MultiBackend } from '@ng-dnd/multi-backend';
 
 @NgModule({
-    declarations: [AppComponent, TestComponent],
-    imports: [
-        BrowserModule,
-        UtilityModule,
-        RouterModule.forRoot(routes, {
-            preloadingStrategy: PreloadAllModules,
-            useHash: true
-        }),
-        StoreRootModule,
-        SkyhookDndModule.forRoot({ backend: MultiBackend, options: CustomTransitions }),
-        // SkyhookDndModule.forRoot({ backend: HTML5Backend }),
-        // SkyhookDndModule.forRoot({ backend: TouchBackend }),
-        // SkyhookDndModule.forRoot({ backend: MouseBackend }),
-        StoreModule.forRoot(reducers, { metaReducers }),
-        // !environment.production ? StoreDevtoolsModule.instrument() : [],
-        EffectsModule.forRoot([AppEffects]),
-        HotkeyModule.forRoot()
-    ],
-    bootstrap: [AppComponent]
+  declarations: [AppComponent, TestComponent],
+  imports: [
+    BrowserModule,
+    UtilityModule,
+    RouterModule.forRoot(routes, {
+      preloadingStrategy: PreloadAllModules,
+      useHash: true
+    }),
+    StoreRootModule,
+    SkyhookDndModule.forRoot({ backend: MultiBackend, options: CustomTransitions }),
+    // SkyhookDndModule.forRoot({ backend: HTML5Backend }),
+    // SkyhookDndModule.forRoot({ backend: TouchBackend }),
+    // SkyhookDndModule.forRoot({ backend: MouseBackend }),
+    StoreModule.forRoot(reducers, { metaReducers }),
+    // !environment.production ? StoreDevtoolsModule.instrument() : [],
+    EffectsModule.forRoot([AppEffects]),
+    HotkeyModule.forRoot()
+  ],
+  bootstrap: [AppComponent]
 })
-export class AppModule {}
+export class AppModule { }

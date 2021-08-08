@@ -1,8 +1,7 @@
-import { Component, Input } from '@angular/core';
-import { SkyhookDndService, DragPreviewOptions } from "@ng-dnd/core";
+import { ChangeDetectionStrategy, Component, Input, OnDestroy, OnInit } from '@angular/core';
+import { DragPreviewOptions, SkyhookDndService } from "@ng-dnd/core";
 import { getEmptyImage } from 'react-dnd-html5-backend';
 import { map } from 'rxjs/operators';
-import { ChangeDetectionStrategy } from '@angular/core';
 import { BoxWithLocation } from '../BoxWithLocation';
 
 @Component({
@@ -14,7 +13,7 @@ import { BoxWithLocation } from '../BoxWithLocation';
   `,
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class DraggableBoxComponent {
+export class DraggableBoxComponent implements OnInit, OnDestroy {
 
   @Input() id: number;
   @Input() title: string;

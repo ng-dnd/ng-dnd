@@ -2,18 +2,18 @@ import { Component, Input } from "@angular/core";
 import { Card } from '../specs';
 
 @Component({
-    selector: "kanban-card",
-    template: `
+  selector: "kanban-card",
+  template: `
     <div class="card"
         [class.card--preview]="preview"
         [class.card--placeholder]="placeholder">
-        <p>{{card.title}}</p>
+        <p>{{ card.title }}</p>
     </div>
-    `,
-    styleUrls: ['./kanban-card.component.scss']
+  `,
+  styleUrls: ['./kanban-card.component.scss']
 })
 export class KanbanCardComponent {
-    @Input() card: Card;
-    @Input() preview = false;
-    @Input() placeholder = false;
+  @Input() card: Card;
+  @Input() preview = false;
+  @Input() placeholder = false;
 }

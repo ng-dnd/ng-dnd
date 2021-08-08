@@ -1,13 +1,18 @@
 import { Component } from '@angular/core';
 
 @Component({
-    selector: 'app-chess-container',
-    template: `
+  selector: 'app-chess-container',
+  template: `
     <app-example-link path="chessboard"></app-example-link>
 
     <p>Welcome to <code>@ng-dnd</code>.</p>
-    <p>This is a re-implementation of the original, classic <a href="http://react-dnd.github.io/react-dnd/examples-chessboard-tutorial-app.html">react-dnd demo</a>.</p>
-    <p>The whole tutorial has been re-written so you can <a href="https://cormacrelf.github.io/angular-skyhook/additional-documentation/chess-tutorial.html">follow along</a> and build this yourself.</p>
+    <p>This is a re-implementation of the original, classic
+        <a href="http://react-dnd.github.io/react-dnd/examples-chessboard-tutorial-app.html">react-dnd demo</a>.
+    </p>
+    <p>The whole tutorial has been re-written so you can
+        <a href="https://cormacrelf.github.io/angular-skyhook/additional-documentation/chess-tutorial.html">follow along</a>
+        and build this yourself.
+    </p>
 
     <div class="max-container">
     <div class="square-outer">
@@ -16,7 +21,8 @@ import { Component } from '@angular/core';
         </div>
     </div>
     </div>
-    `, styles: [`
+  `,
+  styles: [`
     :host ::ng-deep * { box-sizing: border-box; }
     .max-container {
         max-width: 560px;

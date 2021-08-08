@@ -1,22 +1,22 @@
 <div class="list"
-    [class.list--preview]="preview"
-    [class.list--placeholder]="render?.isDragging$ | async">
+     [class.list--preview]="preview"
+     [class.list--placeholder]="render?.isDragging$ | async">
 
-    <!-- Attach to the h3 as a drag handle.
+  <!-- Attach to the h3 as a drag handle.
          The ItemTypes.LIST provided on the board component is applied automatically.
          If render?.source is null, the dragSource directive does nothing.
     -->
-    <div class="handle"
-        [dragSource]="render?.source"
-        [noHTML5Preview]="true">
-        <h3>{{list.title}}</h3>
-    </div>
+  <div class="handle"
+       [dragSource]="render?.source"
+       [noHTML5Preview]="true">
+    <h3>{{list.title}}</h3>
+  </div>
 
 
-    <!-- TODO: note that .cards-container has a min-height so you can hover/drop
+  <!-- TODO: note that .cards-container has a min-height so you can hover/drop
          even when it's empty -->
 
-    <!--
+  <!--
         This is the 'desugared' style, where you render an *ngFor explicitly.
         It's useful for integrating with other libraries like Material,
         hopefully. Other libraries love to include *ngFor themselves, but it
@@ -29,45 +29,44 @@
         double drop events!
     -->
 
-    <div *ngIf="render; else plain"
-        class="cards-container"
-        ssSortable
-        [ssSortableSpec]="specs.listSpec"
-        [ssSortableListId]="list.id"
-        #clist="ssSortable">
-        <!-- note the assignment of the ssSortable directive to a template
+  <div *ngIf="render; else plain"
+       class="cards-container"
+       ssSortable
+       [ssSortableSpec]="specs.listSpec"
+       [ssSortableListId]="list.id"
+       #clist="ssSortable">
+    <!-- note the assignment of the ssSortable directive to a template
             variable, clist, so we can use it below. It can generate the
             required context for ssRender. -->
 
-        <kanban-card
-            *ngFor="let card of list.cards;
+    <kanban-card
+                 *ngFor="let card of list.cards;
                     let i = index;
                     trackBy: trackById"
-            [card]="card"
-            [ssRender]="clist.contextFor(card, i)"
-            #render="ssRender"
-            [dragSource]="render.source"
-            [noHTML5Preview]="true"
-            [placeholder]="render.isDragging$|async">
-            <!-- This time, we aren't doing drag handles, so we just attached
+                 [card]="card"
+                 [ssRender]="clist.contextFor(card, i)"
+                 #render="ssRender"
+                 [dragSource]="render.source"
+                 [noHTML5Preview]="true"
+                 [placeholder]="render.isDragging$|async">
+      <!-- This time, we aren't doing drag handles, so we just attached
                 render.source directly to kanban-card by pulling #render out.
                 You can do it whichever way suits.
             -->
-        </kanban-card>
+    </kanban-card>
 
+  </div>
+
+  <!-- A simple version for when we're dragging -->
+  <ng-template #plain>
+    <div class="cards-container">
+      <kanban-card
+                   *ngFor="let card of list.cards; let i = index; trackBy: trackById"
+                   [card]="card">
+      </kanban-card>
     </div>
+  </ng-template>
 
-    <!-- A simple version for when we're dragging -->
-    <ng-template #plain>
-        <div class="cards-container">
-            <kanban-card
-                *ngFor="let card of list.cards; let i = index; trackBy: trackById"
-                [card]="card">
-            </kanban-card>
-        </div>
-    </ng-template>
-
-    <kanban-add-card (add)="addCard.emit($event)">
-    </kanban-add-card>
+  <kanban-add-card (add)="addCard.emit($event)">
+  </kanban-add-card>
 </div>
-

@@ -11,19 +11,19 @@ import { BoxComponent } from './box.component';
 import { UtilityModule } from '../utility.module';
 
 @NgModule({
-    declarations: [
-        ContainerComponent,
-        CustomDragLayerComponent,
-        DraggableBoxComponent,
-        DragContainerComponent,
-        BoxDragPreviewComponent,
-        BoxComponent
-    ],
-    imports: [
-        CommonModule,
-        SkyhookDndModule,
-        RouterModule.forChild([{ path: '', component: ContainerComponent }]),
-        UtilityModule
-    ],
+  declarations: [
+    ContainerComponent,
+    CustomDragLayerComponent,
+    DraggableBoxComponent,
+    DragContainerComponent,
+    BoxDragPreviewComponent,
+    BoxComponent
+  ],
+  imports: [
+    CommonModule,
+    SkyhookDndModule,
+    RouterModule.forChild([{ path: '', component: ContainerComponent }]),
+    UtilityModule
+  ],
 })
 export class DragLayerModule { }

@@ -19,30 +19,30 @@ import { reducer } from './store';
 import { SortableSpecService } from './specs';
 
 @NgModule({
-    declarations: [
-        ContainerComponent,
-        KanbanBoardComponent,
-        KanbanListComponent,
-        KanbanCardComponent,
-        AddCardComponent,
-        TrashCanComponent,
-        KanbanExternalComponent,
-    ],
-    imports: [
-        CommonModule,
-        UtilityModule,
-        SkyhookDndModule,
-        SkyhookMultiBackendModule,
-        SkyhookSortableModule,
-        ReactiveFormsModule,
-        StoreModule,
-        StoreModule.forFeature('kanban', reducer),
-        RouterModule.forChild([
-            { path: "", component: ContainerComponent }
-        ])
-    ],
-    providers: [
-        SortableSpecService
-    ]
+  declarations: [
+    ContainerComponent,
+    KanbanBoardComponent,
+    KanbanListComponent,
+    KanbanCardComponent,
+    AddCardComponent,
+    TrashCanComponent,
+    KanbanExternalComponent,
+  ],
+  imports: [
+    CommonModule,
+    UtilityModule,
+    SkyhookDndModule,
+    SkyhookMultiBackendModule,
+    SkyhookSortableModule,
+    ReactiveFormsModule,
+    StoreModule,
+    StoreModule.forFeature('kanban', reducer),
+    RouterModule.forChild([
+      { path: "", component: ContainerComponent }
+    ])
+  ],
+  providers: [
+    SortableSpecService
+  ]
 })
 export class KanbanModule { }

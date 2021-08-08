@@ -31,7 +31,7 @@ import { Component, OnInit } from '@angular/core';
     .nested-targets-wrapper > *:not(:last-child) {
       margin-right: 10px;
     }
-    `]
+  `]
 })
 export class ContainerComponent {
 }

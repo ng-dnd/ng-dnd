@@ -26,7 +26,7 @@ import { TreeService } from './tree.service';
 })
 export class Container {
   lastDrop$ = this.tree.select(s => s.lastDrop);
-  constructor(private tree: TreeService) {}
+  constructor(private tree: TreeService) { }
   beginDrag() {
     this.tree.beginDrag();
   }

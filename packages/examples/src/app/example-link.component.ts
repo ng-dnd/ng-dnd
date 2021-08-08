@@ -1,8 +1,8 @@
 import { Component, Input } from '@angular/core';
 
 @Component({
-    selector: 'app-example-link',
-    template: `
+  selector: 'app-example-link',
+  template: `
     <p>
         <a [href]="link" target="_blank">
             <i class="fab fa-github"></i>
@@ -10,8 +10,8 @@ import { Component, Input } from '@angular/core';
         </a>
     </p>
     `,
-    styles: [
-        `
+  styles: [
+    `
         .fab { color: black; }
         p {
             margin-top: 0;
@@ -25,11 +25,11 @@ import { Component, Input } from '@angular/core';
             text-decoration: none;
         }
         `
-    ]
+  ]
 })
 export class ExampleLink {
-    @Input() path: string;
-    get link() {
-        return 'https://github.com/cormacrelf/angular-skyhook/tree/master/packages/examples/src/app/' + this.path;
-    }
+  @Input() path: string;
+  get link() {
+    return 'https://github.com/cormacrelf/angular-skyhook/tree/master/packages/examples/src/app/' + this.path;
+  }
 }

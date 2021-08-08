@@ -14,22 +14,22 @@ import { CubeComponent } from './cube.component';
 import { UtilityModule } from '../utility.module';
 
 @NgModule({
-    declarations: [
-        ContainerComponent,
-        CustomDragLayerComponent,
-        DraggableBoxComponent,
-        DragContainerComponent,
-        BoxDragPreviewComponent,
-        SpotComponent,
-        CrosshairsComponent,
-        CubeComponent
-    ],
-    imports: [
-        CommonModule,
-        FormsModule,
-        SkyhookDndModule,
-        RouterModule.forChild([{ path: '', component: ContainerComponent }]),
-        UtilityModule
-    ]
+  declarations: [
+    ContainerComponent,
+    CustomDragLayerComponent,
+    DraggableBoxComponent,
+    DragContainerComponent,
+    BoxDragPreviewComponent,
+    SpotComponent,
+    CrosshairsComponent,
+    CubeComponent
+  ],
+  imports: [
+    CommonModule,
+    FormsModule,
+    SkyhookDndModule,
+    RouterModule.forChild([{ path: '', component: ContainerComponent }]),
+    UtilityModule
+  ]
 })
-export class XyPadModule {}
+export class XyPadModule { }

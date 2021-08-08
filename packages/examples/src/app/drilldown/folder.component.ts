@@ -1,4 +1,4 @@
-import { Component, Input, ChangeDetectionStrategy, ChangeDetectorRef, NgZone } from '@angular/core';
+import { Component, Input, ChangeDetectionStrategy, ChangeDetectorRef, NgZone, OnInit, OnDestroy } from '@angular/core';
 import { ItemTypes } from './itemTypes';
 import { TreeService } from './tree.service';
 import { SkyhookDndService } from "@ng-dnd/core";
@@ -45,19 +45,19 @@ import { activatorDropTarget } from './activatorDropTarget';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 
-export class Folder {
+export class Folder implements OnInit, OnDestroy {
 
   @Input() keys: string[];
   get ownKey() {
     if (this.keys.length === 0) {
       return '<root>';
     }
-    return this.keys[this.keys.length-1];
+    return this.keys[this.keys.length - 1];
   }
 
   children$: Observable<string[]>;
   anyChildren$: Observable<boolean>;
-  isOpen$: Observable<boolean>
+  isOpen$: Observable<boolean>;
 
   // note, we are using a wrapped version of dnd.dropTarget.
   // this one will observe the 'hover' callback for us, and use Rx
@@ -77,13 +77,13 @@ export class Folder {
 
   isOver$ = this.target.listen(m => m.isOver() && m.canDrop());
 
-  constructor (public tree: TreeService, private dnd: SkyhookDndService, private ngZone: NgZone) { }
+  constructor(public tree: TreeService, private dnd: SkyhookDndService, private ngZone: NgZone) { }
 
   ngOnInit() {
     //   console.log('ngOnInit', this.keys);
     this.children$ = this.tree.getChildren(this.keys);
     this.anyChildren$ = this.children$.pipe(
-        map(cs => cs && cs.length > 0),
+      map(cs => cs && cs.length > 0),
     );
     this.isOpen$ = this.tree.isOpen(this.keys);
   }

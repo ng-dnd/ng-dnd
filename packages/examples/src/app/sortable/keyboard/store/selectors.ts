@@ -6,21 +6,21 @@ import { List } from 'immutable';
 
 export const _state = createFeatureSelector<State>('simple-ngrx');
 export const _render = createSelector(
-    _state,
-    (state) => {
-        const { flying } = state;
-        let either = state.draggingList || state.list;
-        if (flying != null) {
-            const { hover, data } = flying;
-            return either.insert(hover.index, data);
-        }
-        return either;
+  _state,
+  (state) => {
+    const { flying } = state;
+    const either = state.draggingList || state.list;
+    if (flying != null) {
+      const { hover, data } = flying;
+      return either.insert(hover.index, data);
     }
+    return either;
+  }
 );
 
 export const _list = createSelector(_state, s => s.list);
 const summarize = (bs: List<Blob>) => hasher(
-    bs.map(b => ""+b.id+""+b.hash.toString()).toArray().join(" ")
+  bs.map(b => '' + b.id + '' + b.hash.toString()).toArray().join(' ')
 );
 
 export const _unstableHash = createSelector(_render, summarize);

@@ -10,19 +10,19 @@ import { SimpleComponent } from "./simple.component";
 import { ContainerComponent } from "./container.component";
 
 @NgModule({
-    declarations: [
-        ContainerComponent,
-        SimpleComponent,
-    ],
-    imports: [
-        CommonModule,
-        UtilityModule,
-        SkyhookDndModule,
-        SkyhookMultiBackendModule,
-        SkyhookSortableModule,
-        RouterModule.forChild([
-            { path: "", component: ContainerComponent }
-        ])
-    ]
+  declarations: [
+    ContainerComponent,
+    SimpleComponent,
+  ],
+  imports: [
+    CommonModule,
+    UtilityModule,
+    SkyhookDndModule,
+    SkyhookMultiBackendModule,
+    SkyhookSortableModule,
+    RouterModule.forChild([
+      { path: "", component: ContainerComponent }
+    ])
+  ]
 })
 export class SimpleModule { }

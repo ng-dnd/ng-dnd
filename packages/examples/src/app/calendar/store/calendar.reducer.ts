@@ -6,7 +6,7 @@ import * as faker from 'faker';
 
 export interface CalendarState {
   events: List<CalendarEvent>;
-  startDate: moment.Moment,
+  startDate: moment.Moment;
   inFlight: CalendarEvent | null;
   original: CalendarEvent | null;
   diff: Diff;
@@ -36,7 +36,7 @@ export function reducer(state = new CalendarStateRecord(), action: CalendarActio
     case CalendarActionTypes.BeginDragNewEvent: {
       return state.set('inFlight',
         CalendarEvent.allDay(`Conference in ${faker.address.city()}`, action.start, action.start)
-        .set('temp', true));
+          .set('temp', true));
     }
 
     case CalendarActionTypes.HoverNewEvent: {
@@ -64,10 +64,10 @@ export function reducer(state = new CalendarStateRecord(), action: CalendarActio
     }
 
     case CalendarActionTypes.PrevMonth: {
-      return state.set('startDate', state.startDate.clone().add({months: -1}).startOf('month'));
+      return state.set('startDate', state.startDate.clone().add({ months: -1 }).startOf('month'));
     }
     case CalendarActionTypes.NextMonth: {
-      return state.set('startDate', state.startDate.clone().add({months: 1}).startOf('month'));
+      return state.set('startDate', state.startDate.clone().add({ months: 1 }).startOf('month'));
     }
 
     case CalendarActionTypes.BeginDragExistingEvent: {

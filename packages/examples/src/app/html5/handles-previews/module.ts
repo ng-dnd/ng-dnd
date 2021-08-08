@@ -10,18 +10,18 @@ import { CustomPreview } from './custom-preview.component';
 import { Handle } from './handle.component';
 
 @NgModule({
-    declarations: [
-        CustomPreview,
-        Handle,
-        ContainerComponent
-    ],
-    imports: [
-        CommonModule,
-        UtilityModule,
-        SkyhookDndModule,
-        SkyhookMultiBackendModule,
-        RouterModule.forChild([{ path: "", component: ContainerComponent }]),
-    ],
+  declarations: [
+    CustomPreview,
+    Handle,
+    ContainerComponent
+  ],
+  imports: [
+    CommonModule,
+    UtilityModule,
+    SkyhookDndModule,
+    SkyhookMultiBackendModule,
+    RouterModule.forChild([{ path: "", component: ContainerComponent }]),
+  ],
 })
 export class HandlesPreviewsModule {
 }

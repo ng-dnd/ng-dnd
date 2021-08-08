@@ -6,5 +6,5 @@ export function snapToGrid(n: number) {
     const snappedY = Math.round(a.y / n) * n;
 
     return { x: snappedX, y: snappedY };
-  }
+  };
 }

@@ -3,17 +3,17 @@ import { SkyhookDndService } from "@ng-dnd/core";
 import { ItemTypes } from "./item-types";
 
 interface DropResult {
-    dropEffect?: 'copy' | 'move' | 'link' | 'none';
+  dropEffect?: 'copy' | 'move' | 'link' | 'none';
 }
 
 @Component({
-    selector: 'de-box',
-    template: `
+  selector: 'de-box',
+  template: `
     <p [dragSource]="source" [dragSourceOptions]="force && { dropEffect: force }">
         Drag me (<code>{{ force ? force : 'default behaviour' }}</code>)
     </p>
-    `,
-    styles: [`
+  `,
+  styles: [`
     p {
         display: inline-block;
         padding: 0.5em;
@@ -26,17 +26,17 @@ interface DropResult {
     `]
 })
 export class BoxComponent {
-    @Output() dropped = new EventEmitter<string>();
-    @Input() force: string = undefined;
+  @Output() dropped = new EventEmitter<string>();
+  @Input() force: string = undefined;
 
-    source = this.dnd.dragSource<{}, DropResult>(ItemTypes.COPYABLE_ITEM, {
-        beginDrag: monitor => ({}),
-        endDrag: monitor => {
-            const result = monitor.getDropResult();
-            if (result) {
-                this.dropped.emit(result.dropEffect);
-            }
-        }
-    });
-    constructor(private dnd: SkyhookDndService) { }
+  source = this.dnd.dragSource<{}, DropResult>(ItemTypes.COPYABLE_ITEM, {
+    beginDrag: monitor => ({}),
+    endDrag: monitor => {
+      const result = monitor.getDropResult();
+      if (result) {
+        this.dropped.emit(result.dropEffect);
+      }
+    }
+  });
+  constructor(private dnd: SkyhookDndService) { }
 }

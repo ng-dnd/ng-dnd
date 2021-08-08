@@ -5,20 +5,20 @@ import { default as TouchBackend } from 'react-dnd-touch-backend';
 import { TouchBackendOptions } from 'react-dnd-touch-backend/lib/interfaces';
 
 const backends: BackendTransition[] = [
-    {
-        backend: HTML5Backend,
-        transition: MouseTransition,
-    },
-    {
-        backend: TouchBackend,
-        options: {
-            enableMouseEvents: false,
-            ignoreContextMenu: true,
-            delayTouchStart: 200, // milliseconds
-        } as TouchBackendOptions,
-        transition: TouchTransition,
-        preview: true,
-    }
+  {
+    backend: HTML5Backend,
+    transition: MouseTransition,
+  },
+  {
+    backend: TouchBackend,
+    options: {
+      enableMouseEvents: false,
+      ignoreContextMenu: true,
+      delayTouchStart: 200, // milliseconds
+    } as TouchBackendOptions,
+    transition: TouchTransition,
+    preview: true,
+  }
 ];
 
 export const CustomTransitions = { backends };

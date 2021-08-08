@@ -10,18 +10,18 @@ import { Box } from './box.component';
 import { Dustbin } from './dustbin.component';
 
 @NgModule({
-    declarations: [
-        ContainerComponent,
-        Box,
-        Dustbin,
-    ],
-    imports: [
-        CommonModule,
-        UtilityModule,
-        SkyhookDndModule,
-        SkyhookMultiBackendModule,
-        RouterModule.forChild([{ path: "", component: ContainerComponent }]),
-    ],
+  declarations: [
+    ContainerComponent,
+    Box,
+    Dustbin,
+  ],
+  imports: [
+    CommonModule,
+    UtilityModule,
+    SkyhookDndModule,
+    SkyhookMultiBackendModule,
+    RouterModule.forChild([{ path: "", component: ContainerComponent }]),
+  ],
 })
 export class NestedTargetsModule {
 }

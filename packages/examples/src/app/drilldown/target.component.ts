@@ -1,4 +1,4 @@
-import { Input, Component, OnInit } from '@angular/core';
+import { Input, Component, OnInit, OnDestroy } from '@angular/core';
 import { SkyhookDndService } from "@ng-dnd/core";
 import { ItemTypes } from './itemTypes';
 
@@ -37,16 +37,12 @@ import { ItemTypes } from './itemTypes';
     `
   ]
 })
-export class Target {
+export class Target implements OnDestroy {
 
   @Input() greedy = false;
 
   hasDropped = false;
   hasDroppedOnChild = false;
-
-  text() {
-    return this.hasDropped && `dropped${ this.hasDroppedOnChild ? ' on child' : ''}` || '';
-  }
 
   lastDroppedColor: string;
   backgroundColor: string;
@@ -59,7 +55,7 @@ export class Target {
       }
 
       this.hasDropped = true,
-      this.hasDroppedOnChild = hasDroppedOnChild;
+        this.hasDroppedOnChild = hasDroppedOnChild;
     }
   });
 
@@ -68,13 +64,17 @@ export class Target {
     isOverCurrent: monitor.isOver({ shallow: true }),
   }));
 
-  getColor({ isOver, isOverCurrent}) {
+  text() {
+    return this.hasDropped && `dropped${this.hasDroppedOnChild ? ' on child' : ''}` || '';
+  }
+
+  getColor({ isOver, isOverCurrent }) {
     if (isOverCurrent || (isOver && this.greedy)) {
       return 'darkgreen';
     }
   }
 
-  constructor (private dnd: SkyhookDndService) {}
+  constructor(private dnd: SkyhookDndService) { }
 
   ngOnDestroy() {
     this.target.unsubscribe();

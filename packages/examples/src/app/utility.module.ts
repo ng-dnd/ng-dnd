@@ -5,7 +5,7 @@ import { NgLetDirective } from "./utility/ngLet.directive";
 const both = [ExampleLink, NgLetDirective];
 
 @NgModule({
-    declarations: both,
-    exports: both
+  declarations: both,
+  exports: both
 })
-export class UtilityModule {}
+export class UtilityModule { }

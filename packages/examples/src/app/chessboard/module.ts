@@ -12,17 +12,17 @@ import { ContainerComponent } from './container.component';
 import { BoardSquareComponent } from './board-square.component';
 
 @NgModule({
-    declarations: [
-        KnightComponent, SquareComponent, BoardComponent, ContainerComponent, BoardSquareComponent
-    ],
-    imports: [
-        CommonModule,
-        SkyhookDndModule,
-        RouterModule.forChild([{ path: '', component: ContainerComponent }]),
-        UtilityModule,
-    ],
-    providers: [
-        GameService
-    ]
+  declarations: [
+    KnightComponent, SquareComponent, BoardComponent, ContainerComponent, BoardSquareComponent
+  ],
+  imports: [
+    CommonModule,
+    SkyhookDndModule,
+    RouterModule.forChild([{ path: '', component: ContainerComponent }]),
+    UtilityModule,
+  ],
+  providers: [
+    GameService
+  ]
 })
 export class ChessboardModule { }

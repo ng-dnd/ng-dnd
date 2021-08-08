@@ -1,11 +1,11 @@
-import { getEmptyImage } from 'react-dnd-html5-backend';
 import { Component, OnInit, OnDestroy, ChangeDetectionStrategy } from '@angular/core';
 import { snapToGrid } from './snapToGrid';
-import { SkyhookDndService } from "@ng-dnd/core"
+import { SkyhookDndService } from "@ng-dnd/core";
 import { Observable } from 'rxjs';
 import { filter, map, tap } from 'rxjs/operators';
+import { getEmptyImage } from 'react-dnd-html5-backend';
 
-interface Offset { x: number, y: number };
+interface Offset { x: number; y: number; }
 
 @Component({
   selector: 'app-custom-drag-layer',
@@ -37,6 +37,8 @@ interface Offset { x: number, y: number };
 })
 export class CustomDragLayerComponent implements OnInit, OnDestroy {
 
+  constructor(private dnd: SkyhookDndService) { }
+
   dragLayer = this.dnd.dragLayer();
 
   collect$ = this.dragLayer.listen(monitor => ({
@@ -52,7 +54,7 @@ export class CustomDragLayerComponent implements OnInit, OnDestroy {
     map(x => this.getItemStyles(x)),
   );
 
-  constructor(private dnd: SkyhookDndService) { }
+  snapToGrid = false;
 
   ngOnInit() {
   }
@@ -60,8 +62,6 @@ export class CustomDragLayerComponent implements OnInit, OnDestroy {
   ngOnDestroy() {
     this.dragLayer.unsubscribe();
   }
-
-  snapToGrid = false;
 
   getItemStyles({ initialOffset, currentOffset }) {
     if (!initialOffset || !currentOffset) {

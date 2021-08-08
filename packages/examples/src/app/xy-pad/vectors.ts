@@ -1,6 +1,6 @@
 import { Offset } from "@ng-dnd/core";
 
-export type Rect = Offset & { width: number; height: number};
+export type Rect = Offset & { width: number; height: number };
 
 export function scalarMult(a: Offset, k: number): Offset {
   return { x: a.x * k, y: a.y * k };
@@ -22,10 +22,10 @@ export function fmap(f: (number) => number, a: Offset): Offset {
 }
 
 export function alongEdge(width: number, height: number, x: number, y: number): Offset {
-    if (x < 0) x = 0;
+  if (x < 0) x = 0;
 
-    if (x > width) x = width;
-    if (y < 0) y = 0;
-    if (y > height) y = height;
-    return {x, y};
+  if (x > width) x = width;
+  if (y < 0) y = 0;
+  if (y > height) y = height;
+  return { x, y };
 }

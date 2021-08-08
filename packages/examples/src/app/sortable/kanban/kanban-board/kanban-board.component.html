@@ -1,12 +1,14 @@
 <skyhook-preview [allBackends]="true">
-    <ng-template let-type let-item="item">
-        <ng-container [ngSwitch]="type">
-            <kanban-card *ngSwitchCase="ItemTypes.CARD" [card]="item.data" [preview]="true" [ngStyle]="item.size.style()">
-            </kanban-card>
-            <kanban-list *ngSwitchCase="ItemTypes.LIST" [list]="item.data" [preview]="true" [ngStyle]="item.size.style()">
-            </kanban-list>
-        </ng-container>
-    </ng-template>
+  <ng-template let-type let-item="item">
+    <ng-container [ngSwitch]="type">
+      <kanban-card *ngSwitchCase="ItemTypes.CARD" [card]="item.data" [preview]="true"
+                   [ngStyle]="item.size.style()">
+      </kanban-card>
+      <kanban-list *ngSwitchCase="ItemTypes.LIST" [list]="item.data" [preview]="true"
+                   [ngStyle]="item.size.style()">
+      </kanban-list>
+    </ng-container>
+  </ng-template>
 </skyhook-preview>
 
 <!--
@@ -18,25 +20,25 @@
 --->
 
 <skyhook-sortable-list class="kanban-root"
-    [ssSortableListId]="888"
-    [ssSortableSpec]="specs.boardSpec"
-    ssSortableTrigger="fixed"
-    [ssSortableHorizontal]="true">
-    <!-- 'ssSortableHorizontal' makes the hover behave differently. You need CSS to complete the job.
+                       [ssSortableListId]="888"
+                       [ssSortableSpec]="specs.boardSpec"
+                       ssSortableTrigger="fixed"
+                       [ssSortableHorizontal]="true">
+  <!-- 'ssSortableHorizontal' makes the hover behave differently. You need CSS to complete the job.
         .kanban-root must still be like a block element, so no collapsing float containers.
         Flexbox/CSS Grid are great. -->
 
-    <!-- The skyhook-sortable-list component stamps out one ssTemplate
+  <!-- The skyhook-sortable-list component stamps out one ssTemplate
          for each item in yourSpec.getList(). -->
-    <ng-template ssTemplate let-context>
-        <!-- context is everything the ssRender needs to do its job.
+  <ng-template ssTemplate let-context>
+    <!-- context is everything the ssRender needs to do its job.
              It includes 'data' and 'index', which are just from an *ngFor of your spec's getList(). -->
-        <kanban-list
-            [ssRender]="context"
-            [list]="context.data"
-            (addCard)="addCard(context.data.id, $event)">
+    <kanban-list
+                 [ssRender]="context"
+                 [list]="context.data"
+                 (addCard)="addCard(context.data.id, $event)">
 
-            <!-- is this kanban-list draggable? NOT YET.
+      <!-- is this kanban-list draggable? NOT YET.
 
                 -   because ssRender doesn't know which DOM element should be
                     draggable (maybe you want a drag handle), it lets us decide by
@@ -56,13 +58,13 @@
                     the other way is demonstrated with the list of cards inside kanban-list.
             -->
 
-        </kanban-list>
-    </ng-template>
+    </kanban-list>
+  </ng-template>
 
 </skyhook-sortable-list>
 
 
 <div class="trash-zone">
-    <kanban-trash-can (dropped)="removeCard($event)"></kanban-trash-can>
-    <kanban-external></kanban-external>
+  <kanban-trash-can (dropped)="removeCard($event)"></kanban-trash-can>
+  <kanban-external></kanban-external>
 </div>
