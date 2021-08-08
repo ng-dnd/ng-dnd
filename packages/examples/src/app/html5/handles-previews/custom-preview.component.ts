@@ -19,7 +19,7 @@ import { ItemTypes } from './item-types';
       width: 8rem;;
       cursor: move;
     }
-    div, p { display: inline-block;, padding: 3px; margin: 0; }
+    div, p { display: inline-block; padding: 3px; margin: 0; }
     `]
 })
 export class CustomPreview {

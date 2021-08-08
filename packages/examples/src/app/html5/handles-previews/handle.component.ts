@@ -29,7 +29,7 @@ import { ItemTypes } from './item-types';
       background: darkgreen;
       display: inline-block;
     }
-    div, p { display: inline-block;, padding: 3px; margin: 0; }
+    div, p { display: inline-block; padding: 3px; margin: 0; }
     `]
 })
 export class Handle {
