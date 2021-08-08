@@ -35,7 +35,7 @@ Example usage (example component defined below):
 import { default as createTestBackend, TestBackend } from 'react-dnd-test-backend';
 // We will need to find the DragDropManager to access the backend through
 // dependency injection
-import { SkyhookDndModule, DRAG_DROP_MANAGER } from "@angular-skyhook/core";
+import { SkyhookDndModule, DRAG_DROP_MANAGER } from "@ng-dnd/core";
 
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
@@ -105,7 +105,7 @@ describe(MyComponent.name, () => {
 
 ```typescript
 import { Component } from '@angular/core';
-import { SkyhookDndService } from '@angular-skyhook/core';
+import { SkyhookDndService } from '@ng-dnd/core';
 @Component({
 template: `
     <div [dragSource]="source" [class.dragging]="isDragging$|async"></div>
