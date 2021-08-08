@@ -2,20 +2,43 @@
     "name": "@ng-dnd/monorepo",
     "private": true,
     "version": "0.0.0",
+    "scripts": {
+        "lerna": "lerna",
+        "build": "lerna exec node ../../tools/tasks/build && lerna exec cp ../../README.md dist/README.md",
+        "watch": "cross-env WATCH_MODE=true lerna exec --parallel node ../../tools/tasks/build",
+        "build-tools": "tsc -p ./tools/tsconfig.json",
+        "clean-all": "lerna clean && rimraf packages/*/dist",
+        "clean": "rimraf packages/*/dist",
+        "test": "jest",
+        "test-tdd": "jest --watchAll --no-cache",
+        "test-debug": "node --inspect-brk ./node_modules/jest/bin/jest.js --no-cache --runInBand",
+        "release": "yarn lerna version && yarn build && yarn lerna publish from-git",
+        "postinstall": "yarn build-tools",
+        "lint": "tslint packages/**/*.ts -t verbose",
+        "aio": "compodoc -p ./tsconfig.json --output ./aio --hideGenerator --silent"
+    },
+    "workspaces": [
+        "packages/*"
+    ],
     "dependencies": {
+        "@angular/animations": "^8.0.0",
         "@angular/common": "^8.0.0",
         "@angular/compiler": "^8.0.0",
         "@angular/core": "^8.0.0",
+        "@angular/forms": "^8.0.0",
         "@angular/platform-browser": "^8.0.0",
         "@angular/platform-browser-dynamic": "^8.0.0",
+        "@angular/router": "^8.0.0",
         "core-js": "^3.0.0",
         "lodash": "^4.17.4",
         "rxjs": "^6.3.0",
         "zone.js": "~0.9.1"
     },
     "devDependencies": {
+        "@angular-devkit/build-angular": "~0.803.8",
         "@angular/cli": "^8.0.0",
         "@angular/compiler-cli": "^8.0.0",
+        "@angular/language-service": "^8.0.0",
         "@compodoc/compodoc": "^1.1.9",
         "@types/fs-extra": "^8.0.0",
         "@types/jest": "^24.0.6",
@@ -41,23 +64,5 @@
         "tslib": "^1.9.0",
         "tslint": "~5.17.0",
         "typescript": ">=3.4 <3.5"
-    },
-    "scripts": {
-        "lerna": "lerna",
-        "build": "lerna exec node ../../tools/tasks/build && lerna exec cp ../../README.md dist/README.md",
-        "watch": "cross-env WATCH_MODE=true lerna exec --parallel node ../../tools/tasks/build",
-        "build-tools": "tsc -p ./tools/tsconfig.json",
-        "clean-all": "lerna clean && rimraf packages/*/dist",
-        "clean": "rimraf packages/*/dist",
-        "test": "jest",
-        "test-tdd": "jest --watchAll --no-cache",
-        "test-debug": "node --inspect-brk ./node_modules/jest/bin/jest.js --no-cache --runInBand",
-        "release": "yarn lerna version && yarn build && yarn lerna publish from-git",
-        "postinstall": "yarn build-tools",
-        "lint": "tslint packages/**/*.ts -t verbose",
-        "aio": "compodoc -p ./tsconfig.json --output ./aio --hideGenerator --silent"
-    },
-    "workspaces": [
-        "packages/*"
-    ]
+    }
 }
