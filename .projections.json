@@ -1,74 +1,91 @@
 {
-    "packages/*/package.json": { "type": "pkg" },
-    "packages/core/src/*.ts": { "type": "core" },
-    "packages/multi-backend/src/*.ts": { "type": "multi" },
-    "packages/sortable/src/*.ts": { "type": "sortable" },
-    "packages/examples/*": { "type": "ex" },
-    "packages/examples/src/app/*.ts": { "type": "app" },
-    "docs/*": { "type": "docs" },
-    "packages/*/README.md": { "type": "docs", "dispatch": "cd {file|dirname} && yarn docs" },
-    "packages/examples/src/app/*.component.html": {
-        "type": "html",
-        "alternate": "packages/examples/src/app/{}.component.ts"
-    },
-    "packages/examples/src/app/*.component.ts":   {
-        "type": "comp",
-        "alternate": "packages/examples/src/app/{}.component.html",
-        "template": [
-            "import {open} Component {close} from '@angular/core';",
-            "",
-            "@Component({",
-            "    selector: 'app-{basename|snakecase|hyphenate}',",
-            "    templateUrl: './{basename}.component.html',",
-            "    styleUrls: ['./{basename}.component.scss'],",
-            "})",
-            "export class {basename|camelcase|capitalize}Component {",
-            "}"
-        ]
-    },
-    "packages/examples/src/app/*/container.component.ts":   {
-        "type": "container",
-        "template": [
-            "import {open} Component {close} from '@angular/core';",
-            "",
-            "@Component({",
-                "    selector: '{basename}-container',",
-                "    template: `",
-                "    <app-example-link path=\"{}\"></app-example-link>",
-                "    `,",
-                "    styles: [`",
-                "    `],",
-                "})",
-                "export class ContainerComponent {",
-                "}"
-        ]
-    },
-    "packages/examples/src/app/*/module.ts":   {
-        "type": "mod",
-        "template": [
-            "import {open} NgModule {close} from '@angular/core';",
-            "import {open} CommonModule {close} from \"@angular/common\";",
-            "import {open} UtilityModule {close} from \"app/utility.module\";",
-            "import {open} SkyhookDndModule {close} from \"@ng-dnd/core\";",
-            "import {open} RouterModule {close} from \"@angular/router\";",
-            "import {open} SkyhookMultiBackendModule {close} from \"@ng-dnd/multi-backend\";",
-            "",
-            "import {open} ContainerComponent {close} from \"./container.component\";",
-            "",
-            "@NgModule({",
-            "    declarations: [",
-            "        ContainerComponent,",
-            "    ],",
-            "    imports: [",
-            "        CommonModule,",
-            "        UtilityModule,",
-            "        SkyhookDndModule,",
-            "        SkyhookMultiBackendModule,",
-            "        RouterModule.forChild([{open} path: \"\", component: ContainerComponent {close}]),",
-            "    ],",
-            "})",
-            "export class {basename|camelcase|capitalize}Module {",
-            "}"
-        ]
-    }
+  "packages/*/package.json": {
+    "type": "pkg"
+  },
+  "packages/core/src/*.ts": {
+    "type": "core"
+  },
+  "packages/multi-backend/src/*.ts": {
+    "type": "multi"
+  },
+  "packages/sortable/src/*.ts": {
+    "type": "sortable"
+  },
+  "packages/examples/*": {
+    "type": "ex"
+  },
+  "packages/examples/src/app/*.ts": {
+    "type": "app"
+  },
+  "docs/*": {
+    "type": "docs"
+  },
+  "packages/*/README.md": {
+    "type": "docs",
+    "dispatch": "cd {file|dirname} && yarn docs"
+  },
+  "packages/examples/src/app/*.component.html": {
+    "type": "html",
+    "alternate": "packages/examples/src/app/{}.component.ts"
+  },
+  "packages/examples/src/app/*.component.ts": {
+    "type": "comp",
+    "alternate": "packages/examples/src/app/{}.component.html",
+    "template": [
+      "import {open} Component {close} from '@angular/core';",
+      "",
+      "@Component({",
+      "    selector: 'app-{basename|snakecase|hyphenate}',",
+      "    templateUrl: './{basename}.component.html',",
+      "    styleUrls: ['./{basename}.component.scss'],",
+      "})",
+      "export class {basename|camelcase|capitalize}Component {",
+      "}"
+    ]
+  },
+  "packages/examples/src/app/*/container.component.ts": {
+    "type": "container",
+    "template": [
+      "import {open} Component {close} from '@angular/core';",
+      "",
+      "@Component({",
+      "    selector: '{basename}-container',",
+      "    template: `",
+      "    <app-example-link path=\"{}\"></app-example-link>",
+      "    `,",
+      "    styles: [`",
+      "    `],",
+      "})",
+      "export class ContainerComponent {",
+      "}"
+    ]
+  },
+  "packages/examples/src/app/*/module.ts": {
+    "type": "mod",
+    "template": [
+      "import {open} NgModule {close} from '@angular/core';",
+      "import {open} CommonModule {close} from \"@angular/common\";",
+      "import {open} UtilityModule {close} from \"app/utility.module\";",
+      "import {open} SkyhookDndModule {close} from \"@ng-dnd/core\";",
+      "import {open} RouterModule {close} from \"@angular/router\";",
+      "import {open} SkyhookMultiBackendModule {close} from \"@ng-dnd/multi-backend\";",
+      "",
+      "import {open} ContainerComponent {close} from \"./container.component\";",
+      "",
+      "@NgModule({",
+      "    declarations: [",
+      "        ContainerComponent,",
+      "    ],",
+      "    imports: [",
+      "        CommonModule,",
+      "        UtilityModule,",
+      "        SkyhookDndModule,",
+      "        SkyhookMultiBackendModule,",
+      "        RouterModule.forChild([{open} path: \"\", component: ContainerComponent {close}]),",
+      "    ],",
+      "})",
+      "export class {basename|camelcase|capitalize}Module {",
+      "}"
+    ]
+  }
 }
