@@ -12,7 +12,7 @@ import { Component } from "@angular/core";
     <p>Simply add <code>ssSortableTrigger="fixed"</code> to a <code>&lt;skyhook-sortable-list&gt;</code> or <code>ssSortable</code></p>
 
     <app-fixed-sortable></app-fixed-sortable>
-    `
+  `
 })
 export class ContainerComponent {
 }

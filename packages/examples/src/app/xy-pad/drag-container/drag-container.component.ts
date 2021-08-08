@@ -1,4 +1,4 @@
-import { Component, Input, Output, EventEmitter } from '@angular/core';
+import { Component, Input, Output, EventEmitter, OnDestroy } from '@angular/core';
 import { SkyhookDndService, Offset } from "@ng-dnd/core";
 import { snapToGrid } from '../custom-drag-layer/snapToGrid';
 import { Spot } from '../spot';
@@ -22,7 +22,7 @@ import { Spot } from '../spot';
   `,
   styleUrls: ['./drag-container.component.scss']
 })
-export class DragContainerComponent {
+export class DragContainerComponent implements OnDestroy {
   @Input() x = 50;
   @Input() y = 100;
 

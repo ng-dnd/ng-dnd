@@ -7,14 +7,14 @@ import { Spot } from './spot';
   selector: 'xy-cube',
   template: `
     <section class="container" [dragSource]="source" [noHTML5Preview]="true" >
-        <div id="cube" [ngStyle]="{ transform: transform, WebkitTransform: transform }">
-            <figure class="front">1</figure>
-            <figure class="back">2</figure>
-            <figure class="right">3</figure>
-            <figure class="left">4</figure>
-            <figure class="top">5</figure>
-            <figure class="bottom">6</figure>
-        </div>
+      <div id="cube" [ngStyle]="{ transform: transform, WebkitTransform: transform }">
+        <figure class="front">1</figure>
+        <figure class="back">2</figure>
+        <figure class="right">3</figure>
+        <figure class="left">4</figure>
+        <figure class="top">5</figure>
+        <figure class="bottom">6</figure>
+      </div>
     </section>
   `,
   styles: [`

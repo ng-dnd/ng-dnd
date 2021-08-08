@@ -33,7 +33,7 @@
     <skyhook-sortable-list class="list" ssSortableListId="WORK_AREA"
                            [ssSortableSpec]="spec"
                            [ssSortableChildren]="tempList">
-      <quiz-section [style.display]="block"
+      <quiz-section [style.display]="'block'"
                     *ssTemplate="let context" [ssRender]="context" #r="ssRender"
                     [question]="r.data" (edit)="edit($event)">
       </quiz-section>

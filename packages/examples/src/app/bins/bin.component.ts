@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnDestroy, OnInit } from '@angular/core';
 import { SkyhookDndService } from "@ng-dnd/core";
 
 @Component({
@@ -19,14 +19,13 @@ import { SkyhookDndService } from "@ng-dnd/core";
       <pre>{{ trashes | json }}</pre>
     </div>
   `,
-  styles: [`
-  `]
+  styles: [``]
 })
-export class Bin implements OnInit {
+export class BinComponent implements OnInit, OnDestroy {
 
   @Input() name: string;
-  @Input() accepts: string[] = ["TRASH"];
-  trashes = []
+  @Input() accepts: string[] = ['TRASH'];
+  trashes = [];
   capacity = 6;
 
   get hasCapacity() {
@@ -47,7 +46,7 @@ export class Bin implements OnInit {
   collected$ = this.trashTarget.listen(m => ({
     isOver: m.isOver(),
     canDrop: m.canDrop(),
-    itemType: m.getItemType(),
+    itemType: m.getItemType() as string, // TODO: type
   }));
 
   constructor(private dnd: SkyhookDndService) { }
@@ -55,7 +54,7 @@ export class Bin implements OnInit {
   getStyles({ isOver, canDrop }) {
     return {
       backgroundColor: isOver && canDrop ? '#cfcffc' : canDrop ? '#fffacf' : 'white',
-    }
+    };
   }
 
   empty() {

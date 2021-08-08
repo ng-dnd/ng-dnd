@@ -22,7 +22,7 @@ import { Subject, Subscription } from 'rxjs';
   `],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class Trash {
+export class TrashComponent {
   @Input() type: string;
   @Input() empty = false;
   @Input() inFlight = false;

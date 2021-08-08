@@ -32,14 +32,12 @@ interface Collected {
   <ng-container *ngIf="c.isDragging">
 
     <xy-crosshairs *ngIf="crossStyle$|async as cross"
-      [x]="cross.x"
-      [y]="cross.y">
+                   [x]="cross.x" [y]="cross.y">
     </xy-crosshairs>
 
     <div [ngStyle]="movingStyle$|async">
       <ng-container [ngSwitch]="c.itemType">
-        <xy-box-drag-preview *ngSwitchCase="'SPOT'"
-          [title]="c.item.title">
+        <xy-box-drag-preview *ngSwitchCase="'SPOT'" [title]="c.item.title">
         </xy-box-drag-preview>
       </ng-container>
     </div>

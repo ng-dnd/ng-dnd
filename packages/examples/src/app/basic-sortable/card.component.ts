@@ -31,36 +31,33 @@ export class CardInnerDirective { }
   selector: "app-card",
   template: `
     <div class="card"
-        [dropTarget]="cardTarget"
-        [dragSource]="cardSource"
-        [style.opacity]="opacity$|async">
-        <div class="border">
-            <ng-container *ngTemplateOutlet="cardInnerTemplate;
-                                             context: {$implicit: card}">
-            </ng-container>
-        </div>
+         [dropTarget]="cardTarget"
+         [dragSource]="cardSource"
+         [style.opacity]="opacity$|async">
+      <div class="border">
+        <ng-container *ngTemplateOutlet="cardInnerTemplate; context: {$implicit: card}">
+        </ng-container>
+      </div>
     </div>
   `,
   // Note: don't use margins, use padding. This way, there are no gaps to hover over.
-  styles: [
-    `
-            .card {
-                padding-bottom: 0.25rem;
-                background-color: white;
-                cursor: move;
-            }
-            .border {
-                padding: 0.5rem 1rem;
-                border: 1px dashed gray;
-            }
-     `
-  ],
+  styles: [`
+    .card {
+        padding-bottom: 0.25rem;
+        background-color: white;
+        cursor: move;
+    }
+    .border {
+        padding: 0.5rem 1rem;
+        border: 1px dashed gray;
+    }
+  `],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class CardComponent implements OnDestroy {
   @Output() beginDrag: EventEmitter<void> = new EventEmitter<void>();
   @Output() endDrag: EventEmitter<boolean> = new EventEmitter();
-  @Output() onMove: EventEmitter<[number, number]> = new EventEmitter();
+  @Output() handleMove: EventEmitter<[number, number]> = new EventEmitter();
 
   @ContentChild(CardInnerDirective, { static: false, read: TemplateRef }) cardInnerTemplate;
 
@@ -124,7 +121,7 @@ export class CardComponent implements OnDestroy {
       // console.log("moving card")
 
       // Time to actually perform the action
-      this.onMove.emit([dragIndex, hoverIndex]);
+      this.handleMove.emit([dragIndex, hoverIndex]);
 
       // Note: we're mutating the item here!
       // Generally it's better to avoid mutations,
@@ -146,7 +143,7 @@ export class CardComponent implements OnDestroy {
   ) { }
 
   moveCard(a, b) {
-    this.onMove.emit([a, b]);
+    this.handleMove.emit([a, b]);
   }
 
   ngOnDestroy() {

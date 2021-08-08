@@ -4,9 +4,7 @@ import { Component } from "@angular/core";
   template: `
     <app-example-link path="bins"></app-example-link>
 
-    <p>
-    This example demonstrates:
-    </p>
+    <p>This example demonstrates:</p>
     <ul>
       <li>Making components conditionally draggable</li>
       <li>Making targets conditionally available for drops</li>
@@ -15,8 +13,7 @@ import { Component } from "@angular/core";
 
     <skyhook-preview>
       <ng-template let-type let-item="item">
-        <app-trash [type]="type" [inFlight]="true">
-        </app-trash>
+        <app-trash [type]="type" [inFlight]="true"></app-trash>
       </ng-template>
     </skyhook-preview>
 
@@ -31,20 +28,18 @@ import { Component } from "@angular/core";
     </div>
   `,
   styles: [`
-
-        .bins {
-            margin-top: 20px;
-            display: flex;
-        }
-        .bins > * {
-            flex: 1;
-            min-width: 100px;
-        }
-        .bins > *:not(:last-child) {
-            margin-right: 4px;
-        }
-
-    `]
+    .bins {
+        margin-top: 20px;
+        display: flex;
+    }
+    .bins > * {
+        flex: 1;
+        min-width: 100px;
+    }
+    .bins > *:not(:last-child) {
+        margin-right: 4px;
+    }
+  `]
 })
 export class ContainerComponent {
 }

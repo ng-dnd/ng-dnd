@@ -8,7 +8,7 @@ interface Section {
 }
 
 const equalsValidator: (x: any) => ValidatorFn = (x) => (c) => {
-  return c.value === x ? null : { incorrect: true }
+  return c.value === x ? null : { incorrect: true };
 };
 
 @Component({
@@ -41,7 +41,7 @@ const equalsValidator: (x: any) => ValidatorFn = (x) => (c) => {
         </ng-container>
       </div>
     </div>
-    `,
+  `,
   styles: [`
     .ng-valid:not(form)  {
         border-left: 5px solid #42A948; /* green */
@@ -58,7 +58,7 @@ export class PrintoutComponent {
       return {
         question: q,
         input: this.getFormGroup(q),
-      }
+      };
     });
   }
 

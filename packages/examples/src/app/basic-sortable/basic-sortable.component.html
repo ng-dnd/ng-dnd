@@ -1,6 +1,6 @@
 <skyhook-preview>
   <ng-template let-type let-item="item">
-    <!-- sometimes you will want an &lt;ng-content&gt;, but here we want to limit preview width to 400px -->
+    <!-- sometimes you will want an <ng-content>, but here we want to limit preview width to 400px -->
     <div class="sorted" [ngSwitch]="type">
       <app-card *ngSwitchCase="'CARD'" [card]="findCard(item.id)">
         <span *cardInner="let card">{{item.index+1}} {{card.text}}</span>
@@ -14,7 +14,7 @@
             [index]="i"
             [id]="card.id"
             [card]="card"
-            (onMove)="moveCard($event)"
+            (handleMove)="moveCard($event)"
             (beginDrag)="beginDrag($event)"
             (endDrag)="endDrag($event)">
 

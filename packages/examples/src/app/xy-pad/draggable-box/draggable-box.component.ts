@@ -11,8 +11,7 @@ import { Spot } from '../spot';
     <div class="draggable-node">
       <xy-box></xy-box>
     </div>
-    <div class="fullsize">
-    </div>
+    <div class="fullsize"></div>
   </div>
   <xy-crosshairs *ngIf="!(isDragging$|async)" [x]="spot.x" [y]="spot.y"> </xy-crosshairs>
   `,

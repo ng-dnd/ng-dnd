@@ -17,8 +17,7 @@ import { snapToGrid } from './custom-drag-layer/snapToGrid';
         <p> <label> <input type="number" [(ngModel)]="pixels"/> Pixels per gridline </label> </p>
       </div>
       <div class="pad">
-        <xy-cube [transform]="cubeTransform" [x]="x" [y]="y"
-            (endDrag)="dragEnded()">
+        <xy-cube [transform]="cubeTransform" [x]="x" [y]="y" (endDrag)="dragEnded()">
         </xy-cube>
       </div>
     </div>

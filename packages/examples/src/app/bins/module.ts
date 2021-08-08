@@ -5,18 +5,18 @@ import { SkyhookDndModule } from "@ng-dnd/core";
 import { SkyhookMultiBackendModule } from "@ng-dnd/multi-backend";
 import { UtilityModule } from "../utility.module";
 
-import { Bin } from "./bin.component";
-import { TrashPile } from "./trash-pile.component";
-import { Trash } from "./trash.component";
+import { BinComponent } from "./bin.component";
+import { TrashPileComponent } from "./trash-pile.component";
+import { TrashComponent } from "./trash.component";
 import { ContainerComponent } from "./container.component";
 
 @NgModule({
-  declarations: [Bin, TrashPile, Trash, ContainerComponent],
+  declarations: [BinComponent, TrashPileComponent, TrashComponent, ContainerComponent],
   imports: [
     CommonModule,
     SkyhookDndModule,
     SkyhookMultiBackendModule,
-    RouterModule.forChild([{ path: "", component: ContainerComponent }]),
+    RouterModule.forChild([{ path: '', component: ContainerComponent }]),
     UtilityModule
   ]
 })

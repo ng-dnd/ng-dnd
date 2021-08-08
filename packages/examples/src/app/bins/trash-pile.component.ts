@@ -1,4 +1,4 @@
-import { Component, Input } from "@angular/core";
+import { Component, Input, OnChanges, OnDestroy } from "@angular/core";
 import { SkyhookDndService } from "@ng-dnd/core";
 
 @Component({
@@ -6,21 +6,18 @@ import { SkyhookDndService } from "@ng-dnd/core";
   template: `
     <ng-container *ngIf="collected$|async as c">
       <p>
-        <button (click)="litter($event)">add more</button> <span>({{remain}} left)</span>
+        <button (click)="litter($event)">add more</button> <span>({{ remain }} left)</span>
       </p>
       <div [dragSource]="trashSource" [class.dragging]="c.isDragging && remain > 1">
-        <app-trash
-            [type]="type"
-            [empty]="remain == 0 || c.isDragging && remain == 1"> </app-trash>
+        <app-trash [type]="type" [empty]="remain == 0 || c.isDragging && remain == 1"> </app-trash>
       </div>
     </ng-container>
   `,
   styles: [`
-  .dragging {
-  }
+    .dragging {}
   `]
 })
-export class TrashPile {
+export class TrashPileComponent implements OnChanges, OnDestroy {
   @Input() type: string;
   remain = 5;
   count = 0;
