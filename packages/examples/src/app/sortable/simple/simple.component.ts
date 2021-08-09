@@ -13,8 +13,7 @@ interface SimpleData {
   templateUrl: './simple.component.html',
 })
 export class SimpleComponent {
-
-  fake = () => faker.fake('{{hacker.adjective}} the {{hacker.abbreviation}} {{hacker.noun}}')
+  fake = () => faker.fake('{{hacker.adjective}} the {{hacker.abbreviation}} {{hacker.noun}}');
 
   // you need data types that have a unique value, like SimpleData.id
   list: SimpleData[] = [

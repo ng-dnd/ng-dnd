@@ -1,8 +1,8 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from "@angular/common";
+import { RouterModule } from "@angular/router";
 import { UtilityModule } from "app/utility.module";
 import { SkyhookDndModule } from "@ng-dnd/core";
-import { RouterModule } from "@angular/router";
 import { SkyhookMultiBackendModule } from "@ng-dnd/multi-backend";
 
 import { ContainerComponent } from './container.component';

@@ -4,13 +4,12 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { SkyhookDndModule } from "@ng-dnd/core";
+import { SkyhookMultiBackendModule } from '@ng-dnd/multi-backend';
+import { UtilityModule } from '../utility.module';
 
 import { BasicSortableComponent } from './basic-sortable.component';
 import { ContainerComponent } from './container.component';
 import { CardComponent, CardInnerDirective } from './card.component';
-
-import { UtilityModule } from '../utility.module';
-import { SkyhookMultiBackendModule } from '@ng-dnd/multi-backend';
 
 @NgModule({
   declarations: [

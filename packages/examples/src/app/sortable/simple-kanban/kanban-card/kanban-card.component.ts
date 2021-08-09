@@ -7,7 +7,7 @@ import { Card } from '../specs';
     <div class="card"
         [class.card--preview]="preview"
         [class.card--placeholder]="placeholder">
-        <p>{{ card.title }}</p>
+      <p>{{ card.title }}</p>
     </div>
   `,
   styleUrls: ['./kanban-card.component.scss']

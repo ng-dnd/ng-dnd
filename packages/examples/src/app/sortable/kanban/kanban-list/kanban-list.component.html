@@ -57,8 +57,7 @@
   <!-- A simple version for when we're dragging -->
   <ng-template #plain>
     <div class="cards-container">
-      <kanban-card
-                   *ngFor="let card of list.cards; let i = index; trackBy: trackById"
+      <kanban-card *ngFor="let card of list.cards; let i = index; trackBy: trackById"
                    [card]="card">
       </kanban-card>
     </div>

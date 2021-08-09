@@ -34,8 +34,7 @@
   <ng-template ssTemplate let-context>
     <!-- context is everything the ssRender needs to do its job.
          It includes 'data' and 'index', which are just from an *ngFor of your spec's getList(). -->
-    <kanban-list
-                 [ssRender]="context"
+    <kanban-list [ssRender]="context"
                  [list]="context.data"
                  (addCard)="addCard(context.data.id, $event)">
 

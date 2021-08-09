@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { RouterModule } from '@angular/router';
+import { RouterModule, PreloadAllModules } from '@angular/router';
 
 import { AppComponent } from './app.component';
 
@@ -19,7 +19,6 @@ import { AppComponent } from './app.component';
 // import { default as MultiBackend } from 'react-dnd-multi-backend';
 // import { default as HTML5toTouch } from 'react-dnd-multi-backend/lib/HTML5toTouch';
 
-import { PreloadAllModules } from '@angular/router';
 // this is our own adaptation of dnd-multi-backend. will be published eventually
 import { UtilityModule } from './utility.module';
 import { TestComponent } from './test/test.component';
