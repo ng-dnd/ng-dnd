@@ -6,13 +6,13 @@ import { SkyhookDndModule } from "@ng-dnd/core";
 import { SkyhookMultiBackendModule } from "@ng-dnd/multi-backend";
 
 import { ContainerComponent } from './container.component';
-import { CustomPreview } from './custom-preview.component';
-import { Handle } from './handle.component';
+import { CustomPreviewComponent } from './custom-preview.component';
+import { HandleComponent } from './handle.component';
 
 @NgModule({
   declarations: [
-    CustomPreview,
-    Handle,
+    CustomPreviewComponent,
+    HandleComponent,
     ContainerComponent
   ],
   imports: [

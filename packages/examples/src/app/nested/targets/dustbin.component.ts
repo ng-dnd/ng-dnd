@@ -10,7 +10,7 @@ import { ItemTypes } from './item-types';
 
       <p>{{ greedy ? 'greedy' : 'not greedy' }}</p>
 
-      <p *ngIf="hasDroppedOnChild || hasDropped">{{'dropped' + (hasDroppedOnChild ? ' on child' : '')}}</p>
+      <p *ngIf="hasDroppedOnChild || hasDropped">{{ 'dropped' + (hasDroppedOnChild ? ' on child' : '') }}</p>
 
       <ng-content select="app-nested-targets-dustbin"></ng-content>
 
@@ -19,7 +19,7 @@ import { ItemTypes } from './item-types';
   `,
   styleUrls: ['./dustbin.component.scss']
 })
-export class Dustbin implements OnDestroy {
+export class DustbinComponent implements OnDestroy {
 
   @Input() greedy = false;
 

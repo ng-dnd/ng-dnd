@@ -12,7 +12,7 @@ import { Component } from "@angular/core";
        you drag templates over the work area and out again.</p>
 
     <app-external-sortable></app-external-sortable>
-    `
+  `
 })
 export class ContainerComponent {
 }

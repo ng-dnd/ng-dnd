@@ -4,18 +4,18 @@ import { RouterModule } from '@angular/router';
 import { SkyhookDndModule } from "@ng-dnd/core";
 
 import { Container } from './container.component';
-import { Target } from './target.component';
-import { Box } from './box.component';
+import { TargetComponent } from './target.component';
+import { BoxComponent } from './box.component';
 import { TreeService } from './tree.service';
-import { Folder } from './folder.component';
+import { FolderComponent } from './folder.component';
 import { UtilityModule } from '../utility.module';
 
 @NgModule({
   declarations: [
     Container,
-    Target,
-    Box,
-    Folder
+    TargetComponent,
+    BoxComponent,
+    FolderComponent
   ],
   imports: [
     CommonModule,

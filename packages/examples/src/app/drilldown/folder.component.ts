@@ -39,13 +39,11 @@ import { activatorDropTarget } from './activatorDropTarget';
     </li>
   </ng-template>
   `,
-
   styleUrls: ['./folder.component.scss'],
-
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 
-export class Folder implements OnInit, OnDestroy {
+export class FolderComponent implements OnInit, OnDestroy {
 
   @Input() keys: string[];
   get ownKey() {

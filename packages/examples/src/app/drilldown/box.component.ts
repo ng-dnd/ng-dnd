@@ -21,7 +21,7 @@ import { ItemTypes } from './itemTypes';
     div, p { display: inline-block;, padding: 3px; margin: 0; }
     `]
 })
-export class Box implements OnDestroy {
+export class BoxComponent implements OnDestroy {
 
   @Output() beginDrag = new EventEmitter<void>();
   @Output() endDrag = new EventEmitter<void>();
@@ -29,7 +29,7 @@ export class Box implements OnDestroy {
   source = this.dnd.dragSource(ItemTypes.EMAIL, {
     beginDrag: () => {
       this.beginDrag.emit();
-      return {}
+      return {};
     },
     endDrag: () => {
       this.endDrag.emit();
