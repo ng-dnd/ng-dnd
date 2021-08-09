@@ -26,8 +26,13 @@ export class SkyhookSortableRenderer<Data> implements OnInit, OnDestroy {
     @Input('ssRender') context!: RenderContext<Data>;
 
     get data() { return this.context.data; }
-    /** @ignore */
-    private get type() { return this.context.spec && this.context.spec.type; }
+
+    get index() { return this.context.index; }
+
+    get type() { return this.context.spec && this.context.spec.type; }
+
+    get listId() { return this.context.listId; }
+
     /** @ignore */
     private get accepts() {
         const spec = this.context.spec;
@@ -38,11 +43,6 @@ export class SkyhookSortableRenderer<Data> implements OnInit, OnDestroy {
             return spec.accepts || spec.type;
         }
     }
-    /** @ignore */
-    private get listId() { return this.context.listId; }
-    /** @ignore */
-    private get index() { return this.context.index; }
-
     /** @ignore */
     private get spec() { return this.context.spec; }
 
