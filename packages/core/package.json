@@ -1,24 +1,31 @@
 {
-    "name": "@ng-dnd/core",
-    "version": "0.1.1",
-    "description": "Drag and Drop for Angular",
-    "publishConfig": {
-        "access": "public"
-    },
-    "repository": "https://github.com/ng-dnd/ng-dnd",
-    "dependencies": {
-        "dnd-core": "^9.0.0",
-        "tslib": "^1.9.0"
-    },
-    "peerDependencies": {
-        "@angular/core": ">= 6.0.0",
-        "rxjs": ">= 6.0.0",
-        "zone.js": ">= 0.8.26"
-    },
-    "scripts": {
-        "clean": "rimraf dist",
-        "lint": "tslint --config tslint.json src/**/*.ts",
-        "docs": "compodoc -p tsconfig.docs.json -c compodoc.json src"
-    },
-    "license": "MIT"
+  "name": "@ng-dnd/core",
+  "version": "0.1.1",
+  "description": "Drag and Drop for Angular",
+  "publishConfig": {
+    "access": "public"
+  },
+  "repository": "https://github.com/ng-dnd/ng-dnd",
+  "keywords": [
+    "drag-and-drop",
+    "react-dnd",
+    "angular-dnd",
+    "ng-dnd",
+    "ngx-dnd"
+  ],
+  "dependencies": {
+    "dnd-core": "^9.0.0",
+    "tslib": "^1.9.0"
+  },
+  "peerDependencies": {
+    "@angular/core": ">= 6.0.0",
+    "rxjs": ">= 6.0.0",
+    "zone.js": ">= 0.8.26"
+  },
+  "scripts": {
+    "clean": "rimraf dist",
+    "lint": "tslint --config tslint.json src/**/*.ts",
+    "docs": "compodoc -p tsconfig.docs.json -c compodoc.json src"
+  },
+  "license": "MIT"
 }

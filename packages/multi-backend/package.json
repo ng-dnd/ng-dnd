@@ -1,30 +1,37 @@
 {
-    "name": "@ng-dnd/multi-backend",
-    "version": "0.1.1",
-    "description": "Multiple backend for Angular DnD",
-    "publishConfig": {
-        "access": "public"
-    },
-    "repository": "https://github.com/ng-dnd/ng-dnd",
-    "dependencies": {
-        "dnd-core": "^9.0.0",
-        "dnd-multi-backend": "5.0.0",
-        "react-dnd-html5-backend": "^9.0.0",
-        "react-dnd-touch-backend": "^9.0.0",
-        "tslib": "^1.9.0"
-    },
-    "peerDependencies": {
-        "@angular/core": ">= 6.0.0",
-        "@ng-dnd/core": "^0.1.0",
-        "rxjs": ">= 6.0.0"
-    },
-    "scripts": {
-        "clean": "rimraf dist",
-        "lint": "tslint --config tslint.json src/**/*.ts",
-        "docs": "compodoc -p tsconfig.docs.json -c compodoc.json src"
-    },
-    "license": "MIT",
-    "devDependencies": {
-        "@ng-dnd/core": "^0.1.1"
-    }
+  "name": "@ng-dnd/multi-backend",
+  "version": "0.1.1",
+  "description": "Multiple backend for Angular DnD",
+  "publishConfig": {
+    "access": "public"
+  },
+  "repository": "https://github.com/ng-dnd/ng-dnd",
+  "keywords": [
+    "drag-and-drop",
+    "react-dnd",
+    "angular-dnd",
+    "ng-dnd",
+    "ngx-dnd"
+  ],
+  "dependencies": {
+    "dnd-core": "^9.0.0",
+    "dnd-multi-backend": "5.0.0",
+    "react-dnd-html5-backend": "^9.0.0",
+    "react-dnd-touch-backend": "^9.0.0",
+    "tslib": "^1.9.0"
+  },
+  "devDependencies": {
+    "@ng-dnd/core": "^0.1.0"
+  },
+  "peerDependencies": {
+    "@angular/core": ">= 6.0.0",
+    "@ng-dnd/core": "^0.1.0",
+    "rxjs": ">= 6.0.0"
+  },
+  "scripts": {
+    "clean": "rimraf dist",
+    "lint": "tslint --config tslint.json src/**/*.ts",
+    "docs": "compodoc -p tsconfig.docs.json -c compodoc.json src"
+  },
+  "license": "MIT"
 }

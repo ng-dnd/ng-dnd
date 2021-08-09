@@ -1,26 +1,33 @@
 {
-    "name": "@ng-dnd/sortable",
-    "version": "0.1.1",
-    "description": "Sortable for Angular DnD",
-    "publishConfig": {
-        "access": "public"
-    },
-    "repository": "https://github.com/ng-dnd/ng-dnd",
-    "dependencies": {
-        "tslib": "^1.9.0"
-    },
-    "peerDependencies": {
-        "@angular/common": ">= 6.0.0",
-        "@angular/core": ">= 6.0.0",
-        "@ng-dnd/core": "^0.1.0",
-        "rxjs": ">= 6.0.0"
-    },
-    "scripts": {
-        "clean": "rimraf dist",
-        "docs": "compodoc -p tsconfig.docs.json -c compodoc.json src"
-    },
-    "license": "MIT",
-    "devDependencies": {
-        "@ng-dnd/core": "^0.1.1"
-    }
+  "name": "@ng-dnd/sortable",
+  "version": "0.1.1",
+  "description": "Sortable for Angular DnD",
+  "publishConfig": {
+    "access": "public"
+  },
+  "repository": "https://github.com/ng-dnd/ng-dnd",
+  "keywords": [
+    "drag-and-drop",
+    "react-dnd",
+    "angular-dnd",
+    "ng-dnd",
+    "ngx-dnd"
+  ],
+  "dependencies": {
+    "tslib": "^1.9.0"
+  },
+  "devDependencies": {
+    "@ng-dnd/core": "^0.1.0"
+  },
+  "peerDependencies": {
+    "@angular/common": ">= 6.0.0",
+    "@angular/core": ">= 6.0.0",
+    "@ng-dnd/core": "^0.1.0",
+    "rxjs": ">= 6.0.0"
+  },
+  "scripts": {
+    "clean": "rimraf dist",
+    "docs": "compodoc -p tsconfig.docs.json -c compodoc.json src"
+  },
+  "license": "MIT"
 }
