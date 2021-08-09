@@ -29,7 +29,7 @@ import { map, filter, startWith } from 'rxjs/operators';
     }
   `]
 })
-export class TargetBox implements OnDestroy {
+export class TargetBoxComponent implements OnDestroy {
 
   Colors = Colors;
 

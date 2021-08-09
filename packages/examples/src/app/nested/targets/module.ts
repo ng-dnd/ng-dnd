@@ -6,14 +6,14 @@ import { SkyhookDndModule } from "@ng-dnd/core";
 import { SkyhookMultiBackendModule } from "@ng-dnd/multi-backend";
 
 import { ContainerComponent } from "./container.component";
-import { Box } from './box.component';
-import { Dustbin } from './dustbin.component';
+import { BoxComponent } from './box.component';
+import { DustbinComponent } from './dustbin.component';
 
 @NgModule({
   declarations: [
     ContainerComponent,
-    Box,
-    Dustbin,
+    BoxComponent,
+    DustbinComponent,
   ],
   imports: [
     CommonModule,

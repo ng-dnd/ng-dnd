@@ -10,6 +10,8 @@ import { produce } from 'immer';
   templateUrl: './list.component.html',
 })
 export class ListComponent implements OnDestroy {
+
+  constructor(private dnd: SkyhookDndService) { }
   // on hover, this will swap out the hover.listId
   // so our <skyhook-preview> knows when to morph back
   spill = spillTarget<Question>(this.dnd, 'QUIZ_QUESTION', {
@@ -32,6 +34,45 @@ export class ListComponent implements OnDestroy {
   // for holding modifications while dragging
   tempList: Question[] = this.list;
 
+  spec: SortableSpec<Question> = {
+    type: "QUIZ_QUESTION",
+    trackBy: x => x.id,
+    hover: item => {
+      this.tempList = this.move(item);
+    },
+    drop: item => { // save the changes
+      this.tempList = this.list = this.move(item);
+    },
+    endDrag: _item => { // revert
+      this.tempList = this.list;
+    },
+  };
+
+  nameBlock: SortableSpec<Question> = {
+    ...this.spec,
+    createData: () => {
+      return new NameQuestion(this.nextId++);
+    }
+  };
+
+  mathQuestion: SortableSpec<Question> = {
+    ...this.spec,
+    createData: () => {
+      return new MathQuestion(this.nextId++, 'New math question', 0);
+    }
+  };
+
+  questionTemplates = [
+    {
+      spec: this.nameBlock,
+      description: NameQuestion.templateDescription
+    },
+    {
+      spec: this.mathQuestion,
+      description: MathQuestion.templateDescription
+    },
+  ];
+
   move(item: DraggedItem<Question>) {
     return produce(this.list, draft => {
       if (item.isInternal) {
@@ -46,47 +87,6 @@ export class ListComponent implements OnDestroy {
       draft.splice(item.index, 1);
     });
   }
-
-  spec: SortableSpec<Question> = {
-    type: "QUIZ_QUESTION",
-    trackBy: x => x.id,
-    hover: item => {
-      this.tempList = this.move(item)
-    },
-    drop: item => { // save the changes
-      this.tempList = this.list = this.move(item);
-    },
-    endDrag: _item => { // revert
-      this.tempList = this.list;
-    },
-  }
-
-  nameBlock: SortableSpec<Question> = {
-    ...this.spec,
-    createData: () => {
-      return new NameQuestion(this.nextId++);
-    }
-  }
-
-  mathQuestion: SortableSpec<Question> = {
-    ...this.spec,
-    createData: () => {
-      return new MathQuestion(this.nextId++, 'New math question', 0);
-    }
-  }
-
-  questionTemplates = [
-    {
-      spec: this.nameBlock,
-      description: NameQuestion.templateDescription
-    },
-    {
-      spec: this.mathQuestion,
-      description: MathQuestion.templateDescription
-    },
-  ];
-
-  constructor(private dnd: SkyhookDndService) { }
 
   edit(q: Question) {
     const idx = this.list.findIndex(f => f.id === q.id);

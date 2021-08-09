@@ -10,15 +10,14 @@ import { ItemTypes } from './itemTypes';
 
       <p>{{ greedy ? 'greedy' : 'not greedy' }}</p>
 
-      <p *ngIf="hasDroppedOnChild || hasDropped">{{'dropped' + (hasDroppedOnChild ? ' on child' : '')}}</p>
+      <p *ngIf="hasDroppedOnChild || hasDropped">{{ 'dropped' + (hasDroppedOnChild ? ' on child' : '') }}</p>
 
       <ng-content></ng-content>
 
     </div>
   </ng-container>
   `,
-  styles: [
-    `
+  styles: [`
     p {
       margin: 0; padding: 2px;
     }
@@ -34,10 +33,9 @@ import { ItemTypes } from './itemTypes';
       font-size: 1rem;
       background-color: rgba(0,0,0,0.5);
     }
-    `
-  ]
+  `]
 })
-export class Target implements OnDestroy {
+export class TargetComponent implements OnDestroy {
 
   @Input() greedy = false;
 

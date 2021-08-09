@@ -32,7 +32,7 @@ import { ItemTypes } from './item-types';
     div, p { display: inline-block; padding: 3px; margin: 0; }
     `]
 })
-export class Handle implements OnDestroy {
+export class HandleComponent implements OnDestroy {
 
   source = this.dnd.dragSource(ItemTypes.BOX, {
     beginDrag: () => ({}),

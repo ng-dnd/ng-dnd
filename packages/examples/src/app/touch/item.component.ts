@@ -10,10 +10,10 @@ import { SkyhookDndService } from "@ng-dnd/core";
     `,
   styles: [`
     div { display: inline; width: auto; }
-    `]
+  `]
 })
 export class DraggableItemComponent {
-  @Input() color;
+  @Input() color: string;
   itemSource = this.skyhook.dragSource("ITEM", {
     beginDrag: () => ({ color: this.color })
   });
@@ -28,5 +28,5 @@ export class DraggableItemComponent {
     `]
 })
 export class ItemComponent {
-  @Input() color;
+  @Input() color: string;
 }

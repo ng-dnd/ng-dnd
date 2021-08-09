@@ -20,7 +20,7 @@ import { ItemTypes } from './item-types';
     p { display: inline-block;, padding: 3px; margin: 0; }
   `]
 })
-export class Box implements OnDestroy {
+export class BoxComponent implements OnDestroy {
 
   source = this.dnd.dragSource(ItemTypes.BOX, {
     beginDrag: () => ({}),
