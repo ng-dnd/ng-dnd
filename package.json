@@ -21,14 +21,14 @@
     "packages/*"
   ],
   "dependencies": {
-    "@angular/animations": "^9.1.13",
-    "@angular/common": "^9.1.13",
-    "@angular/compiler": "^9.1.13",
-    "@angular/core": "^9.1.13",
-    "@angular/forms": "^9.1.13",
-    "@angular/platform-browser": "^9.1.13",
-    "@angular/platform-browser-dynamic": "^9.1.13",
-    "@angular/router": "^9.1.13",
+    "@angular/animations": "~9.1.13",
+    "@angular/common": "~9.1.13",
+    "@angular/compiler": "~9.1.13",
+    "@angular/core": "~9.1.13",
+    "@angular/forms": "~9.1.13",
+    "@angular/platform-browser": "~9.1.13",
+    "@angular/platform-browser-dynamic": "~9.1.13",
+    "@angular/router": "~9.1.13",
     "core-js": "^2.5.4",
     "lodash": "^4.17.4",
     "rxjs": "~6.5.4",
@@ -36,9 +36,9 @@
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "~0.901.15",
-    "@angular/cli": "^9.1.15",
-    "@angular/compiler-cli": "^9.1.13",
-    "@angular/language-service": "^9.1.13",
+    "@angular/cli": "~9.1.15",
+    "@angular/compiler-cli": "~9.1.13",
+    "@angular/language-service": "~9.1.13",
     "@compodoc/compodoc": "^1.1.14",
     "@types/fs-extra": "^8.0.0",
     "@types/jest": "^24.0.6",
@@ -63,6 +63,6 @@
     "tsickle": "^0.36.0",
     "tslib": "^1.9.0",
     "tslint": "~5.17.0",
-    "typescript": "3.8.3"
+    "typescript": "~3.8.3"
   }
 }
