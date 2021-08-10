@@ -3193,14 +3193,13 @@ amdefine@>=0.0.4:
   resolved "https://registry.yarnpkg.com/amdefine/-/amdefine-1.0.1.tgz#4a5282ac164729e93619bcfd3ad151f817ce91f5"
   integrity sha1-SlKCrBZHKek2Gbz9OtFR+BfOkfU=
 
-angular2-hotkeys@^2.2.0:
-  version "2.3.2"
-  resolved "https://registry.yarnpkg.com/angular2-hotkeys/-/angular2-hotkeys-2.3.2.tgz#f6f4991189a0bdb6a1a56e52048a4cba15b9b76a"
-  integrity sha512-GbTRitS9+itQB1sYEOjvPB62sQZtLaaQSXUX97E3KAxNoVTNeFHvYY3dfeBqb2+zBtFfIh4thtB/ereKvKCgJA==
+angular2-hotkeys@2.2.0:
+  version "2.2.0"
+  resolved "https://registry.yarnpkg.com/angular2-hotkeys/-/angular2-hotkeys-2.2.0.tgz#7b52ba99c42c56656360953ab79d776f583d1ab8"
+  integrity sha512-2O2wtPyscQU/PtyPc+TefSHAql0VI51rrKyIt87YAvBaGUZEj5PZG2QtC7kYI3sFhXYlvrNefUxXoehFjEVQAQ==
   dependencies:
     "@types/mousetrap" "^1.6.0"
     mousetrap "^1.6.0"
-    tslib "^2.0.0"
 
 ansi-align@^3.0.0:
   version "3.0.0"
