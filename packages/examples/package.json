@@ -53,12 +53,11 @@
     "@ngrx/schematics": "^8.0.1",
     "@types/jest": "^24.0.6",
     "@types/node": "^12.11.1",
-    "chokidar-cli": "^2.0.0",
     "jest": "^24.1.0",
     "jest-localstorage-mock": "^2.2.0",
     "protractor": "~6.0.0",
-    "ts-node": "~8.0.2",
-    "tslint": "~5.17.0",
+    "ts-node": "~8.3.0",
+    "tslint": "~6.1.0",
     "typescript": "~3.8.3"
   }
 }
