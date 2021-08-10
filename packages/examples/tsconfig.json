@@ -2,6 +2,7 @@
   "$schema": "http://json.schemastore.org/tsconfig",
   "compileOnSave": false,
   "compilerOptions": {
+    "module": "esnext",
     "outDir": "./dist/out-tsc",
     "baseUrl": "./src",
     "sourceMap": true,

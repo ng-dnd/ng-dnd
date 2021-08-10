@@ -5,44 +5,44 @@ export const routes: Routes = [
   {
     path: 'bins',
     pathMatch: 'full',
-    loadChildren: './bins/module#BinsModule'
+    loadChildren: () => import('./bins/module').then(m => m.BinsModule)
   },
   {
     path: 'basic-sortable',
     pathMatch: 'full',
-    loadChildren: './basic-sortable/module#BasicSortableModule'
+    loadChildren: () => import('./basic-sortable/module').then(m => m.BasicSortableModule)
   },
   {
     path: 'chessboard',
     pathMatch: 'full',
-    loadChildren: './chessboard/module#ChessboardModule'
+    loadChildren: () => import('./chessboard/module').then(m => m.ChessboardModule)
   },
   {
     path: 'calendar',
     pathMatch: 'full',
-    loadChildren: './calendar/module#CalendarModule'
+    loadChildren: () => import('./calendar/module').then(m => m.CalendarModule)
   },
   {
     path: 'touch',
     pathMatch: 'full',
-    loadChildren: './touch/module#TouchModule'
+    loadChildren: () => import('./touch/module').then(m => m.TouchModule)
   },
   {
     path: 'drilldown',
     pathMatch: 'full',
-    loadChildren: './drilldown/module#DrilldownModule'
+    loadChildren: () => import('./drilldown/module').then(m => m.DrilldownModule)
   },
   {
     path: 'drag-layer', children: [
       {
         path: 'simple',
         pathMatch: 'full',
-        loadChildren: './drag-layer/module#DragLayerModule'
+        loadChildren: () => import('./drag-layer/module').then(m => m.DragLayerModule)
       },
       {
         path: 'xy-pad',
         pathMatch: 'full',
-        loadChildren: './xy-pad/module#XyPadModule'
+        loadChildren: () => import('./xy-pad/module').then(m => m.XyPadModule)
       },
     ]
   },
@@ -51,12 +51,12 @@ export const routes: Routes = [
       {
         path: 'sources',
         pathMatch: 'full',
-        loadChildren: './nested/sources/module#NestedSourcesModule'
+        loadChildren: () => import('./nested/sources/module').then(m => m.NestedSourcesModule)
       },
       {
         path: 'targets',
         pathMatch: 'full',
-        loadChildren: './nested/targets/module#NestedTargetsModule'
+        loadChildren: () => import('./nested/targets/module').then(m => m.NestedTargetsModule)
       },
     ]
   },
@@ -65,17 +65,17 @@ export const routes: Routes = [
       {
         path: 'handles-previews',
         pathMatch: 'full',
-        loadChildren: './html5/handles-previews/module#HandlesPreviewsModule'
+        loadChildren: () => import('./html5/handles-previews/module').then(m => m.HandlesPreviewsModule)
       },
       {
         path: 'drop-effects',
         pathMatch: 'full',
-        loadChildren: './html5/drop-effects/module#DropEffectsModule'
+        loadChildren: () => import('./html5/drop-effects/module').then(m => m.DropEffectsModule)
       },
       {
         path: 'native-types',
         pathMatch: 'full',
-        loadChildren: './html5/native-types/module#NativeTypesModule'
+        loadChildren: () => import('./html5/native-types/module').then(m => m.NativeTypesModule)
       },
     ]
   },
@@ -85,32 +85,32 @@ export const routes: Routes = [
       {
         path: 'kanban',
         pathMatch: 'full',
-        loadChildren: './sortable/kanban/module#KanbanModule'
+        loadChildren: () => import('./sortable/kanban/module').then(m => m.KanbanModule)
       },
       {
         path: 'simple',
         pathMatch: 'full',
-        loadChildren: './sortable/simple/module#SimpleModule'
+        loadChildren: () => import('./sortable/simple/module').then(m => m.SimpleModule)
       },
       {
         path: 'simple-kanban',
         pathMatch: 'full',
-        loadChildren: './sortable/simple-kanban/module#KanbanModule'
+        loadChildren: () => import('./sortable/simple-kanban/module').then(m => m.KanbanModule)
       },
       {
         path: 'quiz',
         pathMatch: 'full',
-        loadChildren: './sortable/quiz/module#QuizModule'
+        loadChildren: () => import('./sortable/quiz/module').then(m => m.QuizModule)
       },
       {
         path: 'keyboard',
         pathMatch: 'full',
-        loadChildren: './sortable/keyboard/module#KeyboardModule'
+        loadChildren: () => import('./sortable/keyboard/module').then(m => m.KeyboardModule)
       },
       {
         path: 'fixed-height',
         pathMatch: 'full',
-        loadChildren: './sortable/fixed-height/module#FixedHeightModule'
+        loadChildren: () => import('./sortable/fixed-height/module').then(m => m.FixedHeightModule)
       },
     ]
   },
