@@ -1,44 +1,44 @@
 {
-    "$schema": "http://json.schemastore.org/tsconfig",
-    "compilerOptions": {
-        "baseUrl": ".",
-        "module": "es2015",
-        "target": "es2015",
-        "lib": [
-            "dom",
-            "es2015"
-        ],
-        "moduleResolution": "node",
-        "emitDecoratorMetadata": true,
-        "experimentalDecorators": true,
-        "skipLibCheck": true,
-        "strictPropertyInitialization": true,
-        "noImplicitReturns": true,
-        "noImplicitAny": true,
-        "strictNullChecks": true,
-        "allowUnreachableCode": false,
-        "noUnusedParameters": true,
-        "noUnusedLocals": true,
-        "noFallthroughCasesInSwitch": true,
-        "importHelpers": true,
-        "inlineSourceMap": true,
-        "inlineSources": true,
-        "downlevelIteration": true,
-        "pretty": true,
-        "types": [
-            "jest",
-            "zone.js"
-        ],
-        "paths": {
-            "@ng-dnd/*": [
-                "packages/*/index.ts"
-            ]
-        }
-    },
-    "exclude": [
-        "tools",
-        "**/node_modules",
-        "**/dist",
-        "node_modules"
-    ]
+  "$schema": "http://json.schemastore.org/tsconfig",
+  "compilerOptions": {
+    "baseUrl": ".",
+    "module": "esnext",
+    "target": "es2015",
+    "lib": [
+      "es2018",
+      "dom"
+    ],
+    "moduleResolution": "node",
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "skipLibCheck": true,
+    "strictPropertyInitialization": true,
+    "noImplicitReturns": true,
+    "noImplicitAny": true,
+    "strictNullChecks": true,
+    "allowUnreachableCode": false,
+    "noUnusedParameters": true,
+    "noUnusedLocals": true,
+    "noFallthroughCasesInSwitch": true,
+    "importHelpers": true,
+    "inlineSourceMap": true,
+    "inlineSources": true,
+    "downlevelIteration": true,
+    "pretty": true,
+    "types": [
+      "jest",
+      "zone.js"
+    ],
+    "paths": {
+      "@ng-dnd/*": [
+        "packages/*/index.ts"
+      ]
+    }
+  },
+  "exclude": [
+    "tools",
+    "node_modules",
+    "**/node_modules",
+    "**/dist"
+  ]
 }
