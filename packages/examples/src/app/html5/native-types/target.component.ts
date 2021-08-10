@@ -35,7 +35,7 @@ interface NativeFile {
   `]
 })
 export class TargetComponent implements OnDestroy {
-  @Input() type: string | symbol;
+  @Input() type: string;
   droppedType = null;
   dropped = null;
 
