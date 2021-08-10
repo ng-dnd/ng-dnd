@@ -7,10 +7,11 @@
     "baseUrl": "./src",
     "sourceMap": true,
     "declaration": false,
+    "downlevelIteration": true,
     "moduleResolution": "node",
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
-    "keyofStringsOnly": false,
+    "importHelpers": true,
     "target": "es2015",
     "typeRoots": [
       "node_modules/@types"

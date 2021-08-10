@@ -31,8 +31,7 @@
     "@ngrx/entity": "~9.2.1",
     "@ngrx/store": "~9.2.1",
     "@ngrx/store-devtools": "~9.2.1",
-    "angular2-hotkeys": "^2.1.2",
-    "core-js": "^2.5.4",
+    "angular2-hotkeys": "2.2.0",
     "faker": "^4.1.0",
     "immer": "^3.1.2",
     "immutable": "4.0.0-rc.12",
@@ -41,9 +40,9 @@
     "pressure": "^2.1.2",
     "react-dnd-mouse-backend": "^0.1.1",
     "react-dnd-test-backend": "^9.0.0",
-    "rxjs": "^6.3.0",
+    "rxjs": "~6.5.4",
     "tslib": "^1.10.0",
-    "zone.js": "~0.10.2"
+    "zone.js": "~0.10.3"
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "~0.901.15",
