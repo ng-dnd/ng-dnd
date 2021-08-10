@@ -17,13 +17,13 @@
   },
   "private": true,
   "dependencies": {
-    "@angular/animations": "^8.0.0",
-    "@angular/common": "^8.0.0",
-    "@angular/core": "^8.0.0",
-    "@angular/forms": "^8.0.0",
-    "@angular/platform-browser": "^8.0.0",
-    "@angular/platform-browser-dynamic": "^8.0.0",
-    "@angular/router": "^8.0.0",
+    "@angular/animations": "~9.1.13",
+    "@angular/common": "~9.1.13",
+    "@angular/core": "~9.1.13",
+    "@angular/forms": "~9.1.13",
+    "@angular/platform-browser": "~9.1.13",
+    "@angular/platform-browser-dynamic": "~9.1.13",
+    "@angular/router": "~9.1.13",
     "@ng-dnd/core": "^0.1.2",
     "@ng-dnd/multi-backend": "^0.1.2",
     "@ng-dnd/sortable": "^0.1.2",
@@ -42,19 +42,23 @@
     "react-dnd-mouse-backend": "^0.1.1",
     "react-dnd-test-backend": "^9.0.0",
     "rxjs": "^6.3.0",
-    "zone.js": "~0.9.1"
+    "zone.js": "~0.10.3"
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "~0.803.8",
     "@angular/cli": "^8.0.0",
-    "@angular/compiler-cli": "^8.0.0",
-    "@angular/language-service": "^8.0.0",
+    "@angular/compiler-cli": "~9.1.13",
+    "@angular/language-service": "~9.1.13",
     "@ngrx/schematics": "^8.0.1",
     "@types/jest": "^24.0.6",
     "@types/node": "~12.7.11",
     "chokidar-cli": "^2.0.0",
     "jest": "^24.1.0",
     "jest-localstorage-mock": "^2.2.0",
-    "protractor": "~6.0.0"
+    "protractor": "~6.0.0",
+    "ts-node": "~8.0.2",
+    "tsickle": "^0.36.0",
+    "tslint": "~5.17.0",
+    "typescript": "~3.8.3"
   }
 }
