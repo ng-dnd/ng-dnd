@@ -21,7 +21,7 @@
     <h3>Drag templates</h3>
     <div class="templates-flex">
       <div *ngFor="let qt of questionTemplates" class="external"
-           [ssExternal]="qt.spec" #ext="ssExternal"
+           [ngDndSortableExternal]="qt.spec" #ext="ngDndSortableExternal"
            [dragSource]="ext.source" [noHTML5Preview]="true">
         {{ qt.description }}
       </div>
@@ -30,11 +30,11 @@
 
   <div class="work-area">
     <h3>...into here; edit them</h3>
-    <ng-dnd-sortable-list class="list" ssSortableListId="WORK_AREA"
-                           [ssSortableSpec]="spec"
-                           [ssSortableChildren]="tempList">
+    <ng-dnd-sortable-list class="list" listId="WORK_AREA"
+                           [spec]="spec"
+                           [children]="tempList">
       <quiz-section [style.display]="'block'"
-                    *ssTemplate="let context" [ssRender]="context" #r="ssRender"
+                    *ngDndSortableTemplate="let context" [ngDndSortableRender]="context" #r="ngDndSortableRender"
                     [question]="r.data" (edit)="edit($event)">
       </quiz-section>
     </ng-dnd-sortable-list>

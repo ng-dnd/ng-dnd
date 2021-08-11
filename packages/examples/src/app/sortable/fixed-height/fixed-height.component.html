@@ -11,16 +11,16 @@
 <div class="list">
   <h4>Broken things to fix</h4>
 
-  <ng-dnd-sortable-list ssSortableListId="simple-demo"
-                        [ssSortableChildren]="tempList"
-                        [ssSortableSpec]="simpleSpec"
-                        ssSortableTrigger="fixed">
+  <ng-dnd-sortable-list listId="simple-demo"
+                        [children]="tempList"
+                        [spec]="simpleSpec"
+                        hoverTrigger="fixed">
     <!-- ALTERS THE HOVER ALGORITHM -->
-    <ng-template ssTemplate let-context>
-      <!-- ssRender configures a DragSource for you, but you have to attach it. -->
+    <ng-template ngDndSortableTemplate let-context>
+      <!-- ngDndSortableRender configures a DragSource for you, but you have to attach it. -->
       <div class="fixer"
-           [ssRender]="context"
-           #render="ssRender"
+           [ngDndSortableRender]="context"
+           #render="ngDndSortableRender"
            [class.fixer--placeholder]="render.isDragging$|async"
            [dragSource]="render.source" [noHTML5Preview]="true">
         <!-- <<< attached here! -->

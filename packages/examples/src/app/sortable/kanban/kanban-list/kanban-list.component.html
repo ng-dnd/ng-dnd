@@ -20,29 +20,29 @@
       This is the 'desugared' style, where you render an *ngFor explicitly.
       It's useful for integrating with other libraries like Material,
       hopefully. Other libraries love to include *ngFor themselves, but it
-      should be clear you can attach `ssSortable` to whatever element you want,
-      and then `ssRender` to any of its children, even if they are not
+      should be clear you can attach `ngDndSortable` to whatever element you want,
+      and then `ngDndSortableRender` to any of its children, even if they are not
       direct children or if some other library only lets you change the item
       template. You can even put a header element inside.
 
-      Do not use both `ng-dnd-sortable-list` AND `ssSortable` -- you will get
+      Do not use both `ng-dnd-sortable-list` AND `ngDndSortable` -- you will get
       double drop events!
   -->
 
   <div *ngIf="render; else plain"
        class="cards-container"
-       ssSortable
-       [ssSortableSpec]="specs.listSpec"
-       [ssSortableListId]="list.id"
-       #clist="ssSortable">
-    <!-- note the assignment of the ssSortable directive to a template
+       ngDndSortable
+       [spec]="specs.listSpec"
+       [listId]="list.id"
+       #clist="ngDndSortable">
+    <!-- note the assignment of the ngDndSortable directive to a template
         variable, clist, so we can use it below. It can generate the
-        required context for ssRender. -->
+        required context for ngDndSortableRender. -->
 
     <kanban-card *ngFor="let card of list.cards; let i = index; trackBy: trackById"
                  [card]="card"
-                 [ssRender]="clist.contextFor(card, i)"
-                 #render="ssRender"
+                 [ngDndSortableRender]="clist.contextFor(card, i)"
+                 #render="ngDndSortableRender"
                  [dragSource]="render.source"
                  [noHTML5Preview]="true"
                  [placeholder]="render.isDragging$|async">

@@ -9,15 +9,14 @@ import { SortableSpecService } from './specs';
   selector: 'kanban-external',
   template: `
     <div class="ext">
-      <kanban-card
-          [ssExternal]="externalSpec"
-          #ext="ssExternal"
-          [card]="card"
-          [dragSource]="ext.source"
-          [noHTML5Preview]="true">
+      <kanban-card [ngDndSortableExternal]="externalSpec"
+                  #ext="ngDndSortableExternal"
+                  [card]="card"
+                  [dragSource]="ext.source"
+                  [noHTML5Preview]="true">
       </kanban-card>
     </div>
-    `,
+  `,
   styles: [`
     .ext { margin-right: 8px; margin-bottom: 8px; display: inline-block; }
   `]

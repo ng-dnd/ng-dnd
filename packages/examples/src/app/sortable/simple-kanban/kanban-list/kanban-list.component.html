@@ -20,24 +20,24 @@
       This is the 'desugared' style, where you render an *ngFor explicitly.
       It's useful for integrating with other libraries like Material,
       hopefully. Other libraries love to include *ngFor themselves, but it
-      should be clear you can attach `ssSortable` to whatever element you want,
-      and then `ssRender` to any of its children, even if they are not
+      should be clear you can attach `ngDndSortable` to whatever element you want,
+      and then `ngDndSortableRender` to any of its children, even if they are not
       direct children or if some other library only lets you change the item
       template. You can even put a header element inside.
 
-      Do not use both `ng-dnd-sortable-list` AND `ssSortable` -- you will get
+      Do not use both `ng-dnd-sortable-list` AND `ngDndSortable` -- you will get
       double drop events!
   -->
 
   <ng-dnd-sortable-list class="cards-container"
-                         [ssSortableSpec]="specs.listSpec"
-                         [ssSortableChildren]="list.cards"
-                         [ssSortableListId]="list.id">
+                         [spec]="specs.listSpec"
+                         [children]="list.cards"
+                         [listId]="list.id">
 
-    <ng-template ssTemplate let-context>
+    <ng-template ngDndSortableTemplate let-context>
       <kanban-card
-                   [ssRender]="context"
-                   #render="ssRender"
+                   [ngDndSortableRender]="context"
+                   #render="ngDndSortableRender"
                    [dragSource]="render.source"
                    [card]="context.data"
                    [noHTML5Preview]="true"

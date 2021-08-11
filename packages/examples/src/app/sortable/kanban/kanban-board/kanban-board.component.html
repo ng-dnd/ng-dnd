@@ -16,42 +16,41 @@
     Use ng-dnd-sortable-list, and give it a template for how to
     render each element. It will handle creating the `*ngFor`
     for you, from the list the spec provides, and will help
-    you pass context down to [ssRender].
+    you pass context down to [ngDndSortableRender].
 --->
 
 <ng-dnd-sortable-list class="kanban-root"
-                       [ssSortableListId]="888"
-                       [ssSortableSpec]="specs.boardSpec"
-                       ssSortableTrigger="fixed"
-                       [ssSortableHorizontal]="true">
-  <!-- 'ssSortableHorizontal' makes the hover behave differently. You need CSS to complete the job.
+                       [listId]="888"
+                       [spec]="specs.boardSpec"
+                       hoverTrigger="fixed"
+                       [horizontal]="true">
+  <!-- 'horizontal' makes the hover behave differently. You need CSS to complete the job.
         .kanban-root must still be like a block element, so no collapsing float containers.
         Flexbox/CSS Grid are great. -->
 
-  <!-- The ng-dnd-sortable-list component stamps out one ssTemplate
+  <!-- The ng-dnd-sortable-list component stamps out one ngDndSortableTemplate
        for each item in yourSpec.getList(). -->
-  <ng-template ssTemplate let-context>
-    <!-- context is everything the ssRender needs to do its job.
+  <ng-template ngDndSortableTemplate let-context>
+    <!-- context is everything the ngDndSortableRender needs to do its job.
         It includes 'data' and 'index', which are just from an *ngFor of your spec's getList(). -->
-    <kanban-list
-                 [ssRender]="context"
+    <kanban-list [ngDndSortableRender]="context"
                  [list]="context.data"
                  (addCard)="addCard(context.data.id, $event)">
 
       <!-- is this kanban-list draggable? NOT YET.
 
-          -   because ssRender doesn't know which DOM element should be
+          -   because ngDndSortableRender doesn't know which DOM element should be
               draggable (maybe you want a drag handle), it lets us decide by
               giving us `render.source`, a DragSource object that is already
               configured. You are responsible for connecting it to the DOM.
               If you weren't using child components, you might just do:
 
               <div class="each-child"
-                  [ssRender]="context"
-                  #render="ssRender"
+                  [ngDndSortableRender]="context"
+                  #render="ngDndSortableRender"
                   [dragSource]="render.source"></div>
 
-          -   you can either get the directive using `#render="ssRender"`,
+          -   you can either get the directive using `#render="ngDndSortableRender"`,
               or inject SkyhookSortableRenderer<KanbanList> into KanbanListComponent.
 
           -   we did the latter here, because we want a 'drag handle' inside kanban-list.
@@ -62,7 +61,6 @@
   </ng-template>
 
 </ng-dnd-sortable-list>
-
 
 <div class="trash-zone">
   <kanban-trash-can (dropped)="removeCard($event)"></kanban-trash-can>
