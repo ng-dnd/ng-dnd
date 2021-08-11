@@ -39,13 +39,13 @@ import { NgDndSortable } from './sortable.directive';
 })
 export class NgDndSortableList<Data> extends NgDndSortable<Data>
   implements OnDestroy, OnChanges, AfterContentInit, AfterViewInit {
-  @Input('ssTemplate') template?: TemplateRef<TemplateContext<Data>>;
+  @Input() template?: TemplateRef<TemplateContext<Data>>;
 
   /** @ignore */
   @ContentChildren(NgDndSortableTemplate, {
     read: TemplateRef
   })
-  set ssRenderTemplates(ql: QueryList<TemplateRef<TemplateContext<Data>>>) {
+  set renderTemplates(ql: QueryList<TemplateRef<TemplateContext<Data>>>) {
     if (ql.length > 0) {
       this.template = ql.first;
     }

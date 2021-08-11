@@ -13,11 +13,11 @@ const _scheduleMicroTaskPolyfill: (f: () => void) => any = (
 )
 
 @Directive({
-  selector: '[ssRender]',
-  exportAs: 'ssRender'
+  selector: '[ngDndSortableRender]',
+  exportAs: 'ngDndSortableRender'
 })
 export class NgDndSortableRenderer<Data> implements OnInit, OnDestroy {
-  @Input('ssRender') context!: RenderContext<Data>;
+  @Input('ngDndSortableRender') context!: RenderContext<Data>;
 
   get data() { return this.context.data; }
 
@@ -44,7 +44,7 @@ export class NgDndSortableRenderer<Data> implements OnInit, OnDestroy {
   private subs = new Subscription();
 
   /**
-   * This DropTarget is attached where [ssRender] is.
+   * This DropTarget is attached where [ngDndSortableRender] is.
    *
    * It is responsible for triggering {@link SortableSpec.hover} when the place you are hovering changes.
    */
@@ -53,7 +53,7 @@ export class NgDndSortableRenderer<Data> implements OnInit, OnDestroy {
   /**
    * This DragSource is NOT attached for you.
    *
-   * You need to attach it yourself, by pulling #render="ssRender", and applying [dragSource]="render.source".
+   * You need to attach it yourself, by pulling #render="ngDndSortableRender", and applying [dragSource]="render.source".
    */
   source: DragSource<DraggedItem<Data>>;
 
@@ -196,7 +196,7 @@ export class NgDndSortableRenderer<Data> implements OnInit, OnDestroy {
   /** @ignore */
   private rect() {
     if (!this.el) {
-      throw new Error("@ng-dnd/sortable: [ssRender] expected to be attached to a real DOM element");
+      throw new Error("@ng-dnd/sortable: [ngDndSortableRender] expected to be attached to a real DOM element");
     }
     const rect = (this.el.nativeElement as Element).getBoundingClientRect();
     return rect;

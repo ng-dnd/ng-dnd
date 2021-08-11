@@ -6,16 +6,16 @@ export const EXTERNAL_LIST_ID: symbol = Symbol("EXTERNAL_LIST_ID");
 
 
 @Directive({
-  selector: '[ssExternal]',
-  exportAs: 'ssExternal'
+  selector: '[ngDndSortableExternal]',
+  exportAs: 'ngDndSortableExternal'
 })
 export class NgDndSortableExternal<Data> implements OnChanges, OnDestroy {
-  @Input('ssExternal') spec!: SortableSpec<Data>;
+  @Input('ngDndSortableExternal') spec!: SortableSpec<Data>;
 
   /**
-   * This source has beginDrag and endDrag implemented in line with what ssRender does.
+   * This source has beginDrag and endDrag implemented in line with what ngDndSortableRender does.
    *
-   * You must, like ssRender, attach it with [dragSource] somewhere.
+   * You must, like ngDndSortableRender, attach it with [dragSource] somewhere.
    */
   public source: DragSource<DraggedItem<Data>>;
 

@@ -51,7 +51,7 @@ export interface PreviewTemplateContext {
             </ng-container>
         </ng-dnd-preview-renderer>
     </ng-container>
-    `,
+  `,
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class NgDndPreviewComponent implements BackendWatcher {

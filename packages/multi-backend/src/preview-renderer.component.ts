@@ -19,7 +19,7 @@ import { map } from "rxjs/operators";
     <div class="firefox-bug" [ngStyle]="style$|async">
         <ng-content></ng-content>
     </div>
-    `,
+  `,
   styles: [
     `
       :host {

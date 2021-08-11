@@ -6,7 +6,7 @@ export interface TemplateContext<Data> {
 }
 
 @Directive({
-  selector: '[ssTemplate]'
+  selector: '[ngDndSortableTemplate]'
 })
 export class NgDndSortableTemplate {
 }
