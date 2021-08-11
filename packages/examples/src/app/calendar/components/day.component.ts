@@ -2,7 +2,7 @@ import {
   Component, Input, OnDestroy, OnInit, ChangeDetectionStrategy, AfterViewInit,
   ElementRef, ViewChild
 } from "@angular/core";
-import { SkyhookDndService, DragSourceOptions } from "@ng-dnd/core";
+import { NgDndService, DragSourceOptions } from "@ng-dnd/core";
 import { ItemTypes } from "../item-types";
 import { Store, createSelector } from "@ngrx/store";
 import { State } from "app/reducers";
@@ -144,7 +144,7 @@ export class CalendarDayComponent implements OnInit, OnDestroy, AfterViewInit {
   forceStart$ = new Subject<void>();
   forceThreshold$ = new Subject<void>();
 
-  constructor(private dnd: SkyhookDndService, private store: Store<State>) { }
+  constructor(private dnd: NgDndService, private store: Store<State>) { }
 
   intradayEvent() {
     this.store.dispatch(new NewEvent(

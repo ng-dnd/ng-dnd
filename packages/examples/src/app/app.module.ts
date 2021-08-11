@@ -28,7 +28,7 @@ import { reducers, metaReducers } from './reducers';
 // import { environment } from '../environments/environment';
 import { EffectsModule } from '@ngrx/effects';
 import { AppEffects } from './app.effects';
-import { SkyhookDndModule } from "@ng-dnd/core";
+import { NgDndModule } from "@ng-dnd/core";
 import { routes } from './routes';
 import { HotkeyModule } from 'angular2-hotkeys';
 
@@ -45,10 +45,10 @@ import { MultiBackend } from '@ng-dnd/multi-backend';
       useHash: true
     }),
     StoreRootModule,
-    SkyhookDndModule.forRoot({ backend: MultiBackend, options: CustomTransitions }),
-    // SkyhookDndModule.forRoot({ backend: HTML5Backend }),
-    // SkyhookDndModule.forRoot({ backend: TouchBackend }),
-    // SkyhookDndModule.forRoot({ backend: MouseBackend }),
+    NgDndModule.forRoot({ backend: MultiBackend, options: CustomTransitions }),
+    // NgDndModule.forRoot({ backend: HTML5Backend }),
+    // NgDndModule.forRoot({ backend: TouchBackend }),
+    // NgDndModule.forRoot({ backend: MouseBackend }),
     StoreModule.forRoot(reducers, { metaReducers }),
     // !environment.production ? StoreDevtoolsModule.instrument() : [],
     EffectsModule.forRoot([AppEffects]),

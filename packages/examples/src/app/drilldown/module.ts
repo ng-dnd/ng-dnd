@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
-import { SkyhookDndModule } from "@ng-dnd/core";
+import { NgDndModule } from "@ng-dnd/core";
 
 import { Container } from './container.component';
 import { TargetComponent } from './target.component';
@@ -19,7 +19,7 @@ import { UtilityModule } from '../utility.module';
   ],
   imports: [
     CommonModule,
-    SkyhookDndModule,
+    NgDndModule,
     RouterModule.forChild([{ path: '', component: Container }]),
     UtilityModule
   ],

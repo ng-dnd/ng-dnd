@@ -9,7 +9,7 @@ import {
 } from "@angular/core";
 import { DragSource } from "@ng-dnd/core";
 import {
-  DraggedItem, SortableSpec, SkyhookSortableRenderer
+  DraggedItem, SortableSpec, NgDndSortableRenderer
 } from "@ng-dnd/sortable";
 import { Card } from "../card";
 import { KanbanList } from "../lists";
@@ -33,11 +33,11 @@ export class KanbanListComponent implements OnInit {
   isOver$ = this.render && this.render.target.listen(m => m.canDrop() && m.isOver());
 
   // You can inject any attached directives in a component
-  // - When in the <skyhook-preview>, the directive isn't attached, so make it @Optional()
+  // - When in the <ng-dnd-preview>, the directive isn't attached, so make it @Optional()
   // - Also must be public if you're using it in your template, until the Ivy renderer lands
   constructor(
     public specs: SortableSpecService,
-    @Optional() public render: SkyhookSortableRenderer<KanbanList>,
+    @Optional() public render: NgDndSortableRenderer<KanbanList>,
   ) { }
 
   ngOnInit() {

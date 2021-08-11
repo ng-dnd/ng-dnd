@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { SkyhookDndService } from "@ng-dnd/core";
+import { NgDndService } from "@ng-dnd/core";
 
 @Component({
     selector: 'app-test',
@@ -30,7 +30,7 @@ export class TestComponent implements OnInit {
 
     isDragging$ = this.source.listen(m => m.isDragging());
 
-    constructor(private dnd: SkyhookDndService) {}
+    constructor(private dnd: NgDndService) {}
 
     ngOnInit() {}
 }

@@ -1,4 +1,4 @@
-import { DropTargetSpec, SkyhookDndService } from "@ng-dnd/core";
+import { DropTargetSpec, NgDndService } from "@ng-dnd/core";
 import { Observable, Subject } from "rxjs";
 import { delay, distinctUntilChanged, filter, switchMapTo, take, takeUntil } from "rxjs/operators";
 
@@ -13,7 +13,7 @@ export class ActivatedWith {
 
 export type ActivatorSpec = DropTargetSpec & { onActivate: (a: ActivatedWith) => void };
 
-export function activatorDropTarget(dnd: SkyhookDndService, types: Types, waitMillis: number, spec: ActivatorSpec) {
+export function activatorDropTarget(dnd: NgDndService, types: Types, waitMillis: number, spec: ActivatorSpec) {
   // hover events input stream
   const hoverSubject$ = new Subject<ActivatedWith>();
 

@@ -1,7 +1,7 @@
 import { Component, Input, OnDestroy } from "@angular/core";
 import { Coord } from './coord';
 import { GameService } from "./game.service";
-import { SkyhookDndService } from "@ng-dnd/core";
+import { NgDndService } from "@ng-dnd/core";
 import { ItemTypes } from "./constants";
 import { map } from 'rxjs/operators';
 
@@ -72,7 +72,7 @@ export class BoardSquareComponent implements OnDestroy {
     };
   }));
 
-  constructor(private dnd: SkyhookDndService, private game: GameService) { }
+  constructor(private dnd: NgDndService, private game: GameService) { }
 
   ngOnDestroy() {
     this.target.unsubscribe();

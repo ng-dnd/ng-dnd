@@ -1,5 +1,5 @@
 import { Input, Component, OnInit, OnDestroy } from '@angular/core';
-import { SkyhookDndService } from "@ng-dnd/core";
+import { NgDndService } from "@ng-dnd/core";
 import { Colors } from './colors';
 import { map, filter, startWith } from 'rxjs/operators';
 
@@ -48,7 +48,7 @@ export class TargetBoxComponent implements OnDestroy {
     .listen(m => m.getItemType())
     .pipe(map(t => this.cssColor(t)));
 
-  constructor(private dnd: SkyhookDndService) { }
+  constructor(private dnd: NgDndService) { }
 
   cssColor(c: string | symbol) {
     switch (c) {

@@ -1,4 +1,4 @@
-<skyhook-preview [allBackends]="true">
+<ng-dnd-preview [allBackends]="true">
   <ng-template let-type let-item="item">
     <ng-container [ngSwitch]="type">
       <div class="priority" *ngSwitchCase="'PRIORITY'" [ngStyle]="item.size.style()">
@@ -6,14 +6,14 @@
       </div>
     </ng-container>
   </ng-template>
-</skyhook-preview>
+</ng-dnd-preview>
 
 <div class="list">
   <h4>Contoso company-wide priority list</h4>
 
-  <skyhook-sortable-list ssSortableListId="simple-demo"
-                         [ssSortableChildren]="tempList"
-                         [ssSortableSpec]="simpleSpec">
+  <ng-dnd-sortable-list ssSortableListId="simple-demo"
+                        [ssSortableChildren]="tempList"
+                        [ssSortableSpec]="simpleSpec">
     <ng-template ssTemplate let-context>
       <!-- ssRender configures a DragSource for you, but you have to attach it. -->
       <div class="priority"
@@ -25,5 +25,5 @@
         <pre>{{render.index+1}}. {{ render.data.name }}</pre>
       </div>
     </ng-template>
-  </skyhook-sortable-list>
+  </ng-dnd-sortable-list>
 </div>

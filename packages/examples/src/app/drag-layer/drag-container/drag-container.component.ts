@@ -1,5 +1,5 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { SkyhookDndService } from "@ng-dnd/core";
+import { NgDndService } from "@ng-dnd/core";
 import { BoxWithLocation } from '../BoxWithLocation';
 
 @Component({
@@ -35,7 +35,7 @@ export class DragContainerComponent implements OnInit, OnDestroy {
     }
   });
 
-  constructor(private dnd: SkyhookDndService) { }
+  constructor(private dnd: NgDndService) { }
 
   moveBox(id: any, x: number, y: number) {
     this.x = x;

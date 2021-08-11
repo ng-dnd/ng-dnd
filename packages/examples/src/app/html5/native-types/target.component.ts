@@ -1,5 +1,5 @@
 import { Component, Input, NgZone, OnDestroy } from "@angular/core";
-import { SkyhookDndService } from "@ng-dnd/core";
+import { NgDndService } from "@ng-dnd/core";
 import { NativeTypes } from "react-dnd-html5-backend";
 
 interface NativeUrl {
@@ -52,7 +52,7 @@ export class TargetComponent implements OnDestroy {
     }
   });
 
-  constructor(private dnd: SkyhookDndService) { }
+  constructor(private dnd: NgDndService) { }
 
   ngOnDestroy() {
     this.target.unsubscribe();

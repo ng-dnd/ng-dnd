@@ -1,5 +1,5 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
-import { SkyhookDndService, Offset } from "@ng-dnd/core";
+import { NgDndService, Offset } from "@ng-dnd/core";
 import { getEmptyImage } from 'react-dnd-html5-backend';
 import { Spot } from './spot';
 
@@ -82,5 +82,5 @@ export class CubeComponent {
       this.endDrag.emit();
     }
   });
-  constructor(private dnd: SkyhookDndService) { }
+  constructor(private dnd: NgDndService) { }
 }

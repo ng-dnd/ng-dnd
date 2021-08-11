@@ -1,4 +1,4 @@
-<skyhook-preview [allBackends]="true">
+<ng-dnd-preview [allBackends]="true">
   <ng-template let-type let-item="item">
     <ng-container [ngSwitch]="type">
       <kanban-card *ngSwitchCase="ItemTypes.CARD" [card]="item.data" [preview]="true"
@@ -9,17 +9,17 @@
       </kanban-list>
     </ng-container>
   </ng-template>
-</skyhook-preview>
+</ng-dnd-preview>
 
 <!--
     This is the 'sugared' version.
-    Use skyhook-sortable-list, and give it a template for how to
+    Use ng-dnd-sortable-list, and give it a template for how to
     render each element. It will handle creating the `*ngFor`
     for you, from the list the spec provides, and will help
     you pass context down to [ssRender].
 --->
 
-<skyhook-sortable-list class="kanban-root"
+<ng-dnd-sortable-list class="kanban-root"
                        [ssSortableListId]="888"
                        [ssSortableChildren]="specs.tree"
                        [ssSortableSpec]="specs.boardSpec"
@@ -29,7 +29,7 @@
         .kanban-root must still be like a block element, so no collapsing float containers.
         Flexbox/CSS Grid are great. -->
 
-  <!-- The skyhook-sortable-list component stamps out one ssTemplate
+  <!-- The ng-dnd-sortable-list component stamps out one ssTemplate
        for each item in yourSpec.getList(). -->
   <ng-template ssTemplate let-context>
     <!-- context is everything the ssRender needs to do its job.
@@ -61,4 +61,4 @@
     </kanban-list>
   </ng-template>
 
-</skyhook-sortable-list>
+</ng-dnd-sortable-list>

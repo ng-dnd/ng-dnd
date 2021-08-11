@@ -1,5 +1,5 @@
 import { AfterViewInit, Component, ElementRef, OnDestroy } from '@angular/core';
-import { SkyhookDndService } from "@ng-dnd/core";
+import { NgDndService } from "@ng-dnd/core";
 import { spillTarget } from "@ng-dnd/sortable";
 import { ItemTypes } from './item-types';
 import { Store } from '@ngrx/store';
@@ -25,7 +25,7 @@ export class ContainerComponent implements AfterViewInit, OnDestroy {
   });
 
   constructor(
-    private dnd: SkyhookDndService,
+    private dnd: NgDndService,
     private el: ElementRef,
     private store: Store<{}>
   ) { }

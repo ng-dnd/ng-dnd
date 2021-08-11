@@ -54,7 +54,7 @@
 .handle {
   // the header is 8px-padded inside .list
   // we aren't using HTML5 snapshot previews
-  // the <skyhook-preview> drag layer doesn't know what the 'root'
+  // the <ng-dnd-preview> drag layer doesn't know what the 'root'
   // is, because there is no [dragPreview] to anchor it
   // so we fake it by having the handle have the same x,y origin
   // as the .list

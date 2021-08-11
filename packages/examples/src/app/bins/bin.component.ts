@@ -1,5 +1,5 @@
 import { Component, Input, OnDestroy, OnInit } from '@angular/core';
-import { SkyhookDndService } from "@ng-dnd/core";
+import { NgDndService } from "@ng-dnd/core";
 
 @Component({
   selector: 'app-bin',
@@ -49,7 +49,7 @@ export class BinComponent implements OnInit, OnDestroy {
     itemType: m.getItemType() as string, // TODO: type
   }));
 
-  constructor(private dnd: SkyhookDndService) { }
+  constructor(private dnd: NgDndService) { }
 
   getStyles({ isOver, canDrop }) {
     return {

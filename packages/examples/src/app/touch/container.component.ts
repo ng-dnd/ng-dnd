@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { ItemTypes } from './itemTypes';
-import { SkyhookDndService } from "@ng-dnd/core";
+import { NgDndService } from "@ng-dnd/core";
 
 @Component({
   selector: 'touch-container',
@@ -9,17 +9,17 @@ import { SkyhookDndService } from "@ng-dnd/core";
     <app-example-link path="touch"></app-example-link>
     <p>
         This demo won't be very impressive, but read the code to find out how to use
-        a &lt;skyhook-preview&gt; to easily render touch previews.
+        a &lt;ng-dnd-preview&gt; to easily render touch previews.
     </p>
 
-        <skyhook-preview>
+        <ng-dnd-preview>
             <ng-template let-type let-item="item">
                 <ng-container [ngSwitch]="type">
                     <touch-item *ngSwitchCase="ItemTypes.ITEM" [color]="item.color">
                     </touch-item>
                 </ng-container>
             </ng-template>
-        </skyhook-preview>
+        </ng-dnd-preview>
 
         <touch-draggable-item [color]="'aliceblue'"></touch-draggable-item>
         <touch-draggable-item [color]="'lightgoldenrodyellow'"></touch-draggable-item>

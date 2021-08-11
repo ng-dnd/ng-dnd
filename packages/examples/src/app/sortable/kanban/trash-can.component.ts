@@ -1,5 +1,5 @@
 import { Component, EventEmitter, ChangeDetectionStrategy } from "@angular/core";
-import { SkyhookDndService } from "@ng-dnd/core";
+import { NgDndService } from "@ng-dnd/core";
 import { ItemTypes } from "./item-types";
 import { DraggedItem } from "@ng-dnd/sortable";
 import { Output } from "@angular/core";
@@ -59,7 +59,7 @@ export class TrashCanComponent {
     item: m.getItem(),
     isOver: m.isOver() && m.canDrop()
   }));
-  constructor(private dnd: SkyhookDndService) { }
+  constructor(private dnd: NgDndService) { }
   getStyle(isOver: boolean, item: DraggedItem<Card>) {
     if (!isOver || !item) { return {}; }
     return {

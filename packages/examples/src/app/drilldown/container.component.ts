@@ -7,7 +7,7 @@ import { TreeService } from './tree.service';
     <app-example-link path="drilldown"></app-example-link>
     <p>Hover over a folder to temporarily drill down. Click normally on a folder to open or close it.</p>
     <p>
-      This example uses a wrapper around <code>SkyhookDndService#dropTarget</code>, that listens to dnd-core
+      This example uses a wrapper around <code>NgDndService#dropTarget</code>, that listens to dnd-core
       hover events and fires a callback when you have hovered long enough. This is a clean pattern for extending
       <code>@ng-dnd/core</code> in a reusable way.
     </p>

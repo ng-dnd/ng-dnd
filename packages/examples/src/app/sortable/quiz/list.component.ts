@@ -1,5 +1,5 @@
 import { Component, OnDestroy } from "@angular/core";
-import { SkyhookDndService } from '@ng-dnd/core';
+import { NgDndService } from '@ng-dnd/core';
 import { SortableSpec, DraggedItem, spillTarget } from "@ng-dnd/sortable";
 import { Question, MathQuestion, NameQuestion } from './Question';
 import { produce } from 'immer';
@@ -11,9 +11,9 @@ import { produce } from 'immer';
 })
 export class ListComponent implements OnDestroy {
 
-  constructor(private dnd: SkyhookDndService) { }
+  constructor(private dnd: NgDndService) { }
   // on hover, this will swap out the hover.listId
-  // so our <skyhook-preview> knows when to morph back
+  // so our <ng-dnd-preview> knows when to morph back
   spill = spillTarget<Question>(this.dnd, 'QUIZ_QUESTION', {
     drop: item => {
       if (item.isInternal) {

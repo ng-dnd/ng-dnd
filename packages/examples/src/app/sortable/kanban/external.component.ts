@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { SkyhookDndService, DragSourceSpec } from "@ng-dnd/core";
+import { NgDndService, DragSourceSpec } from "@ng-dnd/core";
 import { SortableSpec, DraggedItem, Size } from '@ng-dnd/sortable';
 import { Card } from './card';
 import { ItemTypes } from './item-types';

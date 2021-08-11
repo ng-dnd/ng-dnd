@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component, Input, OnDestroy, OnInit } from '@angular/core';
-import { DragPreviewOptions, SkyhookDndService } from "@ng-dnd/core";
+import { DragPreviewOptions, NgDndService } from "@ng-dnd/core";
 import { getEmptyImage } from 'react-dnd-html5-backend';
 import { map } from 'rxjs/operators';
 import { BoxWithLocation } from '../BoxWithLocation';
@@ -29,7 +29,7 @@ export class DraggableBoxComponent implements OnInit, OnDestroy {
 
   isDragging$ = this.source.listen(m => m.isDragging());
 
-  constructor(private dnd: SkyhookDndService) { }
+  constructor(private dnd: NgDndService) { }
 
   ngOnInit() {
     this.source.connectDragPreview(getEmptyImage(), {

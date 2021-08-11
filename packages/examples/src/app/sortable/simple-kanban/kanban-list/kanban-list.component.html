@@ -25,11 +25,11 @@
       direct children or if some other library only lets you change the item
       template. You can even put a header element inside.
 
-      Do not use both `skyhook-sortable-list` AND `ssSortable` -- you will get
+      Do not use both `ng-dnd-sortable-list` AND `ssSortable` -- you will get
       double drop events!
   -->
 
-  <skyhook-sortable-list class="cards-container"
+  <ng-dnd-sortable-list class="cards-container"
                          [ssSortableSpec]="specs.listSpec"
                          [ssSortableChildren]="list.cards"
                          [ssSortableListId]="list.id">
@@ -49,7 +49,7 @@
       </kanban-card>
     </ng-template>
 
-  </skyhook-sortable-list>
+  </ng-dnd-sortable-list>
 
   <!-- A simple version for when we're dragging -->
   <ng-template #plain>

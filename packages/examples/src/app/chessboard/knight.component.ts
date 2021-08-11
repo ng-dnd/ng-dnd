@@ -1,5 +1,5 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { SkyhookDndService } from "@ng-dnd/core";
+import { NgDndService } from "@ng-dnd/core";
 import { ItemTypes } from './constants';
 import { horseImage } from './horseImage';
 
@@ -16,7 +16,7 @@ export class KnightComponent implements OnInit, OnDestroy {
 
   isDragging$ = this.knightSource.listen(m => m.isDragging());
 
-  constructor(private dnd: SkyhookDndService) { }
+  constructor(private dnd: NgDndService) { }
 
   ngOnInit() {
     const img = new Image();

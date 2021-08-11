@@ -1,12 +1,12 @@
 import { NgModule } from "@angular/core";
 import { CommonModule } from "@angular/common";
 import { UtilityModule } from "@app/utility.module";
-import { SkyhookDndModule } from "@ng-dnd/core";
+import { NgDndModule } from "@ng-dnd/core";
 import { RouterModule } from "@angular/router";
 import { StoreModule } from '@ngrx/store';
 import { ReactiveFormsModule } from "@angular/forms";
-import { SkyhookMultiBackendModule } from "@ng-dnd/multi-backend";
-import { SkyhookSortableModule } from "@ng-dnd/sortable";
+import { NgDndMultiBackendModule } from "@ng-dnd/multi-backend";
+import { NgDndSortableModule } from "@ng-dnd/sortable";
 
 import { ContainerComponent } from "./container.component";
 import { KanbanBoardComponent } from "./kanban-board/kanban-board.component";
@@ -24,9 +24,9 @@ import { SortableSpecService } from './specs';
   imports: [
     CommonModule,
     UtilityModule,
-    SkyhookDndModule,
-    SkyhookMultiBackendModule,
-    SkyhookSortableModule,
+    NgDndModule,
+    NgDndMultiBackendModule,
+    NgDndSortableModule,
     ReactiveFormsModule,
     RouterModule.forChild([
       { path: "", component: ContainerComponent }

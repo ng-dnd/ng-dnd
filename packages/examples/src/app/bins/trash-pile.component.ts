@@ -1,5 +1,5 @@
 import { Component, Input, OnChanges, OnDestroy } from "@angular/core";
-import { SkyhookDndService } from "@ng-dnd/core";
+import { NgDndService } from "@ng-dnd/core";
 
 @Component({
   selector: 'app-trash-pile',
@@ -60,7 +60,7 @@ export class TrashPileComponent implements OnChanges, OnDestroy {
   //   more content
   // </ng-container>
 
-  constructor(private dnd: SkyhookDndService) { }
+  constructor(private dnd: NgDndService) { }
 
   ngOnChanges() {
     this.trashSource.setType(this.type);

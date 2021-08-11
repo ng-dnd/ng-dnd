@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
-import { SkyhookDndModule } from "@ng-dnd/core";
+import { NgDndModule } from "@ng-dnd/core";
 import { GameService } from './game.service';
 import { UtilityModule } from "@app/utility.module";
 
@@ -17,7 +17,7 @@ import { BoardSquareComponent } from './board-square.component';
   ],
   imports: [
     CommonModule,
-    SkyhookDndModule,
+    NgDndModule,
     RouterModule.forChild([{ path: '', component: ContainerComponent }]),
     UtilityModule,
   ],

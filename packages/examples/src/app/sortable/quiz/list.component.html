@@ -1,4 +1,4 @@
-<skyhook-preview [allBackends]="true">
+<ng-dnd-preview [allBackends]="true">
   <ng-template let-type let-item="item">
     <ng-container *ngIf="type === 'QUIZ_QUESTION'">
       <!-- You can react to which listId the mouse is hovering over
@@ -14,7 +14,7 @@
       </ng-template>
     </ng-container>
   </ng-template>
-</skyhook-preview>
+</ng-dnd-preview>
 
 <div class="flex" [dropTarget]="spill">
   <div class="templates">
@@ -30,14 +30,14 @@
 
   <div class="work-area">
     <h3>...into here; edit them</h3>
-    <skyhook-sortable-list class="list" ssSortableListId="WORK_AREA"
+    <ng-dnd-sortable-list class="list" ssSortableListId="WORK_AREA"
                            [ssSortableSpec]="spec"
                            [ssSortableChildren]="tempList">
       <quiz-section [style.display]="'block'"
                     *ssTemplate="let context" [ssRender]="context" #r="ssRender"
                     [question]="r.data" (edit)="edit($event)">
       </quiz-section>
-    </skyhook-sortable-list>
+    </ng-dnd-sortable-list>
   </div>
 
   <div class="printout">

@@ -1,5 +1,5 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { SkyhookDndService } from "@ng-dnd/core";
+import { NgDndService } from "@ng-dnd/core";
 import { ItemTypes } from './item-types';
 
 @Component({
@@ -30,7 +30,7 @@ export class CustomPreviewComponent implements OnInit, OnDestroy {
 
   opacity$ = this.source.listen(m => m.isDragging() ? 0.4 : 1);
 
-  constructor(private dnd: SkyhookDndService) { }
+  constructor(private dnd: NgDndService) { }
 
   ngOnInit() {
     const img = new Image();

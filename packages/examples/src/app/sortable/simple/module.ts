@@ -1,10 +1,10 @@
 import { NgModule } from "@angular/core";
 import { CommonModule } from "@angular/common";
-import { UtilityModule } from "@app/utility.module";
-import { SkyhookDndModule } from "@ng-dnd/core";
 import { RouterModule } from "@angular/router";
-import { SkyhookMultiBackendModule } from "@ng-dnd/multi-backend";
-import { SkyhookSortableModule } from "@ng-dnd/sortable";
+import { UtilityModule } from "@app/utility.module";
+import { NgDndModule } from "@ng-dnd/core";
+import { NgDndMultiBackendModule } from "@ng-dnd/multi-backend";
+import { NgDndSortableModule } from "@ng-dnd/sortable";
 
 import { SimpleComponent } from "./simple.component";
 import { ContainerComponent } from "./container.component";
@@ -17,9 +17,9 @@ import { ContainerComponent } from "./container.component";
   imports: [
     CommonModule,
     UtilityModule,
-    SkyhookDndModule,
-    SkyhookMultiBackendModule,
-    SkyhookSortableModule,
+    NgDndModule,
+    NgDndMultiBackendModule,
+    NgDndSortableModule,
     RouterModule.forChild([
       { path: "", component: ContainerComponent }
     ])
