@@ -1,9 +1,4 @@
-import {
-  Directive,
-  ElementRef,
-  Input,
-  NgZone
-} from '@angular/core';
+import { Directive, ElementRef, Input, NgZone } from '@angular/core';
 
 import { invariant } from './internal/invariant';
 
@@ -18,11 +13,9 @@ const explanation =
   'There is only one of each source/target/preview allowed per DOM element.'
   ;
 
-/**
- * @ignore
- */
+/** @ignore */
 @Directive({
-    selector: '[abstractDndDirective]'
+  selector: '[abstractDndDirective]'
 })
 export class DndDirective {
   protected connection: any;
@@ -65,8 +58,10 @@ export class DropTargetDirective extends DndDirective {
 
   /** Which target to connect the DOM to */
   @Input('dropTarget') public dropTarget!: DropTarget;
-  /** Shortcut for setting a type on the connection.
-   *  Lets you use Angular binding to do it. Runs {@link DropTarget#setTypes}. */
+  /**
+   * Shortcut for setting a type on the connection.
+   * Lets you use Angular binding to do it. Runs {@link DropTarget#setTypes}.
+   */
   @Input('dropTargetTypes') dropTargetTypes?: TypeOrTypeArray;
   /** Reduce typo confusion by allowing non-plural version of dropTargetTypes */
   @Input('dropTargetType') set dropTargetType(t: TypeOrTypeArray) {
@@ -86,9 +81,7 @@ export class DropTargetDirective extends DndDirective {
   }
 }
 
-/**
- * Allows you to connect a {@link DragSource} to an element in a component template.
- */
+/** Allows you to connect a {@link DragSource} to an element in a component template. */
 @Directive({
   selector: '[dragSource]'
 })
@@ -97,12 +90,15 @@ export class DragSourceDirective extends DndDirective {
 
   /** Which source to connect the DOM to */
   @Input('dragSource') dragSource!: DragSource<any>;
-  /** Shortcut for setting a type on the connection.
-   *  Lets you use Angular binding to do it. Runs {@link DragSource#setType}. */
+  /**
+   * Shortcut for setting a type on the connection.
+   * Lets you use Angular binding to do it. Runs {@link DragSource#setType}.
+   */
   @Input('dragSourceType') dragSourceType?: string | symbol;
   /** Pass an options object as you would to {@link DragSource#connectDragSource}. */
   @Input('dragSourceOptions') dragSourceOptions?: DragSourceOptions;
-  /** Do not render an HTML5 preview. Only applies when using the HTML5 backend.
+  /**
+   * Do not render an HTML5 preview. Only applies when using the HTML5 backend.
    * It does not use { captureDraggingState: true } for IE11 support; that is broken.
    */
   @Input('noHTML5Preview') noHTML5Preview = false;
@@ -127,7 +123,8 @@ export class DragSourceDirective extends DndDirective {
 }
 
 /**
- * Allows you to specify which element a {@link DragSource} should screenshot as an HTML5 drag preview.
+ * Allows you to specify which element a {@link DragSource} should screenshot
+ * as an HTML5 drag preview.
  *
  * Only relevant when using the HTML5 backend.
  */
@@ -159,7 +156,7 @@ let emptyImage: HTMLImageElement;
 /**
  * Returns a 0x0 empty GIF for use as a drag preview.
  * @ignore
- * */
+ */
 function getEmptyImage() {
   if (!emptyImage) {
     emptyImage = new Image();

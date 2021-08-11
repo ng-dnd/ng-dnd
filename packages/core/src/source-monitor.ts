@@ -1,10 +1,7 @@
 import { MonitorBase } from './monitor-base';
 
 /** The monitor available in {@link DragSource}'s listen method. */
-export interface DragSourceMonitor<
-  Item = {},
-  DropResult = {}
-  > extends MonitorBase<Item> {
+export interface DragSourceMonitor<Item = {}, DropResult = {}> extends MonitorBase<Item> {
 
   /**
    * Returns `true` if **NO drag operation is in progress**, and the owner's
@@ -16,15 +13,15 @@ export interface DragSourceMonitor<
    *
    * Instead, keep your `canDrag` logic simple, and replicate it in your template.
    *
-```html
-<div [style.background]="someProperty ? 'yellow' : 'grey'"> content </div>
-```
-
-```typescript
-{
-  canDrag: () => this.someProperty
-}
-```
+   * ```html
+   * <div [style.background]="someProperty ? 'yellow' : 'grey'"> content </div>
+   * ```
+   *
+   * ```typescript
+   * {
+   *   canDrag: () => this.someProperty
+   * }
+   * ```
    */
   canDrag(): boolean;
 

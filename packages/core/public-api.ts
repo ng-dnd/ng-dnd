@@ -2,7 +2,7 @@
 /// <reference path="src/ambient.d.ts" />
 
 export {
-  SkyhookDndModule,
+  NgDndModule,
   BackendInput,
   BackendFactoryInput
 } from "./src/dnd.module";
@@ -19,7 +19,7 @@ export { DragSourceOptions, DragPreviewOptions } from "./src/connectors";
 export { DRAG_DROP_BACKEND, DRAG_DROP_MANAGER } from "./src/tokens";
 
 // direct API
-export { SkyhookDndService, AddSubscription } from "./src/connector.service";
+export { NgDndService, AddSubscription } from "./src/connector.service";
 export { DropTargetSpec } from "./src/drop-target-specification";
 export { DragSourceSpec } from "./src/drag-source-specification";
 

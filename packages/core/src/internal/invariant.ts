@@ -3,4 +3,3 @@ export function invariant(assertion: boolean, msg: string) {
     throw new Error(msg);
   }
 }
-

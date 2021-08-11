@@ -1,32 +1,32 @@
+import { BackendFactory, DragDropManager } from 'dnd-core';
 import { default as HTML5Backend } from "react-dnd-html5-backend";
 import { default as TouchBackend } from "react-dnd-touch-backend";
 import {
-    default as MultiBackend,
-    MouseTransition,
-    TouchTransition,
-    BackendTransition
+  default as MultiBackend,
+  MouseTransition,
+  TouchTransition,
+  BackendTransition
 } from "dnd-multi-backend";
-import { BackendFactory, DragDropManager } from 'dnd-core';
 
 export const HTML5ToTouch = {
-    backends: [
-        {
-            backend: HTML5Backend,
-            transition: MouseTransition
-        },
-        {
-            backend: TouchBackend,
-            options: {
-                enableMouseEvents: false,
-            },
-            preview: true,
-            transition: TouchTransition
-        }
-    ] as BackendTransition[]
+  backends: [
+    {
+      backend: HTML5Backend,
+      transition: MouseTransition
+    },
+    {
+      backend: TouchBackend,
+      options: {
+        enableMouseEvents: false,
+      },
+      preview: true,
+      transition: TouchTransition
+    }
+  ] as BackendTransition[]
 };
 
 export function DefaultMultiBackend(manager: DragDropManager, context: any) {
-    return MultiBackend(manager, context, HTML5ToTouch);
+  return MultiBackend(manager, context, HTML5ToTouch);
 }
 
 /**
@@ -38,12 +38,12 @@ export function DefaultMultiBackend(manager: DragDropManager, context: any) {
  * import { MultiBackend, HTML5ToTouch } from '@ng-dnd/multi-backend';
  *
  * imports: [
- *     ...,
- *     SkyhookDndModule.forRoot({ backend: MultiBackend, options: HTML5ToTouch }),
+ *   ...,
+ *   NgDndModule.forRoot({ backend: MultiBackend, options: HTML5ToTouch }),
  * ]
  * ```
- * */
+ */
 export function createDefaultMultiBackend() {
-    return DefaultMultiBackend as BackendFactory;
+  return DefaultMultiBackend as BackendFactory;
 }
 

@@ -2,9 +2,9 @@
 export type TypeOrTypeArray = string | symbol | Array<string | symbol>;
 /** Just a plain, reusable xy coordinate type. */
 export interface Offset {
-    /** x coordinate */
-    x: number;
-    /** y coordinate */
-    y: number;
+  /** x coordinate */
+  x: number;
+  /** y coordinate */
+  y: number;
 }
 

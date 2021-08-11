@@ -29,43 +29,43 @@ import { RenderContext, DraggedItem } from './types';
 //
 
 export function suggestHalfway<Data>(
-    ctx: RenderContext<Data>,
-    item: DraggedItem<Data>,
-    rect: DOMRect|ClientRect,
-    clientOffset: Offset
+  ctx: RenderContext<Data>,
+  item: DraggedItem<Data>,
+  rect: DOMRect | ClientRect,
+  clientOffset: Offset
 ) {
-    const { hover } = item;
-    const dim = ctx.horizontal
-        ? (rect.width || rect.right - rect.left)
-        : (rect.height || rect.bottom - rect.top);
-    const start = ctx.horizontal ? rect.left : rect.top;
-    const targetCentre = start + dim / 2.0;
-    const mouse = ctx.horizontal ? clientOffset.x : clientOffset.y;
-    const topHalf = mouse < targetCentre;
-    let suggestedIndex: number;
-    if (ctx.listId === hover.listId) {
-        if (ctx.index < hover.index) {
-            suggestedIndex = topHalf ? ctx.index : ctx.index + 1;
-        } else {
-            suggestedIndex = topHalf ? ctx.index - 1 : ctx.index;
-        }
+  const { hover } = item;
+  const dim = ctx.horizontal
+    ? (rect.width || rect.right - rect.left)
+    : (rect.height || rect.bottom - rect.top);
+  const start = ctx.horizontal ? rect.left : rect.top;
+  const targetCentre = start + dim / 2.0;
+  const mouse = ctx.horizontal ? clientOffset.x : clientOffset.y;
+  const topHalf = mouse < targetCentre;
+  let suggestedIndex: number;
+  if (ctx.listId === hover.listId) {
+    if (ctx.index < hover.index) {
+      suggestedIndex = topHalf ? ctx.index : ctx.index + 1;
     } else {
-        // first hover on a different list;
-        // there is no relevant hover.index to compare to
-        suggestedIndex = topHalf ? ctx.index : ctx.index + 1;
+      suggestedIndex = topHalf ? ctx.index - 1 : ctx.index;
     }
-    return suggestedIndex;
+  } else {
+    // first hover on a different list;
+    // there is no relevant hover.index to compare to
+    suggestedIndex = topHalf ? ctx.index : ctx.index + 1;
+  }
+  return suggestedIndex;
 };
 
 export function suggestFixed<Data>(ctx: RenderContext<Data>) {
-    return ctx.index;
+  return ctx.index;
 };
 
 export function getSuggester(trigger: HoverTrigger) {
-    switch (trigger) {
-        case HoverTrigger.fixed:
-            return suggestFixed;
-        default:
-            return suggestHalfway;
-    }
+  switch (trigger) {
+    case HoverTrigger.fixed:
+      return suggestFixed;
+    default:
+      return suggestHalfway;
+  }
 }

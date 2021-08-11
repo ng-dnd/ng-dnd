@@ -2,11 +2,11 @@ import { Directive } from "@angular/core";
 import { RenderContext } from "../types";
 
 export interface TemplateContext<Data> {
-    $implicit: RenderContext<Data>
+  $implicit: RenderContext<Data>
 }
 
 @Directive({
-    selector: '[ssTemplate]'
+  selector: '[ssTemplate]'
 })
-export class SkyhookSortableTemplate {
+export class NgDndSortableTemplate {
 }

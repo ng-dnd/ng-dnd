@@ -1,12 +1,12 @@
 import { NgModule } from "@angular/core";
 import { CommonModule } from "@angular/common";
-import { SkyhookPreviewComponent } from "./preview.component";
-import { SkyhookPreviewRendererComponent } from "./preview-renderer.component";
+import { NgDndPreviewComponent } from "./preview.component";
+import { NgDndPreviewRendererComponent } from "./preview-renderer.component";
 
 /** @ignore */
 const EXPORTS = [
-    SkyhookPreviewComponent,
-    SkyhookPreviewRendererComponent,
+    NgDndPreviewComponent,
+    NgDndPreviewRendererComponent,
 ];
 
 @NgModule({
@@ -14,4 +14,4 @@ const EXPORTS = [
     declarations: EXPORTS,
     exports: EXPORTS,
 })
-export class SkyhookMultiBackendModule {}
+export class NgDndMultiBackendModule {}

@@ -7,7 +7,7 @@ But people can always nail it down with `dnd.dragSource<MyItemType>('BOX', { ...
 Related: https://github.com/Microsoft/TypeScript/issues/19345
 */
 
-/** The spec passed to {@link SkyhookDndService#dragSource}.
+/** The spec passed to {@link NgDndService#dragSource}.
  *
  * Note the two type parameters. Both must represent plain JS objects.
  *

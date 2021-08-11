@@ -1,24 +1,24 @@
 import { NgModule } from "@angular/core";
-import { SkyhookSortable } from "./directives/sortable.directive";
-import { SkyhookSortableList } from "./directives/list.component";
-import { SkyhookSortableTemplate } from "./directives/template.directive";
-import { SkyhookSortableRenderer } from "./directives/render.directive";
-import { SkyhookSortableExternal } from "./directives/external.directive";
+import { NgDndSortable } from "./directives/sortable.directive";
+import { NgDndSortableList } from "./directives/list.component";
+import { NgDndSortableTemplate } from "./directives/template.directive";
+import { NgDndSortableRenderer } from "./directives/render.directive";
+import { NgDndSortableExternal } from "./directives/external.directive";
 import { CommonModule } from "@angular/common";
-import { SkyhookDndModule } from "@ng-dnd/core";
+import { NgDndModule } from "@ng-dnd/core";
 
 /** @ignore */
 const EXPORTS = [
-    SkyhookSortable,
-    SkyhookSortableList,
-    SkyhookSortableTemplate,
-    SkyhookSortableRenderer,
-    SkyhookSortableExternal,
+    NgDndSortable,
+    NgDndSortableList,
+    NgDndSortableTemplate,
+    NgDndSortableRenderer,
+    NgDndSortableExternal,
 ];
 
 @NgModule({
     declarations: EXPORTS,
     exports: EXPORTS,
-    imports: [CommonModule, SkyhookDndModule]
+    imports: [CommonModule, NgDndModule]
 })
-export class SkyhookSortableModule {}
+export class NgDndSortableModule {}
