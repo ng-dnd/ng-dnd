@@ -13,12 +13,12 @@ import {
   SimpleChanges,
   ContentChildren,
 } from "@angular/core";
-import { NgDndService } from "@ng-dnd/core";
-import { NgDndSortableTemplate, TemplateContext } from "./template.directive";
-import { NgDndSortable } from './sortable.directive';
+import { DndService } from "@ng-dnd/core";
+import { DndSortableTemplate, TemplateContext } from "./template.directive";
+import { DndSortable } from './sortable.directive';
 
 @Component({
-  selector: "ng-dnd-sortable-list",
+  selector: "dnd-sortable-list",
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: `
     <ng-container *ngFor="let card of children; let i = index; trackBy: trackById" >
@@ -33,16 +33,17 @@ import { NgDndSortable } from './sortable.directive';
   `],
   // allow injecting the directive and getting the component
   providers: [{
-    provide: NgDndSortable,
-    useExisting: NgDndSortableList
+    provide: DndSortable,
+    useExisting: DndSortableList
   }]
 })
-export class NgDndSortableList<Data> extends NgDndSortable<Data>
+export class DndSortableList<Data> extends DndSortable<Data>
   implements OnDestroy, OnChanges, AfterContentInit, AfterViewInit {
+
   @Input() template?: TemplateRef<TemplateContext<Data>>;
 
   /** @ignore */
-  @ContentChildren(NgDndSortableTemplate, {
+  @ContentChildren(DndSortableTemplate, {
     read: TemplateRef
   })
   set renderTemplates(ql: QueryList<TemplateRef<TemplateContext<Data>>>) {
@@ -53,7 +54,7 @@ export class NgDndSortableList<Data> extends NgDndSortable<Data>
 
   /** @ignore */
   constructor(
-    dnd: NgDndService,
+    dnd: DndService,
     el: ElementRef<HTMLElement>,
     cdr: ChangeDetectorRef,
   ) {

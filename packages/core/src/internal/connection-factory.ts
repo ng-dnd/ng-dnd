@@ -74,7 +74,7 @@ export class Connection<TMonitor extends DragSourceMonitor | DropTargetMonitor, 
   constructor(
     private factoryArgs: FactoryArgs<TMonitor, TConnector>,
     private manager: DragDropManager,
-    private ngDndZone: Zone,
+    private dndZone: Zone,
     initialType: TypeOrTypeArray | undefined
   ) {
     invariant(
@@ -119,7 +119,7 @@ export class Connection<TMonitor extends DragSourceMonitor | DropTargetMonitor, 
       // this schedules a single batch change detection run after all the listeners have heard their newest value
       // thus all changes resulting from subscriptions to this are caught by the
       // change detector.
-      scheduleMicroTaskAfter(this.ngDndZone, this.onUpdate)
+      scheduleMicroTaskAfter(this.dndZone, this.onUpdate)
     );
   }
 
@@ -129,9 +129,9 @@ export class Connection<TMonitor extends DragSourceMonitor | DropTargetMonitor, 
 
   connect(fn: (connector: TConnector) => void): Subscription {
     const subscription = this.resolvedType$.pipe(take(1)).subscribe(() => {
-      // must run inside ngDndZone, so things like timers firing after a long hover with touch backend
+      // must run inside dndZone, so things like timers firing after a long hover with touch backend
       // will cause change detection (via executing a macro or event task)
-      this.ngDndZone.run(() => {
+      this.dndZone.run(() => {
         fn(this.handlerConnector.hooks);
       });
     });
@@ -179,9 +179,9 @@ export class Connection<TMonitor extends DragSourceMonitor | DropTargetMonitor, 
   }
 
   setTypes(type: TypeOrTypeArray) {
-    // must run inside ngDndZone, so things like timers firing after a long hover with touch backend
+    // must run inside dndZone, so things like timers firing after a long hover with touch backend
     // will cause change detection (via executing a macro or event task)
-    this.ngDndZone.run(() => {
+    this.dndZone.run(() => {
       this.receiveType(type);
       this.resolvedType$.next(1);
     });
@@ -258,7 +258,7 @@ export interface SourceConstructor<Item = {}, DropResult = {}> {
   new(
     factoryArgs: FactoryArgs<DragSourceMonitor, DragSourceConnector>,
     manager: DragDropManager,
-    ngDndZone: Zone,
+    dndZone: Zone,
     initialType: string | symbol | undefined
   ): t.DragSource<Item, DropResult>;
 }
@@ -266,7 +266,7 @@ export interface TargetConstructor {
   new(
     factoryArgs: FactoryArgs<DropTargetMonitor, DropTargetConnector>,
     manager: DragDropManager,
-    ngDndZone: Zone,
+    dndZone: Zone,
     initialType: TypeOrTypeArray | undefined
   ): t.DropTarget;
 }

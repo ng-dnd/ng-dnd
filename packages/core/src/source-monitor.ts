@@ -2,7 +2,6 @@ import { MonitorBase } from './monitor-base';
 
 /** The monitor available in {@link DragSource}'s listen method. */
 export interface DragSourceMonitor<Item = {}, DropResult = {}> extends MonitorBase<Item> {
-
   /**
    * Returns `true` if **NO drag operation is in progress**, and the owner's
    * `canDrag()` returns `true` or is not defined.
@@ -30,7 +29,6 @@ export interface DragSourceMonitor<Item = {}, DropResult = {}> extends MonitorBa
    * initiated the drag, or its `isDragging()` is defined and returns true.
    */
   isDragging(): boolean;
-
 
   /**
    * Returns a plain object representing the last recorded drop result. The

@@ -4,7 +4,7 @@ import {
   NgZone
 } from '@angular/core';
 
-import { NgDndService } from './connector.service';
+import { DndService } from './connector.service';
 import {
   DndDirective,
   DragSourceDirective,
@@ -91,7 +91,7 @@ export function getGlobalContext(): any {
  */
 
 /**
- * Used for providing backends to {@link NgDndModule#forRoot}.
+ * Used for providing backends to {@link DndModule#forRoot}.
  * You can configure your backend with `options`.
  */
 export interface BackendInput {
@@ -154,19 +154,16 @@ const EXPORTS = [
   declarations: EXPORTS,
   exports: EXPORTS,
 })
-export class NgDndModule {
-  static forRoot(
-    backendOrBackendFactory: BackendInput | BackendFactoryInput
-  ): ModuleWithProviders {
+export class DndModule {
+  static forRoot(backendOrBackendFactory: BackendInput | BackendFactoryInput): ModuleWithProviders {
     return {
-      ngModule: NgDndModule,
+      ngModule: DndModule,
       providers: [
         {
           provide: DRAG_DROP_BACKEND_FACTORY,
           // whichever one they have provided, the other will be undefined
           useValue: (backendOrBackendFactory as BackendInput).backend,
-          useFactory: (backendOrBackendFactory as BackendFactoryInput)
-            .backendFactory,
+          useFactory: (backendOrBackendFactory as BackendFactoryInput).backendFactory,
         },
         {
           provide: DRAG_DROP_BACKEND_OPTIONS,
@@ -198,7 +195,7 @@ export class NgDndModule {
           deps: [DRAG_DROP_MANAGER],
           useFactory: getBackend,
         },
-        NgDndService,
+        DndService,
       ]
     };
   }

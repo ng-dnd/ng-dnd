@@ -10,15 +10,15 @@ import {
   ChangeDetectorRef,
 } from '@angular/core';
 import { BehaviorSubject, Observable, Subscription } from 'rxjs';
-import { NgDndService, DropTarget, DropTargetMonitor } from "@ng-dnd/core";
+import { DndService, DropTarget, DropTargetMonitor } from "@ng-dnd/core";
 import { SortableSpec, DraggedItem, RenderContext, HoverTrigger } from "../types";
 import { isEmpty } from '../isEmpty';
 
 @Directive({
-  selector: '[ngDndSortable]',
-  exportAs: 'ngDndSortable'
+  selector: '[dndSortable]',
+  exportAs: 'dndSortable'
 })
-export class NgDndSortable<Data> implements OnInit, OnChanges, OnDestroy, AfterViewInit {
+export class DndSortable<Data> implements OnInit, OnChanges, OnDestroy, AfterViewInit {
   @Input() listId: any = Math.random().toString();
   @Input() horizontal = false;
   @Input() protected spec!: SortableSpec<Data>;
@@ -49,7 +49,7 @@ export class NgDndSortable<Data> implements OnInit, OnChanges, OnDestroy, AfterV
 
   /** @ignore */
   constructor(
-    protected dnd: NgDndService,
+    protected dnd: DndService,
     protected el: ElementRef<HTMLElement>,
     protected cdr: ChangeDetectorRef,
   ) {
@@ -181,7 +181,7 @@ export class NgDndSortable<Data> implements OnInit, OnChanges, OnDestroy, AfterV
     if (this.el) {
       this.target.connectDropTarget(this.el.nativeElement);
     } else {
-      throw new Error('ngDndSortable directive must have ElementRef');
+      throw new Error('dndSortable directive must have ElementRef');
     }
   }
 

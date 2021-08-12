@@ -39,7 +39,7 @@ export function DefaultMultiBackend(manager: DragDropManager, context: any) {
  *
  * imports: [
  *   ...,
- *   NgDndModule.forRoot({ backend: MultiBackend, options: HTML5ToTouch }),
+ *   DndModule.forRoot({ backend: MultiBackend, options: HTML5ToTouch }),
  * ]
  * ```
  */

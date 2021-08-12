@@ -2,7 +2,6 @@ import { Offset } from './type-ish';
 
 /** The methods common to all monitor classes. */
 export interface MonitorBase<Item> {
-
   /** The type of the item in transit. Returns `null` if no item is being dragged. */
   getItemType(): string | symbol | null;
 

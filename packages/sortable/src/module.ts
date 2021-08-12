@@ -1,24 +1,24 @@
 import { NgModule } from "@angular/core";
-import { NgDndSortable } from "./directives/sortable.directive";
-import { NgDndSortableList } from "./directives/list.component";
-import { NgDndSortableTemplate } from "./directives/template.directive";
-import { NgDndSortableRenderer } from "./directives/render.directive";
-import { NgDndSortableExternal } from "./directives/external.directive";
 import { CommonModule } from "@angular/common";
-import { NgDndModule } from "@ng-dnd/core";
+import { DndModule } from "@ng-dnd/core";
+import { DndSortable } from "./directives/sortable.directive";
+import { DndSortableList } from "./directives/list.component";
+import { DndSortableTemplate } from "./directives/template.directive";
+import { DndSortableRenderer } from "./directives/render.directive";
+import { DndSortableExternal } from "./directives/external.directive";
 
 /** @ignore */
 const EXPORTS = [
-    NgDndSortable,
-    NgDndSortableList,
-    NgDndSortableTemplate,
-    NgDndSortableRenderer,
-    NgDndSortableExternal,
+  DndSortable,
+  DndSortableList,
+  DndSortableTemplate,
+  DndSortableRenderer,
+  DndSortableExternal,
 ];
 
 @NgModule({
-    declarations: EXPORTS,
-    exports: EXPORTS,
-    imports: [CommonModule, NgDndModule]
+  imports: [CommonModule, DndModule],
+  declarations: EXPORTS,
+  exports: EXPORTS,
 })
-export class NgDndSortableModule {}
+export class DndSortableModule { }

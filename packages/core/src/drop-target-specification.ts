@@ -1,6 +1,6 @@
 import { DropTargetMonitor } from './target-monitor';
 
-/** The spec passed to {@link NgDndService#dropTarget}.
+/** The spec passed to {@link DndService#dropTarget}.
  *
  * Note the two type parameters. Both must represent plain JS objects. See the extended
  * discussion of these type parameters at {@link DragSourceSpec}.

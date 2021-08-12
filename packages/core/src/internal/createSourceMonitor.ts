@@ -5,7 +5,6 @@ import { invariant } from './invariant';
 let isCallingCanDrag = false;
 let isCallingIsDragging = false;
 
-
 class DragSourceMonitorClass implements DragSourceMonitor {
   internalMonitor: DragDropMonitor;
   sourceId: Identifier | undefined;

@@ -1,6 +1,6 @@
 import { Directive, Input, ElementRef, OnInit, OnDestroy } from "@angular/core";
 import {
-  NgDndService,
+  DndService,
   DragSource, DropTarget, DragSourceMonitor, DropTargetMonitor
 } from "@ng-dnd/core";
 import { Observable, Subscription } from 'rxjs';
@@ -13,11 +13,11 @@ const _scheduleMicroTaskPolyfill: (f: () => void) => any = (
 )
 
 @Directive({
-  selector: '[ngDndSortableRender]',
-  exportAs: 'ngDndSortableRender'
+  selector: '[dndSortableRender]',
+  exportAs: 'dndSortableRender'
 })
-export class NgDndSortableRenderer<Data> implements OnInit, OnDestroy {
-  @Input('ngDndSortableRender') context!: RenderContext<Data>;
+export class DndSortableRenderer<Data> implements OnInit, OnDestroy {
+  @Input('dndSortableRender') context!: RenderContext<Data>;
 
   get data() { return this.context.data; }
 
@@ -44,7 +44,7 @@ export class NgDndSortableRenderer<Data> implements OnInit, OnDestroy {
   private subs = new Subscription();
 
   /**
-   * This DropTarget is attached where [ngDndSortableRender] is.
+   * This DropTarget is attached where [dndSortableRender] is.
    *
    * It is responsible for triggering {@link SortableSpec.hover} when the place you are hovering changes.
    */
@@ -53,7 +53,7 @@ export class NgDndSortableRenderer<Data> implements OnInit, OnDestroy {
   /**
    * This DragSource is NOT attached for you.
    *
-   * You need to attach it yourself, by pulling #render="ngDndSortableRender", and applying [dragSource]="render.source".
+   * You need to attach it yourself, by pulling #render="dndSortableRender", and applying [dragSource]="render.source".
    */
   source: DragSource<DraggedItem<Data>>;
 
@@ -64,7 +64,7 @@ export class NgDndSortableRenderer<Data> implements OnInit, OnDestroy {
 
   /** @ignore */
   constructor(
-    private dnd: NgDndService,
+    private dnd: DndService,
     private el: ElementRef<HTMLElement>
   ) {
     this.target = this.dnd.dropTarget<DraggedItem<Data>>(null, {
@@ -196,7 +196,7 @@ export class NgDndSortableRenderer<Data> implements OnInit, OnDestroy {
   /** @ignore */
   private rect() {
     if (!this.el) {
-      throw new Error("@ng-dnd/sortable: [ngDndSortableRender] expected to be attached to a real DOM element");
+      throw new Error("@ng-dnd/sortable: [dndSortableRender] expected to be attached to a real DOM element");
     }
     const rect = (this.el.nativeElement as Element).getBoundingClientRect();
     return rect;

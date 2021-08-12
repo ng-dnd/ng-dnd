@@ -7,7 +7,7 @@ import {
   ChangeDetectionStrategy
 } from "@angular/core";
 import { BehaviorSubject } from 'rxjs';
-import { NgDndService, DRAG_DROP_MANAGER } from "@ng-dnd/core";
+import { DndService, DRAG_DROP_MANAGER } from "@ng-dnd/core";
 import { DragDropManager, Backend } from "dnd-core";
 import { PreviewManager, BackendWatcher } from 'dnd-multi-backend';
 
@@ -40,21 +40,21 @@ export interface PreviewTemplateContext {
  * ```
  */
 @Component({
-  selector: "ng-dnd-preview",
+  selector: "dnd-preview",
   template: `
     <ng-container *ngIf="previewEnabled$ | async">
-        <ng-dnd-preview-renderer *ngIf="collect$ | async as c">
+        <dnd-preview-renderer *ngIf="collect$ | async as c">
             <ng-container *ngIf="c.isDragging" >
                 <ng-container
                     *ngTemplateOutlet="content; context: { $implicit: c.itemType, type: c.itemType, item: c.item }">
                 </ng-container>
             </ng-container>
-        </ng-dnd-preview-renderer>
+        </dnd-preview-renderer>
     </ng-container>
   `,
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class NgDndPreviewComponent implements BackendWatcher {
+export class DndPreviewComponent implements BackendWatcher {
   /** Disables the check for whether the current MultiBackend wants the preview enabled */
   @Input() allBackends = false;
 
@@ -63,7 +63,7 @@ export class NgDndPreviewComponent implements BackendWatcher {
   content!: TemplateRef<PreviewTemplateContext>;
 
   /** @ignore */
-  private layer = this.ngDnd.dragLayer();
+  private layer = this.dnd.dragLayer();
 
   /** @ignore */
   previewEnabled$ = new BehaviorSubject(false);
@@ -85,12 +85,12 @@ export class NgDndPreviewComponent implements BackendWatcher {
 
   /** @ignore */
   constructor(
-    private ngDnd: NgDndService,
+    private dnd: DndService,
     @Inject(DRAG_DROP_MANAGER) private manager: DragDropManager,
   ) {
     if (this.manager == null) {
       this.warn(
-        "no drag and drop manager defined, are you sure you imported NgDndModule?"
+        "no drag and drop manager defined, are you sure you imported DndModule?"
       );
     } else {
       PreviewManager.register(this);
@@ -129,7 +129,7 @@ export class NgDndPreviewComponent implements BackendWatcher {
     }
     if (backend == null) {
       this.warn(
-        "no drag and drop backend defined, are you sure you imported NgDndModule.forRoot(backend)?"
+        "no drag and drop backend defined, are you sure you imported DndModule.forRoot(backend)?"
       );
       return false;
     }

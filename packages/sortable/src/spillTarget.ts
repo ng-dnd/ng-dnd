@@ -1,4 +1,4 @@
-import { NgDndService, DropTarget } from "@ng-dnd/core";
+import { DndService, DropTarget } from "@ng-dnd/core";
 import { DraggedItem } from "./types";
 import { Subject } from 'rxjs';
 import { filter, distinctUntilChanged } from 'rxjs/operators';
@@ -11,7 +11,7 @@ export interface SpillConfiguration<Data> {
 }
 
 export function spillTarget<Data>(
-  dnd: NgDndService,
+  dnd: DndService,
   types: string | symbol | Array<string | symbol> | null,
   config: SpillConfiguration<Data>,
 ): DropTarget<DraggedItem<Data>> {

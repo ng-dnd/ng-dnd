@@ -56,7 +56,7 @@ export interface ConnectionBase<TMonitor> extends SubscriptionLike {
 
   /**
    * Same as RxJS Subscription.add().
-   * Useful, for example, for writing wrappers for the {@link NgDndService} methods,
+   * Useful, for example, for writing wrappers for the {@link DndService} methods,
    * which might internally listen()/subscribe to {@link DropTargetSpec#hover} and provide
    * a convenient callback after you hover without dropping or exiting for a specified
    * duration. That would require the following pattern:
@@ -85,7 +85,7 @@ export interface ConnectionBase<TMonitor> extends SubscriptionLike {
  * Represents one drop target and its behaviour, that can listen to the state
  * and connect to a DOM element.
  *
- * To create one, refer to {@link NgDndService#dropTarget}.
+ * To create one, refer to {@link DndService#dropTarget}.
  */
 export interface DropTarget<Item = {}, DropResult = {}>
   extends ConnectionBase<DropTargetMonitor<Item, DropResult>> {
@@ -123,7 +123,7 @@ export interface DropTarget<Item = {}, DropResult = {}>
  * drag state information related to a particular item type or list of types.
  * You do not have to connect it to a DOM element if that's all you want.
  *
- * To create one, refer to {@link NgDndService#dragSource}.
+ * To create one, refer to {@link DndService#dragSource}.
  */
 export interface DragSource<Item, DropResult = {}>
   extends ConnectionBase<DragSourceMonitor<Item, DropResult>> {
@@ -174,10 +174,7 @@ export interface DragSource<Item, DropResult = {}>
    * The subscription returned is automatically unsubscribed when the connection is made.
    * This may be immediate if the `DragSource` already has a type.
    */
-  connectDragSource(
-    elementOrNode: Node,
-    options?: DragSourceOptions
-  ): Subscription;
+  connectDragSource(elementOrNode: Node, options?: DragSourceOptions): Subscription;
 
   /**
    * This function allows you to connect a DOM node to your `DragSource` as a **preview**.
@@ -196,10 +193,7 @@ export interface DragSource<Item, DropResult = {}>
    * The subscription returned is automatically unsubscribed when the connection is made.
    * This may be immediate if the `DragSource` already has a type.
    */
-  connectDragPreview(
-    elementOrNode: Node,
-    options?: DragPreviewOptions
-  ): Subscription;
+  connectDragPreview(elementOrNode: Node, options?: DragPreviewOptions): Subscription;
 
   /**
    * Returns the drag source ID that can be used to simulate the drag and drop events
@@ -231,7 +225,7 @@ export interface DragSource<Item, DropResult = {}>
  *
  * To use a drag layer as designed:
  *
- * 1. Create a drag layer: `NgDndService.dragLayer`. Make sure to unsubscribe from
+ * 1. Create a drag layer: `DndService.dragLayer`. Make sure to unsubscribe from
  *    it in `ngOnDestroy()`.
  *
  * 2. Listen to global drag state changes with `DragLayer.listen`. These are all available on `DragLayerMonitor`:

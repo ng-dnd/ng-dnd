@@ -7,7 +7,7 @@ But people can always nail it down with `dnd.dragSource<MyItemType>('BOX', { ...
 Related: https://github.com/Microsoft/TypeScript/issues/19345
 */
 
-/** The spec passed to {@link NgDndService#dragSource}.
+/** The spec passed to {@link DndService#dragSource}.
  *
  * Note the two type parameters. Both must represent plain JS objects.
  *
@@ -47,11 +47,7 @@ Related: https://github.com/Microsoft/TypeScript/issues/19345
  * });
  * ```
  */
-export interface DragSourceSpec<
-  Item,
-  DropResult = {}
-  > {
-
+export interface DragSourceSpec<Item, DropResult = {}> {
   /**
    * Required. When the dragging starts, `beginDrag` is called. You **must** return
    * a plain JavaScript object describing the data being dragged. What you

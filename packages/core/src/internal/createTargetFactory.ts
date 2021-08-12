@@ -27,7 +27,7 @@ export class Target implements DropTarget {
       return true;
     }
 
-    // don't run isDragging in the zone. Should be a pure function of `this`.
+    // Don't run isDragging in the zone. Should be a pure function of `this`.
     return this.spec.canDrop(this.monitor);
   }
 

@@ -1,5 +1,5 @@
 import { Component, ChangeDetectionStrategy } from "@angular/core";
-import { NgDndService, Offset } from "@ng-dnd/core";
+import { DndService, Offset } from "@ng-dnd/core";
 import { map } from "rxjs/operators";
 
 /**
@@ -14,7 +14,7 @@ import { map } from "rxjs/operators";
  * whole thing wouldn't re-render unless you animated the border.
  */
 @Component({
-  selector: "ng-dnd-preview-renderer",
+  selector: "dnd-preview-renderer",
   template: `
     <div class="firefox-bug" [ngStyle]="style$|async">
         <ng-content></ng-content>
@@ -50,9 +50,9 @@ import { map } from "rxjs/operators";
   ],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class NgDndPreviewRendererComponent {
+export class DndPreviewRendererComponent {
   /** @ignore */
-  private layer = this.ngDnd.dragLayer();
+  private layer = this.dnd.dragLayer();
 
   /** @ignore */
   collect$ = this.layer.listen(monitor => ({
@@ -82,7 +82,7 @@ export class NgDndPreviewRendererComponent {
   );
 
   /** @ignore */
-  constructor(private ngDnd: NgDndService) { }
+  constructor(private dnd: DndService) { }
 
   /** @ignore */
   ngOnDestroy() {

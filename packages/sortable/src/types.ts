@@ -100,7 +100,7 @@ export interface SortableSpec<Data, Type = string | symbol> {
   /**
    * Optional; you may override default `() => true`.
    *
-   * When used with the `[ngDndSortableExternal]` directive, the first two arguments will be undefined,
+   * When used with the `[dndSortableExternal]` directive, the first two arguments will be undefined,
    * because the data has not yet been created and external items are not associated with a list.
    * You should be able to decide `canDrag` without these.
    */

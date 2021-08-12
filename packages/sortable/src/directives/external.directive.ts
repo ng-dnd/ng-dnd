@@ -1,27 +1,27 @@
 import { Directive, Input, ElementRef, OnChanges, OnDestroy } from "@angular/core";
-import { NgDndService, DragSource } from "@ng-dnd/core";
+import { DndService, DragSource } from "@ng-dnd/core";
 import { DraggedItem, SortableSpec, Size } from "../types";
 
 export const EXTERNAL_LIST_ID: symbol = Symbol("EXTERNAL_LIST_ID");
 
 
 @Directive({
-  selector: '[ngDndSortableExternal]',
-  exportAs: 'ngDndSortableExternal'
+  selector: '[dndSortableExternal]',
+  exportAs: 'dndSortableExternal'
 })
-export class NgDndSortableExternal<Data> implements OnChanges, OnDestroy {
-  @Input('ngDndSortableExternal') spec!: SortableSpec<Data>;
+export class DndSortableExternal<Data> implements OnChanges, OnDestroy {
+  @Input('dndSortableExternal') spec!: SortableSpec<Data>;
 
   /**
-   * This source has beginDrag and endDrag implemented in line with what ngDndSortableRender does.
+   * This source has beginDrag and endDrag implemented in line with what dndSortableRender does.
    *
-   * You must, like ngDndSortableRender, attach it with [dragSource] somewhere.
+   * You must, like dndSortableRender, attach it with [dragSource] somewhere.
    */
   public source: DragSource<DraggedItem<Data>>;
 
   /** @ignore */
   constructor(
-    private dnd: NgDndService,
+    private dnd: DndService,
     private el: ElementRef<Element>
   ) {
     this.source = this.dnd.dragSource<DraggedItem<Data>>(null, {
