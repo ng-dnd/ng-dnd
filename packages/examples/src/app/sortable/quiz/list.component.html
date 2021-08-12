@@ -31,10 +31,12 @@
   <div class="work-area">
     <h3>...into here; edit them</h3>
     <dnd-sortable-list class="list" listId="WORK_AREA"
-                           [spec]="spec"
-                           [children]="tempList">
+                       [spec]="spec"
+                       [children]="tempList">
       <quiz-section [style.display]="'block'"
-                    *dndSortableTemplate="let context" [dndSortableRender]="context" #r="dndSortableRender"
+                    *dndSortableTemplate="let context"
+                    [dndSortableRender]="context"
+                    #r="dndSortableRender"
                     [question]="r.data" (edit)="edit($event)">
       </quiz-section>
     </dnd-sortable-list>

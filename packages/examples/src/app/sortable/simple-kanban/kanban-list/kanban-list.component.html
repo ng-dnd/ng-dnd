@@ -30,13 +30,12 @@
   -->
 
   <dnd-sortable-list class="cards-container"
-                         [spec]="specs.listSpec"
-                         [children]="list.cards"
-                         [listId]="list.id">
+                     [spec]="specs.listSpec"
+                     [children]="list.cards"
+                     [listId]="list.id">
 
     <ng-template dndSortableTemplate let-context>
-      <kanban-card
-                   [dndSortableRender]="context"
+      <kanban-card [dndSortableRender]="context"
                    #render="dndSortableRender"
                    [dragSource]="render.source"
                    [card]="context.data"

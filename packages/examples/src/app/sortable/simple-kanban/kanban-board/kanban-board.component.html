@@ -20,11 +20,11 @@
 --->
 
 <dnd-sortable-list class="kanban-root"
-                      [listId]="888"
-                      [children]="specs.tree"
-                      [spec]="specs.boardSpec"
-                      hoverTrigger="fixed"
-                      [horizontal]="true">
+                   hoverTrigger="fixed"
+                   [listId]="888"
+                   [children]="specs.tree"
+                   [spec]="specs.boardSpec"
+                   [horizontal]="true">
   <!-- 'horizontal' makes the hover behave differently. You need CSS to complete the job.
         .kanban-root must still be like a block element, so no collapsing float containers.
         Flexbox/CSS Grid are great. -->

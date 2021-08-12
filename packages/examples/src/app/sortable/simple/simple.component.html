@@ -12,8 +12,8 @@
   <h4>Contoso company-wide priority list</h4>
 
   <dnd-sortable-list listId="simple-demo"
-                        [children]="tempList"
-                        [spec]="simpleSpec">
+                     [children]="tempList"
+                     [spec]="simpleSpec">
     <ng-template dndSortableTemplate let-context>
       <!-- dndSortableRender configures a DragSource for you, but you have to attach it. -->
       <div class="priority"
