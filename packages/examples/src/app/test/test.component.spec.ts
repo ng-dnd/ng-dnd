@@ -4,7 +4,7 @@ import {
     default as createTestBackend,
     TestBackend
 } from 'react-dnd-test-backend';
-import { NgDndModule, DRAG_DROP_MANAGER } from "@ng-dnd/core";
+import { DndModule, DRAG_DROP_MANAGER } from "@ng-dnd/core";
 import { By } from '@angular/platform-browser';
 
 describe(TestComponent.name, () => {
@@ -21,7 +21,7 @@ describe(TestComponent.name, () => {
 
     beforeEach(async(() => {
         TestBed.configureTestingModule({
-            imports: [NgDndModule.forRoot({ backend: createTestBackend })],
+            imports: [DndModule.forRoot({ backend: createTestBackend })],
             declarations: [TestComponent]
         }).compileComponents();
     }));

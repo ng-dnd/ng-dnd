@@ -1,5 +1,5 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { NgDndService } from "@ng-dnd/core";
+import { DndService } from "@ng-dnd/core";
 import { ItemTypes } from './constants';
 import { horseImage } from './horseImage';
 
@@ -16,7 +16,7 @@ export class KnightComponent implements OnInit, OnDestroy {
 
   isDragging$ = this.knightSource.listen(m => m.isDragging());
 
-  constructor(private dnd: NgDndService) { }
+  constructor(private dnd: DndService) { }
 
   ngOnInit() {
     const img = new Image();

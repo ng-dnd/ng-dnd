@@ -1,8 +1,8 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
-import { NgDndModule } from "@ng-dnd/core";
-import { NgDndMultiBackendModule } from '@ng-dnd/multi-backend';
+import { DndModule } from "@ng-dnd/core";
+import { DndMultiBackendModule } from '@ng-dnd/multi-backend';
 import { UtilityModule } from '../utility.module';
 
 import { BasicSortableComponent } from './basic-sortable.component';
@@ -18,8 +18,8 @@ import { CardComponent, CardInnerDirective } from './card.component';
   ],
   imports: [
     CommonModule,
-    NgDndModule,
-    NgDndMultiBackendModule,
+    DndModule,
+    DndMultiBackendModule,
     RouterModule.forChild([{ path: '', component: ContainerComponent }]),
     UtilityModule
   ],

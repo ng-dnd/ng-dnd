@@ -10,7 +10,7 @@ import {
   OnDestroy,
   Directive
 } from "@angular/core";
-import { NgDndService } from "@ng-dnd/core";
+import { DndService } from "@ng-dnd/core";
 
 interface Card {
   id: number;
@@ -139,7 +139,7 @@ export class CardComponent implements OnDestroy {
 
   constructor(
     private elRef: ElementRef,
-    private dnd: NgDndService
+    private dnd: DndService
   ) { }
 
   moveCard(a, b) {

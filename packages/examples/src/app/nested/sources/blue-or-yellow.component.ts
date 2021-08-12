@@ -1,5 +1,5 @@
 import { Input, Component, OnInit, OnDestroy } from '@angular/core';
-import { NgDndService } from "@ng-dnd/core";
+import { DndService } from "@ng-dnd/core";
 import { Colors } from './colors';
 
 @Component({
@@ -58,7 +58,7 @@ export class BlueOrYellowComponent implements OnDestroy {
     this.forbid = !this.forbid;
   }
 
-  constructor(private dnd: NgDndService) { }
+  constructor(private dnd: DndService) { }
 
   ngOnDestroy() {
     this.source.unsubscribe();

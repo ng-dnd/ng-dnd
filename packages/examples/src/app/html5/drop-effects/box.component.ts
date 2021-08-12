@@ -1,5 +1,5 @@
 import { Component, Output, EventEmitter, Input } from "@angular/core";
-import { NgDndService } from "@ng-dnd/core";
+import { DndService } from "@ng-dnd/core";
 import { ItemTypes } from "./item-types";
 
 interface DropResult {
@@ -38,5 +38,5 @@ export class BoxComponent {
       }
     }
   });
-  constructor(private dnd: NgDndService) { }
+  constructor(private dnd: DndService) { }
 }

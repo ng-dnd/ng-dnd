@@ -1,5 +1,5 @@
 import { Component, Input } from "@angular/core";
-import { NgDndService } from "@ng-dnd/core";
+import { DndService } from "@ng-dnd/core";
 
 @Component({
   selector: 'touch-draggable-item',
@@ -17,7 +17,7 @@ export class DraggableItemComponent {
   itemSource = this.skyhook.dragSource("ITEM", {
     beginDrag: () => ({ color: this.color })
   });
-  constructor(private skyhook: NgDndService) { }
+  constructor(private skyhook: DndService) { }
 }
 
 @Component({

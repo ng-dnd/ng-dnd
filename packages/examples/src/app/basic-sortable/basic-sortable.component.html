@@ -1,4 +1,4 @@
-<ng-dnd-preview>
+<dnd-preview>
   <ng-template let-type let-item="item">
     <!-- sometimes you will want an <ng-content>, but here we want to limit preview width to 400px -->
     <div class="sorted" [ngSwitch]="type">
@@ -7,7 +7,7 @@
       </app-card>
     </div>
   </ng-template>
-</ng-dnd-preview>
+</dnd-preview>
 
 <div class="sorted">
   <app-card *ngFor="let card of cards; let i = index; trackBy: tracker"

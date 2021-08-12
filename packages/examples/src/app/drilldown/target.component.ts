@@ -1,5 +1,5 @@
 import { Input, Component, OnInit, OnDestroy } from '@angular/core';
-import { NgDndService } from "@ng-dnd/core";
+import { DndService } from "@ng-dnd/core";
 import { ItemTypes } from './itemTypes';
 
 @Component({
@@ -72,7 +72,7 @@ export class TargetComponent implements OnDestroy {
     }
   }
 
-  constructor(private dnd: NgDndService) { }
+  constructor(private dnd: DndService) { }
 
   ngOnDestroy() {
     this.target.unsubscribe();

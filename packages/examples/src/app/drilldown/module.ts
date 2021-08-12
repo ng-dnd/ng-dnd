@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
-import { NgDndModule } from "@ng-dnd/core";
+import { DndModule } from "@ng-dnd/core";
 
 import { Container } from './container.component';
 import { TargetComponent } from './target.component';
@@ -19,7 +19,7 @@ import { UtilityModule } from '../utility.module';
   ],
   imports: [
     CommonModule,
-    NgDndModule,
+    DndModule,
     RouterModule.forChild([{ path: '', component: Container }]),
     UtilityModule
   ],

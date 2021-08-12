@@ -20,24 +20,24 @@
       This is the 'desugared' style, where you render an *ngFor explicitly.
       It's useful for integrating with other libraries like Material,
       hopefully. Other libraries love to include *ngFor themselves, but it
-      should be clear you can attach `ngDndSortable` to whatever element you want,
-      and then `ngDndSortableRender` to any of its children, even if they are not
+      should be clear you can attach `dndSortable` to whatever element you want,
+      and then `dndSortableRender` to any of its children, even if they are not
       direct children or if some other library only lets you change the item
       template. You can even put a header element inside.
 
-      Do not use both `ng-dnd-sortable-list` AND `ngDndSortable` -- you will get
+      Do not use both `dnd-sortable-list` AND `dndSortable` -- you will get
       double drop events!
   -->
 
-  <ng-dnd-sortable-list class="cards-container"
+  <dnd-sortable-list class="cards-container"
                          [spec]="specs.listSpec"
                          [children]="list.cards"
                          [listId]="list.id">
 
-    <ng-template ngDndSortableTemplate let-context>
+    <ng-template dndSortableTemplate let-context>
       <kanban-card
-                   [ngDndSortableRender]="context"
-                   #render="ngDndSortableRender"
+                   [dndSortableRender]="context"
+                   #render="dndSortableRender"
                    [dragSource]="render.source"
                    [card]="context.data"
                    [noHTML5Preview]="true"
@@ -49,7 +49,7 @@
       </kanban-card>
     </ng-template>
 
-  </ng-dnd-sortable-list>
+  </dnd-sortable-list>
 
   <!-- A simple version for when we're dragging -->
   <ng-template #plain>

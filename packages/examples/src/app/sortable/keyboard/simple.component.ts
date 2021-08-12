@@ -11,13 +11,13 @@ import { HotkeysService, Hotkey } from 'angular2-hotkeys';
   styleUrls: ['./simple.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: `
-    <table ngDndSortable class="list" [spec]="rxSpec" #sortable="ngDndSortable">
+    <table dndSortable class="list" [spec]="rxSpec" #sortable="dndSortable">
       <thead>
         <tr><th>Hash</th><th>Filename</th></tr>
       </thead>
       <tbody>
         <tr *ngFor="let blob of sortable.children$|async; let i = index"
-            [ngDndSortableRender]="sortable.contextFor(blob, i)" #render="ngDndSortableRender"
+            [dndSortableRender]="sortable.contextFor(blob, i)" #render="dndSortableRender"
             [dragSource]="render.source"
             [class.blob--placeholder]="render.isDragging$|async"
             [class.blob--selected]="blob.id === (selected$|async)"

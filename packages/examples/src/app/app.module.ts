@@ -28,7 +28,7 @@ import { reducers, metaReducers } from './reducers';
 // import { environment } from '../environments/environment';
 import { EffectsModule } from '@ngrx/effects';
 import { AppEffects } from './app.effects';
-import { NgDndModule } from "@ng-dnd/core";
+import { DndModule } from "@ng-dnd/core";
 import { routes } from './routes';
 import { HotkeyModule } from 'angular2-hotkeys';
 
@@ -45,10 +45,10 @@ import { MultiBackend } from '@ng-dnd/multi-backend';
       useHash: true
     }),
     StoreRootModule,
-    NgDndModule.forRoot({ backend: MultiBackend, options: CustomTransitions }),
-    // NgDndModule.forRoot({ backend: HTML5Backend }),
-    // NgDndModule.forRoot({ backend: TouchBackend }),
-    // NgDndModule.forRoot({ backend: MouseBackend }),
+    DndModule.forRoot({ backend: MultiBackend, options: CustomTransitions }),
+    // DndModule.forRoot({ backend: HTML5Backend }),
+    // DndModule.forRoot({ backend: TouchBackend }),
+    // DndModule.forRoot({ backend: MouseBackend }),
     StoreModule.forRoot(reducers, { metaReducers }),
     // !environment.production ? StoreDevtoolsModule.instrument() : [],
     EffectsModule.forRoot([AppEffects]),

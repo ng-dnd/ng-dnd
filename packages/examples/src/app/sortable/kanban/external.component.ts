@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NgDndService, DragSourceSpec } from "@ng-dnd/core";
+import { DndService, DragSourceSpec } from "@ng-dnd/core";
 import { SortableSpec, DraggedItem, Size } from '@ng-dnd/sortable';
 import { Card } from './card';
 import { ItemTypes } from './item-types';
@@ -9,8 +9,8 @@ import { SortableSpecService } from './specs';
   selector: 'kanban-external',
   template: `
     <div class="ext">
-      <kanban-card [ngDndSortableExternal]="externalSpec"
-                  #ext="ngDndSortableExternal"
+      <kanban-card [dndSortableExternal]="externalSpec"
+                  #ext="dndSortableExternal"
                   [card]="card"
                   [dragSource]="ext.source"
                   [noHTML5Preview]="true">

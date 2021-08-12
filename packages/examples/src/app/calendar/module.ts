@@ -3,8 +3,8 @@ import { CommonModule } from "@angular/common";
 import { RouterModule } from "@angular/router";
 import { ReactiveFormsModule } from "@angular/forms";
 import { StoreModule } from '@ngrx/store';
-import { NgDndModule } from "@ng-dnd/core";
-import { NgDndMultiBackendModule } from "@ng-dnd/multi-backend";
+import { DndModule } from "@ng-dnd/core";
+import { DndMultiBackendModule } from "@ng-dnd/multi-backend";
 import { UtilityModule } from "../utility.module";
 import { CalendarService } from "./store/service";
 import * as fromCalendar from './store/calendar.reducer';
@@ -24,8 +24,8 @@ import { CalendarEventComponent } from "./components/event.component";
   imports: [
     CommonModule,
     UtilityModule,
-    NgDndModule,
-    NgDndMultiBackendModule,
+    DndModule,
+    DndMultiBackendModule,
     ReactiveFormsModule,
     StoreModule,
     RouterModule.forChild([

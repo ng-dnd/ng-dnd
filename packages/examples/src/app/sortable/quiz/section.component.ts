@@ -1,5 +1,5 @@
 import { Component, Input, Output, Optional, EventEmitter } from '@angular/core';
-import { NgDndSortableRenderer } from '@ng-dnd/sortable';
+import { DndSortableRenderer } from '@ng-dnd/sortable';
 import { Question } from './Question';
 
 @Component({
@@ -33,5 +33,5 @@ export class SectionComponent {
   @Input() question: Question;
   @Input() preview = false;
   @Output() edit = new EventEmitter();
-  constructor(@Optional() public render: NgDndSortableRenderer<Question>) { }
+  constructor(@Optional() public render: DndSortableRenderer<Question>) { }
 }

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { NgDndService } from "@ng-dnd/core";
+import { DndService } from "@ng-dnd/core";
 
 @Component({
     selector: 'app-test',
@@ -30,7 +30,7 @@ export class TestComponent implements OnInit {
 
     isDragging$ = this.source.listen(m => m.isDragging());
 
-    constructor(private dnd: NgDndService) {}
+    constructor(private dnd: DndService) {}
 
     ngOnInit() {}
 }

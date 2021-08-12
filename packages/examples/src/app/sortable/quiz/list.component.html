@@ -1,4 +1,4 @@
-<ng-dnd-preview [allBackends]="true">
+<dnd-preview [allBackends]="true">
   <ng-template let-type let-item="item">
     <ng-container *ngIf="type === 'QUIZ_QUESTION'">
       <!-- You can react to which listId the mouse is hovering over
@@ -14,14 +14,14 @@
       </ng-template>
     </ng-container>
   </ng-template>
-</ng-dnd-preview>
+</dnd-preview>
 
 <div class="flex" [dropTarget]="spill">
   <div class="templates">
     <h3>Drag templates</h3>
     <div class="templates-flex">
       <div *ngFor="let qt of questionTemplates" class="external"
-           [ngDndSortableExternal]="qt.spec" #ext="ngDndSortableExternal"
+           [dndSortableExternal]="qt.spec" #ext="dndSortableExternal"
            [dragSource]="ext.source" [noHTML5Preview]="true">
         {{ qt.description }}
       </div>
@@ -30,14 +30,14 @@
 
   <div class="work-area">
     <h3>...into here; edit them</h3>
-    <ng-dnd-sortable-list class="list" listId="WORK_AREA"
+    <dnd-sortable-list class="list" listId="WORK_AREA"
                            [spec]="spec"
                            [children]="tempList">
       <quiz-section [style.display]="'block'"
-                    *ngDndSortableTemplate="let context" [ngDndSortableRender]="context" #r="ngDndSortableRender"
+                    *dndSortableTemplate="let context" [dndSortableRender]="context" #r="dndSortableRender"
                     [question]="r.data" (edit)="edit($event)">
       </quiz-section>
-    </ng-dnd-sortable-list>
+    </dnd-sortable-list>
   </div>
 
   <div class="printout">

@@ -1,7 +1,7 @@
 import { Component, Input, ChangeDetectionStrategy } from "@angular/core";
 import { CalendarEvent } from "../event";
 import { Moment } from "moment-mini-ts";
-import { NgDndService, DragSourceSpec } from "@ng-dnd/core";
+import { DndService, DragSourceSpec } from "@ng-dnd/core";
 import { Store, createSelector, Action } from "@ngrx/store";
 import { State } from "app/reducers";
 import { ItemTypes } from "../item-types";
@@ -65,5 +65,5 @@ export class CalendarEventComponent {
     };
   }
 
-  constructor(private dnd: NgDndService, private store: Store<State>) { }
+  constructor(private dnd: DndService, private store: Store<State>) { }
 }

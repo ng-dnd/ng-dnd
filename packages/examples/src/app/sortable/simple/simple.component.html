@@ -1,4 +1,4 @@
-<ng-dnd-preview [allBackends]="true">
+<dnd-preview [allBackends]="true">
   <ng-template let-type let-item="item">
     <ng-container [ngSwitch]="type">
       <div class="priority" *ngSwitchCase="'PRIORITY'" [ngStyle]="item.size.style()">
@@ -6,24 +6,24 @@
       </div>
     </ng-container>
   </ng-template>
-</ng-dnd-preview>
+</dnd-preview>
 
 <div class="list">
   <h4>Contoso company-wide priority list</h4>
 
-  <ng-dnd-sortable-list listId="simple-demo"
+  <dnd-sortable-list listId="simple-demo"
                         [children]="tempList"
                         [spec]="simpleSpec">
-    <ng-template ngDndSortableTemplate let-context>
-      <!-- ngDndSortableRender configures a DragSource for you, but you have to attach it. -->
+    <ng-template dndSortableTemplate let-context>
+      <!-- dndSortableRender configures a DragSource for you, but you have to attach it. -->
       <div class="priority"
-           [ngDndSortableRender]="context"
-           #render="ngDndSortableRender"
+           [dndSortableRender]="context"
+           #render="dndSortableRender"
            [class.priority--placeholder]="render.isDragging$|async"
            [dragSource]="render.source" [noHTML5Preview]="true">
         <!-- <<< attached here! -->
         <pre>{{render.index+1}}. {{ render.data.name }}</pre>
       </div>
     </ng-template>
-  </ng-dnd-sortable-list>
+  </dnd-sortable-list>
 </div>

@@ -2,10 +2,10 @@ import { NgModule } from "@angular/core";
 import { CommonModule } from "@angular/common";
 import { ReactiveFormsModule } from '@angular/forms';
 import { UtilityModule } from "@app/utility.module";
-import { NgDndModule } from "@ng-dnd/core";
+import { DndModule } from "@ng-dnd/core";
 import { RouterModule } from "@angular/router";
-import { NgDndMultiBackendModule } from "@ng-dnd/multi-backend";
-import { NgDndSortableModule } from "@ng-dnd/sortable";
+import { DndMultiBackendModule } from "@ng-dnd/multi-backend";
+import { DndSortableModule } from "@ng-dnd/sortable";
 
 import { ListComponent } from "./list.component";
 import { MathFormComponent } from "./math-form.component";
@@ -25,9 +25,9 @@ import { SectionComponent } from "./section.component";
     CommonModule,
     ReactiveFormsModule,
     UtilityModule,
-    NgDndModule,
-    NgDndMultiBackendModule,
-    NgDndSortableModule,
+    DndModule,
+    DndMultiBackendModule,
+    DndSortableModule,
     RouterModule.forChild([
       { path: "", component: ContainerComponent }
     ])

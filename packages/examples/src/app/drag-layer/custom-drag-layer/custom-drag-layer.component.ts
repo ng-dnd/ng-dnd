@@ -1,6 +1,6 @@
 import { Component, OnInit, OnDestroy, ChangeDetectionStrategy } from '@angular/core';
 import { snapToGrid } from './snapToGrid';
-import { NgDndService } from "@ng-dnd/core";
+import { DndService } from "@ng-dnd/core";
 import { Observable } from 'rxjs';
 import { filter, map, tap } from 'rxjs/operators';
 import { getEmptyImage } from 'react-dnd-html5-backend';
@@ -37,7 +37,7 @@ interface Offset { x: number; y: number; }
 })
 export class CustomDragLayerComponent implements OnInit, OnDestroy {
 
-  constructor(private dnd: NgDndService) { }
+  constructor(private dnd: DndService) { }
 
   dragLayer = this.dnd.dragLayer();
 

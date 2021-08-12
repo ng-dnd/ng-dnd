@@ -11,7 +11,7 @@ import {
   AfterViewInit
 } from '@angular/core';
 import { snapToGrid } from './snapToGrid';
-import { NgDndService, Offset } from "@ng-dnd/core";
+import { DndService, Offset } from "@ng-dnd/core";
 import { Observable } from 'rxjs';
 import { filter, map, tap } from 'rxjs/operators';
 import { Spot } from '../spot';
@@ -86,7 +86,7 @@ export class CustomDragLayerComponent implements AfterViewInit, OnDestroy {
     filter(a => a != null)
   );
 
-  constructor(private dnd: NgDndService, private el: ElementRef) { }
+  constructor(private dnd: DndService, private el: ElementRef) { }
 
   absToRelative(abs: Offset): Offset {
     return abs && minus(abs, this.rect);

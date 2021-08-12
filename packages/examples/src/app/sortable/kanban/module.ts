@@ -3,9 +3,9 @@ import { CommonModule } from "@angular/common";
 import { RouterModule } from "@angular/router";
 import { ReactiveFormsModule } from "@angular/forms";
 import { StoreModule } from '@ngrx/store';
-import { NgDndModule } from "@ng-dnd/core";
-import { NgDndMultiBackendModule } from "@ng-dnd/multi-backend";
-import { NgDndSortableModule } from "@ng-dnd/sortable";
+import { DndModule } from "@ng-dnd/core";
+import { DndMultiBackendModule } from "@ng-dnd/multi-backend";
+import { DndSortableModule } from "@ng-dnd/sortable";
 import { UtilityModule } from "@app/utility.module";
 
 import { ContainerComponent } from "./container.component";
@@ -31,9 +31,9 @@ import { SortableSpecService } from './specs';
   imports: [
     CommonModule,
     UtilityModule,
-    NgDndModule,
-    NgDndMultiBackendModule,
-    NgDndSortableModule,
+    DndModule,
+    DndMultiBackendModule,
+    DndSortableModule,
     ReactiveFormsModule,
     StoreModule,
     StoreModule.forFeature('kanban', reducer),

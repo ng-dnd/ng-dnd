@@ -1,5 +1,5 @@
 import { Component, Input, Output, EventEmitter, OnInit, OnDestroy } from '@angular/core';
-import { NgDndService } from "@ng-dnd/core";
+import { DndService } from "@ng-dnd/core";
 import { getEmptyImage } from 'react-dnd-html5-backend';
 import { ChangeDetectionStrategy } from '@angular/core';
 import { Spot } from '../spot';
@@ -53,7 +53,7 @@ export class DraggableBoxComponent implements OnInit, OnDestroy {
 
   isDragging$ = this.source.listen(m => m.isDragging());
 
-  constructor(private dnd: NgDndService) { }
+  constructor(private dnd: DndService) { }
 
   ngOnInit() {
     this.source.connectDragPreview(getEmptyImage(), {

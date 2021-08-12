@@ -9,7 +9,7 @@ import { Component } from "@angular/core";
 
     <p>It also is a demo for</p>
     <ul>
-      <li>Sorting overlaid on bare HTML table rows using the <code>ngDndSortable</code> directive, without intermediate DOM nodes.</li>
+      <li>Sorting overlaid on bare HTML table rows using the <code>dndSortable</code> directive, without intermediate DOM nodes.</li>
       <li>Keyboard driven sorting, using <code>angular2-mousetrap</code>. Try using the arrow keys and enter to lift/put down.</li>
       <li>Selectors based on the 'unstable' / 'in-flight' rendered list, and the 'stable' / 'saved' one.</li>
     </ul>

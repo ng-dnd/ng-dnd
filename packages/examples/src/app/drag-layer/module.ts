@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
-import { NgDndModule } from "@ng-dnd/core";
+import { DndModule } from "@ng-dnd/core";
 import { CustomDragLayerComponent } from './custom-drag-layer/custom-drag-layer.component';
 import { DraggableBoxComponent } from './draggable-box/draggable-box.component';
 import { DragContainerComponent } from './drag-container/drag-container.component';
@@ -21,7 +21,7 @@ import { UtilityModule } from '../utility.module';
   ],
   imports: [
     CommonModule,
-    NgDndModule,
+    DndModule,
     RouterModule.forChild([{ path: '', component: ContainerComponent }]),
     UtilityModule
   ],

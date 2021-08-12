@@ -1,9 +1,9 @@
 import { NgModule } from "@angular/core";
 import { CommonModule } from "@angular/common";
 import { RouterModule } from "@angular/router";
-import { NgDndModule } from "@ng-dnd/core";
-import { NgDndMultiBackendModule } from "@ng-dnd/multi-backend";
-import { NgDndSortableModule } from "@ng-dnd/sortable";
+import { DndModule } from "@ng-dnd/core";
+import { DndMultiBackendModule } from "@ng-dnd/multi-backend";
+import { DndSortableModule } from "@ng-dnd/sortable";
 import { StoreModule } from "@ngrx/store";
 import { HotkeyModule } from 'angular2-hotkeys';
 import { UtilityModule } from "@app/utility.module";
@@ -22,9 +22,9 @@ import { reducer } from './store/reducer';
   imports: [
     CommonModule,
     UtilityModule,
-    NgDndModule,
-    NgDndMultiBackendModule,
-    NgDndSortableModule,
+    DndModule,
+    DndMultiBackendModule,
+    DndSortableModule,
     StoreModule.forFeature('simple-ngrx', reducer),
     RouterModule.forChild([
       { path: "", component: ContainerComponent }

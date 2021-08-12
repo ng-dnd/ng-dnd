@@ -1,7 +1,7 @@
 import { Component, Input, ChangeDetectionStrategy, ChangeDetectorRef, NgZone, OnInit, OnDestroy } from '@angular/core';
 import { ItemTypes } from './itemTypes';
 import { TreeService } from './tree.service';
-import { NgDndService } from "@ng-dnd/core";
+import { DndService } from "@ng-dnd/core";
 import { Observable } from 'rxjs';
 import { map, tap } from 'rxjs/operators';
 import { activatorDropTarget } from './activatorDropTarget';
@@ -75,7 +75,7 @@ export class FolderComponent implements OnInit, OnDestroy {
 
   isOver$ = this.target.listen(m => m.isOver() && m.canDrop());
 
-  constructor(public tree: TreeService, private dnd: NgDndService, private ngZone: NgZone) { }
+  constructor(public tree: TreeService, private dnd: DndService, private ngZone: NgZone) { }
 
   ngOnInit() {
     //   console.log('ngOnInit', this.keys);

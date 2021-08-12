@@ -11,11 +11,11 @@ import { Component } from "@angular/core";
       <li>How drop targets can accept different item types</li>
     </ul>
 
-    <ng-dnd-preview>
+    <dnd-preview>
       <ng-template let-type let-item="item">
         <app-trash [type]="type" [inFlight]="true"></app-trash>
       </ng-template>
-    </ng-dnd-preview>
+    </dnd-preview>
 
     <div class="bins">
       <app-trash-pile type="PAPER"></app-trash-pile>

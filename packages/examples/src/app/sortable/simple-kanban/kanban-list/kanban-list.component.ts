@@ -6,7 +6,7 @@ import {
   ChangeDetectionStrategy,
   Optional,
 } from "@angular/core";
-import { SortableSpec, NgDndSortableRenderer } from "@ng-dnd/sortable";
+import { SortableSpec, DndSortableRenderer } from "@ng-dnd/sortable";
 import { Card, CardList, SortableSpecService } from "../specs";
 
 @Component({
@@ -25,11 +25,11 @@ export class KanbanListComponent {
   isOver$ = this.render && this.render.target.listen(m => m.canDrop() && m.isOver());
 
   // You can inject any attached directives in a component
-  // - When in the <ng-dnd-preview>, the directive isn't attached, so make it @Optional()
+  // - When in the <dnd-preview>, the directive isn't attached, so make it @Optional()
   // - Also must be public if you're using it in your template, until the Ivy renderer lands
   constructor(
     public specs: SortableSpecService,
-    @Optional() public render: NgDndSortableRenderer<CardList>,
+    @Optional() public render: DndSortableRenderer<CardList>,
   ) { }
 
   trackById = (_: any, x: Card) => x.id;
