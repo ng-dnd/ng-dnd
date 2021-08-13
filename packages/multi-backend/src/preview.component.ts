@@ -9,12 +9,7 @@ import {
 import { BehaviorSubject } from 'rxjs';
 import { DndService, DRAG_DROP_MANAGER } from "@ng-dnd/core";
 import { DragDropManager, Backend } from "dnd-core";
-import { PreviewManager, BackendWatcher } from 'dnd-multi-backend';
-
-
-interface MultiBackendExt {
-  previewEnabled(): boolean;
-}
+import { BackendWatcher, MultiBackendExt } from 'dnd-multi-backend';
 
 export interface PreviewTemplateContext {
   /** same as type */
@@ -24,19 +19,19 @@ export interface PreviewTemplateContext {
 }
 
 /**
- * If you pass an `<ng-template let-type let-item="item">` to `<ng-dnd-preview>` as a child,
+ * If you pass an `<ng-template let-type let-item="item">` to `<dnd-preview>` as a child,
  * then that template will be rendered so as to follow the mouse around while dragging.
  * What you put in that template is up to you, but in most cases this will be:
  *
  * ```html
- * <ng-dnd-preview>
+ * <dnd-preview>
  *   <ng-template let-type let-item="item">
  *     <ng-content [ngSwitch]="type">
  *       <!-- one kind of preview per type, using *ngSwitchCase="'TYPE'" -->
  *       <div *ngSwitchCase="'TYPE'">{{ item | json }}</div>
  *     </ng-content>
  *   </ng-template>
- * </ng-dnd-preview>
+ * </dnd-preview>
  * ```
  */
 @Component({
@@ -93,7 +88,7 @@ export class DndPreviewComponent implements BackendWatcher {
         "no drag and drop manager defined, are you sure you imported DndModule?"
       );
     } else {
-      PreviewManager.register(this);
+      (this.manager.getBackend() as MultiBackendExt).previews!.register(this);
     }
   }
 
@@ -111,7 +106,7 @@ export class DndPreviewComponent implements BackendWatcher {
   /** @ignore */
   ngOnDestroy() {
     this.layer.unsubscribe();
-    PreviewManager.unregister(this);
+    (this.manager.getBackend() as MultiBackendExt).previews!.unregister(this);
   }
 
   /** @ignore */
@@ -123,7 +118,7 @@ export class DndPreviewComponent implements BackendWatcher {
   }
 
   /** @ignore */
-  isPreviewEnabled(backend: Backend & Partial<MultiBackendExt>) {
+  isPreviewEnabled(backend: MultiBackendExt) {
     if (this.allBackends) {
       return true;
     }
