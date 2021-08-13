@@ -6,7 +6,7 @@
 
 Ng-DnD is a toolkit for building complex drag and drop interfaces in Angular. It is based on, and very similar to [`react-dnd`](https://react-dnd.github.io/react-dnd/) by [Dan Abramov](https://github.com/gaearon) and others, and is also powered by [`dnd-core`](https://github.com/react-dnd/react-dnd/tree/master/packages/dnd-core). It is compatible with all backends.
 
-**[Check out the examples here](./examples/).**
+**[Check out the examples here](../examples/).**
 
 ## Installation
 
@@ -18,8 +18,8 @@ Next, follow the [Quickstart](./additional-documentation/quickstart.html) and ch
 
 ## Sub-packages
 
-- [`@ng-dnd/multi-backend`](./multi-backend/)
-- [`@ng-dnd/sortable`](./sortable/)
+- [`@ng-dnd/multi-backend`](../multi-backend/)
+- [`@ng-dnd/sortable`](../sortable/)
 
 ## Features
 
@@ -27,7 +27,7 @@ Next, follow the [Quickstart](./additional-documentation/quickstart.html) and ch
 - Doesn't mutate the DOM, and doesn't use classes and CSS to do 'callbacks'.
   Every visible change is made through Angular templates.
 - The truth lives in JavaScript, with unidirectional data flow (like
-  [`@ngrx/store`](https://github.com/ngrx/ngrx-platform))
+  [`@ngrx/store`](https://github.com/ngrx/platform))
 - Observable APIs, designed to fit in Angular.
 - TypeScript friendly, with strong typing for in-flight objects, and inline
   documentation.
