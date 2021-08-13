@@ -51,9 +51,9 @@ that is also largely compatible with a lot of `react-dnd` code and examples.
 ## Next steps
 
 * Have a look at the [Examples](../examples/index.html), and browse their source code in the
-[examples app on GitHub](https://github.com/ng-dnd/nd-dnd/tree/master/packages/examples/src/app/).
+[examples app on GitHub](https://github.com/ng-dnd/nd-dnd/tree/main/packages/examples/src/app/).
 
-* Read and follow the [Tutorial](tutorial.html)
+* Read and follow the [Tutorial](chess-tutorial.html)
 
 * Read the 3-part [guide](guide.html) in the sidebar. Any specifics are available by browsing the interfaces and
   classes.
@@ -68,9 +68,9 @@ can let the browser render drag previews, when using a backend based on click
 or touch events, on mobile you have to render them yourself.
 
 A good way to solve both problems at once is using
-[`@ng-dnd/multi-backend`](../@ng-dnd/multi-backend/). It is based on the original
+[`@ng-dnd/multi-backend`](../multi-backend/). It is based on the original
 [dnd-multi-backend](https://github.com/LouisBrunner/react-dnd-multi-backend), which was designed to seamlessly switch
-between an HTML5 and a [touch backend](https://github.com/yahoo/react-dnd-touch-backend) when it noticed different
+between an HTML5 and a [touch backend](https://github.com/react-dnd/react-dnd/tree/main/packages/backend-touch) when it noticed different
 kinds of interaction. The `@ng-dnd` version includes a preview component.
 
 Note also that you will need to use an exported function

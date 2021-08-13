@@ -3,16 +3,16 @@
 
 There are many code examples and libraries on the web written for `react-dnd`,
 the most important of which is the actual [`react-dnd`
-documentation](http://react-dnd.github.io/react-dnd/docs-overview.html). In the
+documentation](https://react-dnd.github.io/react-dnd/docs/overview). In the
 interest of making them useful or at least understandable, this library presents
 a fairly similar API to the original. There are, of course, some differences
 mandated by the style and limitations of React and Angular. We will illustrate
 this with the `react-dnd` `DragSource` compared to `@ng-dnd`'s
 `DndService.dragSource()`. Here are the [original API
-docs](http://react-dnd.github.io/react-dnd/docs-drag-source.html) on
+docs](http://react-dnd.github.io/react-dnd/docs/api/drag-source) on
 `DragSource`; the following is a small but complete example for a quick
 reference. If you know how to use `react-dnd` already, then this should show you
-most of it. If you don't know `react-dnd`, this will help you read [the example code demos](http://react-dnd.github.io/react-dnd/examples-chessboard-tutorial-app.html) in the `react-dnd` documentation.
+most of it. If you don't know `react-dnd`, this will help you read [the example code demos](https://react-dnd.github.io/react-dnd/docs/tutorial) in the `react-dnd` documentation.
 
 Here's a basic example in React:
 
