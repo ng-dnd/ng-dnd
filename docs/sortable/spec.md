@@ -12,7 +12,7 @@ There are a number of requirements a `SortableSpec` implementation must satisfy.
        `item.hover.listId`
 
 The previews can be anywhere; it is the transit elements that must move, 
-because they carry the `ssRender` directives that can produce further 
+because they carry the `dndSortableRender` directives that can produce further 
 reordering, and if those directives are out of order, your sortable won't make 
 sense.
 
@@ -65,7 +65,7 @@ You should not reorder anything within beginDrag. This would probably violate
 Requirement #1; moreover, it doesn't make any sense.
 
 The particular item that got picked up will be able to react, because 
-`ssRender.isDragging$` will emit `true`.
+`dndSortableRender.isDragging$` will emit `true`.
 
 ### The implementation of 'Cause reordering' is up to you
 

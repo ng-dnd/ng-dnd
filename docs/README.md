@@ -2,4 +2,4 @@
 
 These guides are found under the 'Documentation' sidebar section.
 
-https://cormacrelf.github.io/angular-skyhook/
+https://ng-dnd.github.io/ng-dnd/

@@ -4,7 +4,7 @@ There are three types of connection.
 
 - [DragSource](../../interfaces/DragSource.html)
   is for allowing components to be dragged. Create one with
-  [SkyhookDndService#dragSource](../../injectables/SkyhookDndService.html#dragSource)
+  [DndService#dragSource](../../injectables/DndService.html#dragSource)
   using a
   [DragSourceSpec](../../interfaces/DragSourceSpec.html)
   and attach it to the DOM
@@ -12,7 +12,7 @@ There are three types of connection.
 
 - [DropTarget](../../interfaces/DropTarget.html)
   is for allowing components to be dragged. Create one with
-  [SkyhookDndService#dropTarget](../../injectables/SkyhookDndService.html#dropTarget)
+  [DndService#dropTarget](../../injectables/DndService.html#dropTarget)
   using a
   [DropTargetSpec](../../interfaces/DropTargetSpec.html)
   and attach it to the DOM
@@ -21,7 +21,7 @@ There are three types of connection.
 - [DragLayer](../../interfaces/DragLayer.html)
   is an advanced feature that allows you to implement your own
   custom drag previews. Create one with
-  [SkyhookDndService#dragLayer](../../injectables/SkyhookDndService.html#dragLayer),
+  [DndService#dragLayer](../../injectables/DndService.html#dragLayer),
   but you don't attach them to the DOM, you simply listen for changes.
 
 All three of them have the same lifecycle, and all three of them offer a
@@ -29,19 +29,19 @@ All three of them have the same lifecycle, and all three of them offer a
 [ConnectionBase](../../interfaces/ConnectionBase.html) for what they have in
 common.
 
-## Using the `SkyhookDndService` to create connections
+## Using the `DndService` to create connections
 
 First, inject 
-[SkyhookDndService](../../injectables/SkyhookDndService.html),
+[DndService](../../injectables/DndService.html),
  into your component.
 
 ```typescript
-constructor(private dnd: SkyhookDndService) { ... }
+constructor(private dnd: DndService) { ... }
 ```
 
 Then, use one of the methods
-[SkyhookDndService#dragSource](../../injectables/SkyhookDndService.html#dragSource),
-[SkyhookDndService#dropTarget](../../injectables/SkyhookDndService.html#dropTarget)
+[DndService#dragSource](../../injectables/DndService.html#dragSource),
+[DndService#dropTarget](../../injectables/DndService.html#dropTarget)
 to create one and store it as an instance variable, and make sure to tear down
 the connection in `ngOnDestroy`.
 
@@ -54,7 +54,7 @@ source = this.dnd.dragSource("CAT", {
 target = this.dnd.dropTarget(["CAT", "ZEBRA"], {
   // ...
 });
-constructor(private dnd: SkyhookDndService) { ... }
+constructor(private dnd: DndService) { ... }
 
 ngOnDestroy() {
   this.source.unsubscribe();
@@ -92,7 +92,7 @@ maintain, there are more powerful ways of unsubscribing to many things at once.
 
 You can create an RxJS `Subscription` object in your component, and call
 `Subscription.add(conn)` with your connection. There is a convenience parameter
-on each of the `SkyhookDndService` methods which will do this for you.
+on each of the `DndService` methods which will do this for you.
 
 ```typescript
 import { Subscription } from 'rxjs';

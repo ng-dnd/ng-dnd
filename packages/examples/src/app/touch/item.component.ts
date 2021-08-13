@@ -14,10 +14,10 @@ import { DndService } from "@ng-dnd/core";
 })
 export class DraggableItemComponent {
   @Input() color: string;
-  itemSource = this.skyhook.dragSource("ITEM", {
+  itemSource = this.dnd.dragSource("ITEM", {
     beginDrag: () => ({ color: this.color })
   });
-  constructor(private skyhook: DndService) { }
+  constructor(private dnd: DndService) { }
 }
 
 @Component({

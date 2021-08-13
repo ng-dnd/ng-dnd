@@ -3,7 +3,7 @@
 Once you have created a connection, it is most useful when connected to a real
 DOM element.
 
-### Making a DOM element draggable
+## Making a DOM element draggable
 
 This means that events fired inside the element's bounding rectangle will start
 a drag. Use `DragSourceDirective` to do this. It's as simple as:
@@ -25,7 +25,7 @@ Then, investigate using
 [DragSourceSpec](../../interfaces/DragSourceSpec.html)
 to customise the behaviour.
 
-### Making a DOM element into a drop target
+## Making a DOM element into a drop target
 
 This means your element will react to items being hovered or dropped within its
 bounding rectangle.

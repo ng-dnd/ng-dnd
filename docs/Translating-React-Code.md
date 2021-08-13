@@ -8,14 +8,11 @@ interest of making them useful or at least understandable, this library presents
 a fairly similar API to the original. There are, of course, some differences
 mandated by the style and limitations of React and Angular. We will illustrate
 this with the `react-dnd` `DragSource` compared to `@ng-dnd`'s
-`SkyhookDndService.dragSource()`. Here are the [original API
+`DndService.dragSource()`. Here are the [original API
 docs](http://react-dnd.github.io/react-dnd/docs-drag-source.html) on
 `DragSource`; the following is a small but complete example for a quick
 reference. If you know how to use `react-dnd` already, then this should show you
-most of it. If you don't know `react-dnd`, this will help you read [the example
-code demos][react-examples] in the `react-dnd` documentation.
-
-[react-examples]: http://react-dnd.github.io/react-dnd/examples-chessboard-tutorial-app.html
+most of it. If you don't know `react-dnd`, this will help you read [the example code demos](http://react-dnd.github.io/react-dnd/examples-chessboard-tutorial-app.html) in the `react-dnd` documentation.
 
 Here's a basic example in React:
 
@@ -82,7 +79,7 @@ export class MyComponent {
   collected$ = this.itemSource.listen(monitor => ({
     isDragging: monitor.isDragging(),
   }));
-  constructor(private dnd: SkyhookDndService) {}
+  constructor(private dnd: DndService) {}
   fireAction(item) { /* ... */ }
   ngOnDestroy() { this.itemSource.destroy(); }
 }
@@ -103,7 +100,7 @@ primary difference relevant to us is that in React you can create a 'wrapper' or
 injected into your component's props.
 
 _In Angular, we run everything inside your component_, using methods on an
-injected `SkyhookDndService` to create **connections**. Connections are a go-between
+injected `DndService` to create **connections**. Connections are a go-between
 for subscribing to the global drag state and can be connected to DOM
 elements. This difference is typical of the React Way and the Angular Way. You
 can create more than one connection for a component, to accomplish the same

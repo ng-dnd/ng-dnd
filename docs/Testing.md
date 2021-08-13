@@ -32,10 +32,10 @@ Example usage (example component defined below):
 
 ```typescript
 // Import the test backend
-import { default as createTestBackend, TestBackend } from 'react-dnd-test-backend';
+import { createTestBackend, TestBackend } from 'react-dnd-test-backend';
 // We will need to find the DragDropManager to access the backend through
 // dependency injection
-import { SkyhookDndModule, DRAG_DROP_MANAGER } from "@ng-dnd/core";
+import { DndModule, DRAG_DROP_MANAGER } from "@ng-dnd/core";
 
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
@@ -61,7 +61,7 @@ describe(MyComponent.name, () => {
         TestBed.configureTestingModule({
             imports: [
                 // supply the test backend when creating the testing module
-                SkyhookDndModule.forRoot({ backend: createTestBackend })
+                DndModule.forRoot({ backend: createTestBackend })
             ],
             declarations: [MyComponent]
         })
@@ -105,7 +105,7 @@ describe(MyComponent.name, () => {
 
 ```typescript
 import { Component } from '@angular/core';
-import { SkyhookDndService } from '@ng-dnd/core';
+import { DndService } from '@ng-dnd/core';
 @Component({
 template: `
     <div [dragSource]="source" [class.dragging]="isDragging$|async"></div>
@@ -118,7 +118,7 @@ class MyComponent {
     });
     target = this.dnd.dropTarget("TEST", {});
     isDragging$ = this.source.listen(m => m.isDragging());
-    constructor (private dnd: SkyhookDndService) {}
+    constructor (private dnd: DndService) {}
     ngOnDestroy() {
         this.source.unsubscribe();
         this.target.unsubscribe();
