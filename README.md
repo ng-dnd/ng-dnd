@@ -12,7 +12,7 @@ Drag and Drop for Angular.
 | ----------------------- | --------------------------------- | ----------------- |
 | `@ng-dnd/core`          | A toolkit for DnD                 | [Docs][core-docs] |
 | `@ng-dnd/multi-backend` | Multi backend system for DnD core | [Docs][back-docs] |
-| `@ng-dnd/sortable`      | Sortable system for Dnd core      | [Docs][sort-docs] |
+| `@ng-dnd/sortable`      | Sortable system for DnD core      | [Docs][sort-docs] |
 
 #### Quick links
 
