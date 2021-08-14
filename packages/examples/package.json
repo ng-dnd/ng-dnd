@@ -1,6 +1,6 @@
 {
   "name": "examples",
-  "version": "0.1.2",
+  "version": "1.0.0",
   "license": "MIT",
   "scripts": {
     "ng": "ng",
@@ -24,9 +24,9 @@
     "@angular/platform-browser": "~9.1.13",
     "@angular/platform-browser-dynamic": "~9.1.13",
     "@angular/router": "~9.1.13",
-    "@ng-dnd/core": "^0.1.2",
-    "@ng-dnd/multi-backend": "^0.1.2",
-    "@ng-dnd/sortable": "^0.1.2",
+    "@ng-dnd/core": "^1.0.0",
+    "@ng-dnd/multi-backend": "^1.0.0",
+    "@ng-dnd/sortable": "^1.0.0",
     "@ngrx/effects": "~9.2.1",
     "@ngrx/entity": "~9.2.1",
     "@ngrx/store": "~9.2.1",
