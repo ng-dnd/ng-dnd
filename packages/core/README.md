@@ -6,7 +6,7 @@
 
 Ng-DnD is a toolkit for building complex drag and drop interfaces in Angular. It is based on, and very similar to [`react-dnd`](https://react-dnd.github.io/react-dnd/) by [Dan Abramov](https://github.com/gaearon) and others, and is also powered by [`dnd-core`](https://github.com/react-dnd/react-dnd/tree/master/packages/dnd-core). It is compatible with all backends.
 
-**[Check out the examples here](../examples/).**
+**[Check out the examples here](https://ng-dnd.github.io/ng-dnd/examples/).**
 
 ## Installation
 
