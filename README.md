@@ -8,6 +8,22 @@ Drag and Drop for Angular.
 
 > 🙏 This repo is cloned from [angular-skyhook](https://github.com/cormacrelf/angular-skyhook#readme).
 
+| Package                 | Description                | Docs              |
+| ----------------------- | -------------------------- | ----------------- |
+| `@ng-dnd/core`          | Dnd core                   | [Docs][core-docs] |
+| `@ng-dnd/multi-backend` | Multi backend for DnD core | [Docs][back-docs] |
+| `@ng-dnd/sortable`      | Sortable for Dnd core      | [Docs][sort-docs] |
+
+#### Quick links
+
+[Documentation][core-docs]
+[Examples][examples]
+
 ## License
 
 MIT
+
+[core-docs]: https://ng-dnd.github.io/ng-dnd/
+[back-docs]: https://ng-dnd.github.io/ng-dnd/multi-backend/
+[sort-docs]: https://ng-dnd.github.io/ng-dnd/sortable/
+[examples]: https://ng-dnd.github.io/ng-dnd/examples/
