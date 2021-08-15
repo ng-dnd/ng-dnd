@@ -32,7 +32,7 @@ else
                 exit
                 ;;
             --full)
-                TRAVIS_BRANCH=master
+                TRAVIS_BRANCH=main
                 TRAVIS_PULL_REQUEST=false
                 ;;
             --fast)
@@ -78,12 +78,12 @@ if [ "$TRAVIS" == "true" ]; then
   EXAMPLES_TASK="gh-pages"
 fi
 
-# Now, if we're running travis, we only want to build docs on master proper.
-# Anything less (e.g. PRs to master) and we can go faster by building in dev mode
+# Now, if we're running travis, we only want to build docs on main proper.
+# Anything less (e.g. PRs to main) and we can go faster by building in dev mode
 # and ignoring the docs (which never fail basically).
-# This saves about 1-2 minutes per non-master build.
+# This saves about 1-2 minutes per non-main build.
 
-if [ "$TRAVIS" == "true" ] && ([ "$TRAVIS_BRANCH" != "master" ] || [ "$TRAVIS_PULL_REQUEST" != "false" ]); then
+if [ "$TRAVIS" == "true" ] && ([ "$TRAVIS_BRANCH" != "main" ] || [ "$TRAVIS_PULL_REQUEST" != "false" ]); then
     echo "travis-ing $TRAVIS $TRAVIS_BRANCH $TRAVIS_PULL_REQUEST"
     (cd "$examples" && yarn run fast)
     exit $?
