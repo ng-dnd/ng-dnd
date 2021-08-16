@@ -6,7 +6,7 @@
 
 Drag and Drop for Angular.
 
-> 🙏 This repo is cloned from [angular-skyhook](https://github.com/cormacrelf/angular-skyhook#readme).
+> 🙏 This repo is cloned from [angular-skyhook](https://github.com/cormacrelf/angular-skyhook). Many thanks for [Cormac Relf](https://github.com/cormacrelf)'s work!
 
 | Package                 | Description                       | Docs              |
 | ----------------------- | --------------------------------- | ----------------- |
@@ -18,6 +18,14 @@ Drag and Drop for Angular.
 
 [Documentation][core-docs] |
 [Examples][examples]
+
+## Why I create this project?
+
+The `angular-skyhook` is a great library, but I had encountered some frustrations.
+
+- It dosen't support **Angular Ivy** (v9+), please check [this issue](https://github.com/cormacrelf/angular-skyhook/issues/512) for more details.
+- It hasn't been maintained for almost two years, the version of `dnd-core` and other packages are very old.
+- The naming of some directives and properties aren't very intuitive such as `ssSortable`.
 
 ## License
 
