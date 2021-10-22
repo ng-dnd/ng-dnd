@@ -8,68 +8,66 @@
 @import "./tablesort.css";
 
 html, body {
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", sans-serif;
-    font-size: 16px;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", sans-serif;
+  font-size: 16px;
 }
 
 h1, h2, h3, h5 {
-    margin-top: 1.5em;
-    margin-bottom: 1em;
-    font-weight: 700;
+  margin-top: 1.5em;
+  margin-bottom: 1em;
+  font-weight: 700;
 }
 
 .content-data > *:first-child {
-    margin-top: 0;
+  margin-top: 0;
 }
 
 .collapsing {
-    transition: none;
-    display: block;
-}
-
-.content {
-    max-width: 960px;
+  transition: none;
+  display: block;
 }
 
 .content-data {
-    display: block;
-    height: initial;
-    padding-bottom: 20px;
+  display: block;
+  height: initial;
+  max-width: 800px;
+  margin: 0 auto;
+  padding-bottom: 20px;
 }
 
 .content p, .content .code-toolbar {
-    margin: 0 0 1em;
+  margin: 0 0 1em;
 }
 
 /* Hide the 'copy' buttons */
 .code-toolbar .toolbar {
-    display: none;
+  display: none;
 }
 
 .content ul {
-    list-style: disc;
-    margin-top: 0;
-    padding-left: 2em;
-    margin-bottom: 1em;
+  list-style: disc;
+  margin-top: 0;
+  padding-left: 2em;
+  margin-bottom: 1em;
 }
 
 .content ul ul, .content ul ol, .content ol ol, .content ol ul {
-    margin-bottom: 0;
+  margin-bottom: 0;
 }
 
 .content li {
-    margin-bottom: 0.2em;
+  margin-bottom: 0.2em;
 }
 
 .content ol ol {
-    list-style-type: lower-alpha;
+  list-style-type: lower-alpha;
 }
 .content ol ol ol {
-    list-style-type: lower-roman;
+  list-style-type: lower-roman;
 }
 
 em {
-    font-style: italic;
+  font-style: italic;
 }
 
 /* Hide the parameters section from each method doc
@@ -84,7 +82,7 @@ display: none;
  */
 
 a, a > code {
-    color: #0074D9;
+  color: #0074D9;
 }
 
 /**
@@ -92,45 +90,45 @@ a, a > code {
  */
 
 code {
-    color: #484A4C;
+  color: #484A4C;
 }
 
 code[class*="language-"],
 pre[class*="language-"] {
-    color: #484A4C;
-    font-family: "SF Mono", "Consolas", "Source Code Pro", "Menlo", "Bitstream Vera Sans Mono", "Courier New", Courier, monospace;
-    direction: ltr;
-    text-align: left;
-    white-space: pre;
-    word-spacing: normal;
-    word-break: normal;
-    font-size: 1em;
-    line-height: 130%;
+  color: #484A4C;
+  font-family: "SF Mono", "Consolas", "Source Code Pro", "Menlo", "Bitstream Vera Sans Mono", "Courier New", Courier, monospace;
+  direction: ltr;
+  text-align: left;
+  white-space: pre;
+  word-spacing: normal;
+  word-break: normal;
+  font-size: 1em;
+  line-height: 130%;
 
-    -moz-tab-size: 4;
-    -o-tab-size: 4;
-    tab-size: 4;
+  -moz-tab-size: 4;
+  -o-tab-size: 4;
+  tab-size: 4;
 
-    -webkit-hyphens: none;
-    -moz-hyphens: none;
-    -ms-hyphens: none;
-    hyphens: none;
+  -webkit-hyphens: none;
+  -moz-hyphens: none;
+  -ms-hyphens: none;
+  hyphens: none;
 
-    margin: 0;
-    margin-top: 0.5em;
-    margin-bottom: 0.5em;
-    background-color: #FCFBFA;
+  margin: 0;
+  margin-top: 0.5em;
+  margin-bottom: 0.5em;
+  background-color: #FCFBFA;
 }
 
 pre[class*="language-"] {
-    padding: 10px;
-    border-left: solid 3px #ECEAE9;
+  padding: 10px;
+  border-left: solid 3px #ECEAE9;
 }
 
 pre code {
-    padding: 0;
-    font-size: 100%;
-    background-color: transparent;
+  padding: 0;
+  font-size: 100%;
+  background-color: transparent;
 }
 
 
@@ -140,29 +138,29 @@ pre[class*="language-"] {
 
 /* Inline code */
 :not(pre) > code[class*="language-"] {
-    padding: .2em;
-    padding-top: 1px; padding-bottom: 1px;
-    background: #f8f8f8;
+  padding: .2em;
+  padding-top: 1px; padding-bottom: 1px;
+  background: #f8f8f8;
 }
 
 .token.comment,
 .token.prolog,
 .token.doctype,
 .token.cdata {
-    color: #999988; font-style: italic;
+  color: #999988; font-style: italic;
 }
 
 .token.namespace {
-    opacity: .7;
+  opacity: .7;
 }
 
 .token.string,
 .token.attr-value {
-    color: #df5050;
+  color: #df5050;
 }
 .token.punctuation,
 .token.operator {
-    color: #393A34; /* no highlight */
+  color: #393A34; /* no highlight */
 }
 
 .token.url,
@@ -174,28 +172,28 @@ pre[class*="language-"] {
 .token.property,
 .token.regex,
 .token.inserted {
-    color: #36acaa;
-    color: #905;
+  color: #36acaa;
+  color: #905;
 }
 
 .token.atrule,
 .token.keyword,
 .token.attr-name,
 .language-autohotkey .token.selector {
-    color: #a51
+  color: #a51
 }
 
 .token.entity,
 .token.function,
 .token.deleted,
 .language-autohotkey .token.tag {
-    color: #32308E;
+  color: #32308E;
 }
 
 .token.tag,
 .token.selector,
 .language-autohotkey .token.keyword {
-    color: #00009f;
+  color: #00009f;
 }
 
 .token.important,
@@ -204,7 +202,7 @@ pre[class*="language-"] {
 }
 
 .token.italic {
-    font-style: italic;
+  font-style: italic;
 }
 
 
