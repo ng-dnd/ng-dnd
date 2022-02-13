@@ -43,7 +43,7 @@ export class CardInnerDirective { }
   // Note: don't use margins, use padding. This way, there are no gaps to hover over.
   styles: [`
     .card {
-      padding-bottom: 0.25rem;
+      margin-bottom: 0.25rem;
       background-color: white;
       cursor: move;
     }
