@@ -233,5 +233,4 @@ export class DndSortableRenderer<Data> implements OnInit, OnDestroy {
   ngOnDestroy() {
     this.subs.unsubscribe();
   }
-
 }

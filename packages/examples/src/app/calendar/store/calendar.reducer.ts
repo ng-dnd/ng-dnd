@@ -26,7 +26,6 @@ export const CalendarStateRecord = Record({
 });
 
 export function reducer(state = new CalendarStateRecord(), action: CalendarActions): CalendarState {
-  // console.log(action);
   switch (action.type) {
 
     case CalendarActionTypes.NewEvent: {

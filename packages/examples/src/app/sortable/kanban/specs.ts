@@ -75,5 +75,4 @@ export class SortableSpecService implements OnDestroy {
   ngOnDestroy() {
     this.subs.unsubscribe();
   }
-
 }

@@ -12,10 +12,7 @@ import { Component } from "@angular/core";
     <p>
       The default behaviour is the 'move' effect
       with a switch to 'copy' when you hold the Alt key. However, any of the
-      <code>copy</code>,
-      <code>move</code>,
-      <code>link</code>, or
-      <code>none</code>
+      <code>copy</code>, <code>move</code>, <code>link</code>, or <code>none</code>
       effects may be forced for any particular drag source. Simply pass
       <code>[dragSourceOptions]="{{ '{' }} dropEffect: ... {{ '}' }}"</code>.
     </p>
@@ -32,7 +29,7 @@ import { Component } from "@angular/core";
     <de-copy-target>
       <p *ngIf="lastEffect">Dropped with the <code>{{ lastEffect }}</code> effect.</p>
     </de-copy-target>
-    `,
+  `,
 })
 export class ContainerComponent {
   lastEffect = null;

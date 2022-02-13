@@ -63,6 +63,4 @@ export class DragLayerConnectionClass implements DragLayer {
   get closed() {
     return this.subscription.closed;
   }
-
 }
-

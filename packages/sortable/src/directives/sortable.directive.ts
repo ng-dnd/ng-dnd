@@ -189,5 +189,4 @@ export class DndSortable<Data> implements OnInit, OnChanges, OnDestroy, AfterVie
   ngOnDestroy() {
     this.subs.unsubscribe();
   }
-
 }

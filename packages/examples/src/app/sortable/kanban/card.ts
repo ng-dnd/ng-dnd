@@ -1,7 +1,7 @@
 export interface Card {
-    id: number;
-    title: string;
-    isCopy?: boolean;
+  id: number;
+  title: string;
+  isCopy?: boolean;
 }
 
 export type Cards = ReadonlyArray<Card>;

@@ -1,7 +1,5 @@
-import { getEmptyImage } from 'react-dnd-html5-backend';
 import {
   Component,
-  OnInit,
   OnDestroy,
   ChangeDetectionStrategy,
   Input,
@@ -12,8 +10,7 @@ import {
 } from '@angular/core';
 import { snapToGrid } from './snapToGrid';
 import { DndService, Offset } from "@ng-dnd/core";
-import { Observable } from 'rxjs';
-import { filter, map, tap } from 'rxjs/operators';
+import { filter, map } from 'rxjs/operators';
 import { Spot } from '../spot';
 import { Rect, alongEdge, plus, minus, clone, fmap } from '../vectors';
 
@@ -28,22 +25,22 @@ interface Collected {
 @Component({
   selector: 'xy-custom-drag-layer',
   template: `
-  <ng-container *ngIf="(collect$|async) as c">
-  <ng-container *ngIf="c.isDragging">
+    <ng-container *ngIf="(collect$|async) as c">
+      <ng-container *ngIf="c.isDragging">
 
-    <xy-crosshairs *ngIf="crossStyle$|async as cross"
-                   [x]="cross.x" [y]="cross.y">
-    </xy-crosshairs>
+        <xy-crosshairs *ngIf="crossStyle$|async as cross"
+                      [x]="cross.x" [y]="cross.y">
+        </xy-crosshairs>
 
-    <div [ngStyle]="movingStyle$|async">
-      <ng-container [ngSwitch]="c.itemType">
-        <xy-box-drag-preview *ngSwitchCase="'SPOT'" [title]="c.item.title">
-        </xy-box-drag-preview>
+        <div [ngStyle]="movingStyle$|async">
+          <ng-container [ngSwitch]="c.itemType">
+            <xy-box-drag-preview *ngSwitchCase="'SPOT'" [title]="c.item.title">
+            </xy-box-drag-preview>
+          </ng-container>
+        </div>
+
       </ng-container>
-    </div>
-
-  </ng-container>
-  </ng-container>
+    </ng-container>
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
   styleUrls: ['./custom-drag-layer.component.scss']

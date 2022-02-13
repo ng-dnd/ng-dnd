@@ -1,4 +1,4 @@
-import { Component, Input, Output, EventEmitter, OnDestroy, OnChanges } from "@angular/core";
+import { Component, Input, Output, EventEmitter, OnChanges } from "@angular/core";
 import { FormControl, FormGroup } from "@angular/forms";
 import { MathQuestion } from './Question';
 
@@ -6,21 +6,21 @@ import { MathQuestion } from './Question';
   selector: "app-math-form",
   template: `
     <form [formGroup]="form" (ngSubmit)="onSubmit()" >
-    <div>
-      <label>
-          Question:
-          <input class="title" placeholder="Add a card" formControlName="question" />
-      </label>
-    </div>
-    <div>
-      <label>
-          Answer:
-        <input class="amount" type="number" formControlName="answer"/>
-      </label>
-    </div>
-    <div>
-    <input type="submit" value="Save question" *ngIf="form.dirty" />
-    </div>
+      <div>
+        <label>
+            Question:
+            <input class="title" placeholder="Add a card" formControlName="question" />
+        </label>
+      </div>
+      <div>
+        <label>
+            Answer:
+          <input class="amount" type="number" formControlName="answer"/>
+        </label>
+      </div>
+      <div>
+        <input type="submit" value="Save question" *ngIf="form.dirty" />
+      </div>
     </form>
   `
 })
@@ -45,4 +45,3 @@ export class MathFormComponent implements OnChanges {
     ));
   }
 }
-

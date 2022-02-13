@@ -1,6 +1,6 @@
 import { Record } from 'immutable';
 import * as moment from 'moment-mini-ts';
-import { getEndOfWeek, daysBetween, getWeekNumber, sameWeek } from './date-utils';
+import { getEndOfWeek, daysBetween, sameWeek } from './date-utils';
 
 let uniqueId = 0;
 
@@ -81,6 +81,7 @@ export class CalendarEvent extends Record({
   startsThisWeek(day: Date): boolean {
     return sameWeek(day, this.start);
   }
+
   endsThisWeek(day: Date): boolean {
     return sameWeek(day, this.end);
   }

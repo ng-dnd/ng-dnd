@@ -1,5 +1,5 @@
 import { Action } from '@ngrx/store';
-import { CalendarEvent, Diff } from '../event';
+import { CalendarEvent } from '../event';
 
 export enum CalendarActionTypes {
   NewEvent = '[Calendar] CREATE_EVENT',

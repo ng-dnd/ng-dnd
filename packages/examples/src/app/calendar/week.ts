@@ -39,5 +39,4 @@ export class Week extends Record({
     // Thursday (='First 4-day week').
     return day.isoWeek() === this.startDate.isoWeek();
   }
-
 }

@@ -29,15 +29,15 @@ import { Component } from "@angular/core";
   `,
   styles: [`
     .bins {
-        margin-top: 20px;
-        display: flex;
+      margin-top: 20px;
+      display: flex;
     }
     .bins > * {
-        flex: 1;
-        min-width: 100px;
+      flex: 1;
+      min-width: 100px;
     }
     .bins > *:not(:last-child) {
-        margin-right: 4px;
+      margin-right: 4px;
     }
   `]
 })

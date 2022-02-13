@@ -7,13 +7,9 @@ import {
   Optional,
   OnInit,
 } from "@angular/core";
-import { DragSource } from "@ng-dnd/core";
-import {
-  DraggedItem, SortableSpec, DndSortableRenderer
-} from "@ng-dnd/sortable";
+import { DndSortableRenderer } from "@ng-dnd/sortable";
 import { Card } from "../card";
 import { KanbanList } from "../lists";
-import { Observable } from "rxjs";
 import { SortableSpecService } from '../specs';
 
 @Component({
@@ -54,5 +50,5 @@ export class KanbanListComponent implements OnInit {
   //     }
   // }
 
-  trackById = (_: any, x: Card) => x.id;
+  trackById = (_: number, x: Card) => x.id;
 }

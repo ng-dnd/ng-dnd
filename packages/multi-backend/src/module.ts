@@ -5,13 +5,13 @@ import { DndPreviewRendererComponent } from "./preview-renderer.component";
 
 /** @ignore */
 const EXPORTS = [
-    DndPreviewComponent,
-    DndPreviewRendererComponent,
+  DndPreviewComponent,
+  DndPreviewRendererComponent,
 ];
 
 @NgModule({
-    imports: [CommonModule],
-    declarations: EXPORTS,
-    exports: EXPORTS,
+  imports: [CommonModule],
+  declarations: EXPORTS,
+  exports: EXPORTS,
 })
-export class DndMultiBackendModule {}
+export class DndMultiBackendModule { }

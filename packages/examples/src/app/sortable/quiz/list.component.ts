@@ -10,7 +10,6 @@ import { produce } from 'immer';
   templateUrl: './list.component.html',
 })
 export class ListComponent implements OnDestroy {
-
   constructor(private dnd: DndService) { }
   // on hover, this will swap out the hover.listId
   // so our <dnd-preview> knows when to morph back
@@ -100,5 +99,4 @@ export class ListComponent implements OnDestroy {
   ngOnDestroy() {
     this.spill.unsubscribe();
   }
-
 }

@@ -22,7 +22,6 @@ import { DndService } from "@ng-dnd/core";
   styles: [``]
 })
 export class BinComponent implements OnInit, OnDestroy {
-
   @Input() name: string;
   @Input() accepts: string[] = ['TRASH'];
   trashes = [];
@@ -68,5 +67,4 @@ export class BinComponent implements OnInit, OnDestroy {
   ngOnDestroy() {
     this.trashTarget.unsubscribe();
   }
-
 }

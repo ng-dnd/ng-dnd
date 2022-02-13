@@ -1,4 +1,4 @@
-import { Component, Input, ChangeDetectionStrategy } from "@angular/core";
+import { Component, ChangeDetectionStrategy } from "@angular/core";
 import { DraggedItem } from "@ng-dnd/sortable";
 import { Card } from "../card";
 import { ItemTypes } from "../item-types";
@@ -27,5 +27,4 @@ export class KanbanBoardComponent {
   removeCard(ev: DraggedItem<Card>) {
     this.store.dispatch(new RemoveCard(ev));
   }
-
 }

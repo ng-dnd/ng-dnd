@@ -29,7 +29,7 @@ import { SectionComponent } from "./section.component";
     DndMultiBackendModule,
     DndSortableModule,
     RouterModule.forChild([
-      { path: "", component: ContainerComponent }
+      { path: '', component: ContainerComponent }
     ])
   ]
 })

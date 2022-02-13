@@ -94,5 +94,4 @@ export class DndSortableList<Data> extends DndSortable<Data>
   ngOnDestroy() {
     super.ngOnDestroy();
   }
-
 }

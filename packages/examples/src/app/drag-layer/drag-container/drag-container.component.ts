@@ -5,14 +5,13 @@ import { BoxWithLocation } from '../BoxWithLocation';
 @Component({
   selector: 'app-drag-container',
   template: `
-  <div [ngStyle]="styles" [dropTarget]="boxTarget">
-    <app-draggable-box [left]="x" [top]="y" id="23" title="this box is titled"></app-draggable-box>
-  </div>
+    <div [ngStyle]="styles" [dropTarget]="boxTarget">
+      <app-draggable-box [left]="x" [top]="y" id="23" title="this box is titled"></app-draggable-box>
+    </div>
   `,
   styles: []
 })
 export class DragContainerComponent implements OnInit, OnDestroy {
-
   x = 30;
   y = 90;
 
@@ -48,5 +47,4 @@ export class DragContainerComponent implements OnInit, OnDestroy {
   ngOnDestroy() {
     this.boxTarget.unsubscribe();
   }
-
 }

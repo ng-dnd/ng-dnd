@@ -4,7 +4,6 @@ import { DraggedItem, SortableSpec, Size } from "../types";
 
 export const EXTERNAL_LIST_ID: symbol = Symbol("EXTERNAL_LIST_ID");
 
-
 @Directive({
   selector: '[dndSortableExternal]',
   exportAs: 'dndSortableExternal'
@@ -73,5 +72,4 @@ export class DndSortableExternal<Data> implements OnChanges, OnDestroy {
   ngOnDestroy() {
     this.source.unsubscribe();
   }
-
 }

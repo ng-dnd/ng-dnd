@@ -21,16 +21,16 @@ import { snapToGrid } from './custom-drag-layer/snapToGrid';
         </xy-cube>
       </div>
     </div>
-    `,
+  `,
   styles: [`
     .flex {
-        display: flex;
-        flex-wrap: wrap;
+      display: flex;
+      flex-wrap: wrap;
     }
     .pad {
-        padding: 80px;
+      padding: 80px;
     }
-`]
+  `]
 })
 export class ContainerComponent {
   x = 225;

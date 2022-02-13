@@ -12,11 +12,11 @@ import { ItemTypes } from "./item-types";
         <p>Drop here</p>
       </ng-template>
     </div>
-    `,
+  `,
   styles: [`
     .target { max-width: 300px; height: 200px; background: #ddd; padding: 1em; }
     .over { background: #bbb; }
-    `]
+  `]
 })
 export class CopyTargetComponent {
   target = this.dnd.dropTarget(ItemTypes.COPYABLE_ITEM, {});

@@ -20,9 +20,9 @@ import { Component } from "@angular/core";
     `,
   styles: [`
     .sep {
-        border-bottom: 1px solid #999;
-        margin-bottom: 8px;
-        max-width: 700px;
+      border-bottom: 1px solid #999;
+      margin-bottom: 8px;
+      max-width: 700px;
     }
   `]
 })

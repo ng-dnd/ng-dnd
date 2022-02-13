@@ -1,12 +1,11 @@
-import { Component, OnInit, Input, NgZone } from '@angular/core';
-import { Observable ,  Subject } from 'rxjs';
+import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
   selector: 'app-box-drag-preview',
   template: `
-  <div class="phresh">
-    <app-box [title]="title"></app-box>
-  </div>
+    <div class="phresh">
+      <app-box [title]="title"></app-box>
+    </div>
   `,
   styles: [`
     :host { display: inline-block; }
@@ -31,7 +30,5 @@ export class BoxDragPreviewComponent implements OnInit {
 
   constructor() {}
 
-  ngOnInit() {
-  }
-
+  ngOnInit() {}
 }

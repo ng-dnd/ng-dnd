@@ -17,7 +17,7 @@ import { map } from "rxjs/operators";
   selector: "dnd-preview-renderer",
   template: `
     <div class="firefox-bug" [ngStyle]="style$|async">
-        <ng-content></ng-content>
+      <ng-content></ng-content>
     </div>
   `,
   styles: [

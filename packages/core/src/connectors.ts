@@ -86,5 +86,4 @@ export interface DragSourceConnector {
   dragSource(elementOrNode: any, options?: DragSourceOptions): void;
 
   dragPreview(elementOrNode: any, options?: DragPreviewOptions): void;
-
 }

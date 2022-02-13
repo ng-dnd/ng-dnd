@@ -20,10 +20,9 @@ import { ItemTypes } from './item-types';
       cursor: move;
     }
     div, p { display: inline-block; padding: 3px; margin: 0; }
-    `]
+  `]
 })
 export class CustomPreviewComponent implements OnInit, OnDestroy {
-
   source = this.dnd.dragSource(ItemTypes.BOX, {
     beginDrag: () => ({}),
   });

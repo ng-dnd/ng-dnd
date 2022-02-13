@@ -21,7 +21,7 @@ import { ContainerComponent } from "./container.component";
     DndMultiBackendModule,
     DndSortableModule,
     RouterModule.forChild([
-      { path: "", component: ContainerComponent }
+      { path: '', component: ContainerComponent }
     ])
   ]
 })

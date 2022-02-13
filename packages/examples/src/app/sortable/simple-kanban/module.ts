@@ -29,7 +29,7 @@ import { SortableSpecService } from './specs';
     DndSortableModule,
     ReactiveFormsModule,
     RouterModule.forChild([
-      { path: "", component: ContainerComponent }
+      { path: '', component: ContainerComponent }
     ])
   ],
   providers: [

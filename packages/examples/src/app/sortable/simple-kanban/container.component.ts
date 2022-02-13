@@ -2,7 +2,6 @@ import { AfterViewInit, Component, ElementRef, OnDestroy } from '@angular/core';
 import { DndService } from "@ng-dnd/core";
 import { spillTarget } from "@ng-dnd/sortable";
 import { ItemTypes } from './item-types';
-import { Store } from '@ngrx/store';
 import { Card } from './specs';
 
 @Component({
@@ -11,7 +10,6 @@ import { Card } from './specs';
   styleUrls: ['./container.component.scss'],
 })
 export class ContainerComponent implements AfterViewInit, OnDestroy {
-
   // this emits a 'hover' only once when you move over the spill area
   // and again if you move over another drop target and come back.
   // note: uses isOver({shallow:true}), so you can stack other targets on top
@@ -33,6 +31,7 @@ export class ContainerComponent implements AfterViewInit, OnDestroy {
     // could easily be document.body
     // this.cardSpill.connectDropTarget(this.el.nativeElement);
   }
+
   ngOnDestroy() {
     // it's a regular drop target! don't forget to unsubscribe.
     this.cardSpill.unsubscribe();

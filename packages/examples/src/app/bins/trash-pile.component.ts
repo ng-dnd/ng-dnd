@@ -73,5 +73,4 @@ export class TrashPileComponent implements OnChanges, OnDestroy {
   litter() {
     this.remain += 5;
   }
-
 }

@@ -20,7 +20,7 @@ import { HandleComponent } from './handle.component';
     UtilityModule,
     DndModule,
     DndMultiBackendModule,
-    RouterModule.forChild([{ path: "", component: ContainerComponent }]),
+    RouterModule.forChild([{ path: '', component: ContainerComponent }]),
   ],
 })
 export class HandlesPreviewsModule {

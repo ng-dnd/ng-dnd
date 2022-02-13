@@ -38,13 +38,13 @@ export interface PreviewTemplateContext {
   selector: "dnd-preview",
   template: `
     <ng-container *ngIf="previewEnabled$ | async">
-        <dnd-preview-renderer *ngIf="collect$ | async as c">
-            <ng-container *ngIf="c.isDragging" >
-                <ng-container
-                    *ngTemplateOutlet="content; context: { $implicit: c.itemType, type: c.itemType, item: c.item }">
-                </ng-container>
-            </ng-container>
-        </dnd-preview-renderer>
+      <dnd-preview-renderer *ngIf="collect$ | async as c">
+        <ng-container *ngIf="c.isDragging" >
+          <ng-container
+              *ngTemplateOutlet="content; context: { $implicit: c.itemType, type: c.itemType, item: c.item }">
+          </ng-container>
+        </ng-container>
+      </dnd-preview-renderer>
     </ng-container>
   `,
   changeDetection: ChangeDetectionStrategy.OnPush

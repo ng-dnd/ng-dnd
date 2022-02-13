@@ -34,4 +34,5 @@ import { Component } from '@angular/core';
     <basic-sortable></basic-sortable>
   `
 })
-export class ContainerComponent { }
+export class ContainerComponent {
+}

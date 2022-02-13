@@ -2,35 +2,36 @@ import { Component, OnInit } from '@angular/core';
 import { DndService } from "@ng-dnd/core";
 
 @Component({
-    selector: 'app-test',
-    template: `
+  selector: 'app-test',
+  template: `
     <p [dragSource]="source" [class.dragging]="isDragging$|async">
       test works!
     </p>
   `,
-    styles: []
+  styles: []
 })
 export class TestComponent implements OnInit {
-    dropped = false;
-    endDrag = false;
+  dropped = false;
+  endDrag = false;
 
-    source = this.dnd.dragSource('TYPE', {
-        beginDrag: monitor => {
-            return { x: 5 };
-        },
-        endDrag: monitor => {
-            this.endDrag = true;
-        }
-    });
-    target = this.dnd.dropTarget('TYPE', {
-        drop: monitor => {
-            this.dropped = true;
-        }
-    });
+  source = this.dnd.dragSource('TYPE', {
+    beginDrag: monitor => {
+      return { x: 5 };
+    },
+    endDrag: monitor => {
+      this.endDrag = true;
+    }
+  });
 
-    isDragging$ = this.source.listen(m => m.isDragging());
+  target = this.dnd.dropTarget('TYPE', {
+    drop: monitor => {
+      this.dropped = true;
+    }
+  });
 
-    constructor(private dnd: DndService) {}
+  isDragging$ = this.source.listen(m => m.isDragging());
 
-    ngOnInit() {}
+  constructor(private dnd: DndService) { }
+
+  ngOnInit() { }
 }

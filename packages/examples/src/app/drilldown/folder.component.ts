@@ -1,51 +1,51 @@
-import { Component, Input, ChangeDetectionStrategy, ChangeDetectorRef, NgZone, OnInit, OnDestroy } from '@angular/core';
+import { Component, Input, ChangeDetectionStrategy, NgZone, OnInit, OnDestroy } from '@angular/core';
 import { ItemTypes } from './itemTypes';
 import { TreeService } from './tree.service';
 import { DndService } from "@ng-dnd/core";
 import { Observable } from 'rxjs';
-import { map, tap } from 'rxjs/operators';
+import { map } from 'rxjs/operators';
 import { activatorDropTarget } from './activatorDropTarget';
 
 @Component({
   selector: 'drilldown-folder',
   template: `
-  <ng-container *ngIf="keys.length === 0 else node">
-    <ul [class.has-children]="anyChildren$|async">
-      <drilldown-folder
-          *ngFor="let c of children$|async; trackBy: tracker"
-          [keys]="keys.concat([c])">
-      </drilldown-folder>
-    </ul>
-  </ng-container>
-  <ng-template #node>
-    <li [class.root]="keys.length === 0"
-      [class.is-open]="isOpen$|async"
-      [class.is-over]="isOver$|async"
-      [class.has-children]="anyChildren$|async" >
-
-      <div [dropTarget]="target" (click)="toggle()" >
-        <b *ngIf="anyChildren$|async; else leaf">{{ ownKey }} ...</b>
-        <ng-template #leaf>
-            {{ ownKey }}
-        </ng-template>
-      </div>
-
-      <ul [class.root]="keys.length === 0" *ngIf="(isOpen$|async)" [class.has-children]="anyChildren$|async">
+    <ng-container *ngIf="keys.length === 0 else node">
+      <ul [class.has-children]="anyChildren$|async">
         <drilldown-folder
             *ngFor="let c of children$|async; trackBy: tracker"
             [keys]="keys.concat([c])">
         </drilldown-folder>
       </ul>
-    </li>
-  </ng-template>
+    </ng-container>
+    <ng-template #node>
+      <li [class.root]="keys.length === 0"
+        [class.is-open]="isOpen$|async"
+        [class.is-over]="isOver$|async"
+        [class.has-children]="anyChildren$|async" >
+
+        <div [dropTarget]="target" (click)="toggle()" >
+          <b *ngIf="anyChildren$|async; else leaf">{{ ownKey }} ...</b>
+          <ng-template #leaf>
+              {{ ownKey }}
+          </ng-template>
+        </div>
+
+        <ul [class.root]="keys.length === 0" *ngIf="(isOpen$|async)" [class.has-children]="anyChildren$|async">
+          <drilldown-folder
+              *ngFor="let c of children$|async; trackBy: tracker"
+              [keys]="keys.concat([c])">
+          </drilldown-folder>
+        </ul>
+      </li>
+    </ng-template>
   `,
   styleUrls: ['./folder.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 
 export class FolderComponent implements OnInit, OnDestroy {
-
   @Input() keys: string[];
+
   get ownKey() {
     if (this.keys.length === 0) {
       return '<root>';
@@ -78,7 +78,6 @@ export class FolderComponent implements OnInit, OnDestroy {
   constructor(public tree: TreeService, private dnd: DndService, private ngZone: NgZone) { }
 
   ngOnInit() {
-    //   console.log('ngOnInit', this.keys);
     this.children$ = this.tree.getChildren(this.keys);
     this.anyChildren$ = this.children$.pipe(
       map(cs => cs && cs.length > 0),
@@ -86,7 +85,7 @@ export class FolderComponent implements OnInit, OnDestroy {
     this.isOpen$ = this.tree.isOpen(this.keys);
   }
 
-  tracker(_, c: string) { return c; }
+  tracker(_: number, c: string) { return c; }
 
   toggle() {
     this.tree.toggle(this.keys);

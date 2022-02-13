@@ -7,7 +7,7 @@ import { DndService } from "@ng-dnd/core";
     <div [dragSource]="itemSource">
         <touch-item [color]="color"></touch-item>
     </div>
-    `,
+  `,
   styles: [`
     div { display: inline; width: auto; }
   `]
@@ -25,7 +25,7 @@ export class DraggableItemComponent {
   template: `<div class="firefox-bug" [style.background]="color || 'red'"></div>`,
   styles: [`
     div { width: 400px; height: 300px; margin: 16px; }
-    `]
+  `]
 })
 export class ItemComponent {
   @Input() color: string;

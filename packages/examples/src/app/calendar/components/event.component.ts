@@ -1,13 +1,11 @@
 import { Component, Input, ChangeDetectionStrategy } from "@angular/core";
 import { CalendarEvent } from "../event";
-import { Moment } from "moment-mini-ts";
 import { DndService, DragSourceSpec } from "@ng-dnd/core";
-import { Store, createSelector, Action } from "@ngrx/store";
+import { Store, createSelector } from "@ngrx/store";
 import { State } from "app/reducers";
 import { ItemTypes } from "../item-types";
 import { BeginDragExistingEvent, EndDragExistingEvent } from "../store/calendar.actions";
-import { withLatestFrom, combineAll } from "rxjs/operators";
-import { Observable, combineLatest } from "rxjs";
+import { combineLatest } from "rxjs";
 
 @Component({
   selector: 'cal-event',

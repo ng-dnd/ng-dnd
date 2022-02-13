@@ -7,7 +7,6 @@ export interface KanbanList {
   cards: Cards;
 }
 export type KanbanBoard = ReadonlyArray<KanbanList>;
-
 // We're using NgRx, so we have to do immutable-only list operations.
 
 // you could use this helper library, but if you're really gunning for @ngrx,

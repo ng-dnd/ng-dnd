@@ -34,5 +34,4 @@ export interface DropTargetMonitor<Item = {}, DropResult = {}> extends MonitorBa
    * drop().
    */
   didDrop(): boolean;
-
 }

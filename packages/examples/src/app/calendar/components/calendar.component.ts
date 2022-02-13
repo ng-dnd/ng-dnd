@@ -1,5 +1,5 @@
 import { Component, OnInit, ChangeDetectionStrategy } from "@angular/core";
-import { Store, select, createSelector } from "@ngrx/store";
+import { Store, select } from "@ngrx/store";
 import { CalendarState } from "app/calendar/store/calendar.reducer";
 import { weeksSelector } from "../store/selectors";
 import { Week } from "app/calendar/week";
@@ -13,17 +13,18 @@ import { ResetCalendar } from "../store/calendar.actions";
   styleUrls: ['./calendar.component.scss']
 })
 export class CalendarComponent implements OnInit {
-
   weeks$ = this.store.pipe(select(weeksSelector));
 
   constructor(private store: Store<CalendarState>) { }
 
-  trackWeek(_, week: Week) {
+  trackWeek(_: number, week: Week) {
     return week.uniqueId;
   }
+
   trackDay(i: number, day: Moment) {
     return i;
   }
+
   ngOnInit() {
     this.store.dispatch(new ResetCalendar());
   }

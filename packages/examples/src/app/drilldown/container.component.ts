@@ -1,4 +1,4 @@
-import { Component, OnInit, Injectable, Input, ChangeDetectionStrategy } from '@angular/core';
+import { Component } from '@angular/core';
 import { TreeService } from './tree.service';
 
 @Component({
@@ -18,18 +18,21 @@ import { TreeService } from './tree.service';
     <drilldown-folder [keys]="[]"></drilldown-folder>
   `,
   styles: [`
-  :host {
-    display: block;
-    min-height: 600px;
-  }
+    :host {
+      display: block;
+      min-height: 600px;
+    }
   `]
 })
 export class Container {
   lastDrop$ = this.tree.select(s => s.lastDrop);
+
   constructor(private tree: TreeService) { }
+
   beginDrag() {
     this.tree.beginDrag();
   }
+
   endDrag() {
     this.tree.endDrag();
   }

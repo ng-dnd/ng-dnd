@@ -27,7 +27,7 @@ import { reducer } from './store/reducer';
     DndSortableModule,
     StoreModule.forFeature('simple-ngrx', reducer),
     RouterModule.forChild([
-      { path: "", component: ContainerComponent }
+      { path: '', component: ContainerComponent }
     ]),
     HotkeyModule,
   ]

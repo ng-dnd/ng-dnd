@@ -4,15 +4,15 @@ import { Component, Input } from "@angular/core";
   selector: 'app-square',
   template: `
     <div [ngStyle]="getStyle()">
-        <ng-content></ng-content>
+      <ng-content></ng-content>
     </div>
   `,
   styles: [`
     :host, div {
-        display: block;
-        height: 100%;
-        width: 100%;
-        text-align: center;
+      display: block;
+      height: 100%;
+      width: 100%;
+      text-align: center;
     }
   `]
 })

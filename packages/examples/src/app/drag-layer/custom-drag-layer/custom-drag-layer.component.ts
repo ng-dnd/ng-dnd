@@ -1,26 +1,22 @@
 import { Component, OnInit, OnDestroy, ChangeDetectionStrategy } from '@angular/core';
 import { snapToGrid } from './snapToGrid';
 import { DndService } from "@ng-dnd/core";
-import { Observable } from 'rxjs';
-import { filter, map, tap } from 'rxjs/operators';
-import { getEmptyImage } from 'react-dnd-html5-backend';
+import { filter, map } from 'rxjs/operators';
 
 interface Offset { x: number; y: number; }
 
 @Component({
   selector: 'app-custom-drag-layer',
   template: `
-  <ng-container *ngIf="(collect$|async) as c">
-    <div *ngIf="c.isDragging" [ngStyle]="forStyle$|async">
-      <ng-container [ngSwitch]="(c.itemType)">
-
-        <ng-container *ngSwitchCase="'BOX'">
-          <app-box-drag-preview [title]="c.item.title"></app-box-drag-preview>
+    <ng-container *ngIf="(collect$|async) as c">
+      <div *ngIf="c.isDragging" [ngStyle]="forStyle$|async">
+        <ng-container [ngSwitch]="(c.itemType)">
+          <ng-container *ngSwitchCase="'BOX'">
+            <app-box-drag-preview [title]="c.item.title"></app-box-drag-preview>
+          </ng-container>
         </ng-container>
-
-      </ng-container>
-    </div>
-  </ng-container>
+      </div>
+    </ng-container>
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
   styles: [`
@@ -33,10 +29,9 @@ interface Offset { x: number; y: number; }
       top: 0;
       width: 100%; height: 100%;
     }
-    `]
+  `]
 })
 export class CustomDragLayerComponent implements OnInit, OnDestroy {
-
   constructor(private dnd: DndService) { }
 
   dragLayer = this.dnd.dragLayer();
@@ -86,5 +81,4 @@ export class CustomDragLayerComponent implements OnInit, OnDestroy {
       WebkitTransform: transform,
     };
   }
-
 }

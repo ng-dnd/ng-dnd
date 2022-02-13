@@ -1,12 +1,5 @@
-import {
-  Component,
-  Input,
-  Output,
-  EventEmitter,
-  ChangeDetectionStrategy,
-  Optional,
-} from "@angular/core";
-import { SortableSpec, DndSortableRenderer } from "@ng-dnd/sortable";
+import { Component, Input, Output, EventEmitter, Optional } from "@angular/core";
+import { DndSortableRenderer } from "@ng-dnd/sortable";
 import { Card, CardList, SortableSpecService } from "../specs";
 
 @Component({
@@ -32,5 +25,5 @@ export class KanbanListComponent {
     @Optional() public render: DndSortableRenderer<CardList>,
   ) { }
 
-  trackById = (_: any, x: Card) => x.id;
+  trackById = (_: number, x: Card) => x.id;
 }

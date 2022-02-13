@@ -36,8 +36,8 @@
        [listId]="list.id"
        #clist="dndSortable">
     <!-- note the assignment of the dndSortable directive to a template
-        variable, clist, so we can use it below. It can generate the
-        required context for dndSortableRender. -->
+         variable, clist, so we can use it below. It can generate the
+         required context for dndSortableRender. -->
 
     <kanban-card *ngFor="let card of list.cards; let i = index; trackBy: trackById"
                  [card]="card"
@@ -47,8 +47,8 @@
                  [noHTML5Preview]="true"
                  [placeholder]="render.isDragging$|async">
       <!-- This time, we aren't doing drag handles, so we just attached
-          render.source directly to kanban-card by pulling #render out.
-          You can do it whichever way suits.
+           render.source directly to kanban-card by pulling #render out.
+           You can do it whichever way suits.
       -->
     </kanban-card>
 

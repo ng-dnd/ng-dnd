@@ -9,23 +9,22 @@ import { map } from 'rxjs/operators';
   selector: 'app-board-square',
   template: `
     <div class="wrapper" [dropTarget]="target">
-        <app-square [black]="black">
-            <ng-content></ng-content>
-        </app-square>
-        <div class="overlay" *ngIf="showOverlay$|async" [ngStyle]="overlayStyle$|async"></div>
+      <app-square [black]="black">
+        <ng-content></ng-content>
+      </app-square>
+      <div class="overlay" *ngIf="showOverlay$|async" [ngStyle]="overlayStyle$|async"></div>
     </div>
   `,
   styles: [`
     :host, .wrapper {
-        display: block;
-        position: relative;
-        width: 100%;
-        height: 100%;
+      display: block;
+      position: relative;
+      width: 100%;
+      height: 100%;
     }
   `]
 })
 export class BoardSquareComponent implements OnDestroy {
-
   @Input() position: Coord;
 
   get black() {
@@ -77,5 +76,4 @@ export class BoardSquareComponent implements OnDestroy {
   ngOnDestroy() {
     this.target.unsubscribe();
   }
-
 }

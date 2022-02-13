@@ -1,6 +1,4 @@
-import { Input, Component, OnInit, OnDestroy, ChangeDetectionStrategy } from '@angular/core';
-import { DndService, DragPreviewOptions, DragSourceSpec } from "@ng-dnd/core";
-import { Subject, Subscription } from 'rxjs';
+import { Input, Component, ChangeDetectionStrategy } from '@angular/core';
 
 @Component({
   selector: 'app-trash',

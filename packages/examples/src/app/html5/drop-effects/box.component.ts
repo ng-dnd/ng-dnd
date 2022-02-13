@@ -23,7 +23,7 @@ interface DropResult {
         margin-right: 8px;
         background: #fff;
     }
-    `]
+  `]
 })
 export class BoxComponent {
   @Output() dropped = new EventEmitter<string>();
@@ -38,5 +38,6 @@ export class BoxComponent {
       }
     }
   });
+
   constructor(private dnd: DndService) { }
 }

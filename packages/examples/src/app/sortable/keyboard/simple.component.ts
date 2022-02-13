@@ -29,10 +29,9 @@ import { HotkeysService, Hotkey } from 'angular2-hotkeys';
         </tr>
       </tbody>
     </table>
-    `,
+  `,
 })
 export class SimpleComponent {
-
   rxSpec = new NgRxSortable<Blob>(this.store, ActionTypes.SORT, {
     type: "BLOB",
     trackBy: x => x.id,
@@ -64,5 +63,4 @@ export class SimpleComponent {
   click(blob: Blob) {
     this.store.dispatch(new SelectBlob(blob.id));
   }
-
 }

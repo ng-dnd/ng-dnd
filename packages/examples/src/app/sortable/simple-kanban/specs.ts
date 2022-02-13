@@ -94,5 +94,4 @@ export class SortableSpecService {
       this.tree = this.savedTree;
     },
   };
-
 }

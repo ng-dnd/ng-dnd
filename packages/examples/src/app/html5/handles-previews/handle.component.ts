@@ -1,5 +1,4 @@
-
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnDestroy } from '@angular/core';
 import { DndService } from "@ng-dnd/core";
 import { ItemTypes } from './item-types';
 
@@ -30,10 +29,9 @@ import { ItemTypes } from './item-types';
       display: inline-block;
     }
     div, p { display: inline-block; padding: 3px; margin: 0; }
-    `]
+  `]
 })
 export class HandleComponent implements OnDestroy {
-
   source = this.dnd.dragSource(ItemTypes.BOX, {
     beginDrag: () => ({}),
   });

@@ -1,20 +1,18 @@
 import { ChangeDetectionStrategy, Component, Input, OnDestroy, OnInit } from '@angular/core';
-import { DragPreviewOptions, DndService } from "@ng-dnd/core";
+import { DndService } from "@ng-dnd/core";
 import { getEmptyImage } from 'react-dnd-html5-backend';
-import { map } from 'rxjs/operators';
 import { BoxWithLocation } from '../BoxWithLocation';
 
 @Component({
   selector: 'app-draggable-box',
   template: `
-  <div class="draggable-box" [dragSource]="source" [ngStyle]="getStyles(isDragging$|async)" >
-    <app-box [title]="title"></app-box>
-  </div>
+    <div class="draggable-box" [dragSource]="source" [ngStyle]="getStyles(isDragging$|async)" >
+      <app-box [title]="title"></app-box>
+    </div>
   `,
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class DraggableBoxComponent implements OnInit, OnDestroy {
-
   @Input() id: number;
   @Input() title: string;
   @Input() left: number;
@@ -55,5 +53,4 @@ export class DraggableBoxComponent implements OnInit, OnDestroy {
       height: isDragging ? 0 : null
     };
   }
-
 }

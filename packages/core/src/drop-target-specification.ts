@@ -47,5 +47,4 @@ export interface DropTargetSpec<
    */
 
   drop?(monitor: DropTargetMonitor<Item, DropResult>): DropResult | void;
-
 }

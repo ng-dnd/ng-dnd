@@ -19,7 +19,7 @@ import { ItemComponent, DraggableItemComponent } from "./item.component";
     UtilityModule,
     DndModule,
     DndMultiBackendModule,
-    RouterModule.forChild([{ path: "", component: ContainerComponent }]),
+    RouterModule.forChild([{ path: '', component: ContainerComponent }]),
   ],
 })
 export class TouchModule {

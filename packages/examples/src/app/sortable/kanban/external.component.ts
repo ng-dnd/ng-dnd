@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
-import { DndService, DragSourceSpec } from "@ng-dnd/core";
-import { SortableSpec, DraggedItem, Size } from '@ng-dnd/sortable';
+import { SortableSpec } from '@ng-dnd/sortable';
 import { Card } from './card';
 import { ItemTypes } from './item-types';
 import { SortableSpecService } from './specs';
@@ -51,8 +50,5 @@ export class KanbanExternalComponent {
     }
   };
 
-  constructor(
-    private specs: SortableSpecService,
-  ) { }
-
+  constructor(private specs: SortableSpecService) { }
 }

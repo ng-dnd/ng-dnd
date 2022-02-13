@@ -1,7 +1,7 @@
-import { Input, Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnDestroy } from '@angular/core';
 import { DndService } from "@ng-dnd/core";
 import { Colors } from './colors';
-import { map, filter, startWith } from 'rxjs/operators';
+import { map } from 'rxjs/operators';
 
 @Component({
   selector: 'app-nested-source-targetbox',
@@ -30,7 +30,6 @@ import { map, filter, startWith } from 'rxjs/operators';
   `]
 })
 export class TargetBoxComponent implements OnDestroy {
-
   Colors = Colors;
 
   lastDroppedColor: string;
@@ -64,6 +63,4 @@ export class TargetBoxComponent implements OnDestroy {
   ngOnDestroy() {
     this.target.unsubscribe();
   }
-
 }
-

@@ -2,7 +2,7 @@ import { Component, ChangeDetectionStrategy } from "@angular/core";
 import { Store, createSelector } from "@ngrx/store";
 import { State } from "app/reducers";
 import { NextMonth, PrevMonth } from "app/calendar/store/calendar.actions";
-import { calendarFeature, startDateSelector } from "../store/selectors";
+import { startDateSelector } from "../store/selectors";
 
 const monthSelector = createSelector(
   startDateSelector,
@@ -18,7 +18,6 @@ const monthSelector = createSelector(
   styleUrls: ['./container.component.scss']
 })
 export class CalendarContainerComponent {
-
   month$ = this.store.select(monthSelector);
 
   constructor(private store: Store<State>) { }

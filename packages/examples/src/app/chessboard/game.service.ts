@@ -4,7 +4,6 @@ import { Coord } from './coord';
 
 @Injectable()
 export class GameService {
-
   knightPosition$ = new BehaviorSubject<Coord>({ x: 2, y: 5 });
   currentPosition: Coord;
 
@@ -26,5 +25,4 @@ export class GameService {
     return (Math.abs(dx) === 2 && Math.abs(dy) === 1) ||
       (Math.abs(dx) === 1 && Math.abs(dy) === 2);
   }
-
 }

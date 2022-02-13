@@ -11,7 +11,6 @@
   </div>
 
   <div class="week" *ngFor="let week of weeks$|async; trackBy: trackWeek">
-    <cal-day *ngFor="let day of week.days; trackBy: trackDay" [day]="day">
-    </cal-day>
+    <cal-day *ngFor="let day of week.days; trackBy: trackDay" [day]="day"></cal-day>
   </div>
 </div>

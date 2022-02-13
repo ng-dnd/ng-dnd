@@ -32,7 +32,7 @@
        for each item in yourSpec.getList(). -->
   <ng-template dndSortableTemplate let-context>
     <!-- context is everything the dndSortableRender needs to do its job.
-        It includes 'data' and 'index', which are just from an *ngFor of your spec's getList(). -->
+         It includes 'data' and 'index', which are just from an *ngFor of your spec's getList(). -->
     <kanban-list [dndSortableRender]="context"
                  [list]="context.data"
                  (addCard)="addCard(context.data.id, $event)">

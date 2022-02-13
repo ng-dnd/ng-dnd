@@ -1,13 +1,13 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnDestroy } from '@angular/core';
 import { DndService } from "@ng-dnd/core";
 import { ItemTypes } from './item-types';
 
 @Component({
   selector: 'app-nested-targets-box',
   template: `
-  <div [dragSource]="source" [style.opacity]="opacity|async">
-    <p>Drag this!</p>
-  </div>
+    <div [dragSource]="source" [style.opacity]="opacity|async">
+      <p>Drag this!</p>
+    </div>
   `,
   styles: [`
     div {
@@ -21,7 +21,6 @@ import { ItemTypes } from './item-types';
   `]
 })
 export class BoxComponent implements OnDestroy {
-
   source = this.dnd.dragSource(ItemTypes.BOX, {
     beginDrag: () => ({}),
   });

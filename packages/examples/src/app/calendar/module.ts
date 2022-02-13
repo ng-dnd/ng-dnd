@@ -29,7 +29,7 @@ import { CalendarEventComponent } from "./components/event.component";
     ReactiveFormsModule,
     StoreModule,
     RouterModule.forChild([
-      { path: "", component: CalendarContainerComponent }
+      { path: '', component: CalendarContainerComponent }
     ]),
     StoreModule.forFeature('calendar', fromCalendar.reducer),
   ],

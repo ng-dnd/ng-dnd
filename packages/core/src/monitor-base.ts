@@ -36,5 +36,4 @@ export interface MonitorBase<Item> {
    * = its initial position + displacement. Returns `null` if no item is being dragged.
    */
   getSourceClientOffset(): Offset | null;
-
 }

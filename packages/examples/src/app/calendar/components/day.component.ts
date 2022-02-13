@@ -2,7 +2,7 @@ import {
   Component, Input, OnDestroy, OnInit, ChangeDetectionStrategy, AfterViewInit,
   ElementRef, ViewChild
 } from "@angular/core";
-import { DndService, DragSourceOptions } from "@ng-dnd/core";
+import { DndService } from "@ng-dnd/core";
 import { ItemTypes } from "../item-types";
 import { Store, createSelector } from "@ngrx/store";
 import { State } from "app/reducers";
@@ -14,7 +14,7 @@ import { startDateSelector, isDraggingSelector, allEventSelector } from "../stor
 import { Observable, Subject, Subscription } from "rxjs";
 import { switchMap, take } from "rxjs/operators";
 import { List } from "immutable";
-import { CalendarEvent, Diff } from "app/calendar/event";
+import { CalendarEvent } from "app/calendar/event";
 import * as faker from 'faker';
 import * as Pressure from 'pressure';
 import { daysBetween } from "../date-utils";
@@ -24,31 +24,29 @@ import { daysBetween } from "../date-utils";
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: `
     <div class="day" [class.day--othermonth]="otherMonth$|async" [class.day--weekend]="isWeekend">
-        <div class="day-pad day-pad--bg">
-        </div>
+      <div class="day-pad day-pad--bg"></div>
 
-        <h3 class="day-label">
-            <span class="day-label-lozenge" [class.day-label-lozenge--today]="isToday">{{ day.getDate() }}</span>
-        </h3>
+      <h3 class="day-label">
+          <span class="day-label-lozenge" [class.day-label-lozenge--today]="isToday">{{ day.getDate() }}</span>
+      </h3>
 
-        <cal-event *ngFor="let e of events$|async; trackBy: unique" [event]="e" [draggingNew]="isDragging$|async" [day]="day">
-        </cal-event>
+      <cal-event *ngFor="let e of events$|async; trackBy: unique" [event]="e" [draggingNew]="isDragging$|async" [day]="day">
+      </cal-event>
 
-        <div #pad class="day-pad"
-             (dblclick)="intradayEvent()"
-             [dragSource]="source"
-             [noHTML5Preview]="true"
-             [dropTarget]="target"
-             [class.day-pad--front]="(isDragging$|async)">
-        </div>
-
+      <div #pad class="day-pad"
+            (dblclick)="intradayEvent()"
+            [dragSource]="source"
+            [noHTML5Preview]="true"
+            [dropTarget]="target"
+            [class.day-pad--front]="(isDragging$|async)">
+      </div>
     </div>
-    `,
+  `,
   styles: [`
     :host, .day {
-        display: contents;
+      display: contents;
     }
-    `]
+  `]
 })
 export class CalendarDayComponent implements OnInit, OnDestroy, AfterViewInit {
   @Input() day: Date;
@@ -188,8 +186,7 @@ export class CalendarDayComponent implements OnInit, OnDestroy, AfterViewInit {
     this.subs.unsubscribe();
   }
 
-  unique(_, e: CalendarEvent) {
+  unique(_: number, e: CalendarEvent) {
     return e.uniqueId;
   }
-
 }

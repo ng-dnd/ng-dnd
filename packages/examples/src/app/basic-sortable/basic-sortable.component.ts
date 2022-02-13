@@ -10,7 +10,6 @@ interface Card { id: number; text: string; }
   `]
 })
 export class BasicSortableComponent {
-
   cards: Card[] = [
     {
       id: 1,
@@ -42,7 +41,7 @@ export class BasicSortableComponent {
     this.origCards = this.cards.slice(0);
   }
 
-  endDrag(goodEdit) {
+  endDrag(goodEdit: boolean) {
     if (!goodEdit) {
       this.cards = this.origCards;
     }
@@ -54,8 +53,7 @@ export class BasicSortableComponent {
     this.cards.splice(hoverIndex, 0, dragCard);
   }
 
-  tracker(_index, card: Card) {
+  tracker(_index: number, card: Card) {
     return card.id;
   }
-
 }

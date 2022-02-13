@@ -49,4 +49,3 @@ export const daysBetween = (date1: Date, date2: Date) => {
   // Convert back to days and return
   return Math.round(difference_ms / one_day);
 };
-

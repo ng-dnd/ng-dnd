@@ -1,4 +1,4 @@
-import { Component, Input, NgZone, OnDestroy } from "@angular/core";
+import { Component, Input, OnDestroy } from "@angular/core";
 import { DndService } from "@ng-dnd/core";
 import { NativeTypes } from "react-dnd-html5-backend";
 
@@ -20,16 +20,16 @@ interface NativeFile {
       <ng-content></ng-content>
       <pre *ngIf="dropped">{{ dropped | json }}</pre>
     </div>
-    `,
+  `,
   styles: [`
     :host {
-        min-width: 200px;
+      min-width: 200px;
     }
     .target {
-        padding: 8px;
-        background: #ddd;
-        min-height: 140px;
-        min-width: 0;
+      padding: 8px;
+      background: #ddd;
+      min-height: 140px;
+      min-width: 0;
     }
     pre { overflow-x: auto; min-width: 0; }
   `]

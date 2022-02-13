@@ -52,5 +52,4 @@ export class FixedHeightComponent {
     temp.splice(item.hover.index, 0, item.data);
     return temp;
   }
-
 }

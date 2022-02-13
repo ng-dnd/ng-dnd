@@ -38,7 +38,7 @@ import { SortableSpecService } from './specs';
     StoreModule,
     StoreModule.forFeature('kanban', reducer),
     RouterModule.forChild([
-      { path: "", component: ContainerComponent }
+      { path: '', component: ContainerComponent }
     ])
   ],
   providers: [

@@ -6,19 +6,19 @@ import { Spot } from '../spot';
 @Component({
   selector: 'xy-drag-container',
   template: `
-  <div class="glow"></div>
-  <div class="scanline"></div>
+    <div class="glow"></div>
+    <div class="scanline"></div>
 
-  <div [dropTarget]="boxTarget" class="square">
-    <div *ngFor="let i of gridlines" class="gridline horizontal" [style.top.px]="px * i - 1"></div>
-    <div *ngFor="let i of gridlines" class="gridline vertical" [style.left.px]="px * i - 1"></div>
-    <xy-draggable-box [spot]="spot" (endDrag)="dragEnded($event)"></xy-draggable-box>
-  </div>
+    <div [dropTarget]="boxTarget" class="square">
+      <div *ngFor="let i of gridlines" class="gridline horizontal" [style.top.px]="px * i - 1"></div>
+      <div *ngFor="let i of gridlines" class="gridline vertical" [style.left.px]="px * i - 1"></div>
+      <xy-draggable-box [spot]="spot" (endDrag)="dragEnded($event)"></xy-draggable-box>
+    </div>
 
-  <xy-custom-drag-layer
-      [snapToGrid]="snapToGrid" [incrementPx]="px"
-      (moved)="emitEach($event)">
-  </xy-custom-drag-layer>
+    <xy-custom-drag-layer
+        [snapToGrid]="snapToGrid" [incrementPx]="px"
+        (moved)="emitEach($event)">
+    </xy-custom-drag-layer>
   `,
   styleUrls: ['./drag-container.component.scss']
 })

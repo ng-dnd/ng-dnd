@@ -12,7 +12,6 @@ import { Card } from './card';
   styleUrls: ['./container.component.scss'],
 })
 export class ContainerComponent implements AfterViewInit, OnDestroy {
-
   // this emits a 'hover' only once when you move over the spill area
   // and again if you move over another drop target and come back.
   // note: uses isOver({shallow:true}), so you can stack other targets on top

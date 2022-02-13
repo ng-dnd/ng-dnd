@@ -9,7 +9,6 @@ import { horseImage } from './horseImage';
   styleUrls: ['./knight.component.scss']
 })
 export class KnightComponent implements OnInit, OnDestroy {
-
   knightSource = this.dnd.dragSource(ItemTypes.KNIGHT, {
     beginDrag: () => ({})
   });
@@ -27,5 +26,4 @@ export class KnightComponent implements OnInit, OnDestroy {
   ngOnDestroy() {
     this.knightSource.unsubscribe();
   }
-
 }

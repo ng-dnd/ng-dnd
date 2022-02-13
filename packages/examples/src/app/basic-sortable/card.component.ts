@@ -43,13 +43,13 @@ export class CardInnerDirective { }
   // Note: don't use margins, use padding. This way, there are no gaps to hover over.
   styles: [`
     .card {
-        padding-bottom: 0.25rem;
-        background-color: white;
-        cursor: move;
+      padding-bottom: 0.25rem;
+      background-color: white;
+      cursor: move;
     }
     .border {
-        padding: 0.5rem 1rem;
-        border: 1px dashed gray;
+      padding: 0.5rem 1rem;
+      border: 1px dashed gray;
     }
   `],
   changeDetection: ChangeDetectionStrategy.OnPush
@@ -142,7 +142,7 @@ export class CardComponent implements OnDestroy {
     private dnd: DndService
   ) { }
 
-  moveCard(a, b) {
+  moveCard(a: number, b: number) {
     this.handleMove.emit([a, b]);
   }
 
