@@ -21,7 +21,7 @@ import { isEmpty } from '../isEmpty';
 export class DndSortable<Data> implements OnInit, OnChanges, OnDestroy, AfterViewInit {
   @Input() listId: any = Math.random().toString();
   @Input() horizontal = false;
-  @Input() protected spec!: SortableSpec<Data>;
+  @Input() spec!: SortableSpec<Data>;
   @Input() children?: Iterable<Data>;
   /**
    * Possible values:

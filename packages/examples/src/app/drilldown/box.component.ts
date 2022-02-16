@@ -18,7 +18,7 @@ import { ItemTypes } from './itemTypes';
       background-color: white;
       width: 8rem;;
     }
-    div, p { display: inline-block;, padding: 3px; margin: 0; }
+    div, p { display: inline-block; padding: 3px; margin: 0; }
   `]
 })
 export class BoxComponent implements OnDestroy {
