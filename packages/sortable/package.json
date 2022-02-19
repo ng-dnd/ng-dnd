@@ -1,6 +1,6 @@
 {
   "name": "@ng-dnd/sortable",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Sortable for Angular DnD",
   "publishConfig": {
     "access": "public"
@@ -17,7 +17,7 @@
     "tslib": "^1.9.0"
   },
   "devDependencies": {
-    "@ng-dnd/core": "^1.0.0"
+    "@ng-dnd/core": "^1.0.1"
   },
   "peerDependencies": {
     "@angular/common": ">= 6.0.0",

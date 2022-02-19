@@ -1,6 +1,6 @@
 {
   "name": "@ng-dnd/core",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Drag and Drop for Angular",
   "publishConfig": {
     "access": "public"
