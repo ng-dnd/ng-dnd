@@ -29,7 +29,12 @@
             "styles": [
               "src/styles.scss"
             ],
-            "scripts": []
+            "scripts": [],
+            "allowedCommonJsDependencies": [
+              "faker",
+              "mousetrap",
+              "pressure"
+            ]
           },
           "configurations": {
             "production": {
