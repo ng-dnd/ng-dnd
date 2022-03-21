@@ -155,7 +155,7 @@ const EXPORTS = [
   exports: EXPORTS,
 })
 export class DndModule {
-  static forRoot(backendOrBackendFactory: BackendInput | BackendFactoryInput): ModuleWithProviders {
+  static forRoot(backendOrBackendFactory: BackendInput | BackendFactoryInput): ModuleWithProviders<DndModule> {
     return {
       ngModule: DndModule,
       providers: [
