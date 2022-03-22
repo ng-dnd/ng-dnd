@@ -31,7 +31,7 @@
     "@ngrx/entity": "~10.1.2",
     "@ngrx/store": "~10.1.2",
     "@ngrx/store-devtools": "~10.1.2",
-    "angular2-hotkeys": "2.3.0",
+    "angular2-hotkeys": "2.4.0",
     "faker": "^4.1.0",
     "immer": "^3.1.2",
     "immutable": "^4.0.0",
@@ -42,7 +42,7 @@
     "react-dnd-test-backend": "^14.0.0",
     "rxjs": "~6.6.0",
     "tslib": "^2.3.1",
-    "zone.js": "~0.10.2"
+    "zone.js": "~0.11.5"
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "~0.1002.4",
