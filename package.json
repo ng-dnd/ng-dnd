@@ -34,7 +34,7 @@
     "lodash": "^4.17.21",
     "rxjs": "~6.6.0",
     "tslib": "^2.3.1",
-    "zone.js": "~0.11.4"
+    "zone.js": "~0.10.2"
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "~0.1002.4",
@@ -43,19 +43,16 @@
     "@angular/language-service": "~10.2.5",
     "@compodoc/compodoc": "^1.1.14",
     "@types/fs-extra": "^8.0.0",
-    "@types/jest": "^24.0.6",
+    "@types/jest": "^27.4.1",
     "@types/lodash": "^4.14.87",
     "@types/node": "^12.11.1",
     "chokidar-cli": "^2.0.0",
-    "codelyzer": "^5.0.0",
     "cross-env": "^6.0.3",
     "fs-extra": "^8.0.1",
     "gh-pages": "^3.2.3",
-    "jasmine-core": "~3.5.0",
-    "jasmine-spec-reporter": "~4.2.1",
-    "jest": "^24.1.0",
-    "jest-localstorage-mock": "^2.2.0",
-    "jest-preset-angular": "^7.0.0",
+    "jest": "^27.5.1",
+    "jest-localstorage-mock": "^2.4.19",
+    "jest-preset-angular": "^10.1.0",
     "lerna": "^4.0.0",
     "mermaid.cli": "^0.5.1",
     "ng-packagr": "^10.1.2",
@@ -63,7 +60,7 @@
     "rimraf": "^3.0.0",
     "scss-bundle": "^3.0.1",
     "ts-node": "~8.3.0",
-    "tsickle": "^0.36.0",
+    "tsickle": "^0.40.0",
     "tslint": "~6.1.0",
     "typescript": "~4.0.8"
   }
