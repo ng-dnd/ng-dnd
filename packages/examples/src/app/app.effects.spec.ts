@@ -1,4 +1,4 @@
-import { TestBed, inject } from '@angular/core/testing';
+import { TestBed, waitForAsync } from '@angular/core/testing';
 import { provideMockActions } from '@ngrx/effects/testing';
 import { Observable } from 'rxjs';
 
@@ -8,7 +8,7 @@ describe('AppService', () => {
   let actions$: Observable<any>;
   let effects: AppEffects;
 
-  beforeEach(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       providers: [
         AppEffects,
@@ -16,8 +16,8 @@ describe('AppService', () => {
       ]
     });
 
-    effects = TestBed.get(AppEffects);
-  });
+    effects = TestBed.inject(AppEffects);
+  }));
 
   it('should be created', () => {
     expect(effects).toBeTruthy();

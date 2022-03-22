@@ -1,4 +1,4 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { TestComponent } from './test.component';
 import { TestBackend } from 'react-dnd-test-backend';
 import { DndModule, DRAG_DROP_MANAGER } from "@ng-dnd/core";
@@ -16,14 +16,14 @@ describe(TestComponent.name, () => {
     return fixture.debugElement.query(By.css('.dragging')) != null;
   };
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       imports: [DndModule.forRoot({ backend: TestBackend })],
       declarations: [TestComponent]
     }).compileComponents();
   }));
 
-  beforeEach(() => {
+  beforeEach(waitForAsync(() => {
     const manager = TestBed.get(DRAG_DROP_MANAGER);
     backend = manager.getBackend();
     fixture = TestBed.createComponent(TestComponent);
@@ -31,7 +31,7 @@ describe(TestComponent.name, () => {
     fixture.detectChanges();
     source = component.source.getHandlerId();
     target = component.target.getHandlerId();
-  });
+  }));
 
   it('should create', () => {
     expect(component).toBeTruthy();
