@@ -50,6 +50,7 @@
     "@angular/compiler-cli": "~10.2.5",
     "@angular/language-service": "~10.2.5",
     "@ngrx/schematics": "~10.1.2",
+    "@types/mousetrap": "1.6.9",
     "@types/node": "^12.11.1",
     "codelyzer": "^6.0.0",
     "jasmine-core": "~3.6.0",
