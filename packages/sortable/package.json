@@ -14,7 +14,7 @@
     "ngx-dnd"
   ],
   "dependencies": {
-    "tslib": "^1.9.0"
+    "tslib": "^2.3.0"
   },
   "devDependencies": {
     "@ng-dnd/core": "^1.0.1"
