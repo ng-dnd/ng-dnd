@@ -5,17 +5,17 @@ import {
   Input,
   Inject,
   ChangeDetectionStrategy
-} from "@angular/core";
+} from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
-import { DndService, DRAG_DROP_MANAGER } from "@ng-dnd/core";
-import { DragDropManager, Backend } from "dnd-core";
+import { DndService, DRAG_DROP_MANAGER } from '@ng-dnd/core';
+import { DragDropManager, Backend } from 'dnd-core';
 import { BackendWatcher, MultiBackendExt } from 'dnd-multi-backend';
 
 export interface PreviewTemplateContext {
   /** same as type */
   $implicit: string | symbol;
   type: string | symbol;
-  item: Object & any;
+  item: any;
 }
 
 /**
@@ -35,7 +35,7 @@ export interface PreviewTemplateContext {
  * ```
  */
 @Component({
-  selector: "dnd-preview",
+  selector: 'dnd-preview',
   template: `
     <ng-container *ngIf="previewEnabled$ | async">
       <dnd-preview-renderer *ngIf="collect$ | async as c">
@@ -85,7 +85,7 @@ export class DndPreviewComponent implements BackendWatcher {
   ) {
     if (this.manager == null) {
       this.warn(
-        "no drag and drop manager defined, are you sure you imported DndModule?"
+        'no drag and drop manager defined, are you sure you imported DndModule?'
       );
     } else {
       (this.manager.getBackend() as MultiBackendExt).previews!.register(this);
@@ -124,7 +124,7 @@ export class DndPreviewComponent implements BackendWatcher {
     }
     if (backend == null) {
       this.warn(
-        "no drag and drop backend defined, are you sure you imported DndModule.forRoot(backend)?"
+        'no drag and drop backend defined, are you sure you imported DndModule.forRoot(backend)?'
       );
       return false;
     }

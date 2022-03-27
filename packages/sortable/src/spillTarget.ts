@@ -1,9 +1,9 @@
-import { DndService, DropTarget } from "@ng-dnd/core";
-import { DraggedItem } from "./types";
+import { DndService, DropTarget } from '@ng-dnd/core';
+import { DraggedItem } from './types';
 import { Subject } from 'rxjs';
 import { filter, distinctUntilChanged } from 'rxjs/operators';
 
-export const SPILLED_LIST_ID: symbol = Symbol("SPILLED_LIST_ID");
+export const SPILLED_LIST_ID: symbol = Symbol('SPILLED_LIST_ID');
 
 export interface SpillConfiguration<Data> {
   drop?: (item: DraggedItem<Data>) => void;
@@ -20,7 +20,7 @@ export function spillTarget<Data>(
     if (!item) return null;
     item.hover = { listId: SPILLED_LIST_ID, index: -1 };
     return { ...item };
-  }
+  };
 
   const hover$ = new Subject<DraggedItem<Data> | null>();
 

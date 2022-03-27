@@ -1,16 +1,16 @@
-import { Directive, Input, ElementRef, OnInit, OnDestroy } from "@angular/core";
+import { Directive, Input, ElementRef, OnInit, OnDestroy } from '@angular/core';
 import {
   DndService,
   DragSource, DropTarget, DragSourceMonitor, DropTargetMonitor
-} from "@ng-dnd/core";
+} from '@ng-dnd/core';
 import { Observable, Subscription } from 'rxjs';
-import { DraggedItem, Size, RenderContext } from "../types";
+import { DraggedItem, Size, RenderContext } from '../types';
 import { getSuggester } from '../hoverTriggers';
 
 /** @ignore */
 const _scheduleMicroTaskPolyfill: (f: () => void) => any = (
   requestAnimationFrame || webkitRequestAnimationFrame || ((f: () => void) => setTimeout(f, 0))
-)
+);
 
 @Directive({
   selector: '[dndSortableRender]',
@@ -128,7 +128,7 @@ export class DndSortableRenderer<Data> implements OnInit, OnDestroy {
   /** @ignore */
   private sameIds = (data: Data, other: DraggedItem<Data>) => {
     return data && other.data && this.spec.trackBy(data) === this.spec.trackBy(other.data);
-  }
+  };
 
   /** @ignore */
   private getCanDrag(monitor: DragSourceMonitor<void, void>) {
@@ -161,8 +161,8 @@ export class DndSortableRenderer<Data> implements OnInit, OnDestroy {
       return;
     }
     const { hover } = item;
-    let suggester = getSuggester(this.context.hoverTrigger);
-    let suggestedIndex = suggester(
+    const suggester = getSuggester(this.context.hoverTrigger);
+    const suggestedIndex = suggester(
       this.context,
       item,
       this.rect(),
@@ -173,7 +173,7 @@ export class DndSortableRenderer<Data> implements OnInit, OnDestroy {
     if (suggestedIndex < 0) {
       // console.warn('this.listId',this.listId, 'hover.listId', hover.listId)
       // suggestedIndex = 0;
-      throw new Error("@ng-dnd/sortable: Cannot move a card to an index < 0.");
+      throw new Error('@ng-dnd/sortable: Cannot move a card to an index < 0.');
     }
 
     // move the item if its new position is different
@@ -196,7 +196,7 @@ export class DndSortableRenderer<Data> implements OnInit, OnDestroy {
   /** @ignore */
   private rect() {
     if (!this.el) {
-      throw new Error("@ng-dnd/sortable: [dndSortableRender] expected to be attached to a real DOM element");
+      throw new Error('@ng-dnd/sortable: [dndSortableRender] expected to be attached to a real DOM element');
     }
     const rect = (this.el.nativeElement as Element).getBoundingClientRect();
     return rect;

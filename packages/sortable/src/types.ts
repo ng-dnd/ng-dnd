@@ -118,8 +118,8 @@ export class Size {
   constructor(public width: number, public height: number) { }
   style() {
     return {
-      width: this.width + "px",
-      height: this.height + "px"
+      width: this.width + 'px',
+      height: this.height + 'px'
     };
   }
 }
@@ -140,8 +140,8 @@ export interface DraggedItem<Data> {
 
 
 export enum HoverTrigger {
-  halfway = "halfway",
-  fixed = "fixed",
+  halfway = 'halfway',
+  fixed = 'fixed',
 }
 
 export interface RenderContext<Data> {

@@ -11,7 +11,7 @@ export class Source implements DragSource {
   }
 
   withChangeDetection<T>(fn: () => T): T {
-    let x = fn();
+    const x = fn();
     this.zone.scheduleMicroTask('DragSource', () => { });
     return x;
   }

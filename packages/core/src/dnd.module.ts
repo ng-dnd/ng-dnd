@@ -68,7 +68,7 @@ export function getBackend(manager: DragDropManager): Backend {
 }
 
 /** @ignore */
-declare var global: any;
+declare const global: any;
 /** @ignore */
 export function getGlobalContext(): any {
   return typeof global !== 'undefined' ? global : (window as any);

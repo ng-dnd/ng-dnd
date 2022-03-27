@@ -1,4 +1,4 @@
-declare module "dnd-multi-backend" {
+declare module 'dnd-multi-backend' {
   import { Backend } from 'dnd-core';
   import { BackendFactory } from 'dnd-core';
   import { DragDropManager } from 'dnd-core';

@@ -12,13 +12,13 @@ import {
   QueryList,
   SimpleChanges,
   ContentChildren,
-} from "@angular/core";
-import { DndService } from "@ng-dnd/core";
-import { DndSortableTemplate, TemplateContext } from "./template.directive";
+} from '@angular/core';
+import { DndService } from '@ng-dnd/core';
+import { DndSortableTemplate, TemplateContext } from './template.directive';
 import { DndSortable } from './sortable.directive';
 
 @Component({
-  selector: "dnd-sortable-list",
+  selector: 'dnd-sortable-list',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: `
     <ng-container *ngFor="let card of children; let i = index; trackBy: trackById" >
@@ -50,7 +50,7 @@ export class DndSortableList<Data> extends DndSortable<Data>
     if (ql.length > 0) {
       this.template = ql.first;
     }
-  };
+  }
 
   /** @ignore */
   constructor(
@@ -64,12 +64,12 @@ export class DndSortableList<Data> extends DndSortable<Data>
   /** @ignore */
   trackById = (_: number, data: Data) => {
     return this.spec && this.spec.trackBy(data);
-  }
+  };
 
   /** @ignore */
   ngAfterContentInit() {
     if (!this.template) {
-      throw new Error("You must provide a <ng-template cardTemplate> as a content child, or with [template]=\"myTemplateRef\"")
+      throw new Error('You must provide a <ng-template cardTemplate> as a content child, or with [template]="myTemplateRef"');
     }
   }
 

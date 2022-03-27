@@ -39,7 +39,7 @@ class DropTargetMonitorClass implements DropTargetMonitor {
     return this.internalMonitor.getItemType();
   }
 
-  getItem(): {} & any {
+  getItem() {
     return this.internalMonitor.getItem();
   }
 

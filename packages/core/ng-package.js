@@ -1,2 +1,1 @@
-module.exports = require("../../ng-package");
-
+module.exports = require('../../ng-package');

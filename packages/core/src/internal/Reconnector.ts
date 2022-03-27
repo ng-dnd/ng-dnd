@@ -18,7 +18,7 @@ export class Reconnector<O = any> {
     if (this.handlerId && this.node) {
       this.disconnect = this.backendConnector(this.handlerId, this.node, this.options);
     }
-  }
+  };
   hook = (nativeElement: Node, options?: O) => {
     if (nativeElement === this.node &&
       areOptionsEqual(options, this.options)) {
@@ -29,5 +29,5 @@ export class Reconnector<O = any> {
     this.options = options;
 
     this.reconnect(this.handlerId);
-  }
+  };
 }

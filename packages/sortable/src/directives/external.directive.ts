@@ -1,8 +1,8 @@
-import { Directive, Input, ElementRef, OnChanges, OnDestroy } from "@angular/core";
-import { DndService, DragSource } from "@ng-dnd/core";
-import { DraggedItem, SortableSpec, Size } from "../types";
+import { Directive, Input, ElementRef, OnChanges, OnDestroy } from '@angular/core';
+import { DndService, DragSource } from '@ng-dnd/core';
+import { DraggedItem, SortableSpec, Size } from '../types';
 
-export const EXTERNAL_LIST_ID: symbol = Symbol("EXTERNAL_LIST_ID");
+export const EXTERNAL_LIST_ID: symbol = Symbol('EXTERNAL_LIST_ID');
 
 @Directive({
   selector: '[dndSortableExternal]',
@@ -34,7 +34,7 @@ export class DndSortableExternal<Data> implements OnChanges, OnDestroy {
       },
       beginDrag: () => {
         if (typeof this.spec.createData !== 'function') {
-          throw new Error("spec.createData must be a function");
+          throw new Error('spec.createData must be a function');
         }
         return {
           type: this.spec.type,
@@ -44,7 +44,7 @@ export class DndSortableExternal<Data> implements OnChanges, OnDestroy {
           index: -1,
           listId: EXTERNAL_LIST_ID,
           size: this.size(),
-        }
+        };
       },
       endDrag: monitor => {
         const item = monitor.getItem();

@@ -10,8 +10,8 @@ import {
   ChangeDetectorRef,
 } from '@angular/core';
 import { BehaviorSubject, Observable, Subscription } from 'rxjs';
-import { DndService, DropTarget, DropTargetMonitor } from "@ng-dnd/core";
-import { SortableSpec, DraggedItem, RenderContext, HoverTrigger } from "../types";
+import { DndService, DropTarget, DropTargetMonitor } from '@ng-dnd/core';
+import { SortableSpec, DraggedItem, RenderContext, HoverTrigger } from '../types';
 import { isEmpty } from '../isEmpty';
 
 @Directive({
@@ -121,7 +121,11 @@ export class DndSortable<Data> implements OnInit, OnChanges, OnDestroy, AfterVie
   }
 
   /** @ignore */
-  private getCanDrop(item: DraggedItem<Data>, monitor: DropTargetMonitor<DraggedItem<Data>>, _default = true) {
+  private getCanDrop(
+    item: DraggedItem<Data>,
+    monitor: DropTargetMonitor<DraggedItem<Data>>,
+    _default = true
+  ) {
     if (this.spec && this.spec.canDrop) {
       return this.spec.canDrop(item, monitor);
     }
@@ -129,7 +133,11 @@ export class DndSortable<Data> implements OnInit, OnChanges, OnDestroy, AfterVie
   }
 
   /** @ignore */
-  private callHover(item: DraggedItem<Data>, monitor: DropTargetMonitor<DraggedItem<Data>>, newHover?: { listId: any; index: number; }) {
+  private callHover(
+    item: DraggedItem<Data>,
+    monitor: DropTargetMonitor<DraggedItem<Data>>,
+    newHover?: { listId: any; index: number; }
+  ) {
     if (newHover) {
       // mutate the object
       item.hover = newHover;
@@ -160,7 +168,7 @@ export class DndSortable<Data> implements OnInit, OnChanges, OnDestroy, AfterVie
       const arr = this.spec.accepts as Array<string | symbol>;
       return arr.indexOf(ty) !== -1;
     } else {
-      let acc = this.getTargetType();
+      const acc = this.getTargetType();
       return ty == acc;
     }
   }

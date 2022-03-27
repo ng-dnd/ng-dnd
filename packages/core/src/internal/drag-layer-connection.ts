@@ -13,7 +13,6 @@ export class DragLayerConnectionClass implements DragLayer {
   private readonly collector$: BehaviorSubject<DragLayerMonitor>;
   private subscription = new Subscription();
 
-
   constructor(private manager: DragDropManager, private zone: Zone) {
     const monitor = this.manager.getMonitor();
     this.collector$ = new BehaviorSubject<DragLayerMonitor>(monitor);
@@ -37,11 +36,11 @@ export class DragLayerConnectionClass implements DragLayer {
   private handleStateChange = () => {
     const monitor = this.manager.getMonitor() as DragLayerMonitor;
     this.collector$.next(monitor);
-  }
+  };
   private handleOffsetChange = () => {
     const monitor = this.manager.getMonitor() as DragLayerMonitor;
     this.collector$.next(monitor);
-  }
+  };
 
   listen<P>(mapFn: (monitor: DragLayerMonitor) => P): Observable<P> {
     return this.collector$.pipe(

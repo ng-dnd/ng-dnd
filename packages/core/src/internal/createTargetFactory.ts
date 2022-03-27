@@ -13,7 +13,7 @@ export class Target implements DropTarget {
   }
 
   withChangeDetection<T>(fn: () => T): T {
-    let x = fn();
+    const x = fn();
     this.zone.scheduleMicroTask('DropTarget', () => { });
     return x;
   }

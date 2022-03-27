@@ -1,4 +1,4 @@
-import { DragSourceSpec, DragSource, DropTargetSpec, DropTarget } from "@ng-dnd/core";
+import { DragSourceSpec, DragSource, DropTargetSpec, DropTarget } from '@ng-dnd/core';
 
 export type Types = string | symbol | (string | symbol)[];
 

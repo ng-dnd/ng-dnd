@@ -55,11 +55,11 @@ export function suggestHalfway<Data>(
     suggestedIndex = topHalf ? ctx.index : ctx.index + 1;
   }
   return suggestedIndex;
-};
+}
 
 export function suggestFixed<Data>(ctx: RenderContext<Data>) {
   return ctx.index;
-};
+}
 
 export function getSuggester(trigger: HoverTrigger) {
   switch (trigger) {

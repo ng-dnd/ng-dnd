@@ -18,7 +18,10 @@ export function scheduleMicroTaskAfter<T>(zone: Zone, uTask?: () => void) {
  * @ignore
  */
 export class ZoneSubscriber<T> extends Subscriber<T> {
-  constructor(destination: Subscriber<T>, private zone: Zone, private uTask: () => void = (() => { })) {
+  constructor(
+    destination: Subscriber<T>,
+    private zone: Zone,
+    private uTask: () => void = (() => { })) {
     super(destination);
   }
   protected _next(val: T) {

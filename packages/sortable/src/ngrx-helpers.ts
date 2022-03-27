@@ -3,10 +3,10 @@ import { DropTargetMonitor, DragSourceMonitor } from '@ng-dnd/core';
 import { Observable } from 'rxjs';
 
 export enum SortableEvents {
-  BeginDrag = "BeginDrag",
-  Hover     = "Hover",
-  Drop      = "Drop",
-  EndDrag   = "EndDrag",
+  BeginDrag = 'BeginDrag',
+  Hover     = 'Hover',
+  Drop      = 'Drop',
+  EndDrag   = 'EndDrag',
 }
 
 export class BeginDragAction<AT, T> {
@@ -85,14 +85,14 @@ export class NgRxSortable<D> implements SortableSpec<D> {
 
   beginDrag = (item: DraggedItem<D>, _monitor: DragSourceMonitor<void, void>): void => {
     this.store.dispatch(new BeginDragAction(this.actionType, item));
-  }
+  };
   hover = (item: DraggedItem<D>, _monitor: DropTargetMonitor<DraggedItem<D>>): void => {
     this.store.dispatch(new HoverAction(this.actionType, item));
-  }
+  };
   drop = (item: DraggedItem<D>, _monitor: DropTargetMonitor<DraggedItem<D>>): void => {
     this.store.dispatch(new DropAction(this.actionType, item));
-  }
+  };
   endDrag = (item: DraggedItem<D>, _monitor: DragSourceMonitor<DraggedItem<D>>): void => {
     this.store.dispatch(new EndDragAction(this.actionType, item));
-  }
+  };
 }

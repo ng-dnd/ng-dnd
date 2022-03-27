@@ -4,28 +4,28 @@
 /** a second comment */
 
 /// <reference types="zone.js" />
-import { Injectable, Inject, NgZone } from "@angular/core";
-import { TYPE_DYNAMIC, DRAG_DROP_MANAGER } from "./tokens";
-import { DragDropManager } from "dnd-core";
+import { Injectable, Inject, NgZone } from '@angular/core';
+import { TYPE_DYNAMIC, DRAG_DROP_MANAGER } from './tokens';
+import { DragDropManager } from 'dnd-core';
 
-import { DropTargetSpec } from "./drop-target-specification";
-import createTargetConnector from "./internal/createTargetConnector";
-import registerTarget from "./internal/register-target";
+import { DropTargetSpec } from './drop-target-specification';
+import createTargetConnector from './internal/createTargetConnector';
+import registerTarget from './internal/register-target';
 
-import { DragSourceSpec } from "./drag-source-specification";
-import createSourceConnector from "./internal/createSourceConnector";
-import registerSource from "./internal/register-source";
+import { DragSourceSpec } from './drag-source-specification';
+import createSourceConnector from './internal/createSourceConnector';
+import registerSource from './internal/register-source';
 
-import { SubscriptionLike, TeardownLogic } from "rxjs";
-import { TypeOrTypeArray } from "./type-ish";
-import { SourceConnection, TargetConnection } from "./internal/connection-factory";
-import { DragLayerConnectionClass } from "./internal/drag-layer-connection";
+import { SubscriptionLike, TeardownLogic } from 'rxjs';
+import { TypeOrTypeArray } from './type-ish';
+import { SourceConnection, TargetConnection } from './internal/connection-factory';
+import { DragLayerConnectionClass } from './internal/drag-layer-connection';
 
-import { DragSource, DropTarget, DragLayer } from "./connection-types";
-import { createSourceMonitor } from "./internal/createSourceMonitor";
-import { createTargetFactory } from "./internal/createTargetFactory";
-import { createTargetMonitor } from "./internal/createTargetMonitor";
-import { createSourceFactory } from "./internal/createSourceFactory";
+import { DragSource, DropTarget, DragLayer } from './connection-types';
+import { createSourceMonitor } from './internal/createSourceMonitor';
+import { createTargetFactory } from './internal/createTargetFactory';
+import { createTargetMonitor } from './internal/createTargetMonitor';
+import { createSourceFactory } from './internal/createSourceFactory';
 
 /**
  * Represents an RxJS Subscription, with multi-version compatibility.
@@ -62,7 +62,7 @@ export interface AddSubscription extends SubscriptionLike {
 export class DndService {
   /** @ignore */
   private dndZone: Zone = Zone.root.fork({
-    name: "dndZone",
+    name: 'dndZone',
     onHasTask: (_parentZoneDelegate, _currentZone, _targetZone, state) => {
       // when we've | drained the microTask queue; or                    | ... run a change detection cycle.
       //            | executed or cancelled a macroTask (eg a timer); or |

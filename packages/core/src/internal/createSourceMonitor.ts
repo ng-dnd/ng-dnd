@@ -51,7 +51,7 @@ class DragSourceMonitorClass implements DragSourceMonitor {
     return this.internalMonitor.getItemType();
   }
 
-  getItem(): {} & any {
+  getItem() {
     return this.internalMonitor.getItem();
   }
 

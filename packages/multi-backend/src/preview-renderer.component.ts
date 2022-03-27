@@ -1,6 +1,6 @@
-import { Component, ChangeDetectionStrategy } from "@angular/core";
-import { DndService, Offset } from "@ng-dnd/core";
-import { map } from "rxjs/operators";
+import { Component, ChangeDetectionStrategy } from '@angular/core';
+import { DndService, Offset } from '@ng-dnd/core';
+import { map } from 'rxjs/operators';
 
 /**
  * This is internal, you probably won't ever need to use it directly.
@@ -14,7 +14,7 @@ import { map } from "rxjs/operators";
  * whole thing wouldn't re-render unless you animated the border.
  */
 @Component({
-  selector: "dnd-preview-renderer",
+  selector: 'dnd-preview-renderer',
   template: `
     <div class="firefox-bug" [ngStyle]="style$|async">
       <ng-content></ng-content>
@@ -67,11 +67,11 @@ export class DndPreviewRendererComponent {
 
       if (!initialOffset || !currentOffset) {
         return {
-          display: "none"
+          display: 'none'
         };
       }
 
-      let { x, y } = currentOffset;
+      const { x, y } = currentOffset;
 
       const transform = `translate(${x}px, ${y}px)`;
       return {

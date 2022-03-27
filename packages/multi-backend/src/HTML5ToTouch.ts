@@ -1,12 +1,12 @@
 import { BackendFactory, DragDropManager } from 'dnd-core';
-import { HTML5Backend } from "react-dnd-html5-backend";
-import { TouchBackend } from "react-dnd-touch-backend";
+import { HTML5Backend } from 'react-dnd-html5-backend';
+import { TouchBackend } from 'react-dnd-touch-backend';
 import {
   default as MultiBackend,
   MouseTransition,
   TouchTransition,
   BackendTransition
-} from "dnd-multi-backend";
+} from 'dnd-multi-backend';
 
 export const HTML5ToTouch = {
   backends: [
