@@ -1,12 +1,12 @@
-import { ngPackagr } from "ng-packagr";
-import { NEVER } from "rxjs";
-import { catchError } from "rxjs/operators";
+import { ngPackagr } from 'ng-packagr';
+import { NEVER } from 'rxjs';
+import { catchError } from 'rxjs/operators';
 
 export const isWatchMode = !!process.env.WATCH_MODE;
 
 ngPackagr()
-  .forProject("./ng-package.js")
-  .withTsConfig("../../tsconfig.build.json")
+  .forProject('./ng-package.js')
+  .withTsConfig('../../tsconfig.build.json')
   .withOptions({
     watch: isWatchMode,
   })
