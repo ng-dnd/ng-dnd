@@ -1,8 +1,8 @@
-import { Component, Output, EventEmitter } from "@angular/core";
-import { FormControl, FormGroup } from "@angular/forms";
+import { Component, Output, EventEmitter } from '@angular/core';
+import { FormControl, FormGroup } from '@angular/forms';
 
 @Component({
-  selector: "kanban-add-card",
+  selector: 'kanban-add-card',
   template: `
     <form [formGroup]="addForm" >
       <input class="title" placeholder="Add a card" formControlName="title" (keyup.enter)="onSubmit()" />
@@ -29,7 +29,7 @@ export class AddCardComponent {
   });
 
   onSubmit() {
-    this.add.emit(this.addForm.get("title").value);
+    this.add.emit(this.addForm.get('title').value);
     this.addForm.reset();
   }
 }

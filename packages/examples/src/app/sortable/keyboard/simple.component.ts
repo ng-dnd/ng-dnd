@@ -1,5 +1,5 @@
-import { Component, ChangeDetectionStrategy } from "@angular/core";
-import { NgRxSortable } from "@ng-dnd/sortable";
+import { Component, ChangeDetectionStrategy } from '@angular/core';
+import { NgRxSortable } from '@ng-dnd/sortable';
 import { Store } from '@ngrx/store';
 import { Blob } from './store/blob';
 import { ActionTypes, SelectBlob, LiftSelected, DropSelected, MoveSelectedUp, MoveSelectedDown } from './store/reducer';
@@ -33,7 +33,7 @@ import { HotkeysService, Hotkey } from 'angular2-hotkeys';
 })
 export class SimpleComponent {
   rxSpec = new NgRxSortable<Blob>(this.store, ActionTypes.SORT, {
-    type: "BLOB",
+    type: 'BLOB',
     trackBy: x => x.id,
     getList: _ => this.store.select(_render),
   });
@@ -45,19 +45,19 @@ export class SimpleComponent {
     this.hotkeys.add(new Hotkey('enter', (_event) => {
       this.store.dispatch(new LiftSelected());
       return false;
-    }, [], "Lift up or put down selected item"));
+    }, [], 'Lift up or put down selected item'));
     this.hotkeys.add(new Hotkey('up', (_event) => {
       this.store.dispatch(new MoveSelectedUp());
       return false;
-    }, [], "Move selection or lifted item up"));
+    }, [], 'Move selection or lifted item up'));
     this.hotkeys.add(new Hotkey('down', (_event) => {
       this.store.dispatch(new MoveSelectedDown());
       return false;
-    }, [], "Move selection or lifted item down"));
+    }, [], 'Move selection or lifted item down'));
     this.hotkeys.add(new Hotkey('esc', (_event) => {
       this.store.dispatch(new DropSelected());
       return false;
-    }, [], "Put down lifted item"));
+    }, [], 'Put down lifted item'));
   }
 
   click(blob: Blob) {

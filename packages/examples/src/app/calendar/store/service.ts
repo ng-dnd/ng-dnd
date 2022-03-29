@@ -1,7 +1,7 @@
-import { Injectable } from "@angular/core";
-import { Store, createFeatureSelector, select } from "@ngrx/store";
-import { State } from "app/reducers";
-import { CalendarState } from "./calendar.reducer";
+import { Injectable } from '@angular/core';
+import { Store, createFeatureSelector, select } from '@ngrx/store';
+import { State } from 'app/reducers';
+import { CalendarState } from './calendar.reducer';
 
 @Injectable()
 export class CalendarService {

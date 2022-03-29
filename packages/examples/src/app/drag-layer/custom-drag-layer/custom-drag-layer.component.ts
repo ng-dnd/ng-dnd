@@ -1,6 +1,6 @@
 import { Component, OnInit, OnDestroy, ChangeDetectionStrategy } from '@angular/core';
 import { snapToGrid } from './snapToGrid';
-import { DndService } from "@ng-dnd/core";
+import { DndService } from '@ng-dnd/core';
 import { filter, map } from 'rxjs/operators';
 
 interface Offset { x: number; y: number; }

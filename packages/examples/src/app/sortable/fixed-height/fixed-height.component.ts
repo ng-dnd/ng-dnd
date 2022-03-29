@@ -1,6 +1,6 @@
-import { Component } from "@angular/core";
+import { Component } from '@angular/core';
 import * as faker from 'faker';
-import { SortableSpec, DraggedItem } from "@ng-dnd/sortable";
+import { SortableSpec, DraggedItem } from '@ng-dnd/sortable';
 
 interface SimpleData {
   id: number;
@@ -28,7 +28,7 @@ export class FixedHeightComponent {
   tempList: SimpleData[] = this.list;
 
   simpleSpec: SortableSpec<SimpleData> = {
-    type: "FIXER",
+    type: 'FIXER',
     // trackBy is required
     trackBy: x => x.id,
     hover: item => {

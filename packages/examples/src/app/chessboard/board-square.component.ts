@@ -1,8 +1,8 @@
-import { Component, Input, OnDestroy } from "@angular/core";
+import { Component, Input, OnDestroy } from '@angular/core';
 import { Coord } from './coord';
-import { GameService } from "./game.service";
-import { DndService } from "@ng-dnd/core";
-import { ItemTypes } from "./constants";
+import { GameService } from './game.service';
+import { DndService } from '@ng-dnd/core';
+import { ItemTypes } from './constants';
 import { map } from 'rxjs/operators';
 
 @Component({
@@ -51,7 +51,7 @@ export class BoardSquareComponent implements OnDestroy {
 
   overlayStyle$ = this.collected$.pipe(map(coll => {
     const { canDrop, isOver } = coll;
-    let bg = "rgba(0,0,0,0)";
+    let bg = 'rgba(0,0,0,0)';
     if (canDrop && isOver) {
       bg = 'green';
     } else if (canDrop && !isOver) {

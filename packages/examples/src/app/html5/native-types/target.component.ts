@@ -1,6 +1,6 @@
-import { Component, Input, OnDestroy } from "@angular/core";
-import { DndService } from "@ng-dnd/core";
-import { NativeTypes } from "react-dnd-html5-backend";
+import { Component, Input, OnDestroy } from '@angular/core';
+import { DndService } from '@ng-dnd/core';
+import { NativeTypes } from 'react-dnd-html5-backend';
 
 interface NativeUrl {
   urls: string[];

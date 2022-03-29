@@ -1,8 +1,8 @@
-import { Component } from "@angular/core";
-import { Colors } from "./colors";
+import { Component } from '@angular/core';
+import { Colors } from './colors';
 
 @Component({
-  selector: "app-sources",
+  selector: 'app-sources',
   template: `
     <app-example-link path="nested/sources"></app-example-link>
     <div class="nested-sources-wrapper">

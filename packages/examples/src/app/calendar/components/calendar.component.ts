@@ -1,10 +1,10 @@
-import { Component, OnInit, ChangeDetectionStrategy } from "@angular/core";
-import { Store, select } from "@ngrx/store";
-import { CalendarState } from "app/calendar/store/calendar.reducer";
-import { weeksSelector } from "../store/selectors";
-import { Week } from "app/calendar/week";
-import { Moment } from "moment-mini-ts";
-import { ResetCalendar } from "../store/calendar.actions";
+import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
+import { Store, select } from '@ngrx/store';
+import { CalendarState } from 'app/calendar/store/calendar.reducer';
+import { weeksSelector } from '../store/selectors';
+import { Week } from 'app/calendar/week';
+import { Moment } from 'moment-mini-ts';
+import { ResetCalendar } from '../store/calendar.actions';
 
 @Component({
   selector: 'cal-calendar',

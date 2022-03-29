@@ -17,7 +17,7 @@ const dayOne = moment().startOf('month');
 export const CalendarStateRecord = Record({
   events: List([
     CalendarEvent.standard(`Meeting with ${faker.name.findName()}`, dayOne.clone().add({ days: 3, hours: 13 }).toDate()),
-    CalendarEvent.allDay("Conference in Berlin", dayOne.clone().add({ days: 7 }).toDate(), dayOne.clone().add({ days: 11 }).toDate()),
+    CalendarEvent.allDay('Conference in Berlin', dayOne.clone().add({ days: 7 }).toDate(), dayOne.clone().add({ days: 11 }).toDate()),
   ]),
   startDate: dayOne,
   inFlight: null as CalendarEvent,

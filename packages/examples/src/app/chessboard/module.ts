@@ -1,9 +1,9 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
-import { DndModule } from "@ng-dnd/core";
+import { DndModule } from '@ng-dnd/core';
 import { GameService } from './game.service';
-import { UtilityModule } from "@app/utility.module";
+import { UtilityModule } from '@app/utility.module';
 
 import { KnightComponent } from './knight.component';
 import { SquareComponent } from './square.component';

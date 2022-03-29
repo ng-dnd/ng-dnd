@@ -1,5 +1,5 @@
 import { Component, Input, Output, EventEmitter, OnInit, OnDestroy } from '@angular/core';
-import { DndService } from "@ng-dnd/core";
+import { DndService } from '@ng-dnd/core';
 import { getEmptyImage } from 'react-dnd-html5-backend';
 import { ChangeDetectionStrategy } from '@angular/core';
 import { Spot } from '../spot';

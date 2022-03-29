@@ -1,17 +1,17 @@
-import { createSelector, createFeatureSelector } from "@ngrx/store";
+import { createSelector, createFeatureSelector } from '@ngrx/store';
 
-import { DraggedItem, SortableAction, SortableEvents } from "@ng-dnd/sortable";
+import { DraggedItem, SortableAction, SortableEvents } from '@ng-dnd/sortable';
 
 // our list operations
 import { KanbanList, KanbanBoard, initialBoard, insertList, removeList, insertCard, removeCard } from './lists';
-import { Card } from "./card";
+import { Card } from './card';
 
 export enum ActionTypes {
-  SortList = "[Kanban] SortList",
-  SortCard = "[Kanban] SortCard",
-  AddCard = "[Kanban] AddCard",
-  RemoveCard = "[Kanban] RemoveCard",
-  Spill = "[Kanban] Spill",
+  SortList = '[Kanban] SortList',
+  SortCard = '[Kanban] SortCard',
+  AddCard = '[Kanban] AddCard',
+  RemoveCard = '[Kanban] RemoveCard',
+  Spill = '[Kanban] Spill',
 }
 
 // Define an action for each of the sortables your reducer will be handling
@@ -71,7 +71,7 @@ const resetDrag = (state: BoardState): BoardState => ({
   spilledCard: false
 });
 
-export const CARD_ID_WHEN_COPYING = Symbol("CLONED_CARD") as any;
+export const CARD_ID_WHEN_COPYING = Symbol('CLONED_CARD') as any;
 const cloneCard = (card: Card, nextId: any) => ({ ...card, id: nextId });
 
 // -  When you're not copying, draggingBoard holds 'board - cardInFlight.data',

@@ -1,6 +1,6 @@
-import { Component } from "@angular/core";
+import { Component } from '@angular/core';
 import * as faker from 'faker';
-import { SortableSpec, DraggedItem } from "@ng-dnd/sortable";
+import { SortableSpec, DraggedItem } from '@ng-dnd/sortable';
 
 interface SimpleData {
   id: number;
@@ -39,11 +39,11 @@ export class SimpleComponent {
   }
 
   simpleSpec: SortableSpec<SimpleData> = {
-    type: "PRIORITY",
+    type: 'PRIORITY',
     // trackBy is required
     trackBy: x => x.id,
     hover: item => {
-      this.tempList = this.move(item)
+      this.tempList = this.move(item);
     },
     drop: item => { // save the changes
       this.tempList = this.list = this.move(item);

@@ -4,12 +4,12 @@ import { Blob } from './blob';
 import * as faker from 'faker';
 
 export enum ActionTypes {
-  SORT = "[simple-ngrx] SORT",
-  KB_SELECT = "[simple-ngrx] KB_SELECT",
-  KB_LIFT = "[simple-ngrx] KB_LIFT",
-  KB_DROP = "[simple-ngrx] KB_DROP",
-  KB_UP = "[simple-ngrx] KB_UP",
-  KB_DOWN = "[simple-ngrx] KB_DOWN",
+  SORT = '[simple-ngrx] SORT',
+  KB_SELECT = '[simple-ngrx] KB_SELECT',
+  KB_LIFT = '[simple-ngrx] KB_LIFT',
+  KB_DROP = '[simple-ngrx] KB_DROP',
+  KB_UP = '[simple-ngrx] KB_UP',
+  KB_DOWN = '[simple-ngrx] KB_DOWN',
 }
 export class SelectBlob {
   readonly type = ActionTypes.KB_SELECT;
@@ -36,7 +36,7 @@ export type Actions =
   | MoveSelectedUp
   | MoveSelectedDown;
 
-const fake = () => faker.fake("/home/mezcal/{{system.fileName}}");
+const fake = () => faker.fake('/home/mezcal/{{system.fileName}}');
 
 export class State extends Record({
   list: List(Array.from(new Array(6), fake).map(Blob.create)),

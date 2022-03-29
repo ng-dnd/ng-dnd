@@ -1,5 +1,5 @@
-import { Component, Input, OnChanges, OnDestroy } from "@angular/core";
-import { DndService } from "@ng-dnd/core";
+import { Component, Input, OnChanges, OnDestroy } from '@angular/core';
+import { DndService } from '@ng-dnd/core';
 
 @Component({
   selector: 'app-trash-pile',
@@ -9,7 +9,7 @@ import { DndService } from "@ng-dnd/core";
         <button (click)="litter($event)">add more</button> <span>({{ remain }} left)</span>
       </p>
       <div [dragSource]="trashSource" [class.dragging]="c.isDragging && remain > 1">
-        <app-trash [type]="type" [empty]="remain == 0 || c.isDragging && remain == 1"> </app-trash>
+        <app-trash [type]="type" [empty]="remain === 0 || c.isDragging && remain === 1"></app-trash>
       </div>
     </ng-container>
   `,

@@ -1,8 +1,8 @@
-import { Component, ChangeDetectionStrategy } from "@angular/core";
-import { Store, createSelector } from "@ngrx/store";
-import { State } from "app/reducers";
-import { NextMonth, PrevMonth } from "app/calendar/store/calendar.actions";
-import { startDateSelector } from "../store/selectors";
+import { Component, ChangeDetectionStrategy } from '@angular/core';
+import { Store, createSelector } from '@ngrx/store';
+import { State } from 'app/reducers';
+import { NextMonth, PrevMonth } from 'app/calendar/store/calendar.actions';
+import { startDateSelector } from '../store/selectors';
 
 const monthSelector = createSelector(
   startDateSelector,
@@ -12,7 +12,7 @@ const monthSelector = createSelector(
 );
 
 @Component({
-  selector: "cal-container",
+  selector: 'cal-container',
   changeDetection: ChangeDetectionStrategy.OnPush,
   templateUrl: './container.component.html',
   styleUrls: ['./container.component.scss']

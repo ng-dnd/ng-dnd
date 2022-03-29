@@ -7,7 +7,7 @@ import {
   TemplateRef,
   ViewContainerRef,
   OnInit
-} from "@angular/core";
+} from '@angular/core';
 
 export class NgLetContext {
   $implicit: any = null;
@@ -15,7 +15,7 @@ export class NgLetContext {
 }
 
 @Directive({
-  selector: "[ngLet]"
+  selector: '[ngLet]'
 })
 export class NgLetDirective implements OnInit {
   private _context = new NgLetContext();

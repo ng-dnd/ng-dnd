@@ -9,7 +9,7 @@ import {
   AfterViewInit
 } from '@angular/core';
 import { snapToGrid } from './snapToGrid';
-import { DndService, Offset } from "@ng-dnd/core";
+import { DndService, Offset } from '@ng-dnd/core';
 import { filter, map } from 'rxjs/operators';
 import { Spot } from '../spot';
 import { Rect, alongEdge, plus, minus, clone, fmap } from '../vectors';

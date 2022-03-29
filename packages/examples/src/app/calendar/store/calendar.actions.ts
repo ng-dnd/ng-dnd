@@ -41,7 +41,7 @@ export class HoverNewEvent implements Action {
 
 export class DropNewEvent implements Action {
   readonly type = CalendarActionTypes.DropNewEvent;
-  constructor(public start: Date, public end: Date, public title = "New Event") { }
+  constructor(public start: Date, public end: Date, public title = 'New Event') { }
 }
 
 export class ResetCalendar implements Action {

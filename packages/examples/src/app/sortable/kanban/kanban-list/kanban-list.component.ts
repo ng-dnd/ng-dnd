@@ -6,17 +6,17 @@ import {
   ChangeDetectionStrategy,
   Optional,
   OnInit,
-} from "@angular/core";
-import { DndSortableRenderer } from "@ng-dnd/sortable";
-import { Card } from "../card";
-import { KanbanList } from "../lists";
+} from '@angular/core';
+import { DndSortableRenderer } from '@ng-dnd/sortable';
+import { Card } from '../card';
+import { KanbanList } from '../lists';
 import { SortableSpecService } from '../specs';
 
 @Component({
-  selector: "kanban-list",
-  templateUrl: "./kanban-list.component.html",
+  selector: 'kanban-list',
+  templateUrl: './kanban-list.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  styleUrls: ["./kanban-list.component.scss"]
+  styleUrls: ['./kanban-list.component.scss']
 })
 export class KanbanListComponent implements OnInit {
   @Input() list: KanbanList;

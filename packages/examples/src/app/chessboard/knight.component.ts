@@ -1,5 +1,5 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { DndService } from "@ng-dnd/core";
+import { DndService } from '@ng-dnd/core';
 import { ItemTypes } from './constants';
 import { horseImage } from './horseImage';
 

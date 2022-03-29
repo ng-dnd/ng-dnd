@@ -1,6 +1,6 @@
-import { Component } from "@angular/core";
-import { DndService } from "@ng-dnd/core";
-import { ItemTypes } from "./item-types";
+import { Component } from '@angular/core';
+import { DndService } from '@ng-dnd/core';
+import { ItemTypes } from './item-types';
 
 @Component({
   selector: 'de-copy-target',

@@ -26,7 +26,7 @@ export class CalendarEvent extends Record({
   isAllDay: false,
   start: new Date(),
   end: new Date(),
-  title: "New Event",
+  title: 'New Event',
 }) {
   static standard(title: string, start: Date) {
     const _1pm = new Date(start.getTime());
@@ -87,6 +87,7 @@ export class CalendarEvent extends Record({
   }
 
   applyDiff(diff: Diff) {
+    // eslint-disable-next-line @typescript-eslint/no-this-alias
     let neu = this;
     if (diff.distance || diff.start) {
       neu = neu.update('start', start => moment(start).add({ days: diff.distance + diff.start }).toDate());

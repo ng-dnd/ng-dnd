@@ -1,5 +1,5 @@
-import { Component } from "@angular/core";
-import { NativeTypes } from "react-dnd-html5-backend";
+import { Component } from '@angular/core';
+import { NativeTypes } from 'react-dnd-html5-backend';
 
 @Component({
   selector: 'native-container',

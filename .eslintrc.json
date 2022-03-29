@@ -12,7 +12,8 @@
       "parserOptions": {
         "project": [
           "tsconfig.json",
-          "tools/tsconfig.json"
+          "tools/tsconfig.json",
+          "packages/*/tsconfig.json"
         ],
         "createDefaultProgram": true
       },
@@ -64,7 +65,9 @@
         "@typescript-eslint/no-inferrable-types": "off",
         "@typescript-eslint/no-non-null-assertion": "off",
         "@typescript-eslint/no-unused-vars": "off",
-        "@typescript-eslint/triple-slash-reference": "off"
+        "@typescript-eslint/triple-slash-reference": "off",
+        "@angular-eslint/no-empty-lifecycle-method": "off",
+        "@angular-eslint/no-host-metadata-property": "off"
       }
     },
     {

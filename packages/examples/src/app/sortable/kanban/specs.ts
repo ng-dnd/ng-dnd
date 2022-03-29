@@ -1,10 +1,10 @@
-import { Injectable, OnDestroy } from "@angular/core";
-import { NgRxSortable } from "@ng-dnd/sortable";
+import { Injectable, OnDestroy } from '@angular/core';
+import { NgRxSortable } from '@ng-dnd/sortable';
 import { KanbanList } from './lists';
-import { Card } from "./card";
-import { ItemTypes } from "./item-types";
+import { Card } from './card';
+import { ItemTypes } from './item-types';
 import { Store, select } from '@ngrx/store';
-import { ActionTypes, _render, _listById, _isCopying, CARD_ID_WHEN_COPYING } from "./store";
+import { ActionTypes, _render, _listById, _isCopying, CARD_ID_WHEN_COPYING } from './store';
 import { filter } from 'rxjs/operators';
 
 @Injectable()

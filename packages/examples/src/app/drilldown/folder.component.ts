@@ -1,7 +1,7 @@
 import { Component, Input, ChangeDetectionStrategy, NgZone, OnInit, OnDestroy } from '@angular/core';
 import { ItemTypes } from './itemTypes';
 import { TreeService } from './tree.service';
-import { DndService } from "@ng-dnd/core";
+import { DndService } from '@ng-dnd/core';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { activatorDropTarget } from './activatorDropTarget';

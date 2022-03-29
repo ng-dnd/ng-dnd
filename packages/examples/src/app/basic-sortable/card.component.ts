@@ -9,8 +9,8 @@ import {
   ChangeDetectionStrategy,
   OnDestroy,
   Directive
-} from "@angular/core";
-import { DndService } from "@ng-dnd/core";
+} from '@angular/core';
+import { DndService } from '@ng-dnd/core';
 
 interface Card {
   id: number;
@@ -23,12 +23,12 @@ interface DraggingCard {
 }
 
 @Directive({
-  selector: "[cardInner]"
+  selector: '[cardInner]'
 })
 export class CardInnerDirective { }
 
 @Component({
-  selector: "app-card",
+  selector: 'app-card',
   template: `
     <div class="card"
          [dropTarget]="cardTarget"
@@ -67,7 +67,7 @@ export class CardComponent implements OnDestroy {
   @Input() id: number;
   @Input() text: string;
 
-  cardSource = this.dnd.dragSource<DraggingCard>("CARD", {
+  cardSource = this.dnd.dragSource<DraggingCard>('CARD', {
     beginDrag: () => {
       this.beginDrag.emit();
       return {
@@ -81,7 +81,7 @@ export class CardComponent implements OnDestroy {
     }
   });
 
-  cardTarget = this.dnd.dropTarget<DraggingCard>("CARD", {
+  cardTarget = this.dnd.dropTarget<DraggingCard>('CARD', {
     hover: monitor => {
       const dragIndex = monitor.getItem().index;
       const hoverIndex = this.index;

@@ -1,4 +1,4 @@
-import { Offset } from "@ng-dnd/core";
+import { Offset } from '@ng-dnd/core';
 
 export type Rect = Offset & { width: number; height: number };
 
@@ -18,7 +18,7 @@ export function clone(a: Offset): Offset {
   return Object.assign({}, a);
 }
 export function fmap(f: (number) => number, a: Offset): Offset {
-  return { x: f(a.x), y: f(a.y) }
+  return { x: f(a.x), y: f(a.y) };
 }
 
 export function alongEdge(width: number, height: number, x: number, y: number): Offset {

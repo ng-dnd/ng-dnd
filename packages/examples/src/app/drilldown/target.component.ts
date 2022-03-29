@@ -1,5 +1,5 @@
 import { Input, Component, OnDestroy } from '@angular/core';
-import { DndService } from "@ng-dnd/core";
+import { DndService } from '@ng-dnd/core';
 import { ItemTypes } from './itemTypes';
 
 @Component({

@@ -1,9 +1,9 @@
-import { Component, Input, Output, EventEmitter, OnChanges } from "@angular/core";
-import { FormControl, FormGroup } from "@angular/forms";
+import { Component, Input, Output, EventEmitter, OnChanges } from '@angular/core';
+import { FormControl, FormGroup } from '@angular/forms';
 import { MathQuestion } from './Question';
 
 @Component({
-  selector: "app-math-form",
+  selector: 'app-math-form',
   template: `
     <form [formGroup]="form" (ngSubmit)="onSubmit()" >
       <div>
@@ -40,8 +40,8 @@ export class MathFormComponent implements OnChanges {
   onSubmit() {
     this.edit.emit(new MathQuestion(
       this.data.id,
-      this.form.get("question").value as string,
-      this.form.get("answer").value as number
+      this.form.get('question').value as string,
+      this.form.get('answer').value as number
     ));
   }
 }

@@ -5,11 +5,6 @@
       "files": [
         "*.ts"
       ],
-      "parserOptions": {
-        "project": [
-          "tsconfig.json"
-        ]
-      },
       "rules": {
         "@angular-eslint/component-selector": [
           "error",

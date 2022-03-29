@@ -1,5 +1,5 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { DndService } from "@ng-dnd/core";
+import { DndService } from '@ng-dnd/core';
 import { ItemTypes } from './item-types';
 
 @Component({
@@ -34,7 +34,7 @@ export class CustomPreviewComponent implements OnInit, OnDestroy {
   ngOnInit() {
     const img = new Image();
     img.onload = () => {
-      console.log("connecting image");
+      console.log('connecting image');
       this.source.connectDragPreview(img);
     };
     // img.src = "https://angular.io/assets/images/logos/angular/angular.png";

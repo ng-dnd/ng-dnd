@@ -1,6 +1,6 @@
-import { DropTargetSpec, DndService } from "@ng-dnd/core";
-import { Observable, Subject } from "rxjs";
-import { delay, distinctUntilChanged, filter, switchMapTo, take, takeUntil } from "rxjs/operators";
+import { DropTargetSpec, DndService } from '@ng-dnd/core';
+import { Observable, Subject } from 'rxjs';
+import { delay, distinctUntilChanged, filter, switchMapTo, take, takeUntil } from 'rxjs/operators';
 
 type Types = string | symbol | (string | symbol)[];
 

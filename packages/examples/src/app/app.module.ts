@@ -28,7 +28,7 @@ import { reducers, metaReducers } from './reducers';
 // import { environment } from '../environments/environment';
 import { EffectsModule } from '@ngrx/effects';
 import { AppEffects } from './app.effects';
-import { DndModule } from "@ng-dnd/core";
+import { DndModule } from '@ng-dnd/core';
 import { routes } from './routes';
 import { HotkeyModule } from 'angular2-hotkeys';
 

@@ -1,8 +1,8 @@
-import { Component, Input } from "@angular/core";
+import { Component, Input } from '@angular/core';
 import { Card } from '../specs';
 
 @Component({
-  selector: "kanban-card",
+  selector: 'kanban-card',
   template: `
     <div class="card"
         [class.card--preview]="preview"

@@ -1,5 +1,5 @@
-import * as faker from "faker";
-import { Card, Cards } from "./card";
+import * as faker from 'faker';
+import { Card, Cards } from './card';
 
 export interface KanbanList {
   id: number;
@@ -63,21 +63,21 @@ export function insertCard(board: KanbanBoard, card: Card, listId: number, index
 export const initialBoard: KanbanBoard = [
   {
     id: 0,
-    title: "To Do",
+    title: 'To Do',
     cards: [
       { id: 1, title: faker.lorem.sentence() },
       { id: 2, title: faker.lorem.sentence() },
       { id: 3, title: faker.lorem.sentence() },
       { id: 4, title: faker.lorem.sentence() },
       {
-        id: 5, title: "This card is a bigger than the other ones. "
-          + faker.lorem.sentence() + " " + faker.lorem.sentence()
+        id: 5, title: 'This card is a bigger than the other ones. '
+          + faker.lorem.sentence() + ' ' + faker.lorem.sentence()
       }
     ]
   },
   {
     id: 1,
-    title: "Doing",
+    title: 'Doing',
     cards: [
       { id: 6, title: faker.company.bs() },
       { id: 7, title: faker.company.bs() },
@@ -88,7 +88,7 @@ export const initialBoard: KanbanBoard = [
   },
   {
     id: 2,
-    title: "Done",
+    title: 'Done',
     cards: [
       { id: 11, title: faker.name.jobTitle() },
       { id: 12, title: faker.name.jobTitle() },

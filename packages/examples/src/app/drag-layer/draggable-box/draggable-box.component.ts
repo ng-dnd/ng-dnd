@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component, Input, OnDestroy, OnInit } from '@angular/core';
-import { DndService } from "@ng-dnd/core";
+import { DndService } from '@ng-dnd/core';
 import { getEmptyImage } from 'react-dnd-html5-backend';
 import { BoxWithLocation } from '../BoxWithLocation';
 

@@ -1,6 +1,6 @@
-import { Record } from "immutable";
-import * as moment from "moment-mini-ts";
-import { Moment } from "moment-mini-ts";
+import { Record } from 'immutable';
+import * as moment from 'moment-mini-ts';
+import { Moment } from 'moment-mini-ts';
 
 let uniqueId = 1;
 

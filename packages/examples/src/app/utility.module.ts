@@ -1,6 +1,6 @@
-import { NgModule } from "@angular/core";
-import { ExampleLinkComponent } from "./example-link.component";
-import { NgLetDirective } from "./utility/ngLet.directive";
+import { NgModule } from '@angular/core';
+import { ExampleLinkComponent } from './example-link.component';
+import { NgLetDirective } from './utility/ngLet.directive';
 
 const both = [ExampleLinkComponent, NgLetDirective];
 

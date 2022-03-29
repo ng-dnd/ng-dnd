@@ -1,8 +1,8 @@
-import { Component } from "@angular/core";
-import { GameService } from "./game.service";
+import { Component } from '@angular/core';
+import { GameService } from './game.service';
 
 @Component({
-  selector: "app-board",
+  selector: 'app-board',
   template: `
     <div class="board">
       <ng-container *ngIf="knightPosition$|async as kp">

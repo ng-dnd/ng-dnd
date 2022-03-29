@@ -1,5 +1,5 @@
 import { Component, Input, Output, EventEmitter, OnDestroy } from '@angular/core';
-import { DndService, Offset } from "@ng-dnd/core";
+import { DndService, Offset } from '@ng-dnd/core';
 import { snapToGrid } from '../custom-drag-layer/snapToGrid';
 import { Spot } from '../spot';
 

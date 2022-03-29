@@ -1,6 +1,6 @@
-import { Component, Output, EventEmitter, Input } from "@angular/core";
-import { DndService } from "@ng-dnd/core";
-import { ItemTypes } from "./item-types";
+import { Component, Output, EventEmitter, Input } from '@angular/core';
+import { DndService } from '@ng-dnd/core';
+import { ItemTypes } from './item-types';
 
 interface DropResult {
   dropEffect?: 'copy' | 'move' | 'link' | 'none';

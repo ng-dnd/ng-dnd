@@ -1,11 +1,11 @@
-import { Component, Input, ChangeDetectionStrategy } from "@angular/core";
-import { CalendarEvent } from "../event";
-import { DndService, DragSourceSpec } from "@ng-dnd/core";
-import { Store, createSelector } from "@ngrx/store";
-import { State } from "app/reducers";
-import { ItemTypes } from "../item-types";
-import { BeginDragExistingEvent, EndDragExistingEvent } from "../store/calendar.actions";
-import { combineLatest } from "rxjs";
+import { Component, Input, ChangeDetectionStrategy } from '@angular/core';
+import { CalendarEvent } from '../event';
+import { DndService, DragSourceSpec } from '@ng-dnd/core';
+import { Store, createSelector } from '@ngrx/store';
+import { State } from 'app/reducers';
+import { ItemTypes } from '../item-types';
+import { BeginDragExistingEvent, EndDragExistingEvent } from '../store/calendar.actions';
+import { combineLatest } from 'rxjs';
 
 @Component({
   selector: 'cal-event',

@@ -1,12 +1,12 @@
-import { Component } from "@angular/core";
-import { DraggedItem } from "@ng-dnd/sortable";
-import { ItemTypes } from "../item-types";
+import { Component } from '@angular/core';
+import { DraggedItem } from '@ng-dnd/sortable';
+import { ItemTypes } from '../item-types';
 import { SortableSpecService, Card } from '../specs';
 
 @Component({
-  selector: "kanban-board",
-  templateUrl: "./kanban-board.component.html",
-  styleUrls: ["./kanban-board.component.scss"]
+  selector: 'kanban-board',
+  templateUrl: './kanban-board.component.html',
+  styleUrls: ['./kanban-board.component.scss']
 })
 export class KanbanBoardComponent {
   ItemTypes = ItemTypes;

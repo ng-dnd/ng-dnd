@@ -1,7 +1,7 @@
-import { Injectable } from "@angular/core";
-import { publishReplay, refCount, map, scan, startWith } from "rxjs/operators";
-import { distinctUntilChanged } from "rxjs/operators";
-import { BehaviorSubject } from "rxjs";
+import { Injectable } from '@angular/core';
+import { publishReplay, refCount, map, scan, startWith } from 'rxjs/operators';
+import { distinctUntilChanged } from 'rxjs/operators';
+import { BehaviorSubject } from 'rxjs';
 
 interface Node {
   [k: string]: Node;
@@ -18,11 +18,11 @@ interface Shape {
   lastDrop?: string[];
 }
 
-const BEGIN_DRAG = "BEGIN_DRAG";
-const END_DRAG = "END_DRAG";
-const OPEN_TRANSIENT = "OPEN_TRANSIENT";
-const DROP = "DROP";
-const TOGGLE = "TOGGLE";
+const BEGIN_DRAG = 'BEGIN_DRAG';
+const END_DRAG = 'END_DRAG';
+const OPEN_TRANSIENT = 'OPEN_TRANSIENT';
+const DROP = 'DROP';
+const TOGGLE = 'TOGGLE';
 
 class BeginDrag {
   readonly type = BEGIN_DRAG;
@@ -63,18 +63,18 @@ const initialState: Shape = {
       }
     },
     Magnanimous: {
-      'Jalapeño': {
+      Jalapeño: {
         Poppers: {}
       },
-      'Jalapeño2': {
+      Jalapeño2: {
         Poppers3: {}
       }
     },
     Byzantine: {
-      'Fault': {
+      Fault: {
         Tolerance: {}
       },
-      'Armadillo': {
+      Armadillo: {
         Farming: {}
       }
     }
@@ -106,12 +106,12 @@ export class TreeService {
   }
 
   static makeKey(keys: string[]) {
-    return keys.join(".");
+    return keys.join('.');
   }
 
   static toggleSingle(set: OpenSet, keys: string[]): OpenSet {
     const key = TreeService.makeKey(keys);
-    const neu = Object.assign({}, set, { [key]: !!!set[key] });
+    const neu = Object.assign({}, set, { [key]: !set[key] });
     return neu;
   }
 

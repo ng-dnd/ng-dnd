@@ -1,16 +1,16 @@
-import { Component, ChangeDetectionStrategy } from "@angular/core";
-import { DraggedItem } from "@ng-dnd/sortable";
-import { Card } from "../card";
-import { ItemTypes } from "../item-types";
-import { AddCard, RemoveCard } from "../store";
+import { Component, ChangeDetectionStrategy } from '@angular/core';
+import { DraggedItem } from '@ng-dnd/sortable';
+import { Card } from '../card';
+import { ItemTypes } from '../item-types';
+import { AddCard, RemoveCard } from '../store';
 import { Store } from '@ngrx/store';
 import { SortableSpecService } from '../specs';
 
 @Component({
-  selector: "kanban-board",
+  selector: 'kanban-board',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  templateUrl: "./kanban-board.component.html",
-  styleUrls: ["./kanban-board.component.scss"]
+  templateUrl: './kanban-board.component.html',
+  styleUrls: ['./kanban-board.component.scss']
 })
 export class KanbanBoardComponent {
   ItemTypes = ItemTypes;

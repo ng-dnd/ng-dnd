@@ -1,8 +1,8 @@
-import { Component, EventEmitter, ChangeDetectionStrategy } from "@angular/core";
-import { DndService } from "@ng-dnd/core";
-import { ItemTypes } from "./item-types";
-import { DraggedItem } from "@ng-dnd/sortable";
-import { Output } from "@angular/core";
+import { Component, EventEmitter, ChangeDetectionStrategy } from '@angular/core';
+import { DndService } from '@ng-dnd/core';
+import { ItemTypes } from './item-types';
+import { DraggedItem } from '@ng-dnd/sortable';
+import { Output } from '@angular/core';
 import { Card } from './card';
 
 @Component({

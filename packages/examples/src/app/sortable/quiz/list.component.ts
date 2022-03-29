@@ -1,6 +1,6 @@
-import { Component, OnDestroy } from "@angular/core";
+import { Component, OnDestroy } from '@angular/core';
 import { DndService } from '@ng-dnd/core';
-import { SortableSpec, DraggedItem, spillTarget } from "@ng-dnd/sortable";
+import { SortableSpec, DraggedItem, spillTarget } from '@ng-dnd/sortable';
 import { Question, MathQuestion, NameQuestion } from './Question';
 import { produce } from 'immer';
 
@@ -34,7 +34,7 @@ export class ListComponent implements OnDestroy {
   tempList: Question[] = this.list;
 
   spec: SortableSpec<Question> = {
-    type: "QUIZ_QUESTION",
+    type: 'QUIZ_QUESTION',
     trackBy: x => x.id,
     hover: item => {
       this.tempList = this.move(item);

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { DndService } from "@ng-dnd/core";
+import { DndService } from '@ng-dnd/core';
 
 @Component({
   selector: 'app-test',

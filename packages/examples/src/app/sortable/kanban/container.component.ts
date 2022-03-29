@@ -1,6 +1,6 @@
 import { AfterViewInit, Component, ElementRef, OnDestroy } from '@angular/core';
-import { DndService } from "@ng-dnd/core";
-import { spillTarget } from "@ng-dnd/sortable";
+import { DndService } from '@ng-dnd/core';
+import { spillTarget } from '@ng-dnd/sortable';
 import { ItemTypes } from './item-types';
 import { Store } from '@ngrx/store';
 import { Spill } from './store';

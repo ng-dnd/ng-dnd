@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
-import { DndModule } from "@ng-dnd/core";
+import { DndModule } from '@ng-dnd/core';
 import { CustomDragLayerComponent } from './custom-drag-layer/custom-drag-layer.component';
 import { DraggableBoxComponent } from './draggable-box/draggable-box.component';
 import { DragContainerComponent } from './drag-container/drag-container.component';

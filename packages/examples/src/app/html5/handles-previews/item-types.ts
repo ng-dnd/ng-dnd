@@ -1,3 +1,3 @@
 export const ItemTypes = {
-  BOX: "NESTED_SOURCES_BOX",
+  BOX: 'NESTED_SOURCES_BOX',
 };

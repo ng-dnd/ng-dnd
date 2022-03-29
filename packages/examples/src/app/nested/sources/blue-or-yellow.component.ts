@@ -1,5 +1,5 @@
 import { Input, Component, OnDestroy } from '@angular/core';
-import { DndService } from "@ng-dnd/core";
+import { DndService } from '@ng-dnd/core';
 import { Colors } from './colors';
 
 @Component({
@@ -28,7 +28,7 @@ export class BlueOrYellowComponent implements OnDestroy {
   Colors = Colors;
 
   backgroundColor: string;
-  @Input('color') set color(c: string) {
+  @Input() set color(c: string) {
 
     this.source.setType(c);
 
