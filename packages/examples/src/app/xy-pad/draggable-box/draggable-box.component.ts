@@ -13,7 +13,7 @@ import { Spot } from '../spot';
       </div>
       <div class="fullsize"></div>
     </div>
-    <xy-crosshairs *ngIf="!(isDragging$|async)" [x]="spot.x" [y]="spot.y"> </xy-crosshairs>
+    <xy-crosshairs *ngIf="(isDragging$|async)!==true" [x]="spot.x" [y]="spot.y"> </xy-crosshairs>
   `,
   styles: [`
     .root {

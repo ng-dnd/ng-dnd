@@ -24,7 +24,7 @@ import { TreeService } from './tree.service';
     }
   `]
 })
-export class Container {
+export class ContainerComponent {
   lastDrop$ = this.tree.select(s => s.lastDrop);
 
   constructor(private tree: TreeService) { }

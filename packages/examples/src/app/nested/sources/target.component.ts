@@ -8,7 +8,7 @@ import { map } from 'rxjs/operators';
   template: `
     <div [dropTarget]="target" class="box" [class.fade]="fade$|async" [style.background-color]="draggingColor$|async" >
       <p>Drop here.</p>
-      <ng-container *ngIf="!(canDrop$|async) && lastDroppedColor != null">
+      <ng-container *ngIf="(canDrop$|async)!==true && !!lastDroppedColor">
         <p [style.background-color]="backgroundColor" [style.padding.px]="5">Last dropped: {{ lastDroppedColor }}</p>
       </ng-container>
     </div>

@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { DndModule } from '@ng-dnd/core';
 
-import { Container } from './container.component';
+import { ContainerComponent } from './container.component';
 import { TargetComponent } from './target.component';
 import { BoxComponent } from './box.component';
 import { TreeService } from './tree.service';
@@ -12,7 +12,7 @@ import { UtilityModule } from '../utility.module';
 
 @NgModule({
   declarations: [
-    Container,
+    ContainerComponent,
     TargetComponent,
     BoxComponent,
     FolderComponent
@@ -20,7 +20,7 @@ import { UtilityModule } from '../utility.module';
   imports: [
     CommonModule,
     DndModule,
-    RouterModule.forChild([{ path: '', component: Container }]),
+    RouterModule.forChild([{ path: '', component: ContainerComponent }]),
     UtilityModule
   ],
   providers: [

@@ -7,7 +7,7 @@ import { ItemTypes } from './item-types';
   template: `
     <div [dropTarget]="target" class="target" [class.over]="over$|async">
       <p>Drag one of the above boxes. Hold 'alt' when dragging the default one to make it a copy.</p>
-      <ng-content *ngIf="!(canDrop$|async); else dropHere"></ng-content>
+      <ng-content *ngIf="(canDrop$|async)!==true; else dropHere"></ng-content>
       <ng-template #dropHere>
         <p>Drop here</p>
       </ng-template>
