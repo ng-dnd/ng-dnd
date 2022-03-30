@@ -66,8 +66,14 @@
         "@typescript-eslint/no-non-null-assertion": "off",
         "@typescript-eslint/no-unused-vars": "off",
         "@typescript-eslint/triple-slash-reference": "off",
+        "@angular-eslint/component-class-suffix": "off",
+        "@angular-eslint/directive-class-suffix": "off",
         "@angular-eslint/no-empty-lifecycle-method": "off",
-        "@angular-eslint/no-host-metadata-property": "off"
+        "@angular-eslint/no-host-metadata-property": "off",
+        "@angular-eslint/no-input-rename": "off",
+        "@angular-eslint/no-inputs-metadata-property": "off",
+        "@angular-eslint/no-output-native": "off",
+        "@angular-eslint/no-output-rename": "off"
       }
     },
     {

@@ -18,7 +18,7 @@ import { isEmpty } from '../isEmpty';
   selector: '[dndSortable]',
   exportAs: 'dndSortable'
 })
-export class DndSortable<Data> implements OnInit, OnChanges, OnDestroy, AfterViewInit {
+export class DndSortable<Data> implements OnChanges, OnInit, AfterViewInit, OnDestroy {
   @Input() listId: any = Math.random().toString();
   @Input() horizontal = false;
   @Input() spec!: SortableSpec<Data>;

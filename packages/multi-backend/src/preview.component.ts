@@ -4,7 +4,9 @@ import {
   ContentChild,
   Input,
   Inject,
-  ChangeDetectionStrategy
+  ChangeDetectionStrategy,
+  OnInit,
+  OnDestroy
 } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 import { DndService, DRAG_DROP_MANAGER } from '@ng-dnd/core';
@@ -49,7 +51,7 @@ export interface PreviewTemplateContext {
   `,
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class DndPreviewComponent implements BackendWatcher {
+export class DndPreviewComponent implements BackendWatcher, OnInit, OnDestroy {
   /** Disables the check for whether the current MultiBackend wants the preview enabled */
   @Input() allBackends = false;
 

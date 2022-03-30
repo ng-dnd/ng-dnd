@@ -1,4 +1,4 @@
-import { Directive, Input, ElementRef, OnInit, OnDestroy } from '@angular/core';
+import { Directive, Input, ElementRef, OnInit, OnDestroy, OnChanges, AfterViewInit } from '@angular/core';
 import {
   DndService,
   DragSource, DropTarget, DragSourceMonitor, DropTargetMonitor
@@ -16,7 +16,7 @@ const _scheduleMicroTaskPolyfill: (f: () => void) => any = (
   selector: '[dndSortableRender]',
   exportAs: 'dndSortableRender'
 })
-export class DndSortableRenderer<Data> implements OnInit, OnDestroy {
+export class DndSortableRenderer<Data> implements OnChanges, OnInit, AfterViewInit, OnDestroy {
   @Input('dndSortableRender') context!: RenderContext<Data>;
 
   get data() { return this.context.data; }
@@ -211,6 +211,12 @@ export class DndSortableRenderer<Data> implements OnInit, OnDestroy {
   }
 
   /** @ignore */
+  ngOnChanges() {
+    this.target.setTypes(this.accepts);
+    this.source.setType(this.type);
+  }
+
+  /** @ignore */
   ngOnInit() {
     this.target.setTypes(this.accepts);
     this.source.setType(this.type);
@@ -221,12 +227,6 @@ export class DndSortableRenderer<Data> implements OnInit, OnDestroy {
     if (this.el) {
       this.target.connectDropTarget(this.el.nativeElement);
     }
-  }
-
-  /** @ignore */
-  ngOnChanges() {
-    this.target.setTypes(this.accepts);
-    this.source.setType(this.type);
   }
 
   /** @ignore */

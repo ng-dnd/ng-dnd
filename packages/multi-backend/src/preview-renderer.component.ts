@@ -1,4 +1,4 @@
-import { Component, ChangeDetectionStrategy } from '@angular/core';
+import { Component, ChangeDetectionStrategy, OnDestroy } from '@angular/core';
 import { DndService, Offset } from '@ng-dnd/core';
 import { map } from 'rxjs/operators';
 
@@ -50,7 +50,7 @@ import { map } from 'rxjs/operators';
   ],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class DndPreviewRendererComponent {
+export class DndPreviewRendererComponent implements OnDestroy {
   /** @ignore */
   private layer = this.dnd.dragLayer();
 

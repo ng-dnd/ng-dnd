@@ -12,6 +12,7 @@ import {
   QueryList,
   SimpleChanges,
   ContentChildren,
+  OnInit,
 } from '@angular/core';
 import { DndService } from '@ng-dnd/core';
 import { DndSortableTemplate, TemplateContext } from './template.directive';
@@ -38,7 +39,7 @@ import { DndSortable } from './sortable.directive';
   }]
 })
 export class DndSortableList<Data> extends DndSortable<Data>
-  implements OnDestroy, OnChanges, AfterContentInit, AfterViewInit {
+  implements OnChanges, OnInit, AfterContentInit, AfterViewInit, OnDestroy {
 
   @Input() template?: TemplateRef<TemplateContext<Data>>;
 
@@ -76,6 +77,11 @@ export class DndSortableList<Data> extends DndSortable<Data>
   // forwarding lifecycle events is required until Ivy renderer
 
   /** @ignore */
+  ngOnChanges(changes: SimpleChanges) {
+    super.ngOnChanges(changes);
+  }
+
+  /** @ignore */
   ngOnInit() {
     super.ngOnInit();
   }
@@ -83,11 +89,6 @@ export class DndSortableList<Data> extends DndSortable<Data>
   /** @ignore */
   ngAfterViewInit() {
     super.ngAfterViewInit();
-  }
-
-  /** @ignore */
-  ngOnChanges(changes: SimpleChanges) {
-    super.ngOnChanges(changes);
   }
 
   /** @ignore */
