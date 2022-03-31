@@ -1,3 +1,5 @@
+@use 'sass:color';
+
 :host {
   display: contents;
 }
@@ -23,15 +25,16 @@
 
 $blip-pad: 10px;
 $lighter: lightblue;
-$darker: darken(lightblue, 20);
+$darker: color.adjust(lightblue, $lightness: -20%);
 
 .event:not(.event--allday) {
   padding-left: $blip-pad;
-  &:before {
+
+  &::before {
     position: absolute;
     margin-left: -1 * $blip-pad;
-    top: 0.4em;
-    content: "";
+    top: .4em;
+    content: '';
     display: block;
     width: 8px;
     height: 8px;
@@ -40,25 +43,13 @@ $darker: darken(lightblue, 20);
   }
 }
 
-.event--allday {
-  background-color: hsl(30, 89%, 83%);
-  background-color: $lighter;
-}
-
-.event--drag {
-  background-color: hsl(30, 89%, 58%);
-  background-color: $darker;
-}
-
-.event--pointernone,
-.event--drag {
-  pointer-events: none;
-}
-
 $rad: 8px;
 $mrg: 4px;
 
 .event--allday {
+  background-color: hsl(30deg, 89%, 83%);
+  background-color: $lighter;
+
   &.event--start {
     margin-left: $mrg;
     border-top-left-radius: $rad;
@@ -70,6 +61,16 @@ $mrg: 4px;
     border-top-right-radius: $rad;
     border-bottom-right-radius: $rad;
   }
+}
+
+.event--drag {
+  background-color: hsl(30deg, 89%, 58%);
+  background-color: $darker;
+}
+
+.event--pointernone,
+.event--drag {
+  pointer-events: none;
 }
 
 // handles
@@ -85,6 +86,7 @@ $mrg: 4px;
 .event-handle--left {
   left: -$mrg;
 }
+
 .event-handle--right {
   right: -$mrg;
 }

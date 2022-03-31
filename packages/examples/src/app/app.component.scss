@@ -1,11 +1,8 @@
-:host, .wrapper {
+:host,
+.wrapper {
   min-height: calc(100vh - 50px);
   display: flex;
   flex-direction: column;
-}
-
-header {
-  height: 50px;
 }
 
 .wrapper ::ng-deep router-outlet + * {
@@ -22,10 +19,6 @@ ul {
   padding: 0;
 }
 
-.outer {
-  min-width: 0;
-}
-
 .outer * {
   list-style: none;
 }
@@ -34,61 +27,30 @@ ul {
   margin-bottom: 6px;
 }
 
-.nav-grid {
-  display: flex;
-  flex-wrap: row wrap;
-  justify-content: space-around;
-  & > section:not(:last-child) {
-    margin-right: 40px;
-  }
-}
-
-@supports (grid-template-columns: repeat(auto-fill, minmax(170px, 1fr))) {
-  .nav-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(170px, 1fr));
-    justify-content: initial;
-  }
-  .nav-grid > section:not(:last-child) {
-    margin-right: 0;
-  }
-}
-
-@media screen and (min-width: 1000px) {
-  p.menu {
-    display: none;
-  }
-  .wrapper {
-    flex-direction: row;
-  }
-  .wrapper > *:not(:last-child) {
-    // margin-right: 8px;
-  }
-  .nav-grid { display: block; }
-}
-
 nav li {
-  // display: block;
   min-width: 170px;
   max-width: 240px;
 }
 
 header {
+  height: 50px;
   padding: 8px;
   background: #f0f0f0;
-  background:  hsla(248, 31%, 91%, 1);
+  background: hsla(248deg, 31%, 91%, 1);
   background: #e5e8f5;
 }
 
 .outer {
+  min-width: 0;
   padding: 8px;
   background: #fcfcfc;
-  background:  hsla(249, 20%, 98%, 1);
-  background:  #fbfbfd;
+  background: hsla(249deg, 20%, 98%, 1);
+  background: #fbfbfd;
 }
 
 p.back {
   margin-top: 8px;
+
   a {
     display: inline-block;
     padding: 8px;
@@ -99,6 +61,14 @@ p.back {
 }
 
 .nav-grid {
+  display: flex;
+  flex-wrap: row wrap;
+  justify-content: space-around;
+
+  & > section:not(:last-child) {
+    margin-right: 40px;
+  }
+
   a:link,
   a:visited,
   a:hover,
@@ -106,7 +76,7 @@ p.back {
     text-decoration: none;
     color: black;
     background: #dfdfdf;
-    background:  #e2e4ee;
+    background: #e2e4ee;
     padding: 0 6px;
     border-bottom: 1px solid #ccc;
   }
@@ -132,6 +102,34 @@ p.back {
 
 h2 {
   margin-top: 0 !important;
+}
+
+@supports (grid-template-columns: repeat(auto-fill, minmax(170px, 1fr))) {
+  .nav-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(170px, 1fr));
+    justify-content: initial;
+  }
+
+  .nav-grid > section:not(:last-child) {
+    margin-right: 0;
+  }
+}
+
+@media screen and (min-width: 1000px) {
+  p.menu {
+    display: none;
+  }
+
+  .wrapper {
+    flex-direction: row;
+  }
+
+  .wrapper > *:not(:last-child) {
+    // margin-right: 8px;
+  }
+
+  .nav-grid { display: block; }
 }
 
 @media screen and (max-width: 999px) {

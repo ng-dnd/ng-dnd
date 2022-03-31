@@ -15,16 +15,14 @@
   grid-template-columns: repeat(7, 1fr);
   grid-auto-rows: min-content;
   grid-auto-flow: dense;
-  grid-gap: 2px 0px;
+  grid-gap: 2px 0;
   position: relative;
   min-height: 120px;
-}
-.week--titles {
-  min-height: 0;
+  border-bottom: 1px solid #ddd;
 }
 
-.week {
-  border-bottom: 1px solid #ddd;
+.week--titles {
+  min-height: 0;
 }
 
 :host ::ng-deep {
@@ -32,19 +30,22 @@
     font-size: 14px;
     line-height: 16px;
   }
+
   .day {
     display: contents;
+    min-height: 120px;
   }
 
   .day-label {
-    margin-top: 0.3em;
-    margin-bottom: 0.5em;
+    margin-top: .3em;
+    margin-bottom: .5em;
     grid-row-start: 1;
     text-align: right;
   }
 
   .day-label-lozenge--today {
     $h: (16px + 4px) * 2;
+
     background: red;
     color: white;
     border-radius: $h/2;
@@ -84,6 +85,7 @@
       color: #c3c3ca;
       font-weight: 400;
     }
+
     .day-pad--bg {
       // background: #eee;
     }
@@ -96,21 +98,27 @@
   cal-day:nth-child(1) .day-pad {
     grid-column: 1/2;
   }
+
   cal-day:nth-child(2) .day-pad {
     grid-column: 2/3;
   }
+
   cal-day:nth-child(3) .day-pad {
     grid-column: 3/4;
   }
+
   cal-day:nth-child(4) .day-pad {
     grid-column: 4/5;
   }
+
   cal-day:nth-child(5) .day-pad {
     grid-column: 5/6;
   }
+
   cal-day:nth-child(6) .day-pad {
     grid-column: 6/7;
   }
+
   cal-day:nth-child(7) .day-pad {
     grid-column: 7/8;
   }
@@ -118,27 +126,29 @@
   cal-day:nth-child(1) .event {
     grid-column-start: 1;
   }
+
   cal-day:nth-child(2) .event {
     grid-column-start: 2;
   }
+
   cal-day:nth-child(3) .event {
     grid-column-start: 3;
   }
+
   cal-day:nth-child(4) .event {
     grid-column-start: 4;
   }
+
   cal-day:nth-child(5) .event {
     grid-column-start: 5;
   }
+
   cal-day:nth-child(6) .event {
     grid-column-start: 6;
   }
+
   cal-day:nth-child(7) .event {
     grid-column-start: 7;
-  }
-
-  .day {
-    min-height: 120px;
   }
 }
 

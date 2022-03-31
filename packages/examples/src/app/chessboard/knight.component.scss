@@ -1,4 +1,4 @@
-@import "css-lock";
+@import 'css-lock';
 
 span {
   font-weight: 400;
@@ -18,9 +18,10 @@ span {
     $property: line-height,
     $unit: px
   );
+
   cursor: move;
 }
 
 .dragging {
-  opacity: 0.25;
+  opacity: .25;
 }

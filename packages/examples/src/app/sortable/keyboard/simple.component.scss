@@ -1,27 +1,34 @@
 tbody tr {
   cursor: move;
   color: #b73030;
-  background: rgba(142, 174, 15, 0.1);
+  background: rgba(142, 174, 15, .1);
 }
+
 td {
   padding: 4px;
 }
+
 .blob--selected td {
   background: #d6ddbe;
 }
+
 tr.blob--lifted {
   transform: translateX(8px);
+
   td {
     background: #f9d456;
   }
 }
+
 td.hash {
-  background: rgba(142, 174, 15, 0.3);
+  background: rgba(142, 174, 15, .3);
   text-align: right;
+
   code {
     background: none;
   }
 }
+
 .blob--placeholder {
-  opacity: 0.4;
+  opacity: .4;
 }

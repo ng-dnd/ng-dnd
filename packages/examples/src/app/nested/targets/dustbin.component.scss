@@ -1,4 +1,4 @@
-@import "css-lock";
+@import 'css-lock';
 
 p {
   font-size: 1rem;
@@ -7,12 +7,14 @@ p {
   @include css-lock(-1, -2, 0, 1000/14, margin-left, rem);
   @include css-lock(-1, -2, 0, 1000/14, margin-right, rem);
 }
+
 .box {
-  border: 1px solid rgba(0, 0, 0, 0.2);
+  border: 1px solid rgba(0, 0, 0, .2);
   width: 100%;
   color: white;
   @include css-lock(1, 2, 0, 1000/14, padding, rem);
-  @include css-lock(0.5, 1, 0, 1000/14, padding-top, rem);
+  @include css-lock(.5, 1, 0, 1000/14, padding-top, rem);
+
   text-align: center;
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: rgba(0, 0, 0, .5);
 }
