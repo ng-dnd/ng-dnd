@@ -1,4 +1,4 @@
-@import './includes';
+@use './includes' as *;
 
 :host {
   display: flex;

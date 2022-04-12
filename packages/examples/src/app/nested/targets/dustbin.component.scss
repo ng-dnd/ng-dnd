@@ -1,19 +1,22 @@
-@import 'css-lock';
+@use 'sass:math';
+@use '../../../styles/css-lock' as *;
+
+$max-width: math.div(1000, 14);
 
 p {
   font-size: 1rem;
   line-height: 2rem;
   margin: 0;
-  @include css-lock(-1, -2, 0, 1000/14, margin-left, rem);
-  @include css-lock(-1, -2, 0, 1000/14, margin-right, rem);
+  @include css-lock(-1, -2, 0, $max-width, margin-left, rem);
+  @include css-lock(-1, -2, 0, $max-width, margin-right, rem);
 }
 
 .box {
   border: 1px solid rgba(0, 0, 0, .2);
   width: 100%;
   color: white;
-  @include css-lock(1, 2, 0, 1000/14, padding, rem);
-  @include css-lock(.5, 1, 0, 1000/14, padding-top, rem);
+  @include css-lock(1, 2, 0, $max-width, padding, rem);
+  @include css-lock(.5, 1, 0, $max-width, padding-top, rem);
 
   text-align: center;
   background-color: rgba(0, 0, 0, .5);

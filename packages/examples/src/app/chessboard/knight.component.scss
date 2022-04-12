@@ -1,4 +1,4 @@
-@import 'css-lock';
+@use '../../styles/css-lock' as *;
 
 span {
   font-weight: 400;

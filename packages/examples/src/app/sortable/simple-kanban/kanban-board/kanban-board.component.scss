@@ -1,4 +1,4 @@
-@import '../includes';
+@use '../includes' as *;
 
 .kanban-root {
   background: $board-bg;

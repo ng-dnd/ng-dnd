@@ -1,5 +1,7 @@
 // Somewhat based on https://snook.ca/archives/html_and_css/calendar-css-grid
 
+@use 'sass:math';
+
 *,
 :host ::ng-deep * {
   box-sizing: border-box;
@@ -48,7 +50,7 @@
 
     background: red;
     color: white;
-    border-radius: $h/2;
+    border-radius: math.div($h, 2);
     padding: 4px;
     width: $h;
     height: $h;
