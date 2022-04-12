@@ -41,7 +41,7 @@ export class SimpleComponent {
   selected$ = this.store.select(_selected);
   lifted$ = this.store.select(_lifted);
 
-  constructor(private store: Store<{}>, private hotkeys: HotkeysService) {
+  constructor(private store: Store<unknown>, private hotkeys: HotkeysService) {
     this.hotkeys.add(new Hotkey('enter', (_event) => {
       this.store.dispatch(new LiftSelected());
       return false;

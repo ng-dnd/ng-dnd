@@ -5,7 +5,7 @@ import { DropTargetMonitor } from './target-monitor';
  * Note the two type parameters. Both must represent plain JS objects. See the extended
  * discussion of these type parameters at {@link DragSourceSpec}.
  */
-export interface DropTargetSpec<Item extends {} = {}, DropResult extends {} = {}> {
+export interface DropTargetSpec<Item = unknown, DropResult = unknown> {
   /**
    * Queries your component to determine whether an item can be dropped on this target.
    *

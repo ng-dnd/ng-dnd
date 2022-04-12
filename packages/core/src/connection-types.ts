@@ -87,7 +87,7 @@ export interface ConnectionBase<TMonitor> extends SubscriptionLike {
  *
  * To create one, refer to {@link DndService#dropTarget}.
  */
-export interface DropTarget<Item = {}, DropResult = {}>
+export interface DropTarget<Item = unknown, DropResult = unknown>
   extends ConnectionBase<DropTargetMonitor<Item, DropResult>> {
   /**
    * Use this method to have a dynamically typed target. If no type has
@@ -125,7 +125,7 @@ export interface DropTarget<Item = {}, DropResult = {}>
  *
  * To create one, refer to {@link DndService#dragSource}.
  */
-export interface DragSource<Item, DropResult = {}>
+export interface DragSource<Item, DropResult = unknown>
   extends ConnectionBase<DragSourceMonitor<Item, DropResult>> {
   /**
    * Use this method to have a dynamically typed source. If no type has

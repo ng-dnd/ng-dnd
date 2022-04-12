@@ -47,7 +47,7 @@ Related: https://github.com/Microsoft/TypeScript/issues/19345
  * });
  * ```
  */
-export interface DragSourceSpec<Item, DropResult = {}> {
+export interface DragSourceSpec<Item, DropResult = unknown> {
   /**
    * Required. When the dragging starts, `beginDrag` is called. You **must** return
    * a plain JavaScript object describing the data being dragged. What you

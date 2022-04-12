@@ -1,4 +1,4 @@
-import { Directive, ElementRef, Input, NgZone } from '@angular/core';
+import { Directive, ElementRef, Input, NgZone, OnChanges, OnDestroy } from '@angular/core';
 
 import { invariant } from './internal/invariant';
 
@@ -17,12 +17,14 @@ const explanation =
 @Directive({
   selector: '[abstractDndDirective]'
 })
-export class DndDirective {
+export class DndDirective implements OnChanges, OnDestroy {
   protected connection: any;
   private deferredRequest = new Subscription();
+
   /** @ignore */
   constructor(protected elRef: ElementRef, private zone: NgZone) { }
-  protected ngOnChanges() {
+
+  ngOnChanges() {
     invariant(
       typeof this.connection === 'object' && !Array.isArray(this.connection),
       explanation
@@ -38,9 +40,10 @@ export class DndDirective {
       }
     });
   }
-  protected ngOnDestroy() { this.deferredRequest.unsubscribe(); }
-  // @ts-ignore
-  protected callHooks(conn: any): Subscription {
+
+  ngOnDestroy() { this.deferredRequest.unsubscribe(); }
+
+  protected callHooks(_conn: any): Subscription {
     return new Subscription();
   }
 }
@@ -53,7 +56,7 @@ export class DndDirective {
 @Directive({
   selector: '[dropTarget]'
 })
-export class DropTargetDirective extends DndDirective {
+export class DropTargetDirective extends DndDirective implements OnChanges {
   protected connection: DropTarget | undefined;
 
   /** Which target to connect the DOM to */
@@ -68,7 +71,7 @@ export class DropTargetDirective extends DndDirective {
     this.dropTargetTypes = t;
   }
 
-  protected ngOnChanges() {
+  ngOnChanges() {
     this.connection = this.dropTarget;
     if (this.connection && this.dropTargetTypes != null) {
       this.connection.setTypes(this.dropTargetTypes);
@@ -85,7 +88,7 @@ export class DropTargetDirective extends DndDirective {
 @Directive({
   selector: '[dragSource]'
 })
-export class DragSourceDirective extends DndDirective {
+export class DragSourceDirective extends DndDirective implements OnChanges {
   protected connection: DragSource<any> | undefined;
 
   /** Which source to connect the DOM to */
@@ -103,7 +106,7 @@ export class DragSourceDirective extends DndDirective {
    */
   @Input('noHTML5Preview') noHTML5Preview = false;
 
-  protected ngOnChanges() {
+  ngOnChanges() {
     this.connection = this.dragSource;
     if (this.connection && this.dragSourceType != null) {
       this.connection.setType(this.dragSourceType);
@@ -132,14 +135,14 @@ export class DragSourceDirective extends DndDirective {
   selector: '[dragPreview]',
   inputs: ['dragPreview', 'dragPreviewOptions']
 })
-export class DragPreviewDirective extends DndDirective {
+export class DragPreviewDirective extends DndDirective implements OnChanges {
   protected connection: DragSource<any> | undefined;
   /** The drag source for which this element will be the preview. */
   @Input('dragPreview') public dragPreview!: DragSource<any>;
   /** Pass an options object as you would to {@link DragSource#connectDragPreview}. */
   @Input('dragPreviewOptions') dragPreviewOptions?: DragPreviewOptions;
 
-  protected ngOnChanges() {
+  ngOnChanges() {
     this.connection = this.dragPreview;
     super.ngOnChanges();
   }

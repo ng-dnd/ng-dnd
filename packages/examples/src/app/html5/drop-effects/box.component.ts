@@ -29,7 +29,7 @@ export class BoxComponent {
   @Output() dropped = new EventEmitter<string>();
   @Input() force: string = undefined;
 
-  source = this.dnd.dragSource<{}, DropResult>(ItemTypes.COPYABLE_ITEM, {
+  source = this.dnd.dragSource<unknown, DropResult>(ItemTypes.COPYABLE_ITEM, {
     beginDrag: monitor => ({}),
     endDrag: monitor => {
       const result = monitor.getDropResult();

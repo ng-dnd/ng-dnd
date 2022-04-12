@@ -16,7 +16,7 @@ export class KanbanBoardComponent {
   ItemTypes = ItemTypes;
 
   constructor(
-    private store: Store<{}>,
+    private store: Store<unknown>,
     public specs: SortableSpecService
   ) { }
 

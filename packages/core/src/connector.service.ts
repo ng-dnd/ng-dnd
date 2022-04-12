@@ -114,7 +114,7 @@ export class DndService {
    * If you want a dynamic type, pass `null` as the type; and call
    * {@link DropTarget#setTypes} in a lifecycle hook.
    */
-  public dropTarget<Item = {}, DropResult = {}>(
+  public dropTarget<Item = unknown, DropResult = unknown>(
     types: TypeOrTypeArray | null,
     spec: DropTargetSpec<Item, DropResult>,
     subscription?: AddSubscription
@@ -166,7 +166,7 @@ export class DndService {
    * connection to.
    */
 
-  public dragSource<Item, DropResult = {}>(
+  public dragSource<Item, DropResult = unknown>(
     type: string | symbol | null,
     spec: DragSourceSpec<Item, DropResult>,
     subscription?: AddSubscription

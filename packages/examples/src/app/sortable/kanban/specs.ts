@@ -69,7 +69,7 @@ export class SortableSpecService implements OnDestroy {
     }
   });
 
-  constructor(public store: Store<{}>) { }
+  constructor(public store: Store<unknown>) { }
 
   // usually services don't get destroyed, but if it is, we will be ON IT.
   ngOnDestroy() {

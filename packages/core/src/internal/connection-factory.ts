@@ -39,7 +39,7 @@ export interface FactoryArgs<TMonitor, TConnector> {
     manager: DragDropManager
   ) => {
     handlerId: any;
-    unregister: Subscription | Function;
+    unregister: Subscription | ((...args: any[]) => void);
   };
 }
 
@@ -254,7 +254,7 @@ export class Connection<TMonitor extends DragSourceMonitor | DropTargetMonitor, 
   }
 }
 
-export interface SourceConstructor<Item = {}, DropResult = {}> {
+export interface SourceConstructor<Item = unknown, DropResult = unknown> {
   new(
     factoryArgs: FactoryArgs<DragSourceMonitor, DragSourceConnector>,
     manager: DragDropManager,

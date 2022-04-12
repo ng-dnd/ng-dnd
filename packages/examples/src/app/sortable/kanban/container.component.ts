@@ -26,7 +26,7 @@ export class ContainerComponent implements AfterViewInit, OnDestroy {
   constructor(
     private dnd: DndService,
     private el: ElementRef,
-    private store: Store<{}>
+    private store: Store<unknown>
   ) { }
 
   ngAfterViewInit() {

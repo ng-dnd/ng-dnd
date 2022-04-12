@@ -1,7 +1,7 @@
 import { MonitorBase } from './monitor-base';
 
 /** The monitor available in {@link DropTarget}'s listen method. */
-export interface DropTargetMonitor<Item = {}, DropResult = {}> extends MonitorBase<Item> {
+export interface DropTargetMonitor<Item = unknown, DropResult = unknown> extends MonitorBase<Item> {
   /**
    * Returns `true` if there is a drag operation in progress, and the owner's
    * `canDrop()` returns true or is not defined.

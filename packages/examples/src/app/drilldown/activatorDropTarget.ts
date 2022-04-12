@@ -5,24 +5,26 @@ import { delay, distinctUntilChanged, filter, switchMapTo, take, takeUntil } fro
 type Types = string | symbol | (string | symbol)[];
 
 export class ActivatedWith {
-  constructor(
-    public type: string | symbol,
-    public item: any,
-  ) { }
+  constructor(public type: string | symbol, public item: any) { }
 }
 
 export type ActivatorSpec = DropTargetSpec & { onActivate: (a: ActivatedWith) => void };
 
-export function activatorDropTarget(dnd: DndService, types: Types, waitMillis: number, spec: ActivatorSpec) {
+export function activatorDropTarget(
+  dnd: DndService,
+  types: Types,
+  waitMillis: number,
+  spec: ActivatorSpec
+) {
   // hover events input stream
   const hoverSubject$ = new Subject<ActivatedWith>();
 
   const dt = dnd.dropTarget(types, {
-    ...spec as DropTargetSpec,
+    ...(spec as DropTargetSpec),
     hover: monitor => {
       hoverSubject$.next(new ActivatedWith(monitor.getItemType(), monitor.getItem()));
       spec.hover && spec.hover(monitor);
-    }
+    },
   });
 
   const startedHovering$ = dt
@@ -30,7 +32,7 @@ export function activatorDropTarget(dnd: DndService, types: Types, waitMillis: n
     .pipe(
       // just emit when it changes to not-isOver
       distinctUntilChanged(),
-      filter(isOver => isOver),
+      filter(isOver => isOver)
       // tap(() => console.log('started (isOver)'))
     );
 
@@ -39,19 +41,13 @@ export function activatorDropTarget(dnd: DndService, types: Types, waitMillis: n
     .pipe(
       // just emit when it changes to not-canDrop
       distinctUntilChanged(),
-      filter(canDrop => canDrop === false),
+      filter(canDrop => canDrop === false)
       // tap(() => console.log('stoppedHovering (canDrop)'))
     );
 
   const activations$: Observable<ActivatedWith> = startedHovering$.pipe(
     // tap(() => console.log('startedHovering -> switchMapTo(...)')),
-    switchMapTo(
-      hoverSubject$.pipe(
-        delay(waitMillis),
-        takeUntil(stoppedHovering$),
-        take(1),
-      )
-    ),
+    switchMapTo(hoverSubject$.pipe(delay(waitMillis), takeUntil(stoppedHovering$), take(1)))
   );
 
   // internal subscription should die when the connection is torn down
