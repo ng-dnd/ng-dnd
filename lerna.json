@@ -1,43 +1,43 @@
 {
-    "lerna": "3.1.1",
-    "version": "1.0.1",
-    "npmClient": "yarn",
-    "useWorkspaces": true,
-    "packages": [
-        "packages/*"
-    ],
-    "command": {
-        "publish": {
-            "yes": false,
-            "message": "chore(release): publish",
-            "contents": "dist",
-            "allowBranch": [
-                "main",
-                "release/*"
-            ],
-            "noCommitHooks": true,
-            "conventionalCommits": true,
-            "ignoreChanges": [
-                "*.snap",
-                "*.spec.ts",
-                "*.md"
-            ]
-        },
-        "bootstrap": {
-            "scope": [
-                "@ng-dnd/*"
-            ]
-        },
-        "exec": {
-            "scope": [
-                "@ng-dnd/*"
-            ]
-        },
-        "clean": {
-            "yes": true
-        }
+  "lerna": "4.0.0",
+  "version": "1.0.1",
+  "npmClient": "yarn",
+  "useWorkspaces": true,
+  "packages": [
+    "packages/*"
+  ],
+  "command": {
+    "publish": {
+      "yes": false,
+      "message": "chore(release): publish",
+      "contents": "dist",
+      "allowBranch": [
+        "main",
+        "release/*"
+      ],
+      "noCommitHooks": true,
+      "conventionalCommits": true,
+      "ignoreChanges": [
+        "*.snap",
+        "*.spec.ts",
+        "*.md"
+      ]
     },
-    "npmClientArgs": [
-        "--no-package-lock"
-    ]
+    "bootstrap": {
+      "scope": [
+        "@ng-dnd/*"
+      ]
+    },
+    "exec": {
+      "scope": [
+        "@ng-dnd/*"
+      ]
+    },
+    "clean": {
+      "yes": true
+    }
+  },
+  "npmClientArgs": [
+    "--no-package-lock"
+  ]
 }
