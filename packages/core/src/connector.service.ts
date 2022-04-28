@@ -33,7 +33,7 @@ import { createSourceFactory } from "./internal/createSourceFactory";
  */
 export interface AddSubscription extends SubscriptionLike {
   /** Same as RxJS `Subscription#add` */
-  add(teardownLogic: TeardownLogic): AddSubscription;
+  add(teardownLogic: TeardownLogic): any;
 }
 
 /**
