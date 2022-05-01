@@ -25,29 +25,29 @@
     "packages/*"
   ],
   "dependencies": {
-    "@angular/animations": "~12.2.16",
-    "@angular/common": "~12.2.16",
-    "@angular/compiler": "~12.2.16",
-    "@angular/core": "~12.2.16",
-    "@angular/forms": "~12.2.16",
-    "@angular/platform-browser": "~12.2.16",
-    "@angular/platform-browser-dynamic": "~12.2.16",
-    "@angular/router": "~12.2.16",
+    "@angular/animations": "~13.3.5",
+    "@angular/common": "~13.3.5",
+    "@angular/compiler": "~13.3.5",
+    "@angular/core": "~13.3.5",
+    "@angular/forms": "~13.3.5",
+    "@angular/platform-browser": "~13.3.5",
+    "@angular/platform-browser-dynamic": "~13.3.5",
+    "@angular/router": "~13.3.5",
     "lodash": "^4.17.21",
     "rxjs": "~6.6.0",
     "tslib": "^2.3.1",
     "zone.js": "~0.11.5"
   },
   "devDependencies": {
-    "@angular-devkit/build-angular": "~12.2.16",
+    "@angular-devkit/build-angular": "~13.3.4",
     "@angular-eslint/builder": "^12.7.0",
     "@angular-eslint/eslint-plugin": "^12.7.0",
     "@angular-eslint/eslint-plugin-template": "^12.7.0",
     "@angular-eslint/schematics": "^12.7.0",
     "@angular-eslint/template-parser": "^12.7.0",
-    "@angular/cli": "~12.2.16",
-    "@angular/compiler-cli": "~12.2.16",
-    "@angular/language-service": "~12.2.16",
+    "@angular/cli": "~13.3.4",
+    "@angular/compiler-cli": "~13.3.5",
+    "@angular/language-service": "~13.3.5",
     "@compodoc/compodoc": "^1.1.14",
     "@types/fs-extra": "^9.0.0",
     "@types/jest": "^27.4.1",
@@ -65,7 +65,7 @@
     "jest-preset-angular": "^10.1.0",
     "lerna": "^4.0.0",
     "mermaid.cli": "^0.5.1",
-    "ng-packagr": "^12.2.7",
+    "ng-packagr": "^13.3.1",
     "rimraf": "^3.0.0",
     "scss-bundle": "^3.1.2",
     "stylelint": "^14.6.1",
@@ -74,6 +74,6 @@
     "stylelint-scss": "^4.2.0",
     "ts-node": "~10.7.0",
     "tsickle": "^0.43.0",
-    "typescript": "~4.3.5"
+    "typescript": "~4.6.4"
   }
 }
