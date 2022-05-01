@@ -82,7 +82,6 @@ export class Connection<TMonitor extends DragSourceMonitor | DropTargetMonitor, 
       // TODO: update this mini-documentation
       'Could not find the drag and drop manager in the context of %s. ' +
       'Make sure to wrap the top-level component of your app with DragDropContext. '
-      // tslint:disable-next-line:max-line-length
       // 'Read more: ',
     );
     NgZone.assertNotInAngularZone();
@@ -242,7 +241,7 @@ export class Connection<TMonitor extends DragSourceMonitor | DropTargetMonitor, 
     this.subscriptionConnectionLifetime.unsubscribe();
   }
 
-  add(teardown: TeardownLogic): Subscription {
+  add(teardown: TeardownLogic) {
     return this.subscriptionConnectionLifetime.add(teardown);
   }
 

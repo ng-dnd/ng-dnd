@@ -55,7 +55,7 @@ export class DragLayerConnectionClass implements DragLayer {
     this.subscription.unsubscribe();
   }
 
-  add(teardown: TeardownLogic): Subscription {
+  add(teardown: TeardownLogic) {
     return this.subscription.add(teardown);
   }
 

@@ -41,7 +41,7 @@ import { DndSortable } from './sortable.directive';
 export class DndSortableList<Data> extends DndSortable<Data>
   implements OnChanges, OnInit, AfterContentInit, AfterViewInit, OnDestroy {
 
-  @Input() template?: TemplateRef<TemplateContext<Data>>;
+  @Input() template: TemplateRef<TemplateContext<Data>> | null = null;
 
   /** @ignore */
   @ContentChildren(DndSortableTemplate, {

@@ -78,7 +78,7 @@ export interface ConnectionBase<TMonitor> extends SubscriptionLike {
    * }
    * ```
    */
-  add(teardown: TeardownLogic): Subscription;
+  add(teardown: TeardownLogic): void;
 }
 
 /**
