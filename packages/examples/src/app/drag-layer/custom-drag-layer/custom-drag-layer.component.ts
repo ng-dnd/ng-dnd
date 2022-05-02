@@ -58,7 +58,7 @@ export class CustomDragLayerComponent implements OnInit, OnDestroy {
     this.dragLayer.unsubscribe();
   }
 
-  getItemStyles({ initialOffset, currentOffset }) {
+  getItemStyles({ initialOffset, currentOffset }: any) {
     if (!initialOffset || !currentOffset) {
       return {
         display: 'none',

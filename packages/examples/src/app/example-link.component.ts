@@ -26,7 +26,7 @@ import { Component, Input } from '@angular/core';
   `]
 })
 export class ExampleLinkComponent {
-  @Input() path: string;
+  @Input() path = '';
   get link() {
     return 'https://github.com/ng-dnd/ng-dnd/tree/main/packages/examples/src/app/' + this.path;
   }

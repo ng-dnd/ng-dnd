@@ -13,7 +13,7 @@ import { DndService } from '@ng-dnd/core';
   `]
 })
 export class DraggableItemComponent {
-  @Input() color: string;
+  @Input() color = '';
   itemSource = this.dnd.dragSource('ITEM', {
     beginDrag: () => ({ color: this.color })
   });
@@ -28,5 +28,5 @@ export class DraggableItemComponent {
   `]
 })
 export class ItemComponent {
-  @Input() color: string;
+  @Input() color = '';
 }

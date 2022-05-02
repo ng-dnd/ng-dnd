@@ -32,8 +32,8 @@ import { map } from 'rxjs/operators';
 export class TargetBoxComponent implements OnDestroy {
   Colors = Colors;
 
-  lastDroppedColor: string;
-  backgroundColor: string;
+  lastDroppedColor = '';
+  backgroundColor = '';
 
   target = this.dnd.dropTarget([Colors.BLUE, Colors.YELLOW], {
     drop: (monitor) => {
@@ -45,7 +45,7 @@ export class TargetBoxComponent implements OnDestroy {
   fade$ = this.target.listen(m => m.canDrop() && !m.isOver());
   draggingColor$ = this.target
     .listen(m => m.getItemType())
-    .pipe(map(t => this.cssColor(t)));
+    .pipe(map(t => this.cssColor(t!)));
 
   constructor(private dnd: DndService) { }
 

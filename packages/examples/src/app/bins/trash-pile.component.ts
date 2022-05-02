@@ -18,7 +18,7 @@ import { DndService } from '@ng-dnd/core';
   `]
 })
 export class TrashPileComponent implements OnChanges, OnDestroy {
-  @Input() type: string;
+  @Input() type = '';
   remain = 5;
   count = 0;
 

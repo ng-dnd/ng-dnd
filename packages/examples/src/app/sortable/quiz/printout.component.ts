@@ -52,7 +52,7 @@ const equalsValidator: (x: any) => ValidatorFn = (x) => (c) => {
   `]
 })
 export class PrintoutComponent {
-  sections: Section[];
+  sections: Section[] = [];
   @Input() set formElements(forms: Question[]) {
     this.sections = forms.map(q => {
       return {

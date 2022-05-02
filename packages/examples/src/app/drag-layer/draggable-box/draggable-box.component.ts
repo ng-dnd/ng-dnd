@@ -13,10 +13,10 @@ import { BoxWithLocation } from '../BoxWithLocation';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class DraggableBoxComponent implements OnInit, OnDestroy {
-  @Input() id: number;
-  @Input() title: string;
-  @Input() left: number;
-  @Input() top: number;
+  @Input() id!: number;
+  @Input() title!: string;
+  @Input() left!: number;
+  @Input() top!: number;
 
   source = this.dnd.dragSource<BoxWithLocation>('BOX', {
     beginDrag: () => {

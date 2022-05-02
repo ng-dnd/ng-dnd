@@ -35,13 +35,13 @@ interface NativeFile {
   `]
 })
 export class TargetComponent implements OnDestroy {
-  @Input() type: string;
-  droppedType = null;
-  dropped = null;
+  @Input() type = '';
+  droppedType: any = null;
+  dropped: any = null;
 
   target = this.dnd.dropTarget<NativeUrl | NativeText | NativeFile>(null, {
     drop: monitor => {
-      this.droppedType = monitor.getItemType();
+      this.droppedType = monitor.getItemType() as string;
       const item = monitor.getItem();
       if (monitor.getItemType() === NativeTypes.FILE) {
         const files = (item as NativeFile).files.map(f => `File named ${f.name}`);

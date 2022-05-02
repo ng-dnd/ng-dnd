@@ -69,9 +69,9 @@ import { Spot } from './spot';
   `]
 })
 export class CubeComponent {
-  @Input() transform: string;
-  @Input() x: number;
-  @Input() y: number;
+  @Input() transform = '';
+  @Input() x!: number;
+  @Input() y!: number;
   @Output() endDrag = new EventEmitter<void>();
   source = this.dnd.dragSource<Spot>('SPOT', {
     beginDrag: () => {

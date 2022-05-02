@@ -17,7 +17,7 @@ import { Component, Input } from '@angular/core';
   `]
 })
 export class SquareComponent {
-  @Input() black: boolean;
+  @Input() black = false;
 
   getStyle() {
     return this.black

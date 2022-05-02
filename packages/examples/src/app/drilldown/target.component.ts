@@ -41,8 +41,8 @@ export class TargetComponent implements OnDestroy {
   hasDropped = false;
   hasDroppedOnChild = false;
 
-  lastDroppedColor: string;
-  backgroundColor: string;
+  lastDroppedColor = '';
+  backgroundColor = '';
 
   target = this.dnd.dropTarget(ItemTypes.EMAIL, {
     drop: (monitor) => {
@@ -65,7 +65,7 @@ export class TargetComponent implements OnDestroy {
     return this.hasDropped && `dropped${this.hasDroppedOnChild ? ' on child' : ''}` || '';
   }
 
-  getColor({ isOver, isOverCurrent }) {
+  getColor({ isOver, isOverCurrent }: { isOver: boolean, isOverCurrent: boolean }) {
     if (isOverCurrent || (isOver && this.greedy)) {
       return 'darkgreen';
     }

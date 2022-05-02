@@ -27,7 +27,7 @@ import { Colors } from './colors';
 export class BlueOrYellowComponent implements OnDestroy {
   Colors = Colors;
 
-  backgroundColor: string;
+  backgroundColor = '';
   @Input() set color(c: string) {
 
     this.source.setType(c);

@@ -44,7 +44,7 @@ import { activatorDropTarget } from './activatorDropTarget';
 })
 
 export class FolderComponent implements OnInit, OnDestroy {
-  @Input() keys: string[];
+  @Input() keys: string[] = [];
 
   get ownKey() {
     if (this.keys.length === 0) {
@@ -53,9 +53,9 @@ export class FolderComponent implements OnInit, OnDestroy {
     return this.keys[this.keys.length - 1];
   }
 
-  children$: Observable<string[]>;
-  anyChildren$: Observable<boolean>;
-  isOpen$: Observable<boolean>;
+  children$!: Observable<string[]>;
+  anyChildren$!: Observable<boolean>;
+  isOpen$!: Observable<boolean>;
 
   // note, we are using a wrapped version of dnd.dropTarget.
   // this one will observe the 'hover' callback for us, and use Rx

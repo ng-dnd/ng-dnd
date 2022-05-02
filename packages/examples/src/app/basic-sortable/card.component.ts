@@ -59,13 +59,13 @@ export class CardComponent implements OnDestroy {
   @Output() endDrag: EventEmitter<boolean> = new EventEmitter();
   @Output() handleMove: EventEmitter<[number, number]> = new EventEmitter();
 
-  @ContentChild(CardInnerDirective, { read: TemplateRef }) cardInnerTemplate;
+  @ContentChild(CardInnerDirective, { read: TemplateRef }) cardInnerTemplate!: CardInnerDirective;
 
-  @Input() card: Card;
+  @Input() card!: Card;
 
-  @Input() index: number;
-  @Input() id: number;
-  @Input() text: string;
+  @Input() index!: number;
+  @Input() id!: number;
+  @Input() text!: string;
 
   cardSource = this.dnd.dragSource<DraggingCard>('CARD', {
     beginDrag: () => {
@@ -83,7 +83,7 @@ export class CardComponent implements OnDestroy {
 
   cardTarget = this.dnd.dropTarget<DraggingCard>('CARD', {
     hover: monitor => {
-      const dragIndex = monitor.getItem().index;
+      const dragIndex = monitor.getItem()!.index;
       const hoverIndex = this.index;
 
       // Don't replace items with themselves
@@ -99,7 +99,7 @@ export class CardComponent implements OnDestroy {
         (hoverBoundingRect.bottom - hoverBoundingRect.top) / 2;
 
       // Determine mouse position
-      const clientOffset = monitor.getClientOffset();
+      const clientOffset = monitor.getClientOffset()!;
 
       // Get pixels to the top
       const hoverClientY = clientOffset.y - hoverBoundingRect.top;
@@ -127,7 +127,7 @@ export class CardComponent implements OnDestroy {
       // Generally it's better to avoid mutations,
       // but it's good here for the sake of performance
       // to avoid expensive index searches.
-      monitor.getItem().index = hoverIndex;
+      monitor.getItem()!.index = hoverIndex;
     }
   });
 

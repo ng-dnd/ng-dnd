@@ -13,7 +13,7 @@ import { Card } from '../specs';
   styleUrls: ['./kanban-card.component.scss']
 })
 export class KanbanCardComponent {
-  @Input() card: Card;
+  @Input() card!: Card;
   @Input() preview = false;
   @Input() placeholder = false;
 }

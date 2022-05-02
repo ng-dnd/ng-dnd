@@ -28,8 +28,8 @@ export class DragContainerComponent implements OnInit, OnDestroy {
 
   boxTarget = this.dnd.dropTarget<BoxWithLocation>('BOX', {
     drop: (monitor) => {
-      const delta = monitor.getDifferenceFromInitialOffset();
-      const item = monitor.getItem();
+      const delta = monitor.getDifferenceFromInitialOffset()!;
+      const item = monitor.getItem()!;
       this.moveBox(item.id, item.left + delta.x, item.top + delta.y);
     }
   });

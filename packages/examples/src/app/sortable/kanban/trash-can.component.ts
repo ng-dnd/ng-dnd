@@ -50,10 +50,10 @@ export class TrashCanComponent {
 
   target = this.dnd.dropTarget<DraggedItem<Card>>(ItemTypes.CARD, {
     canDrop: monitor => {
-      return monitor.getItem().isInternal;
+      return monitor.getItem()!.isInternal!;
     },
     drop: monitor => {
-      this.dropped.emit(monitor.getItem());
+      this.dropped.emit(monitor.getItem()!);
     }
   });
 

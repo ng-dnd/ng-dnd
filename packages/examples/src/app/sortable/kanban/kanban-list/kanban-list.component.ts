@@ -19,7 +19,7 @@ import { SortableSpecService } from '../specs';
   styleUrls: ['./kanban-list.component.scss']
 })
 export class KanbanListComponent implements OnInit {
-  @Input() list: KanbanList;
+  @Input() list!: KanbanList;
   @Input() preview = false;
   @Output() addCard = new EventEmitter<string>();
 
