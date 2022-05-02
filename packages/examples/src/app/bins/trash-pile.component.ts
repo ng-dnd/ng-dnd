@@ -6,7 +6,7 @@ import { DndService } from '@ng-dnd/core';
   template: `
     <ng-container *ngIf="collected$|async as c">
       <p>
-        <button (click)="litter($event)">add more</button> <span>({{ remain }} left)</span>
+        <button (click)="litter()">add more</button> <span>({{ remain }} left)</span>
       </p>
       <div [dragSource]="trashSource" [class.dragging]="c.isDragging && remain > 1">
         <app-trash [type]="type" [empty]="remain === 0 || c.isDragging && remain === 1"></app-trash>

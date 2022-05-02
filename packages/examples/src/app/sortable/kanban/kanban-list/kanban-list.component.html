@@ -7,7 +7,7 @@
         If render?.source is null, the dragSource directive does nothing.
   -->
   <div class="handle"
-       [dragSource]="render?.source"
+       [dragSource]="render?.source!"
        [noHTML5Preview]="true">
     <h3>{{list.title}}</h3>
   </div>
@@ -45,7 +45,7 @@
                  #render="dndSortableRender"
                  [dragSource]="render.source"
                  [noHTML5Preview]="true"
-                 [placeholder]="render.isDragging$|async">
+                 [placeholder]="!!(render.isDragging$|async)">
       <!-- This time, we aren't doing drag handles, so we just attached
            render.source directly to kanban-card by pulling #render out.
            You can do it whichever way suits.

@@ -15,7 +15,7 @@
             [id]="card.id"
             [card]="card"
             (handleMove)="moveCard($event)"
-            (beginDrag)="beginDrag($event)"
+            (beginDrag)="beginDrag()"
             (endDrag)="endDrag($event)">
 
     <span *cardInner="let card">{{card.text}}</span>

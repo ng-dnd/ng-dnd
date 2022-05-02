@@ -12,7 +12,7 @@
   <h4>Broken things to fix</h4>
 
   <dnd-sortable-list listId="simple-demo"
-                     hoverTrigger="fixed"
+                     [hoverTrigger]="hoverTrigger"
                      [children]="tempList"
                      [spec]="simpleSpec">
     <!-- ALTERS THE HOVER ALGORITHM -->

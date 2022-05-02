@@ -17,7 +17,7 @@ import { Card } from './card';
         <i class="fas fa-trash-alt"></i>
         <span>Drop here to delete</span>
       </div>
-      <div class="space" [ngStyle]="getStyle(c.isOver, c.item)"></div>
+      <div class="space" [ngStyle]="getStyle(c.isOver, c.item!)"></div>
     </div>
   `,
   styles: [`

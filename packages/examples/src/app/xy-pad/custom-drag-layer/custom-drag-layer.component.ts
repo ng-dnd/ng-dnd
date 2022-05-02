@@ -34,7 +34,7 @@ interface Collected {
 
         <div [ngStyle]="movingStyle$|async">
           <ng-container [ngSwitch]="c.itemType">
-            <xy-box-drag-preview *ngSwitchCase="'SPOT'" [title]="c.item.title">
+            <xy-box-drag-preview *ngSwitchCase="'SPOT'">
             </xy-box-drag-preview>
           </ng-container>
         </div>

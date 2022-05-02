@@ -34,7 +34,7 @@ export class BasicSortableComponent {
   origCards: Card[] = this.cards;
 
   findCard(id: number) {
-    return this.cards.find(c => c.id === id);
+    return this.cards.find(c => c.id === id)!;
   }
 
   beginDrag() {

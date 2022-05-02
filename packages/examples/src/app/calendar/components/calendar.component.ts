@@ -13,7 +13,7 @@ import { ResetCalendar } from '../store/calendar.actions';
   styleUrls: ['./calendar.component.scss']
 })
 export class CalendarComponent implements OnInit {
-  weeks$ = this.store.pipe(select(weeksSelector));
+  weeks$ = this.store.pipe(select(weeksSelector)) as any;
 
   constructor(private store: Store<CalendarState>) { }
 

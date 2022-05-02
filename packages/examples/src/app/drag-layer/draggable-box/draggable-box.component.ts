@@ -6,7 +6,7 @@ import { BoxWithLocation } from '../BoxWithLocation';
 @Component({
   selector: 'app-draggable-box',
   template: `
-    <div class="draggable-box" [dragSource]="source" [ngStyle]="getStyles(isDragging$|async)" >
+    <div class="draggable-box" [dragSource]="source" [ngStyle]="getStyles(!!(isDragging$|async))">
       <app-box [title]="title"></app-box>
     </div>
   `,
