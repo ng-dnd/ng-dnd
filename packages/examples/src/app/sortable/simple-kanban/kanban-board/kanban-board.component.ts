@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { DraggedItem } from '@ng-dnd/sortable';
+import { DraggedItem, HoverTrigger } from '@ng-dnd/sortable';
 import { ItemTypes } from '../item-types';
 import { SortableSpecService, Card } from '../specs';
 
@@ -10,6 +10,7 @@ import { SortableSpecService, Card } from '../specs';
 })
 export class KanbanBoardComponent {
   ItemTypes = ItemTypes;
+  hoverTrigger = HoverTrigger.fixed;
 
   constructor(public specs: SortableSpecService) { }
 

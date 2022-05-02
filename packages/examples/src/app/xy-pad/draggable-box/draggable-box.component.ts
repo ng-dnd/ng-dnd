@@ -70,7 +70,7 @@ export class DraggableBoxComponent implements OnInit, OnDestroy {
     return;
   }
 
-  getRootStyles(isDragging: boolean) {
+  getRootStyles(isDragging: boolean | null) {
     const { x, y } = this.spot;
     const transform = `translate3d(${x}px, ${y}px, 0)`;
 

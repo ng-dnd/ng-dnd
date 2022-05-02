@@ -1,5 +1,5 @@
 import { Component, ChangeDetectionStrategy } from '@angular/core';
-import { DraggedItem } from '@ng-dnd/sortable';
+import { DraggedItem, HoverTrigger } from '@ng-dnd/sortable';
 import { Card } from '../card';
 import { ItemTypes } from '../item-types';
 import { AddCard, RemoveCard } from '../store';
@@ -14,6 +14,7 @@ import { SortableSpecService } from '../specs';
 })
 export class KanbanBoardComponent {
   ItemTypes = ItemTypes;
+  hoverTrigger = HoverTrigger.fixed;
 
   constructor(
     private store: Store<unknown>,

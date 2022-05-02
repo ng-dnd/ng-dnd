@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import * as faker from 'faker';
-import { SortableSpec, DraggedItem } from '@ng-dnd/sortable';
+import { SortableSpec, DraggedItem, HoverTrigger } from '@ng-dnd/sortable';
 
 interface SimpleData {
   id: number;
@@ -13,6 +13,8 @@ interface SimpleData {
   templateUrl: './fixed-height.component.html',
 })
 export class FixedHeightComponent {
+  hoverTrigger = HoverTrigger.fixed;
+
   fake = () => faker.fake('fix the {{hacker.abbreviation}} {{hacker.noun}}');
 
   // you need data types that have a unique value, like SimpleData.id

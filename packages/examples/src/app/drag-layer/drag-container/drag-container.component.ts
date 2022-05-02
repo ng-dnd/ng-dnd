@@ -6,7 +6,7 @@ import { BoxWithLocation } from '../BoxWithLocation';
   selector: 'app-drag-container',
   template: `
     <div [ngStyle]="styles" [dropTarget]="boxTarget">
-      <app-draggable-box [left]="x" [top]="y" id="23" title="this box is titled"></app-draggable-box>
+      <app-draggable-box [left]="x" [top]="y" [id]="23" title="this box is titled"></app-draggable-box>
     </div>
   `,
   styles: []

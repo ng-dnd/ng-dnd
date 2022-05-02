@@ -32,5 +32,5 @@ import { Component } from '@angular/core';
   `,
 })
 export class ContainerComponent {
-  lastEffect = null;
+  lastEffect = '';
 }

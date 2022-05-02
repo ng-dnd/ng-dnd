@@ -30,7 +30,7 @@ import { daysBetween } from '../date-utils';
           <span class="day-label-lozenge" [class.day-label-lozenge--today]="isToday">{{ day.getDate() }}</span>
       </h3>
 
-      <cal-event *ngFor="let e of events$|async; trackBy: unique" [event]="e" [draggingNew]="isDragging$|async" [day]="day">
+      <cal-event *ngFor="let e of events$|async; trackBy: unique" [event]="e" [draggingNew]="!!(isDragging$|async)" [day]="day">
       </cal-event>
 
       <div #pad class="day-pad"
@@ -38,7 +38,7 @@ import { daysBetween } from '../date-utils';
             [dragSource]="source"
             [noHTML5Preview]="true"
             [dropTarget]="target"
-            [class.day-pad--front]="(isDragging$|async)">
+            [class.day-pad--front]="isDragging$|async">
       </div>
     </div>
   `,

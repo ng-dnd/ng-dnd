@@ -22,7 +22,7 @@ const equalsValidator: (x: any) => ValidatorFn = (x) => (c) => {
             <form [formGroup]="section.input">
                 <input formControlName="answer" type="number" />
                 <div *ngIf="section.input.get('answer') as answer" class="alert alert-danger">
-                    <div *ngIf="answer.invalid && (answer.touched || answer.dirty) && answer.errors.incorrect">That's not quite right.</div>
+                    <div *ngIf="answer.invalid && (answer.touched || answer.dirty) && answer.errors?.incorrect">That's not quite right.</div>
                     <div *ngIf="answer.valid">Correct!</div>
                 </div>
             </form>
@@ -33,7 +33,7 @@ const equalsValidator: (x: any) => ValidatorFn = (x) => (c) => {
                 <label> Name <input formControlName="name" /> </label>
                 <label> Student ID <input formControlName="studentId" /> </label>
                 <div *ngIf="section.input.get('studentId') as studentId" class="alert alert-danger">
-                    <div *ngIf="studentId.invalid && (studentId.touched || studentId.dirty) && studentId.errors.pattern">
+                    <div *ngIf="studentId.invalid && (studentId.touched || studentId.dirty) && studentId.errors?.pattern">
                       Please enter a student ID in the form 's1234'.</div>
                 </div>
             </form>
