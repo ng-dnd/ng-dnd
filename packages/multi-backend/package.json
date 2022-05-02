@@ -14,10 +14,10 @@
     "ngx-dnd"
   ],
   "dependencies": {
-    "dnd-core": "^14.0.0",
+    "dnd-core": "^16.0.0",
     "dnd-multi-backend": "^6.0.0",
-    "react-dnd-html5-backend": "^14.0.0",
-    "react-dnd-touch-backend": "^14.0.0",
+    "react-dnd-html5-backend": "^16.0.0",
+    "react-dnd-touch-backend": "^16.0.0",
     "tslib": "^1.9.0"
   },
   "devDependencies": {
