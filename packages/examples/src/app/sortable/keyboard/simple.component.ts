@@ -35,11 +35,11 @@ export class SimpleComponent {
   rxSpec = new NgRxSortable<Blob>(this.store, ActionTypes.SORT, {
     type: 'BLOB',
     trackBy: x => x.id,
-    getList: _ => this.store.select(_render),
+    getList: _ => this.store.select(_render as any),
   });
 
-  selected$ = this.store.select(_selected);
-  lifted$ = this.store.select(_lifted);
+  selected$ = this.store.select(_selected as any);
+  lifted$ = this.store.select(_lifted as any);
 
   constructor(private store: Store<unknown>, private hotkeys: HotkeysService) {
     this.hotkeys.add(new Hotkey('enter', (_event) => {

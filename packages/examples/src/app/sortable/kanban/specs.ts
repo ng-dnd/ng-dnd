@@ -17,19 +17,22 @@ export class SortableSpecService implements OnDestroy {
   boardSpec = new NgRxSortable<KanbanList>(this.store, ActionTypes.SortList, {
     type: ItemTypes.LIST,
     trackBy: list => list.id,
-    getList: _listId => this.store.pipe(select(_render)),
+    getList: _listId => this.store.pipe(select(_render) as any),
   });
 
   isCopying = false;
 
-  subs = this.store.pipe(select(_isCopying))
-    .subscribe(x => this.isCopying = x);
+  subs = this.store.pipe(select(_isCopying) as any)
+    .subscribe(x => this.isCopying = x as boolean);
 
   listSpec = new NgRxSortable<Card>(this.store, ActionTypes.SortCard, {
     type: ItemTypes.CARD,
     trackBy: card => card.id,
     // here we use the different listId on each kanban-list to pull different data
-    getList: listId => this.store.pipe(select(_listById(listId)), filter(x => x != null)),
+    getList: listId => this.store.pipe(
+      select(_listById(listId)) as any,
+      filter(x => x != null) as any
+    ),
 
     // isDragging determines which card on the ground will regard itself as
     // "the same as the one in flight". It must return true for exactly one

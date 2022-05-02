@@ -147,7 +147,7 @@ export function cardReducer(state: BoardState, action: SortCard) {
       return { ...state, cardInFlight: action.item };
     }
     case SortableEvents.Drop: {
-      return copyOrInsertCard(state, cloneCard(state.cardInFlight.data, state.nextId));
+      return copyOrInsertCard(state, cloneCard(state.cardInFlight!.data, state.nextId));
     }
     case SortableEvents.EndDrag: {
       return resetDrag(state);
@@ -174,7 +174,7 @@ export function reducer(state: BoardState = initialState, action: Actions): Boar
     case ActionTypes.AddCard: {
       const card: Card = { id: state.nextId, title: action.title };
       const list = currentBoard.find(x => x.id === action.listId);
-      const index = list.cards.length;
+      const index = list!.cards.length;
       return {
         ...resetDrag(state),
         board: insertCard(state.board, card, action.listId, index),
@@ -234,7 +234,7 @@ export const _render = createSelector(
     const either = state.draggingBoard || state.board;
 
     if (cardInFlight != null) {
-      return copyOrInsertCard(state, tempClone).board;
+      return copyOrInsertCard(state, tempClone!).board;
     }
     if (listInFlight != null) {
       const { hover, data } = listInFlight;

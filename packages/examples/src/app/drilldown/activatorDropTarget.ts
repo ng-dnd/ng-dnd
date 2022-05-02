@@ -22,7 +22,7 @@ export function activatorDropTarget(
   const dt = dnd.dropTarget(types, {
     ...(spec as DropTargetSpec),
     hover: monitor => {
-      hoverSubject$.next(new ActivatedWith(monitor.getItemType(), monitor.getItem()));
+      hoverSubject$.next(new ActivatedWith(monitor.getItemType()!, monitor.getItem()));
       spec.hover && spec.hover(monitor);
     },
   });

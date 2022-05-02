@@ -27,7 +27,7 @@ interface DropResult {
 })
 export class BoxComponent {
   @Output() dropped = new EventEmitter<string>();
-  @Input() force: string = undefined;
+  @Input() force = '';
 
   source = this.dnd.dragSource<unknown, DropResult>(ItemTypes.COPYABLE_ITEM, {
     beginDrag: monitor => ({}),

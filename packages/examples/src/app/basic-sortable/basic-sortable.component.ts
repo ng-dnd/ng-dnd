@@ -47,7 +47,7 @@ export class BasicSortableComponent {
     }
   }
 
-  moveCard([dragIndex, hoverIndex]) {
+  moveCard([dragIndex, hoverIndex]: [number, number]) {
     const dragCard = this.cards[dragIndex];
     this.cards.splice(dragIndex, 1);
     this.cards.splice(hoverIndex, 0, dragCard);

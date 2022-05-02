@@ -29,7 +29,7 @@ export class AddCardComponent {
   });
 
   onSubmit() {
-    this.add.emit(this.addForm.get('title').value);
+    this.add.emit(this.addForm.get('title')?.value);
     this.addForm.reset();
   }
 }

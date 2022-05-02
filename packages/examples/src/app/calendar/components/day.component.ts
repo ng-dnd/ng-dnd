@@ -49,9 +49,9 @@ import { daysBetween } from '../date-utils';
   `]
 })
 export class CalendarDayComponent implements OnInit, OnDestroy, AfterViewInit {
-  @Input() day: Date;
+  @Input() day!: Date;
 
-  today: Date;
+  today!: Date;
 
   get isToday() {
     return this.day.valueOf() === this.today.valueOf();
@@ -72,7 +72,7 @@ export class CalendarDayComponent implements OnInit, OnDestroy, AfterViewInit {
         return startOfAllday || sameAsIntraday || spilled;
       });
   });
-  events$: Observable<List<CalendarEvent>>;
+  events$!: Observable<List<CalendarEvent>>;
 
   isDragging$ = this.store.select(isDraggingSelector);
 
@@ -104,17 +104,17 @@ export class CalendarDayComponent implements OnInit, OnDestroy, AfterViewInit {
     ItemTypes.RESIZE_END,
   ], {
     hover: monitor => {
-      const { id, start, end } = monitor.getItem();
+      const { id, start, end } = monitor.getItem()!;
       const type = monitor.getItemType();
       switch (type) {
         case ItemTypes.EXISTING: {
-          return this.store.dispatch(new HoverExistingEvent(id, daysBetween(start, this.day)));
+          return this.store.dispatch(new HoverExistingEvent(id!, daysBetween(start, this.day)));
         }
         case ItemTypes.RESIZE_START: {
-          return this.store.dispatch(new HoverResizeStart(id, daysBetween(start, this.day)));
+          return this.store.dispatch(new HoverResizeStart(id!, daysBetween(start, this.day)));
         }
         case ItemTypes.RESIZE_END: {
-          return this.store.dispatch(new HoverResizeEnd(id, daysBetween(end, this.day)));
+          return this.store.dispatch(new HoverResizeEnd(id!, daysBetween(end, this.day)));
         }
         case ItemTypes.NEW_EVENT: {
           return this.store.dispatch(new HoverNewEvent(this.day));
@@ -123,20 +123,20 @@ export class CalendarDayComponent implements OnInit, OnDestroy, AfterViewInit {
     },
     drop: monitor => {
       if (monitor.getItemType() === ItemTypes.NEW_EVENT) {
-        const { start } = monitor.getItem();
+        const { start } = monitor.getItem()!;
         if (this.day > start) {
           this.store.dispatch(new DropNewEvent(start, this.day));
         } else {
           this.store.dispatch(new EndDragNewEvent());
         }
       } else {
-        const { id } = monitor.getItem();
-        this.store.dispatch(new DropExistingEvent(id));
+        const { id } = monitor.getItem()!;
+        this.store.dispatch(new DropExistingEvent(id!));
       }
     }
   });
 
-  @ViewChild('pad') pad: ElementRef<HTMLDivElement>;
+  @ViewChild('pad') pad!: ElementRef<HTMLDivElement>;
 
   subs = new Subscription();
   forceStart$ = new Subject<void>();

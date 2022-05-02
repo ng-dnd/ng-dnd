@@ -8,7 +8,7 @@ import { Card, CardList, SortableSpecService } from '../specs';
   styleUrls: ['./kanban-list.component.scss']
 })
 export class KanbanListComponent {
-  @Input() list: CardList;
+  @Input() list!: CardList;
   @Input() preview = false;
   @Output() addCard = new EventEmitter<string>();
 

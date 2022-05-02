@@ -30,7 +30,7 @@ import { Question } from './Question';
   styleUrls: ['./section.component.scss']
 })
 export class SectionComponent {
-  @Input() question: Question;
+  @Input() question!: Question;
   @Input() preview = false;
   @Output() edit = new EventEmitter();
   constructor(@Optional() public render: DndSortableRenderer<Question>) { }

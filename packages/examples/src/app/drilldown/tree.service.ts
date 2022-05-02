@@ -187,7 +187,7 @@ export class TreeService {
   openTransient(keys: string[]) {
     this.actions$.next(new OpenTransient(keys));
   }
-  drop(keys) {
+  drop(keys: string[]) {
     this.actions$.next(new Drop(keys));
   }
 

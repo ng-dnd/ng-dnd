@@ -25,10 +25,10 @@ import { MathQuestion } from './Question';
   `
 })
 export class MathFormComponent implements OnChanges {
-  @Input() data: MathQuestion;
+  @Input() data!: MathQuestion;
   @Output() edit = new EventEmitter<MathQuestion>();
 
-  form: FormGroup;
+  form!: FormGroup;
 
   ngOnChanges() {
     this.form = new FormGroup({
@@ -40,8 +40,8 @@ export class MathFormComponent implements OnChanges {
   onSubmit() {
     this.edit.emit(new MathQuestion(
       this.data.id,
-      this.form.get('question').value as string,
-      this.form.get('answer').value as number
+      this.form.get('question')?.value as string,
+      this.form.get('answer')?.value as number
     ));
   }
 }

@@ -22,9 +22,9 @@ import { DndService } from '@ng-dnd/core';
   styles: [``]
 })
 export class BinComponent implements OnInit, OnDestroy {
-  @Input() name: string;
+  @Input() name = '';
   @Input() accepts: string[] = ['TRASH'];
-  trashes = [];
+  trashes: string[] = [];
   capacity = 6;
 
   get hasCapacity() {
@@ -37,7 +37,7 @@ export class BinComponent implements OnInit, OnDestroy {
     },
     drop: (monitor) => {
       // item is what we returned from beginDrag on the source
-      const type = monitor.getItemType();
+      const type = monitor.getItemType() as string;
       this.trashes.unshift(type);
     }
   });
@@ -50,7 +50,7 @@ export class BinComponent implements OnInit, OnDestroy {
 
   constructor(private dnd: DndService) { }
 
-  getStyles({ isOver, canDrop }) {
+  getStyles({ isOver, canDrop }: { isOver: boolean, canDrop: boolean }) {
     return {
       backgroundColor: isOver && canDrop ? '#cfcffc' : canDrop ? '#fffacf' : 'white',
     };

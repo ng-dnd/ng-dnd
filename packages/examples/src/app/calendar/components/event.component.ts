@@ -14,9 +14,9 @@ import { combineLatest } from 'rxjs';
   styleUrls: ['./event.component.scss']
 })
 export class CalendarEventComponent {
-  @Input() event: CalendarEvent;
+  @Input() event!: CalendarEvent;
   @Input() draggingNew = false;
-  @Input() day: Date;
+  @Input() day!: Date;
 
   // memoize out the span function
   spanSelector = createSelector(
@@ -43,7 +43,7 @@ export class CalendarEventComponent {
 
   spec(t: string): DragSourceSpec<{ id: number, start: Date, end: Date }> {
     return {
-      isDragging: m => m.getItem().id === this.event.uniqueId,
+      isDragging: m => m.getItem()!.id === this.event.uniqueId,
       beginDrag: m => {
         // apparently trying to do CSS/class modifications during dragstart
         // causes dragend to fire immediately

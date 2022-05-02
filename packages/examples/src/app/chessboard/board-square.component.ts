@@ -25,7 +25,7 @@ import { map } from 'rxjs/operators';
   `]
 })
 export class BoardSquareComponent implements OnDestroy {
-  @Input() position: Coord;
+  @Input() position!: Coord;
 
   get black() {
     const { x, y } = this.position;

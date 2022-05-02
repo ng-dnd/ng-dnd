@@ -20,8 +20,8 @@ export const CalendarStateRecord = Record({
     CalendarEvent.allDay('Conference in Berlin', dayOne.clone().add({ days: 7 }).toDate(), dayOne.clone().add({ days: 11 }).toDate()),
   ]),
   startDate: dayOne,
-  inFlight: null as CalendarEvent,
-  original: null as CalendarEvent,
+  inFlight: null as unknown as CalendarEvent,
+  original: null as unknown as CalendarEvent,
   diff: new Diff()
 });
 
@@ -44,7 +44,7 @@ export function reducer(state = new CalendarStateRecord(), action: CalendarActio
     }
 
     case CalendarActionTypes.EndDragNewEvent: {
-      return state.set('inFlight', null);
+      return state.set('inFlight', null as any);
     }
 
     case CalendarActionTypes.ResetCalendar: {
@@ -58,7 +58,7 @@ export function reducer(state = new CalendarStateRecord(), action: CalendarActio
           .set('temp', false);
         state = state.update('events', evs => evs.push(inFlight));
       }
-      state = state.set('inFlight', null);
+      state = state.set('inFlight', null as any);
       return state;
     }
 
@@ -71,11 +71,11 @@ export function reducer(state = new CalendarStateRecord(), action: CalendarActio
 
     case CalendarActionTypes.BeginDragExistingEvent: {
       return state
-        .set('original', state.events.find(e => e.uniqueId === action.id));
+        .set('original', state.events.find(e => e.uniqueId === action.id)!);
     }
 
     case CalendarActionTypes.EndDragExistingEvent: {
-      return state.set('original', null).set('diff', new Diff());
+      return state.set('original', null as any).set('diff', new Diff());
     }
 
     case CalendarActionTypes.HoverResizeStart: {
@@ -94,8 +94,8 @@ export function reducer(state = new CalendarStateRecord(), action: CalendarActio
       }
       return state.update('events', es => {
         const idx = es.findIndex(e => e.uniqueId === action.id);
-        return es.update(idx, e => e.applyDiff(state.diff));
-      }).set('original', null).set('diff', new Diff());
+        return es.update(idx, e => e!.applyDiff(state.diff));
+      }).set('original', null as any).set('diff', new Diff());
     }
 
     default:

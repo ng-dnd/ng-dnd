@@ -40,8 +40,8 @@ const fake = () => faker.fake('/home/mezcal/{{system.fileName}}');
 
 export class State extends Record({
   list: List(Array.from(new Array(6), fake).map(Blob.create)),
-  draggingList: null as List<Blob>,
-  flying: null as DraggedItem<Blob>,
+  draggingList: null as unknown as List<Blob>,
+  flying: null as unknown as DraggedItem<Blob>,
   kbSelected: 0,
   kbLifted: false
 }) { }
@@ -86,9 +86,9 @@ function keyboardMove(state: State, from: number, to: number) {
   to = Math.max(0, Math.min(state.list.count() - 1, to));
   if (!state.kbLifted) {
     // move selection up instead
-    return state.set('kbSelected', state.list.get(to).id);
+    return state.set('kbSelected', state.list.get(to)!.id);
   }
-  const blob = state.list.get(from);
+  const blob = state.list.get(from)!;
   return state.update('list', list => {
     return list.remove(from).insert(to, blob);
   });

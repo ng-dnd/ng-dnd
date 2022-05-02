@@ -17,7 +17,7 @@ export function minus(a: Offset, b: Offset): Offset {
 export function clone(a: Offset): Offset {
   return Object.assign({}, a);
 }
-export function fmap(f: (number) => number, a: Offset): Offset {
+export function fmap(f: (n: number) => number, a: Offset): Offset {
   return { x: f(a.x), y: f(a.y) };
 }
 

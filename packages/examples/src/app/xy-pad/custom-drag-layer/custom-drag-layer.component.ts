@@ -66,10 +66,8 @@ export class CustomDragLayerComponent implements AfterViewInit, OnDestroy {
       item: monitor.getItem(),
       itemType: monitor.getItemType(),
       isDragging: monitor.isDragging(),
-      initialOffset: this.absToRelative(
-        monitor.getInitialSourceClientOffset()
-      ),
-      currentOffset: this.absToRelative(monitor.getSourceClientOffset())
+      initialOffset: this.absToRelative(monitor.getInitialSourceClientOffset()!),
+      currentOffset: this.absToRelative(monitor.getSourceClientOffset()!)
     } as Collected;
   });
 

@@ -40,7 +40,7 @@ export class DragContainerComponent implements OnDestroy {
   @Input() snapToGrid = false;
   px = 32;
   snappingFunction = snapToGrid(this.px);
-  gridlines: Array<any>;
+  gridlines: any[] = [];
   @Input()
   set incrementPx(n: number) {
     this.px = n;

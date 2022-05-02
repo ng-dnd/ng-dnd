@@ -3,3 +3,5 @@
 // interface NodeModule {
 //   id: string;
 // }
+declare module 'faker';
+declare module 'pressure'
