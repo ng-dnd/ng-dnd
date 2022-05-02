@@ -12,14 +12,13 @@
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
     "skipLibCheck": true,
-    "strictPropertyInitialization": true,
+    "strict": true,
     "noImplicitReturns": true,
     "noImplicitAny": true,
-    "strictNullChecks": true,
-    "allowUnreachableCode": false,
     "noUnusedParameters": true,
     "noUnusedLocals": true,
     "noFallthroughCasesInSwitch": true,
+    "allowUnreachableCode": false,
     "importHelpers": true,
     "inlineSourceMap": true,
     "inlineSources": true,
@@ -40,5 +39,11 @@
     "node_modules",
     "**/node_modules",
     "**/dist"
-  ]
+  ],
+  "angularCompilerOptions": {
+    "enableI18nLegacyMessageIdFormat": false,
+    "strictInjectionParameters": true,
+    "strictInputAccessModifiers": true,
+    "strictTemplates": true
+  }
 }
