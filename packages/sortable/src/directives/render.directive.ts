@@ -9,7 +9,7 @@ import { getSuggester } from '../hoverTriggers';
 
 /** @ignore */
 const _scheduleMicroTaskPolyfill: (f: () => void) => any = (
-  requestAnimationFrame || webkitRequestAnimationFrame || ((f: () => void) => setTimeout(f, 0))
+  requestAnimationFrame || ((f: () => void) => setTimeout(f, 0))
 );
 
 @Directive({
