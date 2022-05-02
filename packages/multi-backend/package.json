@@ -1,6 +1,6 @@
 {
   "name": "@ng-dnd/multi-backend",
-  "version": "1.0.1",
+  "version": "1.0.3",
   "description": "Multiple backend for Angular DnD",
   "publishConfig": {
     "access": "public"
@@ -14,14 +14,14 @@
     "ngx-dnd"
   ],
   "dependencies": {
-    "dnd-core": "^14.0.0",
+    "dnd-core": "^15.0.0",
     "dnd-multi-backend": "^6.0.0",
-    "react-dnd-html5-backend": "^14.0.0",
-    "react-dnd-touch-backend": "^14.0.0",
+    "react-dnd-html5-backend": "^15.0.0",
+    "react-dnd-touch-backend": "^15.0.0",
     "tslib": "^1.9.0"
   },
   "devDependencies": {
-    "@ng-dnd/core": "^1.0.1"
+    "@ng-dnd/core": "^1.0.3"
   },
   "peerDependencies": {
     "@angular/common": ">= 6.0.0",
