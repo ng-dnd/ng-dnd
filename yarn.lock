@@ -3219,7 +3219,7 @@
   resolved "https://registry.yarnpkg.com/@types/minimist/-/minimist-1.2.2.tgz#ee771e2ba4b3dc5b372935d549fd9617bf345b8c"
   integrity sha512-jhuKLIRrhvCPLqwPcx6INqmKeiA5EWrsCOPhrlFSrbrmU4ZMPjj5Ul/oLCMDO98XRUIwVm78xICz4EPCektzeQ==
 
-"@types/mousetrap@^1.6.0":
+"@types/mousetrap@^1.6.9":
   version "1.6.9"
   resolved "https://registry.yarnpkg.com/@types/mousetrap/-/mousetrap-1.6.9.tgz#f1ef9adbd1eac3466f21b6988b1c82c633a45340"
   integrity sha512-HUAiN65VsRXyFCTicolwb5+I7FM6f72zjMWr+ajGk+YTvzBgXqa2A5U7d+rtsouAkunJ5U4Sb5lNJjo9w+nmXg==
@@ -3779,14 +3779,14 @@ amdefine@>=0.0.4:
   resolved "https://registry.yarnpkg.com/amdefine/-/amdefine-1.0.1.tgz#4a5282ac164729e93619bcfd3ad151f817ce91f5"
   integrity sha1-SlKCrBZHKek2Gbz9OtFR+BfOkfU=
 
-angular2-hotkeys@^2.4.0:
-  version "2.4.0"
-  resolved "https://registry.yarnpkg.com/angular2-hotkeys/-/angular2-hotkeys-2.4.0.tgz#b814ccc43bb55eddff103d2ccf42afd832e3ff9d"
-  integrity sha512-m1UHmPBCKNUoGDPbyfLxUcUXd7vn1welfpfCLv7hEM2HIYfEtFo158xx7l4mAufEeE5179uFJggSQcVwJennfg==
+angular2-hotkeys@^13.1.0:
+  version "13.1.0"
+  resolved "https://registry.yarnpkg.com/angular2-hotkeys/-/angular2-hotkeys-13.1.0.tgz#fdbb30b72dc512379e3dea5d44d98593cdfb18a9"
+  integrity sha512-irsQLLiHCHqz73ocDV8N5K7Zel7mJyLQHwLrRePOwUumQfyBc2TTuO+ccdQAAM7/RK+IdT6P5YoiP0FEbA19Uw==
   dependencies:
-    "@types/mousetrap" "^1.6.0"
-    mousetrap "^1.6.0"
-    tslib "^2.0.0"
+    "@types/mousetrap" "^1.6.9"
+    mousetrap "^1.6.5"
+    tslib "^2.3.1"
 
 ansi-colors@4.1.1, ansi-colors@^4.1.1:
   version "4.1.1"
@@ -9673,7 +9673,7 @@ morgan@^1.10.0:
     on-finished "~2.3.0"
     on-headers "~1.0.2"
 
-mousetrap@^1.6.0:
+mousetrap@^1.6.5:
   version "1.6.5"
   resolved "https://registry.yarnpkg.com/mousetrap/-/mousetrap-1.6.5.tgz#8a766d8c272b08393d5f56074e0b5ec183485bf9"
   integrity sha512-QNo4kEepaIBwiT8CDhP98umTetp+JNfQYBWvC1pc6/OAibuXtRcxZ58Qz8skvEHYvURne/7R8T5VoOI7rDsEUA==
@@ -13006,10 +13006,10 @@ tsconfig-paths@^3.9.0:
     minimist "^1.2.6"
     strip-bom "^3.0.0"
 
-tsickle@^0.43.0:
-  version "0.43.0"
-  resolved "https://registry.yarnpkg.com/tsickle/-/tsickle-0.43.0.tgz#d53501ee54932382c4923a77de9ab5a82abd9e98"
-  integrity sha512-n0lgIQBLliB7EFVTDpqrd/GjyB9I3NCodfX4R3NE/H73PQvGjgrkSZc8RVcWBG6s1MDiFjYDHIezYkuh8GYslw==
+tsickle@^0.46.0:
+  version "0.46.0"
+  resolved "https://registry.yarnpkg.com/tsickle/-/tsickle-0.46.0.tgz#73f42d028e166627756006e42a395e6bc7865253"
+  integrity sha512-pEkomf35SZMlCyHJH2A5/4Li8KZprvGcVUz8jcZVArZNBKVOY7YEvDRJcaEWMTOaEzvjcaeDvE95VDyDka0i2Q==
   dependencies:
     "@types/minimist" "^1.2.1"
 
