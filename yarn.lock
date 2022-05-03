@@ -11093,6 +11093,11 @@ pressure@^2.2.0:
   resolved "https://registry.yarnpkg.com/pressure/-/pressure-2.2.0.tgz#4e2d0d6b206e4532342d3a7f23af4ba9bc7b6342"
   integrity sha512-FZAIZTfsz3hIApUQGRKN9fcQYcjsuCB/EWKj5rWr+7hhdkT+3EK8vYsGcdzFebZE7FQTHaIz8Z9k7xTYEs3Qng==
 
+prettier@^2.6.2:
+  version "2.6.2"
+  resolved "https://registry.yarnpkg.com/prettier/-/prettier-2.6.2.tgz#e26d71a18a74c3d0f0597f55f01fb6c06c206032"
+  integrity sha512-PkUpF+qoXTqhOeWL9fu7As8LXsIUZ1WYaJiY/a7McAQzxjk82OF0tibkFXVCDImZtWxbvojFjerkiLb0/q8mew==
+
 pretty-bytes@^5.3.0:
   version "5.6.0"
   resolved "https://registry.yarnpkg.com/pretty-bytes/-/pretty-bytes-5.6.0.tgz#356256f643804773c82f64723fe78c92c62beaeb"
