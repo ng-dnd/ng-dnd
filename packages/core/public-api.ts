@@ -1,11 +1,7 @@
 // import no symbols to get typings but not execute the monkey-patching module loader
-/// <reference path="src/ambient.d.ts" />
+/// <reference path="src/ambient.ts" />
 
-export {
-  DndModule,
-  BackendInput,
-  BackendFactoryInput
-} from './src/dnd.module';
+export { DndModule, BackendInput, BackendFactoryInput } from './src/dnd.module';
 
 export { DragSourceMonitor } from './src/source-monitor';
 export { DropTargetMonitor } from './src/target-monitor';
@@ -27,7 +23,7 @@ export {
   DndDirective,
   DragSourceDirective,
   DropTargetDirective,
-  DragPreviewDirective
+  DragPreviewDirective,
 } from './src/dnd.directive';
 
 export { Offset } from './src/type-ish';

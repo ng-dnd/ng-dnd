@@ -1,5 +1,6 @@
 module.exports = {
   deleteDestPath: !process.env.WATCH_MODE,
+  assets: [],
   lib: {
     entryFile: 'public-api.ts',
     cssUrl: 'inline',
@@ -13,7 +14,7 @@ module.exports = {
 
       // local
       '@ng-dnd/core': 'ngDnd',
-    }
+    },
   },
   allowedNonPeerDependencies: [
     '.',
@@ -21,5 +22,5 @@ module.exports = {
     'dnd-multi-backend',
     'react-dnd-html5-backend',
     'react-dnd-touch-backend',
-  ]
+  ],
 };
