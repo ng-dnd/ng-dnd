@@ -19,13 +19,6 @@ Drag and Drop for Angular.
 [Documentation][core-docs] |
 [Examples][examples]
 
-## Compatibility
-
-| Angular           | @ng-dnd/core |
-| ----------------- | ------------ |
-| >= 13.0.0         | 2.x          |
-| >= 9.0.0 < 13.0.0 | 1.x          |
-
 ## Why I create this project?
 
 The `angular-skyhook` is a great library, but I had encountered some frustrations.
@@ -33,6 +26,13 @@ The `angular-skyhook` is a great library, but I had encountered some frustration
 - It dosen't support **Angular Ivy** (v9+), please check [this issue](https://github.com/cormacrelf/angular-skyhook/issues/512) for more details.
 - It hasn't been maintained for almost two years, the version of `dnd-core` and other packages are very old.
 - The naming of some directives and properties aren't very intuitive such as `ssSortable`.
+
+## Compatibility
+
+| Angular           | @ng-dnd/core |
+| ----------------- | ------------ |
+| >= 13.0.0         | 2.x          |
+| >= 9.0.0 < 13.0.0 | 1.x          |
 
 ## License
 
