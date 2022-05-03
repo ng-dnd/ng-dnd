@@ -19,6 +19,13 @@ Drag and Drop for Angular.
 [Documentation][core-docs] |
 [Examples][examples]
 
+## Compatibility
+
+| Angular           | @ng-dnd/core |
+| ----------------- | ------------ |
+| >= 13.0.0         | 2.x          |
+| >= 9.0.0 < 13.0.0 | 1.x          |
+
 ## Why I create this project?
 
 The `angular-skyhook` is a great library, but I had encountered some frustrations.
