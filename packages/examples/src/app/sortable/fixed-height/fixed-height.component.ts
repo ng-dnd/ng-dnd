@@ -13,8 +13,6 @@ interface SimpleData {
   templateUrl: './fixed-height.component.html',
 })
 export class FixedHeightComponent {
-  hoverTrigger = HoverTrigger.fixed;
-
   fake = () => faker.fake('fix the {{hacker.abbreviation}} {{hacker.noun}}');
 
   // you need data types that have a unique value, like SimpleData.id
@@ -54,4 +52,6 @@ export class FixedHeightComponent {
     temp.splice(item.hover.index, 0, item.data);
     return temp;
   }
+
+  hoverTrigger = HoverTrigger.fixed;
 }

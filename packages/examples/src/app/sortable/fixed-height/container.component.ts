@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 
 @Component({
   selector: 'simple-sortable-container',
@@ -12,7 +12,8 @@ import { Component } from '@angular/core';
     <p>Simply add <code>hoverTrigger="fixed"</code> to a <code>&lt;dnd-sortable-list&gt;</code> or <code>dndSortable</code></p>
 
     <app-fixed-sortable></app-fixed-sortable>
-  `
+  `,
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ContainerComponent {
 }

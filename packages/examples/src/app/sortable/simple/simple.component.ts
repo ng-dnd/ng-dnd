@@ -51,6 +51,5 @@ export class SimpleComponent {
     endDrag: _item => { // revert
       this.tempList = this.list;
     }
-  }
-
+  };
 }

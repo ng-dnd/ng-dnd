@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 
 @Component({
   selector: 'simple-sortable-container',
@@ -9,7 +9,8 @@ import { Component } from '@angular/core';
     write a complicated hover function. You can focus on the model data. </p>
 
     <app-simple-sortable></app-simple-sortable>
-  `
+  `,
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ContainerComponent {
 }
