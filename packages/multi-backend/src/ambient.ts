@@ -11,7 +11,7 @@ declare module 'dnd-multi-backend' {
     transition: Transition;
     options?: any;
     preview?: boolean;
-    skipDispatchOnTransition?: boolean,
+    skipDispatchOnTransition?: boolean;
   };
   export interface BackendWatcher {
     backendChanged(backend: Backend): void;
@@ -32,4 +32,3 @@ declare module 'dnd-multi-backend' {
   export const TouchTransition: Transition;
   export const MouseTransition: Transition;
 }
-
