@@ -1,5 +1,5 @@
 // import no symbols to get typings but not execute the monkey-patching module loader
-/// <reference path="src/ambient.d.ts" />
+// <reference path="src/ambient.d.ts" />
 
 export {
   DndModule,

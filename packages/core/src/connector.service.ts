@@ -3,7 +3,7 @@
  */
 /** a second comment */
 
-/// <reference types="zone.js" />
+// <reference types="zone.js" />
 import { Injectable, Inject, NgZone } from '@angular/core';
 import { TYPE_DYNAMIC, DRAG_DROP_MANAGER } from './tokens';
 import { DragDropManager } from 'dnd-core';

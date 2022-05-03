@@ -1,6 +1,6 @@
 // TODO: move this to another package, in the `dnd-multi-backend` monorepo.
 
-/// <reference path="src/ambient.d.ts" />
+// <reference path="src/ambient.d.ts" />
 export { TouchBackend } from 'react-dnd-touch-backend';
 export { HTML5Backend } from 'react-dnd-html5-backend';
 export {

@@ -1,2 +1,2 @@
-/// <reference types="zone.js" />
+// <reference types="zone.js" />
 
