@@ -1,0 +1,169 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>@ng-dnd/core documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="./images/favicon.ico">
+	   <link rel="stylesheet" href="./styles/style.css">
+        <link rel="stylesheet" href="./styles/dark.css">
+    </head>
+    <body>
+
+        <div class="navbar navbar-default navbar-fixed-top visible-xs">
+            <a href="./" class="navbar-brand">@ng-dnd/core documentation</a>
+            <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="hidden-xs menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content getting-started">
+                   <div class="content-data">
+
+<h1 id="ng-dndcore">@ng-dnd/core</h1>
+<p><a href="https://www.travis-ci.com/ng-dnd/ng-dnd"><img src="https://www.travis-ci.com/ng-dnd/ng-dnd.svg?branch=main" alt="Build Status" class="img-responsive"></a>
+<a href="https://www.npmjs.com/package/@ng-dnd/core"><img src="https://img.shields.io/npm/v/@ng-dnd/core.svg" alt="npm" class="img-responsive"></a>
+<a href="https://github.com/ng-dnd/ng-dnd/blob/master/LICENSE"><img src="https://img.shields.io/github/license/mashape/apistatus.svg" alt="GitHub license" class="img-responsive"></a></p>
+<p>Ng-DnD is a toolkit for building complex drag and drop interfaces in Angular. It is based on, and very similar to <a href="https://react-dnd.github.io/react-dnd/"><code>react-dnd</code></a> by <a href="https://github.com/gaearon">Dan Abramov</a> and others, and is also powered by <a href="https://github.com/react-dnd/react-dnd/tree/master/packages/dnd-core"><code>dnd-core</code></a>. It is compatible with all backends.</p>
+<h4 id="check-out-the-examples-here"><a href="https://ng-dnd.github.io/ng-dnd/examples/">Check out the examples here</a>.</h4>
+<h2 id="installation">Installation</h2>
+<div><pre class="line-numbers"><code class="language-sh">yarn add &#64;ng-dnd/core react-dnd-html5-backend</code></pre></div><p>Next, follow the <a href="./additional-documentation/quickstart.html">Quickstart</a> and check out the <a href="./additional-documentation/chess-tutorial.html">Tutorial</a>.</p>
+<h2 id="sub-packages">Sub-packages</h2>
+<ul>
+<li><a href="https://ng-dnd.github.io/ng-dnd/multi-backend/"><code>@ng-dnd/multi-backend</code></a></li>
+<li><a href="https://ng-dnd.github.io/ng-dnd/sortable/"><code>@ng-dnd/sortable</code></a></li>
+</ul>
+<h2 id="features">Features</h2>
+<ul>
+<li>Make any component draggable, or into a drop target.</li>
+<li>Doesn&#39;t mutate the DOM, and doesn&#39;t use classes and CSS to do &#39;callbacks&#39;.
+Every visible change is made through Angular templates.</li>
+<li>The truth lives in JavaScript, with unidirectional data flow (like
+<a href="https://github.com/ngrx/platform"><code>@ngrx/store</code></a>)</li>
+<li>Observable APIs, designed to fit in Angular.</li>
+<li>TypeScript friendly, with strong typing for in-flight objects, and inline
+documentation.</li>
+<li>Works with HTML5 drag and drop, and all other <code>react-dnd</code> backends.</li>
+</ul>
+<h2 id="goals">Goals</h2>
+<ul>
+<li><p><strong>High performance.</strong> All code runs outside the Angular zone, and re-enters in batches only where strictly necessary, such that change detection runs precisely as many times as you need it to, with no extra configuration. You should also be able to take full advantage of <code>OnPush</code> change detection.</p>
+</li>
+<li><p>Largely possible to <strong>translate <code>react-dnd</code> code</strong> and examples into Angular (see <a href="./additional-documentation/translating-react-code.html">Translating React Code</a>).</p>
+</li>
+<li><p><strong>Comprehensive documentation</strong> and tons of example code, written in Angular style.</p>
+</li>
+</ul>
+<h2 id="what-can-you-do-with-it">What can you do with it?</h2>
+<p>Instead of building maximally-ergonomic solutions to simple use cases, <code>react-dnd</code> and <code>@ng-dnd</code> provide an abstraction over most things you could want to do with drag and drop. They are lower-level building blocks that make it easy to implement some very complex interactions. They assign no specific meaning to a drag/drop operation. You get to define what happens when a drag starts or ends or hovers. Here are some ambitious examples:</p>
+<ul>
+<li>The <a href="http://react-dnd.github.io/react-dnd/examples-chessboard-tutorial-app.html">traditional <code>react-dnd</code> tutorial</a>, a chess board with movable pieces and rules</li>
+<li>Deleting items by dragging them to a &#39;trash can&#39;, like in the macOS dock.</li>
+<li>Stamping out a template by dragging the template into a work area</li>
+<li>Merging two items by dragging one on top of the other</li>
+<li>Hover over a &#39;folder&#39; for a few seconds to &#39;drill down&#39; into it</li>
+<li>The famous lists and cards on <a href="https://trello.com">trello.com</a>, which actually uses <code>react-dnd</code></li>
+<li>A diagramming tool where you can draw links between nodes</li>
+<li>A 2D CAD program</li>
+<li>A graphical query builder, or visual data pipeline like <a href="http://www.luna-lang.org/">Luna</a></li>
+<li><a href="https://github.com/react-dnd/react-dnd/issues/384">Many other demonstrations of <code>react-dnd</code> (most with GIFs) in use</a></li>
+</ul>
+<h2 id="alternatives">Alternatives</h2>
+<p>It is important to note that for bare-bones sortable lists, where you have a mutable array of simple values, you don&#39;t necessarily need the superpowers in this library. There are plenty of cookie-cutter solutions out there, like the quite powerful <a href="https://github.com/akserg/ng2-dnd"><code>ng2-dnd</code></a> or <a href="https://github.com/valor-software/ng2-dragula"><code>ng2-dragula</code></a>, which may get you to your deadline faster than learning and using <code>@ng-dnd</code>. But be warned; you may find yourself wanting more dragging power once you get a taste. In fact, this package was born when <a href="https://github.com/cormacrelf">@cormacrelf</a> got sick of maintaining <code>ng2-dragula</code> and watching users struggle to implement what <code>react-dnd</code> was born for.</p>
+<p>If Angular and React aren&#39;t your thing, there&#39;s also <a href="https://github.com/jenshaase/vue-react-dnd"><code>vue-react-dnd</code></a>.</p>
+<h2 id="issues">Issues</h2>
+<p>Not all issues are <code>@ng-dnd</code>-related. If you think you found a bug in <code>dnd-core</code> or with the HTML5 backend, those issues belong on <a href="https://github.com/react-dnd/react-dnd">that codebase</a> with their many contributors and wealth of experience. If there is a problem with another backend you are using, file an issue with that backend so you can get more specific help and so that the community can benefit.</p>
+<p>Issues and potential improvements to <code>@ng-dnd</code> are discussed on <a href="https://github.com/ng-dnd/ng-dnd">GitHub</a>.</p>
+<h2 id="license">License</h2>
+<p>This library is released under the MIT license. It depends on <code>dnd-core</code>, which is (now) also under the MIT license.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+          <label class="dark-mode-switch">
+               <input type="checkbox">
+               <span class="slider">
+                    <svg class="slider-icon" viewBox="0 0 24 24" fill="none" height="20" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" width="20" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path>
+                    </svg>
+               </span>
+          </label>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 0;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'getting-started';
+            var COMPODOC_CURRENT_PAGE_URL = 'index.html';
+            var MAX_SEARCH_RESULTS = 15;
+       </script>
+
+       <script src="./js/libs/custom-elements.min.js"></script>
+       <script src="./js/libs/lit-html.js"></script>
+
+       <script src="./js/menu-wc.js" defer></script>
+       <script nomodule src="./js/menu-wc_es5.js" defer></script>
+
+       <script src="./js/libs/bootstrap-native.js"></script>
+
+       <script src="./js/libs/es6-shim.min.js"></script>
+       <script src="./js/libs/EventDispatcher.js"></script>
+       <script src="./js/libs/promise.min.js"></script>
+       <script src="./js/libs/zepto.min.js"></script>
+
+       <script src="./js/compodoc.js"></script>
+
+       <script src="./js/tabs.js"></script>
+       <script src="./js/menu.js"></script>
+       <script src="./js/libs/clipboard.min.js"></script>
+       <script src="./js/libs/prism.js"></script>
+       <script src="./js/sourceCode.js"></script>
+          <script src="./js/search/search.js"></script>
+          <script src="./js/search/lunr.min.js"></script>
+          <script src="./js/search/search-lunr.js"></script>
+          <script src="./js/search/search_index.js"></script>
+       <script src="./js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>
