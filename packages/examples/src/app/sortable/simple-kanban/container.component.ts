@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, ElementRef, OnDestroy } from '@angular/core';
+import { AfterViewInit, ChangeDetectionStrategy, Component, ElementRef, OnDestroy } from '@angular/core';
 import { DndService } from '@ng-dnd/core';
 import { spillTarget } from '@ng-dnd/sortable';
 import { ItemTypes } from './item-types';
@@ -8,6 +8,7 @@ import { Card } from './specs';
   selector: 'kanban-container',
   templateUrl: './container.component.html',
   styleUrls: ['./container.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ContainerComponent implements AfterViewInit, OnDestroy {
   // this emits a 'hover' only once when you move over the spill area

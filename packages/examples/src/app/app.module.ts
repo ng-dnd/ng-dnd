@@ -49,7 +49,13 @@ import { MultiBackend } from '@ng-dnd/multi-backend';
     // DndModule.forRoot({ backend: HTML5Backend }),
     // DndModule.forRoot({ backend: TouchBackend }),
     // DndModule.forRoot({ backend: MouseBackend }),
-    StoreModule.forRoot(reducers, { metaReducers }),
+    StoreModule.forRoot(reducers, {
+      metaReducers,
+      runtimeChecks: {
+        strictStateImmutability: false,
+        strictActionImmutability: false
+      }
+    }),
     // !environment.production ? StoreDevtoolsModule.instrument() : [],
     EffectsModule.forRoot([AppEffects]),
     HotkeyModule.forRoot()
