@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0](https://github.com/ng-dnd/ng-dnd/compare/v1.0.3...v2.0.0) (2022-05-03)
+
+
+### Bug Fixes
+
+* **examples:** fix mousetrap version dependent on angular2-hotkeys ([cb38cdd](https://github.com/ng-dnd/ng-dnd/commit/cb38cdd502fe48a722ef29f8daeb76ba7c63ee1e))
+* **examples:** small fix typings ([e197a49](https://github.com/ng-dnd/ng-dnd/commit/e197a494b4dde21e8640d27acaa589225330e80b))
+* fix typeRoots of tsconfig ([bf75ecd](https://github.com/ng-dnd/ng-dnd/commit/bf75ecd208aa23c84bb83671cc219c81abbe0a90))
+
+
+
+
+
 ## [1.0.3](https://github.com/ng-dnd/ng-dnd/compare/v1.0.2...v1.0.3) (2022-05-02)
 
 **Note:** Version bump only for package examples

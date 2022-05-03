@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0](https://github.com/ng-dnd/ng-dnd/compare/v1.0.3...v2.0.0) (2022-05-03)
+
+
+### Bug Fixes
+
+* **build:** fix tslib version ([d5aa05b](https://github.com/ng-dnd/ng-dnd/commit/d5aa05be7db32c0a2f67ca47ce177c8b95c2e005))
+
+
+
+
+
 ## [1.0.3](https://github.com/ng-dnd/ng-dnd/compare/v1.0.2...v1.0.3) (2022-05-02)
 
 **Note:** Version bump only for package @ng-dnd/multi-backend
