@@ -22,30 +22,35 @@ import { DndSortable } from './sortable.directive';
   selector: 'dnd-sortable-list',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: `
-    <ng-container *ngFor="let card of children; let i = index; trackBy: trackById" >
+    <ng-container *ngFor="let card of children; let i = index; trackBy: trackById">
       <ng-container *ngTemplateOutlet="template; context: { $implicit: contextFor(card, i) }">
       </ng-container>
     </ng-container>
   `,
-  styles: [`
-    :host {
-      display: block;
-    }
-  `],
+  styles: [
+    `
+      :host {
+        display: block;
+      }
+    `,
+  ],
   // allow injecting the directive and getting the component
-  providers: [{
-    provide: DndSortable,
-    useExisting: DndSortableList
-  }]
+  providers: [
+    {
+      provide: DndSortable,
+      useExisting: DndSortableList,
+    },
+  ],
 })
-export class DndSortableList<Data> extends DndSortable<Data>
-  implements OnChanges, OnInit, AfterContentInit, AfterViewInit, OnDestroy {
-
+export class DndSortableList<Data>
+  extends DndSortable<Data>
+  implements OnChanges, OnInit, AfterContentInit, AfterViewInit, OnDestroy
+{
   @Input() template: TemplateRef<TemplateContext<Data>> | null = null;
 
   /** @ignore */
   @ContentChildren(DndSortableTemplate, {
-    read: TemplateRef
+    read: TemplateRef,
   })
   set renderTemplates(ql: QueryList<TemplateRef<TemplateContext<Data>>>) {
     if (ql.length > 0) {
@@ -54,11 +59,7 @@ export class DndSortableList<Data> extends DndSortable<Data>
   }
 
   /** @ignore */
-  constructor(
-    dnd: DndService,
-    el: ElementRef<HTMLElement>,
-    cdr: ChangeDetectorRef,
-  ) {
+  constructor(dnd: DndService, el: ElementRef<HTMLElement>, cdr: ChangeDetectorRef) {
     super(dnd, el, cdr);
   }
 
@@ -70,7 +71,9 @@ export class DndSortableList<Data> extends DndSortable<Data>
   /** @ignore */
   ngAfterContentInit() {
     if (!this.template) {
-      throw new Error('You must provide a <ng-template cardTemplate> as a content child, or with [template]="myTemplateRef"');
+      throw new Error(
+        'You must provide a <ng-template cardTemplate> as a content child, or with [template]="myTemplateRef"'
+      );
     }
   }
 

@@ -13,9 +13,8 @@ export interface SpillConfiguration<Data> {
 export function spillTarget<Data>(
   dnd: DndService,
   types: string | symbol | Array<string | symbol> | null,
-  config: SpillConfiguration<Data>,
+  config: SpillConfiguration<Data>
 ): DropTarget<DraggedItem<Data>> {
-
   const mutate = (item: DraggedItem<Data> | null) => {
     if (!item) return null;
     item.hover = { listId: SPILLED_LIST_ID, index: -1 };
@@ -33,18 +32,23 @@ export function spillTarget<Data>(
         hover$.next(null);
       }
     },
-    drop: config.drop && (monitor => {
-      const item = mutate(monitor.getItem());
-      if (!monitor.didDrop()) {
-        config.drop && item && config.drop(item);
-      }
-    }) || undefined
+    drop:
+      (config.drop &&
+        (monitor => {
+          const item = mutate(monitor.getItem());
+          if (!monitor.didDrop()) {
+            config.drop && item && config.drop(item);
+          }
+        })) ||
+      undefined,
   });
 
-  const spilled$ = hover$
-    .pipe(distinctUntilChanged(), filter(a => !!a));
+  const spilled$ = hover$.pipe(
+    distinctUntilChanged(),
+    filter(a => !!a)
+  );
 
-  const subs = spilled$.subscribe((item) => {
+  const subs = spilled$.subscribe(item => {
     config.hover && item && config.hover(item);
   });
 

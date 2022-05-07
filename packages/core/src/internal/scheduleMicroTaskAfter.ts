@@ -7,7 +7,6 @@ import { Observable, TeardownLogic, Subscriber, Operator } from 'rxjs';
  * It's useful because we use `microTasks !== 0` to determine when we are finished
  * processing all the listeners and are ready for Angular to perform change detection.
  */
-
 export function scheduleMicroTaskAfter<T>(zone: Zone, uTask?: () => void) {
   return (source: Observable<T>): Observable<T> => {
     return source.lift(new RunInZoneOperator(zone, uTask));
@@ -21,7 +20,8 @@ export class ZoneSubscriber<T> extends Subscriber<T> {
   constructor(
     destination: Subscriber<T>,
     private zone: Zone,
-    private uTask: () => void = (() => { })) {
+    private uTask: () => void = () => {}
+  ) {
     super(destination);
   }
   protected _next(val: T) {
@@ -34,7 +34,7 @@ export class ZoneSubscriber<T> extends Subscriber<T> {
  * @ignore
  */
 export class RunInZoneOperator<T, R> implements Operator<T, R> {
-  constructor(private zone: Zone, private uTask?: () => void) { }
+  constructor(private zone: Zone, private uTask?: () => void) {}
   call(subscriber: Subscriber<R>, source: any): TeardownLogic {
     return source.subscribe(new ZoneSubscriber(subscriber, this.zone, this.uTask));
   }

@@ -6,9 +6,7 @@ import { DragDropManager, BackendFactory, Backend } from 'dnd-core';
 import { InjectionToken } from '@angular/core';
 
 /** The injection token for the dnd-core compatible backend currently in use. */
-export const DRAG_DROP_BACKEND = new InjectionToken<Backend>(
-  'dnd-core compatible backend'
-);
+export const DRAG_DROP_BACKEND = new InjectionToken<Backend>('dnd-core compatible backend');
 
 /** The injection token for the dnd-core BackendFactory used to instantiate dnd-core. */
 export const DRAG_DROP_BACKEND_FACTORY = new InjectionToken<BackendFactory>(
@@ -26,14 +24,10 @@ export const DRAG_DROP_BACKEND_DEBUG_MODE = new InjectionToken<any>(
 );
 
 /** The injection token for the dnd-core DragDropManager */
-export const DRAG_DROP_MANAGER = new InjectionToken<DragDropManager>(
-  'dnd-core DragDropManager'
-);
+export const DRAG_DROP_MANAGER = new InjectionToken<DragDropManager>('dnd-core DragDropManager');
 
 /** The injection token for the dnd-core compatible backend currently in use. */
-export const DRAG_DROP_GLOBAL_CONTEXT = new InjectionToken<any>(
-  'dnd-core context'
-);
+export const DRAG_DROP_GLOBAL_CONTEXT = new InjectionToken<any>('dnd-core context');
 
 /**
  * The type a source or target is given as a marker for 'you supplied null as a type',

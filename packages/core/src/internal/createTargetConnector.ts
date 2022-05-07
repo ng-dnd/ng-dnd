@@ -6,13 +6,11 @@ import { Reconnector } from './Reconnector';
 export class TargetConnector implements Connector<DropTargetConnector> {
   private currentHandlerId: any;
 
-  private dropTarget = new Reconnector<void>(
-    (handlerId, node, options) => {
-      return this.backend.connectDropTarget(handlerId, node, options);
-    }
-  );
+  private dropTarget = new Reconnector<void>((handlerId, node, options) => {
+    return this.backend.connectDropTarget(handlerId, node, options);
+  });
 
-  constructor(private backend: Backend) { }
+  constructor(private backend: Backend) {}
 
   public receiveHandlerId(handlerId: Identifier | null) {
     if (handlerId === this.currentHandlerId) {
@@ -23,7 +21,7 @@ export class TargetConnector implements Connector<DropTargetConnector> {
   }
 
   public hooks: DropTargetConnector = {
-    dropTarget: this.dropTarget.hook
+    dropTarget: this.dropTarget.hook,
   };
 
   public reconnect() {

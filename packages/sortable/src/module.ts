@@ -21,4 +21,4 @@ const EXPORTS = [
   declarations: EXPORTS,
   exports: EXPORTS,
 })
-export class DndSortableModule { }
+export class DndSortableModule {}

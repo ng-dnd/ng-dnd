@@ -36,8 +36,8 @@ export function suggestHalfway<Data>(
 ) {
   const { hover } = item;
   const dim = ctx.horizontal
-    ? (rect.width || rect.right - rect.left)
-    : (rect.height || rect.bottom - rect.top);
+    ? rect.width || rect.right - rect.left
+    : rect.height || rect.bottom - rect.top;
   const start = ctx.horizontal ? rect.left : rect.top;
   const targetCentre = start + dim / 2.0;
   const mouse = ctx.horizontal ? clientOffset.x : clientOffset.y;

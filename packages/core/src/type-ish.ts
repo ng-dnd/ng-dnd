@@ -7,4 +7,3 @@ export interface Offset {
   /** y coordinate */
   y: number;
 }
-

@@ -2,13 +2,7 @@ import { Backend, DragDropManager } from 'dnd-core';
 import { NgZone } from '@angular/core';
 import { invariant } from './invariant';
 import { TypeOrTypeArray } from '../type-ish';
-import {
-  Subscription,
-  Observable,
-  ReplaySubject,
-  BehaviorSubject,
-  TeardownLogic
-} from 'rxjs';
+import { Subscription, Observable, ReplaySubject, BehaviorSubject, TeardownLogic } from 'rxjs';
 import { TYPE_DYNAMIC } from '../tokens';
 
 import { take, map, distinctUntilChanged, switchMapTo } from 'rxjs/operators';
@@ -22,7 +16,7 @@ import {
   DropTargetConnector,
   DragSourceConnector,
   DragSourceOptions,
-  DragPreviewOptions
+  DragPreviewOptions,
 } from '../connectors';
 import { Connector } from './createSourceConnector';
 import { scheduleMicroTaskAfter } from './scheduleMicroTaskAfter';
@@ -30,9 +24,7 @@ import { scheduleMicroTaskAfter } from './scheduleMicroTaskAfter';
 export interface FactoryArgs<TMonitor, TConnector> {
   createHandler: (handlerMonitor: any) => any;
   createMonitor: (manager: DragDropManager) => TMonitor;
-  createConnector: (
-    backend: Backend
-  ) => Connector<TConnector>;
+  createConnector: (backend: Backend) => Connector<TConnector>;
   registerHandler: (
     type: any,
     handler: any,
@@ -81,7 +73,7 @@ export class Connection<TMonitor extends DragSourceMonitor | DropTargetMonitor, 
       typeof manager === 'object',
       // TODO: update this mini-documentation
       'Could not find the drag and drop manager in the context of %s. ' +
-      'Make sure to wrap the top-level component of your app with DragDropContext. '
+        'Make sure to wrap the top-level component of your app with DragDropContext. '
       // 'Read more: ',
     );
     NgZone.assertNotInAngularZone();
@@ -89,13 +81,9 @@ export class Connection<TMonitor extends DragSourceMonitor | DropTargetMonitor, 
     this.handlerMonitor = this.factoryArgs.createMonitor(this.manager);
     this.collector$ = new BehaviorSubject(this.handlerMonitor);
     this.handler = this.factoryArgs.createHandler(this.handlerMonitor);
-    this.handlerConnector = this.factoryArgs.createConnector(
-      this.manager.getBackend()
-    );
+    this.handlerConnector = this.factoryArgs.createConnector(this.manager.getBackend());
     // handlerConnector lives longer than any per-type subscription
-    this.subscriptionConnectionLifetime.add(() =>
-      this.handlerConnector.receiveHandlerId(null)
-    );
+    this.subscriptionConnectionLifetime.add(() => this.handlerConnector.receiveHandlerId(null));
 
     if (initialType && initialType !== TYPE_DYNAMIC) {
       this.setTypes(initialType);
@@ -124,7 +112,7 @@ export class Connection<TMonitor extends DragSourceMonitor | DropTargetMonitor, 
 
   private onUpdate = () => {
     this.handlerConnector.reconnect();
-  }
+  };
 
   connect(fn: (connector: TConnector) => void): Subscription {
     const subscription = this.resolvedType$.pipe(take(1)).subscribe(() => {
@@ -154,27 +142,15 @@ export class Connection<TMonitor extends DragSourceMonitor | DropTargetMonitor, 
   }
 
   connectDropTarget(node: Node): Subscription {
-    return this.connect(c =>
-      ((c as any) as DropTargetConnector).dropTarget(node)
-    );
+    return this.connect(c => (c as any as DropTargetConnector).dropTarget(node));
   }
 
-  connectDragSource(
-    node: Node,
-    options: DragSourceOptions
-  ): Subscription {
-    return this.connect(c =>
-      ((c as any) as DragSourceConnector).dragSource(node, options)
-    );
+  connectDragSource(node: Node, options: DragSourceOptions): Subscription {
+    return this.connect(c => (c as any as DragSourceConnector).dragSource(node, options));
   }
 
-  connectDragPreview(
-    node: Node,
-    options: DragPreviewOptions
-  ): Subscription {
-    return this.connect(c =>
-      ((c as any) as DragSourceConnector).dragPreview(node, options)
-    );
+  connectDragPreview(node: Node, options: DragPreviewOptions): Subscription {
+    return this.connect(c => (c as any as DragSourceConnector).dragPreview(node, options));
   }
 
   setTypes(type: TypeOrTypeArray) {
@@ -220,10 +196,9 @@ export class Connection<TMonitor extends DragSourceMonitor | DropTargetMonitor, 
     this.handlerConnector.receiveHandlerId(handlerId);
 
     const globalMonitor = this.manager.getMonitor();
-    const unsubscribe = globalMonitor.subscribeToStateChange(
-      this.handleChange,
-      { handlerIds: [handlerId] }
-    );
+    const unsubscribe = globalMonitor.subscribeToStateChange(this.handleChange, {
+      handlerIds: [handlerId],
+    });
 
     this.subscriptionTypeLifetime.add(unsubscribe);
     this.subscriptionTypeLifetime.add(unregister);
@@ -232,7 +207,7 @@ export class Connection<TMonitor extends DragSourceMonitor | DropTargetMonitor, 
 
   private handleChange = () => {
     this.collector$.next(this.handlerMonitor);
-  }
+  };
 
   unsubscribe() {
     if (this.subscriptionTypeLifetime) {
@@ -246,15 +221,12 @@ export class Connection<TMonitor extends DragSourceMonitor | DropTargetMonitor, 
   }
 
   get closed() {
-    return (
-      this.subscriptionConnectionLifetime &&
-      this.subscriptionConnectionLifetime.closed
-    );
+    return this.subscriptionConnectionLifetime && this.subscriptionConnectionLifetime.closed;
   }
 }
 
 export interface SourceConstructor<Item = unknown, DropResult = unknown> {
-  new(
+  new (
     factoryArgs: FactoryArgs<DragSourceMonitor, DragSourceConnector>,
     manager: DragDropManager,
     dndZone: Zone,
@@ -262,7 +234,7 @@ export interface SourceConstructor<Item = unknown, DropResult = unknown> {
   ): t.DragSource<Item, DropResult>;
 }
 export interface TargetConstructor {
-  new(
+  new (
     factoryArgs: FactoryArgs<DropTargetMonitor, DropTargetConnector>,
     manager: DragDropManager,
     dndZone: Zone,

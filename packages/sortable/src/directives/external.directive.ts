@@ -6,7 +6,7 @@ export const EXTERNAL_LIST_ID: symbol = Symbol('EXTERNAL_LIST_ID');
 
 @Directive({
   selector: '[dndSortableExternal]',
-  exportAs: 'dndSortableExternal'
+  exportAs: 'dndSortableExternal',
 })
 export class DndSortableExternal<Data> implements OnChanges, OnDestroy {
   @Input('dndSortableExternal') spec!: SortableSpec<Data>;
@@ -19,10 +19,7 @@ export class DndSortableExternal<Data> implements OnChanges, OnDestroy {
   public source: DragSource<DraggedItem<Data>>;
 
   /** @ignore */
-  constructor(
-    private dnd: DndService,
-    private el: ElementRef<Element>
-  ) {
+  constructor(private dnd: DndService, private el: ElementRef<Element>) {
     this.source = this.dnd.dragSource<DraggedItem<Data>>(null, {
       canDrag: monitor => {
         if (this.spec && this.spec.canDrag) {
@@ -51,17 +48,14 @@ export class DndSortableExternal<Data> implements OnChanges, OnDestroy {
         if (item) {
           this.spec && this.spec.endDrag && this.spec.endDrag(item, monitor);
         }
-      }
+      },
     });
   }
 
   /** @ignore */
   private size() {
     const rect = this.el.nativeElement.getBoundingClientRect();
-    return new Size(
-      rect.width || rect.right - rect.left,
-      rect.height || rect.bottom - rect.top
-    );
+    return new Size(rect.width || rect.right - rect.left, rect.height || rect.bottom - rect.top);
   }
 
   /** @ignore */

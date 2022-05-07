@@ -1,6 +1,7 @@
 import { DropTargetMonitor } from './target-monitor';
 
-/** The spec passed to {@link DndService#dropTarget}.
+/**
+ * The spec passed to {@link DndService#dropTarget}.
  *
  * Note the two type parameters. Both must represent plain JS objects. See the extended
  * discussion of these type parameters at {@link DragSourceSpec}.
@@ -16,17 +17,18 @@ export interface DropTargetSpec<Item = unknown, DropResult = unknown> {
    * performance degradation.
    *
    * Default, when not specified, is `true`.
-   **/
+   */
   canDrop?(monitor: DropTargetMonitor<Item, DropResult>): boolean;
 
-  /** Called frequently while the mouse hovers over the owner drop target while
+  /**
+   * Called frequently while the mouse hovers over the owner drop target while
    * dragging a relevant item.
-   *
-   * */
+   */
   hover?(monitor: DropTargetMonitor<Item, DropResult>): void;
 
-  /** Called when a compatible item is dropped on the target. You may either
-   *  return nothing, or a plain object.
+  /**
+   * Called when a compatible item is dropped on the target. You may either
+   * return nothing, or a plain object.
    *
    * If you return an object, it is going to become the drop result and will be
    * available to the drag source in its {@link DragSourceSpec#endDrag} method as
@@ -41,6 +43,5 @@ export interface DropTargetSpec<Item = unknown, DropResult = unknown> {
    *
    * This method will not be called if `canDrop()` is defined and returns `false`.
    */
-
   drop?(monitor: DropTargetMonitor<Item, DropResult>): DropResult | void;
 }

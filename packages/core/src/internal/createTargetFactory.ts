@@ -3,7 +3,6 @@ import { DropTargetMonitor } from '../target-monitor';
 import { DropTargetSpec } from '../drop-target-specification';
 
 export class Target implements DropTarget {
-
   constructor(
     private spec: DropTargetSpec,
     private zone: Zone,
@@ -14,7 +13,7 @@ export class Target implements DropTarget {
 
   withChangeDetection<T>(fn: () => T): T {
     const x = fn();
-    this.zone.scheduleMicroTask('DropTarget', () => { });
+    this.zone.scheduleMicroTask('DropTarget', () => {});
     return x;
   }
 

@@ -5,14 +5,14 @@ import {
   default as MultiBackend,
   MouseTransition,
   TouchTransition,
-  BackendTransition
+  BackendTransition,
 } from 'dnd-multi-backend';
 
 export const HTML5ToTouch = {
   backends: [
     {
       backend: HTML5Backend,
-      transition: MouseTransition
+      transition: MouseTransition,
     },
     {
       backend: TouchBackend,
@@ -20,9 +20,9 @@ export const HTML5ToTouch = {
         enableMouseEvents: false,
       },
       preview: true,
-      transition: TouchTransition
-    }
-  ] as BackendTransition[]
+      transition: TouchTransition,
+    },
+  ] as BackendTransition[],
 };
 
 export function DefaultMultiBackend(manager: DragDropManager, context: any) {
@@ -46,4 +46,3 @@ export function DefaultMultiBackend(manager: DragDropManager, context: any) {
 export function createDefaultMultiBackend() {
   return DefaultMultiBackend as BackendFactory;
 }
-

@@ -111,15 +111,14 @@ export interface SortableSpec<Data, Type = string | symbol> {
    * Inspect `item.hover` for where it is hovering.
    */
   canDrop?(item: DraggedItem<Data>, monitor: DropTargetMonitor<DraggedItem<Data>>): boolean;
-
 }
 
 export class Size {
-  constructor(public width: number, public height: number) { }
+  constructor(public width: number, public height: number) {}
   style() {
     return {
       width: this.width + 'px',
-      height: this.height + 'px'
+      height: this.height + 'px',
     };
   }
 }
@@ -135,9 +134,8 @@ export interface DraggedItem<Data> {
   hover: {
     index: number;
     listId: any;
-  }
+  };
 }
-
 
 export enum HoverTrigger {
   halfway = 'halfway',

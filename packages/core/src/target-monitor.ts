@@ -23,7 +23,7 @@ export interface DropTargetMonitor<Item = unknown, DropResult = unknown> extends
    * targets, bottom up, any parent that explicitly returns its own result
    * from `drop()` overrides the drop result previously set by the child.
    * Returns `null` if called outside `drop()`.
-   * */
+   */
   getDropResult(): DropResult;
 
   /**

@@ -16,7 +16,7 @@ import { map } from 'rxjs/operators';
 @Component({
   selector: 'dnd-preview-renderer',
   template: `
-    <div class="firefox-bug" [ngStyle]="style$|async">
+    <div class="firefox-bug" [ngStyle]="style$ | async">
       <ng-content></ng-content>
     </div>
   `,
@@ -46,9 +46,9 @@ import { map } from 'rxjs/operators';
         animation-iteration-count: infinite;
         animation-timing-function: linear;
       }
-    `
+    `,
   ],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class DndPreviewRendererComponent implements OnDestroy {
   /** @ignore */
@@ -57,7 +57,7 @@ export class DndPreviewRendererComponent implements OnDestroy {
   /** @ignore */
   collect$ = this.layer.listen(monitor => ({
     initialOffset: monitor.getInitialSourceClientOffset() as Offset,
-    currentOffset: monitor.getSourceClientOffset()
+    currentOffset: monitor.getSourceClientOffset(),
   }));
 
   /** @ignore */
@@ -67,7 +67,7 @@ export class DndPreviewRendererComponent implements OnDestroy {
 
       if (!initialOffset || !currentOffset) {
         return {
-          display: 'none'
+          display: 'none',
         };
       }
 
@@ -76,13 +76,13 @@ export class DndPreviewRendererComponent implements OnDestroy {
       const transform = `translate(${x}px, ${y}px)`;
       return {
         transform,
-        WebkitTransform: transform
+        WebkitTransform: transform,
       };
     })
   );
 
   /** @ignore */
-  constructor(private dnd: DndService) { }
+  constructor(private dnd: DndService) {}
 
   /** @ignore */
   ngOnDestroy() {

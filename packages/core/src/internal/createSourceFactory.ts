@@ -6,13 +6,12 @@ export class Source implements DragSource {
   constructor(
     private spec: DragSourceSpec<any>,
     private zone: Zone,
-    private monitor: DragSourceMonitor<any, any>,
-  ) {
-  }
+    private monitor: DragSourceMonitor<any, any>
+  ) {}
 
   withChangeDetection<T>(fn: () => T): T {
     const x = fn();
-    this.zone.scheduleMicroTask('DragSource', () => { });
+    this.zone.scheduleMicroTask('DragSource', () => {});
     return x;
   }
 
@@ -22,7 +21,7 @@ export class Source implements DragSource {
     }
 
     return this.withChangeDetection(() => {
-      return this.spec.canDrag && this.spec.canDrag(this.monitor) || false;
+      return (this.spec.canDrag && this.spec.canDrag(this.monitor)) || false;
     });
   }
 

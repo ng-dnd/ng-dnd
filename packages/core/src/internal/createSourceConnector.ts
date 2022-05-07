@@ -12,18 +12,14 @@ export interface Connector<TConnector> {
 export class SourceConnector implements Connector<DragSourceConnector> {
   private currentHandlerId: any;
 
-  private dragSource = new Reconnector<DragSourceOptions>(
-    (handlerId, node, options) => {
-      return this.backend.connectDragSource(handlerId, node, options);
-    }
-  );
-  private dragPreview = new Reconnector<DragPreviewOptions>(
-    (handlerId, node, options) => {
-      return this.backend.connectDragPreview(handlerId, node, options);
-    }
-  );
+  private dragSource = new Reconnector<DragSourceOptions>((handlerId, node, options) => {
+    return this.backend.connectDragSource(handlerId, node, options);
+  });
+  private dragPreview = new Reconnector<DragPreviewOptions>((handlerId, node, options) => {
+    return this.backend.connectDragPreview(handlerId, node, options);
+  });
 
-  constructor(private backend: Backend) { }
+  constructor(private backend: Backend) {}
 
   public receiveHandlerId(handlerId: Identifier | null) {
     if (handlerId === this.currentHandlerId) {

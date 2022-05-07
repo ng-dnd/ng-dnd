@@ -1,13 +1,14 @@
 import { DragSourceMonitor } from './source-monitor';
 
-/*
-Note that you can't infer Item if you supply both beginDrag and endDrag,
-since endDrag needs to find some type to put in the 'monitor' argument.
-But people can always nail it down with `dnd.dragSource<MyItemType>('BOX', { ...spec })`.
-Related: https://github.com/Microsoft/TypeScript/issues/19345
-*/
+/**
+ * Note that you can't infer Item if you supply both beginDrag and endDrag,
+ * since endDrag needs to find some type to put in the 'monitor' argument.
+ * But people can always nail it down with `dnd.dragSource<MyItemType>('BOX', { ...spec })`.
+ * Related: https://github.com/Microsoft/TypeScript/issues/19345
+ */
 
-/** The spec passed to {@link DndService#dragSource}.
+/**
+ * The spec passed to {@link DndService#dragSource}.
  *
  * Note the two type parameters. Both must represent plain JS objects.
  *

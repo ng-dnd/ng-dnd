@@ -6,9 +6,7 @@ export class Reconnector<O = any> {
   node?: Node;
   options?: O;
   disconnect?: Unsubscribe | null;
-  constructor(
-    private backendConnector: (handlerId: any, node: Node, options?: O) => Unsubscribe
-  ) { }
+  constructor(private backendConnector: (handlerId: any, node: Node, options?: O) => Unsubscribe) {}
   reconnect = (parentHandlerId: Identifier | null) => {
     if (this.disconnect) {
       this.disconnect();
@@ -20,8 +18,7 @@ export class Reconnector<O = any> {
     }
   };
   hook = (nativeElement: Node, options?: O) => {
-    if (nativeElement === this.node &&
-      areOptionsEqual(options, this.options)) {
+    if (nativeElement === this.node && areOptionsEqual(options, this.options)) {
       return;
     }
 

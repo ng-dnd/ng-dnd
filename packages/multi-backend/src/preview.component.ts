@@ -6,7 +6,7 @@ import {
   Inject,
   ChangeDetectionStrategy,
   OnInit,
-  OnDestroy
+  OnDestroy,
 } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 import { DndService, DRAG_DROP_MANAGER } from '@ng-dnd/core';
@@ -41,15 +41,19 @@ export interface PreviewTemplateContext {
   template: `
     <ng-container *ngIf="previewEnabled$ | async">
       <dnd-preview-renderer *ngIf="collect$ | async as c">
-        <ng-container *ngIf="c.isDragging" >
+        <ng-container *ngIf="c.isDragging">
           <ng-container
-              *ngTemplateOutlet="content; context: { $implicit: c.itemType, type: c.itemType, item: c.item }">
+            *ngTemplateOutlet="
+              content;
+              context: { $implicit: c.itemType, type: c.itemType, item: c.item }
+            "
+          >
           </ng-container>
         </ng-container>
       </dnd-preview-renderer>
     </ng-container>
   `,
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class DndPreviewComponent implements BackendWatcher, OnInit, OnDestroy {
   /** Disables the check for whether the current MultiBackend wants the preview enabled */
@@ -83,12 +87,10 @@ export class DndPreviewComponent implements BackendWatcher, OnInit, OnDestroy {
   /** @ignore */
   constructor(
     private dnd: DndService,
-    @Inject(DRAG_DROP_MANAGER) private manager: DragDropManager,
+    @Inject(DRAG_DROP_MANAGER) private manager: DragDropManager
   ) {
     if (this.manager == null) {
-      this.warn(
-        'no drag and drop manager defined, are you sure you imported DndModule?'
-      );
+      this.warn('no drag and drop manager defined, are you sure you imported DndModule?');
     } else {
       (this.manager.getBackend() as MultiBackendExt).previews!.register(this);
     }

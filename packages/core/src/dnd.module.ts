@@ -1,15 +1,11 @@
-import {
-  NgModule,
-  ModuleWithProviders,
-  NgZone
-} from '@angular/core';
+import { NgModule, ModuleWithProviders, NgZone } from '@angular/core';
 
 import { DndService } from './connector.service';
 import {
   DndDirective,
   DragSourceDirective,
   DropTargetDirective,
-  DragPreviewDirective
+  DragPreviewDirective,
 } from './dnd.directive';
 
 import {
@@ -18,15 +14,10 @@ import {
   DRAG_DROP_BACKEND_OPTIONS,
   DRAG_DROP_BACKEND_DEBUG_MODE,
   DRAG_DROP_MANAGER,
-  DRAG_DROP_GLOBAL_CONTEXT
+  DRAG_DROP_GLOBAL_CONTEXT,
 } from './tokens';
 
-import {
-  createDragDropManager,
-  BackendFactory,
-  DragDropManager,
-  Backend,
-} from 'dnd-core';
+import { createDragDropManager, BackendFactory, DragDropManager, Backend } from 'dnd-core';
 
 import { invariant } from './internal/invariant';
 
@@ -40,7 +31,7 @@ export function unpackBackendForEs5Users(backendOrModule: any) {
   invariant(
     typeof backend === 'function',
     'Expected the backend to be a function or an ES6 module exporting a default function. ' +
-    'Read more: http://react-dnd.github.io/react-dnd/docs-drag-drop-context.html'
+      'Read more: http://react-dnd.github.io/react-dnd/docs-drag-drop-context.html'
   );
   return backend;
 }
@@ -53,7 +44,7 @@ export function managerFactory(
   zone: NgZone,
   context: any,
   backendOptions?: any,
-  debugMode?: boolean,
+  debugMode?: boolean
 ): DragDropManager {
   backendFactory = unpackBackendForEs5Users(backendFactory);
   return zone.runOutsideAngular(() =>
@@ -142,12 +133,7 @@ export interface BackendFactoryInput {
 }
 
 /** @ignore */
-const EXPORTS = [
-  DndDirective,
-  DragSourceDirective,
-  DropTargetDirective,
-  DragPreviewDirective,
-];
+const EXPORTS = [DndDirective, DragSourceDirective, DropTargetDirective, DragPreviewDirective];
 
 // @dynamic
 @NgModule({

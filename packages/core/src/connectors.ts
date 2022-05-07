@@ -3,7 +3,6 @@
  * display items dragged from it. See {@link DragSource#connectDragSource}.
  */
 export interface DragSourceOptions {
-
   /**
    * A string. By default, 'move'. In the browsers that support this
    * feature, specifying 'copy' shows a special "copying" cursor, while 'move'
@@ -11,14 +10,12 @@ export interface DragSourceOptions {
    * provide a hint to the user about whether an action is destructive.
    */
   dropEffect?: 'copy' | 'move' | 'link' | 'none';
-
 }
 
 /**
  * Provide options for how to render a drag preview. See {@link DragSource#connectDragPreview}.
  */
 export interface DragPreviewOptions {
-
   /**
    * By default, false. If true, the component will learn that it is being
    * dragged immediately as the drag starts instead of the next tick. This
@@ -51,7 +48,6 @@ export interface DragPreviewOptions {
    */
   anchorY?: number;
 
-
   /**
    * By default, null. Specifies the vertical offset between the cursor and
    * the drag preview element. If `offsetX` has a value, `anchorX` won't be
@@ -65,7 +61,6 @@ export interface DragPreviewOptions {
    * used.
    */
   offsetY?: number;
-
 }
 
 /** @ignore Connects a drop target to a DOM element */
@@ -74,8 +69,8 @@ export interface DropTargetConnector {
 }
 
 /**
- * @ignore Connects a drag source to a DOM element, either as the source itself or as
- * a drag preview
+ * @ignore
+ * Connects a drag source to a DOM element, either as the source itself or as a drag preview
  */
 export interface DragSourceConnector {
   /**

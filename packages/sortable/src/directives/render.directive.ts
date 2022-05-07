@@ -1,31 +1,49 @@
-import { Directive, Input, ElementRef, OnInit, OnDestroy, OnChanges, AfterViewInit } from '@angular/core';
+import {
+  Directive,
+  Input,
+  ElementRef,
+  OnInit,
+  OnDestroy,
+  OnChanges,
+  AfterViewInit,
+} from '@angular/core';
 import {
   DndService,
-  DragSource, DropTarget, DragSourceMonitor, DropTargetMonitor
+  DragSource,
+  DropTarget,
+  DragSourceMonitor,
+  DropTargetMonitor,
 } from '@ng-dnd/core';
 import { Observable, Subscription } from 'rxjs';
 import { DraggedItem, Size, RenderContext } from '../types';
 import { getSuggester } from '../hoverTriggers';
 
 /** @ignore */
-const _scheduleMicroTaskPolyfill: (f: () => void) => any = (
-  requestAnimationFrame || ((f: () => void) => setTimeout(f, 0))
-);
+const _scheduleMicroTaskPolyfill: (f: () => void) => any =
+  requestAnimationFrame || ((f: () => void) => setTimeout(f, 0));
 
 @Directive({
   selector: '[dndSortableRender]',
-  exportAs: 'dndSortableRender'
+  exportAs: 'dndSortableRender',
 })
 export class DndSortableRenderer<Data> implements OnChanges, OnInit, AfterViewInit, OnDestroy {
   @Input('dndSortableRender') context!: RenderContext<Data>;
 
-  get data() { return this.context.data; }
+  get data() {
+    return this.context.data;
+  }
 
-  get index() { return this.context.index; }
+  get index() {
+    return this.context.index;
+  }
 
-  get type() { return this.context.spec && this.context.spec.type; }
+  get type() {
+    return this.context.spec && this.context.spec.type;
+  }
 
-  get listId() { return this.context.listId; }
+  get listId() {
+    return this.context.listId;
+  }
 
   /** @ignore */
   private get accepts() {
@@ -38,7 +56,9 @@ export class DndSortableRenderer<Data> implements OnChanges, OnInit, AfterViewIn
     }
   }
   /** @ignore */
-  private get spec() { return this.context.spec; }
+  private get spec() {
+    return this.context.spec;
+  }
 
   /** @ignore */
   private subs = new Subscription();
@@ -63,50 +83,56 @@ export class DndSortableRenderer<Data> implements OnChanges, OnInit, AfterViewIn
   isDragging$: Observable<boolean>;
 
   /** @ignore */
-  constructor(
-    private dnd: DndService,
-    private el: ElementRef<HTMLElement>
-  ) {
-    this.target = this.dnd.dropTarget<DraggedItem<Data>>(null, {
-      // this is a hover-only situation
-      canDrop: () => false,
-      hover: monitor => {
-        this.hover(monitor);
-      }
-    }, this.subs);
-
-    this.source = this.dnd.dragSource<DraggedItem<Data>>(null, {
-      canDrag: monitor => {
-        return this.getCanDrag(monitor);
+  constructor(private dnd: DndService, private el: ElementRef<HTMLElement>) {
+    this.target = this.dnd.dropTarget<DraggedItem<Data>>(
+      null,
+      {
+        // this is a hover-only situation
+        canDrop: () => false,
+        hover: monitor => {
+          this.hover(monitor);
+        },
       },
-      isDragging: monitor => {
-        return this.isDragging(monitor.getItem());
-      },
-      beginDrag: monitor => {
-        const item = this.createItem();
+      this.subs
+    );
 
-        // Chromium bug since 2016: if you modify styles or DOM
-        // synchronously within 'dragstart' handler, Chrome fires
-        // a 'dragend' immediately.
-        //
-        // https://bugs.chromium.org/p/chromium/issues/detail?id=674882
-        // although recommended Promise.resolve().then() doesn't work.
-        this.spec && this.spec.beginDrag && _scheduleMicroTaskPolyfill(() => {
-          this.spec && this.spec.beginDrag && this.spec.beginDrag(item, monitor);
-        });
+    this.source = this.dnd.dragSource<DraggedItem<Data>>(
+      null,
+      {
+        canDrag: monitor => {
+          return this.getCanDrag(monitor);
+        },
+        isDragging: monitor => {
+          return this.isDragging(monitor.getItem());
+        },
+        beginDrag: monitor => {
+          const item = this.createItem();
 
-        return item;
+          // Chromium bug since 2016: if you modify styles or DOM
+          // synchronously within 'dragstart' handler, Chrome fires
+          // a 'dragend' immediately.
+          //
+          // https://bugs.chromium.org/p/chromium/issues/detail?id=674882
+          // although recommended Promise.resolve().then() doesn't work.
+          this.spec &&
+            this.spec.beginDrag &&
+            _scheduleMicroTaskPolyfill(() => {
+              this.spec && this.spec.beginDrag && this.spec.beginDrag(item, monitor);
+            });
+
+          return item;
+        },
+        endDrag: monitor => {
+          const item = monitor.getItem();
+          if (item) {
+            this.spec && this.spec.endDrag && this.spec.endDrag(item, monitor);
+          }
+        },
       },
-      endDrag: monitor => {
-        const item = monitor.getItem();
-        if (item) {
-          this.spec && this.spec.endDrag && this.spec.endDrag(item, monitor);
-        }
-      }
-    }, this.subs);
+      this.subs
+    );
 
     this.isDragging$ = this.source.listen(m => m.isDragging());
-
   }
 
   /** @ignore */
@@ -120,8 +146,8 @@ export class DndSortableRenderer<Data> implements OnChanges, OnInit, AfterViewIn
       listId: this.listId,
       hover: {
         index: this.index,
-        listId: this.listId
-      }
+        listId: this.listId,
+      },
     };
   }
 
@@ -141,9 +167,9 @@ export class DndSortableRenderer<Data> implements OnChanges, OnInit, AfterViewIn
   /** @ignore */
   private isDragging(item: DraggedItem<Data> | null) {
     if (this.spec && this.spec.isDragging) {
-      return item && this.spec.isDragging(this.data, item) || false;
+      return (item && this.spec.isDragging(this.data, item)) || false;
     } else {
-      return item && this.sameIds(this.data, item) || false;
+      return (item && this.sameIds(this.data, item)) || false;
     }
   }
 
@@ -155,19 +181,16 @@ export class DndSortableRenderer<Data> implements OnChanges, OnInit, AfterViewIn
       return;
     }
     // hovering on yourself should do nothing
-    if (this.isDragging(item)
-      && this.index === item.hover.index
-      && this.listId === item.hover.listId) {
+    if (
+      this.isDragging(item) &&
+      this.index === item.hover.index &&
+      this.listId === item.hover.listId
+    ) {
       return;
     }
     const { hover } = item;
     const suggester = getSuggester(this.context.hoverTrigger);
-    const suggestedIndex = suggester(
-      this.context,
-      item,
-      this.rect(),
-      clientOffset
-    );
+    const suggestedIndex = suggester(this.context, item, this.rect(), clientOffset);
 
     // happens if you aren't implementing SortableSpec correctly.
     if (suggestedIndex < 0) {
@@ -180,23 +203,29 @@ export class DndSortableRenderer<Data> implements OnChanges, OnInit, AfterViewIn
     if (suggestedIndex !== hover.index || this.listId !== hover.listId) {
       item.hover = {
         index: suggestedIndex,
-        listId: this.listId
+        listId: this.listId,
       };
       if (this.spec && this.spec.canDrop && !this.spec.canDrop(item, monitor)) {
         return;
       }
       // shallow clone so library consumers don't mutate our items
-      this.spec && this.spec.hover && this.spec.hover({
-        ...item
-      }, monitor);
+      this.spec &&
+        this.spec.hover &&
+        this.spec.hover(
+          {
+            ...item,
+          },
+          monitor
+        );
     }
-
   }
 
   /** @ignore */
   private rect() {
     if (!this.el) {
-      throw new Error('@ng-dnd/sortable: [dndSortableRender] expected to be attached to a real DOM element');
+      throw new Error(
+        '@ng-dnd/sortable: [dndSortableRender] expected to be attached to a real DOM element'
+      );
     }
     const rect = (this.el.nativeElement as Element).getBoundingClientRect();
     return rect;

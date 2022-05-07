@@ -4,29 +4,29 @@ import { Observable } from 'rxjs';
 
 export enum SortableEvents {
   BeginDrag = 'BeginDrag',
-  Hover     = 'Hover',
-  Drop      = 'Drop',
-  EndDrag   = 'EndDrag',
+  Hover = 'Hover',
+  Drop = 'Drop',
+  EndDrag = 'EndDrag',
 }
 
 export class BeginDragAction<AT, T> {
   readonly event = SortableEvents.BeginDrag;
-  constructor(public readonly type: AT, public readonly item: DraggedItem<T>) { }
+  constructor(public readonly type: AT, public readonly item: DraggedItem<T>) {}
 }
 
 export class HoverAction<AT, T> {
   readonly event = SortableEvents.Hover;
-  constructor(public readonly type: AT, public readonly item: DraggedItem<T>) { }
+  constructor(public readonly type: AT, public readonly item: DraggedItem<T>) {}
 }
 
 export class DropAction<AT, T> {
   readonly event = SortableEvents.Drop;
-  constructor(public readonly type: AT, public readonly item: DraggedItem<T>) { }
+  constructor(public readonly type: AT, public readonly item: DraggedItem<T>) {}
 }
 
 export class EndDragAction<AT, T> {
   readonly event = SortableEvents.EndDrag;
-  constructor(public readonly type: AT, public readonly item: DraggedItem<T>) { }
+  constructor(public readonly type: AT, public readonly item: DraggedItem<T>) {}
 }
 
 export type SortableAction<AT, D> =
@@ -69,7 +69,7 @@ export class NgRxSortable<D> implements SortableSpec<D> {
   constructor(
     protected store: Dispatcher,
     protected actionType: string,
-    configure: NgRxSortableConfiguration<D>,
+    configure: NgRxSortableConfiguration<D>
   ) {
     if (configure.type !== undefined) this.type = configure.type;
     if (configure.accepts !== undefined) this.accepts = configure.accepts;

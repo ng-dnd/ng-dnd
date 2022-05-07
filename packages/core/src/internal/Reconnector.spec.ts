@@ -5,7 +5,7 @@ describe('Reconnector', () => {
   let options: string | undefined;
   let unsubscribeCount = 0;
   let reconnector: Reconnector;
-  let spy = () => { };
+  let spy = () => {};
 
   beforeEach(() => {
     reconnector = new Reconnector<string>((_handlerId, _node, _options) => {
@@ -36,7 +36,7 @@ describe('Reconnector', () => {
     expect(unsubscribeCount).toBe(1);
 
     let calledSpy = false;
-    spy = () => calledSpy = true;
+    spy = () => (calledSpy = true);
     reconnector.reconnect(null);
     expect(unsubscribeCount).toBe(2);
     expect(calledSpy).toBe(false);
@@ -48,9 +48,8 @@ describe('Reconnector', () => {
     reconnector.reconnect('parentHandlerId');
     reconnector.hook(div, options);
     let calledSpy = false;
-    spy = () => calledSpy = true;
+    spy = () => (calledSpy = true);
     reconnector.hook(div, options);
     expect(calledSpy).toBe(false);
   });
-
 });

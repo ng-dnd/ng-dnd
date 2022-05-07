@@ -253,8 +253,7 @@ export interface DragSource<Item, DropResult = unknown>
  * Or, you could just use [@ng-dnd/multi-backend](../@ng-dnd/multi-backend/).
  *
  */
-export interface DragLayer<Item = any>
-  extends ConnectionBase<DragLayerMonitor<Item>> {
+export interface DragLayer<Item = any> extends ConnectionBase<DragLayerMonitor<Item>> {
   /**
    * For listen functions in general, see {@link ConnectionBase#listen}.
    *

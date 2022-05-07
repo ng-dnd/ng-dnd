@@ -7,7 +7,6 @@ import { map, distinctUntilChanged } from 'rxjs/operators';
 import { scheduleMicroTaskAfter } from './scheduleMicroTaskAfter';
 
 export class DragLayerConnectionClass implements DragLayer {
-
   unsubscribeFromOffsetChange: Unsubscribe;
   unsubscribeFromStateChange: Unsubscribe;
   private readonly collector$: BehaviorSubject<DragLayerMonitor>;
@@ -16,12 +15,8 @@ export class DragLayerConnectionClass implements DragLayer {
   constructor(private manager: DragDropManager, private zone: Zone) {
     const monitor = this.manager.getMonitor();
     this.collector$ = new BehaviorSubject<DragLayerMonitor>(monitor);
-    this.unsubscribeFromOffsetChange = monitor.subscribeToOffsetChange(
-      this.handleOffsetChange
-    );
-    this.unsubscribeFromStateChange = monitor.subscribeToStateChange(
-      this.handleStateChange
-    );
+    this.unsubscribeFromOffsetChange = monitor.subscribeToOffsetChange(this.handleOffsetChange);
+    this.unsubscribeFromStateChange = monitor.subscribeToStateChange(this.handleStateChange);
 
     this.subscription.add(() => {
       this.unsubscribeFromOffsetChange();

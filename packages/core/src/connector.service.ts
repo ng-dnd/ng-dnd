@@ -57,7 +57,6 @@ export interface AddSubscription extends SubscriptionLike {
  *
  * It is a good habit for avoiding leaked subscriptions, because .
  */
-
 @Injectable()
 export class DndService {
   /** @ignore */
@@ -91,7 +90,7 @@ export class DndService {
           // noop, but causes change detection (i.e. onLeave)
         });
       }
-    }
+    },
     // onInvokeTask: (zoneDelegate, currentZone, targetZone, task, applyThis, applyArgs) => {
     // }
     // onScheduleTask(parentZoneDelegate, currentZone, targetZone, task) {
@@ -105,7 +104,7 @@ export class DndService {
   constructor(
     @Inject(DRAG_DROP_MANAGER) private manager: DragDropManager,
     private ngZone: NgZone
-  ) { }
+  ) {}
 
   /**
    * This drop target will only react to the items produced by the drag sources
@@ -128,7 +127,7 @@ export class DndService {
           createHandler: createTarget,
           registerHandler: registerTarget,
           createMonitor: createTargetMonitor,
-          createConnector: createTargetConnector
+          createConnector: createTargetConnector,
         },
         this.manager,
         this.dndZone,
@@ -165,7 +164,6 @@ export class DndService {
    * @param subscription An RxJS Subscription to tie the lifetime of the
    * connection to.
    */
-
   public dragSource<Item, DropResult = unknown>(
     type: string | symbol | null,
     spec: DragSourceSpec<Item, DropResult>,
@@ -179,7 +177,7 @@ export class DndService {
           createHandler: createSource,
           registerHandler: registerSource,
           createMonitor: createSourceMonitor,
-          createConnector: createSourceConnector
+          createConnector: createSourceConnector,
         },
         this.manager,
         this.dndZone,

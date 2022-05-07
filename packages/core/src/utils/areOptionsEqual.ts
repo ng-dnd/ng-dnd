@@ -5,7 +5,7 @@ export default function areOptionsEqual(nextOptions: any, currentOptions: any) {
     return true;
   }
 
-  return currentOptions !== null &&
-    nextOptions !== null &&
-    shallowEqual(currentOptions, nextOptions);
+  return (
+    currentOptions !== null && nextOptions !== null && shallowEqual(currentOptions, nextOptions)
+  );
 }

@@ -20,7 +20,7 @@ class DropTargetMonitorClass implements DropTargetMonitor {
     invariant(
       !isCallingCanDrop,
       'You may not call monitor.canDrop() inside your canDrop() implementation. ' +
-      'Read more: http://react-dnd.github.io/react-dnd/docs-drop-target-monitor.html',
+        'Read more: http://react-dnd.github.io/react-dnd/docs-drop-target-monitor.html'
     );
 
     try {

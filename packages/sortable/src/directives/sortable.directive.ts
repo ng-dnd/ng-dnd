@@ -16,7 +16,7 @@ import { isEmpty } from '../isEmpty';
 
 @Directive({
   selector: '[dndSortable]',
-  exportAs: 'dndSortable'
+  exportAs: 'dndSortable',
 })
 export class DndSortable<Data> implements OnChanges, OnInit, AfterViewInit, OnDestroy {
   @Input() listId: any = Math.random().toString();
@@ -51,43 +51,48 @@ export class DndSortable<Data> implements OnChanges, OnInit, AfterViewInit, OnDe
   constructor(
     protected dnd: DndService,
     protected el: ElementRef<HTMLElement>,
-    protected cdr: ChangeDetectorRef,
+    protected cdr: ChangeDetectorRef
   ) {
-    this.target = this.dnd.dropTarget<DraggedItem<Data>>(null, {
-      canDrop: monitor => {
-        if (!this.acceptsType(monitor.getItemType())) {
-          return false;
-        }
-        const item = monitor.getItem();
-        if (!item) { return false; }
-        return this.getCanDrop(item, monitor);
-      },
-      drop: monitor => {
-        const item = monitor.getItem();
-        if (item && this.getCanDrop(item, monitor)) {
-          this.spec && this.spec.drop && this.spec.drop(item, monitor);
-        }
-        return {};
-      },
-      hover: monitor => {
-        const item = monitor.getItem();
-        if (this.children && isEmpty(this.children) && item) {
-          const canDrop = this.getCanDrop(item, monitor);
-          if (canDrop && monitor.isOver({ shallow: true })) {
-            this.callHover(item, monitor, {
-              listId: this.listId,
-              index: 0,
-            });
+    this.target = this.dnd.dropTarget<DraggedItem<Data>>(
+      null,
+      {
+        canDrop: monitor => {
+          if (!this.acceptsType(monitor.getItemType())) {
+            return false;
           }
-        }
-      }
-    }, this.subs);
+          const item = monitor.getItem();
+          if (!item) {
+            return false;
+          }
+          return this.getCanDrop(item, monitor);
+        },
+        drop: monitor => {
+          const item = monitor.getItem();
+          if (item && this.getCanDrop(item, monitor)) {
+            this.spec && this.spec.drop && this.spec.drop(item, monitor);
+          }
+          return {};
+        },
+        hover: monitor => {
+          const item = monitor.getItem();
+          if (this.children && isEmpty(this.children) && item) {
+            const canDrop = this.getCanDrop(item, monitor);
+            if (canDrop && monitor.isOver({ shallow: true })) {
+              this.callHover(item, monitor, {
+                listId: this.listId,
+                index: 0,
+              });
+            }
+          }
+        },
+      },
+      this.subs
+    );
   }
 
   /** @ignore */
   private updateSubscription() {
-    const anyListId =
-      (typeof this.listId !== 'undefined') && (this.listId !== null);
+    const anyListId = typeof this.listId !== 'undefined' && this.listId !== null;
     if (anyListId && this.spec) {
       if (this.listSubs) {
         this.subs.remove(this.listSubs);
@@ -96,13 +101,15 @@ export class DndSortable<Data> implements OnChanges, OnInit, AfterViewInit, OnDe
 
       if (this.spec.getList) {
         const cs$ = this.spec.getList(this.listId);
-        this.listSubs = cs$ && cs$.subscribe(l => {
-          if (l) {
-            this.childrenSubject$.next(l);
-            this.children = l;
-            this.cdr.markForCheck();
-          }
-        });
+        this.listSubs =
+          cs$ &&
+          cs$.subscribe(l => {
+            if (l) {
+              this.childrenSubject$.next(l);
+              this.children = l;
+              this.cdr.markForCheck();
+            }
+          });
 
         this.subs.add(this.listSubs);
       }
@@ -136,7 +143,7 @@ export class DndSortable<Data> implements OnChanges, OnInit, AfterViewInit, OnDe
   private callHover(
     item: DraggedItem<Data>,
     monitor: DropTargetMonitor<DraggedItem<Data>>,
-    newHover?: { listId: any; index: number; }
+    newHover?: { listId: any; index: number }
   ) {
     if (newHover) {
       // mutate the object

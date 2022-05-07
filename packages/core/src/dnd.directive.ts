@@ -10,25 +10,21 @@ import { TypeOrTypeArray } from './type-ish';
 /** @ignore */
 const explanation =
   'You can only pass exactly one connection object to [dropTarget]. ' +
-  'There is only one of each source/target/preview allowed per DOM element.'
-  ;
+  'There is only one of each source/target/preview allowed per DOM element.';
 
 /** @ignore */
 @Directive({
-  selector: '[abstractDndDirective]'
+  selector: '[abstractDndDirective]',
 })
 export class DndDirective implements OnChanges, OnDestroy {
   protected connection: any;
   private deferredRequest = new Subscription();
 
   /** @ignore */
-  constructor(protected elRef: ElementRef, private zone: NgZone) { }
+  constructor(protected elRef: ElementRef, private zone: NgZone) {}
 
   ngOnChanges() {
-    invariant(
-      typeof this.connection === 'object' && !Array.isArray(this.connection),
-      explanation
-    );
+    invariant(typeof this.connection === 'object' && !Array.isArray(this.connection), explanation);
     this.zone.runOutsideAngular(() => {
       // discard an unresolved connection request
       // in the case where the previous one succeeded, deferredRequest is
@@ -41,7 +37,9 @@ export class DndDirective implements OnChanges, OnDestroy {
     });
   }
 
-  ngOnDestroy() { this.deferredRequest.unsubscribe(); }
+  ngOnDestroy() {
+    this.deferredRequest.unsubscribe();
+  }
 
   protected callHooks(_conn: any): Subscription {
     return new Subscription();
@@ -54,7 +52,7 @@ export class DndDirective implements OnChanges, OnDestroy {
  * Allows you to connect a {@link DropTarget} to an element in a component template.
  */
 @Directive({
-  selector: '[dropTarget]'
+  selector: '[dropTarget]',
 })
 export class DropTargetDirective extends DndDirective implements OnChanges {
   protected connection: DropTarget | undefined;
@@ -86,7 +84,7 @@ export class DropTargetDirective extends DndDirective implements OnChanges {
 
 /** Allows you to connect a {@link DragSource} to an element in a component template. */
 @Directive({
-  selector: '[dragSource]'
+  selector: '[dragSource]',
 })
 export class DragSourceDirective extends DndDirective implements OnChanges {
   protected connection: DragSource<any> | undefined;
@@ -122,7 +120,6 @@ export class DragSourceDirective extends DndDirective implements OnChanges {
     }
     return sub;
   }
-
 }
 
 /**
@@ -133,7 +130,7 @@ export class DragSourceDirective extends DndDirective implements OnChanges {
  */
 @Directive({
   selector: '[dragPreview]',
-  inputs: ['dragPreview', 'dragPreviewOptions']
+  inputs: ['dragPreview', 'dragPreviewOptions'],
 })
 export class DragPreviewDirective extends DndDirective implements OnChanges {
   protected connection: DragSource<any> | undefined;
@@ -167,4 +164,3 @@ function getEmptyImage() {
   }
   return emptyImage;
 }
-
