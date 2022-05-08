@@ -28,9 +28,7 @@ import { SectionComponent } from './section.component';
     DndModule,
     DndMultiBackendModule,
     DndSortableModule,
-    RouterModule.forChild([
-      { path: '', component: ContainerComponent }
-    ])
-  ]
+    RouterModule.forChild([{ path: '', component: ContainerComponent }]),
+  ],
 })
-export class QuizModule { }
+export class QuizModule {}

@@ -16,23 +16,30 @@ interface NativeFile {
   selector: 'native-target',
   template: `
     <div class="target" [dropTarget]="target" [dropTargetTypes]="type">
-      <p>Accepts <code>{{ type }}</code></p>
+      <p>
+        Accepts <code>{{ type }}</code>
+      </p>
       <ng-content></ng-content>
       <pre *ngIf="dropped">{{ dropped | json }}</pre>
     </div>
   `,
-  styles: [`
-    :host {
-      min-width: 200px;
-    }
-    .target {
-      padding: 8px;
-      background: #ddd;
-      min-height: 140px;
-      min-width: 0;
-    }
-    pre { overflow-x: auto; min-width: 0; }
-  `]
+  styles: [
+    `
+      :host {
+        min-width: 200px;
+      }
+      .target {
+        padding: 8px;
+        background: #ddd;
+        min-height: 140px;
+        min-width: 0;
+      }
+      pre {
+        overflow-x: auto;
+        min-width: 0;
+      }
+    `,
+  ],
 })
 export class TargetComponent implements OnDestroy {
   @Input() type = '';
@@ -49,10 +56,10 @@ export class TargetComponent implements OnDestroy {
       } else {
         this.dropped = item;
       }
-    }
+    },
   });
 
-  constructor(private dnd: DndService) { }
+  constructor(private dnd: DndService) {}
 
   ngOnDestroy() {
     this.target.unsubscribe();

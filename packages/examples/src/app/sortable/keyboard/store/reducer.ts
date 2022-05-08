@@ -13,7 +13,7 @@ export enum ActionTypes {
 }
 export class SelectBlob {
   readonly type = ActionTypes.KB_SELECT;
-  constructor(public id: number) { }
+  constructor(public id: number) {}
 }
 export class LiftSelected {
   readonly type = ActionTypes.KB_LIFT;
@@ -43,8 +43,8 @@ export class State extends Record({
   draggingList: null as unknown as List<Blob>,
   flying: null as unknown as DraggedItem<Blob>,
   kbSelected: 0,
-  kbLifted: false
-}) { }
+  kbLifted: false,
+}) {}
 
 function sortReducer(state = new State(), action: SortAction) {
   const { index, hover, data } = action.item;
@@ -74,7 +74,8 @@ function sortReducer(state = new State(), action: SortAction) {
         .set('kbSelected', action.item.data.id)
         .set('kbLifted', false);
     }
-    default: return state;
+    default:
+      return state;
   }
 }
 

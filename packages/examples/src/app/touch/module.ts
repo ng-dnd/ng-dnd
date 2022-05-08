@@ -9,11 +9,7 @@ import { ContainerComponent } from './container.component';
 import { ItemComponent, DraggableItemComponent } from './item.component';
 
 @NgModule({
-  declarations: [
-    ContainerComponent,
-    ItemComponent,
-    DraggableItemComponent
-  ],
+  declarations: [ContainerComponent, ItemComponent, DraggableItemComponent],
   imports: [
     CommonModule,
     UtilityModule,
@@ -22,5 +18,4 @@ import { ItemComponent, DraggableItemComponent } from './item.component';
     RouterModule.forChild([{ path: '', component: ContainerComponent }]),
   ],
 })
-export class TouchModule {
-}
+export class TouchModule {}

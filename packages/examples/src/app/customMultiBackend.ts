@@ -18,7 +18,7 @@ const backends: BackendTransition[] = [
     } as TouchBackendOptions,
     transition: TouchTransition,
     preview: true,
-  }
+  },
 ];
 
 export const CustomTransitions = { backends };

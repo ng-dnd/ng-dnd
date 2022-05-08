@@ -11,7 +11,7 @@ import { combineLatest } from 'rxjs';
   selector: 'cal-event',
   changeDetection: ChangeDetectionStrategy.OnPush,
   templateUrl: './event.component.html',
-  styleUrls: ['./event.component.scss']
+  styleUrls: ['./event.component.scss'],
 })
 export class CalendarEventComponent {
   @Input() event!: CalendarEvent;
@@ -24,7 +24,8 @@ export class CalendarEventComponent {
     () => this.day,
     (e, day) => {
       return e.span(day);
-    });
+    }
+  );
 
   get span() {
     return this.spanSelector({});
@@ -41,7 +42,7 @@ export class CalendarEventComponent {
     (a, b, c) => a || b || c
   );
 
-  spec(t: string): DragSourceSpec<{ id: number, start: Date, end: Date }> {
+  spec(t: string): DragSourceSpec<{ id: number; start: Date; end: Date }> {
     return {
       isDragging: m => m.getItem()!.id === this.event.uniqueId,
       beginDrag: m => {
@@ -59,9 +60,9 @@ export class CalendarEventComponent {
         if (!monitor.didDrop()) {
           this.store.dispatch(new EndDragExistingEvent(this.event.uniqueId));
         }
-      }
+      },
     };
   }
 
-  constructor(private dnd: DndService, private store: Store<State>) { }
+  constructor(private dnd: DndService, private store: Store<State>) {}
 }

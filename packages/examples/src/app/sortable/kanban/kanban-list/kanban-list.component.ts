@@ -16,7 +16,7 @@ import { SortableSpecService } from '../specs';
   selector: 'kanban-list',
   templateUrl: './kanban-list.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  styleUrls: ['./kanban-list.component.scss']
+  styleUrls: ['./kanban-list.component.scss'],
 })
 export class KanbanListComponent implements OnInit {
   @Input() list!: KanbanList;
@@ -33,11 +33,10 @@ export class KanbanListComponent implements OnInit {
   // - Also must be public if you're using it in your template, until the Ivy renderer lands
   constructor(
     public specs: SortableSpecService,
-    @Optional() public render: DndSortableRenderer<KanbanList>,
-  ) { }
+    @Optional() public render: DndSortableRenderer<KanbanList>
+  ) {}
 
-  ngOnInit() {
-  }
+  ngOnInit() {}
 
   // // If you wanted to listen to properties on the LIST's drop target (to answer
   // // 'is there a card hovering over this kanban-list?'), then you can grab it with a ViewChild.

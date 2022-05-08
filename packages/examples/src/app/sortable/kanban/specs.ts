@@ -22,17 +22,14 @@ export class SortableSpecService implements OnDestroy {
 
   isCopying = false;
 
-  subs = this.store.pipe(select(_isCopying) as any)
-    .subscribe(x => this.isCopying = x as boolean);
+  subs = this.store.pipe(select(_isCopying) as any).subscribe(x => (this.isCopying = x as boolean));
 
   listSpec = new NgRxSortable<Card>(this.store, ActionTypes.SortCard, {
     type: ItemTypes.CARD,
     trackBy: card => card.id,
     // here we use the different listId on each kanban-list to pull different data
-    getList: listId => this.store.pipe(
-      select(_listById(listId)) as any,
-      filter(x => x != null) as any
-    ),
+    getList: listId =>
+      this.store.pipe(select(_listById(listId)) as any, filter(x => x != null) as any),
 
     // isDragging determines which card on the ground will regard itself as
     // "the same as the one in flight". It must return true for exactly one
@@ -69,10 +66,10 @@ export class SortableSpecService implements OnDestroy {
     isDragging: (ground, inFlight) => {
       const flyingId = this.isCopying ? CARD_ID_WHEN_COPYING : inFlight.data.id;
       return ground.id === flyingId;
-    }
+    },
   });
 
-  constructor(public store: Store<unknown>) { }
+  constructor(public store: Store<unknown>) {}
 
   // usually services don't get destroyed, but if it is, we will be ON IT.
   ngOnDestroy() {

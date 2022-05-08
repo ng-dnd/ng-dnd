@@ -17,13 +17,13 @@ import { UtilityModule } from '../utility.module';
     DraggableBoxComponent,
     DragContainerComponent,
     BoxDragPreviewComponent,
-    BoxComponent
+    BoxComponent,
   ],
   imports: [
     CommonModule,
     DndModule,
     RouterModule.forChild([{ path: '', component: ContainerComponent }]),
-    UtilityModule
+    UtilityModule,
   ],
 })
-export class DragLayerModule { }
+export class DragLayerModule {}

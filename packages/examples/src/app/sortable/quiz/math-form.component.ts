@@ -5,24 +5,24 @@ import { MathQuestion } from './Question';
 @Component({
   selector: 'app-math-form',
   template: `
-    <form [formGroup]="form" (ngSubmit)="onSubmit()" >
+    <form [formGroup]="form" (ngSubmit)="onSubmit()">
       <div>
         <label>
-            Question:
-            <input class="title" placeholder="Add a card" formControlName="question" />
+          Question:
+          <input class="title" placeholder="Add a card" formControlName="question" />
         </label>
       </div>
       <div>
         <label>
-            Answer:
-          <input class="amount" type="number" formControlName="answer"/>
+          Answer:
+          <input class="amount" type="number" formControlName="answer" />
         </label>
       </div>
       <div>
         <input type="submit" value="Save question" *ngIf="form.dirty" />
       </div>
     </form>
-  `
+  `,
 })
 export class MathFormComponent implements OnChanges {
   @Input() data!: MathQuestion;
@@ -38,10 +38,12 @@ export class MathFormComponent implements OnChanges {
   }
 
   onSubmit() {
-    this.edit.emit(new MathQuestion(
-      this.data.id,
-      this.form.get('question')?.value as string,
-      this.form.get('answer')?.value as number
-    ));
+    this.edit.emit(
+      new MathQuestion(
+        this.data.id,
+        this.form.get('question')?.value as string,
+        this.form.get('answer')?.value as number
+      )
+    );
   }
 }

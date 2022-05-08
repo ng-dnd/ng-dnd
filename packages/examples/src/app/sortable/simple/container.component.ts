@@ -5,12 +5,13 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
   template: `
     <app-example-link path="sortable/simple"></app-example-link>
 
-    <p> This example is like the 'Basic Sortable', except you don't have to
-    write a complicated hover function. You can focus on the model data. </p>
+    <p>
+      This example is like the 'Basic Sortable', except you don't have to write a complicated hover
+      function. You can focus on the model data.
+    </p>
 
     <app-simple-sortable></app-simple-sortable>
   `,
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class ContainerComponent {
-}
+export class ContainerComponent {}

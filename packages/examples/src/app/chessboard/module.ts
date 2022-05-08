@@ -13,7 +13,11 @@ import { BoardSquareComponent } from './board-square.component';
 
 @NgModule({
   declarations: [
-    KnightComponent, SquareComponent, BoardComponent, ContainerComponent, BoardSquareComponent
+    KnightComponent,
+    SquareComponent,
+    BoardComponent,
+    ContainerComponent,
+    BoardSquareComponent,
   ],
   imports: [
     CommonModule,
@@ -21,8 +25,6 @@ import { BoardSquareComponent } from './board-square.component';
     RouterModule.forChild([{ path: '', component: ContainerComponent }]),
     UtilityModule,
   ],
-  providers: [
-    GameService
-  ]
+  providers: [GameService],
 })
-export class ChessboardModule { }
+export class ChessboardModule {}

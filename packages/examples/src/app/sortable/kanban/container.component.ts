@@ -23,11 +23,7 @@ export class ContainerComponent implements AfterViewInit, OnDestroy {
     // drop: item => this.store.dispatch(new RemoveCard(item))
   });
 
-  constructor(
-    private dnd: DndService,
-    private el: ElementRef,
-    private store: Store<unknown>
-  ) { }
+  constructor(private dnd: DndService, private el: ElementRef, private store: Store<unknown>) {}
 
   ngAfterViewInit() {
     // spill = anywhere in this container component

@@ -7,5 +7,5 @@ import { CalendarState } from './calendar.reducer';
 export class CalendarService {
   feat = createFeatureSelector<CalendarState>('calendar');
   calendar = this.store.pipe(select(this.feat));
-  constructor(private store: Store<State>) { }
+  constructor(private store: Store<State>) {}
 }

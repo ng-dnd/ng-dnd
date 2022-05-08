@@ -10,11 +10,7 @@ import { CustomPreviewComponent } from './custom-preview.component';
 import { HandleComponent } from './handle.component';
 
 @NgModule({
-  declarations: [
-    CustomPreviewComponent,
-    HandleComponent,
-    ContainerComponent
-  ],
+  declarations: [CustomPreviewComponent, HandleComponent, ContainerComponent],
   imports: [
     CommonModule,
     UtilityModule,
@@ -23,5 +19,4 @@ import { HandleComponent } from './handle.component';
     RouterModule.forChild([{ path: '', component: ContainerComponent }]),
   ],
 })
-export class HandlesPreviewsModule {
-}
+export class HandlesPreviewsModule {}

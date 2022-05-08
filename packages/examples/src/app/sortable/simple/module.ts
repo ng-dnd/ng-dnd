@@ -10,19 +10,14 @@ import { SimpleComponent } from './simple.component';
 import { ContainerComponent } from './container.component';
 
 @NgModule({
-  declarations: [
-    ContainerComponent,
-    SimpleComponent,
-  ],
+  declarations: [ContainerComponent, SimpleComponent],
   imports: [
     CommonModule,
     UtilityModule,
     DndModule,
     DndMultiBackendModule,
     DndSortableModule,
-    RouterModule.forChild([
-      { path: '', component: ContainerComponent }
-    ])
-  ]
+    RouterModule.forChild([{ path: '', component: ContainerComponent }]),
+  ],
 })
-export class SimpleModule { }
+export class SimpleModule {}

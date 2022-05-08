@@ -1,3 +1,3 @@
 export const ItemTypes = {
-  EMAIL: 'EMAIL'
+  EMAIL: 'EMAIL',
 };

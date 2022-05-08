@@ -10,11 +10,7 @@ import { CopyTargetComponent } from './copy-target.component';
 import { BoxComponent } from './box.component';
 
 @NgModule({
-  declarations: [
-    ContainerComponent,
-    CopyTargetComponent,
-    BoxComponent
-  ],
+  declarations: [ContainerComponent, CopyTargetComponent, BoxComponent],
   imports: [
     CommonModule,
     UtilityModule,
@@ -23,5 +19,4 @@ import { BoxComponent } from './box.component';
     RouterModule.forChild([{ path: '', component: ContainerComponent }]),
   ],
 })
-export class DropEffectsModule {
-}
+export class DropEffectsModule {}

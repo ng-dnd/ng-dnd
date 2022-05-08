@@ -12,17 +12,20 @@ import { map } from 'rxjs/operators';
       <app-square [black]="black">
         <ng-content></ng-content>
       </app-square>
-      <div class="overlay" *ngIf="showOverlay$|async" [ngStyle]="overlayStyle$|async"></div>
+      <div class="overlay" *ngIf="showOverlay$ | async" [ngStyle]="overlayStyle$ | async"></div>
     </div>
   `,
-  styles: [`
-    :host, .wrapper {
-      display: block;
-      position: relative;
-      width: 100%;
-      height: 100%;
-    }
-  `]
+  styles: [
+    `
+      :host,
+      .wrapper {
+        display: block;
+        position: relative;
+        width: 100%;
+        height: 100%;
+      }
+    `,
+  ],
 })
 export class BoardSquareComponent implements OnDestroy {
   @Input() position!: Coord;
@@ -39,7 +42,7 @@ export class BoardSquareComponent implements OnDestroy {
     },
     drop: monitor => {
       this.game.moveKnight(this.position);
-    }
+    },
   });
 
   collected$ = this.target.listen(m => ({
@@ -49,29 +52,31 @@ export class BoardSquareComponent implements OnDestroy {
 
   showOverlay$ = this.collected$.pipe(map(c => c.isOver || c.canDrop));
 
-  overlayStyle$ = this.collected$.pipe(map(coll => {
-    const { canDrop, isOver } = coll;
-    let bg = 'rgba(0,0,0,0)';
-    if (canDrop && isOver) {
-      bg = 'green';
-    } else if (canDrop && !isOver) {
-      bg = 'yellow';
-    } else if (!canDrop && isOver) {
-      bg = 'red';
-    }
-    return {
-      position: 'absolute',
-      top: 0,
-      left: 0,
-      height: '100%',
-      width: '100%',
-      zIndex: 1,
-      opacity: 0.5,
-      backgroundColor: bg
-    };
-  }));
+  overlayStyle$ = this.collected$.pipe(
+    map(coll => {
+      const { canDrop, isOver } = coll;
+      let bg = 'rgba(0,0,0,0)';
+      if (canDrop && isOver) {
+        bg = 'green';
+      } else if (canDrop && !isOver) {
+        bg = 'yellow';
+      } else if (!canDrop && isOver) {
+        bg = 'red';
+      }
+      return {
+        position: 'absolute',
+        top: 0,
+        left: 0,
+        height: '100%',
+        width: '100%',
+        zIndex: 1,
+        opacity: 0.5,
+        backgroundColor: bg,
+      };
+    })
+  );
 
-  constructor(private dnd: DndService, private game: GameService) { }
+  constructor(private dnd: DndService, private game: GameService) {}
 
   ngOnDestroy() {
     this.target.unsubscribe();

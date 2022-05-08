@@ -18,17 +18,19 @@ import { Colors } from './colors';
       <app-nested-source-targetbox></app-nested-source-targetbox>
     </div>
   `,
-  styles: [`
-    .nested-sources-wrapper {
-      display: flex;
-    }
-    .nested-sources-wrapper > * {
-      flex: 1;
-    }
-    .nested-sources-wrapper > *:not(:last-child) {
-      margin-right: 20px;
-    }
-  `]
+  styles: [
+    `
+      .nested-sources-wrapper {
+        display: flex;
+      }
+      .nested-sources-wrapper > * {
+        flex: 1;
+      }
+      .nested-sources-wrapper > *:not(:last-child) {
+        margin-right: 20px;
+      }
+    `,
+  ],
 })
 export class ContainerComponent {
   Colors = Colors;

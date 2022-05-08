@@ -10,11 +10,7 @@ import { TargetBoxComponent } from './target.component';
 import { BlueOrYellowComponent } from './blue-or-yellow.component';
 
 @NgModule({
-  declarations: [
-    ContainerComponent,
-    TargetBoxComponent,
-    BlueOrYellowComponent
-  ],
+  declarations: [ContainerComponent, TargetBoxComponent, BlueOrYellowComponent],
   imports: [
     CommonModule,
     UtilityModule,
@@ -23,5 +19,4 @@ import { BlueOrYellowComponent } from './blue-or-yellow.component';
     RouterModule.forChild([{ path: '', component: ContainerComponent }]),
   ],
 })
-export class NestedSourcesModule {
-}
+export class NestedSourcesModule {}

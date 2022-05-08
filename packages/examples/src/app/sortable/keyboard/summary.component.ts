@@ -8,16 +8,20 @@ import { State } from './store/reducer';
   template: `
     <p>
       Hash of the unstable list: <code>{{ unstable$ | async }}</code>
-      <br/>
+      <br />
       Hash of the stable list: <code>{{ stable$ | async }}</code>
     </p>
+  `,
+  styles: [
+    `
+      p {
+        margin-top: 0;
+      }
     `,
-  styles: [`
-    p { margin-top: 0; }
-  `]
+  ],
 })
 export class SummaryComponent {
   unstable$ = this.store.select(_unstableHash);
   stable$ = this.store.select(_overallHash);
-  constructor(private store: Store<State>) { }
+  constructor(private store: Store<State>) {}
 }

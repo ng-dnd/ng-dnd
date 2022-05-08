@@ -5,7 +5,7 @@ import { delay, distinctUntilChanged, filter, switchMapTo, take, takeUntil } fro
 type Types = string | symbol | (string | symbol)[];
 
 export class ActivatedWith {
-  constructor(public type: string | symbol, public item: any) { }
+  constructor(public type: string | symbol, public item: any) {}
 }
 
 export type ActivatorSpec = DropTargetSpec & { onActivate: (a: ActivatedWith) => void };

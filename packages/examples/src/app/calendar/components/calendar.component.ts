@@ -10,12 +10,12 @@ import { ResetCalendar } from '../store/calendar.actions';
   selector: 'cal-calendar',
   changeDetection: ChangeDetectionStrategy.OnPush,
   templateUrl: './calendar.component.html',
-  styleUrls: ['./calendar.component.scss']
+  styleUrls: ['./calendar.component.scss'],
 })
 export class CalendarComponent implements OnInit {
   weeks$ = this.store.pipe(select(weeksSelector)) as any;
 
-  constructor(private store: Store<CalendarState>) { }
+  constructor(private store: Store<CalendarState>) {}
 
   trackWeek(_: number, week: Week) {
     return week.uniqueId;

@@ -37,12 +37,8 @@ import { SortableSpecService } from './specs';
     ReactiveFormsModule,
     StoreModule,
     StoreModule.forFeature('kanban', reducer),
-    RouterModule.forChild([
-      { path: '', component: ContainerComponent }
-    ])
+    RouterModule.forChild([{ path: '', component: ContainerComponent }]),
   ],
-  providers: [
-    SortableSpecService
-  ]
+  providers: [SortableSpecService],
 })
-export class KanbanModule { }
+export class KanbanModule {}

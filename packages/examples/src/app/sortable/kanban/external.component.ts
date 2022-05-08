@@ -8,17 +8,25 @@ import { SortableSpecService } from './specs';
   selector: 'kanban-external',
   template: `
     <div class="ext">
-      <kanban-card [dndSortableExternal]="externalSpec"
-                  #ext="dndSortableExternal"
-                  [card]="card"
-                  [dragSource]="ext.source"
-                  [noHTML5Preview]="true">
+      <kanban-card
+        [dndSortableExternal]="externalSpec"
+        #ext="dndSortableExternal"
+        [card]="card"
+        [dragSource]="ext.source"
+        [noHTML5Preview]="true"
+      >
       </kanban-card>
     </div>
   `,
-  styles: [`
-    .ext { margin-right: 8px; margin-bottom: 8px; display: inline-block; }
-  `]
+  styles: [
+    `
+      .ext {
+        margin-right: 8px;
+        margin-bottom: 8px;
+        display: inline-block;
+      }
+    `,
+  ],
 })
 export class KanbanExternalComponent {
   ItemTypes = ItemTypes;
@@ -26,7 +34,7 @@ export class KanbanExternalComponent {
   // create some dummy data to pass to kanban-card
   card: Card = {
     id: 1337,
-    title: 'External card - drag me in!'
+    title: 'External card - drag me in!',
   };
 
   nextId = 3000000;
@@ -45,10 +53,10 @@ export class KanbanExternalComponent {
     createData: () => {
       return {
         id: this.nextId++,
-        title: this.card.title
+        title: this.card.title,
       };
-    }
+    },
   };
 
-  constructor(private specs: SortableSpecService) { }
+  constructor(private specs: SortableSpecService) {}
 }

@@ -19,7 +19,7 @@ describe(TestComponent.name, () => {
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       imports: [DndModule.forRoot({ backend: TestBackend })],
-      declarations: [TestComponent]
+      declarations: [TestComponent],
     }).compileComponents();
   }));
 

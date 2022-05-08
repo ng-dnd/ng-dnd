@@ -22,14 +22,14 @@ import { UtilityModule } from '../utility.module';
     BoxDragPreviewComponent,
     SpotComponent,
     CrosshairsComponent,
-    CubeComponent
+    CubeComponent,
   ],
   imports: [
     CommonModule,
     FormsModule,
     DndModule,
     RouterModule.forChild([{ path: '', component: ContainerComponent }]),
-    UtilityModule
-  ]
+    UtilityModule,
+  ],
 })
-export class XyPadModule { }
+export class XyPadModule {}

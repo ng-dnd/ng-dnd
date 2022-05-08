@@ -6,13 +6,13 @@ import { SortableSpecService, Card } from '../specs';
 @Component({
   selector: 'kanban-board',
   templateUrl: './kanban-board.component.html',
-  styleUrls: ['./kanban-board.component.scss']
+  styleUrls: ['./kanban-board.component.scss'],
 })
 export class KanbanBoardComponent {
   ItemTypes = ItemTypes;
   hoverTrigger = HoverTrigger.fixed;
 
-  constructor(public specs: SortableSpecService) { }
+  constructor(public specs: SortableSpecService) {}
 
   addCard(listId: number, title: string) {
     // this.store.dispatch(new AddCard(listId, title));

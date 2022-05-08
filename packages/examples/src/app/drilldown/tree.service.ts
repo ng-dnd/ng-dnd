@@ -26,23 +26,23 @@ const TOGGLE = 'TOGGLE';
 
 class BeginDrag {
   readonly type = BEGIN_DRAG;
-  constructor() { }
+  constructor() {}
 }
 class EndDrag {
   readonly type = END_DRAG;
-  constructor() { }
+  constructor() {}
 }
 class OpenTransient {
   readonly type = OPEN_TRANSIENT;
-  constructor(public keys: string[]) { }
+  constructor(public keys: string[]) {}
 }
 class Drop {
   readonly type = DROP;
-  constructor(public keys: string[]) { }
+  constructor(public keys: string[]) {}
 }
 class Toggle {
   readonly type = TOGGLE;
-  constructor(public keys: string[]) { }
+  constructor(public keys: string[]) {}
 }
 
 type Actions = BeginDrag | EndDrag | OpenTransient | Drop | Toggle | { type: '@@init' };
@@ -59,40 +59,39 @@ const initialState: Shape = {
         Salivate: {},
       },
       Candid: {
-        Granada: {}
-      }
+        Granada: {},
+      },
     },
     Magnanimous: {
       Jalapeño: {
-        Poppers: {}
+        Poppers: {},
       },
       Jalapeño2: {
-        Poppers3: {}
-      }
+        Poppers3: {},
+      },
     },
     Byzantine: {
       Fault: {
-        Tolerance: {}
+        Tolerance: {},
       },
       Armadillo: {
-        Farming: {}
-      }
-    }
+        Farming: {},
+      },
+    },
   },
   open: {
     // nothing's open
     'Infraction': true,
     'Infraction.Basilica': true,
-    'Infraction.Basilica.Salivate': true
+    'Infraction.Basilica.Salivate': true,
   },
   preDragOpen: {
     // nothing's open
-  }
+  },
 };
 
 @Injectable()
 export class TreeService {
-
   private actions$ = new BehaviorSubject<Actions>({ type: '@@init' });
 
   private store$ = this.actions$.pipe(
@@ -102,8 +101,7 @@ export class TreeService {
     refCount()
   );
 
-  constructor() {
-  }
+  constructor() {}
 
   static makeKey(keys: string[]) {
     return keys.join('.');
@@ -190,5 +188,4 @@ export class TreeService {
   drop(keys: string[]) {
     this.actions$.next(new Drop(keys));
   }
-
 }

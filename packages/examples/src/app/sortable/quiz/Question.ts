@@ -6,11 +6,7 @@ export enum QuestionTypes {
 }
 
 export class MathQuestion {
-  constructor(
-    public id: any,
-    public question: string,
-    public answer: number
-  ) { }
+  constructor(public id: any, public question: string, public answer: number) {}
   static readonly templateDescription = 'Math question';
   readonly [immerable] = true;
   readonly formType = QuestionTypes.Math;
@@ -18,9 +14,7 @@ export class MathQuestion {
 }
 
 export class NameQuestion {
-  constructor(
-    public id: any
-  ) { }
+  constructor(public id: any) {}
   static readonly templateDescription = 'Name and student ID';
   readonly [immerable] = true;
   readonly formType = QuestionTypes.Name;

@@ -7,4 +7,3 @@ export function hasher(content: string) {
   }
   return hash;
 }
-

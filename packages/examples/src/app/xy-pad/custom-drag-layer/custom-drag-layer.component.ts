@@ -6,7 +6,7 @@ import {
   EventEmitter,
   Output,
   ElementRef,
-  AfterViewInit
+  AfterViewInit,
 } from '@angular/core';
 import { snapToGrid } from './snapToGrid';
 import { DndService, Offset } from '@ng-dnd/core';
@@ -25,25 +25,21 @@ interface Collected {
 @Component({
   selector: 'xy-custom-drag-layer',
   template: `
-    <ng-container *ngIf="(collect$|async) as c">
+    <ng-container *ngIf="collect$ | async as c">
       <ng-container *ngIf="c.isDragging">
-
-        <xy-crosshairs *ngIf="crossStyle$|async as cross"
-                      [x]="cross.x" [y]="cross.y">
+        <xy-crosshairs *ngIf="crossStyle$ | async as cross" [x]="cross.x" [y]="cross.y">
         </xy-crosshairs>
 
-        <div [ngStyle]="movingStyle$|async">
+        <div [ngStyle]="movingStyle$ | async">
           <ng-container [ngSwitch]="c.itemType">
-            <xy-box-drag-preview *ngSwitchCase="'SPOT'">
-            </xy-box-drag-preview>
+            <xy-box-drag-preview *ngSwitchCase="'SPOT'"> </xy-box-drag-preview>
           </ng-container>
         </div>
-
       </ng-container>
     </ng-container>
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
-  styleUrls: ['./custom-drag-layer.component.scss']
+  styleUrls: ['./custom-drag-layer.component.scss'],
 })
 export class CustomDragLayerComponent implements AfterViewInit, OnDestroy {
   @Input() snapToGrid = false;
@@ -67,7 +63,7 @@ export class CustomDragLayerComponent implements AfterViewInit, OnDestroy {
       itemType: monitor.getItemType(),
       isDragging: monitor.isDragging(),
       initialOffset: this.absToRelative(monitor.getInitialSourceClientOffset()!),
-      currentOffset: this.absToRelative(monitor.getSourceClientOffset()!)
+      currentOffset: this.absToRelative(monitor.getSourceClientOffset()!),
     } as Collected;
   });
 
@@ -81,7 +77,7 @@ export class CustomDragLayerComponent implements AfterViewInit, OnDestroy {
     filter(a => a != null)
   );
 
-  constructor(private dnd: DndService, private el: ElementRef) { }
+  constructor(private dnd: DndService, private el: ElementRef) {}
 
   absToRelative(abs: Offset): Offset {
     return abs && minus(abs, this.rect);
@@ -93,16 +89,11 @@ export class CustomDragLayerComponent implements AfterViewInit, OnDestroy {
       x: o.left,
       y: o.top,
       width: o.width,
-      height: o.height
+      height: o.height,
     };
   }
 
-  getXY(
-    spot: Spot,
-    initialOffset: Offset,
-    currentOffset: Offset,
-    emit = false
-  ): Offset {
+  getXY(spot: Spot, initialOffset: Offset, currentOffset: Offset, emit = false): Offset {
     let offset = clone(currentOffset);
 
     let diff = minus(currentOffset, initialOffset);
@@ -115,10 +106,7 @@ export class CustomDragLayerComponent implements AfterViewInit, OnDestroy {
     }
 
     if (spot.fromCube) {
-      const absoluteUsingOriginalSpot = plus(
-        spot,
-        minus(diff, { x: 16, y: 16 })
-      );
+      const absoluteUsingOriginalSpot = plus(spot, minus(diff, { x: 16, y: 16 }));
       const clipped = this.getClippedOffset(absoluteUsingOriginalSpot);
       emit && this.moved.emit(clipped);
       return clipped;
@@ -140,7 +128,7 @@ export class CustomDragLayerComponent implements AfterViewInit, OnDestroy {
   getItemStyles({ item, initialOffset, currentOffset }: Collected) {
     if (!initialOffset || !currentOffset) {
       return {
-        display: 'none'
+        display: 'none',
       };
     }
 
@@ -148,7 +136,7 @@ export class CustomDragLayerComponent implements AfterViewInit, OnDestroy {
     const transform = `translate3d(${x}px, ${y}px, 0)`;
     return {
       transform,
-      WebkitTransform: transform
+      WebkitTransform: transform,
     };
   }
 

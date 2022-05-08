@@ -8,29 +8,37 @@ import { snapToGrid } from './custom-drag-layer/snapToGrid';
     <div class="flex">
       <div>
         <xy-drag-container
-            [x]="x" [y]="y"
-            [snapToGrid]="snapToGrid" [incrementPx]="pixels"
-            (endDrag)="dragEnded()"
-            (moved)="latestLocation = $event;">
+          [x]="x"
+          [y]="y"
+          [snapToGrid]="snapToGrid"
+          [incrementPx]="pixels"
+          (endDrag)="dragEnded()"
+          (moved)="latestLocation = $event"
+        >
         </xy-drag-container>
-        <p> <label> <input type="checkbox" [(ngModel)]="snapToGrid" /> Snap to grid </label> </p>
-        <p> <label> <input type="number" [(ngModel)]="pixels"/> Pixels per gridline </label> </p>
+        <p>
+          <label> <input type="checkbox" [(ngModel)]="snapToGrid" /> Snap to grid </label>
+        </p>
+        <p>
+          <label> <input type="number" [(ngModel)]="pixels" /> Pixels per gridline </label>
+        </p>
       </div>
       <div class="pad">
-        <xy-cube [transform]="cubeTransform" [x]="x" [y]="y" (endDrag)="dragEnded()">
-        </xy-cube>
+        <xy-cube [transform]="cubeTransform" [x]="x" [y]="y" (endDrag)="dragEnded()"> </xy-cube>
       </div>
     </div>
   `,
-  styles: [`
-    .flex {
-      display: flex;
-      flex-wrap: wrap;
-    }
-    .pad {
-      padding: 80px;
-    }
-  `]
+  styles: [
+    `
+      .flex {
+        display: flex;
+        flex-wrap: wrap;
+      }
+      .pad {
+        padding: 80px;
+      }
+    `,
+  ],
 })
 export class ContainerComponent {
   x = 225;

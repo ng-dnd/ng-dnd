@@ -10,11 +10,12 @@ interface DropResult {
   selector: 'de-box',
   template: `
     <p [dragSource]="source" [dragSourceOptions]="force && { dropEffect: force }">
-        Drag me (<code>{{ force ? force : 'default behaviour' }}</code>)
+      Drag me ( <code>{{ force ? force : 'default behaviour' }}</code> )
     </p>
   `,
-  styles: [`
-    p {
+  styles: [
+    `
+      p {
         display: inline-block;
         padding: 0.5em;
         border: 1px dashed #333;
@@ -22,8 +23,9 @@ interface DropResult {
         margin-bottom: 8px;
         margin-right: 8px;
         background: #fff;
-    }
-  `]
+      }
+    `,
+  ],
 })
 export class BoxComponent {
   @Output() dropped = new EventEmitter<string>();
@@ -36,8 +38,8 @@ export class BoxComponent {
       if (result) {
         this.dropped.emit(result.dropEffect);
       }
-    }
+    },
   });
 
-  constructor(private dnd: DndService) { }
+  constructor(private dnd: DndService) {}
 }

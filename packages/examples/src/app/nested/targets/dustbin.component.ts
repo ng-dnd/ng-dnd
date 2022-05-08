@@ -6,18 +6,18 @@ import { ItemTypes } from './item-types';
   selector: 'app-nested-targets-dustbin',
   template: `
     <ng-container *ngIf="collected$ | async as c">
-      <div [dropTarget]="target" class="box" [style.background-color]="getColor(c)" >
-
+      <div [dropTarget]="target" class="box" [style.background-color]="getColor(c)">
         <p>{{ greedy ? 'greedy' : 'not greedy' }}</p>
 
-        <p *ngIf="hasDroppedOnChild || hasDropped">{{ 'dropped' + (hasDroppedOnChild ? ' on child' : '') }}</p>
+        <p *ngIf="hasDroppedOnChild || hasDropped">
+          {{ 'dropped' + (hasDroppedOnChild ? ' on child' : '') }}
+        </p>
 
         <ng-content select="app-nested-targets-dustbin"></ng-content>
-
       </div>
     </ng-container>
   `,
-  styleUrls: ['./dustbin.component.scss']
+  styleUrls: ['./dustbin.component.scss'],
 })
 export class DustbinComponent implements OnDestroy {
   @Input() greedy = false;
@@ -29,15 +29,14 @@ export class DustbinComponent implements OnDestroy {
   backgroundColor = '';
 
   target = this.dnd.dropTarget(ItemTypes.BOX, {
-    drop: (monitor) => {
+    drop: monitor => {
       const hasDroppedOnChild = monitor.didDrop();
       if (hasDroppedOnChild && !this.greedy) {
         return;
       }
 
-      this.hasDropped = true,
-        this.hasDroppedOnChild = hasDroppedOnChild;
-    }
+      (this.hasDropped = true), (this.hasDroppedOnChild = hasDroppedOnChild);
+    },
   });
 
   collected$ = this.target.listen(monitor => ({
@@ -46,16 +45,16 @@ export class DustbinComponent implements OnDestroy {
   }));
 
   text() {
-    return this.hasDropped && `dropped${this.hasDroppedOnChild ? ' on child' : ''}` || '';
+    return (this.hasDropped && `dropped${this.hasDroppedOnChild ? ' on child' : ''}`) || '';
   }
 
-  getColor({ isOver, isOverCurrent }: { isOver: boolean, isOverCurrent: boolean }) {
+  getColor({ isOver, isOverCurrent }: { isOver: boolean; isOverCurrent: boolean }) {
     if (isOverCurrent || (isOver && this.greedy)) {
       return 'darkgreen';
     }
   }
 
-  constructor(private dnd: DndService) { }
+  constructor(private dnd: DndService) {}
 
   ngOnDestroy() {
     this.target.unsubscribe();

@@ -7,7 +7,7 @@ interface Section {
   input: FormGroup;
 }
 
-const equalsValidator: (x: any) => ValidatorFn = (x) => (c) => {
+const equalsValidator: (x: any) => ValidatorFn = x => c => {
   return c.value === x ? null : { incorrect: true };
 };
 
@@ -20,36 +20,51 @@ const equalsValidator: (x: any) => ValidatorFn = (x) => (c) => {
           <div *ngSwitchCase="'Math'">
             <h4>{{ getQuestion(section) }}</h4>
             <form [formGroup]="section.input">
-                <input formControlName="answer" type="number" />
-                <div *ngIf="section.input.get('answer') as answer" class="alert alert-danger">
-                    <div *ngIf="answer.invalid && (answer.touched || answer.dirty) && answer.errors?.incorrect">That's not quite right.</div>
-                    <div *ngIf="answer.valid">Correct!</div>
+              <input formControlName="answer" type="number" />
+              <div *ngIf="section.input.get('answer') as answer" class="alert alert-danger">
+                <div
+                  *ngIf="
+                    answer.invalid && (answer.touched || answer.dirty) && answer.errors?.incorrect
+                  "
+                >
+                  That's not quite right.
                 </div>
+                <div *ngIf="answer.valid">Correct!</div>
+              </div>
             </form>
           </div>
           <div *ngSwitchCase="'Name'">
             <h4>Enter your Name and Student Id</h4>
             <form [formGroup]="section.input">
-                <label> Name <input formControlName="name" /> </label>
-                <label> Student ID <input formControlName="studentId" /> </label>
-                <div *ngIf="section.input.get('studentId') as studentId" class="alert alert-danger">
-                    <div *ngIf="studentId.invalid && (studentId.touched || studentId.dirty) && studentId.errors?.pattern">
-                      Please enter a student ID in the form 's1234'.</div>
+              <label> Name <input formControlName="name" /> </label>
+              <label> Student ID <input formControlName="studentId" /> </label>
+              <div *ngIf="section.input.get('studentId') as studentId" class="alert alert-danger">
+                <div
+                  *ngIf="
+                    studentId.invalid &&
+                    (studentId.touched || studentId.dirty) &&
+                    studentId.errors?.pattern
+                  "
+                >
+                  Please enter a student ID in the form 's1234'.
                 </div>
+              </div>
             </form>
           </div>
         </ng-container>
       </div>
     </div>
   `,
-  styles: [`
-    .ng-valid:not(form)  {
-        border-left: 5px solid #42A948; /* green */
-    }
-    .ng-invalid:not(form)  {
+  styles: [
+    `
+      .ng-valid:not(form) {
+        border-left: 5px solid #42a948; /* green */
+      }
+      .ng-invalid:not(form) {
         border-left: 5px solid #a94442; /* red */
-    }
-  `]
+      }
+    `,
+  ],
 })
 export class PrintoutComponent {
   sections: Section[] = [];
@@ -66,21 +81,13 @@ export class PrintoutComponent {
     switch (question.formType) {
       case QuestionTypes.Math: {
         return new FormGroup({
-          answer: new FormControl(null, [
-            Validators.required,
-            equalsValidator(question.answer)
-          ])
+          answer: new FormControl(null, [Validators.required, equalsValidator(question.answer)]),
         });
       }
       case QuestionTypes.Name: {
         return new FormGroup({
-          name: new FormControl(null, [
-            Validators.required,
-          ]),
-          studentId: new FormControl(null, [
-            Validators.required,
-            Validators.pattern(/^s\d{4}$/)
-          ])
+          name: new FormControl(null, [Validators.required]),
+          studentId: new FormControl(null, [Validators.required, Validators.pattern(/^s\d{4}$/)]),
         });
       }
     }

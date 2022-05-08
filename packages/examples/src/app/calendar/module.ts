@@ -28,11 +28,9 @@ import { CalendarEventComponent } from './components/event.component';
     DndMultiBackendModule,
     ReactiveFormsModule,
     StoreModule,
-    RouterModule.forChild([
-      { path: '', component: CalendarContainerComponent }
-    ]),
+    RouterModule.forChild([{ path: '', component: CalendarContainerComponent }]),
     StoreModule.forFeature('calendar', fromCalendar.reducer),
   ],
-  providers: [CalendarService]
+  providers: [CalendarService],
 })
-export class CalendarModule { }
+export class CalendarModule {}

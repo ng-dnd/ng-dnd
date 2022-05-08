@@ -10,16 +10,13 @@ import { SortableSpecService } from '../specs';
   selector: 'kanban-board',
   changeDetection: ChangeDetectionStrategy.OnPush,
   templateUrl: './kanban-board.component.html',
-  styleUrls: ['./kanban-board.component.scss']
+  styleUrls: ['./kanban-board.component.scss'],
 })
 export class KanbanBoardComponent {
   ItemTypes = ItemTypes;
   hoverTrigger = HoverTrigger.fixed;
 
-  constructor(
-    private store: Store<unknown>,
-    public specs: SortableSpecService
-  ) { }
+  constructor(private store: Store<unknown>, public specs: SortableSpecService) {}
 
   addCard(listId: number, title: string) {
     this.store.dispatch(new AddCard(listId, title));

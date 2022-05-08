@@ -10,7 +10,7 @@ import { produce } from 'immer';
   templateUrl: './list.component.html',
 })
 export class ListComponent implements OnDestroy {
-  constructor(private dnd: DndService) { }
+  constructor(private dnd: DndService) {}
   // on hover, this will swap out the hover.listId
   // so our <dnd-preview> knows when to morph back
   spill = spillTarget<Question>(this.dnd, 'QUIZ_QUESTION', {
@@ -18,7 +18,7 @@ export class ListComponent implements OnDestroy {
       if (item.isInternal) {
         this.list = this.tempList = this.remove(item);
       }
-    }
+    },
   });
 
   // you need data types that have a unique value, like Question.id
@@ -39,10 +39,12 @@ export class ListComponent implements OnDestroy {
     hover: item => {
       this.tempList = this.move(item);
     },
-    drop: item => { // save the changes
+    drop: item => {
+      // save the changes
       this.tempList = this.list = this.move(item);
     },
-    endDrag: _item => { // revert
+    endDrag: _item => {
+      // revert
       this.tempList = this.list;
     },
   };
@@ -51,24 +53,24 @@ export class ListComponent implements OnDestroy {
     ...this.spec,
     createData: () => {
       return new NameQuestion(this.nextId++);
-    }
+    },
   };
 
   mathQuestion: SortableSpec<Question> = {
     ...this.spec,
     createData: () => {
       return new MathQuestion(this.nextId++, 'New math question', 0);
-    }
+    },
   };
 
   questionTemplates = [
     {
       spec: this.nameBlock,
-      description: NameQuestion.templateDescription
+      description: NameQuestion.templateDescription,
     },
     {
       spec: this.mathQuestion,
-      description: MathQuestion.templateDescription
+      description: MathQuestion.templateDescription,
     },
   ];
 

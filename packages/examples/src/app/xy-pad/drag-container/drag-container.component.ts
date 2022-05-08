@@ -10,17 +10,19 @@ import { Spot } from '../spot';
     <div class="scanline"></div>
 
     <div [dropTarget]="boxTarget" class="square">
-      <div *ngFor="let i of gridlines" class="gridline horizontal" [style.top.px]="px * i - 1"></div>
+      <div
+        *ngFor="let i of gridlines"
+        class="gridline horizontal"
+        [style.top.px]="px * i - 1"
+      ></div>
       <div *ngFor="let i of gridlines" class="gridline vertical" [style.left.px]="px * i - 1"></div>
       <xy-draggable-box [spot]="spot" (endDrag)="dragEnded($event)"></xy-draggable-box>
     </div>
 
-    <xy-custom-drag-layer
-        [snapToGrid]="snapToGrid" [incrementPx]="px"
-        (moved)="emitEach($event)">
+    <xy-custom-drag-layer [snapToGrid]="snapToGrid" [incrementPx]="px" (moved)="emitEach($event)">
     </xy-custom-drag-layer>
   `,
-  styleUrls: ['./drag-container.component.scss']
+  styleUrls: ['./drag-container.component.scss'],
 })
 export class DragContainerComponent implements OnDestroy {
   @Input() x = 50;
@@ -30,7 +32,7 @@ export class DragContainerComponent implements OnDestroy {
     return {
       id: 23,
       x: this.x,
-      y: this.y
+      y: this.y,
     };
   }
 
@@ -67,8 +69,6 @@ export class DragContainerComponent implements OnDestroy {
   }
 
   setGridlines() {
-    this.gridlines = new Array(Math.floor(400 / this.px) - 1)
-      .fill(0)
-      .map((_, i) => i + 1);
+    this.gridlines = new Array(Math.floor(400 / this.px) - 1).fill(0).map((_, i) => i + 1);
   }
 }

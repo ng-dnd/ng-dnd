@@ -47,7 +47,7 @@ export class CalendarEvent extends Record({
       isAllDay: true,
       start: new Date(start.getTime()),
       end: new Date(end.getTime()),
-      title
+      title,
     });
   }
 
@@ -55,10 +55,12 @@ export class CalendarEvent extends Record({
    * Returns true if it does, and the day who is asking is a monday
    */
   spill(day: Date): boolean {
-    return this.isAllDay
-      && day.getDay() === 1 // monday
-      && day > this.start
-      && day <= this.end;
+    return (
+      this.isAllDay &&
+      day.getDay() === 1 && // monday
+      day > this.start &&
+      day <= this.end
+    );
   }
 
   span(day: Date): number {
@@ -90,10 +92,18 @@ export class CalendarEvent extends Record({
     // eslint-disable-next-line @typescript-eslint/no-this-alias
     let neu = this;
     if (diff.distance || diff.start) {
-      neu = neu.update('start', start => moment(start).add({ days: diff.distance + diff.start }).toDate());
+      neu = neu.update('start', start =>
+        moment(start)
+          .add({ days: diff.distance + diff.start })
+          .toDate()
+      );
     }
     if (diff.distance || diff.end) {
-      neu = neu.update('end', end => moment(end).add({ days: diff.distance + diff.end }).toDate());
+      neu = neu.update('end', end =>
+        moment(end)
+          .add({ days: diff.distance + diff.end })
+          .toDate()
+      );
     }
     return neu;
   }

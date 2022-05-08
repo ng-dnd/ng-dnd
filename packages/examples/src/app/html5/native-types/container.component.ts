@@ -6,7 +6,8 @@ import { NativeTypes } from 'react-dnd-html5-backend';
   template: `
     <app-example-link path="html5/native-types"></app-example-link>
     <p>
-      When you are using the HTML5 backend, you can accept three native types: files, URLs, and text.
+      When you are using the HTML5 backend, you can accept three native types: files, URLs, and
+      text.
     </p>
     <div class="flex">
       <native-target [type]="NativeTypes.FILE">
@@ -20,15 +21,21 @@ import { NativeTypes } from 'react-dnd-html5-backend';
       </native-target>
     </div>
   `,
-  styles: [`
-    .flex {
+  styles: [
+    `
+      .flex {
         display: flex;
         flex-wrap: wrap;
         margin: -8px;
-    }
-    .flex > * { flex: 1; }
-    .flex > * { margin: 8px; }
-  `]
+      }
+      .flex > * {
+        flex: 1;
+      }
+      .flex > * {
+        margin: 8px;
+      }
+    `,
+  ],
 })
 export class ContainerComponent {
   NativeTypes = NativeTypes;

@@ -3,7 +3,15 @@ import { createSelector, createFeatureSelector } from '@ngrx/store';
 import { DraggedItem, SortableAction, SortableEvents } from '@ng-dnd/sortable';
 
 // our list operations
-import { KanbanList, KanbanBoard, initialBoard, insertList, removeList, insertCard, removeCard } from './lists';
+import {
+  KanbanList,
+  KanbanBoard,
+  initialBoard,
+  insertList,
+  removeList,
+  insertCard,
+  removeCard,
+} from './lists';
 import { Card } from './card';
 
 export enum ActionTypes {
@@ -22,15 +30,15 @@ export type SortCard = SortableAction<ActionTypes.SortCard, Card>;
 // Some extra actions to do more things
 export class AddCard {
   readonly type = ActionTypes.AddCard;
-  constructor(public listId: number, public title: string) { }
+  constructor(public listId: number, public title: string) {}
 }
 export class RemoveCard {
   readonly type = ActionTypes.RemoveCard;
-  constructor(public item: DraggedItem<Card>) { }
+  constructor(public item: DraggedItem<Card>) {}
 }
 export class Spill {
   readonly type = ActionTypes.Spill;
-  constructor(public item: DraggedItem<Card>) { }
+  constructor(public item: DraggedItem<Card>) {}
 }
 
 // Include all the above actions
@@ -68,7 +76,7 @@ const resetDrag = (state: BoardState): BoardState => ({
   cardInFlight: null,
   listInFlight: null,
   isCopying: false,
-  spilledCard: false
+  spilledCard: false,
 });
 
 export const CARD_ID_WHEN_COPYING = Symbol('CLONED_CARD') as any;
@@ -91,9 +99,7 @@ const copyOrInsertCard = (state: BoardState, clonedCard: Card): BoardState => {
         : insertCard(state.board, clonedCard, hover.listId, hover.index);
     } else {
       const either = state.draggingBoard || state.board;
-      board = state.spilledCard
-        ? either
-        : insertCard(either, data, hover.listId, hover.index);
+      board = state.spilledCard ? either : insertCard(either, data, hover.listId, hover.index);
     }
   }
   return { ...resetDrag(state), board, nextId };
@@ -125,7 +131,8 @@ export function listReducer(state: BoardState, action: SortList) {
     case SortableEvents.EndDrag: {
       return resetDrag(state);
     }
-    default: return state;
+    default:
+      return state;
   }
 }
 
@@ -152,7 +159,8 @@ export function cardReducer(state: BoardState, action: SortCard) {
     case SortableEvents.EndDrag: {
       return resetDrag(state);
     }
-    default: return state;
+    default:
+      return state;
   }
 }
 
@@ -205,16 +213,16 @@ export const _isCopying = createSelector(_boardState, s => s.isCopying);
 export const _cardInFlight = createSelector(_boardState, state => state.cardInFlight);
 // produce a clone to be inserted into the board while dragging
 // a permanent one is created on drop
-export const _temporaryClone = createSelector(
-  _isCopying,
-  _cardInFlight,
-  (copying, card) => (copying && card) ? cloneCard(card.data, CARD_ID_WHEN_COPYING) : null);
+export const _temporaryClone = createSelector(_isCopying, _cardInFlight, (copying, card) =>
+  copying && card ? cloneCard(card.data, CARD_ID_WHEN_COPYING) : null
+);
 
 const _board = createSelector(_boardState, state => state.board);
-export const _listById = (listId: any) => createSelector(_board, board => {
-  const list = board.find(l => l.id === listId);
-  return list && list.cards;
-});
+export const _listById = (listId: any) =>
+  createSelector(_board, board => {
+    const list = board.find(l => l.id === listId);
+    return list && list.cards;
+  });
 
 // This is the final piece of the puzzle. In the reducers above, we simply
 // removed a card or list in BeginDrag, and added it back in Drop or EndDrag.
@@ -226,20 +234,16 @@ export const _listById = (listId: any) => createSelector(_board, board => {
 //    Consider: external sources won't call BeginDrag, so removeXXX will not be
 //    called. Then insertXXX is called here -- and it works.
 
-export const _render = createSelector(
-  _boardState,
-  _temporaryClone,
-  (state, tempClone) => {
-    const { cardInFlight, listInFlight } = state;
-    const either = state.draggingBoard || state.board;
+export const _render = createSelector(_boardState, _temporaryClone, (state, tempClone) => {
+  const { cardInFlight, listInFlight } = state;
+  const either = state.draggingBoard || state.board;
 
-    if (cardInFlight != null) {
-      return copyOrInsertCard(state, tempClone!).board;
-    }
-    if (listInFlight != null) {
-      const { hover, data } = listInFlight;
-      return insertList(either, data, hover.index);
-    }
-    return either;
+  if (cardInFlight != null) {
+    return copyOrInsertCard(state, tempClone!).board;
   }
-);
+  if (listInFlight != null) {
+    const { hover, data } = listInFlight;
+    return insertList(either, data, hover.index);
+  }
+  return either;
+});

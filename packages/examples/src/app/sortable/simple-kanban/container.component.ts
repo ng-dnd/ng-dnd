@@ -1,4 +1,10 @@
-import { AfterViewInit, ChangeDetectionStrategy, Component, ElementRef, OnDestroy } from '@angular/core';
+import {
+  AfterViewInit,
+  ChangeDetectionStrategy,
+  Component,
+  ElementRef,
+  OnDestroy,
+} from '@angular/core';
 import { DndService } from '@ng-dnd/core';
 import { spillTarget } from '@ng-dnd/sortable';
 import { ItemTypes } from './item-types';
@@ -8,7 +14,7 @@ import { Card } from './specs';
   selector: 'kanban-container',
   templateUrl: './container.component.html',
   styleUrls: ['./container.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ContainerComponent implements AfterViewInit, OnDestroy {
   // this emits a 'hover' only once when you move over the spill area
@@ -22,10 +28,7 @@ export class ContainerComponent implements AfterViewInit, OnDestroy {
     // drop: item => this.store.dispatch(new RemoveCard(item))
   });
 
-  constructor(
-    private dnd: DndService,
-    private el: ElementRef,
-  ) { }
+  constructor(private dnd: DndService, private el: ElementRef) {}
 
   ngAfterViewInit() {
     // spill = anywhere in this container component

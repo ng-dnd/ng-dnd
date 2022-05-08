@@ -6,7 +6,6 @@ import { Component } from '@angular/core';
     <app-example-link path="drag-layer"></app-example-link>
     <app-custom-drag-layer></app-custom-drag-layer>
     <app-drag-container></app-drag-container>
-  `
+  `,
 })
-export class ContainerComponent {
-}
+export class ContainerComponent {}

@@ -1,35 +1,49 @@
 import { Component } from '@angular/core';
 
-interface Card { id: number; text: string; }
+interface Card {
+  id: number;
+  text: string;
+}
 
 @Component({
   selector: 'basic-sortable',
   templateUrl: './basic-sortable.component.html',
-  styles: [`
-    .sorted { width: 100%; max-width: 400px; }
-  `]
+  styles: [
+    `
+      .sorted {
+        width: 100%;
+        max-width: 400px;
+      }
+    `,
+  ],
 })
 export class BasicSortableComponent {
   cards: Card[] = [
     {
       id: 1,
       text: 'Write a cool JS library',
-    }, {
+    },
+    {
       id: 2,
       text: 'Make it generic enough',
-    }, {
+    },
+    {
       id: 3,
       text: 'Write README',
-    }, {
+    },
+    {
       id: 4,
       text: 'Create some examples',
-    }, {
+    },
+    {
       id: 5,
       text: 'Write a glorious Medium post to promote it (note that this element is taller, and far more important, than the others)',
-    }, {
+    },
+    {
       id: 6,
       text: 'Sit back and relax',
-    }];
+    },
+  ];
 
   origCards: Card[] = this.cards;
 

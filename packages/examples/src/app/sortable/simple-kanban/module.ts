@@ -28,12 +28,8 @@ import { SortableSpecService } from './specs';
     DndMultiBackendModule,
     DndSortableModule,
     ReactiveFormsModule,
-    RouterModule.forChild([
-      { path: '', component: ContainerComponent }
-    ])
+    RouterModule.forChild([{ path: '', component: ContainerComponent }]),
   ],
-  providers: [
-    SortableSpecService
-  ]
+  providers: [SortableSpecService],
 })
-export class KanbanModule { }
+export class KanbanModule {}

@@ -10,18 +10,13 @@ import { ContainerComponent } from './container.component';
 import { CardComponent, CardInnerDirective } from './card.component';
 
 @NgModule({
-  declarations: [
-    ContainerComponent,
-    CardComponent,
-    CardInnerDirective,
-    BasicSortableComponent
-  ],
+  declarations: [ContainerComponent, CardComponent, CardInnerDirective, BasicSortableComponent],
   imports: [
     CommonModule,
     DndModule,
     DndMultiBackendModule,
     RouterModule.forChild([{ path: '', component: ContainerComponent }]),
-    UtilityModule
+    UtilityModule,
   ],
 })
-export class BasicSortableModule { }
+export class BasicSortableModule {}

@@ -7,23 +7,31 @@ import { Component, OnInit, Input } from '@angular/core';
       <app-box [title]="title"></app-box>
     </div>
   `,
-  styles: [`
-    :host { display: inline-block; }
-    @keyframes animatedBackground {
-      from { background: yellow; }
-      to { background: white; }
-    }
-    .phresh {
-      background: white;
-      transform: rotate(-10deg);
-      overflow: hidden;
-      animation-name: animatedBackground;
-      animation-duration: 0.7s;
-      animation-iteration-count: infinite;
-      animation-timing-function: linear;
-      animation-direction: alternate;
-    }
-  `]
+  styles: [
+    `
+      :host {
+        display: inline-block;
+      }
+      @keyframes animatedBackground {
+        from {
+          background: yellow;
+        }
+        to {
+          background: white;
+        }
+      }
+      .phresh {
+        background: white;
+        transform: rotate(-10deg);
+        overflow: hidden;
+        animation-name: animatedBackground;
+        animation-duration: 0.7s;
+        animation-iteration-count: infinite;
+        animation-timing-function: linear;
+        animation-direction: alternate;
+      }
+    `,
+  ],
 })
 export class BoxDragPreviewComponent implements OnInit {
   @Input() title: any;

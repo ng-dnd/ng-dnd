@@ -6,11 +6,11 @@ import { BoxWithLocation } from '../BoxWithLocation';
 @Component({
   selector: 'app-draggable-box',
   template: `
-    <div class="draggable-box" [dragSource]="source" [ngStyle]="getStyles(!!(isDragging$|async))">
+    <div class="draggable-box" [dragSource]="source" [ngStyle]="getStyles(!!(isDragging$ | async))">
       <app-box [title]="title"></app-box>
     </div>
   `,
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class DraggableBoxComponent implements OnInit, OnDestroy {
   @Input() id!: number;
@@ -22,17 +22,17 @@ export class DraggableBoxComponent implements OnInit, OnDestroy {
     beginDrag: () => {
       const { id, title, left, top } = this;
       return { id, title, left, top };
-    }
+    },
   });
 
   isDragging$ = this.source.listen(m => m.isDragging());
 
-  constructor(private dnd: DndService) { }
+  constructor(private dnd: DndService) {}
 
   ngOnInit() {
     this.source.connectDragPreview(getEmptyImage(), {
       // for ie11 compat with DragLayer
-      captureDraggingState: true
+      captureDraggingState: true,
     });
   }
 
@@ -50,7 +50,7 @@ export class DraggableBoxComponent implements OnInit, OnDestroy {
       WebkitTransform: transform,
       // hide the original element while dragging
       opacity: isDragging ? 0 : null,
-      height: isDragging ? 0 : null
+      height: isDragging ? 0 : null,
     };
   }
 }

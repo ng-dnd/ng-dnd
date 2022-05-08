@@ -5,31 +5,38 @@ import { ItemTypes } from './item-types';
 @Component({
   selector: 'custom-preview',
   template: `
-  <div [dragSource]="source" [style.opacity]="opacity$|async">
-    <p>Drag this for image preview</p>
-  </div>
+    <div [dragSource]="source" [style.opacity]="opacity$ | async">
+      <p>Drag this for image preview</p>
+    </div>
   `,
-  styles: [`
-    div {
-      border: 1px dashed #777;
-      background: #fff;
-      padding: 0.5rem 1rem;
-      margin-bottom: .5rem;
-      background-color: white;
-      width: 8rem;;
-      cursor: move;
-    }
-    div, p { display: inline-block; padding: 3px; margin: 0; }
-  `]
+  styles: [
+    `
+      div {
+        border: 1px dashed #777;
+        background: #fff;
+        padding: 0.5rem 1rem;
+        margin-bottom: 0.5rem;
+        background-color: white;
+        width: 8rem;
+        cursor: move;
+      }
+      div,
+      p {
+        display: inline-block;
+        padding: 3px;
+        margin: 0;
+      }
+    `,
+  ],
 })
 export class CustomPreviewComponent implements OnInit, OnDestroy {
   source = this.dnd.dragSource(ItemTypes.BOX, {
     beginDrag: () => ({}),
   });
 
-  opacity$ = this.source.listen(m => m.isDragging() ? 0.4 : 1);
+  opacity$ = this.source.listen(m => (m.isDragging() ? 0.4 : 1));
 
-  constructor(private dnd: DndService) { }
+  constructor(private dnd: DndService) {}
 
   ngOnInit() {
     const img = new Image();
@@ -38,7 +45,8 @@ export class CustomPreviewComponent implements OnInit, OnDestroy {
       this.source.connectDragPreview(img);
     };
     // img.src = "https://angular.io/assets/images/logos/angular/angular.png";
-    img.src = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAPoAAAD6CAMAAAC/MqoPAAAAz1BMVEUAAADUBy\
+    img.src =
+      'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAPoAAAD6CAMAAAC/MqoPAAAAz1BMVEUAAADUBy\
     /DDi7dAzDdAzDdAzDdAzDDDi7DDi7DDi7dAzDdAzDdAzDDDi7DDi7DDi7dAzDdAzDdAzDDDi7DDi7DDi7dAzDdAzDDDi7DD\
     i7dAzDdAzDDDi7DDi7dAzDDDi7fEz3HHTvugZjhh5f97/L78PLqYn7////aaHz74OX44eXmQmTSSmL3wMvww8vhI0rLLEjy\
     obHppbHdAzDDDi7jMlfOO1XoUnHWWW/50Nj00tjscYvdd4nwkaTllqT0sL7stL7hRGPXBjDWBi/FDS4+JsiBAAAARXRSTlM\

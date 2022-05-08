@@ -14,24 +14,25 @@ import { Component } from '@angular/core';
         </app-nested-targets-dustbin>
       </app-nested-targets-dustbin>
 
-      <app-nested-targets-dustbin >
-        <app-nested-targets-dustbin >
-          <app-nested-targets-dustbin ></app-nested-targets-dustbin>
+      <app-nested-targets-dustbin>
+        <app-nested-targets-dustbin>
+          <app-nested-targets-dustbin></app-nested-targets-dustbin>
         </app-nested-targets-dustbin>
       </app-nested-targets-dustbin>
     </div>
   `,
-  styles: [`
-    .nested-targets-wrapper {
-      display: flex;
-    }
-    .nested-targets-wrapper > * {
-      flex: 1;
-    }
-    .nested-targets-wrapper > *:not(:last-child) {
-      margin-right: 10px;
-    }
-  `]
+  styles: [
+    `
+      .nested-targets-wrapper {
+        display: flex;
+      }
+      .nested-targets-wrapper > * {
+        flex: 1;
+      }
+      .nested-targets-wrapper > *:not(:last-child) {
+        margin-right: 10px;
+      }
+    `,
+  ],
 })
-export class ContainerComponent {
-}
+export class ContainerComponent {}

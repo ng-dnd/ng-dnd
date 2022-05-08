@@ -34,12 +34,14 @@ export class FixedHeightComponent {
     hover: item => {
       this.tempList = this.move(item);
     },
-    drop: item => { // save the changes
+    drop: item => {
+      // save the changes
       this.tempList = this.list = this.move(item);
     },
-    endDrag: _item => { // revert
+    endDrag: _item => {
+      // revert
       this.tempList = this.list;
-    }
+    },
   };
 
   move(item: DraggedItem<SimpleData>) {

@@ -42,7 +42,7 @@ import { MultiBackend } from '@ng-dnd/multi-backend';
     UtilityModule,
     RouterModule.forRoot(routes, {
       preloadingStrategy: PreloadAllModules,
-      useHash: true
+      useHash: true,
     }),
     StoreRootModule,
     DndModule.forRoot({ backend: MultiBackend, options: CustomTransitions }),
@@ -53,13 +53,13 @@ import { MultiBackend } from '@ng-dnd/multi-backend';
       metaReducers,
       runtimeChecks: {
         strictStateImmutability: false,
-        strictActionImmutability: false
-      }
+        strictActionImmutability: false,
+      },
     }),
     // !environment.production ? StoreDevtoolsModule.instrument() : [],
     EffectsModule.forRoot([AppEffects]),
-    HotkeyModule.forRoot()
+    HotkeyModule.forRoot(),
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

@@ -1,10 +1,6 @@
 export const getEndOfWeek = (d: Date) => {
   const day = d.getDay();
-  return new Date(
-    d.getFullYear(),
-    d.getMonth(),
-    d.getDate() + (day === 0 ? day : 7 - day)
-  );
+  return new Date(d.getFullYear(), d.getMonth(), d.getDate() + (day === 0 ? day : 7 - day));
 };
 
 // https://stackoverflow.com/questions/6117814/get-week-of-year-in-javascript-like-in-php
@@ -17,7 +13,7 @@ export const getWeekNumber = (d: Date) => {
   // Get first day of year
   const yearStart = new Date(Date.UTC(d.getUTCFullYear(), 0, 1));
   // Calculate full weeks to nearest Thursday
-  const weekNo = Math.ceil((((d.valueOf() - yearStart.valueOf()) / 86400000) + 1) / 7);
+  const weekNo = Math.ceil(((d.valueOf() - yearStart.valueOf()) / 86400000 + 1) / 7);
   // Return array of year and week number
   return [d.getUTCFullYear(), weekNo];
 };
@@ -29,11 +25,7 @@ export const sameWeek = (a: Date, b: Date) => {
 };
 
 export const getStartOfDay = (d: Date) => {
-  return new Date(
-    d.getFullYear(),
-    d.getMonth(),
-    d.getDate()
-  );
+  return new Date(d.getFullYear(), d.getMonth(), d.getDate());
 };
 
 // https://www.htmlgoodies.com/html5/javascript/calculating-the-difference-between-two-dates-in-javascript.html

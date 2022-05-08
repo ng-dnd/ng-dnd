@@ -9,10 +9,7 @@ import { ContainerComponent } from './container.component';
 import { TargetComponent } from './target.component';
 
 @NgModule({
-  declarations: [
-    ContainerComponent,
-    TargetComponent,
-  ],
+  declarations: [ContainerComponent, TargetComponent],
   imports: [
     CommonModule,
     UtilityModule,
@@ -21,5 +18,4 @@ import { TargetComponent } from './target.component';
     RouterModule.forChild([{ path: '', component: ContainerComponent }]),
   ],
 })
-export class NativeTypesModule {
-}
+export class NativeTypesModule {}

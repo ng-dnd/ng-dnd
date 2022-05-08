@@ -7,14 +7,17 @@ import { Component, Input } from '@angular/core';
       <ng-content></ng-content>
     </div>
   `,
-  styles: [`
-    :host, div {
-      display: block;
-      height: 100%;
-      width: 100%;
-      text-align: center;
-    }
-  `]
+  styles: [
+    `
+      :host,
+      div {
+        display: block;
+        height: 100%;
+        width: 100%;
+        text-align: center;
+      }
+    `,
+  ],
 })
 export class SquareComponent {
   @Input() black = false;

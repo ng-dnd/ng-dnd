@@ -17,7 +17,7 @@ import { ContainerComponent } from './container.component';
     DndModule,
     DndMultiBackendModule,
     RouterModule.forChild([{ path: '', component: ContainerComponent }]),
-    UtilityModule
-  ]
+    UtilityModule,
+  ],
 })
-export class BinsModule { }
+export class BinsModule {}

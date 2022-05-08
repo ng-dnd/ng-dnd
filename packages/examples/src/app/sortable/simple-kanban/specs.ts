@@ -19,18 +19,19 @@ export interface Card {
 
 @Injectable()
 export class SortableSpecService {
-
   private initialTree: CardTree = [
     {
-      id: 1, title: 'To Do', cards: [
+      id: 1,
+      title: 'To Do',
+      cards: [
         { listId: 1, id: 10, title: 'Write a new song' },
         { listId: 1, id: 20, title: 'Put the lyrics to music' },
-      ]
+      ],
     },
     {
-      id: 2, title: 'Doing', cards: [
-        { listId: 2, id: 30, title: 'Rig up the speakers' }
-      ]
+      id: 2,
+      title: 'Doing',
+      cards: [{ listId: 2, id: 30, title: 'Rig up the speakers' }],
     },
     { id: 3, title: 'Done', cards: [] },
   ];

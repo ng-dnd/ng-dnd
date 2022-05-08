@@ -7,15 +7,14 @@ let uniqueId = 1;
 export class Week extends Record({
   startDate: moment(),
   uniqueId: 0,
-  days: [] as Date[]
+  days: [] as Date[],
 }) {
-
   static from(date: Moment) {
     date = date.startOf('isoWeek');
     return new Week({
       startDate: date,
       uniqueId: uniqueId++,
-      days: Week.getDays(date)
+      days: Week.getDays(date),
     });
   }
 

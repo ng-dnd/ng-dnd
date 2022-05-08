@@ -14,11 +14,7 @@ import { ContainerComponent } from './container.component';
 import { reducer } from './store/reducer';
 
 @NgModule({
-  declarations: [
-    ContainerComponent,
-    SimpleComponent,
-    SummaryComponent,
-  ],
+  declarations: [ContainerComponent, SimpleComponent, SummaryComponent],
   imports: [
     CommonModule,
     UtilityModule,
@@ -26,10 +22,8 @@ import { reducer } from './store/reducer';
     DndMultiBackendModule,
     DndSortableModule,
     StoreModule.forFeature('simple-ngrx', reducer),
-    RouterModule.forChild([
-      { path: '', component: ContainerComponent }
-    ]),
+    RouterModule.forChild([{ path: '', component: ContainerComponent }]),
     HotkeyModule,
-  ]
+  ],
 })
-export class KeyboardModule { }
+export class KeyboardModule {}

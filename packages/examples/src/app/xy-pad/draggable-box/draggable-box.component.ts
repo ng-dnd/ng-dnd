@@ -7,33 +7,38 @@ import { Spot } from '../spot';
 @Component({
   selector: 'xy-draggable-box',
   template: `
-    <div class="root" [dragSource]="source" [ngStyle]="getRootStyles(isDragging$|async)">
+    <div class="root" [dragSource]="source" [ngStyle]="getRootStyles(isDragging$ | async)">
       <div class="draggable-node">
         <xy-box></xy-box>
       </div>
       <div class="fullsize"></div>
     </div>
-    <xy-crosshairs *ngIf="(isDragging$|async)!==true" [x]="spot.x" [y]="spot.y"> </xy-crosshairs>
+    <xy-crosshairs *ngIf="(isDragging$ | async) !== true" [x]="spot.x" [y]="spot.y">
+    </xy-crosshairs>
   `,
-  styles: [`
-    .root {
-      cursor: move;
-    }
-    xy-crosshairs,
-    .draggable-node {
-      pointer-events: none;
-      position: absolute;
-    }
-    xy-crosshairs { margin-top: 16px; }
-    .fullsize {
-      position: absolute;
-      left: -400px;
-      top: -400px;
-      width: 800px;
-      height: 800px;
-    }
-  `],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  styles: [
+    `
+      .root {
+        cursor: move;
+      }
+      xy-crosshairs,
+      .draggable-node {
+        pointer-events: none;
+        position: absolute;
+      }
+      xy-crosshairs {
+        margin-top: 16px;
+      }
+      .fullsize {
+        position: absolute;
+        left: -400px;
+        top: -400px;
+        width: 800px;
+        height: 800px;
+      }
+    `,
+  ],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class DraggableBoxComponent implements OnInit, OnDestroy {
   @Input() spot!: Spot;
@@ -48,17 +53,17 @@ export class DraggableBoxComponent implements OnInit, OnDestroy {
     },
     endDrag: () => {
       this.endDrag.emit(this.spot);
-    }
+    },
   });
 
   isDragging$ = this.source.listen(m => m.isDragging());
 
-  constructor(private dnd: DndService) { }
+  constructor(private dnd: DndService) {}
 
   ngOnInit() {
     this.source.connectDragPreview(getEmptyImage(), {
       // for ie11 compat with DragLayer
-      captureDraggingState: true
+      captureDraggingState: true,
     });
   }
 
@@ -82,7 +87,7 @@ export class DraggableBoxComponent implements OnInit, OnDestroy {
       WebkitTransform: transform,
       // hide the original element while dragging
       opacity: isDragging ? 0 : null,
-      height: isDragging ? 0 : null
+      height: isDragging ? 0 : null,
     };
   }
 }

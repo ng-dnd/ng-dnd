@@ -5,7 +5,7 @@ import { Card, CardList, SortableSpecService } from '../specs';
 @Component({
   selector: 'kanban-list',
   templateUrl: './kanban-list.component.html',
-  styleUrls: ['./kanban-list.component.scss']
+  styleUrls: ['./kanban-list.component.scss'],
 })
 export class KanbanListComponent {
   @Input() list!: CardList;
@@ -22,8 +22,8 @@ export class KanbanListComponent {
   // - Also must be public if you're using it in your template, until the Ivy renderer lands
   constructor(
     public specs: SortableSpecService,
-    @Optional() public render: DndSortableRenderer<CardList>,
-  ) { }
+    @Optional() public render: DndSortableRenderer<CardList>
+  ) {}
 
   trackById = (_: number, x: Card) => x.id;
 }

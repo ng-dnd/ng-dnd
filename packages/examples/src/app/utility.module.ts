@@ -6,6 +6,6 @@ const both = [ExampleLinkComponent, NgLetDirective];
 
 @NgModule({
   declarations: both,
-  exports: both
+  exports: both,
 })
-export class UtilityModule { }
+export class UtilityModule {}

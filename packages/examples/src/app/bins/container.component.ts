@@ -27,19 +27,20 @@ import { Component } from '@angular/core';
       <app-bin name="mailbox" [accepts]="['PARCEL', 'ENVELOPE']"></app-bin>
     </div>
   `,
-  styles: [`
-    .bins {
-      margin-top: 20px;
-      display: flex;
-    }
-    .bins > * {
-      flex: 1;
-      min-width: 100px;
-    }
-    .bins > *:not(:last-child) {
-      margin-right: 4px;
-    }
-  `]
+  styles: [
+    `
+      .bins {
+        margin-top: 20px;
+        display: flex;
+      }
+      .bins > * {
+        flex: 1;
+        min-width: 100px;
+      }
+      .bins > *:not(:last-child) {
+        margin-right: 4px;
+      }
+    `,
+  ],
 })
-export class ContainerComponent {
-}
+export class ContainerComponent {}

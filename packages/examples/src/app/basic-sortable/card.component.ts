@@ -8,7 +8,7 @@ import {
   TemplateRef,
   ChangeDetectionStrategy,
   OnDestroy,
-  Directive
+  Directive,
 } from '@angular/core';
 import { DndService } from '@ng-dnd/core';
 
@@ -23,36 +23,40 @@ interface DraggingCard {
 }
 
 @Directive({
-  selector: '[cardInner]'
+  selector: '[cardInner]',
 })
-export class CardInnerDirective { }
+export class CardInnerDirective {}
 
 @Component({
   selector: 'app-card',
   template: `
-    <div class="card"
-         [dropTarget]="cardTarget"
-         [dragSource]="cardSource"
-         [style.opacity]="opacity$|async">
+    <div
+      class="card"
+      [dropTarget]="cardTarget"
+      [dragSource]="cardSource"
+      [style.opacity]="opacity$ | async"
+    >
       <div class="border">
-        <ng-container *ngTemplateOutlet="cardInnerTemplate; context: {$implicit: card}">
+        <ng-container *ngTemplateOutlet="cardInnerTemplate; context: { $implicit: card }">
         </ng-container>
       </div>
     </div>
   `,
   // Note: don't use margins, use padding. This way, there are no gaps to hover over.
-  styles: [`
-    .card {
-      margin-bottom: 0.25rem;
-      background-color: white;
-      cursor: move;
-    }
-    .border {
-      padding: 0.5rem 1rem;
-      border: 1px dashed gray;
-    }
-  `],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  styles: [
+    `
+      .card {
+        margin-bottom: 0.25rem;
+        background-color: white;
+        cursor: move;
+      }
+      .border {
+        padding: 0.5rem 1rem;
+        border: 1px dashed gray;
+      }
+    `,
+  ],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class CardComponent implements OnDestroy {
   @Output() beginDrag: EventEmitter<void> = new EventEmitter<void>();
@@ -72,13 +76,13 @@ export class CardComponent implements OnDestroy {
       this.beginDrag.emit();
       return {
         id: this.id,
-        index: this.index
+        index: this.index,
       };
     },
     endDrag: monitor => {
       const didDrop = monitor.didDrop();
       this.endDrag.emit(didDrop);
-    }
+    },
   });
 
   cardTarget = this.dnd.dropTarget<DraggingCard>('CARD', {
@@ -95,8 +99,7 @@ export class CardComponent implements OnDestroy {
       const hoverBoundingRect = this.elRef.nativeElement.getBoundingClientRect();
 
       // Get vertical middle
-      const hoverMiddleY =
-        (hoverBoundingRect.bottom - hoverBoundingRect.top) / 2;
+      const hoverMiddleY = (hoverBoundingRect.bottom - hoverBoundingRect.top) / 2;
 
       // Determine mouse position
       const clientOffset = monitor.getClientOffset()!;
@@ -128,19 +131,14 @@ export class CardComponent implements OnDestroy {
       // but it's good here for the sake of performance
       // to avoid expensive index searches.
       monitor.getItem()!.index = hoverIndex;
-    }
+    },
   });
 
   isDragging$ = this.cardSource.listen(m => m.isDragging());
 
-  opacity$ = this.cardSource.listen(
-    monitor => (monitor.isDragging() ? 0.2 : 1)
-  );
+  opacity$ = this.cardSource.listen(monitor => (monitor.isDragging() ? 0.2 : 1));
 
-  constructor(
-    private elRef: ElementRef,
-    private dnd: DndService
-  ) { }
+  constructor(private elRef: ElementRef, private dnd: DndService) {}
 
   moveCard(a: number, b: number) {
     this.handleMove.emit([a, b]);

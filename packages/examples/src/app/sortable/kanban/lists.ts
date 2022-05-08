@@ -29,7 +29,7 @@ function updateCards(board: KanbanBoard, listId: number, f: (cards: Card[]) => v
   }
   const list = {
     ...board[fromListIdx],
-    cards: withMutations(board[fromListIdx].cards, f)
+    cards: withMutations(board[fromListIdx].cards, f),
   };
   return withMutations(board, ls => {
     ls.splice(fromListIdx, 1, list);
@@ -70,10 +70,14 @@ export const initialBoard: KanbanBoard = [
       { id: 3, title: faker.lorem.sentence() },
       { id: 4, title: faker.lorem.sentence() },
       {
-        id: 5, title: 'This card is a bigger than the other ones. '
-          + faker.lorem.sentence() + ' ' + faker.lorem.sentence()
-      }
-    ]
+        id: 5,
+        title:
+          'This card is a bigger than the other ones. ' +
+          faker.lorem.sentence() +
+          ' ' +
+          faker.lorem.sentence(),
+      },
+    ],
   },
   {
     id: 1,
@@ -83,8 +87,8 @@ export const initialBoard: KanbanBoard = [
       { id: 7, title: faker.company.bs() },
       { id: 8, title: faker.company.bs() },
       { id: 9, title: faker.company.bs() },
-      { id: 10, title: faker.company.bs() }
-    ]
+      { id: 10, title: faker.company.bs() },
+    ],
   },
   {
     id: 2,
@@ -94,7 +98,7 @@ export const initialBoard: KanbanBoard = [
       { id: 12, title: faker.name.jobTitle() },
       { id: 13, title: faker.name.jobTitle() },
       { id: 14, title: faker.name.jobTitle() },
-      { id: 15, title: faker.name.jobTitle() }
-    ]
-  }
+      { id: 15, title: faker.name.jobTitle() },
+    ],
+  },
 ];

@@ -6,10 +6,15 @@ import { BoxWithLocation } from '../BoxWithLocation';
   selector: 'app-drag-container',
   template: `
     <div [ngStyle]="styles" [dropTarget]="boxTarget">
-      <app-draggable-box [left]="x" [top]="y" [id]="23" title="this box is titled"></app-draggable-box>
+      <app-draggable-box
+        [left]="x"
+        [top]="y"
+        [id]="23"
+        title="this box is titled"
+      ></app-draggable-box>
     </div>
   `,
-  styles: []
+  styles: [],
 })
 export class DragContainerComponent implements OnInit, OnDestroy {
   x = 30;
@@ -27,22 +32,21 @@ export class DragContainerComponent implements OnInit, OnDestroy {
   };
 
   boxTarget = this.dnd.dropTarget<BoxWithLocation>('BOX', {
-    drop: (monitor) => {
+    drop: monitor => {
       const delta = monitor.getDifferenceFromInitialOffset()!;
       const item = monitor.getItem()!;
       this.moveBox(item.id, item.left + delta.x, item.top + delta.y);
-    }
+    },
   });
 
-  constructor(private dnd: DndService) { }
+  constructor(private dnd: DndService) {}
 
   moveBox(id: any, x: number, y: number) {
     this.x = x;
     this.y = y;
   }
 
-  ngOnInit() {
-  }
+  ngOnInit() {}
 
   ngOnDestroy() {
     this.boxTarget.unsubscribe();

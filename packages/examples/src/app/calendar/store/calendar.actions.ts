@@ -22,12 +22,12 @@ export enum CalendarActionTypes {
 
 export class NewEvent implements Action {
   readonly type = CalendarActionTypes.NewEvent;
-  constructor(public event: CalendarEvent) { }
+  constructor(public event: CalendarEvent) {}
 }
 
 export class BeginDragNewEvent implements Action {
   readonly type = CalendarActionTypes.BeginDragNewEvent;
-  constructor(public start: Date) { }
+  constructor(public start: Date) {}
 }
 
 export class EndDragNewEvent implements Action {
@@ -36,12 +36,12 @@ export class EndDragNewEvent implements Action {
 
 export class HoverNewEvent implements Action {
   readonly type = CalendarActionTypes.HoverNewEvent;
-  constructor(public end: Date) { }
+  constructor(public end: Date) {}
 }
 
 export class DropNewEvent implements Action {
   readonly type = CalendarActionTypes.DropNewEvent;
-  constructor(public start: Date, public end: Date, public title = 'New Event') { }
+  constructor(public start: Date, public end: Date, public title = 'New Event') {}
 }
 
 export class ResetCalendar implements Action {
@@ -58,34 +58,34 @@ export class PrevMonth implements Action {
 
 export class BeginDragExistingEvent implements Action {
   readonly type = CalendarActionTypes.BeginDragExistingEvent;
-  constructor(public id: number) { }
+  constructor(public id: number) {}
 }
 
 export class EndDragExistingEvent implements Action {
   readonly type = CalendarActionTypes.EndDragExistingEvent;
-  constructor(public id: number) { }
+  constructor(public id: number) {}
 }
 
 export class HoverExistingEvent implements Action {
   readonly type = CalendarActionTypes.HoverExistingEvent;
-  constructor(public id: number, public diff: number) { }
+  constructor(public id: number, public diff: number) {}
 }
 export class HoverResizeStart implements Action {
   readonly type = CalendarActionTypes.HoverResizeStart;
-  constructor(public id: number, public diff: number) { }
+  constructor(public id: number, public diff: number) {}
 }
 export class HoverResizeEnd implements Action {
   readonly type = CalendarActionTypes.HoverResizeEnd;
-  constructor(public id: number, public diff: number) { }
+  constructor(public id: number, public diff: number) {}
 }
 
 export class DropExistingEvent implements Action {
   readonly type = CalendarActionTypes.DropExistingEvent;
-  constructor(public id: number) { }
+  constructor(public id: number) {}
 }
 
-export type CalendarActions
-  = NewEvent
+export type CalendarActions =
+  | NewEvent
   | BeginDragNewEvent
   | HoverNewEvent
   | EndDragNewEvent
@@ -98,5 +98,4 @@ export type CalendarActions
   | HoverResizeStart
   | HoverResizeEnd
   | EndDragExistingEvent
-  | DropExistingEvent
-  ;
+  | DropExistingEvent;

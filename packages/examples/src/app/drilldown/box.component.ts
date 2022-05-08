@@ -5,21 +5,28 @@ import { ItemTypes } from './itemTypes';
 @Component({
   selector: 'drilldown-source',
   template: `
-    <div [dragSource]="source" [style.opacity]="opacity|async">
+    <div [dragSource]="source" [style.opacity]="opacity | async">
       <p>Drag this!</p>
     </div>
   `,
-  styles: [`
-    div {
-      border: 1px dashed #777;
-      background: #fff;
-      padding: 0.5rem 1rem;
-      margin-bottom: .5rem;
-      background-color: white;
-      width: 8rem;;
-    }
-    div, p { display: inline-block; padding: 3px; margin: 0; }
-  `]
+  styles: [
+    `
+      div {
+        border: 1px dashed #777;
+        background: #fff;
+        padding: 0.5rem 1rem;
+        margin-bottom: 0.5rem;
+        background-color: white;
+        width: 8rem;
+      }
+      div,
+      p {
+        display: inline-block;
+        padding: 3px;
+        margin: 0;
+      }
+    `,
+  ],
 })
 export class BoxComponent implements OnDestroy {
   @Output() beginDrag = new EventEmitter<void>();
@@ -32,12 +39,12 @@ export class BoxComponent implements OnDestroy {
     },
     endDrag: () => {
       this.endDrag.emit();
-    }
+    },
   });
 
-  opacity = this.source.listen(m => m.isDragging() ? 0.4 : 1);
+  opacity = this.source.listen(m => (m.isDragging() ? 0.4 : 1));
 
-  constructor(private dnd: DndService) { }
+  constructor(private dnd: DndService) {}
 
   ngOnDestroy() {
     this.source.unsubscribe();
