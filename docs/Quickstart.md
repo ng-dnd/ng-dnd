@@ -9,16 +9,15 @@ backend, because it allows adding touch support as well.
 
 Then import `DndModule` and provide the backend:
 
-
 ```typescript
-import { DndModule } from "@ng-dnd/core";
-import { HTML5Backend } from 'react-dnd-html5-backend'
+import { DndModule } from '@ng-dnd/core';
+import { HTML5Backend } from 'react-dnd-html5-backend';
 
 @NgModule({
   imports: [
     // Don't forget the forRoot()
     DndModule.forRoot({ backend: HTML5Backend }),
-  ]
+  ],
 })
 export class AppModule {}
 ```
@@ -50,12 +49,12 @@ that is also largely compatible with a lot of `react-dnd` code and examples.
 
 ## Next steps
 
-* Have a look at the [Examples](../examples/index.html), and browse their source code in the
-[examples app on GitHub](https://github.com/ng-dnd/nd-dnd/tree/main/packages/examples/src/app/).
+- Have a look at the [Examples](../examples/index.html), and browse their source code in the
+  [examples app on GitHub](https://github.com/ng-dnd/nd-dnd/tree/main/packages/examples/src/app/).
 
-* Read and follow the [Tutorial](chess-tutorial.html)
+- Read and follow the [Tutorial](chess-tutorial.html)
 
-* Read the 3-part [guide](guide.html) in the sidebar. Any specifics are available by browsing the interfaces and
+- Read the 3-part [guide](guide.html) in the sidebar. Any specifics are available by browsing the interfaces and
   classes.
 
 ## Touch support and alternate backends
@@ -64,8 +63,8 @@ Mobile devices have not implemented HTML5 drag and drop. You will need:
 
 - A different backend using click or touch events, without dropping desktop support
 - A way to render drag previews. Where on desktops you
-can let the browser render drag previews, when using a backend based on click
-or touch events, on mobile you have to render them yourself.
+  can let the browser render drag previews, when using a backend based on click
+  or touch events, on mobile you have to render them yourself.
 
 A good way to solve both problems at once is using
 [`@ng-dnd/multi-backend`](../multi-backend/). It is based on the original
@@ -123,14 +122,14 @@ Make sure you use the arrow function syntax (`() =>`) in your specs so `this` wi
 
 ```typescript
 paperCount = 3;
-limitedSupplyOfPaper = this.dnd.dragSource("PAPER", {
-    // use shorthand for one-liners that return a value
-    canDrag: () => this.paperCount > 0,
-    endDrag: (monitor) => {
-        if (monitor.didDrop()) {
-            this.paperCount--;
-        }
+limitedSupplyOfPaper = this.dnd.dragSource('PAPER', {
+  // use shorthand for one-liners that return a value
+  canDrag: () => this.paperCount > 0,
+  endDrag: monitor => {
+    if (monitor.didDrop()) {
+      this.paperCount--;
     }
+  },
 });
 ```
 

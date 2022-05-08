@@ -9,12 +9,11 @@ This means that events fired inside the element's bounding rectangle will start
 a drag. Use `DragSourceDirective` to do this. It's as simple as:
 
 ```html
-<div [dragSource]="source">
-  drag me
-</div>
+<div [dragSource]="source">drag me</div>
 ```
+
 ```typescript
-source = this.dnd.dragSource("DRAGME", {
+source = this.dnd.dragSource('DRAGME', {
   beginDrag: () => ({ name: 'Jones McFly' }),
   // other DragSourceSpec methods
 });
@@ -31,16 +30,15 @@ This means your element will react to items being hovered or dropped within its
 bounding rectangle.
 
 ```html
-<div [dropTarget]="target">
-  drop on me
-</div>
+<div [dropTarget]="target">drop on me</div>
 ```
+
 ```typescript
-target = this.dnd.dropTarget("DRAGME", {
-    drop: monitor => {
-        console.log('dropped an item:', monitor.getItem()); // => { name: 'Jones McFly' }
-    }
-})
+target = this.dnd.dropTarget('DRAGME', {
+  drop: monitor => {
+    console.log('dropped an item:', monitor.getItem()); // => { name: 'Jones McFly' }
+  },
+});
 // constructor, unsubscribe, etc
 ```
 
@@ -48,10 +46,9 @@ Then, investigate using
 [DropTargetSpec](../../interfaces/DropTargetSpec.html)
 to customise the behaviour.
 
-
 ## Drag previews
 
-__This is a feature unique to the HTML5 backend.__ If you are using another
+**This is a feature unique to the HTML5 backend.** If you are using another
 backend, you will need a Drag Layer (see below) to render anything that follows
 the mouse.
 
@@ -87,6 +84,5 @@ touching the inputs / selecting text / making unwanted changes.
    callback, run `someDragSourceConnection.connectDragPreview(img)`.
 
 See `DragSource.connectDragPreview` and `DragPreviewOptions` for options.
-
 
 [Next: Monitoring State](./3.-monitoring-state.html).

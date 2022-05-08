@@ -1,4 +1,3 @@
-
 After the break, we will discuss implementation strategies.
 
 <!-- <div class="mermaid"> -->

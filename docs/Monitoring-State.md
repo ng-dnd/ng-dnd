@@ -12,23 +12,25 @@
 For example:
 
 ```html
-<div [dropTarget]="target"
-    class="cat-target"
-    [class.cat-target--hovering]="hovering$ | async">
-    drop cats here
+<div [dropTarget]="target" class="cat-target" [class.cat-target--hovering]="hovering$ | async">
+  drop cats here
 </div>
 ```
 
 ```scss
-.cat-target { background: #eee; }
-.cat-target--hovering { background: lightgoldenrodyellow; }
+.cat-target {
+  background: #eee;
+}
+.cat-target--hovering {
+  background: lightgoldenrodyellow;
+}
 ```
 
 ```typescript
-target = this.dnd.dropTarget("CAT", {
-    drop: monitor => {
-        console.log('dropped a cat');
-    }
+target = this.dnd.dropTarget('CAT', {
+  drop: monitor => {
+    console.log('dropped a cat');
+  },
 });
 
 // this is a very useful combination on a drop target,
@@ -63,7 +65,7 @@ but different values. The following two examples fire exactly as often:
 
 ```typescript
 isDraggingPlain$ = this.source.listen(m => m.isDragging());
-isDraggingObj$   = this.source.listen(m => ({ isDragging: m.isDragging() }));
+isDraggingObj$ = this.source.listen(m => ({ isDragging: m.isDragging() }));
 ```
 
 This is helpful if you have a lot of properties to listen to and wish to

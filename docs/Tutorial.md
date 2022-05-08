@@ -6,15 +6,15 @@ tutorial][orig]. The discussion about how to break down this game into
 components is worth reading the original for. We will carry on implementing the
 three components:
 
-* `KnightComponent`, responsible for rendering one knight piece
-* `SquareComponent`, just one black or white square on the board
-* `BoardComponent`, 64 squares.
+- `KnightComponent`, responsible for rendering one knight piece
+- `SquareComponent`, just one black or white square on the board
+- `BoardComponent`, 64 squares.
 
 [orig]: http://react-dnd.github.io/react-dnd/docs-tutorial.html
 
 This tutorial assumes you are familiar with the basics of Angular (version 2+).
 It also assumes you have read the [Quickstart](./quickstart.html) guide, and have attached the
-`DndModule` *and* the HTML5 backend. Complete source code is available on
+`DndModule` _and_ the HTML5 backend. Complete source code is available on
 GitHub, in four commits: [one][chessboard-1], [two][chessboard-2],
 [three][chessboard-3], [four][chessboard-4], the last of which is the finished
 product. You can play with a [live demo](../examples/index.html#/chessboard).
@@ -33,18 +33,19 @@ knight character in it.
 import { Component } from '@angular/core';
 
 @Component({
-    selector: 'app-knight',
-    template: `<span>♘</span>`,
-    styles: [`
-    span {
+  selector: 'app-knight',
+  template: `<span>♘</span>`,
+  styles: [
+    `
+      span {
         font-weight: 400;
         font-size: 54px;
         line-height: 70px;
-    }
-    `]
+      }
+    `,
+  ],
 })
-export class KnightComponent {
-}
+export class KnightComponent {}
 ```
 
 Add this component to your module's `declarations` section, and put
@@ -72,7 +73,6 @@ be black or not:
 
 Then implement `getStyle()` by reading this property.
 
-
 ```typescript
 getStyle() {
     return this.black
@@ -93,11 +93,12 @@ big the whole board is going to be. Include the following in a `styles` block,
 or a linked CSS file.
 
 ```css
-:host, div {
-    display: block;
-    height: 100%;
-    width: 100%;
-    text-align: center;
+:host,
+div {
+  display: block;
+  height: 100%;
+  width: 100%;
+  text-align: center;
 }
 ```
 
@@ -105,12 +106,11 @@ At this point, you can render one square with a knight in it, like so:
 
 ```html
 <app-square [black]="true">
-    <app-knight></app-knight>
+  <app-knight></app-knight>
 </app-square>
 ```
 
 ![One square, with a knight in it](../media/one-square.png)
-
 
 If you're paying attention, you'll notice that `height: 100%` doesn't really
 mean anything as none of the parent `div`s have a height to be 100% of, but it
@@ -124,64 +124,59 @@ one square.
 import { Component } from '@angular/core';
 
 @Component({
-    selector: 'app-board',
-    template: `
+  selector: 'app-board',
+  template: `
     <div>
-        <app-square [black]="true">
-            <app-knight></app-knight>
-        </app-square>
+      <app-square [black]="true">
+        <app-knight></app-knight>
+      </app-square>
     </div>
-    `
+  `,
 })
-export class BoardComponent {
-}
+export class BoardComponent {}
 ```
 
 Now, we need to render 64 of them. We will need an `*ngFor`, but Angular isn't
 very good at for loops, so we have to make an array of 64 items.
 
-
 ```html
 <div *ngFor="let i of sixtyFour">
-    <app-square [black]="true">
-        <app-knight></app-knight>
-    </app-square>
+  <app-square [black]="true">
+    <app-knight></app-knight>
+  </app-square>
 </div>
 ```
 
 ```typescript
 // ...
 export class BoardComponent {
-    sixtyFour = new Array(64).fill(0).map((_, i) => i);
+  sixtyFour = new Array(64).fill(0).map((_, i) => i);
 }
 ```
 
 ![Many knights in a vertical list](../media/many-knights.png)
 
-
 Then, you just have a lot of black squares in a vertical list. Not very chess-y.
-To make it an 8x8 grid, we are going to wrap them all in a `<div
-class="board">`, and use the cool new CSS feature, CSS Grid. Make sure you are
+To make it an 8x8 grid, we are going to wrap them all in a `<div class="board">`, and use the cool new CSS feature, CSS Grid. Make sure you are
 using a modern browser. Apply this style to the wrapping `.board`:
 
 ```css
 .board {
-    width: 100%;
-    height: 100%;
-    border: 1px solid black;
-    display: grid;
-    grid-template-columns: repeat(8, 12.5%);
-    grid-template-rows: repeat(8, 12.5%);
+  width: 100%;
+  height: 100%;
+  border: 1px solid black;
+  display: grid;
+  grid-template-columns: repeat(8, 12.5%);
+  grid-template-rows: repeat(8, 12.5%);
 }
 ```
 
 For brevity's sake you could just set `.board` to a fixed `width` and `height`
 of `560px`. I added a `ContainerComponent`, just to specify that size, to keep
 the board independent of where it will be placed. At this point, you will have
-an 8x8 board, but it still doesn't *quite* look like chess.
+an 8x8 board, but it still doesn't _quite_ look like chess.
 
 ![An 8 by 8 grid of black squares](../media/grid.png)
-
 
 ### Making the chessboard pattern and placing one knight on the board
 
@@ -226,17 +221,15 @@ left:
 
 ```html
 <div *ngFor="let i of sixtyFour">
-    <app-square *ngIf="xy(i) as pos" [black]="isBlack(pos)">
-        <app-knight *ngIf="pos.x === 0 && pos.y === 0"></app-knight>
-    </app-square>
+  <app-square *ngIf="xy(i) as pos" [black]="isBlack(pos)">
+    <app-knight *ngIf="pos.x === 0 && pos.y === 0"></app-knight>
+  </app-square>
 </div>
 ```
 
 And look at that, we have a chess board with one knight.
 
-
 ![A chess board with one knight on it](../media/chess-grid.png)
-
 
 ## Making the knight move around
 
@@ -244,11 +237,10 @@ And look at that, we have a chess board with one knight.
 > start fresh from there if you want.
 
 We can clearly represent the position of a knight in one `Coord` object. You
-*could* store this on the `BoardComponent` itself:
+_could_ store this on the `BoardComponent` itself:
 
 ```html
-<app-knight *ngIf="pos.x === knightPosition.x && pos.y === knightPosition.y">
-</app-knight>
+<app-knight *ngIf="pos.x === knightPosition.x && pos.y === knightPosition.y"> </app-knight>
 ```
 
 ```typescript
@@ -275,13 +267,11 @@ import { Coord } from './coord';
 
 @Injectable()
 export class GameService {
+  knightPosition$ = new BehaviorSubject<Coord>({ x: 2, y: 5 });
 
-    knightPosition$ = new BehaviorSubject<Coord>({ x: 2, y: 5 });
-
-    moveKnight(to: Coord) {
-        this.knightPosition$.next(to);
-    }
-
+  moveKnight(to: Coord) {
+    this.knightPosition$.next(to);
+  }
 }
 ```
 
@@ -309,16 +299,15 @@ the entire template:
 [truthy]: https://developer.mozilla.org/en-US/docs/Glossary/Truthy
 
 ```html
-    <div class="board">
-        <ng-container *ngIf="knightPosition$|async as kp">
-            <div class="square-container" *ngFor="let i of sixtyFour">
-                <app-square *ngIf="xy(i) as pos" [black]="isBlack(pos)">
-                    <app-knight *ngIf="pos.x === kp.x && pos.y === kp.y">
-                    </app-knight>
-                </app-square>
-            </div>
-        </ng-container>
+<div class="board">
+  <ng-container *ngIf="knightPosition$|async as kp">
+    <div class="square-container" *ngFor="let i of sixtyFour">
+      <app-square *ngIf="xy(i) as pos" [black]="isBlack(pos)">
+        <app-knight *ngIf="pos.x === kp.x && pos.y === kp.y"> </app-knight>
+      </app-square>
     </div>
+  </ng-container>
+</div>
 ```
 
 The resulting template is much clearer.
@@ -329,12 +318,16 @@ around the board. We're going to remove it later, so just throw it in the
 `BoardComponent`:
 
 ```html
-<app-square *ngIf="xy(i) as pos" [black]="isBlack(pos)" (click)="handleSquareClick(pos)">
+<app-square
+  *ngIf="xy(i) as pos"
+  [black]="isBlack(pos)"
+  (click)="handleSquareClick(pos)"
+></app-square>
 ```
 
 ```typescript
 handleSquareClick(pos: Coord) {
-    this.game.moveKnight(pos);
+  this.game.moveKnight(pos);
 }
 ```
 
@@ -351,29 +344,26 @@ import { Coord } from './coord';
 
 @Injectable()
 export class GameService {
+  knightPosition$ = new BehaviorSubject<Coord>({ x: 2, y: 5 });
+  currentPosition: Coord;
 
-    knightPosition$ = new BehaviorSubject<Coord>({ x: 2, y: 5 });
-    currentPosition: Coord;
+  constructor() {
+    this.knightPosition$.subscribe(kp => {
+      this.currentPosition = kp;
+    });
+  }
 
-    constructor() {
-        this.knightPosition$.subscribe(kp => {
-            this.currentPosition = kp;
-        })
-    }
+  moveKnight(to: Coord) {
+    this.knightPosition$.next(to);
+  }
 
-    moveKnight(to: Coord) {
-        this.knightPosition$.next(to);
-    }
+  canMoveKnight(to: Coord) {
+    const { x, y } = this.currentPosition;
+    const dx = to.x - x;
+    const dy = to.y - y;
 
-    canMoveKnight(to: Coord) {
-        const { x, y } = this.currentPosition;
-        const dx = to.x - x;
-        const dy = to.y - y;
-
-        return (Math.abs(dx) === 2 && Math.abs(dy) === 1) ||
-               (Math.abs(dx) === 1 && Math.abs(dy) === 2);
-    }
-
+    return (Math.abs(dx) === 2 && Math.abs(dy) === 1) || (Math.abs(dx) === 1 && Math.abs(dy) === 2);
+  }
 }
 ```
 
@@ -381,9 +371,9 @@ Amend `handleSquareClick` to check the rules before executing the move:
 
 ```typescript
 handleSquareClick(pos: Coord) {
-    if (this.game.canMoveKnight(pos)) {
-        this.game.moveKnight(pos);
-    }
+  if (this.game.canMoveKnight(pos)) {
+    this.game.moveKnight(pos);
+  }
 }
 ```
 
@@ -397,10 +387,10 @@ can reuse those two functions.
 
 Take a moment to think about what we have to work with. We have:
 
-* A `KnightComponent` which we want to be able to drag,
-* Many `SquareComponent`s on which he could be dropped,
-* A way to express that state change (`GameService.moveKnight`),
-* And a way to compute where we can drop him (`GameService.canMoveKnight`).
+- A `KnightComponent` which we want to be able to drag,
+- Many `SquareComponent`s on which he could be dropped,
+- A way to express that state change (`GameService.moveKnight`),
+- And a way to compute where we can drop him (`GameService.canMoveKnight`).
 
 Our strategy for implementing drag and drop is this:
 
@@ -428,8 +418,8 @@ as a single place where all your different chess piece types are defined.
 ```typescript
 // constants.ts
 export const ItemTypes = {
-    KNIGHT: "KNIGHT"
-}
+  KNIGHT: 'KNIGHT',
+};
 ```
 
 Then, make your `KnightComponent` into a drag source.
@@ -446,33 +436,35 @@ Here's all four in one go:
 
 ```typescript
 import { Component } from '@angular/core';
-import { DndService } from "@ng-dnd/core";
+import { DndService } from '@ng-dnd/core';
 import { ItemTypes } from './constants';
 
 @Component({
-    selector: 'app-knight',
-                     // step 3
-    template: `<span [dragSource]="knightSource">♘</span>`,
-    styles: [`
-    span {
+  selector: 'app-knight',
+                   // step 3
+  template: `<span [dragSource]="knightSource">♘</span>`,
+  styles: [
+    `
+      span {
         font-weight: 700;
         font-size: 54px;
-    }
-    `]
+      }
+    `,
+  ],
 })
 export class KnightComponent {
-    // step 2
-    knightSource = this.dnd.dragSource(ItemTypes.KNIGHT, {
-        beginDrag: () => ({})
-    });
+  // step 2
+  knightSource = this.dnd.dragSource(ItemTypes.KNIGHT, {
+    beginDrag: () => ({}),
+  });
 
-    // step 1
-    constructor(private dnd: DndService) { }
+  // step 1
+  constructor(private dnd: DndService) {}
 
-    // step 4
-    ngOnDestroy() {
-        this.knightSource.unsubscribe();
-    }
+  // step 4
+  ngOnDestroy() {
+    this.knightSource.unsubscribe();
+  }
 }
 ```
 
@@ -500,7 +492,7 @@ isDragging$ = this.knightSource.listen(monitor => monitor.isDragging());
 ```css
 /* in the style block */
 .dragging {
-    opacity: 0.25;
+  opacity: 0.25;
 }
 ```
 
@@ -509,7 +501,6 @@ You could set it to `opacity: 0`, but in chess, players like to know where the
 piece came from. `@ng-dnd` makes no assumptions about how to render
 any elements, so you can always customise their appearance at any stage of the
 drag and drop process.
-
 
 ### Part 2: Make the squares into drop targets
 
@@ -521,31 +512,35 @@ and leave the black and white rendering to `SquareComponent`. This is a basic wr
 which preserves the size of the underlying squares:
 
 ```typescript
-import { Component, Input  } from "@angular/core";
+import { Component, Input } from '@angular/core';
 
 @Component({
-    selector: 'app-board-square',
-    template: `
+  selector: 'app-board-square',
+  template: `
     <div class="wrapper">
-        <app-square [black]="black">
-            <ng-content></ng-content>
-        </app-square>
+      <app-square [black]="black">
+        <ng-content></ng-content>
+      </app-square>
     </div>
-    `, styles: [`
-    :host, .wrapper {
+  `,
+  styles: [
+    `
+      :host,
+      .wrapper {
         display: block;
         position: relative;
         width: 100%;
         height: 100%;
-    }
-    `]
+      }
+    `,
+  ],
 })
 export class BoardSquareComponent {
-    @Input() position: Coord;
-    get black() {
-         const { x, y } = this.position;
-         return (x + y) % 2 === 1;
-    }
+  @Input() position: Coord;
+  get black() {
+    const { x, y } = this.position;
+    return (x + y) % 2 === 1;
+  }
 }
 ```
 
@@ -554,7 +549,7 @@ template with this:
 
 ```html
 <app-board-square *ngIf="xy(i) as pos" [position]="pos">
-    <app-knight *ngIf="pos.x === kp.x && pos.y === kp.y"></app-knight>
+  <app-knight *ngIf="pos.x === kp.x && pos.y === kp.y"></app-knight>
 </app-board-square>
 ```
 
@@ -566,50 +561,50 @@ to that wrapper `div`. It's very similar to the drag source.
 3. Attach it to the DOM
 4. Unsubscribe it in `ngOnDestroy`.
 
-
 ```typescript
-import { Component, Input  } from "@angular/core";
-import { DndService } from "@ng-dnd/core";
-import { ItemTypes } from "./constants";
+import { Component, Input } from '@angular/core';
+import { DndService } from '@ng-dnd/core';
+import { ItemTypes } from './constants';
 
 @Component({
-    selector: 'app-board-square',
-    template: `
+  selector: 'app-board-square',
+  template: `
                          <!-- step 3 -->
     <div class="wrapper" [dropTarget]="target">
-        <app-square [black]="black">
-            <ng-content></ng-content>
-        </app-square>
+      <app-square [black]="black">
+        <ng-content></ng-content>
+      </app-square>
     </div>
-    `, styles: [`
-    :host, .wrapper {
+  `,
+  styles: [
+    `
+      :host,
+      .wrapper {
         display: block;
         position: relative;
         width: 100%;
         height: 100%;
-    }
-    `]
+      }
+    `,
+  ],
 })
 export class BoardSquareComponent {
-    @Input() position: Coord;
-    get black() {
-         const { x, y } = this.position;
-         return (x + y) % 2 === 1;
-    }
+  @Input() position: Coord;
+  get black() {
+    const { x, y } = this.position;
+    return (x + y) % 2 === 1;
+  }
 
-    // step 2
-    target = this.dnd.dropTarget(ItemTypes.KNIGHT, {
+  // step 2
+  target = this.dnd.dropTarget(ItemTypes.KNIGHT, {});
 
-    });
+  // step 1
+  constructor(private dnd: DndService) {}
 
-    // step 1
-    constructor(private dnd: DndService) { }
-
-    // step 4
-    ngOnDestroy() {
-        this.target.unsubscribe();
-    }
-
+  // step 4
+  ngOnDestroy() {
+    this.target.unsubscribe();
+  }
 }
 ```
 
@@ -620,7 +615,6 @@ going to use two hooks in the drop target: `DropTargetSpec.canDrop` and
 `DropTargetSpec.drop`. We have already done the heavy lifting for both in
 `GameService`. Inject `GameService` in the constructor, and incorporate its
 methods.
-
 
 ```typescript
 target = this.dnd.dropTarget(ItemTypes.KNIGHT, {
@@ -664,51 +658,53 @@ import { map } from 'rxjs/operators';
 ```
 
 ```html
-    <div class="wrapper" [dropTarget]="target">
-        <app-square [black]="black">
-            <ng-content></ng-content>
-        </app-square>
-        <div class="overlay"
-             *ngIf="showOverlay$|async"
-             [ngStyle]="overlayStyle$|async"></div>
-    </div>
-
+<div class="wrapper" [dropTarget]="target">
+  <app-square [black]="black">
+    <ng-content></ng-content>
+  </app-square>
+  <div class="overlay" *ngIf="showOverlay$|async" [ngStyle]="overlayStyle$|async"></div>
+</div>
 ```
 
 ```typescript
 export class BoardSquareComponent {
+  // ...
+  target = this.dnd.dropTarget(ItemTypes.KNIGHT, {
     // ...
-    target = this.dnd.dropTarget(ItemTypes.KNIGHT, {
-        // ...
-    });
+  });
 
-    collected$ = this.target.listen(m => ({
-        canDrop: m.canDrop(),
-        isOver: m.isOver(),
-    }));
-    
-    showOverlay$ = this.collected$.pipe(map(c => c.isOver || c.canDrop));
+  collected$ = this.target.listen(m => ({
+    canDrop: m.canDrop(),
+    isOver: m.isOver(),
+  }));
 
-    overlayStyle$ = this.collected$.pipe(map(coll => {
-        let { canDrop, isOver } = coll;
-        let bg: string = "rgba(0,0,0,0)";
-        if (canDrop && isOver) { bg = 'green'; }
-        else if (canDrop && !isOver) { bg = 'yellow'; }
-        else if (!canDrop && isOver) { bg = 'red'; }
-        return {
-            position: 'absolute',
-            top: 0,
-            left: 0,
-            height: '100%',
-            width: '100%',
-            zIndex: 1,
-            opacity: 0.5,
-            backgroundColor: bg
-        }
-    }));
+  showOverlay$ = this.collected$.pipe(map(c => c.isOver || c.canDrop));
 
-    // ...
+  overlayStyle$ = this.collected$.pipe(
+    map(coll => {
+      let { canDrop, isOver } = coll;
+      let bg: string = 'rgba(0,0,0,0)';
+      if (canDrop && isOver) {
+        bg = 'green';
+      } else if (canDrop && !isOver) {
+        bg = 'yellow';
+      } else if (!canDrop && isOver) {
+        bg = 'red';
+      }
+      return {
+        position: 'absolute',
+        top: 0,
+        left: 0,
+        height: '100%',
+        width: '100%',
+        zIndex: 1,
+        opacity: 0.5,
+        backgroundColor: bg,
+      };
+    })
+  );
 
+  // ...
 }
 ```
 
@@ -729,14 +725,14 @@ We can do this in just a few lines.
 ```typescript
 // ...
 export class KnightComponent {
-    // ...
+  // ...
 
-    ngOnInit() {
-        const img = new Image();
-        img.src = // ... long 'data:image/png;base64' url
-                  // regular 'https://' URLs work here too
-        img.onload = () => this.knightSource.connectDragPreview(img);
-    }
+  ngOnInit() {
+    const img = new Image();
+    img.src = // ... long 'data:image/png;base64' url
+      // regular 'https://' URLs work here too
+      img.onload = () => this.knightSource.connectDragPreview(img);
+  }
 }
 ```
 
@@ -747,4 +743,3 @@ Then we get a funky horse as our preview.
 ![Visual guides and a horse preview image](../media/guides.png)
 
 Have a go with the live demo [here](../examples/index.html#/chessboard).
-

@@ -6,4 +6,3 @@ When using `@ng-dnd`, you follow this general pattern:
 3. Use the connection's `listen` method to listen for relevant state changes, and respond to them:
    [Monitoring State](guide/3.-monitoring-state.html)
 4. Remember to destroy the connection in `ngOnDestroy()`. Refer to [part 1](guide/1.-creating-connections.html)
-

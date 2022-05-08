@@ -21,10 +21,7 @@ yarn add @ng-dnd/multi-backend
 Then import the module and change your `DndModule` backend to a **`backendFactory`** like so:
 
 ```typescript
-import {
-  DndMultiBackendModule,
-  createDefaultMultiBackend,
-} from "@ng-dnd/multi-backend";
+import { DndMultiBackendModule, createDefaultMultiBackend } from '@ng-dnd/multi-backend';
 
 @NgModule({
   imports: [
@@ -65,15 +62,15 @@ If you don't like putting reusable strings directly in templates, then try this:
 ```typescript
 // item-types.ts
 export const ItemTypes = {
-  TYPE: "TYPE",
-  OTHER_TYPE: "OTHER_TYPE",
-  THIRD_TYPE: "THIRD_TYPE",
+  TYPE: 'TYPE',
+  OTHER_TYPE: 'OTHER_TYPE',
+  THIRD_TYPE: 'THIRD_TYPE',
 };
 ```
 
 ```typescript
 // your-component.ts
-import { ItemTypes } from "./item-types";
+import { ItemTypes } from './item-types';
 @Component({
   template: `
     ...
@@ -108,7 +105,7 @@ import { getEmptyImage } from 'react-dnd-html5-backend';
 // ...
 
 ngOnInit() {
-    source.connectDragPreview(getEmptyImage());
+  source.connectDragPreview(getEmptyImage());
 }
 ```
 

@@ -31,9 +31,9 @@ common.
 
 ## Using the `DndService` to create connections
 
-First, inject 
+First, inject
 [DndService](../../injectables/DndService.html),
- into your component.
+into your component.
 
 ```typescript
 constructor(private dnd: DndService) { ... }
@@ -71,8 +71,8 @@ Spec input for your connection type.
 All three types of connection need to be destroyed when your component is
 destroyed. If you don't, you will have strange problems.
 
-__The easy way is to call
-[`.unsubscribe()`](../../interfaces/ConnectionBase.html#unsubscribe)__ on the
+**The easy way is to call
+[`.unsubscribe()`](../../interfaces/ConnectionBase.html#unsubscribe)** on the
 connection object in `ngOnDestroy`.
 
 ```typescript
