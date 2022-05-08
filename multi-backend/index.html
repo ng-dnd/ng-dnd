@@ -41,10 +41,7 @@
 <p>Second, it gives you a convenient and easy way to render previews when the touch backend is in use.</p>
 <h2 id="installation">Installation</h2>
 <div><pre class="line-numbers"><code class="language-sh">yarn add &#64;ng-dnd/multi-backend</code></pre></div><p>Then import the module and change your <code>DndModule</code> backend to a <strong><code>backendFactory</code></strong> like so:</p>
-<div><pre class="line-numbers"><code class="language-typescript">import {
-  DndMultiBackendModule,
-  createDefaultMultiBackend,
-} from &quot;&#64;ng-dnd/multi-backend&quot;;
+<div><pre class="line-numbers"><code class="language-typescript">import { DndMultiBackendModule, createDefaultMultiBackend } from &#39;&#64;ng-dnd/multi-backend&#39;;
 
 &#64;NgModule({
   imports: [
@@ -74,11 +71,11 @@ export class AppModule {}</code></pre></div><h2 id="normal-usage">Normal usage</
 &lt;/dnd-preview&gt;</code></pre></div><p>If you don&#39;t like putting reusable strings directly in templates, then try this:</p>
 <div><pre class="line-numbers"><code class="language-typescript">// item-types.ts
 export const ItemTypes = {
-  TYPE: &quot;TYPE&quot;,
-  OTHER_TYPE: &quot;OTHER_TYPE&quot;,
-  THIRD_TYPE: &quot;THIRD_TYPE&quot;,
+  TYPE: &#39;TYPE&#39;,
+  OTHER_TYPE: &#39;OTHER_TYPE&#39;,
+  THIRD_TYPE: &#39;THIRD_TYPE&#39;,
 };</code></pre></div><div><pre class="line-numbers"><code class="language-typescript">// your-component.ts
-import { ItemTypes } from &quot;./item-types&quot;;
+import { ItemTypes } from &#39;./item-types&#39;;
 &#64;Component({
   template: `
     ...
@@ -100,7 +97,7 @@ something different while an item is in flight. You will need two things:</p>
 // ...
 
 ngOnInit() {
-    source.connectDragPreview(getEmptyImage());
+  source.connectDragPreview(getEmptyImage());
 }</code></pre></div><h3 id="2-disable-the-touch-backend-only-check-in-the-preview-component">2. Disable the touch-backend-only check in the preview component</h3>
 <p>Simply pass allBackends as true to the preview.</p>
 <div><pre class="line-numbers"><code class="language-html">&lt;dnd-preview [allBackends]=&quot;true&quot;&gt; ... &lt;/dnd-preview&gt;</code></pre></div><h2 id="custom-backends-and-transitions">Custom backends and transitions</h2>

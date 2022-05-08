@@ -57,9 +57,7 @@ DOM element.</p>
 <h2 id="making-a-dom-element-draggable">Making a DOM element draggable</h2>
 <p>This means that events fired inside the element&#39;s bounding rectangle will start
 a drag. Use <code>DragSourceDirective</code> to do this. It&#39;s as simple as:</p>
-<div><pre class="line-numbers"><code class="language-html">&lt;div [dragSource]=&quot;source&quot;&gt;
-  drag me
-&lt;/div&gt;</code></pre></div><div><pre class="line-numbers"><code class="language-typescript">source = this.dnd.dragSource(&quot;DRAGME&quot;, {
+<div><pre class="line-numbers"><code class="language-html">&lt;div [dragSource]=&quot;source&quot;&gt;drag me&lt;/div&gt;</code></pre></div><div><pre class="line-numbers"><code class="language-typescript">source = this.dnd.dragSource(&#39;DRAGME&#39;, {
   beginDrag: () =&gt; ({ name: &#39;Jones McFly&#39; }),
   // other DragSourceSpec methods
 });
@@ -69,13 +67,11 @@ to customise the behaviour.</p>
 <h2 id="making-a-dom-element-into-a-drop-target">Making a DOM element into a drop target</h2>
 <p>This means your element will react to items being hovered or dropped within its
 bounding rectangle.</p>
-<div><pre class="line-numbers"><code class="language-html">&lt;div [dropTarget]=&quot;target&quot;&gt;
-  drop on me
-&lt;/div&gt;</code></pre></div><div><pre class="line-numbers"><code class="language-typescript">target = this.dnd.dropTarget(&quot;DRAGME&quot;, {
-    drop: monitor =&gt; {
-        console.log(&#39;dropped an item:&#39;, monitor.getItem()); // =&gt; { name: &#39;Jones McFly&#39; }
-    }
-})
+<div><pre class="line-numbers"><code class="language-html">&lt;div [dropTarget]=&quot;target&quot;&gt;drop on me&lt;/div&gt;</code></pre></div><div><pre class="line-numbers"><code class="language-typescript">target = this.dnd.dropTarget(&#39;DRAGME&#39;, {
+  drop: monitor =&gt; {
+    console.log(&#39;dropped an item:&#39;, monitor.getItem()); // =&gt; { name: &#39;Jones McFly&#39; }
+  },
+});
 // constructor, unsubscribe, etc</code></pre></div><p>Then, investigate using
 <a href="../../interfaces/DropTargetSpec.html">DropTargetSpec</a>
 to customise the behaviour.</p>

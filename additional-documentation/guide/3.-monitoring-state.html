@@ -62,15 +62,17 @@ monitor</li>
 your template.</li>
 </ol>
 <p>For example:</p>
-<div><pre class="line-numbers"><code class="language-html">&lt;div [dropTarget]=&quot;target&quot;
-    class=&quot;cat-target&quot;
-    [class.cat-target--hovering]=&quot;hovering$ | async&quot;&gt;
-    drop cats here
-&lt;/div&gt;</code></pre></div><div><pre class="line-numbers"><code class="language-scss">.cat-target { background: #eee; }
-.cat-target--hovering { background: lightgoldenrodyellow; }</code></pre></div><div><pre class="line-numbers"><code class="language-typescript">target = this.dnd.dropTarget(&quot;CAT&quot;, {
-    drop: monitor =&gt; {
-        console.log(&#39;dropped a cat&#39;);
-    }
+<div><pre class="line-numbers"><code class="language-html">&lt;div [dropTarget]=&quot;target&quot; class=&quot;cat-target&quot; [class.cat-target--hovering]=&quot;hovering$ | async&quot;&gt;
+  drop cats here
+&lt;/div&gt;</code></pre></div><div><pre class="line-numbers"><code class="language-scss">.cat-target {
+  background: #eee;
+}
+.cat-target--hovering {
+  background: lightgoldenrodyellow;
+}</code></pre></div><div><pre class="line-numbers"><code class="language-typescript">target = this.dnd.dropTarget(&#39;CAT&#39;, {
+  drop: monitor =&gt; {
+    console.log(&#39;dropped a cat&#39;);
+  },
 });
 
 // this is a very useful combination on a drop target,
@@ -98,7 +100,7 @@ never again, because the monitor object itself is the same each time.</li>
 <code>distinctUntilChanged</code> that also optimises for JS Objects with the same keys
 but different values. The following two examples fire exactly as often:</p>
 <div><pre class="line-numbers"><code class="language-typescript">isDraggingPlain$ = this.source.listen(m =&gt; m.isDragging());
-isDraggingObj$   = this.source.listen(m =&gt; ({ isDragging: m.isDragging() }));</code></pre></div><p>This is helpful if you have a lot of properties to listen to and wish to
+isDraggingObj$ = this.source.listen(m =&gt; ({ isDragging: m.isDragging() }));</code></pre></div><p>This is helpful if you have a lot of properties to listen to and wish to
 reduce the number of <code>| async</code> pipes in your code, or if you want to copy
 some <code>react-dnd</code> code.</p>
 <h2 id="making-decisions-in-the-spec-based-on-current-drag-state">Making decisions in the Spec based on current drag state</h2>

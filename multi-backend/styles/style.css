@@ -1,18 +1,33 @@
-@import "./reset.css";
-@import "./bootstrap.min.css";
-@import "./bootstrap-card.css";
-@import "./font-awesome.min.css";
-@import "./ionicons.min.css";
-@import "./compodoc.css";
-/* @import "./prism.css"; */
-@import "./tablesort.css";
+@import './reset.css';
+@import './bootstrap.min.css';
+@import './bootstrap-card.css';
+@import './font-awesome.min.css';
+@import './ionicons.min.css';
+@import './compodoc.css';
 
-html, body {
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", sans-serif;
+/* @import "./prism.css"; */
+@import './tablesort.css';
+
+html,
+body {
+  font-family:
+    -apple-system,
+    BlinkMacSystemFont,
+    'Segoe UI',
+    Roboto,
+    Helvetica,
+    Arial,
+    'Apple Color Emoji',
+    'Segoe UI Emoji',
+    'Segoe UI Symbol',
+    sans-serif;
   font-size: 16px;
 }
 
-h1, h2, h3, h5 {
+h1,
+h2,
+h3,
+h5 {
   margin-top: 1.5em;
   margin-bottom: 1em;
   font-weight: 700;
@@ -35,7 +50,8 @@ h1, h2, h3, h5 {
   padding-bottom: 20px;
 }
 
-.content p, .content .code-toolbar {
+.content p,
+.content .code-toolbar {
   margin: 0 0 1em;
 }
 
@@ -51,17 +67,21 @@ h1, h2, h3, h5 {
   margin-bottom: 1em;
 }
 
-.content ul ul, .content ul ol, .content ol ol, .content ol ul {
+.content ul ul,
+.content ul ol,
+.content ol ol,
+.content ol ul {
   margin-bottom: 0;
 }
 
 .content li {
-  margin-bottom: 0.2em;
+  margin-bottom: .2em;
 }
 
 .content ol ol {
   list-style-type: lower-alpha;
 }
+
 .content ol ol ol {
   list-style-type: lower-roman;
 }
@@ -81,8 +101,9 @@ display: none;
  * Links
  */
 
-a, a > code {
-  color: #0074D9;
+a,
+a > code {
+  color: #0074d9;
 }
 
 /**
@@ -90,13 +111,21 @@ a, a > code {
  */
 
 code {
-  color: #484A4C;
+  color: #484a4c;
 }
 
-code[class*="language-"],
-pre[class*="language-"] {
-  color: #484A4C;
-  font-family: "SF Mono", "Consolas", "Source Code Pro", "Menlo", "Bitstream Vera Sans Mono", "Courier New", Courier, monospace;
+code[class*='language-'],
+pre[class*='language-'] {
+  color: #484a4c;
+  font-family:
+    'SF Mono',
+    Consolas,
+    'Source Code Pro',
+    Menlo,
+    'Bitstream Vera Sans Mono',
+    'Courier New',
+    Courier,
+    monospace;
   direction: ltr;
   text-align: left;
   white-space: pre;
@@ -104,25 +133,17 @@ pre[class*="language-"] {
   word-break: normal;
   font-size: 1em;
   line-height: 130%;
-
-  -moz-tab-size: 4;
-  -o-tab-size: 4;
   tab-size: 4;
-
-  -webkit-hyphens: none;
-  -moz-hyphens: none;
-  -ms-hyphens: none;
   hyphens: none;
-
   margin: 0;
-  margin-top: 0.5em;
-  margin-bottom: 0.5em;
-  background-color: #FCFBFA;
+  margin-top: .5em;
+  margin-bottom: .5em;
+  background-color: #fcfbfa;
 }
 
-pre[class*="language-"] {
+pre[class*='language-'] {
   padding: 10px;
-  border-left: solid 3px #ECEAE9;
+  border-left: solid 3px #eceae9;
 }
 
 pre code {
@@ -131,15 +152,15 @@ pre code {
   background-color: transparent;
 }
 
-
-:not(pre) > code[class*="language-"],
-pre[class*="language-"] {
+:not(pre) > code[class*='language-'],
+pre[class*='language-'] {
 }
 
 /* Inline code */
-:not(pre) > code[class*="language-"] {
+:not(pre) > code[class*='language-'] {
   padding: .2em;
-  padding-top: 1px; padding-bottom: 1px;
+  padding-top: 1px;
+  padding-bottom: 1px;
   background: #f8f8f8;
 }
 
@@ -147,7 +168,8 @@ pre[class*="language-"] {
 .token.prolog,
 .token.doctype,
 .token.cdata {
-  color: #999988; font-style: italic;
+  color: #998;
+  font-style: italic;
 }
 
 .token.namespace {
@@ -158,9 +180,10 @@ pre[class*="language-"] {
 .token.attr-value {
   color: #df5050;
 }
+
 .token.punctuation,
 .token.operator {
-  color: #393A34; /* no highlight */
+  color: #393a34; /* no highlight */
 }
 
 .token.url,
@@ -180,14 +203,14 @@ pre[class*="language-"] {
 .token.keyword,
 .token.attr-name,
 .language-autohotkey .token.selector {
-  color: #a51
+  color: #a51;
 }
 
 .token.entity,
 .token.function,
 .token.deleted,
 .language-autohotkey .token.tag {
-  color: #32308E;
+  color: #32308e;
 }
 
 .token.tag,
@@ -204,6 +227,3 @@ pre[class*="language-"] {
 .token.italic {
   font-style: italic;
 }
-
-
-

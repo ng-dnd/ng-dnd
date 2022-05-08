@@ -3,7 +3,7 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="x-ua-compatible" content="ie=edge">
-        <title>@ng-dnd/core documentation</title>
+        <title>@ng-dnd/multi-backend documentation</title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -14,7 +14,7 @@
     <body>
 
         <div class="navbar navbar-default navbar-fixed-top visible-xs">
-            <a href="../" class="navbar-brand">@ng-dnd/core documentation</a>
+            <a href="../" class="navbar-brand">@ng-dnd/multi-backend documentation</a>
             <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
         </div>
 
@@ -28,7 +28,7 @@
                    <compodoc-menu mode="normal"></compodoc-menu>
                </div>
                <!-- START CONTENT -->
-               <div class="content interface">
+               <div class="content class">
                    <div class="content-data">
 
 
@@ -42,12 +42,9 @@
 
 
 
-
 <ol class="breadcrumb">
-  <li>Interfaces</li>
-  <li
-  >
-  DropTargetSpec</li>
+  <li>Classes</li>
+  <li >PreviewList</li>
 </ol>
 
 <ul class="nav nav-tabs" role="tablist">
@@ -62,60 +59,49 @@
             <h3>File</h3>
         </p>
         <p class="comment">
-            <code>src/drop-target-specification.ts</code>
+            <code>src/ambient.ts</code>
         </p>
 
 
-            <p class="comment">
-                <h3>Description</h3>
-            </p>
-            <p class="comment">
-                <p>The spec passed to <a href="../injectables/DndService.html#dropTarget">DndService</a>.</p>
-<p>Note the two type parameters. Both must represent plain JS objects. See the extended
-discussion of these type parameters at <a href="../interfaces/DragSourceSpec.html">DragSourceSpec</a>.</p>
-
-            </p>
 
 
-        <section>
-            <h3 id="index">Index</h3>
-            <table class="table table-sm table-bordered index-table">
-                <tbody>
-                    <tr>
-                        <td class="col-md-4">
-                            <h6><b>Methods</b></h6>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="col-md-4">
-                            <ul class="index-list">
-                                <li>
-                                        <span class="modifier">Optional</span>
-                                    <a href="#canDrop" 
->
-                                        canDrop
-                                    </a>
-                                </li>
-                                <li>
-                                        <span class="modifier">Optional</span>
-                                    <a href="#drop" 
->
-                                        drop
-                                    </a>
-                                </li>
-                                <li>
-                                        <span class="modifier">Optional</span>
-                                    <a href="#hover" 
->
-                                        hover
-                                    </a>
-                                </li>
-                            </ul>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
-        </section>
+
+
+            <section>
+    <h3 id="index">Index</h3>
+    <table class="table table-sm table-bordered index-table">
+        <tbody>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Methods</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#backendChanged" >backendChanged</a>
+                            </li>
+                            <li>
+                                <a href="#register" >register</a>
+                            </li>
+                            <li>
+                                <a href="#unregister" >unregister</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+
 
             <section>
     
@@ -126,17 +112,16 @@ discussion of these type parameters at <a href="../interfaces/DragSourceSpec.htm
         <tbody>
             <tr>
                 <td class="col-md-4">
-                    <a name="canDrop"></a>
+                    <a name="backendChanged"></a>
                     <span class="name">
-                        <span class="modifier">Optional</span>
-                        <span ><b>canDrop</b></span>
-                        <a href="#canDrop"><span class="icon ion-ios-link"></span></a>
+                        <span ><b>backendChanged</b></span>
+                        <a href="#backendChanged"><span class="icon ion-ios-link"></span></a>
                     </span>
                 </td>
             </tr>
             <tr>
                 <td class="col-md-4">
-<code>canDrop(monitor: DropTargetMonitor<Item | DropResult>)</code>
+<code>backendChanged(backend: Backend)</code>
                 </td>
             </tr>
 
@@ -145,14 +130,6 @@ discussion of these type parameters at <a href="../interfaces/DragSourceSpec.htm
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-description"><p>Queries your component to determine whether an item can be dropped on this target.</p>
-<p><strong>NOTE: runs outside Angular change detection.</strong> This is for performance
-reasons. You shouldn&#39;t be making changes to your component here anyway. If
-you do change your component inside this callback, it may not appear
-immediately, and if you use <code>NgZone.run()</code> then you may experience
-performance degradation.</p>
-<p>Default, when not specified, is <code>true</code>.</p>
-</div>
 
                     <div class="io-description">
                         <b>Parameters :</b>
@@ -167,9 +144,9 @@ performance degradation.</p>
                             </thead>
                             <tbody>
                                 <tr>
-                                    <td>monitor</td>
+                                    <td>backend</td>
                                     <td>
-                                            <code>DropTargetMonitor&lt;Item | DropResult&gt;</code>
+                                            <code>Backend</code>
                                     </td>
 
                                     <td>
@@ -184,7 +161,7 @@ performance degradation.</p>
                     <div>
                     </div>
                     <div class="io-description">
-                        <b>Returns : </b>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
 
                     </div>
                     <div class="io-description">
@@ -198,17 +175,16 @@ performance degradation.</p>
         <tbody>
             <tr>
                 <td class="col-md-4">
-                    <a name="drop"></a>
+                    <a name="register"></a>
                     <span class="name">
-                        <span class="modifier">Optional</span>
-                        <span ><b>drop</b></span>
-                        <a href="#drop"><span class="icon ion-ios-link"></span></a>
+                        <span ><b>register</b></span>
+                        <a href="#register"><span class="icon ion-ios-link"></span></a>
                     </span>
                 </td>
             </tr>
             <tr>
                 <td class="col-md-4">
-<code>drop(monitor: DropTargetMonitor<Item | DropResult>)</code>
+<code>register(preview: <a href="../interfaces/BackendWatcher.html" target="_self">BackendWatcher</a>)</code>
                 </td>
             </tr>
 
@@ -217,19 +193,6 @@ performance degradation.</p>
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-description"><p>Called when a compatible item is dropped on the target. You may either
-return nothing, or a plain object.</p>
-<p>If you return an object, it is going to become the drop result and will be
-available to the drag source in its <a href="../interfaces/DragSourceSpec.html#endDrag">DragSourceSpec</a> method as
-<a href="../interfaces/DropTargetMonitor.html#getDropResult">DropTargetMonitor</a>. This is useful in case you want the
-source to perform different actions depending on which target received the
-drop. Otherwise, it is simpler to handle the dropped item here.</p>
-<p>If you have nested drop targets, you can test whether a nested target has
-already handled drop by checking <a href="../interfaces/DropTargetMonitor.html#didDrop">DropTargetMonitor</a>. Both this
-method and the source&#39;s <code>endDrag()</code> method are good places to fire
-<code>@ngrx/store</code> actions.</p>
-<p>This method will not be called if <code>canDrop()</code> is defined and returns <code>false</code>.</p>
-</div>
 
                     <div class="io-description">
                         <b>Parameters :</b>
@@ -244,9 +207,9 @@ method and the source&#39;s <code>endDrag()</code> method are good places to fir
                             </thead>
                             <tbody>
                                 <tr>
-                                    <td>monitor</td>
+                                    <td>preview</td>
                                     <td>
-                                            <code>DropTargetMonitor&lt;Item | DropResult&gt;</code>
+                                                <code><a href="../interfaces/BackendWatcher.html" target="_self" >BackendWatcher</a></code>
                                     </td>
 
                                     <td>
@@ -261,7 +224,7 @@ method and the source&#39;s <code>endDrag()</code> method are good places to fir
                     <div>
                     </div>
                     <div class="io-description">
-                        <b>Returns : </b>    <code>DropResult | void</code>
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
 
                     </div>
                     <div class="io-description">
@@ -275,17 +238,16 @@ method and the source&#39;s <code>endDrag()</code> method are good places to fir
         <tbody>
             <tr>
                 <td class="col-md-4">
-                    <a name="hover"></a>
+                    <a name="unregister"></a>
                     <span class="name">
-                        <span class="modifier">Optional</span>
-                        <span ><b>hover</b></span>
-                        <a href="#hover"><span class="icon ion-ios-link"></span></a>
+                        <span ><b>unregister</b></span>
+                        <a href="#unregister"><span class="icon ion-ios-link"></span></a>
                     </span>
                 </td>
             </tr>
             <tr>
                 <td class="col-md-4">
-<code>hover(monitor: DropTargetMonitor<Item | DropResult>)</code>
+<code>unregister(preview: <a href="../interfaces/BackendWatcher.html" target="_self">BackendWatcher</a>)</code>
                 </td>
             </tr>
 
@@ -294,9 +256,6 @@ method and the source&#39;s <code>endDrag()</code> method are good places to fir
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-description"><p>Called frequently while the mouse hovers over the owner drop target while
-dragging a relevant item.</p>
-</div>
 
                     <div class="io-description">
                         <b>Parameters :</b>
@@ -311,9 +270,9 @@ dragging a relevant item.</p>
                             </thead>
                             <tbody>
                                 <tr>
-                                    <td>monitor</td>
+                                    <td>preview</td>
                                     <td>
-                                            <code>DropTargetMonitor&lt;Item | DropResult&gt;</code>
+                                                <code><a href="../interfaces/BackendWatcher.html" target="_self" >BackendWatcher</a></code>
                                     </td>
 
                                     <td>
@@ -340,10 +299,15 @@ dragging a relevant item.</p>
     </table>
 </section>
 
+
+
+
+
     </div>
 
 
 </div>
+
 
 
 
@@ -377,8 +341,8 @@ dragging a relevant item.</p>
 
        <script>
             var COMPODOC_CURRENT_PAGE_DEPTH = 1;
-            var COMPODOC_CURRENT_PAGE_CONTEXT = 'interface';
-            var COMPODOC_CURRENT_PAGE_URL = 'DropTargetSpec.html';
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'class';
+            var COMPODOC_CURRENT_PAGE_URL = 'PreviewList.html';
             var MAX_SEARCH_RESULTS = 15;
        </script>
 

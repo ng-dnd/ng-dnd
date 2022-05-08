@@ -73,14 +73,16 @@ most of it. If you don&#39;t know <code>react-dnd</code>, this will help you rea
     if (monitor.didDrop()) {
       component.fireAction(monitor.getItem());
     }
-  }
-}
-&#64;DragSource(&quot;ITEM&quot;, itemSourceSpec, (connect, monitor) =&gt; ({
+  },
+};
+&#64;DragSource(&#39;ITEM&#39;, itemSourceSpec, (connect, monitor) =&gt; ({
   connectDragSource: connect.connectDragSource(),
   isDragging: monitor.isDragging(),
 }))
 export class MyComponent extends React.Component {
-  fireAction() { /* ... */ }
+  fireAction() {
+    /* ... */
+  }
   render() {
     const { someProperty, isDragging } = this.props;
     return connectDragSource(
@@ -92,31 +94,35 @@ export class MyComponent extends React.Component {
   }
 }</code></pre></div><p>And here&#39;s the Angular translation:</p>
 <div><pre class="line-numbers"><code class="language-typescript">&#64;Component({
-  template: `</code></pre></div><div><pre class="line-numbers"><code class="language-html">  &lt;div [dragSource]=&quot;itemSource&quot;&gt;
-    {{someProperty}}
-    &lt;span *ngIf=&quot;(collected$|async).isDragging&quot;&gt;
-      I am being dragged now
-    &lt;/span&gt;
-  &lt;/div&gt;
-  `</code></pre></div><div><pre class="line-numbers"><code class="language-typescript">})
+  template: `
+    &lt;div [dragSource]=&quot;itemSource&quot;&gt;
+      {{ someProperty }}
+      &lt;span *ngIf=&quot;(collected$ | async).isDragging&quot;&gt; I am being dragged now &lt;/span&gt;
+    &lt;/div&gt;
+  `,
+})
 export class MyComponent {
   &#64;Input() someProperty: string;
-  itemSource = dnd.dragSource(&quot;ITEM&quot;, {
-    beginDrag: (monitor) =&gt; {
+  itemSource = dnd.dragSource(&#39;ITEM&#39;, {
+    beginDrag: monitor =&gt; {
       return { someProperty: this.someProperty };
     },
-    endDrag: (monitor) =&gt; {
+    endDrag: monitor =&gt; {
       if (monitor.didDrop()) {
         this.fireAction(monitor.getItem());
       }
-    }
+    },
   });
   collected$ = this.itemSource.listen(monitor =&gt; ({
     isDragging: monitor.isDragging(),
   }));
   constructor(private dnd: DndService) {}
-  fireAction(item) { /* ... */ }
-  ngOnDestroy() { this.itemSource.destroy(); }
+  fireAction(item) {
+    /* ... */
+  }
+  ngOnDestroy() {
+    this.itemSource.destroy();
+  }
 }</code></pre></div><p>As you can see, the two are very similar. You should be able to take most
 React/<code>react-dnd</code> examples and translate them quite directly into Angular. You
 can <em>almost</em> copy and paste some parts.</p>
@@ -125,7 +131,7 @@ can <em>almost</em> copy and paste some parts.</p>
 primary difference relevant to us is that in React you can create a &#39;wrapper&#39; or
 &#39;higher-order&#39; component that will pass all of its props to the one it is
 &#39;wrapping&#39; or &#39;decorating&#39;, with extra behaviour or new props added. This is how
-<code>react-dnd</code> works: wrap your component with <code>@DragSource(type, spec, collect: (connect, monitor) =&gt; Object)</code>, and the output of the  <code>collect</code> function is
+<code>react-dnd</code> works: wrap your component with <code>@DragSource(type, spec, collect: (connect, monitor) =&gt; Object)</code>, and the output of the <code>collect</code> function is
 injected into your component&#39;s props.</p>
 <p><em>In Angular, we run everything inside your component</em>, using methods on an
 injected <code>DndService</code> to create <strong>connections</strong>. Connections are a go-between
@@ -172,7 +178,7 @@ can do both patterns with directives, because each directive is linked to one Co
 <p>Imagine you want to make a component draggable based on type(s) specified on the
 component inputs.</p>
 <p><code>react-dnd</code> allows strings and ES6 Symbols in the type argument. But you can
-<em>also</em> pass a function  of <code>(props) =&gt; string|symbol</code>; in this way, your item
+<em>also</em> pass a function of <code>(props) =&gt; string|symbol</code>; in this way, your item
 types can depend on the inputs to your component, and even change over time when
 the props change. It&#39;s not a plain asynchronous callback like the rest of the
 spec, it is called when the props change on the decorating component, before any

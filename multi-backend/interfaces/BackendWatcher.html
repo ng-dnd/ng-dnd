@@ -28,201 +28,145 @@
                    <compodoc-menu mode="normal"></compodoc-menu>
                </div>
                <!-- START CONTENT -->
-               <div class="content component">
+               <div class="content interface">
                    <div class="content-data">
 
 
 
 
+
+
+
+
+
+
+
+
+
 <ol class="breadcrumb">
-  <li>Components</li>
+  <li>Interfaces</li>
   <li
   >
-  DndPreviewRendererComponent</li>
+  BackendWatcher</li>
 </ol>
 
 <ul class="nav nav-tabs" role="tablist">
         <li class="active">
             <a href="#info" role="tab" id="info-tab" data-toggle="tab" data-link="info">Info</a>
         </li>
-        <li >
-            <a href="#styleData" role="tab" id="styleData-tab" data-toggle="tab" data-link="style">Styles</a>
-        </li>
 </ul>
 
 <div class="tab-content">
-    <div class="tab-pane fade active in" id="c-info"><p class="comment">
-    <h3>File</h3>
-</p>
-<p class="comment">
-    <code>src/preview-renderer.component.ts</code>
-</p>
+    <div class="tab-pane fade active in" id="c-info">
+        <p class="comment">
+            <h3>File</h3>
+        </p>
+        <p class="comment">
+            <code>src/ambient.ts</code>
+        </p>
 
 
-    <p class="comment">
-        <h3>Description</h3>
-    </p>
-    <p class="comment">
-        <p>This is internal, you probably won&#39;t ever need to use it directly.</p>
-<p>For understanding&#39;s sake, it helps to know that this component
-essentially just renders whatever is placed between its tags, but
-in a <code>position: fixed</code> container that is translated according to
-the drag in progress and how far it has travelled.</p>
-<p>It currently has a workaround for some Firefox versions where the
-whole thing wouldn&#39;t re-render unless you animated the border.</p>
-
-    </p>
 
 
-    <p class="comment">
-        <h3>Implements</h3>
-    </p>
-    <p class="comment">
-                    <code><a href="https://angular.io/api/core/OnDestroy" target="_blank" >OnDestroy</a></code>
-    </p>
+        <section>
+            <h3 id="index">Index</h3>
+            <table class="table table-sm table-bordered index-table">
+                <tbody>
+                    <tr>
+                        <td class="col-md-4">
+                            <h6><b>Methods</b></h6>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <ul class="index-list">
+                                <li>
+                                    <a href="#backendChanged" 
+>
+                                        backendChanged
+                                    </a>
+                                </li>
+                            </ul>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
 
-
-<section>
-    <h3>Metadata</h3>
-    <table class="table table-sm table-hover metadata">
+            <section>
+    
+    <h3 id="methods">
+        Methods
+    </h3>
+    <table class="table table-sm table-bordered">
         <tbody>
-
             <tr>
-                <td class="col-md-3">changeDetection</td>
-                <td class="col-md-9"><code>ChangeDetectionStrategy.OnPush</code></td>
+                <td class="col-md-4">
+                    <a name="backendChanged"></a>
+                    <span class="name">
+                        <span ><b>backendChanged</b></span>
+                        <a href="#backendChanged"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>backendChanged(backend: Backend)</code>
+                </td>
             </tr>
 
 
 
 
-
-
-
-
-
-
             <tr>
-                <td class="col-md-3">selector</td>
-                <td class="col-md-9"><code>dnd-preview-renderer</code></td>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>backend</td>
+                                    <td>
+                                            <code>Backend</code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
             </tr>
-
-
-            <tr>
-                <td class="col-md-3">styles</td>
-                <td class="col-md-9"><code>
-      :host {
-        display: block;
-        position: fixed;
-        pointer-events: none;
-        z-index: 100;
-        left: 0;
-        top: 0;
-        width: 100%;
-        height: 100%;
-      }
-      @keyframes animatedBorder {
-        from {
-          border-color: rgba(0, 0, 0, 0);
-        }
-        to {
-          border-color: rgba(0, 0, 0, 1);
-        }
-      }
-      .firefox-bug {
-        animation-name: animatedBorder;
-        animation-duration: 1s;
-        animation-iteration-count: infinite;
-        animation-timing-function: linear;
-      }
-    </code></td>
-            </tr>
-
-            <tr>
-                <td class="col-md-3">template</td>
-                <td class="col-md-9"><pre class="line-numbers"><code class="language-html">&lt;div class&#x3D;&quot;firefox-bug&quot; [ngStyle]&#x3D;&quot;style$ | async&quot;&gt;
-  &lt;ng-content&gt;&lt;/ng-content&gt;
-&lt;/div&gt;
-</code></pre></td>
-            </tr>
-
-
-
-
-
-
-
-
-
         </tbody>
     </table>
 </section>
 
-
-
-
-
-
-
-
-
-</div>
-
-
-
-
-    <div class="tab-pane fade " id="c-styleData">
-            <pre class="line-numbers"><code class="language-scss">
-      :host {
-        display: block;
-        position: fixed;
-        pointer-events: none;
-        z-index: 100;
-        left: 0;
-        top: 0;
-        width: 100%;
-        height: 100%;
-      }
-      @keyframes animatedBorder {
-        from {
-          border-color: rgba(0, 0, 0, 0);
-        }
-        to {
-          border-color: rgba(0, 0, 0, 1);
-        }
-      }
-      .firefox-bug {
-        animation-name: animatedBorder;
-        animation-duration: 1s;
-        animation-iteration-count: infinite;
-        animation-timing-function: linear;
-      }
-    
-</code></pre>
     </div>
 
 
-    
 </div>
-
-<script src="../js/libs/vis.min.js"></script>
-<script src="../js/libs/htmlparser.js"></script>
-<script src="../js/libs/deep-iterator.js"></script>
-<script>
-        var COMPONENT_TEMPLATE = '<div><div class="firefox-bug" [ngStyle]="style$ | async">  <ng-content></ng-content></div></div>'
-    var COMPONENTS = [{'name': 'DndPreviewComponent', 'selector': 'dnd-preview'},{'name': 'DndPreviewRendererComponent', 'selector': 'dnd-preview-renderer'}];
-    var DIRECTIVES = [];
-    var ACTUAL_COMPONENT = {'name': 'DndPreviewRendererComponent'};
-</script>
-<script src="../js/tree.js"></script>
-
-
-
-
-
-
-
-
-
 
 
 
@@ -256,8 +200,8 @@ whole thing wouldn&#39;t re-render unless you animated the border.</p>
 
        <script>
             var COMPODOC_CURRENT_PAGE_DEPTH = 1;
-            var COMPODOC_CURRENT_PAGE_CONTEXT = 'component';
-            var COMPODOC_CURRENT_PAGE_URL = 'DndPreviewRendererComponent.html';
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'interface';
+            var COMPODOC_CURRENT_PAGE_URL = 'BackendWatcher.html';
             var MAX_SEARCH_RESULTS = 15;
        </script>
 

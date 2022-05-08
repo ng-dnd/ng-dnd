@@ -55,14 +55,14 @@
 <div><pre class="line-numbers"><code class="language-sh">yarn add &#64;ng-dnd/core react-dnd-html5-backend</code></pre></div><p>You might consider <code>@ng-dnd/multi-backend</code> instead of the HTML5
 backend, because it allows adding touch support as well.</p>
 <p>Then import <code>DndModule</code> and provide the backend:</p>
-<div><pre class="line-numbers"><code class="language-typescript">import { DndModule } from &quot;&#64;ng-dnd/core&quot;;
-import { HTML5Backend } from &#39;react-dnd-html5-backend&#39;
+<div><pre class="line-numbers"><code class="language-typescript">import { DndModule } from &#39;&#64;ng-dnd/core&#39;;
+import { HTML5Backend } from &#39;react-dnd-html5-backend&#39;;
 
 &#64;NgModule({
   imports: [
     // Don&#39;t forget the forRoot()
     DndModule.forRoot({ backend: HTML5Backend }),
-  ]
+  ],
 })
 export class AppModule {}</code></pre></div><p>If you need it again on a child module, like a lazy-loaded module, you only need
 to import <code>DndModule</code> there. That way the backend and global drag state is only
@@ -142,14 +142,14 @@ like <code>TouchBackend</code>. <a href="#touch-support-and-alternate-backends">
 <h3 id="in-the-spec-callbacks-my-component-doesnt-have-any-properties-and-it-cant-call-thismethod">In the spec callbacks, my component doesn&#39;t have any properties, and it can&#39;t call <code>this.method()</code>!</h3>
 <p>Make sure you use the arrow function syntax (<code>() =&gt;</code>) in your specs so <code>this</code> will refer to your component. Example:</p>
 <div><pre class="line-numbers"><code class="language-typescript">paperCount = 3;
-limitedSupplyOfPaper = this.dnd.dragSource(&quot;PAPER&quot;, {
-    // use shorthand for one-liners that return a value
-    canDrag: () =&gt; this.paperCount &gt; 0,
-    endDrag: (monitor) =&gt; {
-        if (monitor.didDrop()) {
-            this.paperCount--;
-        }
+limitedSupplyOfPaper = this.dnd.dragSource(&#39;PAPER&#39;, {
+  // use shorthand for one-liners that return a value
+  canDrag: () =&gt; this.paperCount &gt; 0,
+  endDrag: monitor =&gt; {
+    if (monitor.didDrop()) {
+      this.paperCount--;
     }
+  },
 });</code></pre></div><p><a href="https://goo.gl/VYQMEs">This demo</a> shows comprehensively what <code>this</code> refers to
 in arrow functions vs regular ones. A sufficiently advanced editor shouldn&#39;t
 show any completions at <code>this.|</code> in a regular function, as it will resolve the

@@ -55,25 +55,25 @@
 <h2 id="requirements-of-sortablespec">Requirements of SortableSpec</h2>
 <p>There are a number of requirements a <code>SortableSpec</code> implementation must satisfy.</p>
 <ol>
-<li>after <code>beginDrag</code>, the element you picked up (= <em>transit</em>) must still be 
+<li>after <code>beginDrag</code>, the element you picked up (= <em>transit</em>) must still be
 under the mouse;</li>
 <li>after <code>hover</code>, the element you picked up (= <em>transit</em>) must be:<ol>
 <li>under the mouse; and</li>
-<li>at the index <code>item.hover.index</code> in the list identified by 
+<li>at the index <code>item.hover.index</code> in the list identified by
 <code>item.hover.listId</code></li>
 </ol>
 </li>
 </ol>
-<p>The previews can be anywhere; it is the transit elements that must move, 
-because they carry the <code>dndSortableRender</code> directives that can produce further 
-reordering, and if those directives are out of order, your sortable won&#39;t make 
+<p>The previews can be anywhere; it is the transit elements that must move,
+because they carry the <code>dndSortableRender</code> directives that can produce further
+reordering, and if those directives are out of order, your sortable won&#39;t make
 sense.</p>
-<p>The specific meaning of &#39;at the index&#39; in 2b is that the <code>index</code> property of 
-the <code>context</code> passed to <code>ssRender</code> is the same as the <code>hover.index</code> on the 
-<code>item</code> passed to <code>hover(item)</code>. In general, this means you will be re-rendering 
+<p>The specific meaning of &#39;at the index&#39; in 2b is that the <code>index</code> property of
+the <code>context</code> passed to <code>dndSortableRender</code> is the same as the <code>hover.index</code> on the
+<code>item</code> passed to <code>hover(item)</code>. In general, this means you will be re-rendering
 your list to match, and the <code>NgForOf</code> gives you new indexes.</p>
-<p>You are free to implement <code>drop</code> and <code>endDrag</code> as you wish, but they should 
-probably involve &#39;save the temporary order&#39; and &#39;set temporary = saved&#39; 
+<p>You are free to implement <code>drop</code> and <code>endDrag</code> as you wish, but they should
+probably involve &#39;save the temporary order&#39; and &#39;set temporary = saved&#39;
 respectively.</p>
 <h2 id="lifecycle">Lifecycle</h2>
 <p>The following diagram summarises the calls made to <code>SortableSpec</code> during a drag.</p>
@@ -81,22 +81,22 @@ respectively.</p>
 sequenceDiagram
     participant Spec as SortableSpec
     participant C as Component
-    participant S as ssSortable
-    participant R as origin ssRender
-    participant R2 as other ssRender
+    participant S as dndSortable
+    participant R as origin dndSortableRender
+    participant R2 as other dndSortableRender
     Note over R: user drags
     R->>Spec: ask canDrag() ?
     R->>Spec: beginDrag(item)
     Spec-->>C: no changes
     loop While Dragging
-        Note over R2: hover over other<br/>ssRender
+        Note over R2: hover over other<br/>dndSortableRender
         R2->>Spec: ask canDrop() ?
         R2->>Spec: hover(item)
         Note right of Spec: children reordered<br/> to match item.hover
         Spec-->>C: cause reordering
         R-->R2: reorder
     end
-    opt if dropped on ssSortable
+    opt if dropped on dndSortable
         S->>Spec: ask canDrop() ?
         S->>Spec: drop(item)
         Spec-->>C: cause reordering
@@ -108,13 +108,13 @@ sequenceDiagram
 <script>mermaid.initialize({startOnLoad:true});</script>
 
 <h3 id="no-changes-after-begindrag">&#39;No changes&#39; after beginDrag</h3>
-<p>You should not reorder anything within beginDrag. This would probably violate 
+<p>You should not reorder anything within beginDrag. This would probably violate
 Requirement #1; moreover, it doesn&#39;t make any sense.</p>
-<p>The particular item that got picked up will be able to react, because 
+<p>The particular item that got picked up will be able to react, because
 <code>dndSortableRender.isDragging$</code> will emit <code>true</code>.</p>
 <h3 id="the-implementation-of-cause-reordering-is-up-to-you">The implementation of &#39;Cause reordering&#39; is up to you</h3>
-<p>You can implement this at the most basic level by setting variables on a 
-component that isn&#39;t <code>OnPush</code>; you could also use RxJS, <code>@ngrx</code> and other more 
+<p>You can implement this at the most basic level by setting variables on a
+component that isn&#39;t <code>OnPush</code>; you could also use RxJS, <code>@ngrx</code> and other more
 powerful solutions.</p>
 
                    </div><div class="search-results">
