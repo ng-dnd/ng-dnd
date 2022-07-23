@@ -1,6 +1,7 @@
 # Ng DnD
 
 [![Build Status](https://www.travis-ci.com/ng-dnd/ng-dnd.svg?branch=main)](https://www.travis-ci.com/ng-dnd/ng-dnd)
+[![CodeFactor](https://www.codefactor.io/repository/github/ng-dnd/ng-dnd/badge)](https://www.codefactor.io/repository/github/ng-dnd/ng-dnd)
 [![npm](https://img.shields.io/npm/v/@ng-dnd/core.svg)](https://www.npmjs.com/package/@ng-dnd/core)
 [![GitHub license](https://img.shields.io/github/license/mashape/apistatus.svg)](https://github.com/ng-dnd/ng-dnd/blob/master/LICENSE)
 
