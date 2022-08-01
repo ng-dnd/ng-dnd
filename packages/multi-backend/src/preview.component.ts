@@ -92,7 +92,7 @@ export class DndPreviewComponent implements BackendWatcher, OnInit, OnDestroy {
     if (this.manager == null) {
       this.warn('no drag and drop manager defined, are you sure you imported DndModule?');
     } else {
-      (this.manager.getBackend() as MultiBackendExt).previews!.register(this);
+      (this.manager.getBackend() as MultiBackendExt).previews?.register(this);
     }
   }
 
@@ -110,7 +110,7 @@ export class DndPreviewComponent implements BackendWatcher, OnInit, OnDestroy {
   /** @ignore */
   ngOnDestroy() {
     this.layer.unsubscribe();
-    (this.manager.getBackend() as MultiBackendExt).previews!.unregister(this);
+    (this.manager.getBackend() as MultiBackendExt).previews?.unregister(this);
   }
 
   /** @ignore */
