@@ -48,8 +48,8 @@ export function suggestHalfway<Data>(
       suggestedIndex = topHalf ? ctx.index : ctx.index + 1;
     } else {
       suggestedIndex = topHalf ? ctx.index - 1 : ctx.index;
+      // Fix rare issue when trying to drag too high
       if (suggestedIndex < 0) {
-        // Fix rare issue when trying to drag too high
         suggestedIndex = 0;
       }
     }
