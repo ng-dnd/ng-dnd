@@ -30,10 +30,10 @@ The `angular-skyhook` is a great library, but I had encountered some frustration
 
 ## Compatibility
 
-| Angular           | @ng-dnd/core |
-| ----------------- | ------------ |
-| >= 13.0.0         | 2.x          |
-| >= 9.0.0 < 13.0.0 | 1.x          |
+| Angular           | RxJS | @ng-dnd/core |
+| ----------------- | ---- | ------------ |
+| >= 13.0.0         | 7.x  | 2.x          |
+| >= 9.0.0 < 13.0.0 | 6.x  | 1.x          |
 
 ## License
 
