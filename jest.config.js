@@ -7,7 +7,9 @@ module.exports = {
       useExperimentalLanguageServer: true,
     },
   },
-  testURL: 'http://localhost',
+  testEnvironmentOptions: {
+    url: 'http://localhost'
+  },
   preset: 'jest-preset-angular',
   setupFilesAfterEnv: [
     '<rootDir>/test/test-setup.ts',
