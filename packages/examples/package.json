@@ -49,6 +49,7 @@
     "@angular/compiler-cli": "^14.3.0",
     "@angular/language-service": "^14.3.0",
     "@ngrx/schematics": "^14.3.3",
+    "@types/jasmine": "~4.3.0",
     "jasmine-core": "~4.2.0",
     "jasmine-spec-reporter": "~7.0.0",
     "karma": "~6.4.0",
