@@ -6,6 +6,7 @@ import { MathQuestion, Question } from './Question';
   selector: 'quiz-section',
   template: `
     <div
+      *ngIf="render"
       class="section"
       [class.section--placeholder]="render.isDragging$ | async"
       [class.section--preview]="preview"
