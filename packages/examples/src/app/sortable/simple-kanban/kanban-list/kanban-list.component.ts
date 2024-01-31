@@ -22,7 +22,7 @@ export class KanbanListComponent {
   // - Also must be public if you're using it in your template, until the Ivy renderer lands
   constructor(
     public specs: SortableSpecService,
-    @Optional() public render: DndSortableRenderer<CardList>
+    @Optional() public render?: DndSortableRenderer<CardList>
   ) {}
 
   trackById = (_: number, x: Card) => x.id;
