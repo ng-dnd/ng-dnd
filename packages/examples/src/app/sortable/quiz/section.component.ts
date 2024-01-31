@@ -7,11 +7,11 @@ import { MathQuestion, Question } from './Question';
   template: `
     <div
       class="section"
-      [class.section--placeholder]="render.isDragging$ | async"
+      [class.section--placeholder]="render?.isDragging$ | async"
       [class.section--preview]="preview"
-      [dragPreview]="render.source"
+      [dragPreview]="render?.source!"
     >
-      <span class="section-handle" [dragSource]="render.source" [noHTML5Preview]="true">
+      <span class="section-handle" [dragSource]="render?.source!" [noHTML5Preview]="true">
         &#9776;
       </span>
 
@@ -31,5 +31,5 @@ export class SectionComponent {
   getMathQuestion() {
     return this.question as MathQuestion;
   }
-  constructor(@Optional() public render: DndSortableRenderer<Question>) {}
+  constructor(@Optional() public render?: DndSortableRenderer<Question>) {}
 }

@@ -33,7 +33,7 @@ export class KanbanListComponent implements OnInit {
   // - Also must be public if you're using it in your template, until the Ivy renderer lands
   constructor(
     public specs: SortableSpecService,
-    @Optional() public render: DndSortableRenderer<KanbanList>
+    @Optional() public render?: DndSortableRenderer<KanbanList>
   ) {}
 
   ngOnInit() {}
