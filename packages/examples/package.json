@@ -32,17 +32,17 @@
     "@ngrx/entity": "^15.4.0",
     "@ngrx/store": "^15.4.0",
     "@ngrx/store-devtools": "^15.4.0",
-    "angular2-hotkeys": "^13.1.0",
+    "angular2-hotkeys": "^15.0.0",
     "faker": "^5.5.3",
-    "immer": "^9.0.12",
-    "immutable": "^4.0.0",
+    "immer": "^10.0.0",
+    "immutable": "^4.3.0",
     "moment-mini-ts": "^2.20.1",
     "pressure": "^2.2.0",
-    "react-dnd-mouse-backend": "^0.1.1",
+    "react-dnd-mouse-backend": "^0.1.2",
     "react-dnd-test-backend": "^16.0.0",
     "rxjs": "~7.8.0",
     "tslib": "^2.4.0",
-    "zone.js": "~0.11.8"
+    "zone.js": "~0.12.0"
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "^15.2.10",
@@ -51,15 +51,15 @@
     "@angular/language-service": "^15.2.10",
     "@ngrx/schematics": "^15.4.0",
     "@types/jasmine": "~4.3.0",
+    "@types/mousetrap": "^1.6.9",
     "jasmine-core": "~4.2.0",
     "jasmine-spec-reporter": "~7.0.0",
     "karma": "~6.4.0",
     "karma-chrome-launcher": "~3.2.0",
     "karma-coverage": "~2.2.0",
-    "karma-jasmine": "~5.0.0",
-    "karma-jasmine-html-reporter": "^1.7.0",
+    "karma-jasmine": "~5.1.0",
+    "karma-jasmine-html-reporter": "^2.0.0",
     "protractor": "~7.0.0",
-    "ts-node": "~10.7.0",
-    "typescript": "~4.8.4"
+    "typescript": "~4.9.5"
   }
 }
