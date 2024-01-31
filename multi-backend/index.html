@@ -13,7 +13,7 @@
     </head>
     <body>
 
-        <div class="navbar navbar-default navbar-fixed-top visible-xs">
+        <div class="navbar navbar-default navbar-fixed-top d-block d-sm-none">
             <a href="./" class="navbar-brand">@ng-dnd/multi-backend documentation</a>
             <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
         </div>
@@ -31,15 +31,15 @@
                <div class="content getting-started">
                    <div class="content-data">
 
-<h4 id="go-back-to-ng-dndcore">Go back to <a href="../"><code>@ng-dnd/core</code></a></h4>
-<h1 id="ng-dndmulti-beckend">@ng-dnd/multi-beckend</h1>
+<h4>Go back to <a href="../"><code>@ng-dnd/core</code></a></h4>
+<h1>@ng-dnd/multi-beckend</h1>
 <p><a href="https://www.travis-ci.com/ng-dnd/ng-dnd"><img src="https://www.travis-ci.com/ng-dnd/ng-dnd.svg?branch=main" alt="Build Status" class="img-responsive"></a>
 <a href="https://www.npmjs.com/package/@ng-dnd/core"><img src="https://img.shields.io/npm/v/@ng-dnd/core.svg" alt="npm" class="img-responsive"></a>
 <a href="https://github.com/ng-dnd/ng-dnd/blob/master/LICENSE"><img src="https://img.shields.io/github/license/mashape/apistatus.svg" alt="GitHub license" class="img-responsive"></a></p>
 <p>This package does two things.</p>
 <p>First, it re-exports <a href="https://github.com/LouisBrunner/react-dnd-multi-backend"><code>dnd-multi-backend</code></a>, <a href="https://github.com/yahoo/react-dnd-touch-backend"><code>react-dnd-touch-backend</code></a> and <a href="https://github.com/react-dnd/react-dnd"><code>react-dnd-html5-backend</code></a>.</p>
 <p>Second, it gives you a convenient and easy way to render previews when the touch backend is in use.</p>
-<h2 id="installation">Installation</h2>
+<h2>Installation</h2>
 <div><pre class="line-numbers"><code class="language-sh">yarn add &#64;ng-dnd/multi-backend</code></pre></div><p>Then import the module and change your <code>DndModule</code> backend to a <strong><code>backendFactory</code></strong> like so:</p>
 <div><pre class="line-numbers"><code class="language-typescript">import { DndMultiBackendModule, createDefaultMultiBackend } from &#39;&#64;ng-dnd/multi-backend&#39;;
 
@@ -50,7 +50,7 @@
     DndModule.forRoot({ backendFactory: createDefaultMultiBackend }),
   ],
 })
-export class AppModule {}</code></pre></div><h2 id="normal-usage">Normal usage</h2>
+export class AppModule {}</code></pre></div><h2>Normal usage</h2>
 <p>You will want to render previews. The <code>&lt;dnd-preview&gt;</code> component is very helpful.</p>
 <ol>
 <li>Create a <code>&lt;dnd-preview&gt;</code></li>
@@ -85,12 +85,12 @@ import { ItemTypes } from &#39;./item-types&#39;;
 export class YourComponent {
   // make ItemTypes a property on the class
   ItemTypes = ItemTypes;
-}</code></pre></div><h2 id="using-the-preview-component-even-in-html5-mode">Using the preview component even in HTML5 mode</h2>
+}</code></pre></div><h2>Using the preview component even in HTML5 mode</h2>
 <p>Sometimes, it is desirable to render a totally custom drag preview even in
 desktop browsers. This might be because some browsers only show a small
 feathered section of a larged dragged element, or just because you want to show
 something different while an item is in flight. You will need two things:</p>
-<h3 id="1-an-empty-html5-drag-preview">1. An empty HTML5 drag preview</h3>
+<h3>1. An empty HTML5 drag preview</h3>
 <p>You can attach an empty image as your drag preview. Simply:</p>
 <div><pre class="line-numbers"><code class="language-html">&lt;div [dragSource]=&quot;source&quot; [noHTML5Preview]=&quot;true&quot;&gt;&lt;/div&gt;</code></pre></div><p>Or:</p>
 <div><pre class="line-numbers"><code class="language-typescript">import { getEmptyImage } from &#39;react-dnd-html5-backend&#39;;
@@ -98,9 +98,9 @@ something different while an item is in flight. You will need two things:</p>
 
 ngOnInit() {
   source.connectDragPreview(getEmptyImage());
-}</code></pre></div><h3 id="2-disable-the-touch-backend-only-check-in-the-preview-component">2. Disable the touch-backend-only check in the preview component</h3>
+}</code></pre></div><h3>2. Disable the touch-backend-only check in the preview component</h3>
 <p>Simply pass allBackends as true to the preview.</p>
-<div><pre class="line-numbers"><code class="language-html">&lt;dnd-preview [allBackends]=&quot;true&quot;&gt; ... &lt;/dnd-preview&gt;</code></pre></div><h2 id="custom-backends-and-transitions">Custom backends and transitions</h2>
+<div><pre class="line-numbers"><code class="language-html">&lt;dnd-preview [allBackends]=&quot;true&quot;&gt; ... &lt;/dnd-preview&gt;</code></pre></div><h2>Custom backends and transitions</h2>
 <p>You can also import anything from <code>dnd-multi-backend</code> and create your own
 transitions. Refer to the original documentation, or simply to the autocomplete
 through the re-exported types in this package.</p>

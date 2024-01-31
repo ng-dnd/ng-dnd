@@ -13,7 +13,7 @@
     </head>
     <body>
 
-        <div class="navbar navbar-default navbar-fixed-top visible-xs">
+        <div class="navbar navbar-default navbar-fixed-top d-block d-sm-none">
             <a href="../" class="navbar-brand">@ng-dnd/core documentation</a>
             <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
         </div>
@@ -44,20 +44,23 @@
 
 
 <ol class="breadcrumb">
-  <li>Interfaces</li>
-  <li
+  <li class="breadcrumb-item">Interfaces</li>
+  <li class="breadcrumb-item"
   >
   DragSourceSpec</li>
 </ol>
 
 <ul class="nav nav-tabs" role="tablist">
-        <li class="active">
-            <a href="#info" role="tab" id="info-tab" data-toggle="tab" data-link="info">Info</a>
+        <li class="nav-item">
+            <a href="#info" 
+                class="nav-link"
+                class="nav-link active"
+                role="tab" id="info-tab" data-bs-toggle="tab" data-link="info">Info</a>
         </li>
 </ul>
 
 <div class="tab-content">
-    <div class="tab-pane fade active in" id="c-info">
+    <div class="tab-pane fade active in" id="info">
         <p class="comment">
             <h3>File</h3>
         </p>
@@ -102,7 +105,7 @@ source = this.dnd.dragSource&lt;... MyDropResult&gt;(..., {
             </p>
 
 
-        <section>
+        <section data-compodoc="block-index">
             <h3 id="index">Index</h3>
             <table class="table table-sm table-bordered index-table">
                 <tbody>
@@ -148,7 +151,7 @@ source = this.dnd.dragSource&lt;... MyDropResult&gt;(..., {
             </table>
         </section>
 
-            <section>
+            <section data-compodoc="block-methods">
     
     <h3 id="methods">
         Methods
@@ -166,7 +169,7 @@ source = this.dnd.dragSource&lt;... MyDropResult&gt;(..., {
             </tr>
             <tr>
                 <td class="col-md-4">
-<code>beginDrag(monitor: DragSourceMonitor<void | void>)</code>
+<code>beginDrag(monitor: <a href="../classes/Source.html" target="_self">DragSourceMonitor&lt;void | void&gt;</a>)</code>
                 </td>
             </tr>
 
@@ -199,7 +202,7 @@ sources and drop targets. It&#39;s a good idea to return something like <code>{ 
                                 <tr>
                                     <td>monitor</td>
                                     <td>
-                                            <code>DragSourceMonitor&lt;void | void&gt;</code>
+                                                <code><a href="../classes/Source.html" target="_self" >DragSourceMonitor&lt;void | void&gt;</a></code>
                                     </td>
 
                                     <td>
@@ -238,7 +241,7 @@ sources and drop targets. It&#39;s a good idea to return something like <code>{ 
             </tr>
             <tr>
                 <td class="col-md-4">
-<code>canDrag(monitor: DragSourceMonitor<void | void>)</code>
+<code>canDrag(monitor: <a href="../classes/Source.html" target="_self">DragSourceMonitor&lt;void | void&gt;</a>)</code>
                 </td>
             </tr>
 
@@ -266,7 +269,7 @@ dragged. Default returns true; this is often sufficient.</p>
                                 <tr>
                                     <td>monitor</td>
                                     <td>
-                                            <code>DragSourceMonitor&lt;void | void&gt;</code>
+                                                <code><a href="../classes/Source.html" target="_self" >DragSourceMonitor&lt;void | void&gt;</a></code>
                                     </td>
 
                                     <td>
@@ -305,7 +308,7 @@ dragged. Default returns true; this is often sufficient.</p>
             </tr>
             <tr>
                 <td class="col-md-4">
-<code>endDrag(monitor: DragSourceMonitor<Item | DropResult>)</code>
+<code>endDrag(monitor: <a href="../classes/Source.html" target="_self">DragSourceMonitor&lt;Item | DropResult&gt;</a>)</code>
                 </td>
             </tr>
 
@@ -335,7 +338,7 @@ details.</p>
                                 <tr>
                                     <td>monitor</td>
                                     <td>
-                                            <code>DragSourceMonitor&lt;Item | DropResult&gt;</code>
+                                                <code><a href="../classes/Source.html" target="_self" >DragSourceMonitor&lt;Item | DropResult&gt;</a></code>
                                     </td>
 
                                     <td>
@@ -374,7 +377,7 @@ details.</p>
             </tr>
             <tr>
                 <td class="col-md-4">
-<code>isDragging(monitor: DragSourceMonitor<Item | void>)</code>
+<code>isDragging(monitor: <a href="../classes/Source.html" target="_self">DragSourceMonitor&lt;Item | void&gt;</a>)</code>
                 </td>
             </tr>
 
@@ -414,7 +417,7 @@ performance degradation.</p>
                                 <tr>
                                     <td>monitor</td>
                                     <td>
-                                            <code>DragSourceMonitor&lt;Item | void&gt;</code>
+                                                <code><a href="../classes/Source.html" target="_self" >DragSourceMonitor&lt;Item | void&gt;</a></code>
                                     </td>
 
                                     <td>

@@ -13,7 +13,7 @@
     </head>
     <body>
 
-        <div class="navbar navbar-default navbar-fixed-top visible-xs">
+        <div class="navbar navbar-default navbar-fixed-top d-block d-sm-none">
             <a href="../../" class="navbar-brand">@ng-dnd/core documentation</a>
             <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
         </div>
@@ -51,10 +51,10 @@
 
 
 
-<h1 id="connecting-sources-and-targets-to-real-dom-elements">Connecting sources and targets to real DOM elements</h1>
+<h1>Connecting sources and targets to real DOM elements</h1>
 <p>Once you have created a connection, it is most useful when connected to a real
 DOM element.</p>
-<h2 id="making-a-dom-element-draggable">Making a DOM element draggable</h2>
+<h2>Making a DOM element draggable</h2>
 <p>This means that events fired inside the element&#39;s bounding rectangle will start
 a drag. Use <code>DragSourceDirective</code> to do this. It&#39;s as simple as:</p>
 <div><pre class="line-numbers"><code class="language-html">&lt;div [dragSource]=&quot;source&quot;&gt;drag me&lt;/div&gt;</code></pre></div><div><pre class="line-numbers"><code class="language-typescript">source = this.dnd.dragSource(&#39;DRAGME&#39;, {
@@ -64,7 +64,7 @@ a drag. Use <code>DragSourceDirective</code> to do this. It&#39;s as simple as:<
 // constructor, unsubscribe, etc</code></pre></div><p>Then, investigate using
 <a href="../../interfaces/DragSourceSpec.html">DragSourceSpec</a>
 to customise the behaviour.</p>
-<h2 id="making-a-dom-element-into-a-drop-target">Making a DOM element into a drop target</h2>
+<h2>Making a DOM element into a drop target</h2>
 <p>This means your element will react to items being hovered or dropped within its
 bounding rectangle.</p>
 <div><pre class="line-numbers"><code class="language-html">&lt;div [dropTarget]=&quot;target&quot;&gt;drop on me&lt;/div&gt;</code></pre></div><div><pre class="line-numbers"><code class="language-typescript">target = this.dnd.dropTarget(&#39;DRAGME&#39;, {
@@ -75,19 +75,19 @@ bounding rectangle.</p>
 // constructor, unsubscribe, etc</code></pre></div><p>Then, investigate using
 <a href="../../interfaces/DropTargetSpec.html">DropTargetSpec</a>
 to customise the behaviour.</p>
-<h2 id="drag-previews">Drag previews</h2>
+<h2>Drag previews</h2>
 <p><strong>This is a feature unique to the HTML5 backend.</strong> If you are using another
 backend, you will need a Drag Layer (see below) to render anything that follows
 the mouse.</p>
 <p>By default, a static screenshot of the original <code>[dragSource]</code> element will form
 a drag preview and follow the mouse around.</p>
-<h3 id="using-a-different-element-as-the-preview-source">Using a different element as the preview source</h3>
+<h3>Using a different element as the preview source</h3>
 <p>If you want another element to be the source of the preview, you can use the
 <code>[dragPreview]=&quot;source&quot;</code> directive.</p>
 <p>If you place a <code>DragPreviewDirective</code> on a different element than the
 <code>[dragSource]</code>, and pass the same <code>DragSource</code> connection to it, the
 preview element will take over the job of posing for the preview screenshot.</p>
-<h3 id="using-a-drag-handle">Using a &#39;drag handle&#39;</h3>
+<h3>Using a &#39;drag handle&#39;</h3>
 <p>This is a common use of custom drag previews, where a box with a smaller handle
 within it is only draggable from the handle. This is useful for moving
 interactive blocks of UI (e.g. <code>&lt;input/&gt;</code> elements) around the screen, without
@@ -99,7 +99,7 @@ touching the inputs / selecting text / making unwanted changes.</p>
 similar to the handle, to make sure users can discover what the handle is
 for.</li>
 </ol>
-<h3 id="using-an-image-preview">Using an image preview</h3>
+<h3>Using an image preview</h3>
 <ol>
 <li>Create an image element with <code>const img = new Image(); img.src = &quot;...&quot;;</code></li>
 <li>Use <code>img.onload = () =&gt; { ... }</code> to wait for it to load. Inside the onload

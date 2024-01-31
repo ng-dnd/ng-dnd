@@ -13,7 +13,7 @@
     </head>
     <body>
 
-        <div class="navbar navbar-default navbar-fixed-top visible-xs">
+        <div class="navbar navbar-default navbar-fixed-top d-block d-sm-none">
             <a href="../" class="navbar-brand">@ng-dnd/sortable documentation</a>
             <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
         </div>
@@ -51,8 +51,8 @@
 
 
 
-<h1 id="sortablespec-lifecycle">SortableSpec Lifecycle</h1>
-<h2 id="requirements-of-sortablespec">Requirements of SortableSpec</h2>
+<h1>SortableSpec Lifecycle</h1>
+<h2>Requirements of SortableSpec</h2>
 <p>There are a number of requirements a <code>SortableSpec</code> implementation must satisfy.</p>
 <ol>
 <li>after <code>beginDrag</code>, the element you picked up (= <em>transit</em>) must still be
@@ -75,7 +75,7 @@ your list to match, and the <code>NgForOf</code> gives you new indexes.</p>
 <p>You are free to implement <code>drop</code> and <code>endDrag</code> as you wish, but they should
 probably involve &#39;save the temporary order&#39; and &#39;set temporary = saved&#39;
 respectively.</p>
-<h2 id="lifecycle">Lifecycle</h2>
+<h2>Lifecycle</h2>
 <p>The following diagram summarises the calls made to <code>SortableSpec</code> during a drag.</p>
 <div class="mermaid">
 sequenceDiagram
@@ -107,12 +107,12 @@ sequenceDiagram
 <script src="../media/mermaid.min.js"></script>
 <script>mermaid.initialize({startOnLoad:true});</script>
 
-<h3 id="no-changes-after-begindrag">&#39;No changes&#39; after beginDrag</h3>
+<h3>&#39;No changes&#39; after beginDrag</h3>
 <p>You should not reorder anything within beginDrag. This would probably violate
 Requirement #1; moreover, it doesn&#39;t make any sense.</p>
 <p>The particular item that got picked up will be able to react, because
 <code>dndSortableRender.isDragging$</code> will emit <code>true</code>.</p>
-<h3 id="the-implementation-of-cause-reordering-is-up-to-you">The implementation of &#39;Cause reordering&#39; is up to you</h3>
+<h3>The implementation of &#39;Cause reordering&#39; is up to you</h3>
 <p>You can implement this at the most basic level by setting variables on a
 component that isn&#39;t <code>OnPush</code>; you could also use RxJS, <code>@ngrx</code> and other more
 powerful solutions.</p>

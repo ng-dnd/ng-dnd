@@ -13,7 +13,7 @@
     </head>
     <body>
 
-        <div class="navbar navbar-default navbar-fixed-top visible-xs">
+        <div class="navbar navbar-default navbar-fixed-top d-block d-sm-none">
             <a href="../" class="navbar-brand">@ng-dnd/core documentation</a>
             <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
         </div>
@@ -39,18 +39,21 @@
 
 
 <ol class="breadcrumb">
-  <li>Injectables</li>
-  <li >DndService</li>
+  <li class="breadcrumb-item">Injectables</li>
+  <li class="breadcrumb-item" >DndService</li>
 </ol>
 
 <ul class="nav nav-tabs" role="tablist">
-        <li class="active">
-            <a href="#info" role="tab" id="info-tab" data-toggle="tab" data-link="info">Info</a>
+        <li class="nav-item">
+            <a href="#info" 
+                class="nav-link"
+                class="nav-link active"
+                role="tab" id="info-tab" data-bs-toggle="tab" data-link="info">Info</a>
         </li>
 </ul>
 
 <div class="tab-content">
-    <div class="tab-pane fade active in" id="c-info">
+    <div class="tab-pane fade active in" id="info">
         <p class="comment">
             <h3>File</h3>
         </p>
@@ -82,7 +85,7 @@ ngOnDestroy() { this.destroy.unsubscribe(); }</code></pre></div><p>It is a good 
 
 
 
-            <section>
+            <section data-compodoc="block-index">
     <h3 id="index">Index</h3>
     <table class="table table-sm table-bordered index-table">
         <tbody>
@@ -120,7 +123,7 @@ ngOnDestroy() { this.destroy.unsubscribe(); }</code></pre></div><p>It is a good 
 </section>
 
 
-            <section>
+            <section data-compodoc="block-methods">
     
     <h3 id="methods">
         Methods
@@ -215,7 +218,7 @@ ngOnDestroy() { this.destroy.unsubscribe(); }</code></pre></div><p>It is a good 
             <tr>
                 <td class="col-md-4">
                     <span class="modifier-icon icon ion-ios-reset"></span>
-                    <code>dragSource(type: string | symbol | null, spec: DragSourceSpec<Item | DropResult>, subscription?: <a href="../interfaces/AddSubscription.html" target="_self">AddSubscription</a>)</code>
+                    <code>dragSource(type: string | symbol | null, spec: <a href="../classes/Source.html" target="_self">DragSourceSpec&lt;Item | DropResult&gt;</a>, subscription?: <a href="../interfaces/AddSubscription.html" target="_self">AddSubscription</a>)</code>
                 </td>
             </tr>
 
@@ -281,7 +284,7 @@ a lifecycle hook.</p>
                                 <tr>
                                     <td>spec</td>
                                     <td>
-                                            <code>DragSourceSpec&lt;Item | DropResult&gt;</code>
+                                                <code><a href="../classes/Source.html" target="_self" >DragSourceSpec&lt;Item | DropResult&gt;</a></code>
                                     </td>
 
                                     <td>
@@ -340,7 +343,7 @@ connection to.</p>
             <tr>
                 <td class="col-md-4">
                     <span class="modifier-icon icon ion-ios-reset"></span>
-                    <code>dropTarget(types: <a href="../undefineds/TypeOrTypeArray.html" target="_self">TypeOrTypeArray | null</a>, spec: DropTargetSpec<Item | DropResult>, subscription?: <a href="../interfaces/AddSubscription.html" target="_self">AddSubscription</a>)</code>
+                    <code>dropTarget(types: <a href="../undefineds/TypeOrTypeArray.html" target="_self">TypeOrTypeArray | null</a>, spec: <a href="../classes/Target.html" target="_self">DropTargetSpec&lt;Item | DropResult&gt;</a>, subscription?: <a href="../interfaces/AddSubscription.html" target="_self">AddSubscription</a>)</code>
                 </td>
             </tr>
 
@@ -391,7 +394,7 @@ of the specified type or types.</p>
                                 <tr>
                                     <td>spec</td>
                                     <td>
-                                            <code>DropTargetSpec&lt;Item | DropResult&gt;</code>
+                                                <code><a href="../classes/Target.html" target="_self" >DropTargetSpec&lt;Item | DropResult&gt;</a></code>
                                     </td>
 
                                     <td>

@@ -13,7 +13,7 @@
     </head>
     <body>
 
-        <div class="navbar navbar-default navbar-fixed-top visible-xs">
+        <div class="navbar navbar-default navbar-fixed-top d-block d-sm-none">
             <a href="../../" class="navbar-brand">@ng-dnd/core documentation</a>
             <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
         </div>
@@ -51,7 +51,7 @@
 
 
 
-<h1 id="creating-connections">Creating connections</h1>
+<h1>Creating connections</h1>
 <p>There are three types of connection.</p>
 <ul>
 <li><p><a href="../../interfaces/DragSource.html">DragSource</a>
@@ -81,7 +81,7 @@ but you don&#39;t attach them to the DOM, you simply listen for changes.</p>
 <code>.listen()</code> function, which allows you to listen to changes. See
 <a href="../../interfaces/ConnectionBase.html">ConnectionBase</a> for what they have in
 common.</p>
-<h2 id="using-the-dndservice-to-create-connections">Using the <code>DndService</code> to create connections</h2>
+<h2>Using the <code>DndService</code> to create connections</h2>
 <p>First, inject
 <a href="../../injectables/DndService.html">DndService</a>,
 into your component.</p>
@@ -106,7 +106,7 @@ ngOnDestroy() {
   this.target.unsubscribe();
 }</code></pre></div><p>Then, you will want to add some behaviour beyond the default by looking into the
 Spec input for your connection type.</p>
-<h2 id="destroying-connections">Destroying Connections</h2>
+<h2>Destroying Connections</h2>
 <p>All three types of connection need to be destroyed when your component is
 destroyed. If you don&#39;t, you will have strange problems.</p>
 <p><strong>The easy way is to call
@@ -118,7 +118,7 @@ connection object in <code>ngOnDestroy</code>.</p>
     this.layer.unsubscribe();
     // neat. we&#39;re done.
 }
-</code></pre></div><h3 id="but-i-have-ten-other-subscriptions">But I have ten other subscriptions!</h3>
+</code></pre></div><h3>But I have ten other subscriptions!</h3>
 <p>In situations where your component has <strong>a lot</strong> of subscription logic to
 maintain, there are more powerful ways of unsubscribing to many things at once.</p>
 <p>You can create an RxJS <code>Subscription</code> object in your component, and call

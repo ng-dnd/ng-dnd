@@ -13,7 +13,7 @@
     </head>
     <body>
 
-        <div class="navbar navbar-default navbar-fixed-top visible-xs">
+        <div class="navbar navbar-default navbar-fixed-top d-block d-sm-none">
             <a href="../" class="navbar-brand">@ng-dnd/core documentation</a>
             <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
         </div>
@@ -51,7 +51,7 @@
 
 
 
-<h1 id="translating-react-code">Translating React Code</h1>
+<h1>Translating React Code</h1>
 <p>There are many code examples and libraries on the web written for <code>react-dnd</code>,
 the most important of which is the actual <a href="https://react-dnd.github.io/react-dnd/docs/overview"><code>react-dnd</code>
 documentation</a>. In the
@@ -126,7 +126,7 @@ export class MyComponent {
 }</code></pre></div><p>As you can see, the two are very similar. You should be able to take most
 React/<code>react-dnd</code> examples and translate them quite directly into Angular. You
 can <em>almost</em> copy and paste some parts.</p>
-<h3 id="1-biggest-difference-connections-instead-of-higher-order-components">1. Biggest difference: Connections instead of Higher-Order Components</h3>
+<h3>1. Biggest difference: Connections instead of Higher-Order Components</h3>
 <p>There is a React concept of &#39;props&#39;, similar to <code>Input()</code> in Angular. The
 primary difference relevant to us is that in React you can create a &#39;wrapper&#39; or
 &#39;higher-order&#39; component that will pass all of its props to the one it is
@@ -141,10 +141,10 @@ can create more than one connection for a component, to accomplish the same
 thing as composing multiple decorators in <code>react-dnd</code>.</p>
 <p>There are five other ways this approach makes for slightly different-looking but
 very similar-functioning code.</p>
-<h3 id="2-you-must-destroy-the-connection-object-when-you-are-done-with-it">2. You must destroy the connection object when you are done with it.</h3>
+<h3>2. You must destroy the connection object when you are done with it.</h3>
 <p>In React, this is managed by the wrapper component. In Angular, you have to do
 it yourself. See <code>ConnectionBase.unsubscribe</code>.</p>
-<h3 id="3-no-props-or-component-arguments-in-the-spec-callbacks">3. No <code>props</code> or <code>component</code> arguments in the <code>spec</code> callbacks</h3>
+<h3>3. No <code>props</code> or <code>component</code> arguments in the <code>spec</code> callbacks</h3>
 <p>There are no props in Angular, as discussed above. Instead, all inputs to a component
 or properties relevant to the template are declared on the component class.
 Therefore, using <code>this</code> is appropriate instead. That also makes <code>component</code>
@@ -153,7 +153,7 @@ two <code>*Spec</code> interfaces have only <code>monitor</code> as an argument.
 <p>One thing to be aware of is that to access <code>this</code> in an function you pass
 elsewhere, you <strong>must use Arrow notation: <code>(arrow) =&gt; this.notation;</code></strong> for your
 spec callbacks.</p>
-<h3 id="4-information-about-current-drag-state-comes-through-an-observable">4. Information about current drag state comes through an Observable</h3>
+<h3>4. Information about current drag state comes through an Observable</h3>
 <p>In <code>react-dnd</code> the <code>collect((props, monitor) =&gt; {})</code> function supplies the
 component props &#39;from above&#39;. In Angular (here, <code>DragSource.listen</code>), the
 library gives you an Observable you can subscribe to in your template. The
@@ -163,7 +163,7 @@ combine information from two different connections using
 <code>Observable.combineLatest</code>, for example.</p>
 <p>I found the terms <code>connect</code> and <code>collect</code> far too similar and confusing, so
 I renamed <code>collect</code> to <code>listen</code>.</p>
-<h3 id="5-connectdragsource-etc-functions-vs-angular-directives">5. <code>connectDragSource()</code> (etc.) functions vs Angular directives</h3>
+<h3>5. <code>connectDragSource()</code> (etc.) functions vs Angular directives</h3>
 <p>In the example above, <code>connect.connectDragSource()</code> returns a function that will
 link up a particular part of the JSX template&#39;s DOM to the wrapper component. To
 accomplish the same thing in Angular we must connect some DOM from the template
@@ -174,7 +174,7 @@ React code does.</p>
 <p>Some React examples will have two different drag sources + associated connectors
 (on different DOM elements), or one source and one <code>connectDragPreview</code>. Angular
 can do both patterns with directives, because each directive is linked to one Connection.</p>
-<h3 id="6-cant-supply-a-dynamic-type-via-a-props--propstype-callback-use-settype-instead">6. Can&#39;t supply a dynamic type via a <code>(props) =&gt; props.type</code> callback, use <code>setType</code> instead</h3>
+<h3>6. Can&#39;t supply a dynamic type via a <code>(props) =&gt; props.type</code> callback, use <code>setType</code> instead</h3>
 <p>Imagine you want to make a component draggable based on type(s) specified on the
 component inputs.</p>
 <p><code>react-dnd</code> allows strings and ES6 Symbols in the type argument. But you can

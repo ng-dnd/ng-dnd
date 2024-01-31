@@ -13,7 +13,7 @@
     </head>
     <body>
 
-        <div class="navbar navbar-default navbar-fixed-top visible-xs">
+        <div class="navbar navbar-default navbar-fixed-top d-block d-sm-none">
             <a href="../" class="navbar-brand">@ng-dnd/core documentation</a>
             <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
         </div>
@@ -51,7 +51,7 @@
 
 
 
-<h2 id="installation">Installation</h2>
+<h2>Installation</h2>
 <div><pre class="line-numbers"><code class="language-sh">yarn add &#64;ng-dnd/core react-dnd-html5-backend</code></pre></div><p>You might consider <code>@ng-dnd/multi-backend</code> instead of the HTML5
 backend, because it allows adding touch support as well.</p>
 <p>Then import <code>DndModule</code> and provide the backend:</p>
@@ -68,7 +68,7 @@ export class AppModule {}</code></pre></div><p>If you need it again on a child m
 to import <code>DndModule</code> there. That way the backend and global drag state is only
 initialized once. But you may use <code>forRoot</code>to inject a new instance or to
 include drag and drop on only some child modules.</p>
-<h2 id="concepts">Concepts</h2>
+<h2>Concepts</h2>
 <p>These pieces make up the library:</p>
 <ol>
 <li>An <strong>item</strong> (JS Object, not a DOM node) is the source of truth for each drag
@@ -85,7 +85,7 @@ each <strong>item</strong> has a <strong>type</strong>, and drag sources and dro
 respectively emit and accept only items with matching types.</p>
 <p>That&#39;s it. This library offers all those concepts in an Angular-friendly way,
 that is also largely compatible with a lot of <code>react-dnd</code> code and examples.</p>
-<h2 id="next-steps">Next steps</h2>
+<h2>Next steps</h2>
 <ul>
 <li><p>Have a look at the <a href="../examples/index.html">Examples</a>, and browse their source code in the
 <a href="https://github.com/ng-dnd/nd-dnd/tree/main/packages/examples/src/app/">examples app on GitHub</a>.</p>
@@ -96,7 +96,7 @@ that is also largely compatible with a lot of <code>react-dnd</code> code and ex
 classes.</p>
 </li>
 </ul>
-<h2 id="touch-support-and-alternate-backends">Touch support and alternate backends</h2>
+<h2>Touch support and alternate backends</h2>
 <p>Mobile devices have not implemented HTML5 drag and drop. You will need:</p>
 <ul>
 <li>A different backend using click or touch events, without dropping desktop support</li>
@@ -120,8 +120,8 @@ to provide the backend, to retain AOT compatibility, if it requires assembly.
     DndModule.forRoot({ backendFactory: createBackend })
   ]
 }
-// ...</code></pre></div><h2 id="troubleshooting">Troubleshooting</h2>
-<h3 id="i-get-typeerror-backend-is-null-only-when-aot-is-enabled">I get <code>TypeError: backend is null</code>, only when AOT is enabled</h3>
+// ...</code></pre></div><h2>Troubleshooting</h2>
+<h3>I get <code>TypeError: backend is null</code>, only when AOT is enabled</h3>
 <p>Also rears its head as <code>No such property &#39;default&#39; of undefined</code>.</p>
 <p><strong>Troubleshooting steps</strong></p>
 <ol>
@@ -135,11 +135,11 @@ browse the source code.</p>
 <code>DndModule.forRoot({ backend: MyBackend })</code> instead of plain <code>DndModule</code>.</p>
 </li>
 </ol>
-<h3 id="i-get-error-encountered-resolving-symbol-values-statically-calling-function-default-with-aot-enabled">I get <code>Error encountered resolving symbol values statically. Calling function &#39;default&#39;</code> with AOT enabled.</h3>
+<h3>I get <code>Error encountered resolving symbol values statically. Calling function &#39;default&#39;</code> with AOT enabled.</h3>
 <p>Make sure you are following the special instructions for assembly-required backends
 like <code>MultiBackend</code> or any backend that allows <code>SomeBackend({ optionsHere: true })</code>,
 like <code>TouchBackend</code>. <a href="#touch-support-and-alternate-backends">See above</a>.</p>
-<h3 id="in-the-spec-callbacks-my-component-doesnt-have-any-properties-and-it-cant-call-thismethod">In the spec callbacks, my component doesn&#39;t have any properties, and it can&#39;t call <code>this.method()</code>!</h3>
+<h3>In the spec callbacks, my component doesn&#39;t have any properties, and it can&#39;t call <code>this.method()</code>!</h3>
 <p>Make sure you use the arrow function syntax (<code>() =&gt;</code>) in your specs so <code>this</code> will refer to your component. Example:</p>
 <div><pre class="line-numbers"><code class="language-typescript">paperCount = 3;
 limitedSupplyOfPaper = this.dnd.dragSource(&#39;PAPER&#39;, {

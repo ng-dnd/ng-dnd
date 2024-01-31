@@ -13,7 +13,7 @@
     </head>
     <body>
 
-        <div class="navbar navbar-default navbar-fixed-top visible-xs">
+        <div class="navbar navbar-default navbar-fixed-top d-block d-sm-none">
             <a href="../" class="navbar-brand">@ng-dnd/core documentation</a>
             <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
         </div>
@@ -51,17 +51,17 @@
 
 
 
-<h1 id="testing">Testing</h1>
-<h2 id="usage-with-jest">Usage with Jest</h2>
+<h1>Testing</h1>
+<h2>Usage with Jest</h2>
 <p>See <a href="https://react-dnd.github.io/react-dnd/docs/testing">The React DnD testing
 guide</a> for details about
 how to use dnd-core and react-dnd-test-backend with Jest. In particular, you
 will need to configure the <code>moduleNameMapper</code> as described there.</p>
-<h2 id="testing-components-in-isolation">Testing Components in Isolation</h2>
+<h2>Testing Components in Isolation</h2>
 <p>The Angular way of supplying drag state to components is not as easily testable
 as the React way. Currently it is not easy to isolate a component&#39;s rendering
 from the drag sources, drop targets and drag layers it listens to.</p>
-<h2 id="the-test-backend">The Test Backend</h2>
+<h2>The Test Backend</h2>
 <p>React DnD offers a test backend that does not require the DOM, and offers an
 API for easy simulation of drag and drop events. This is useful for testing an
 entire drag and drop interaction. (Imagine trying to construct the exact mouse

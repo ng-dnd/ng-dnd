@@ -13,7 +13,7 @@
     </head>
     <body>
 
-        <div class="navbar navbar-default navbar-fixed-top visible-xs">
+        <div class="navbar navbar-default navbar-fixed-top d-block d-sm-none">
             <a href="../" class="navbar-brand">@ng-dnd/core documentation</a>
             <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
         </div>
@@ -49,11 +49,11 @@
 
 
 <ol class="breadcrumb">
-  <li>Miscellaneous</li>
-  <li>Variables</li>
+  <li class="breadcrumb-item">Miscellaneous</li>
+  <li class="breadcrumb-item">Variables</li>
 </ol>
 
-<section>
+<section data-compodoc="block-index">
     <h3 id="index">Index</h3>
     <table class="table table-sm table-bordered index-table">
         <tbody>
@@ -79,6 +79,21 @@
                             <a href="#DRAG_DROP_MANAGER" title="src/tokens.ts" ><b>DRAG_DROP_MANAGER</b>&nbsp;&nbsp;&nbsp;(src/.../tokens.ts)</a>
                         </li>
                         <li>
+                            <a href="#isCallingCanDrag" title="src/internal/createSourceMonitor.ts" ><b>isCallingCanDrag</b>&nbsp;&nbsp;&nbsp;(src/.../createSourceMonitor.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#isCallingCanDrop" title="src/internal/createTargetMonitor.ts" ><b>isCallingCanDrop</b>&nbsp;&nbsp;&nbsp;(src/.../createTargetMonitor.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#isCallingIsDragging" title="src/internal/createSourceMonitor.ts" ><b>isCallingIsDragging</b>&nbsp;&nbsp;&nbsp;(src/.../createSourceMonitor.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#SourceConnection" title="src/internal/connection-factory.ts" ><b>SourceConnection</b>&nbsp;&nbsp;&nbsp;(src/.../connection-factory.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#TargetConnection" title="src/internal/connection-factory.ts" ><b>TargetConnection</b>&nbsp;&nbsp;&nbsp;(src/.../connection-factory.ts)</a>
+                        </li>
+                        <li>
                             <a href="#TYPE_DYNAMIC" title="src/tokens.ts" ><b>TYPE_DYNAMIC</b>&nbsp;&nbsp;&nbsp;(src/.../tokens.ts)</a>
                         </li>
                     </ul>
@@ -89,7 +104,7 @@
 </section>
 
     <h3>src/tokens.ts</h3>
-    <section>
+    <section data-compodoc="block-properties">
     <h3></h3>    <table class="table table-sm table-bordered">
         <tbody>
             <tr>
@@ -285,6 +300,115 @@ See <a href="DragSource.setType">DragSource.setType</a>, <a href="DropTarget.set
 </div>
                 </td>
             </tr>
+
+        </tbody>
+    </table>
+</section>
+    <h3>src/internal/createSourceMonitor.ts</h3>
+    <section data-compodoc="block-properties">
+    <h3></h3>    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="isCallingCanDrag"></a>
+                    <span class="name">
+                        <span ><b>isCallingCanDrag</b></span>
+                        <a href="#isCallingCanDrag"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>false</code>
+                    </td>
+                </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="isCallingIsDragging"></a>
+                    <span class="name">
+                        <span ><b>isCallingIsDragging</b></span>
+                        <a href="#isCallingIsDragging"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>false</code>
+                    </td>
+                </tr>
+
+
+        </tbody>
+    </table>
+</section>
+    <h3>src/internal/createTargetMonitor.ts</h3>
+    <section data-compodoc="block-properties">
+    <h3></h3>    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="isCallingCanDrop"></a>
+                    <span class="name">
+                        <span ><b>isCallingCanDrop</b></span>
+                        <a href="#isCallingCanDrop"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>false</code>
+                    </td>
+                </tr>
+
+
+        </tbody>
+    </table>
+</section>
+    <h3>src/internal/connection-factory.ts</h3>
+    <section data-compodoc="block-properties">
+    <h3></h3>    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="SourceConnection"></a>
+                    <span class="name">
+                        <span ><b>SourceConnection</b></span>
+                        <a href="#SourceConnection"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>Connection as SourceConstructor</code>
+                    </td>
+                </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="TargetConnection"></a>
+                    <span class="name">
+                        <span ><b>TargetConnection</b></span>
+                        <a href="#TargetConnection"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>Connection as TargetConstructor</code>
+                    </td>
+                </tr>
+
 
         </tbody>
     </table>

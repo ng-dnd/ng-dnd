@@ -13,7 +13,7 @@
     </head>
     <body>
 
-        <div class="navbar navbar-default navbar-fixed-top visible-xs">
+        <div class="navbar navbar-default navbar-fixed-top d-block d-sm-none">
             <a href="../" class="navbar-brand">@ng-dnd/core documentation</a>
             <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
         </div>
@@ -51,7 +51,7 @@
 
 
 
-<h1 id="chess-tutorial">Chess Tutorial</h1>
+<h1>Chess Tutorial</h1>
 <p>In this tutorial, we&#39;re building a tiny chess game, with one knight on the
 board. It&#39;s an Angular-specific translation of the original <a href="http://react-dnd.github.io/react-dnd/docs-tutorial.html"><code>react-dnd</code>
 tutorial</a>. The discussion about how to break down this game into
@@ -68,7 +68,7 @@ It also assumes you have read the <a href="./quickstart.html">Quickstart</a> gui
 GitHub, in four commits: <a href="https://github.com/ng-dnd/nd-dnd/tree/chessboard-1/packages/examples/src/app/chessboard">one</a>, <a href="https://github.com/ng-dnd/nd-dnd/tree/chessboard-2/packages/examples/src/app/chessboard">two</a>,
 <a href="https://github.com/ng-dnd/nd-dnd/tree/chessboard-3/packages/examples/src/app/chessboard">three</a>, <a href="https://github.com/ng-dnd/nd-dnd/tree/chessboard-4/packages/examples/src/app/chessboard">four</a>, the last of which is the finished
 product. You can play with a <a href="../examples/index.html#/chessboard">live demo</a>.</p>
-<h2 id="basic-chess-visuals">Basic chess visuals</h2>
+<h2>Basic chess visuals</h2>
 <p>We&#39;ll build the <code>KnightComponent</code> first. It is very simple, just a span with a Unicode
 knight character in it.</p>
 <div><pre class="line-numbers"><code class="language-typescript">import { Component } from &#39;&#64;angular/core&#39;;
@@ -164,7 +164,7 @@ of <code>560px</code>. I added a <code>ContainerComponent</code>, just to specif
 the board independent of where it will be placed. At this point, you will have
 an 8x8 board, but it still doesn&#39;t <em>quite</em> look like chess.</p>
 <p><img src="../media/grid.png" alt="An 8 by 8 grid of black squares" class="img-responsive"></p>
-<h3 id="making-the-chessboard-pattern-and-placing-one-knight-on-the-board">Making the chessboard pattern and placing one knight on the board</h3>
+<h3>Making the chessboard pattern and placing one knight on the board</h3>
 <p>We&#39;re going to need a way to express coordinates on the board. Define a new
 interface, to hold <code>x</code> and <code>y</code> coordinates.</p>
 <div><pre class="line-numbers"><code class="language-typescript">export interface Coord {
@@ -194,7 +194,7 @@ left:</p>
   &lt;/app-square&gt;
 &lt;/div&gt;</code></pre></div><p>And look at that, we have a chess board with one knight.</p>
 <p><img src="../media/chess-grid.png" alt="A chess board with one knight on it" class="img-responsive"></p>
-<h2 id="making-the-knight-move-around">Making the knight move around</h2>
+<h2>Making the knight move around</h2>
 <blockquote>
 <p>At this point, your code should look like <a href="https://github.com/ng-dnd/nd-dnd/tree/chessboard-1/packages/examples/src/app/chessboard">this commit</a>. You can
 start fresh from there if you want.</p>
@@ -291,7 +291,7 @@ export class GameService {
 }</code></pre></div><p>And voilà, your knight won&#39;t execute an illegal move. We will be replacing this
 click handler in just a moment, but we have separated the game logic out, so we
 can reuse those two functions.</p>
-<h2 id="implementing-drag-and-drop">Implementing drag and drop</h2>
+<h2>Implementing drag and drop</h2>
 <blockquote>
 <p>At this point, your code should be look like <a href="https://github.com/ng-dnd/nd-dnd/tree/chessboard-2/packages/examples/src/app/chessboard">this commit</a>.</p>
 </blockquote>
@@ -317,7 +317,7 @@ he disappears. After step 1, we will have a knight you can pick up, but nothing
 interesting will happen when we let go, except that the preview will vanish. We
 are going to do steps 3 and 4 on the drop targets, which are notified when you
 drop something on them.</p>
-<h3 id="part-1-make-the-knight-draggable">Part 1. Make the knight draggable</h3>
+<h3>Part 1. Make the knight draggable</h3>
 <p>First, we need a type to describe what we&#39;re dragging, so that the squares can
 listen for knights floating above them. Store a constant string <code>&quot;KNIGHT&quot;</code> in
 a new file. This is better than typing the same string over and over, and serves
@@ -387,7 +387,7 @@ You could set it to <code>opacity: 0</code>, but in chess, players like to know 
 piece came from. <code>@ng-dnd</code> makes no assumptions about how to render
 any elements, so you can always customise their appearance at any stage of the
 drag and drop process.</p>
-<h3 id="part-2-make-the-squares-into-drop-targets">Part 2: Make the squares into drop targets</h3>
+<h3>Part 2: Make the squares into drop targets</h3>
 <p>Because <code>canMoveKnight</code> has to be computed once per square, each square is going
 to have to know where it is on the board. However, the <code>SquareComponent</code> is
 perfectly good at what it does. We don&#39;t want to ruin a good thing. Let&#39;s wrap
@@ -478,7 +478,7 @@ export class BoardSquareComponent {
   ngOnDestroy() {
     this.target.unsubscribe();
   }
-}</code></pre></div><h3 id="parts-3-and-4-make-the-knight-move-around-on-drop">Parts 3 and 4: make the knight move around on drop</h3>
+}</code></pre></div><h3>Parts 3 and 4: make the knight move around on drop</h3>
 <p>Next up is to incorporate the game logic, and to actually move the knight. We&#39;re
 going to use two hooks in the drop target: <code>DropTargetSpec.canDrop</code> and
 <code>DropTargetSpec.drop</code>. We have already done the heavy lifting for both in
@@ -494,7 +494,7 @@ methods.</p>
 });
 
 constructor(private dnd: DndService, private gme: GameService) {}</code></pre></div><p>Now you should be able to drag your knight around the board!</p>
-<h3 id="part-5-extra-visuals">Part 5: Extra visuals</h3>
+<h3>Part 5: Extra visuals</h3>
 <p>We have some guidance already about where you can drop a knight. The mouse
 cursor gets a different icon depending on whether you can or not. But usually,
 this is not enough of an indicator. Good UI means making difficult things
