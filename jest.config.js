@@ -1,12 +1,6 @@
 module.exports = {
   bail: true,
-  globals: {
-    'ts-jest': {
-      stringifyContentPathRegex: '\\.html?$',
-      tsconfig: './tsconfig.test.json',
-      useExperimentalLanguageServer: true,
-    },
-  },
+  globals: {},
   testEnvironmentOptions: {
     url: 'http://localhost'
   },
@@ -30,8 +24,7 @@ module.exports = {
     'json',
     'ts',
   ],
-  transformIgnorePatterns: [
-  ],
+  transformIgnorePatterns: [],
   modulePathIgnorePatterns: [
     '/node_modules/',
     '/dist/',
