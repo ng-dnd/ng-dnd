@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { ListComponent } from './list.component';
+import { ExampleLinkComponent } from '@app/utility/example-link.component';
 
 @Component({
   selector: 'quiz-container',
@@ -19,5 +21,7 @@ import { Component } from '@angular/core';
 
     <app-external-sortable></app-external-sortable>
   `,
+  standalone: true,
+  imports: [ExampleLinkComponent, ListComponent],
 })
 export class ContainerComponent {}

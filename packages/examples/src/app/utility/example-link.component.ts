@@ -5,8 +5,7 @@ import { Component, Input } from '@angular/core';
   template: `
     <p>
       <a [href]="link" target="_blank">
-        <i class="fab fa-github"></i>
-        View the source on GitHub
+        <i class="fab fa-github"></i> View the source on GitHub
       </a>
     </p>
   `,
@@ -28,6 +27,7 @@ import { Component, Input } from '@angular/core';
       }
     `,
   ],
+  standalone: true,
 })
 export class ExampleLinkComponent {
   @Input() path = '';

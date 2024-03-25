@@ -1,5 +1,5 @@
 import { Component, Output, EventEmitter } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
 
 @Component({
   selector: 'kanban-add-card',
@@ -27,6 +27,8 @@ import { FormControl, FormGroup } from '@angular/forms';
       }
     `,
   ],
+  standalone: true,
+  imports: [ReactiveFormsModule],
 })
 export class AddCardComponent {
   @Output() add = new EventEmitter<string>();

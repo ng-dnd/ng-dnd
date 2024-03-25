@@ -1,5 +1,6 @@
-import { Component, Input, Output, EventEmitter } from '@angular/core';
-import { DndService } from '@ng-dnd/core';
+import { NgStyle } from '@angular/common';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { DndModule, DndService } from '@ng-dnd/core';
 import { Spot } from './spot';
 
 @Component({
@@ -69,6 +70,8 @@ import { Spot } from './spot';
       }
     `,
   ],
+  standalone: true,
+  imports: [DndModule, NgStyle],
 })
 export class CubeComponent {
   @Input() transform = '';

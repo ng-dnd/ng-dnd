@@ -10,6 +10,7 @@ export class NgLetContext {
 
 @Directive({
   selector: '[ngLet]',
+  standalone: true,
 })
 export class NgLetDirective implements OnInit {
   private _context = new NgLetContext();
@@ -19,7 +20,10 @@ export class NgLetDirective implements OnInit {
     this._context.$implicit = this._context.ngLet = value;
   }
 
-  constructor(private _vcr: ViewContainerRef, private _templateRef: TemplateRef<NgLetContext>) {}
+  constructor(
+    private _vcr: ViewContainerRef,
+    private _templateRef: TemplateRef<NgLetContext>
+  ) {}
 
   ngOnInit() {
     this._vcr.createEmbeddedView(this._templateRef, this._context);

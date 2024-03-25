@@ -1,6 +1,13 @@
+import { NgFor, NgIf, NgSwitch, NgSwitchCase } from '@angular/common';
 import { Component, Input } from '@angular/core';
-import { Question, QuestionTypes, MathQuestion } from './Question';
-import { FormGroup, FormControl, Validators, ValidatorFn } from '@angular/forms';
+import {
+  FormControl,
+  FormGroup,
+  ReactiveFormsModule,
+  ValidatorFn,
+  Validators,
+} from '@angular/forms';
+import { MathQuestion, Question, QuestionTypes } from './Question';
 
 interface Section {
   question: Question;
@@ -65,6 +72,8 @@ const equalsValidator: (x: any) => ValidatorFn = x => c => {
       }
     `,
   ],
+  standalone: true,
+  imports: [NgIf, NgFor, NgSwitch, NgSwitchCase, ReactiveFormsModule],
 })
 export class PrintoutComponent {
   sections: Section[] = [];

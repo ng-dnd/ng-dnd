@@ -1,4 +1,7 @@
 import { Component } from '@angular/core';
+import { ExampleLinkComponent } from '@app/utility/example-link.component';
+import { SimpleComponent } from './simple.component';
+import { SummaryComponent } from './summary.component';
 
 @Component({
   selector: 'rxsort-container',
@@ -38,5 +41,7 @@ import { Component } from '@angular/core';
       }
     `,
   ],
+  standalone: true,
+  imports: [ExampleLinkComponent, SummaryComponent, SimpleComponent],
 })
 export class ContainerComponent {}

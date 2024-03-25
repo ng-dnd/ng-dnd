@@ -1,7 +1,9 @@
 import { Component } from '@angular/core';
-import { SortableSpec } from '@ng-dnd/sortable';
+import { DndModule } from '@ng-dnd/core';
+import { DndSortableModule, SortableSpec } from '@ng-dnd/sortable';
 import { Card } from './card';
 import { ItemTypes } from './item-types';
+import { KanbanCardComponent } from './kanban-card/kanban-card.component';
 import { SortableSpecService } from './specs';
 
 @Component({
@@ -27,6 +29,8 @@ import { SortableSpecService } from './specs';
       }
     `,
   ],
+  standalone: true,
+  imports: [KanbanCardComponent, DndSortableModule, DndModule],
 })
 export class KanbanExternalComponent {
   ItemTypes = ItemTypes;

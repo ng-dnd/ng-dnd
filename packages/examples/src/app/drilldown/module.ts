@@ -8,15 +8,16 @@ import { TargetComponent } from './target.component';
 import { BoxComponent } from './box.component';
 import { TreeService } from './tree.service';
 import { FolderComponent } from './folder.component';
-import { UtilityModule } from '../utility.module';
 
 @NgModule({
-  declarations: [ContainerComponent, TargetComponent, BoxComponent, FolderComponent],
   imports: [
     CommonModule,
     DndModule,
     RouterModule.forChild([{ path: '', component: ContainerComponent }]),
-    UtilityModule,
+    ContainerComponent,
+    TargetComponent,
+    BoxComponent,
+    FolderComponent,
   ],
   providers: [TreeService],
 })

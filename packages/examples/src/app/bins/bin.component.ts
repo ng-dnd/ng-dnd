@@ -1,5 +1,6 @@
+import { AsyncPipe, JsonPipe, NgIf, NgStyle } from '@angular/common';
 import { Component, Input, OnDestroy, OnInit } from '@angular/core';
-import { DndService } from '@ng-dnd/core';
+import { DndModule, DndService } from '@ng-dnd/core';
 
 @Component({
   selector: 'app-bin',
@@ -25,6 +26,8 @@ import { DndService } from '@ng-dnd/core';
     </div>
   `,
   styles: [``],
+  standalone: true,
+  imports: [DndModule, NgIf, NgStyle, AsyncPipe, JsonPipe],
 })
 export class BinComponent implements OnInit, OnDestroy {
   @Input() name = '';

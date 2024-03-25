@@ -1,36 +1,38 @@
+import { AsyncPipe, NgFor } from '@angular/common';
 import {
+  AfterViewInit,
+  ChangeDetectionStrategy,
   Component,
+  ElementRef,
   Input,
   OnDestroy,
   OnInit,
-  ChangeDetectionStrategy,
-  AfterViewInit,
-  ElementRef,
   ViewChild,
 } from '@angular/core';
-import { DndService } from '@ng-dnd/core';
-import { ItemTypes } from '../item-types';
+import { DndModule, DndService } from '@ng-dnd/core';
 import { Store, createSelector } from '@ngrx/store';
+import { CalendarEvent } from 'app/calendar/event';
 import { State } from 'app/reducers';
-import {
-  NewEvent,
-  HoverNewEvent,
-  BeginDragNewEvent,
-  EndDragNewEvent,
-  DropNewEvent,
-  HoverExistingEvent,
-  DropExistingEvent,
-  HoverResizeStart,
-  HoverResizeEnd,
-} from '../store/calendar.actions';
-import { startDateSelector, isDraggingSelector, allEventSelector } from '../store/selectors';
+import * as faker from 'faker';
+import { List } from 'immutable';
+import * as Pressure from 'pressure';
 import { Observable, Subject, Subscription } from 'rxjs';
 import { switchMap, take } from 'rxjs/operators';
-import { List } from 'immutable';
-import { CalendarEvent } from 'app/calendar/event';
-import * as faker from 'faker';
-import * as Pressure from 'pressure';
 import { daysBetween } from '../date-utils';
+import { ItemTypes } from '../item-types';
+import {
+  BeginDragNewEvent,
+  DropExistingEvent,
+  DropNewEvent,
+  EndDragNewEvent,
+  HoverExistingEvent,
+  HoverNewEvent,
+  HoverResizeEnd,
+  HoverResizeStart,
+  NewEvent,
+} from '../store/calendar.actions';
+import { allEventSelector, isDraggingSelector, startDateSelector } from '../store/selectors';
+import { CalendarEventComponent } from './event.component';
 
 @Component({
   selector: 'cal-day',
@@ -72,6 +74,8 @@ import { daysBetween } from '../date-utils';
       }
     `,
   ],
+  standalone: true,
+  imports: [DndModule, NgFor, CalendarEventComponent, AsyncPipe],
 })
 export class CalendarDayComponent implements OnInit, OnDestroy, AfterViewInit {
   @Input() day!: Date;
@@ -161,7 +165,10 @@ export class CalendarDayComponent implements OnInit, OnDestroy, AfterViewInit {
   forceStart$ = new Subject<void>();
   forceThreshold$ = new Subject<void>();
 
-  constructor(private dnd: DndService, private store: Store<State>) {}
+  constructor(
+    private dnd: DndService,
+    private store: Store<State>
+  ) {}
 
   intradayEvent() {
     this.store.dispatch(

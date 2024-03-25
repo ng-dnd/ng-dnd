@@ -1,4 +1,8 @@
+import { NgIf } from '@angular/common';
 import { Component } from '@angular/core';
+import { ExampleLinkComponent } from '@app/utility/example-link.component';
+import { BoxComponent } from './box.component';
+import { CopyTargetComponent } from './copy-target.component';
 
 @Component({
   selector: 'de-container',
@@ -31,6 +35,8 @@ import { Component } from '@angular/core';
       </p>
     </de-copy-target>
   `,
+  standalone: true,
+  imports: [ExampleLinkComponent, BoxComponent, CopyTargetComponent, NgIf],
 })
 export class ContainerComponent {
   lastEffect = '';

@@ -1,8 +1,18 @@
-import { Component, Input, Output, EventEmitter, OnInit, OnDestroy } from '@angular/core';
-import { DndService } from '@ng-dnd/core';
+import { AsyncPipe, NgIf, NgStyle } from '@angular/common';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  EventEmitter,
+  Input,
+  OnDestroy,
+  OnInit,
+  Output,
+} from '@angular/core';
+import { DndModule, DndService } from '@ng-dnd/core';
 import { getEmptyImage } from 'react-dnd-html5-backend';
-import { ChangeDetectionStrategy } from '@angular/core';
+import { CrosshairsComponent } from '../crosshairs.component';
 import { Spot } from '../spot';
+import { SpotComponent } from '../spot.component';
 
 @Component({
   selector: 'xy-draggable-box',
@@ -39,6 +49,8 @@ import { Spot } from '../spot';
     `,
   ],
   changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: true,
+  imports: [DndModule, NgIf, NgStyle, SpotComponent, CrosshairsComponent, AsyncPipe],
 })
 export class DraggableBoxComponent implements OnInit, OnDestroy {
   @Input() spot!: Spot;

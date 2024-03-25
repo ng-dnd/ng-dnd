@@ -1,5 +1,6 @@
-import { Input, Component, OnDestroy } from '@angular/core';
-import { DndService } from '@ng-dnd/core';
+import { AsyncPipe } from '@angular/common';
+import { Component, Input, OnDestroy } from '@angular/core';
+import { DndModule, DndService } from '@ng-dnd/core';
 import { Colors } from './colors';
 
 @Component({
@@ -33,6 +34,8 @@ import { Colors } from './colors';
       }
     `,
   ],
+  standalone: true,
+  imports: [DndModule, AsyncPipe],
 })
 export class BlueOrYellowComponent implements OnDestroy {
   Colors = Colors;

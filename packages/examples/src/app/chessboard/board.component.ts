@@ -1,5 +1,8 @@
+import { AsyncPipe, NgFor, NgIf } from '@angular/common';
 import { Component } from '@angular/core';
+import { BoardSquareComponent } from './board-square.component';
 import { GameService } from './game.service';
+import { KnightComponent } from './knight.component';
 
 @Component({
   selector: 'app-board',
@@ -26,6 +29,8 @@ import { GameService } from './game.service';
       }
     `,
   ],
+  standalone: true,
+  imports: [NgIf, NgFor, BoardSquareComponent, KnightComponent, AsyncPipe],
 })
 export class BoardComponent {
   sixtyFour = new Array(64).fill(0).map((_, i) => i);

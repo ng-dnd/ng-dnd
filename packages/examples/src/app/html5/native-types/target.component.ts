@@ -1,5 +1,6 @@
+import { JsonPipe, NgIf } from '@angular/common';
 import { Component, Input, OnDestroy } from '@angular/core';
-import { DndService } from '@ng-dnd/core';
+import { DndModule, DndService } from '@ng-dnd/core';
 import { NativeTypes } from 'react-dnd-html5-backend';
 
 interface NativeUrl {
@@ -40,6 +41,8 @@ interface NativeFile {
       }
     `,
   ],
+  standalone: true,
+  imports: [DndModule, NgIf, JsonPipe],
 })
 export class TargetComponent implements OnDestroy {
   @Input() type = '';

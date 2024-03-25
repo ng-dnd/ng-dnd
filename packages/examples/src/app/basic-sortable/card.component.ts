@@ -1,16 +1,17 @@
+import { AsyncPipe, NgTemplateOutlet } from '@angular/common';
 import {
+  ChangeDetectionStrategy,
   Component,
-  Input,
-  Output,
+  ContentChild,
+  Directive,
   ElementRef,
   EventEmitter,
-  ContentChild,
-  TemplateRef,
-  ChangeDetectionStrategy,
+  Input,
   OnDestroy,
-  Directive,
+  Output,
+  TemplateRef,
 } from '@angular/core';
-import { DndService } from '@ng-dnd/core';
+import { DndModule, DndService } from '@ng-dnd/core';
 
 interface Card {
   id: number;
@@ -24,6 +25,7 @@ interface DraggingCard {
 
 @Directive({
   selector: '[cardInner]',
+  standalone: true,
 })
 export class CardInnerDirective {}
 
@@ -57,6 +59,8 @@ export class CardInnerDirective {}
     `,
   ],
   changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: true,
+  imports: [DndModule, NgTemplateOutlet, AsyncPipe],
 })
 export class CardComponent implements OnDestroy {
   @Output() beginDrag: EventEmitter<void> = new EventEmitter<void>();
@@ -138,7 +142,10 @@ export class CardComponent implements OnDestroy {
 
   opacity$ = this.cardSource.listen(monitor => (monitor.isDragging() ? 0.2 : 1));
 
-  constructor(private elRef: ElementRef, private dnd: DndService) {}
+  constructor(
+    private elRef: ElementRef,
+    private dnd: DndService
+  ) {}
 
   moveCard(a: number, b: number) {
     this.handleMove.emit([a, b]);

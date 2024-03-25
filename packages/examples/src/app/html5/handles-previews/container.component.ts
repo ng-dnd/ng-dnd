@@ -1,4 +1,7 @@
 import { Component } from '@angular/core';
+import { ExampleLinkComponent } from '@app/utility/example-link.component';
+import { CustomPreviewComponent } from './custom-preview.component';
+import { HandleComponent } from './handle.component';
 
 @Component({
   selector: 'app-nested-targets',
@@ -28,5 +31,7 @@ import { Component } from '@angular/core';
       }
     `,
   ],
+  standalone: true,
+  imports: [ExampleLinkComponent, HandleComponent, CustomPreviewComponent],
 })
 export class ContainerComponent {}

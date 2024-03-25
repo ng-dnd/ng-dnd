@@ -11,10 +11,13 @@ import { ContainerComponent } from './container.component';
 import { SpotComponent } from './spot.component';
 import { CrosshairsComponent } from './crosshairs.component';
 import { CubeComponent } from './cube.component';
-import { UtilityModule } from '../utility.module';
 
 @NgModule({
-  declarations: [
+  imports: [
+    CommonModule,
+    FormsModule,
+    DndModule,
+    RouterModule.forChild([{ path: '', component: ContainerComponent }]),
     ContainerComponent,
     CustomDragLayerComponent,
     DraggableBoxComponent,
@@ -23,13 +26,6 @@ import { UtilityModule } from '../utility.module';
     SpotComponent,
     CrosshairsComponent,
     CubeComponent,
-  ],
-  imports: [
-    CommonModule,
-    FormsModule,
-    DndModule,
-    RouterModule.forChild([{ path: '', component: ContainerComponent }]),
-    UtilityModule,
   ],
 })
 export class XyPadModule {}

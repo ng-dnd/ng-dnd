@@ -1,5 +1,23 @@
 import { Component, Input } from '@angular/core';
-import { DndService } from '@ng-dnd/core';
+import { DndModule, DndService } from '@ng-dnd/core';
+
+@Component({
+  selector: 'touch-item',
+  template: `<div class="firefox-bug" [style.background]="color || 'red'"></div>`,
+  styles: [
+    `
+      div {
+        width: 400px;
+        height: 300px;
+        margin: 16px;
+      }
+    `,
+  ],
+  standalone: true,
+})
+export class ItemComponent {
+  @Input() color = '';
+}
 
 @Component({
   selector: 'touch-draggable-item',
@@ -16,6 +34,8 @@ import { DndService } from '@ng-dnd/core';
       }
     `,
   ],
+  standalone: true,
+  imports: [DndModule, ItemComponent],
 })
 export class DraggableItemComponent {
   @Input() color = '';
@@ -23,21 +43,4 @@ export class DraggableItemComponent {
     beginDrag: () => ({ color: this.color }),
   });
   constructor(private dnd: DndService) {}
-}
-
-@Component({
-  selector: 'touch-item',
-  template: `<div class="firefox-bug" [style.background]="color || 'red'"></div>`,
-  styles: [
-    `
-      div {
-        width: 400px;
-        height: 300px;
-        margin: 16px;
-      }
-    `,
-  ],
-})
-export class ItemComponent {
-  @Input() color = '';
 }

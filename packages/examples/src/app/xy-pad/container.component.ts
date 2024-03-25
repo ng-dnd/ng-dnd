@@ -1,5 +1,9 @@
 import { Component } from '@angular/core';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { ExampleLinkComponent } from '@app/utility/example-link.component';
+import { CubeComponent } from './cube.component';
 import { snapToGrid } from './custom-drag-layer/snapToGrid';
+import { DragContainerComponent } from './drag-container/drag-container.component';
 
 @Component({
   selector: 'xy-drag-layer-container',
@@ -38,6 +42,14 @@ import { snapToGrid } from './custom-drag-layer/snapToGrid';
         padding: 80px;
       }
     `,
+  ],
+  standalone: true,
+  imports: [
+    ExampleLinkComponent,
+    DragContainerComponent,
+    ReactiveFormsModule,
+    FormsModule,
+    CubeComponent,
   ],
 })
 export class ContainerComponent {

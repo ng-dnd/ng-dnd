@@ -1,4 +1,6 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { SimpleComponent } from './simple.component';
+import { ExampleLinkComponent } from '@app/utility/example-link.component';
 
 @Component({
   selector: 'simple-sortable-container',
@@ -13,5 +15,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
     <app-simple-sortable></app-simple-sortable>
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: true,
+  imports: [ExampleLinkComponent, SimpleComponent],
 })
 export class ContainerComponent {}

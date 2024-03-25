@@ -1,6 +1,8 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
-import { DndService } from '@ng-dnd/core';
+import { NgStyle } from '@angular/common';
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { DndModule, DndService } from '@ng-dnd/core';
 import { BoxWithLocation } from '../BoxWithLocation';
+import { DraggableBoxComponent } from '../draggable-box/draggable-box.component';
 
 @Component({
   selector: 'app-drag-container',
@@ -15,6 +17,8 @@ import { BoxWithLocation } from '../BoxWithLocation';
     </div>
   `,
   styles: [],
+  standalone: true,
+  imports: [NgStyle, DndModule, DraggableBoxComponent],
 })
 export class DragContainerComponent implements OnInit, OnDestroy {
   x = 30;

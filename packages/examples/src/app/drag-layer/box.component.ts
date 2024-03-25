@@ -12,6 +12,7 @@ import { Component, Input } from '@angular/core';
       }
     `,
   ],
+  standalone: true,
 })
 export class BoxComponent {
   @Input() title!: string;

@@ -1,9 +1,9 @@
-import { Component, EventEmitter, ChangeDetectionStrategy } from '@angular/core';
-import { DndService } from '@ng-dnd/core';
-import { ItemTypes } from './item-types';
+import { AsyncPipe, NgIf, NgStyle } from '@angular/common';
+import { ChangeDetectionStrategy, Component, EventEmitter, Output } from '@angular/core';
+import { DndModule, DndService } from '@ng-dnd/core';
 import { DraggedItem } from '@ng-dnd/sortable';
-import { Output } from '@angular/core';
 import { Card } from './card';
+import { ItemTypes } from './item-types';
 
 @Component({
   selector: 'kanban-trash-can',
@@ -50,6 +50,8 @@ import { Card } from './card';
       }
     `,
   ],
+  standalone: true,
+  imports: [NgIf, DndModule, NgStyle, AsyncPipe],
 })
 export class TrashCanComponent {
   @Output() dropped = new EventEmitter<DraggedItem<Card>>();

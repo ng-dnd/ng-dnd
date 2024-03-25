@@ -18,6 +18,7 @@ import { Component, Input } from '@angular/core';
       }
     `,
   ],
+  standalone: true,
 })
 export class SpotComponent {
   @Input() compensate = false;

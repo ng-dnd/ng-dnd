@@ -1,4 +1,7 @@
 import { Component } from '@angular/core';
+import { ExampleLinkComponent } from '@app/utility/example-link.component';
+import { BoxComponent } from './box.component';
+import { DustbinComponent } from './dustbin.component';
 
 @Component({
   selector: 'app-nested-targets',
@@ -34,5 +37,7 @@ import { Component } from '@angular/core';
       }
     `,
   ],
+  standalone: true,
+  imports: [ExampleLinkComponent, BoxComponent, DustbinComponent],
 })
 export class ContainerComponent {}

@@ -1,4 +1,5 @@
 import { Component, Input } from '@angular/core';
+import { NgStyle } from '@angular/common';
 
 @Component({
   selector: 'app-square',
@@ -18,6 +19,8 @@ import { Component, Input } from '@angular/core';
       }
     `,
   ],
+  standalone: true,
+  imports: [NgStyle],
 })
 export class SquareComponent {
   @Input() black = false;

@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { BoardComponent } from './board.component';
+import { ExampleLinkComponent } from '@app/utility/example-link.component';
 
 @Component({
   selector: 'app-chess-container',
@@ -8,15 +10,11 @@ import { Component } from '@angular/core';
     <p>Welcome to <code>@ng-dnd</code>.</p>
     <p>
       This is a re-implementation of the original, classic
-      <a href="http://react-dnd.github.io/react-dnd/examples-chessboard-tutorial-app.html"
-        >react-dnd demo</a
-      >.
+      <a href="http://react-dnd.github.io/react-dnd/examples-chessboard-tutorial-app.html">react-dnd demo</a>.
     </p>
     <p>
       The whole tutorial has been re-written so you can
-      <a href="https://ng-dnd.github.io/ng-dnd/additional-documentation/chess-tutorial.html"
-        >follow along</a
-      >
+      <a href="https://ng-dnd.github.io/ng-dnd/additional-documentation/chess-tutorial.html">follow along</a>
       and build this yourself.
     </p>
 
@@ -51,5 +49,7 @@ import { Component } from '@angular/core';
       }
     `,
   ],
+  standalone: true,
+  imports: [ExampleLinkComponent, BoardComponent],
 })
 export class ContainerComponent {}

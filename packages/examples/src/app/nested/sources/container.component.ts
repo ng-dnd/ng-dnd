@@ -1,5 +1,8 @@
 import { Component } from '@angular/core';
+import { ExampleLinkComponent } from '@app/utility/example-link.component';
+import { BlueOrYellowComponent } from './blue-or-yellow.component';
 import { Colors } from './colors';
+import { TargetBoxComponent } from './target.component';
 
 @Component({
   selector: 'app-sources',
@@ -31,6 +34,8 @@ import { Colors } from './colors';
       }
     `,
   ],
+  standalone: true,
+  imports: [ExampleLinkComponent, BlueOrYellowComponent, TargetBoxComponent],
 })
 export class ContainerComponent {
   Colors = Colors;

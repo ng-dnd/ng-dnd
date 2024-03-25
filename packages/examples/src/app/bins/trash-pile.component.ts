@@ -1,5 +1,7 @@
+import { AsyncPipe, NgIf } from '@angular/common';
 import { Component, Input, OnChanges, OnDestroy } from '@angular/core';
-import { DndService } from '@ng-dnd/core';
+import { DndModule, DndService } from '@ng-dnd/core';
+import { TrashComponent } from './trash.component';
 
 @Component({
   selector: 'app-trash-pile',
@@ -22,6 +24,8 @@ import { DndService } from '@ng-dnd/core';
       }
     `,
   ],
+  standalone: true,
+  imports: [DndModule, NgIf, TrashComponent, AsyncPipe],
 })
 export class TrashPileComponent implements OnChanges, OnDestroy {
   @Input() type = '';

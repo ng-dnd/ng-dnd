@@ -1,6 +1,9 @@
-import { Component, Input, Output, Optional, EventEmitter } from '@angular/core';
+import { AsyncPipe, NgSwitch, NgSwitchCase } from '@angular/common';
+import { Component, EventEmitter, Input, Optional, Output } from '@angular/core';
+import { DndModule } from '@ng-dnd/core';
 import { DndSortableRenderer } from '@ng-dnd/sortable';
 import { MathQuestion, Question } from './Question';
+import { MathFormComponent } from './math-form.component';
 
 @Component({
   selector: 'quiz-section',
@@ -23,6 +26,8 @@ import { MathQuestion, Question } from './Question';
     </div>
   `,
   styleUrls: ['./section.component.scss'],
+  standalone: true,
+  imports: [DndModule, NgSwitch, NgSwitchCase, MathFormComponent, AsyncPipe],
 })
 export class SectionComponent {
   @Input() question!: Question;

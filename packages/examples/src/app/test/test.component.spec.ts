@@ -1,8 +1,8 @@
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
-import { TestComponent } from './test.component';
-import { TestBackend } from 'react-dnd-test-backend';
-import { DndModule, DRAG_DROP_MANAGER } from '@ng-dnd/core';
 import { By } from '@angular/platform-browser';
+import { DRAG_DROP_MANAGER, DndModule } from '@ng-dnd/core';
+import { TestBackend } from 'react-dnd-test-backend';
+import { TestComponent } from './test.component';
 
 describe(TestComponent.name, () => {
   let component: TestComponent;
@@ -18,8 +18,7 @@ describe(TestComponent.name, () => {
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      imports: [DndModule.forRoot({ backend: TestBackend })],
-      declarations: [TestComponent],
+      imports: [DndModule.forRoot({ backend: TestBackend }), TestComponent],
     }).compileComponents();
   }));
 

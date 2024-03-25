@@ -1,11 +1,16 @@
-import { Component, Input, Output, EventEmitter, Optional } from '@angular/core';
-import { DndSortableRenderer } from '@ng-dnd/sortable';
+import { AsyncPipe, NgFor } from '@angular/common';
+import { Component, EventEmitter, Input, Optional, Output } from '@angular/core';
+import { DndModule } from '@ng-dnd/core';
+import { DndSortableModule, DndSortableRenderer } from '@ng-dnd/sortable';
+import { KanbanCardComponent } from '../kanban-card/kanban-card.component';
 import { Card, CardList, SortableSpecService } from '../specs';
 
 @Component({
   selector: 'kanban-list',
   templateUrl: './kanban-list.component.html',
   styleUrls: ['./kanban-list.component.scss'],
+  standalone: true,
+  imports: [DndModule, DndSortableModule, KanbanCardComponent, NgFor, AsyncPipe],
 })
 export class KanbanListComponent {
   @Input() list!: CardList;

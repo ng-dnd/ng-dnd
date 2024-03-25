@@ -1,5 +1,6 @@
-import { Component, Input, Output, EventEmitter, OnChanges } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { NgIf } from '@angular/common';
+import { Component, EventEmitter, Input, OnChanges, Output } from '@angular/core';
+import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { MathQuestion } from './Question';
 
 @Component({
@@ -23,6 +24,8 @@ import { MathQuestion } from './Question';
       </div>
     </form>
   `,
+  standalone: true,
+  imports: [ReactiveFormsModule, NgIf],
 })
 export class MathFormComponent implements OnChanges {
   @Input() data!: MathQuestion;

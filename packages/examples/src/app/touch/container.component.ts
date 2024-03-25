@@ -1,4 +1,8 @@
+import { NgSwitch, NgSwitchCase } from '@angular/common';
 import { Component } from '@angular/core';
+import { ExampleLinkComponent } from '@app/utility/example-link.component';
+import { DndMultiBackendModule } from '@ng-dnd/multi-backend';
+import { DraggableItemComponent, ItemComponent } from './item.component';
 import { ItemTypes } from './itemTypes';
 
 @Component({
@@ -24,6 +28,15 @@ import { ItemTypes } from './itemTypes';
       <touch-draggable-item></touch-draggable-item>
     </div>
   `,
+  standalone: true,
+  imports: [
+    ExampleLinkComponent,
+    DndMultiBackendModule,
+    NgSwitch,
+    NgSwitchCase,
+    ItemComponent,
+    DraggableItemComponent,
+  ],
 })
 export class ContainerComponent {
   ItemTypes = ItemTypes;

@@ -1,17 +1,19 @@
-import { Component, ChangeDetectionStrategy } from '@angular/core';
-import { NgRxSortable } from '@ng-dnd/sortable';
+import { AsyncPipe, NgFor } from '@angular/common';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { DndModule } from '@ng-dnd/core';
+import { DndSortableModule, NgRxSortable } from '@ng-dnd/sortable';
 import { Store } from '@ngrx/store';
+import { Hotkey, HotkeysService } from 'angular2-hotkeys';
 import { Blob } from './store/blob';
 import {
   ActionTypes,
-  SelectBlob,
-  LiftSelected,
   DropSelected,
-  MoveSelectedUp,
+  LiftSelected,
   MoveSelectedDown,
+  MoveSelectedUp,
+  SelectBlob,
 } from './store/reducer';
-import { _render, _selected, _lifted } from './store/selectors';
-import { HotkeysService, Hotkey } from 'angular2-hotkeys';
+import { _lifted, _render, _selected } from './store/selectors';
 
 @Component({
   selector: 'rxsort-sortable',
@@ -44,6 +46,8 @@ import { HotkeysService, Hotkey } from 'angular2-hotkeys';
       </tbody>
     </table>
   `,
+  standalone: true,
+  imports: [DndModule, DndSortableModule, NgFor, AsyncPipe],
 })
 export class SimpleComponent {
   rxSpec = new NgRxSortable<Blob>(this.store, ActionTypes.SORT, {
@@ -55,7 +59,10 @@ export class SimpleComponent {
   selected$ = this.store.select(_selected as any);
   lifted$ = this.store.select(_lifted as any);
 
-  constructor(private store: Store<unknown>, private hotkeys: HotkeysService) {
+  constructor(
+    private store: Store<unknown>,
+    private hotkeys: HotkeysService
+  ) {
     this.hotkeys.add(
       new Hotkey(
         'enter',

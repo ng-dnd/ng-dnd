@@ -1,6 +1,9 @@
+import { AsyncPipe, NgStyle, NgSwitch, NgSwitchCase } from '@angular/common';
 import { Component } from '@angular/core';
+import { DndModule } from '@ng-dnd/core';
+import { DndMultiBackendModule } from '@ng-dnd/multi-backend';
+import { DndSortableModule, DraggedItem, SortableSpec } from '@ng-dnd/sortable';
 import * as faker from 'faker';
-import { SortableSpec, DraggedItem } from '@ng-dnd/sortable';
 
 interface SimpleData {
   id: number;
@@ -11,6 +14,16 @@ interface SimpleData {
   selector: 'app-simple-sortable',
   styleUrls: ['./simple.component.scss'],
   templateUrl: './simple.component.html',
+  standalone: true,
+  imports: [
+    DndModule,
+    DndSortableModule,
+    DndMultiBackendModule,
+    NgSwitch,
+    NgSwitchCase,
+    NgStyle,
+    AsyncPipe,
+  ],
 })
 export class SimpleComponent {
   fake = () => faker.fake('{{hacker.adjective}} the {{hacker.abbreviation}} {{hacker.noun}}');

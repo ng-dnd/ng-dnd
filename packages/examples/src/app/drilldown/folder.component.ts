@@ -1,17 +1,18 @@
+import { AsyncPipe, NgFor, NgIf } from '@angular/common';
 import {
+  ChangeDetectionStrategy,
   Component,
   Input,
-  ChangeDetectionStrategy,
   NgZone,
-  OnInit,
   OnDestroy,
+  OnInit,
 } from '@angular/core';
-import { ItemTypes } from './itemTypes';
-import { TreeService } from './tree.service';
-import { DndService } from '@ng-dnd/core';
+import { DndModule, DndService } from '@ng-dnd/core';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { activatorDropTarget } from './activatorDropTarget';
+import { ItemTypes } from './itemTypes';
+import { TreeService } from './tree.service';
 
 @Component({
   selector: 'drilldown-folder',
@@ -55,6 +56,8 @@ import { activatorDropTarget } from './activatorDropTarget';
   `,
   styleUrls: ['./folder.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: true,
+  imports: [NgIf, NgFor, DndModule, AsyncPipe],
 })
 export class FolderComponent implements OnInit, OnDestroy {
   @Input() keys: string[] = [];
@@ -88,7 +91,11 @@ export class FolderComponent implements OnInit, OnDestroy {
 
   isOver$ = this.target.listen(m => m.isOver() && m.canDrop());
 
-  constructor(public tree: TreeService, private dnd: DndService, private ngZone: NgZone) {}
+  constructor(
+    public tree: TreeService,
+    private dnd: DndService,
+    private ngZone: NgZone
+  ) {}
 
   ngOnInit() {
     this.children$ = this.tree.getChildren(this.keys);

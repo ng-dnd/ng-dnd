@@ -1,17 +1,20 @@
-import { Component, Input, ChangeDetectionStrategy } from '@angular/core';
-import { CalendarEvent } from '../event';
-import { DndService, DragSourceSpec } from '@ng-dnd/core';
+import { AsyncPipe, NgIf, NgStyle } from '@angular/common';
+import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
+import { DndModule, DndService, DragSourceSpec } from '@ng-dnd/core';
 import { Store, createSelector } from '@ngrx/store';
 import { State } from 'app/reducers';
+import { combineLatest } from 'rxjs';
+import { CalendarEvent } from '../event';
 import { ItemTypes } from '../item-types';
 import { BeginDragExistingEvent, EndDragExistingEvent } from '../store/calendar.actions';
-import { combineLatest } from 'rxjs';
 
 @Component({
   selector: 'cal-event',
   changeDetection: ChangeDetectionStrategy.OnPush,
   templateUrl: './event.component.html',
   styleUrls: ['./event.component.scss'],
+  standalone: true,
+  imports: [DndModule, NgStyle, NgIf, AsyncPipe],
 })
 export class CalendarEventComponent {
   @Input() event!: CalendarEvent;
@@ -64,5 +67,8 @@ export class CalendarEventComponent {
     };
   }
 
-  constructor(private dnd: DndService, private store: Store<State>) {}
+  constructor(
+    private dnd: DndService,
+    private store: Store<State>
+  ) {}
 }

@@ -1,5 +1,6 @@
+import { AsyncPipe, NgIf } from '@angular/common';
 import { Component } from '@angular/core';
-import { DndService } from '@ng-dnd/core';
+import { DndModule, DndService } from '@ng-dnd/core';
 import { ItemTypes } from './item-types';
 
 @Component({
@@ -28,6 +29,8 @@ import { ItemTypes } from './item-types';
       }
     `,
   ],
+  standalone: true,
+  imports: [DndModule, NgIf, AsyncPipe],
 })
 export class CopyTargetComponent {
   target = this.dnd.dropTarget(ItemTypes.COPYABLE_ITEM, {});

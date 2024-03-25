@@ -1,7 +1,9 @@
-import { Component, OnInit, OnDestroy, ChangeDetectionStrategy } from '@angular/core';
-import { snapToGrid } from './snapToGrid';
+import { AsyncPipe, NgIf, NgStyle, NgSwitch, NgSwitchCase } from '@angular/common';
+import { ChangeDetectionStrategy, Component, OnDestroy, OnInit } from '@angular/core';
 import { DndService } from '@ng-dnd/core';
 import { filter, map } from 'rxjs/operators';
+import { BoxDragPreviewComponent } from '../box-drag-preview/box-drag-preview.component';
+import { snapToGrid } from './snapToGrid';
 
 interface Offset {
   x: number;
@@ -36,6 +38,8 @@ interface Offset {
       }
     `,
   ],
+  standalone: true,
+  imports: [NgIf, NgStyle, NgSwitch, NgSwitchCase, BoxDragPreviewComponent, AsyncPipe],
 })
 export class CustomDragLayerComponent implements OnInit, OnDestroy {
   constructor(private dnd: DndService) {}

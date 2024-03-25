@@ -1,5 +1,6 @@
+import { AsyncPipe } from '@angular/common';
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { DndService } from '@ng-dnd/core';
+import { DndModule, DndService } from '@ng-dnd/core';
 import { ItemTypes } from './constants';
 import { horseImage } from './horseImage';
 
@@ -7,6 +8,8 @@ import { horseImage } from './horseImage';
   selector: 'app-knight',
   template: `<span [dragSource]="knightSource" [class.dragging]="isDragging$ | async">♘</span>`,
   styleUrls: ['./knight.component.scss'],
+  standalone: true,
+  imports: [DndModule, AsyncPipe],
 })
 export class KnightComponent implements OnInit, OnDestroy {
   knightSource = this.dnd.dragSource(ItemTypes.KNIGHT, {

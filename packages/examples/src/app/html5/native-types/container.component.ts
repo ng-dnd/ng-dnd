@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
+import { ExampleLinkComponent } from '@app/utility/example-link.component';
 import { NativeTypes } from 'react-dnd-html5-backend';
+import { TargetComponent } from './target.component';
 
 @Component({
   selector: 'native-container',
@@ -36,6 +38,8 @@ import { NativeTypes } from 'react-dnd-html5-backend';
       }
     `,
   ],
+  standalone: true,
+  imports: [ExampleLinkComponent, TargetComponent],
 })
 export class ContainerComponent {
   NativeTypes = NativeTypes;

@@ -1,4 +1,9 @@
+import { AsyncPipe } from '@angular/common';
 import { Component } from '@angular/core';
+import { ExampleLinkComponent } from '@app/utility/example-link.component';
+import { NgLetDirective } from '@app/utility/ngLet.directive';
+import { BoxComponent } from './box.component';
+import { FolderComponent } from './folder.component';
 import { TreeService } from './tree.service';
 
 @Component({
@@ -29,6 +34,8 @@ import { TreeService } from './tree.service';
       }
     `,
   ],
+  standalone: true,
+  imports: [ExampleLinkComponent, NgLetDirective, BoxComponent, FolderComponent, AsyncPipe],
 })
 export class ContainerComponent {
   lastDrop$ = this.tree.select(s => s.lastDrop);

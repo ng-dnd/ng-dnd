@@ -23,6 +23,7 @@ import { Component, Input } from '@angular/core';
     </div>
   `,
   styleUrls: ['./crosshairs.component.scss'],
+  standalone: true,
 })
 export class CrosshairsComponent {
   math = Math;

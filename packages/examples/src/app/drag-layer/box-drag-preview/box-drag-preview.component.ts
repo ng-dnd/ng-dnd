@@ -1,4 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { BoxComponent } from '../box.component';
 
 @Component({
   selector: 'app-box-drag-preview',
@@ -32,6 +33,8 @@ import { Component, OnInit, Input } from '@angular/core';
       }
     `,
   ],
+  standalone: true,
+  imports: [BoxComponent],
 })
 export class BoxDragPreviewComponent implements OnInit {
   @Input() title: any;

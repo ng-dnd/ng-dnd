@@ -1,18 +1,21 @@
+import { AsyncPipe, NgIf, NgStyle, NgSwitch, NgSwitchCase } from '@angular/common';
 import {
-  Component,
-  OnDestroy,
-  ChangeDetectionStrategy,
-  Input,
-  EventEmitter,
-  Output,
-  ElementRef,
   AfterViewInit,
+  ChangeDetectionStrategy,
+  Component,
+  ElementRef,
+  EventEmitter,
+  Input,
+  OnDestroy,
+  Output,
 } from '@angular/core';
-import { snapToGrid } from './snapToGrid';
 import { DndService, Offset } from '@ng-dnd/core';
 import { filter, map } from 'rxjs/operators';
+import { BoxDragPreviewComponent } from '../box-drag-preview/box-drag-preview.component';
+import { CrosshairsComponent } from '../crosshairs.component';
 import { Spot } from '../spot';
-import { Rect, alongEdge, plus, minus, clone, fmap } from '../vectors';
+import { Rect, alongEdge, clone, fmap, minus, plus } from '../vectors';
+import { snapToGrid } from './snapToGrid';
 
 interface Collected {
   item: Spot;
@@ -40,6 +43,16 @@ interface Collected {
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
   styleUrls: ['./custom-drag-layer.component.scss'],
+  standalone: true,
+  imports: [
+    NgIf,
+    NgStyle,
+    NgSwitch,
+    NgSwitchCase,
+    CrosshairsComponent,
+    BoxDragPreviewComponent,
+    AsyncPipe,
+  ],
 })
 export class CustomDragLayerComponent implements AfterViewInit, OnDestroy {
   @Input() snapToGrid = false;
@@ -77,7 +90,10 @@ export class CustomDragLayerComponent implements AfterViewInit, OnDestroy {
     filter(a => a != null)
   );
 
-  constructor(private dnd: DndService, private el: ElementRef) {}
+  constructor(
+    private dnd: DndService,
+    private el: ElementRef
+  ) {}
 
   absToRelative(abs: Offset): Offset {
     return abs && minus(abs, this.rect);

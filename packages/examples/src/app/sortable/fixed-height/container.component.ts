@@ -1,4 +1,6 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { ExampleLinkComponent } from '@app/utility/example-link.component';
+import { FixedHeightComponent } from './fixed-height.component';
 
 @Component({
   selector: 'simple-sortable-container',
@@ -18,5 +20,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
     <app-fixed-sortable></app-fixed-sortable>
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: true,
+  imports: [ExampleLinkComponent, FixedHeightComponent],
 })
 export class ContainerComponent {}

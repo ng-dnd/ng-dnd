@@ -1,4 +1,7 @@
+import { NgFor, NgSwitch, NgSwitchCase } from '@angular/common';
 import { Component } from '@angular/core';
+import { DndMultiBackendModule } from '@ng-dnd/multi-backend';
+import { CardComponent, CardInnerDirective } from './card.component';
 
 interface Card {
   id: number;
@@ -15,6 +18,15 @@ interface Card {
         max-width: 400px;
       }
     `,
+  ],
+  standalone: true,
+  imports: [
+    DndMultiBackendModule,
+    NgFor,
+    NgSwitch,
+    NgSwitchCase,
+    CardComponent,
+    CardInnerDirective,
   ],
 })
 export class BasicSortableComponent {

@@ -1,5 +1,6 @@
-import { Input, Component, OnDestroy } from '@angular/core';
-import { DndService } from '@ng-dnd/core';
+import { AsyncPipe, NgIf } from '@angular/common';
+import { Component, Input, OnDestroy } from '@angular/core';
+import { DndModule, DndService } from '@ng-dnd/core';
 import { ItemTypes } from './item-types';
 
 @Component({
@@ -18,6 +19,8 @@ import { ItemTypes } from './item-types';
     </ng-container>
   `,
   styleUrls: ['./dustbin.component.scss'],
+  standalone: true,
+  imports: [NgIf, DndModule, AsyncPipe],
 })
 export class DustbinComponent implements OnDestroy {
   @Input() greedy = false;

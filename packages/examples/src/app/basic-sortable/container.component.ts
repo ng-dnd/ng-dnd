@@ -1,4 +1,7 @@
 import { Component } from '@angular/core';
+import { RouterLink } from '@angular/router';
+import { ExampleLinkComponent } from '@app/utility/example-link.component';
+import { BasicSortableComponent } from './basic-sortable.component';
 
 @Component({
   selector: 'basic-sortable-container',
@@ -39,5 +42,7 @@ import { Component } from '@angular/core';
 
     <basic-sortable></basic-sortable>
   `,
+  standalone: true,
+  imports: [RouterLink, ExampleLinkComponent, BasicSortableComponent],
 })
 export class ContainerComponent {}

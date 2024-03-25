@@ -1,6 +1,9 @@
+import { AsyncPipe, NgStyle, NgSwitch, NgSwitchCase } from '@angular/common';
 import { Component } from '@angular/core';
+import { DndModule } from '@ng-dnd/core';
+import { DndMultiBackendModule } from '@ng-dnd/multi-backend';
+import { DndSortableModule, DraggedItem, HoverTrigger, SortableSpec } from '@ng-dnd/sortable';
 import * as faker from 'faker';
-import { SortableSpec, DraggedItem, HoverTrigger } from '@ng-dnd/sortable';
 
 interface SimpleData {
   id: number;
@@ -11,6 +14,16 @@ interface SimpleData {
   selector: 'app-fixed-sortable',
   styleUrls: ['./fixed-height.component.scss'],
   templateUrl: './fixed-height.component.html',
+  standalone: true,
+  imports: [
+    DndMultiBackendModule,
+    NgSwitch,
+    NgSwitchCase,
+    NgStyle,
+    DndSortableModule,
+    DndModule,
+    AsyncPipe,
+  ],
 })
 export class FixedHeightComponent {
   fake = () => faker.fake('fix the {{hacker.abbreviation}} {{hacker.noun}}');

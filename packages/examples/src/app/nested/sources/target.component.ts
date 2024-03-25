@@ -1,7 +1,8 @@
+import { AsyncPipe, NgIf } from '@angular/common';
 import { Component, OnDestroy } from '@angular/core';
-import { DndService } from '@ng-dnd/core';
-import { Colors } from './colors';
+import { DndModule, DndService } from '@ng-dnd/core';
 import { map } from 'rxjs/operators';
+import { Colors } from './colors';
 
 @Component({
   selector: 'app-nested-source-targetbox',
@@ -37,6 +38,8 @@ import { map } from 'rxjs/operators';
       }
     `,
   ],
+  standalone: true,
+  imports: [DndModule, NgIf, AsyncPipe],
 })
 export class TargetBoxComponent implements OnDestroy {
   Colors = Colors;

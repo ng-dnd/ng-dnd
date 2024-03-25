@@ -1,5 +1,5 @@
-import { Component, Output, EventEmitter, Input } from '@angular/core';
-import { DndService } from '@ng-dnd/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { DndModule, DndService } from '@ng-dnd/core';
 import { ItemTypes } from './item-types';
 
 interface DropResult {
@@ -7,14 +7,14 @@ interface DropResult {
 }
 
 @Component({
-  selector: 'de-box',
-  template: `
+    selector: 'de-box',
+    template: `
     <p [dragSource]="source" [dragSourceOptions]="force && { dropEffect: force }">
       Drag me ( <code>{{ force ? force : 'default behaviour' }}</code> )
     </p>
   `,
-  styles: [
-    `
+    styles: [
+        `
       p {
         display: inline-block;
         padding: 0.5em;
@@ -25,7 +25,9 @@ interface DropResult {
         background: #fff;
       }
     `,
-  ],
+    ],
+    standalone: true,
+    imports: [DndModule],
 })
 export class BoxComponent {
   @Output() dropped = new EventEmitter<string>();

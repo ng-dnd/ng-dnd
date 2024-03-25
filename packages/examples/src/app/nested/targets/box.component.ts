@@ -1,5 +1,6 @@
+import { AsyncPipe } from '@angular/common';
 import { Component, OnDestroy } from '@angular/core';
-import { DndService } from '@ng-dnd/core';
+import { DndModule, DndService } from '@ng-dnd/core';
 import { ItemTypes } from './item-types';
 
 @Component({
@@ -25,6 +26,8 @@ import { ItemTypes } from './item-types';
       }
     `,
   ],
+  standalone: true,
+  imports: [DndModule, AsyncPipe],
 })
 export class BoxComponent implements OnDestroy {
   source = this.dnd.dragSource(ItemTypes.BOX, {

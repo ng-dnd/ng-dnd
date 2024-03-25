@@ -6,7 +6,6 @@ import { StoreModule } from '@ngrx/store';
 import { DndModule } from '@ng-dnd/core';
 import { DndMultiBackendModule } from '@ng-dnd/multi-backend';
 import { DndSortableModule } from '@ng-dnd/sortable';
-import { UtilityModule } from '@app/utility.module';
 
 import { ContainerComponent } from './container.component';
 import { KanbanBoardComponent } from './kanban-board/kanban-board.component';
@@ -19,18 +18,8 @@ import { reducer } from './store';
 import { SortableSpecService } from './specs';
 
 @NgModule({
-  declarations: [
-    ContainerComponent,
-    KanbanBoardComponent,
-    KanbanListComponent,
-    KanbanCardComponent,
-    AddCardComponent,
-    TrashCanComponent,
-    KanbanExternalComponent,
-  ],
   imports: [
     CommonModule,
-    UtilityModule,
     DndModule,
     DndMultiBackendModule,
     DndSortableModule,
@@ -38,6 +27,13 @@ import { SortableSpecService } from './specs';
     StoreModule,
     StoreModule.forFeature('kanban', reducer),
     RouterModule.forChild([{ path: '', component: ContainerComponent }]),
+    ContainerComponent,
+    KanbanBoardComponent,
+    KanbanListComponent,
+    KanbanCardComponent,
+    AddCardComponent,
+    TrashCanComponent,
+    KanbanExternalComponent,
   ],
   providers: [SortableSpecService],
 })

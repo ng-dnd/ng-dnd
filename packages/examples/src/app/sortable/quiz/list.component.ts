@@ -1,13 +1,28 @@
+import { NgFor, NgIf, NgStyle } from '@angular/common';
 import { Component, OnDestroy } from '@angular/core';
-import { DndService } from '@ng-dnd/core';
-import { SortableSpec, DraggedItem, spillTarget } from '@ng-dnd/sortable';
-import { Question, MathQuestion, NameQuestion } from './Question';
+import { DndModule, DndService } from '@ng-dnd/core';
+import { DndMultiBackendModule } from '@ng-dnd/multi-backend';
+import { DndSortableModule, DraggedItem, SortableSpec, spillTarget } from '@ng-dnd/sortable';
 import { produce } from 'immer';
+import { MathQuestion, NameQuestion, Question } from './Question';
+import { PrintoutComponent } from './printout.component';
+import { SectionComponent } from './section.component';
 
 @Component({
   selector: 'app-external-sortable',
   styleUrls: ['./list.component.scss'],
   templateUrl: './list.component.html',
+  standalone: true,
+  imports: [
+    DndModule,
+    DndSortableModule,
+    DndMultiBackendModule,
+    NgIf,
+    NgFor,
+    NgStyle,
+    SectionComponent,
+    PrintoutComponent,
+  ],
 })
 export class ListComponent implements OnDestroy {
   constructor(private dnd: DndService) {}

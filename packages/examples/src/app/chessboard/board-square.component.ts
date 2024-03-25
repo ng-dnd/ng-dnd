@@ -1,9 +1,11 @@
+import { AsyncPipe, NgIf, NgStyle } from '@angular/common';
 import { Component, Input, OnDestroy } from '@angular/core';
+import { DndModule, DndService } from '@ng-dnd/core';
+import { map } from 'rxjs/operators';
+import { ItemTypes } from './constants';
 import { Coord } from './coord';
 import { GameService } from './game.service';
-import { DndService } from '@ng-dnd/core';
-import { ItemTypes } from './constants';
-import { map } from 'rxjs/operators';
+import { SquareComponent } from './square.component';
 
 @Component({
   selector: 'app-board-square',
@@ -26,6 +28,8 @@ import { map } from 'rxjs/operators';
       }
     `,
   ],
+  standalone: true,
+  imports: [DndModule, SquareComponent, NgIf, NgStyle, AsyncPipe],
 })
 export class BoardSquareComponent implements OnDestroy {
   @Input() position!: Coord;
@@ -76,7 +80,10 @@ export class BoardSquareComponent implements OnDestroy {
     })
   );
 
-  constructor(private dnd: DndService, private game: GameService) {}
+  constructor(
+    private dnd: DndService,
+    private game: GameService
+  ) {}
 
   ngOnDestroy() {
     this.target.unsubscribe();

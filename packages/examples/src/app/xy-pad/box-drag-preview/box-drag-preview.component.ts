@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { SpotComponent } from '../spot.component';
 
 @Component({
   selector: 'xy-box-drag-preview',
@@ -35,5 +36,7 @@ import { Component } from '@angular/core';
       }
     `,
   ],
+  standalone: true,
+  imports: [SpotComponent],
 })
 export class BoxDragPreviewComponent {}

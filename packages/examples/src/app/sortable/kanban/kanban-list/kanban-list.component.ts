@@ -1,14 +1,18 @@
+import { AsyncPipe, NgFor, NgIf } from '@angular/common';
 import {
-  Component,
-  Input,
-  Output,
-  EventEmitter,
   ChangeDetectionStrategy,
-  Optional,
+  Component,
+  EventEmitter,
+  Input,
   OnInit,
+  Optional,
+  Output,
 } from '@angular/core';
-import { DndSortableRenderer } from '@ng-dnd/sortable';
+import { DndModule } from '@ng-dnd/core';
+import { DndSortableModule, DndSortableRenderer } from '@ng-dnd/sortable';
+import { AddCardComponent } from '../add-card.component';
 import { Card } from '../card';
+import { KanbanCardComponent } from '../kanban-card/kanban-card.component';
 import { KanbanList } from '../lists';
 import { SortableSpecService } from '../specs';
 
@@ -17,6 +21,16 @@ import { SortableSpecService } from '../specs';
   templateUrl: './kanban-list.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
   styleUrls: ['./kanban-list.component.scss'],
+  standalone: true,
+  imports: [
+    DndModule,
+    DndSortableModule,
+    NgIf,
+    NgFor,
+    KanbanCardComponent,
+    AddCardComponent,
+    AsyncPipe,
+  ],
 })
 export class KanbanListComponent implements OnInit {
   @Input() list!: KanbanList;

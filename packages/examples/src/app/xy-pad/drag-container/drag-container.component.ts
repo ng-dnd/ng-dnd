@@ -1,6 +1,9 @@
-import { Component, Input, Output, EventEmitter, OnDestroy } from '@angular/core';
-import { DndService, Offset } from '@ng-dnd/core';
+import { NgFor } from '@angular/common';
+import { Component, EventEmitter, Input, OnDestroy, Output } from '@angular/core';
+import { DndModule, DndService, Offset } from '@ng-dnd/core';
+import { CustomDragLayerComponent } from '../custom-drag-layer/custom-drag-layer.component';
 import { snapToGrid } from '../custom-drag-layer/snapToGrid';
+import { DraggableBoxComponent } from '../draggable-box/draggable-box.component';
 import { Spot } from '../spot';
 
 @Component({
@@ -23,6 +26,8 @@ import { Spot } from '../spot';
     </xy-custom-drag-layer>
   `,
   styleUrls: ['./drag-container.component.scss'],
+  standalone: true,
+  imports: [DndModule, NgFor, DraggableBoxComponent, CustomDragLayerComponent],
 })
 export class DragContainerComponent implements OnDestroy {
   @Input() x = 50;

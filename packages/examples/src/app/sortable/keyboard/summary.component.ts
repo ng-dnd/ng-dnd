@@ -1,7 +1,8 @@
+import { AsyncPipe } from '@angular/common';
 import { Component } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { _overallHash, _unstableHash } from './store/selectors';
 import { State } from './store/reducer';
+import { _overallHash, _unstableHash } from './store/selectors';
 
 @Component({
   selector: 'rxsort-summary',
@@ -19,6 +20,8 @@ import { State } from './store/reducer';
       }
     `,
   ],
+  standalone: true,
+  imports: [AsyncPipe],
 })
 export class SummaryComponent {
   unstable$ = this.store.select(_unstableHash);

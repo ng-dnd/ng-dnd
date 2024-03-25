@@ -1,4 +1,9 @@
 import { Component } from '@angular/core';
+import { ExampleLinkComponent } from '@app/utility/example-link.component';
+import { DndMultiBackendModule } from '@ng-dnd/multi-backend';
+import { BinComponent } from './bin.component';
+import { TrashPileComponent } from './trash-pile.component';
+import { TrashComponent } from './trash.component';
 
 @Component({
   template: `
@@ -41,6 +46,14 @@ import { Component } from '@angular/core';
         margin-right: 4px;
       }
     `,
+  ],
+  standalone: true,
+  imports: [
+    DndMultiBackendModule,
+    ExampleLinkComponent,
+    TrashComponent,
+    TrashPileComponent,
+    BinComponent,
   ],
 })
 export class ContainerComponent {}
