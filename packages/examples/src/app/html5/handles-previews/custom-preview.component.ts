@@ -4,14 +4,14 @@ import { DndModule, DndService } from '@ng-dnd/core';
 import { ItemTypes } from './item-types';
 
 @Component({
-    selector: 'custom-preview',
-    template: `
+  selector: 'custom-preview',
+  template: `
     <div [dragSource]="source" [style.opacity]="opacity$ | async">
       <p>Drag this for image preview</p>
     </div>
   `,
-    styles: [
-        `
+  styles: [
+    `
       div {
         border: 1px dashed #777;
         background: #fff;
@@ -28,9 +28,9 @@ import { ItemTypes } from './item-types';
         margin: 0;
       }
     `,
-    ],
-    standalone: true,
-    imports: [DndModule, AsyncPipe],
+  ],
+  standalone: true,
+  imports: [DndModule, AsyncPipe],
 })
 export class CustomPreviewComponent implements OnInit, OnDestroy {
   source = this.dnd.dragSource(ItemTypes.BOX, {

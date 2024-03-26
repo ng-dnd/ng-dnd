@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import { ListComponent } from './list.component';
 import { ExampleLinkComponent } from '@app/utility/example-link.component';
+import { ListComponent } from './list.component';
 
 @Component({
   selector: 'quiz-container',

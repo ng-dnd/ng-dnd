@@ -7,6 +7,7 @@ import { BasicSortableComponent } from './basic-sortable.component';
   selector: 'basic-sortable-container',
   template: `
     <app-example-link path="basic-sortable"></app-example-link>
+
     <p>You can make a sortable by:</p>
 
     <ul>

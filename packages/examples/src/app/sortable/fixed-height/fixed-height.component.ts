@@ -16,12 +16,12 @@ interface SimpleData {
   templateUrl: './fixed-height.component.html',
   standalone: true,
   imports: [
+    DndModule,
+    DndSortableModule,
     DndMultiBackendModule,
     NgSwitch,
     NgSwitchCase,
     NgStyle,
-    DndSortableModule,
-    DndModule,
     AsyncPipe,
   ],
 })

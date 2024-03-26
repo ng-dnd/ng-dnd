@@ -116,7 +116,7 @@ h2 {
   }
 }
 
-@media screen and (min-width: 1000px) {
+@media screen and (width >= 1000px) {
   p.menu {
     display: none;
   }
@@ -132,7 +132,7 @@ h2 {
   .nav-grid { display: block; }
 }
 
-@media screen and (max-width: 999px) {
+@media screen and (width <= 999px) {
   .hide {
     display: none;
   }

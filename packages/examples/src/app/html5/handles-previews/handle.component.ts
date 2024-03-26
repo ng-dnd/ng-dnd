@@ -4,8 +4,8 @@ import { DndModule, DndService } from '@ng-dnd/core';
 import { ItemTypes } from './item-types';
 
 @Component({
-    selector: 'handle',
-    template: `
+  selector: 'handle',
+  template: `
     <div [dragPreview]="source" [style.opacity]="opacity | async">
       <p>
         <span class="handle" [dragSource]="source"></span>
@@ -13,8 +13,8 @@ import { ItemTypes } from './item-types';
       </p>
     </div>
   `,
-    styles: [
-        `
+  styles: [
+    `
       div {
         border: 1px dashed #777;
         background: #fff;
@@ -37,9 +37,9 @@ import { ItemTypes } from './item-types';
         margin: 0;
       }
     `,
-    ],
-    standalone: true,
-    imports: [DndModule, AsyncPipe],
+  ],
+  standalone: true,
+  imports: [DndModule, AsyncPipe],
 })
 export class HandleComponent implements OnDestroy {
   source = this.dnd.dragSource(ItemTypes.BOX, {

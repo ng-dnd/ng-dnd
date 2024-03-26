@@ -51,7 +51,7 @@ import { ItemTypes } from './item-types';
     `,
   ],
   standalone: true,
-  imports: [NgIf, DndModule, NgStyle, AsyncPipe],
+  imports: [DndModule, NgIf, NgStyle, AsyncPipe],
 })
 export class TrashCanComponent {
   @Output() dropped = new EventEmitter<DraggedItem<Card>>();
