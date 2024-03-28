@@ -33,7 +33,7 @@ import { BasicSortableComponent } from './basic-sortable.component';
 
     <p>
       If that sounds like too much effort, this pattern is made easy and reusable in
-      <code>@ng-dnd/sortable</code>. You can do it without introducing a new component, too.
+      <code>&#64;ng-dnd/sortable</code>. You can do it without introducing a new component, too.
     </p>
 
     <p>

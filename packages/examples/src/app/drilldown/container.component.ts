@@ -16,7 +16,7 @@ import { TreeService } from './tree.service';
     <p>
       This example uses a wrapper around <code>DndService#dropTarget</code>, that listens to
       dnd-core hover events and fires a callback when you have hovered long enough. This is a clean
-      pattern for extending <code>@ng-dnd/core</code> in a reusable way.
+      pattern for extending <code>&#64;ng-dnd/core</code> in a reusable way.
     </p>
     <p *ngLet="lastDrop$ | async as keys">
       Last dropped on <code> {{ keys ? keys.join(' > ') : '(never)' }} </code>

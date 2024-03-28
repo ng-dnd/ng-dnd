@@ -8,7 +8,7 @@ import { SummaryComponent } from './summary.component';
   template: `
     <app-example-link path="sortable/keyboard"></app-example-link>
     <p>
-      This one uses an <code>@ngrx/store</code> with Immutable.js data. This is very convenient,
+      This one uses an <code>&#64;ngrx/store</code> with Immutable.js data. This is very convenient,
       since Immutable.js has its own 'insert' and 'remove' operations.
     </p>
 
