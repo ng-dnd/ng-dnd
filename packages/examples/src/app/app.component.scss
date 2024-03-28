@@ -35,7 +35,6 @@ nav li {
 header {
   height: 50px;
   padding: 8px;
-  background: #f0f0f0;
   background: hsla(248deg, 31%, 91%, 1);
   background: #e5e8f5;
 }
@@ -43,7 +42,6 @@ header {
 .outer {
   min-width: 0;
   padding: 8px;
-  background: #fcfcfc;
   background: hsla(249deg, 20%, 98%, 1);
   background: #fbfbfd;
 }
@@ -75,7 +73,6 @@ p.back {
   a:active {
     text-decoration: none;
     color: black;
-    background: #dfdfdf;
     background: #e2e4ee;
     padding: 0 6px;
     border-bottom: 1px solid #ccc;
@@ -87,7 +84,6 @@ p.back {
 
   // router link is active
   a.active {
-    background: #fddd96;
     background: #eeaac6;
   }
 
