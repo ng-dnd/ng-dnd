@@ -15,7 +15,7 @@
   ],
   "dependencies": {
     "dnd-core": "^16.0.0",
-    "dnd-multi-backend": "^6.0.0",
+    "dnd-multi-backend": "^8.0.0",
     "react-dnd-html5-backend": "^16.0.0",
     "react-dnd-touch-backend": "^16.0.0",
     "tslib": "^2.3.0"

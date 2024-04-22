@@ -10,8 +10,8 @@ import {
 } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 import { DndService, DRAG_DROP_MANAGER } from '@ng-dnd/core';
-import { DragDropManager, Backend } from 'dnd-core';
-import { BackendWatcher, MultiBackendExt } from 'dnd-multi-backend';
+import { DragDropManager } from 'dnd-core';
+import { PreviewListener, MultiBackendSwitcher } from 'dnd-multi-backend';
 
 export interface PreviewTemplateContext {
   /** same as type */
@@ -55,7 +55,7 @@ export interface PreviewTemplateContext {
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class DndPreviewComponent implements BackendWatcher, OnInit, OnDestroy {
+export class DndPreviewComponent implements PreviewListener, OnInit, OnDestroy {
   /** Disables the check for whether the current MultiBackend wants the preview enabled */
   @Input() allBackends = false;
 
@@ -92,25 +92,25 @@ export class DndPreviewComponent implements BackendWatcher, OnInit, OnDestroy {
     if (this.manager == null) {
       this.warn('no drag and drop manager defined, are you sure you imported DndModule?');
     } else {
-      (this.manager.getBackend() as MultiBackendExt).previews?.register(this);
+      (this.manager.getBackend() as MultiBackendSwitcher).previewsList()?.register(this);
     }
   }
 
   /** @ignore */
   ngOnInit() {
     // Have to do this after allBackends receives its value.
-    this.backendChanged(this.manager.getBackend());
+    this.backendChanged(this.manager.getBackend() as MultiBackendSwitcher);
   }
 
   /** @ignore */
-  backendChanged(backend: Backend) {
+  backendChanged(backend: MultiBackendSwitcher) {
     this.previewEnabled$.next(this.isPreviewEnabled(backend));
   }
 
   /** @ignore */
   ngOnDestroy() {
     this.layer.unsubscribe();
-    (this.manager.getBackend() as MultiBackendExt).previews?.unregister(this);
+    (this.manager.getBackend() as MultiBackendSwitcher).previewsList()?.unregister(this);
   }
 
   /** @ignore */
@@ -122,7 +122,7 @@ export class DndPreviewComponent implements BackendWatcher, OnInit, OnDestroy {
   }
 
   /** @ignore */
-  isPreviewEnabled(backend: MultiBackendExt) {
+  isPreviewEnabled(backend: MultiBackendSwitcher) {
     if (this.allBackends) {
       return true;
     }
