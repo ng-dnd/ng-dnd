@@ -26,13 +26,13 @@ import { DndSortableTemplate, TemplateContext } from './template.directive';
       <ng-container *ngTemplateOutlet="template; context: { $implicit: contextFor(card, i) }">
       </ng-container>
     </ng-container>
-    `,
+  `,
   styles: [
     `
       :host {
         display: block;
       }
-      `,
+    `,
   ],
   changeDetection: ChangeDetectionStrategy.OnPush,
   // allow injecting the directive and getting the component

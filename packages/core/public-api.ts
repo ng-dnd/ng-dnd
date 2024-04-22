@@ -1,5 +1,4 @@
 // import no symbols to get typings but not execute the monkey-patching module loader
-/// <reference path="src/ambient.ts" />
 
 export { DndModule, BackendInput, BackendFactoryInput } from './src/dnd.module';
 

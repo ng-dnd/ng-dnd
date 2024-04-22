@@ -50,8 +50,6 @@ export class DndDirective implements OnChanges, OnDestroy {
   }
 }
 
-// Note: the T | undefined everywhere is from https://github.com/angular/angular-cli/issues/2034
-
 /**
  * Allows you to connect a {@link DropTarget} to an element in a component template.
  */
@@ -63,7 +61,7 @@ export class DropTargetDirective extends DndDirective implements OnChanges {
   protected connection: DropTarget | undefined;
 
   /** Which target to connect the DOM to */
-  @Input('dropTarget') public dropTarget!: DropTarget;
+  @Input('dropTarget') dropTarget!: DropTarget;
   /**
    * Shortcut for setting a type on the connection.
    * Lets you use Angular binding to do it. Runs {@link DropTarget#setTypes}.
@@ -136,13 +134,12 @@ export class DragSourceDirective extends DndDirective implements OnChanges {
  */
 @Directive({
   selector: '[dragPreview]',
-  inputs: ['dragPreview', 'dragPreviewOptions'],
   standalone: true,
 })
 export class DragPreviewDirective extends DndDirective implements OnChanges {
   protected connection: DragSource<any> | undefined;
   /** The drag source for which this element will be the preview. */
-  @Input('dragPreview') public dragPreview!: DragSource<any>;
+  @Input('dragPreview') dragPreview!: DragSource<any>;
   /** Pass an options object as you would to {@link DragSource#connectDragPreview}. */
   @Input('dragPreviewOptions') dragPreviewOptions?: DragPreviewOptions;
 

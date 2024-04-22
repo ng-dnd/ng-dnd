@@ -17,7 +17,7 @@ export class DndSortableExternal<Data> implements OnChanges, OnDestroy {
    *
    * You must, like dndSortableRender, attach it with [dragSource] somewhere.
    */
-  public source: DragSource<DraggedItem<Data>>;
+  source: DragSource<DraggedItem<Data>>;
 
   /** @ignore */
   constructor(

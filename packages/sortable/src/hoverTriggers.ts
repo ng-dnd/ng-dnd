@@ -1,6 +1,5 @@
-import { HoverTrigger } from './types';
 import { Offset } from '@ng-dnd/core';
-import { RenderContext, DraggedItem } from './types';
+import { DraggedItem, HoverTrigger, RenderContext } from './types';
 
 //     ~ List ~
 // [

@@ -34,7 +34,7 @@ export class DndSortable<Data> implements OnChanges, OnInit, AfterViewInit, OnDe
   /** @ignore */
   private childrenSubject$ = new BehaviorSubject<Iterable<Data>>([]);
   /** A handy way to subscribe to spec.getList(). */
-  public children$: Observable<Iterable<Data>> = this.childrenSubject$;
+  children$: Observable<Iterable<Data>> = this.childrenSubject$;
 
   /** @ignore */
   subs = new Subscription();
@@ -91,6 +91,17 @@ export class DndSortable<Data> implements OnChanges, OnInit, AfterViewInit, OnDe
     );
   }
 
+  contextFor(data: Data, index: number): RenderContext<Data> {
+    return {
+      data,
+      index,
+      listId: this.listId,
+      spec: this.spec,
+      horizontal: this.horizontal,
+      hoverTrigger: this.hoverTrigger,
+    };
+  }
+
   /** @ignore */
   private updateSubscription() {
     const anyListId = typeof this.listId !== 'undefined' && this.listId !== null;
@@ -115,17 +126,6 @@ export class DndSortable<Data> implements OnChanges, OnInit, AfterViewInit, OnDe
         this.subs.add(this.listSubs);
       }
     }
-  }
-
-  public contextFor(data: Data, index: number): RenderContext<Data> {
-    return {
-      data,
-      index,
-      listId: this.listId,
-      spec: this.spec,
-      horizontal: this.horizontal,
-      hoverTrigger: this.hoverTrigger,
-    };
   }
 
   /** @ignore */
