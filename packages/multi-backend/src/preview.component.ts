@@ -1,17 +1,19 @@
+import { AsyncPipe, NgIf, NgTemplateOutlet } from '@angular/common';
 import {
-  Component,
-  TemplateRef,
-  ContentChild,
-  Input,
-  Inject,
   ChangeDetectionStrategy,
-  OnInit,
+  Component,
+  ContentChild,
+  Inject,
+  Input,
   OnDestroy,
+  OnInit,
+  TemplateRef,
 } from '@angular/core';
-import { BehaviorSubject } from 'rxjs';
-import { DndService, DRAG_DROP_MANAGER } from '@ng-dnd/core';
+import { DRAG_DROP_MANAGER, DndService } from '@ng-dnd/core';
 import { DragDropManager } from 'dnd-core';
-import { PreviewListener, MultiBackendSwitcher } from 'dnd-multi-backend';
+import { MultiBackendSwitcher, PreviewListener } from 'dnd-multi-backend';
+import { BehaviorSubject } from 'rxjs';
+import { DndPreviewRendererComponent } from './preview-renderer.component';
 
 export interface PreviewTemplateContext {
   /** same as type */
@@ -54,6 +56,8 @@ export interface PreviewTemplateContext {
     </ng-container>
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: true,
+  imports: [AsyncPipe, NgIf, NgTemplateOutlet, DndPreviewRendererComponent],
 })
 export class DndPreviewComponent implements PreviewListener, OnInit, OnDestroy {
   /** Disables the check for whether the current MultiBackend wants the preview enabled */

@@ -7,5 +7,6 @@ export interface TemplateContext<Data> {
 
 @Directive({
   selector: '[dndSortableTemplate]',
+  standalone: true,
 })
 export class DndSortableTemplate {}

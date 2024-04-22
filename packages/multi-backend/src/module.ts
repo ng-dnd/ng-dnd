@@ -1,14 +1,13 @@
-import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { DndPreviewComponent } from './preview.component';
+import { NgModule } from '@angular/core';
 import { DndPreviewRendererComponent } from './preview-renderer.component';
+import { DndPreviewComponent } from './preview.component';
 
 /** @ignore */
 const EXPORTS = [DndPreviewComponent, DndPreviewRendererComponent];
 
 @NgModule({
-  imports: [CommonModule],
-  declarations: EXPORTS,
+  imports: [CommonModule, EXPORTS],
   exports: EXPORTS,
 })
 export class DndMultiBackendModule {}

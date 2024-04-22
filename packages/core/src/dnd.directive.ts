@@ -2,9 +2,9 @@ import { Directive, ElementRef, Input, NgZone, OnChanges, OnDestroy } from '@ang
 
 import { invariant } from './internal/invariant';
 
-import { DropTarget, DragSource } from './connection-types';
-import { DragSourceOptions, DragPreviewOptions } from './connectors';
 import { Subscription } from 'rxjs';
+import { DragSource, DropTarget } from './connection-types';
+import { DragPreviewOptions, DragSourceOptions } from './connectors';
 import { TypeOrTypeArray } from './type-ish';
 
 /** @ignore */
@@ -15,13 +15,17 @@ const explanation =
 /** @ignore */
 @Directive({
   selector: '[abstractDndDirective]',
+  standalone: true,
 })
 export class DndDirective implements OnChanges, OnDestroy {
   protected connection: any;
   private deferredRequest = new Subscription();
 
   /** @ignore */
-  constructor(protected elRef: ElementRef, private zone: NgZone) {}
+  constructor(
+    protected elRef: ElementRef,
+    private zone: NgZone
+  ) {}
 
   ngOnChanges() {
     invariant(typeof this.connection === 'object' && !Array.isArray(this.connection), explanation);
@@ -53,6 +57,7 @@ export class DndDirective implements OnChanges, OnDestroy {
  */
 @Directive({
   selector: '[dropTarget]',
+  standalone: true,
 })
 export class DropTargetDirective extends DndDirective implements OnChanges {
   protected connection: DropTarget | undefined;
@@ -85,6 +90,7 @@ export class DropTargetDirective extends DndDirective implements OnChanges {
 /** Allows you to connect a {@link DragSource} to an element in a component template. */
 @Directive({
   selector: '[dragSource]',
+  standalone: true,
 })
 export class DragSourceDirective extends DndDirective implements OnChanges {
   protected connection: DragSource<any> | undefined;
@@ -131,6 +137,7 @@ export class DragSourceDirective extends DndDirective implements OnChanges {
 @Directive({
   selector: '[dragPreview]',
   inputs: ['dragPreview', 'dragPreviewOptions'],
+  standalone: true,
 })
 export class DragPreviewDirective extends DndDirective implements OnChanges {
   protected connection: DragSource<any> | undefined;

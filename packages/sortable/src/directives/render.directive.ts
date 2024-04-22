@@ -1,22 +1,22 @@
 import {
-  Directive,
-  Input,
-  ElementRef,
-  OnInit,
-  OnDestroy,
-  OnChanges,
   AfterViewInit,
+  Directive,
+  ElementRef,
+  Input,
+  OnChanges,
+  OnDestroy,
+  OnInit,
 } from '@angular/core';
 import {
   DndService,
   DragSource,
-  DropTarget,
   DragSourceMonitor,
+  DropTarget,
   DropTargetMonitor,
 } from '@ng-dnd/core';
 import { Observable, Subscription } from 'rxjs';
-import { DraggedItem, Size, RenderContext } from '../types';
 import { getSuggester } from '../hoverTriggers';
+import { DraggedItem, RenderContext, Size } from '../types';
 
 /** @ignore */
 const _scheduleMicroTaskPolyfill: (f: () => void) => any =
@@ -25,6 +25,7 @@ const _scheduleMicroTaskPolyfill: (f: () => void) => any =
 @Directive({
   selector: '[dndSortableRender]',
   exportAs: 'dndSortableRender',
+  standalone: true,
 })
 export class DndSortableRenderer<Data> implements OnChanges, OnInit, AfterViewInit, OnDestroy {
   @Input('dndSortableRender') context!: RenderContext<Data>;

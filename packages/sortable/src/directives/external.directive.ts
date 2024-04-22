@@ -1,12 +1,13 @@
-import { Directive, Input, ElementRef, OnChanges, OnDestroy } from '@angular/core';
+import { Directive, ElementRef, Input, OnChanges, OnDestroy } from '@angular/core';
 import { DndService, DragSource } from '@ng-dnd/core';
-import { DraggedItem, SortableSpec, Size } from '../types';
+import { DraggedItem, Size, SortableSpec } from '../types';
 
 export const EXTERNAL_LIST_ID: symbol = Symbol('EXTERNAL_LIST_ID');
 
 @Directive({
   selector: '[dndSortableExternal]',
   exportAs: 'dndSortableExternal',
+  standalone: true,
 })
 export class DndSortableExternal<Data> implements OnChanges, OnDestroy {
   @Input('dndSortableExternal') spec!: SortableSpec<Data>;
@@ -19,7 +20,10 @@ export class DndSortableExternal<Data> implements OnChanges, OnDestroy {
   public source: DragSource<DraggedItem<Data>>;
 
   /** @ignore */
-  constructor(private dnd: DndService, private el: ElementRef<Element>) {
+  constructor(
+    private dnd: DndService,
+    private el: ElementRef<Element>
+  ) {
     this.source = this.dnd.dragSource<DraggedItem<Data>>(null, {
       canDrag: monitor => {
         if (this.spec && this.spec.canDrag) {

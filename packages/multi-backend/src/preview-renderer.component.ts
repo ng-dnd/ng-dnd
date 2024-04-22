@@ -1,3 +1,4 @@
+import { AsyncPipe } from '@angular/common';
 import { Component, ChangeDetectionStrategy, OnDestroy } from '@angular/core';
 import { DndService, Offset } from '@ng-dnd/core';
 import { map } from 'rxjs/operators';
@@ -16,7 +17,7 @@ import { map } from 'rxjs/operators';
 @Component({
   selector: 'dnd-preview-renderer',
   template: `
-    <div class="firefox-bug" [ngStyle]="style$ | async">
+    <div class="firefox-bug" [style]="style$ | async">
       <ng-content></ng-content>
     </div>
   `,
@@ -49,6 +50,8 @@ import { map } from 'rxjs/operators';
     `,
   ],
   changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: true,
+  imports: [AsyncPipe],
 })
 export class DndPreviewRendererComponent implements OnDestroy {
   /** @ignore */

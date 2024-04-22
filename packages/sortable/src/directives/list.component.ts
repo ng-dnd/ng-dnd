@@ -1,46 +1,44 @@
+import { NgFor, NgTemplateOutlet } from '@angular/common';
 import {
-  Component,
-  Input,
-  TemplateRef,
+  AfterContentInit,
+  AfterViewInit,
   ChangeDetectionStrategy,
   ChangeDetectorRef,
-  OnDestroy,
-  OnChanges,
-  AfterViewInit,
-  AfterContentInit,
+  Component,
+  ContentChildren,
   ElementRef,
+  Input,
+  OnChanges,
+  OnDestroy,
+  OnInit,
   QueryList,
   SimpleChanges,
-  ContentChildren,
-  OnInit,
+  TemplateRef,
 } from '@angular/core';
 import { DndService } from '@ng-dnd/core';
-import { DndSortableTemplate, TemplateContext } from './template.directive';
 import { DndSortable } from './sortable.directive';
+import { DndSortableTemplate, TemplateContext } from './template.directive';
 
 @Component({
   selector: 'dnd-sortable-list',
-  changeDetection: ChangeDetectionStrategy.OnPush,
   template: `
     <ng-container *ngFor="let card of children; let i = index; trackBy: trackById">
       <ng-container *ngTemplateOutlet="template; context: { $implicit: contextFor(card, i) }">
       </ng-container>
     </ng-container>
-  `,
+    `,
   styles: [
     `
       :host {
         display: block;
       }
-    `,
+      `,
   ],
+  changeDetection: ChangeDetectionStrategy.OnPush,
   // allow injecting the directive and getting the component
-  providers: [
-    {
-      provide: DndSortable,
-      useExisting: DndSortableList,
-    },
-  ],
+  providers: [{ provide: DndSortable, useExisting: DndSortableList }],
+  standalone: true,
+  imports: [NgFor, NgTemplateOutlet],
 })
 export class DndSortableList<Data>
   extends DndSortable<Data>

@@ -1,22 +1,23 @@
 import {
-  Input,
+  AfterViewInit,
+  ChangeDetectorRef,
   Directive,
-  OnInit,
+  ElementRef,
+  Input,
   OnChanges,
   OnDestroy,
-  AfterViewInit,
-  ElementRef,
+  OnInit,
   SimpleChanges,
-  ChangeDetectorRef,
 } from '@angular/core';
-import { BehaviorSubject, Observable, Subscription } from 'rxjs';
 import { DndService, DropTarget, DropTargetMonitor } from '@ng-dnd/core';
-import { SortableSpec, DraggedItem, RenderContext, HoverTrigger } from '../types';
+import { BehaviorSubject, Observable, Subscription } from 'rxjs';
 import { isEmpty } from '../isEmpty';
+import { DraggedItem, HoverTrigger, RenderContext, SortableSpec } from '../types';
 
 @Directive({
   selector: '[dndSortable]',
   exportAs: 'dndSortable',
+  standalone: true,
 })
 export class DndSortable<Data> implements OnChanges, OnInit, AfterViewInit, OnDestroy {
   @Input() listId: any = Math.random().toString();

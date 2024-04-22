@@ -1,23 +1,23 @@
-import { NgModule, ModuleWithProviders, NgZone } from '@angular/core';
+import { ModuleWithProviders, NgModule, NgZone } from '@angular/core';
 
 import { DndService } from './connector.service';
 import {
   DndDirective,
+  DragPreviewDirective,
   DragSourceDirective,
   DropTargetDirective,
-  DragPreviewDirective,
 } from './dnd.directive';
 
 import {
   DRAG_DROP_BACKEND,
+  DRAG_DROP_BACKEND_DEBUG_MODE,
   DRAG_DROP_BACKEND_FACTORY,
   DRAG_DROP_BACKEND_OPTIONS,
-  DRAG_DROP_BACKEND_DEBUG_MODE,
-  DRAG_DROP_MANAGER,
   DRAG_DROP_GLOBAL_CONTEXT,
+  DRAG_DROP_MANAGER,
 } from './tokens';
 
-import { createDragDropManager, BackendFactory, DragDropManager, Backend } from 'dnd-core';
+import { Backend, BackendFactory, DragDropManager, createDragDropManager } from 'dnd-core';
 
 import { invariant } from './internal/invariant';
 
@@ -137,7 +137,7 @@ const EXPORTS = [DndDirective, DragSourceDirective, DropTargetDirective, DragPre
 
 // @dynamic
 @NgModule({
-  declarations: EXPORTS,
+  imports: EXPORTS,
   exports: EXPORTS,
 })
 export class DndModule {
