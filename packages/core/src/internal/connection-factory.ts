@@ -1,14 +1,14 @@
 import { NgZone } from '@angular/core';
 import { Backend, DragDropManager } from 'dnd-core';
 import { BehaviorSubject, Observable, ReplaySubject, Subscription, TeardownLogic } from 'rxjs';
-import { distinctUntilChanged, map, switchMapTo, take } from 'rxjs/operators';
+import { distinctUntilChanged, map, switchMap, take } from 'rxjs/operators';
 import { TYPE_DYNAMIC } from '../tokens';
 import { TypeOrTypeArray } from '../type-ish';
 import { invariant } from './invariant';
 
 import { areCollectsEqual } from '../utils/areCollectsEqual';
 
-import * as t from '../connection-types';
+import { DragSource, DropTarget } from '../connection-types';
 import {
   DragPreviewOptions,
   DragSourceConnector,
@@ -97,7 +97,7 @@ export class Connection<TMonitor extends DragSourceMonitor | DropTargetMonitor, 
       // this ensures we don't start emitting values until there is a type resolved
       take(1),
       // switch our attention to the incoming firehose of 'something changed' events
-      switchMapTo(this.collector$),
+      switchMap(() => this.collector$),
       // turn them into 'interesting state' via the monitor and a user-provided function
       map(mapFn),
       // don't emit EVERY time the firehose says something changed, only when the interesting state changes
@@ -113,7 +113,7 @@ export class Connection<TMonitor extends DragSourceMonitor | DropTargetMonitor, 
     this.handlerConnector.reconnect();
   };
 
-  connect(fn: (connector: TConnector) => void): Subscription {
+  connect(fn: (connector: TConnector) => void) {
     const subscription = this.resolvedType$.pipe(take(1)).subscribe(() => {
       // must run inside dndZone, so things like timers firing after a long hover with touch backend
       // will cause change detection (via executing a macro or event task)
@@ -140,16 +140,16 @@ export class Connection<TMonitor extends DragSourceMonitor | DropTargetMonitor, 
     return subscription;
   }
 
-  connectDropTarget(node: Node): Subscription {
-    return this.connect(c => (c as any as DropTargetConnector).dropTarget(node));
+  connectDropTarget(node: Node) {
+    return this.connect(c => (c as DropTargetConnector).dropTarget(node));
   }
 
-  connectDragSource(node: Node, options: DragSourceOptions): Subscription {
-    return this.connect(c => (c as any as DragSourceConnector).dragSource(node, options));
+  connectDragSource(node: Node, options: DragSourceOptions) {
+    return this.connect(c => (c as DragSourceConnector).dragSource(node, options));
   }
 
-  connectDragPreview(node: Node, options: DragPreviewOptions): Subscription {
-    return this.connect(c => (c as any as DragSourceConnector).dragPreview(node, options));
+  connectDragPreview(node: Node, options: DragPreviewOptions) {
+    return this.connect(c => (c as DragSourceConnector).dragPreview(node, options));
   }
 
   setTypes(type: TypeOrTypeArray) {
@@ -230,7 +230,7 @@ export interface SourceConstructor<Item = unknown, DropResult = unknown> {
     manager: DragDropManager,
     dndZone: Zone,
     initialType: string | symbol | undefined
-  ): t.DragSource<Item, DropResult>;
+  ): DragSource<Item, DropResult>;
 }
 export interface TargetConstructor {
   new (
@@ -238,7 +238,7 @@ export interface TargetConstructor {
     manager: DragDropManager,
     dndZone: Zone,
     initialType: TypeOrTypeArray | undefined
-  ): t.DropTarget;
+  ): DropTarget;
 }
 
 export const TargetConnection = Connection as TargetConstructor;

@@ -35,14 +35,14 @@ export function unpackBackendForEs5Users(backendOrModule: any) {
   return backend;
 }
 
-// TODO allow injecting window
+// TODO: allow injecting window
 /** @ignore */
 // @dynamic
 export function managerFactory(
   backendFactory: BackendFactory,
   zone: NgZone,
-  context: any,
-  backendOptions?: any,
+  context: unknown,
+  backendOptions?: unknown,
   debugMode?: boolean
 ): DragDropManager {
   backendFactory = unpackBackendForEs5Users(backendFactory);
