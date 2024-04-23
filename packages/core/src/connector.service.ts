@@ -57,7 +57,7 @@ export interface AddSubscription extends SubscriptionLike {
  *
  * It is a good habit for avoiding leaked subscriptions, because .
  */
-@Injectable()
+@Injectable({ providedIn: 'root' })
 export class DndService {
   /** @ignore */
   private dndZone: Zone = Zone.root.fork({

@@ -1,6 +1,5 @@
-import { ModuleWithProviders, NgModule, NgZone } from '@angular/core';
+import { ModuleWithProviders, NgModule, NgZone, Provider } from '@angular/core';
 
-import { DndService } from './connector.service';
 import {
   DndDirective,
   DragPreviewDirective,
@@ -146,45 +145,50 @@ export class DndModule {
   ): ModuleWithProviders<DndModule> {
     return {
       ngModule: DndModule,
-      providers: [
-        {
-          provide: DRAG_DROP_BACKEND_FACTORY,
-          // whichever one they have provided, the other will be undefined
-          useValue: (backendOrBackendFactory as BackendInput).backend,
-          useFactory: (backendOrBackendFactory as BackendFactoryInput).backendFactory,
-        },
-        {
-          provide: DRAG_DROP_BACKEND_OPTIONS,
-          // whichever one they have provided, the other will be undefined
-          useValue: (backendOrBackendFactory as BackendInput).options,
-        },
-        {
-          provide: DRAG_DROP_BACKEND_DEBUG_MODE,
-          // whichever one they have provided, the other will be undefined
-          useValue: backendOrBackendFactory.debug,
-        },
-        {
-          provide: DRAG_DROP_GLOBAL_CONTEXT,
-          useFactory: getGlobalContext,
-        },
-        {
-          provide: DRAG_DROP_MANAGER,
-          useFactory: managerFactory,
-          deps: [
-            DRAG_DROP_BACKEND_FACTORY,
-            NgZone,
-            DRAG_DROP_GLOBAL_CONTEXT,
-            DRAG_DROP_BACKEND_OPTIONS,
-            DRAG_DROP_BACKEND_DEBUG_MODE,
-          ],
-        },
-        {
-          provide: DRAG_DROP_BACKEND,
-          deps: [DRAG_DROP_MANAGER],
-          useFactory: getBackend,
-        },
-        DndService,
-      ],
+      providers: [provideDnd(backendOrBackendFactory)],
     };
   }
+}
+
+export function provideDnd(
+  backendOrBackendFactory: BackendInput | BackendFactoryInput
+): Provider[] {
+  return [
+    {
+      provide: DRAG_DROP_BACKEND_FACTORY,
+      // whichever one they have provided, the other will be undefined
+      useValue: (backendOrBackendFactory as BackendInput).backend,
+      useFactory: (backendOrBackendFactory as BackendFactoryInput).backendFactory,
+    },
+    {
+      provide: DRAG_DROP_BACKEND_OPTIONS,
+      // whichever one they have provided, the other will be undefined
+      useValue: (backendOrBackendFactory as BackendInput).options,
+    },
+    {
+      provide: DRAG_DROP_BACKEND_DEBUG_MODE,
+      // whichever one they have provided, the other will be undefined
+      useValue: backendOrBackendFactory.debug,
+    },
+    {
+      provide: DRAG_DROP_GLOBAL_CONTEXT,
+      useFactory: getGlobalContext,
+    },
+    {
+      provide: DRAG_DROP_MANAGER,
+      useFactory: managerFactory,
+      deps: [
+        DRAG_DROP_BACKEND_FACTORY,
+        NgZone,
+        DRAG_DROP_GLOBAL_CONTEXT,
+        DRAG_DROP_BACKEND_OPTIONS,
+        DRAG_DROP_BACKEND_DEBUG_MODE,
+      ],
+    },
+    {
+      provide: DRAG_DROP_BACKEND,
+      deps: [DRAG_DROP_MANAGER],
+      useFactory: getBackend,
+    },
+  ];
 }
