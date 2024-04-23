@@ -13,7 +13,7 @@ import { DRAG_DROP_MANAGER, DndService } from '@ng-dnd/core';
 import { DragDropManager } from 'dnd-core';
 import { MultiBackendSwitcher, PreviewListener } from 'dnd-multi-backend';
 import { BehaviorSubject } from 'rxjs';
-import { DndPreviewRendererComponent } from './preview-renderer.component';
+import { DndPreviewRenderer } from './preview-renderer';
 
 export interface PreviewTemplateContext {
   /** same as type */
@@ -57,9 +57,9 @@ export interface PreviewTemplateContext {
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
   standalone: true,
-  imports: [AsyncPipe, NgIf, NgTemplateOutlet, DndPreviewRendererComponent],
+  imports: [AsyncPipe, NgIf, NgTemplateOutlet, DndPreviewRenderer],
 })
-export class DndPreviewComponent implements PreviewListener, OnInit, OnDestroy {
+export class DndPreview implements PreviewListener, OnInit, OnDestroy {
   /** Disables the check for whether the current MultiBackend wants the preview enabled */
   @Input() allBackends = false;
 

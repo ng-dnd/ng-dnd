@@ -1,10 +1,9 @@
-import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
-import { DndSortableExternal } from './directives/external.directive';
-import { DndSortableList } from './directives/list.component';
-import { DndSortableRenderer } from './directives/render.directive';
-import { DndSortable } from './directives/sortable.directive';
-import { DndSortableTemplate } from './directives/template.directive';
+import { DndSortable } from './directives/sortable';
+import { DndSortableExternal } from './directives/sortable-external';
+import { DndSortableList } from './directives/sortable-list';
+import { DndSortableRenderer } from './directives/sortable-render';
+import { DndSortableTemplate } from './directives/sortable-template';
 
 /** @ignore */
 const EXPORTS = [
@@ -16,7 +15,7 @@ const EXPORTS = [
 ];
 
 @NgModule({
-  imports: [CommonModule, EXPORTS],
+  imports: EXPORTS,
   exports: EXPORTS,
 })
 export class DndSortableModule {}

@@ -14,7 +14,7 @@ const explanation =
 
 /** @ignore */
 @Directive({
-  selector: '[abstractDndDirective]',
+  selector: '[abstractDnd]',
   standalone: true,
 })
 export class DndDirective implements OnChanges, OnDestroy {

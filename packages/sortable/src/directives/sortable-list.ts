@@ -16,8 +16,8 @@ import {
   TemplateRef,
 } from '@angular/core';
 import { DndService } from '@ng-dnd/core';
-import { DndSortable } from './sortable.directive';
-import { DndSortableTemplate, TemplateContext } from './template.directive';
+import { DndSortable } from './sortable';
+import { DndSortableTemplate, TemplateContext } from './sortable-template';
 
 @Component({
   selector: 'dnd-sortable-list',

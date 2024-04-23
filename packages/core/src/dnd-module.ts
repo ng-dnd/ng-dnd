@@ -5,7 +5,7 @@ import {
   DragPreviewDirective,
   DragSourceDirective,
   DropTargetDirective,
-} from './dnd.directive';
+} from './dnd-directives';
 
 import {
   DRAG_DROP_BACKEND,

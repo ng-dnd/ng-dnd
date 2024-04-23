@@ -1,5 +1,5 @@
+import { DragSourceMonitor, DropTargetMonitor } from '@ng-dnd/core';
 import { Observable } from 'rxjs';
-import { DropTargetMonitor, DragSourceMonitor } from '@ng-dnd/core';
 
 export interface SortableSpec<Data, Type = string | symbol> {
   /**

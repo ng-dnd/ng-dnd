@@ -1,6 +1,6 @@
-import { SortableSpec, DraggedItem } from './types';
-import { DropTargetMonitor, DragSourceMonitor } from '@ng-dnd/core';
+import { DragSourceMonitor, DropTargetMonitor } from '@ng-dnd/core';
 import { Observable } from 'rxjs';
+import { DraggedItem, SortableSpec } from './types';
 
 export enum SortableEvents {
   BeginDrag = 'BeginDrag',
