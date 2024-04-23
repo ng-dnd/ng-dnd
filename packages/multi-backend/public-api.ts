@@ -10,7 +10,7 @@ export {
   MouseTransition,
 } from 'dnd-multi-backend';
 
-export { HTML5ToTouch, createDefaultMultiBackend } from './src/HTML5ToTouch';
+export { HTML5ToTouch } from './src/HTML5ToTouch';
 export { DndMultiBackendModule } from './src/module';
 export { DndPreviewComponent } from './src/preview.component';
 export { DndPreviewRendererComponent } from './src/preview-renderer.component';

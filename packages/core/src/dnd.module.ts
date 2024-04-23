@@ -16,7 +16,7 @@ import {
   DRAG_DROP_MANAGER,
 } from './tokens';
 
-import { Backend, BackendFactory, DragDropManager, createDragDropManager } from 'dnd-core';
+import { BackendFactory, DragDropManager, createDragDropManager } from 'dnd-core';
 
 import { invariant } from './internal/invariant';
 
@@ -53,14 +53,14 @@ export function managerFactory(
 
 /** @ignore */
 // @dynamic
-export function getBackend(manager: DragDropManager): Backend {
+export function getBackend(manager: DragDropManager) {
   return manager.getBackend();
 }
 
 /** @ignore */
 declare const global: any;
 /** @ignore */
-export function getGlobalContext(): any {
+export function getGlobalContext() {
   return typeof global !== 'undefined' ? global : (window as any);
 }
 
@@ -99,38 +99,6 @@ export interface BackendInput {
   debug?: boolean;
 }
 
-/**
- * DEPRECATED / @deprecated
- *
- * To configure backends, prefer using the new `{ backend: SomeBackend, options: { ... } }` pattern.
- * This used to be necessary for configuring backends in AOT mode, but with the new API,
- * it is completely unnecessary.
- *
- * This would be more aptly named as 'backendFactoryFactory'. Example:
- *
- * ```typescript
- * // must export for use with Angular's AOT compilation.
- * export function MyBackendFactory(): BackendFactory {
- *     return (manager, context) => SomeBackend({ options: "here" })(manager, context);
- * }
- * forRoot({ backendFactory: MyBackendFactory })
- * ```
- */
-export interface BackendFactoryInput {
-  /**
-   * DEPRECATED / @deprecated
-   *
-   * To configure backends, prefer using the new `{ backend: SomeBackend, options: { ... } }`
-   * pattern. See {@link BackendFactoryInput}
-   */
-  backendFactory: () => BackendFactory;
-  /**
-   * Whether dnd-core should enable debugging, which lets you see dnd-core actions
-   * in the Redux extension for Chrome.
-   */
-  debug?: boolean;
-}
-
 /** @ignore */
 const EXPORTS = [DndDirective, DragSourceDirective, DropTargetDirective, DragPreviewDirective];
 
@@ -140,35 +108,27 @@ const EXPORTS = [DndDirective, DragSourceDirective, DropTargetDirective, DragPre
   exports: EXPORTS,
 })
 export class DndModule {
-  static forRoot(
-    backendOrBackendFactory: BackendInput | BackendFactoryInput
-  ): ModuleWithProviders<DndModule> {
+  static forRoot(backendInput: BackendInput): ModuleWithProviders<DndModule> {
     return {
       ngModule: DndModule,
-      providers: [provideDnd(backendOrBackendFactory)],
+      providers: [provideDnd(backendInput)],
     };
   }
 }
 
-export function provideDnd(
-  backendOrBackendFactory: BackendInput | BackendFactoryInput
-): Provider[] {
+export function provideDnd(backendInput: BackendInput): Provider[] {
   return [
     {
       provide: DRAG_DROP_BACKEND_FACTORY,
-      // whichever one they have provided, the other will be undefined
-      useValue: (backendOrBackendFactory as BackendInput).backend,
-      useFactory: (backendOrBackendFactory as BackendFactoryInput).backendFactory,
+      useValue: backendInput.backend,
     },
     {
       provide: DRAG_DROP_BACKEND_OPTIONS,
-      // whichever one they have provided, the other will be undefined
-      useValue: (backendOrBackendFactory as BackendInput).options,
+      useValue: backendInput.options,
     },
     {
       provide: DRAG_DROP_BACKEND_DEBUG_MODE,
-      // whichever one they have provided, the other will be undefined
-      useValue: backendOrBackendFactory.debug,
+      useValue: backendInput.debug,
     },
     {
       provide: DRAG_DROP_GLOBAL_CONTEXT,

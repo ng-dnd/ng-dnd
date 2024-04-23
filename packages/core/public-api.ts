@@ -1,6 +1,6 @@
 // import no symbols to get typings but not execute the monkey-patching module loader
 
-export { DndModule, BackendInput, BackendFactoryInput } from './src/dnd.module';
+export { DndModule, BackendInput } from './src/dnd.module';
 
 export { DragSourceMonitor } from './src/source-monitor';
 export { DropTargetMonitor } from './src/target-monitor';
