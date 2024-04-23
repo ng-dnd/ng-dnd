@@ -8,13 +8,13 @@
     "sourceMap": true,
     "declaration": false,
     "downlevelIteration": true,
-    "module": "es2020",
+    "module": "ES2022",
     "moduleResolution": "node",
     "experimentalDecorators": true,
     "importHelpers": true,
     "target": "ES2022",
     "lib": [
-      "es2019",
+      "ES2022",
       "dom"
     ],
     "paths": {
