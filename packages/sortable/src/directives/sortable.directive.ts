@@ -173,7 +173,7 @@ export class DndSortable<Data> implements OnChanges, OnInit, AfterViewInit, OnDe
   acceptsType(ty: string | symbol | null) {
     if (ty == null) return false;
     if (Array.isArray(this.spec.accepts)) {
-      const arr = this.spec.accepts as Array<string | symbol>;
+      const arr = this.spec.accepts;
       return arr.indexOf(ty) !== -1;
     } else {
       const acc = this.getTargetType();

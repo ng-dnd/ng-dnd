@@ -51,7 +51,7 @@ export class Target implements DropTarget {
   }
 }
 
-export function createTargetFactory(spec: DropTargetSpec, zone: Zone): any {
+export function createTargetFactory(spec: DropTargetSpec, zone: Zone) {
   return function createTarget(monitor: any): DropTarget {
     return new Target(spec, zone, monitor);
   };

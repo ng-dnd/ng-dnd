@@ -45,7 +45,7 @@ export class DndDirective implements OnChanges, OnDestroy {
     this.deferredRequest.unsubscribe();
   }
 
-  protected callHooks(_conn: any): Subscription {
+  protected callHooks(_conn: any) {
     return new Subscription();
   }
 }
@@ -80,7 +80,7 @@ export class DropTargetDirective extends DndDirective implements OnChanges {
     super.ngOnChanges();
   }
 
-  protected callHooks(conn: DropTarget): Subscription {
+  protected callHooks(conn: DropTarget) {
     return conn.connectDropTarget(this.elRef.nativeElement);
   }
 }
@@ -116,7 +116,7 @@ export class DragSourceDirective extends DndDirective implements OnChanges {
     super.ngOnChanges();
   }
 
-  protected callHooks(conn: DragSource<any>): Subscription {
+  protected callHooks(conn: DragSource<any>) {
     const sub = new Subscription();
     sub.add(conn.connectDragSource(this.elRef.nativeElement, this.dragSourceOptions));
     if (this.noHTML5Preview) {

@@ -16,7 +16,7 @@ class DropTargetMonitorClass implements DropTargetMonitor {
     this.targetId = targetId;
   }
 
-  canDrop(): boolean {
+  canDrop() {
     invariant(
       !isCallingCanDrop,
       'You may not call monitor.canDrop() inside your canDrop() implementation. ' +
@@ -31,7 +31,7 @@ class DropTargetMonitorClass implements DropTargetMonitor {
     }
   }
 
-  isOver(options = { shallow: false }): boolean {
+  isOver(options = { shallow: false }) {
     return this.internalMonitor.isOverTarget(this.targetId, options);
   }
 
@@ -47,7 +47,7 @@ class DropTargetMonitorClass implements DropTargetMonitor {
     return this.internalMonitor.getDropResult();
   }
 
-  didDrop(): boolean {
+  didDrop() {
     return this.internalMonitor.didDrop();
   }
 

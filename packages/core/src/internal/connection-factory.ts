@@ -1,23 +1,22 @@
-import { Backend, DragDropManager } from 'dnd-core';
 import { NgZone } from '@angular/core';
-import { invariant } from './invariant';
-import { TypeOrTypeArray } from '../type-ish';
-import { Subscription, Observable, ReplaySubject, BehaviorSubject, TeardownLogic } from 'rxjs';
+import { Backend, DragDropManager } from 'dnd-core';
+import { BehaviorSubject, Observable, ReplaySubject, Subscription, TeardownLogic } from 'rxjs';
+import { distinctUntilChanged, map, switchMapTo, take } from 'rxjs/operators';
 import { TYPE_DYNAMIC } from '../tokens';
-
-import { take, map, distinctUntilChanged, switchMapTo } from 'rxjs/operators';
+import { TypeOrTypeArray } from '../type-ish';
+import { invariant } from './invariant';
 
 import { areCollectsEqual } from '../utils/areCollectsEqual';
 
-import { DropTargetMonitor } from '../target-monitor';
-import { DragSourceMonitor } from '../source-monitor';
 import * as t from '../connection-types';
 import {
-  DropTargetConnector,
+  DragPreviewOptions,
   DragSourceConnector,
   DragSourceOptions,
-  DragPreviewOptions,
+  DropTargetConnector,
 } from '../connectors';
+import { DragSourceMonitor } from '../source-monitor';
+import { DropTargetMonitor } from '../target-monitor';
 import { Connector } from './createSourceConnector';
 import { scheduleMicroTaskAfter } from './scheduleMicroTaskAfter';
 

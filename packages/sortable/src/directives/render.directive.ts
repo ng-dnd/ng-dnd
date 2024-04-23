@@ -84,7 +84,10 @@ export class DndSortableRenderer<Data> implements OnChanges, OnInit, AfterViewIn
   isDragging$: Observable<boolean>;
 
   /** @ignore */
-  constructor(private dnd: DndService, private el: ElementRef<HTMLElement>) {
+  constructor(
+    private dnd: DndService,
+    private el: ElementRef<HTMLElement>
+  ) {
     this.target = this.dnd.dropTarget<DraggedItem<Data>>(
       null,
       {
@@ -175,7 +178,7 @@ export class DndSortableRenderer<Data> implements OnChanges, OnInit, AfterViewIn
   }
 
   /** @ignore */
-  private hover(monitor: DropTargetMonitor<DraggedItem<Data>>): void {
+  private hover(monitor: DropTargetMonitor<DraggedItem<Data>>) {
     const item = monitor.getItem();
     const clientOffset = monitor.getClientOffset();
     if (item == null || clientOffset == null) {

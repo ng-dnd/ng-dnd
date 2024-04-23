@@ -4,9 +4,9 @@
 /** a second comment */
 
 /// <reference types="zone.js" />
-import { Injectable, Inject, NgZone } from '@angular/core';
-import { TYPE_DYNAMIC, DRAG_DROP_MANAGER } from './tokens';
+import { Inject, Injectable, NgZone } from '@angular/core';
 import { DragDropManager } from 'dnd-core';
+import { DRAG_DROP_MANAGER, TYPE_DYNAMIC } from './tokens';
 
 import { DropTargetSpec } from './drop-target-specification';
 import createTargetConnector from './internal/createTargetConnector';
@@ -17,15 +17,15 @@ import createSourceConnector from './internal/createSourceConnector';
 import registerSource from './internal/register-source';
 
 import { SubscriptionLike, TeardownLogic } from 'rxjs';
-import { TypeOrTypeArray } from './type-ish';
 import { SourceConnection, TargetConnection } from './internal/connection-factory';
 import { DragLayerConnectionClass } from './internal/drag-layer-connection';
+import { TypeOrTypeArray } from './type-ish';
 
-import { DragSource, DropTarget, DragLayer } from './connection-types';
+import { DragLayer, DragSource, DropTarget } from './connection-types';
+import { createSourceFactory } from './internal/createSourceFactory';
 import { createSourceMonitor } from './internal/createSourceMonitor';
 import { createTargetFactory } from './internal/createTargetFactory';
 import { createTargetMonitor } from './internal/createTargetMonitor';
-import { createSourceFactory } from './internal/createSourceFactory';
 
 /**
  * Represents an RxJS Subscription, with multi-version compatibility.
@@ -60,7 +60,7 @@ export interface AddSubscription extends SubscriptionLike {
 @Injectable({ providedIn: 'root' })
 export class DndService {
   /** @ignore */
-  private dndZone: Zone = Zone.root.fork({
+  private dndZone = Zone.root.fork({
     name: 'dndZone',
     onHasTask: (_parentZoneDelegate, _currentZone, _targetZone, state) => {
       // when we've | drained the microTask queue; or                    | ... run a change detection cycle.
@@ -120,9 +120,9 @@ export class DndService {
   ): DropTarget<Item, DropResult> {
     // return this.ngZone.runOutsideAngular(() => {
     return this.dndZone.run(() => {
-      const createTarget: any = createTargetFactory(spec, this.dndZone);
+      const createTarget = createTargetFactory(spec, this.dndZone);
 
-      const conn: any = new TargetConnection(
+      const conn = new TargetConnection(
         {
           createHandler: createTarget,
           registerHandler: registerTarget,

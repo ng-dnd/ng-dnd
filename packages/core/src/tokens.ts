@@ -2,8 +2,8 @@
  * @module Misc
  */
 
-import { DragDropManager, BackendFactory, Backend } from 'dnd-core';
 import { InjectionToken } from '@angular/core';
+import { Backend, BackendFactory, DragDropManager } from 'dnd-core';
 
 /** The injection token for the dnd-core compatible backend currently in use. */
 export const DRAG_DROP_BACKEND = new InjectionToken<Backend>('dnd-core compatible backend');
