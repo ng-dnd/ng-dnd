@@ -35,7 +35,7 @@ export class Target implements DropTarget {
       return;
     }
     this.withChangeDetection(() => {
-      this.spec.hover && this.spec.hover(this.monitor);
+      this.spec.hover?.(this.monitor);
     });
   }
 
@@ -45,8 +45,7 @@ export class Target implements DropTarget {
     }
 
     return this.withChangeDetection(() => {
-      const dropResult = this.spec.drop && this.spec.drop(this.monitor);
-      return dropResult;
+      return this.spec.drop?.(this.monitor);
     });
   }
 }

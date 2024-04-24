@@ -25,7 +25,7 @@ export class ZoneSubscriber<T> extends Subscriber<T> {
     super(destination);
   }
   protected _next(val: T) {
-    this.destination.next && this.destination.next(val);
+    this.destination.next?.(val);
     this.zone.scheduleMicroTask('ZoneSubscriber', this.uTask);
   }
 }
@@ -34,7 +34,10 @@ export class ZoneSubscriber<T> extends Subscriber<T> {
  * @ignore
  */
 export class RunInZoneOperator<T, R> implements Operator<T, R> {
-  constructor(private zone: Zone, private uTask?: () => void) {}
+  constructor(
+    private zone: Zone,
+    private uTask?: () => void
+  ) {}
   call(subscriber: Subscriber<R>, source: any): TeardownLogic {
     return source.subscribe(new ZoneSubscriber(subscriber, this.zone, this.uTask));
   }

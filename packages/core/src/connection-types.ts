@@ -68,7 +68,7 @@ export interface ConnectionBase<TMonitor> extends SubscriptionLike {
    *       ...spec,
    *       hover: monitor => {
    *       subj.next();
-   *       spec.hover && spec.hover(monitor);
+   *       spec.hover?.(monitor);
    *     }
    *   });
    *   // runs the callback until the returned connection

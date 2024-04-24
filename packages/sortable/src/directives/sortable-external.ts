@@ -26,7 +26,7 @@ export class DndSortableExternal<Data> implements OnChanges, OnDestroy {
   ) {
     this.source = this.dnd.dragSource<DraggedItem<Data>>(null, {
       canDrag: monitor => {
-        if (this.spec && this.spec.canDrag) {
+        if (this.spec.canDrag) {
           // beginDrag has not been called yet, so there is no data, and this is not part of a list.
           // you should be able to decide canDrag without these anyway.
           return this.spec.canDrag(undefined as any, undefined, monitor);
@@ -50,7 +50,7 @@ export class DndSortableExternal<Data> implements OnChanges, OnDestroy {
       endDrag: monitor => {
         const item = monitor.getItem();
         if (item) {
-          this.spec && this.spec.endDrag && this.spec.endDrag(item, monitor);
+          this.spec.endDrag?.(item, monitor);
         }
       },
     });

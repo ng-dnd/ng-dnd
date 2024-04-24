@@ -70,7 +70,7 @@ export class DndSortable<Data> implements OnChanges, OnInit, AfterViewInit, OnDe
         drop: monitor => {
           const item = monitor.getItem();
           if (item && this.getCanDrop(item, monitor)) {
-            this.spec && this.spec.drop && this.spec.drop(item, monitor);
+            this.spec.drop?.(item, monitor);
           }
           return {};
         },
@@ -104,8 +104,7 @@ export class DndSortable<Data> implements OnChanges, OnInit, AfterViewInit, OnDe
 
   /** @ignore */
   private updateSubscription() {
-    const anyListId = typeof this.listId !== 'undefined' && this.listId !== null;
-    if (anyListId && this.spec) {
+    if (this.listId != null && this.spec) {
       if (this.listSubs) {
         this.subs.remove(this.listSubs);
         this.listSubs.unsubscribe();
@@ -113,15 +112,13 @@ export class DndSortable<Data> implements OnChanges, OnInit, AfterViewInit, OnDe
 
       if (this.spec.getList) {
         const cs$ = this.spec.getList(this.listId);
-        this.listSubs =
-          cs$ &&
-          cs$.subscribe(l => {
-            if (l) {
-              this.childrenSubject$.next(l);
-              this.children = l;
-              this.cdr.markForCheck();
-            }
-          });
+        this.listSubs = cs$?.subscribe(l => {
+          if (l) {
+            this.childrenSubject$.next(l);
+            this.children = l;
+            this.cdr.markForCheck();
+          }
+        });
 
         this.subs.add(this.listSubs);
       }
@@ -134,7 +131,7 @@ export class DndSortable<Data> implements OnChanges, OnInit, AfterViewInit, OnDe
     monitor: DropTargetMonitor<DraggedItem<Data>>,
     _default = true
   ) {
-    if (this.spec && this.spec.canDrop) {
+    if (this.spec.canDrop) {
       return this.spec.canDrop(item, monitor);
     }
     return _default;
@@ -153,7 +150,7 @@ export class DndSortable<Data> implements OnChanges, OnInit, AfterViewInit, OnDe
       // useful if you rely on that for ngrx
       item = { ...item };
     }
-    this.spec && this.spec.hover && this.spec.hover(item, monitor);
+    this.spec.hover?.(item, monitor);
   }
 
   /** @ignore */

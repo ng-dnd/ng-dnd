@@ -21,7 +21,7 @@ export class Source implements DragSource {
     }
 
     return this.withChangeDetection(() => {
-      return (this.spec.canDrag && this.spec.canDrag(this.monitor)) || false;
+      return this.spec.canDrag?.(this.monitor) || false;
     });
   }
 
@@ -45,9 +45,7 @@ export class Source implements DragSource {
     }
 
     return this.withChangeDetection(() => {
-      if (this.spec.endDrag) {
-        this.spec.endDrag(this.monitor);
-      }
+      this.spec.endDrag?.(this.monitor);
     });
   }
 }

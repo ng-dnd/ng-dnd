@@ -37,7 +37,7 @@ export function spillTarget<Data>(
         (monitor => {
           const item = mutate(monitor.getItem());
           if (!monitor.didDrop()) {
-            config.drop && item && config.drop(item);
+            item && config.drop?.(item);
           }
         })) ||
       undefined,
@@ -49,7 +49,7 @@ export function spillTarget<Data>(
   );
 
   const subs = spilled$.subscribe(item => {
-    config.hover && item && config.hover(item);
+    item && config.hover?.(item);
   });
 
   target.add(subs);

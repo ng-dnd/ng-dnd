@@ -39,7 +39,7 @@ export class DndSortableRenderer<Data> implements OnChanges, OnInit, AfterViewIn
   }
 
   get type() {
-    return this.context.spec && this.context.spec.type;
+    return this.context.spec.type;
   }
 
   get listId() {
@@ -118,10 +118,9 @@ export class DndSortableRenderer<Data> implements OnChanges, OnInit, AfterViewIn
           //
           // https://bugs.chromium.org/p/chromium/issues/detail?id=674882
           // although recommended Promise.resolve().then() doesn't work.
-          this.spec &&
-            this.spec.beginDrag &&
+          this.spec.beginDrag &&
             _scheduleMicroTaskPolyfill(() => {
-              this.spec && this.spec.beginDrag && this.spec.beginDrag(item, monitor);
+              this.spec.beginDrag?.(item, monitor);
             });
 
           return item;
@@ -129,7 +128,7 @@ export class DndSortableRenderer<Data> implements OnChanges, OnInit, AfterViewIn
         endDrag: monitor => {
           const item = monitor.getItem();
           if (item) {
-            this.spec && this.spec.endDrag && this.spec.endDrag(item, monitor);
+            this.spec.endDrag?.(item, monitor);
           }
         },
       },
@@ -162,7 +161,7 @@ export class DndSortableRenderer<Data> implements OnChanges, OnInit, AfterViewIn
 
   /** @ignore */
   private getCanDrag(monitor: DragSourceMonitor<void, void>) {
-    if (this.spec && this.spec.canDrag) {
+    if (this.spec.canDrag) {
       return this.spec.canDrag(this.data, this.listId, monitor);
     }
     return true;
@@ -170,7 +169,7 @@ export class DndSortableRenderer<Data> implements OnChanges, OnInit, AfterViewIn
 
   /** @ignore */
   private isDragging(item: DraggedItem<Data> | null) {
-    if (this.spec && this.spec.isDragging) {
+    if (this.spec.isDragging) {
       return (item && this.spec.isDragging(this.data, item)) || false;
     } else {
       return (item && this.sameIds(this.data, item)) || false;
@@ -209,18 +208,11 @@ export class DndSortableRenderer<Data> implements OnChanges, OnInit, AfterViewIn
         index: suggestedIndex,
         listId: this.listId,
       };
-      if (this.spec && this.spec.canDrop && !this.spec.canDrop(item, monitor)) {
+      if (this.spec.canDrop && !this.spec.canDrop(item, monitor)) {
         return;
       }
       // shallow clone so library consumers don't mutate our items
-      this.spec &&
-        this.spec.hover &&
-        this.spec.hover(
-          {
-            ...item,
-          },
-          monitor
-        );
+      this.spec.hover?.({ ...item }, monitor);
     }
   }
 
@@ -231,7 +223,7 @@ export class DndSortableRenderer<Data> implements OnChanges, OnInit, AfterViewIn
         '@ng-dnd/sortable: [dndSortableRender] expected to be attached to a real DOM element'
       );
     }
-    const rect = (this.el.nativeElement as Element).getBoundingClientRect();
+    const rect = this.el.nativeElement.getBoundingClientRect();
     return rect;
   }
 

@@ -63,7 +63,7 @@ export class DndSortableList<Data>
 
   /** @ignore */
   trackById = (_: number, data: Data) => {
-    return this.spec && this.spec.trackBy(data);
+    return this.spec.trackBy(data);
   };
 
   /** @ignore */
