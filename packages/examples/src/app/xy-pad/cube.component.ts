@@ -1,4 +1,3 @@
-import { NgStyle } from '@angular/common';
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { DndModule, DndService } from '@ng-dnd/core';
 import { Spot } from './spot';
@@ -7,7 +6,7 @@ import { Spot } from './spot';
   selector: 'xy-cube',
   template: `
     <section class="container" [dragSource]="source" [noHTML5Preview]="true">
-      <div id="cube" [ngStyle]="{ transform: transform, WebkitTransform: transform }">
+      <div id="cube" [style]="{ transform: transform, WebkitTransform: transform }">
         <figure class="front">1</figure>
         <figure class="back">2</figure>
         <figure class="right">3</figure>
@@ -71,7 +70,7 @@ import { Spot } from './spot';
     `,
   ],
   standalone: true,
-  imports: [DndModule, NgStyle],
+  imports: [DndModule],
 })
 export class CubeComponent {
   @Input() transform = '';

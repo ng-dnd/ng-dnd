@@ -1,5 +1,5 @@
 <div class="event"
-     [ngStyle]="{ 'grid-column-end': 'span ' + span }"
+     [style]="{ 'grid-column-end': 'span ' + span }"
      [class.event--pointernone]="event.temp || (draggingEvent$|async)"
      [class.event--allday]="event.isAllDay"
      [class.event--drag]="event.temp || (draggingEvent$|async)"

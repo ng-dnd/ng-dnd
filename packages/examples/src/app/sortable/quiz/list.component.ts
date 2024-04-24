@@ -1,4 +1,4 @@
-import { NgFor, NgIf, NgStyle } from '@angular/common';
+import { NgFor, NgIf } from '@angular/common';
 import { Component, OnDestroy } from '@angular/core';
 import { DndModule, DndService } from '@ng-dnd/core';
 import { DndMultiBackendModule } from '@ng-dnd/multi-backend';
@@ -19,7 +19,6 @@ import { SectionComponent } from './section.component';
     DndMultiBackendModule,
     NgIf,
     NgFor,
-    NgStyle,
     SectionComponent,
     PrintoutComponent,
   ],

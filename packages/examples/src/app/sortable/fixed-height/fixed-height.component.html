@@ -1,7 +1,7 @@
 <dnd-preview [allBackends]="true">
   <ng-template let-type let-item="item">
     <ng-container [ngSwitch]="type">
-      <div class="fixer" *ngSwitchCase="'FIXER'" [ngStyle]="item.size.style()">
+      <div class="fixer" *ngSwitchCase="'FIXER'" [style]="item.size.style()">
         <pre>{{item.index+1}}. {{ item.data.name }}</pre>
       </div>
     </ng-container>

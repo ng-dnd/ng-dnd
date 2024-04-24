@@ -1,4 +1,4 @@
-import { AsyncPipe, NgStyle, NgSwitch, NgSwitchCase } from '@angular/common';
+import { AsyncPipe, NgSwitch, NgSwitchCase } from '@angular/common';
 import { Component } from '@angular/core';
 import { DndModule } from '@ng-dnd/core';
 import { DndMultiBackendModule } from '@ng-dnd/multi-backend';
@@ -21,7 +21,6 @@ interface SimpleData {
     DndMultiBackendModule,
     NgSwitch,
     NgSwitchCase,
-    NgStyle,
     AsyncPipe,
   ],
 })

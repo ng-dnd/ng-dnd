@@ -1,4 +1,4 @@
-import { AsyncPipe, NgIf, NgStyle, NgSwitch, NgSwitchCase } from '@angular/common';
+import { AsyncPipe, NgIf, NgSwitch, NgSwitchCase } from '@angular/common';
 import {
   AfterViewInit,
   ChangeDetectionStrategy,
@@ -33,7 +33,7 @@ interface Collected {
         <xy-crosshairs *ngIf="crossStyle$ | async as cross" [x]="cross.x" [y]="cross.y">
         </xy-crosshairs>
 
-        <div [ngStyle]="movingStyle$ | async">
+        <div [style]="movingStyle$ | async">
           <ng-container [ngSwitch]="c.itemType">
             <xy-box-drag-preview *ngSwitchCase="'SPOT'"> </xy-box-drag-preview>
           </ng-container>
@@ -46,7 +46,6 @@ interface Collected {
   standalone: true,
   imports: [
     NgIf,
-    NgStyle,
     NgSwitch,
     NgSwitchCase,
     CrosshairsComponent,

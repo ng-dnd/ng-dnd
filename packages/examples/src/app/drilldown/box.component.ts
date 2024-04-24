@@ -4,14 +4,14 @@ import { DndModule, DndService } from '@ng-dnd/core';
 import { ItemTypes } from './itemTypes';
 
 @Component({
-    selector: 'drilldown-source',
-    template: `
+  selector: 'drilldown-source',
+  template: `
     <div [dragSource]="source" [style.opacity]="opacity | async">
       <p>Drag this!</p>
     </div>
   `,
-    styles: [
-        `
+  styles: [
+    `
       div {
         border: 1px dashed #777;
         background: #fff;
@@ -27,9 +27,9 @@ import { ItemTypes } from './itemTypes';
         margin: 0;
       }
     `,
-    ],
-    standalone: true,
-    imports: [DndModule, AsyncPipe],
+  ],
+  standalone: true,
+  imports: [DndModule, AsyncPipe],
 })
 export class BoxComponent implements OnDestroy {
   @Output() beginDrag = new EventEmitter<void>();

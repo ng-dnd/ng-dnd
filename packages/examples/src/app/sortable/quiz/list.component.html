@@ -8,7 +8,7 @@
         <quiz-section [question]="item.data" [preview]="true"></quiz-section>
       </ng-container>
       <ng-template #external>
-        <div class="external" [ngStyle]="item.size.style()">
+        <div class="external" [style]="item.size.style()">
           {{ item.data.templateDescription }}
         </div>
       </ng-template>

@@ -1,4 +1,4 @@
-import { AsyncPipe, JsonPipe, NgIf, NgStyle } from '@angular/common';
+import { AsyncPipe, JsonPipe, NgIf } from '@angular/common';
 import { Component, Input, OnDestroy, OnInit } from '@angular/core';
 import { DndModule, DndService } from '@ng-dnd/core';
 
@@ -9,7 +9,7 @@ import { DndModule, DndService } from '@ng-dnd/core';
       *ngIf="collected$ | async as c"
       class="dustbin pad"
       [dropTarget]="trashTarget"
-      [ngStyle]="getStyles(c)"
+      [style]="getStyles(c)"
     >
       <p>
         <b>
@@ -27,7 +27,7 @@ import { DndModule, DndService } from '@ng-dnd/core';
   `,
   styles: [``],
   standalone: true,
-  imports: [DndModule, NgIf, NgStyle, AsyncPipe, JsonPipe],
+  imports: [DndModule, NgIf, AsyncPipe, JsonPipe],
 })
 export class BinComponent implements OnInit, OnDestroy {
   @Input() name = '';

@@ -36,7 +36,6 @@ import { CalendarEventComponent } from './event.component';
 
 @Component({
   selector: 'cal-day',
-  changeDetection: ChangeDetectionStrategy.OnPush,
   template: `
     <div class="day" [class.day--othermonth]="otherMonth$ | async" [class.day--weekend]="isWeekend">
       <div class="day-pad day-pad--bg"></div>
@@ -74,6 +73,7 @@ import { CalendarEventComponent } from './event.component';
       }
     `,
   ],
+  changeDetection: ChangeDetectionStrategy.OnPush,
   standalone: true,
   imports: [DndModule, NgFor, CalendarEventComponent, AsyncPipe],
 })

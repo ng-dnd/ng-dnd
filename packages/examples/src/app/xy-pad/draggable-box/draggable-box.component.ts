@@ -1,4 +1,4 @@
-import { AsyncPipe, NgIf, NgStyle } from '@angular/common';
+import { AsyncPipe, NgIf } from '@angular/common';
 import {
   ChangeDetectionStrategy,
   Component,
@@ -17,7 +17,7 @@ import { SpotComponent } from '../spot.component';
 @Component({
   selector: 'xy-draggable-box',
   template: `
-    <div class="root" [dragSource]="source" [ngStyle]="getRootStyles(isDragging$ | async)">
+    <div class="root" [dragSource]="source" [style]="getRootStyles(isDragging$ | async)">
       <div class="draggable-node">
         <xy-box></xy-box>
       </div>
@@ -50,7 +50,7 @@ import { SpotComponent } from '../spot.component';
   ],
   changeDetection: ChangeDetectionStrategy.OnPush,
   standalone: true,
-  imports: [DndModule, NgIf, NgStyle, SpotComponent, CrosshairsComponent, AsyncPipe],
+  imports: [DndModule, NgIf, SpotComponent, CrosshairsComponent, AsyncPipe],
 })
 export class DraggableBoxComponent implements OnInit, OnDestroy {
   @Input() spot!: Spot;

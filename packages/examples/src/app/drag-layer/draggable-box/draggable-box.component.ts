@@ -1,4 +1,4 @@
-import { AsyncPipe, NgStyle } from '@angular/common';
+import { AsyncPipe } from '@angular/common';
 import { ChangeDetectionStrategy, Component, Input, OnDestroy, OnInit } from '@angular/core';
 import { DndModule, DndService } from '@ng-dnd/core';
 import { getEmptyImage } from 'react-dnd-html5-backend';
@@ -8,13 +8,13 @@ import { BoxComponent } from '../box.component';
 @Component({
   selector: 'app-draggable-box',
   template: `
-    <div class="draggable-box" [dragSource]="source" [ngStyle]="getStyles(!!(isDragging$ | async))">
+    <div class="draggable-box" [dragSource]="source" [style]="getStyles(!!(isDragging$ | async))">
       <app-box [title]="title"></app-box>
     </div>
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
   standalone: true,
-  imports: [DndModule, NgStyle, BoxComponent, AsyncPipe],
+  imports: [DndModule, BoxComponent, AsyncPipe],
 })
 export class DraggableBoxComponent implements OnInit, OnDestroy {
   @Input() id!: number;

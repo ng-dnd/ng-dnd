@@ -1,4 +1,4 @@
-import { AsyncPipe, NgIf, NgStyle } from '@angular/common';
+import { AsyncPipe, NgIf } from '@angular/common';
 import { Component, Input, OnDestroy } from '@angular/core';
 import { DndModule, DndService } from '@ng-dnd/core';
 import { map } from 'rxjs/operators';
@@ -14,7 +14,7 @@ import { SquareComponent } from './square.component';
       <app-square [black]="black">
         <ng-content></ng-content>
       </app-square>
-      <div class="overlay" *ngIf="showOverlay$ | async" [ngStyle]="overlayStyle$ | async"></div>
+      <div class="overlay" *ngIf="showOverlay$ | async" [style]="overlayStyle$ | async"></div>
     </div>
   `,
   styles: [
@@ -29,7 +29,7 @@ import { SquareComponent } from './square.component';
     `,
   ],
   standalone: true,
-  imports: [DndModule, SquareComponent, NgIf, NgStyle, AsyncPipe],
+  imports: [DndModule, SquareComponent, NgIf, AsyncPipe],
 })
 export class BoardSquareComponent implements OnDestroy {
   @Input() position!: Coord;

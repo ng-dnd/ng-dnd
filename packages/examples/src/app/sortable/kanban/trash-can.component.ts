@@ -1,4 +1,4 @@
-import { AsyncPipe, NgIf, NgStyle } from '@angular/common';
+import { AsyncPipe, NgIf } from '@angular/common';
 import { ChangeDetectionStrategy, Component, EventEmitter, Output } from '@angular/core';
 import { DndModule, DndService } from '@ng-dnd/core';
 import { DraggedItem } from '@ng-dnd/sortable';
@@ -19,7 +19,7 @@ import { ItemTypes } from './item-types';
         <i class="fas fa-trash-alt"></i>
         <span>Drop here to delete</span>
       </div>
-      <div class="space" [ngStyle]="getStyle(c.isOver, c.item!)"></div>
+      <div class="space" [style]="getStyle(c.isOver, c.item!)"></div>
     </div>
   `,
   styles: [
@@ -51,7 +51,7 @@ import { ItemTypes } from './item-types';
     `,
   ],
   standalone: true,
-  imports: [DndModule, NgIf, NgStyle, AsyncPipe],
+  imports: [DndModule, NgIf, AsyncPipe],
 })
 export class TrashCanComponent {
   @Output() dropped = new EventEmitter<DraggedItem<Card>>();
