@@ -1,7 +1,11 @@
-import { MouseTransition } from '@ng-dnd/multi-backend';
-import { MultiBackendOptions, TouchTransition } from 'dnd-multi-backend';
-import { HTML5Backend } from 'react-dnd-html5-backend';
-import { TouchBackend, TouchBackendOptions } from 'react-dnd-touch-backend';
+import {
+  HTML5Backend,
+  MouseTransition,
+  MultiBackendOptions,
+  TouchBackend,
+  TouchBackendOptions,
+  TouchTransition,
+} from '@ng-dnd/multi-backend';
 
 export const CustomTransitions: MultiBackendOptions = {
   backends: [

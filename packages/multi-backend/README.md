@@ -21,13 +21,13 @@ yarn add @ng-dnd/multi-backend
 Then import the module and change your `DndModule` backend to a **`backendFactory`** like so:
 
 ```typescript
-import { DndMultiBackendModule, createDefaultMultiBackend } from '@ng-dnd/multi-backend';
+import { DndMultiBackendModule, MultiBackend, HTML5ToTouch } from '@ng-dnd/multi-backend';
 
 @NgModule({
   imports: [
     // ...,
     DndMultiBackendModule,
-    DndModule.forRoot({ backendFactory: createDefaultMultiBackend }),
+    DndModule.forRoot({ backend: MultiBackend: options: HTML5ToTouch }),
   ],
 })
 export class AppModule {}
@@ -114,10 +114,12 @@ ngOnInit() {
 Simply pass allBackends as true to the preview.
 
 ```html
-<dnd-preview [allBackends]="true"> ... </dnd-preview>
+<dnd-preview [allBackends]="true">
+  ...
+</dnd-preview>
 ```
 
-## Custom backends and transitions
+## Custom backends and transitions, e.g. supplying options to the `TouchBackend`
 
 You can also import anything from `dnd-multi-backend` and create your own
 transitions. Refer to the original documentation, or simply to the autocomplete
@@ -125,3 +127,35 @@ through the re-exported types in this package.
 
 Remember that you will need to create an exported function and pass it as a
 `backendFactory` if you want to continue using Angular AOT compilation.
+
+```typescript
+import {
+  HTML5Backend,
+  MouseTransition,
+  MultiBackendOptions,
+  TouchBackend,
+  TouchBackendOptions,
+  TouchTransition,
+} from '@ng-dnd/multi-backend';
+
+// Replace HTML5ToTouch with this
+export const CustomTransitions: MultiBackendOptions = {
+  backends: [
+    {
+      id: 'html5',
+      backend: HTML5Backend,
+      transition: MouseTransition,
+    },
+    {
+      id: 'touch',
+      backend: TouchBackend,
+      options: {
+        enableMouseEvents: false,
+        // your options here
+      } as TouchBackendOptions,
+      transition: TouchTransition,
+      preview: true,
+    },
+  ],
+};
+```

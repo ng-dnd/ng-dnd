@@ -4,11 +4,13 @@ export {
   HTML5DragTransition,
   MouseTransition,
   MultiBackend,
+  MultiBackendOptions,
+  PointerTransition,
   TouchTransition,
   createTransition,
 } from 'dnd-multi-backend';
-export { HTML5Backend } from 'react-dnd-html5-backend';
-export { TouchBackend } from 'react-dnd-touch-backend';
+export { HTML5Backend, HTML5BackendOptions } from 'react-dnd-html5-backend';
+export { TouchBackend, TouchBackendOptions } from 'react-dnd-touch-backend';
 
 export * from './src/module';
 
