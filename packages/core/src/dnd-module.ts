@@ -1,11 +1,6 @@
 import { ModuleWithProviders, NgModule, NgZone, Provider } from '@angular/core';
 
-import {
-  DndDirective,
-  DragPreviewDirective,
-  DragSourceDirective,
-  DropTargetDirective,
-} from './dnd-directives';
+import { DragPreviewDirective, DragSourceDirective, DropTargetDirective } from './dnd-directives';
 
 import {
   DRAG_DROP_BACKEND,
@@ -100,7 +95,7 @@ export interface BackendInput {
 }
 
 /** @ignore */
-const EXPORTS = [DndDirective, DragSourceDirective, DropTargetDirective, DragPreviewDirective];
+const EXPORTS = [DragSourceDirective, DropTargetDirective, DragPreviewDirective];
 
 // @dynamic
 @NgModule({

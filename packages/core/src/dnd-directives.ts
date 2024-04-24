@@ -13,11 +13,8 @@ const explanation =
   'There is only one of each source/target/preview allowed per DOM element.';
 
 /** @ignore */
-@Directive({
-  selector: '[abstractDnd]',
-  standalone: true,
-})
-export class DndDirective implements OnChanges, OnDestroy {
+@Directive()
+export class AbstractDndDirective implements OnChanges, OnDestroy {
   protected connection: any;
   private deferredRequest = new Subscription();
 
@@ -57,7 +54,7 @@ export class DndDirective implements OnChanges, OnDestroy {
   selector: '[dropTarget]',
   standalone: true,
 })
-export class DropTargetDirective extends DndDirective implements OnChanges {
+export class DropTargetDirective extends AbstractDndDirective implements OnChanges {
   protected connection: DropTarget | undefined;
 
   /** Which target to connect the DOM to */
@@ -90,7 +87,7 @@ export class DropTargetDirective extends DndDirective implements OnChanges {
   selector: '[dragSource]',
   standalone: true,
 })
-export class DragSourceDirective extends DndDirective implements OnChanges {
+export class DragSourceDirective extends AbstractDndDirective implements OnChanges {
   protected connection: DragSource<any> | undefined;
 
   /** Which source to connect the DOM to */
@@ -136,7 +133,7 @@ export class DragSourceDirective extends DndDirective implements OnChanges {
   selector: '[dragPreview]',
   standalone: true,
 })
-export class DragPreviewDirective extends DndDirective implements OnChanges {
+export class DragPreviewDirective extends AbstractDndDirective implements OnChanges {
   protected connection: DragSource<any> | undefined;
   /** The drag source for which this element will be the preview. */
   @Input('dragPreview') dragPreview!: DragSource<any>;
