@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [3.0.0](https://github.com/ng-dnd/ng-dnd/compare/v2.0.2...v3.0.0) (2024-04-25)
+
+**Note:** Version bump only for package @ng-dnd/core
+
+
+
+
+
 ## [2.0.2](https://github.com/ng-dnd/ng-dnd/compare/v2.0.1...v2.0.2) (2022-08-06)
 
 **Note:** Version bump only for package @ng-dnd/core

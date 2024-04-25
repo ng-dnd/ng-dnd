@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [3.0.0](https://github.com/ng-dnd/ng-dnd/compare/v2.0.2...v3.0.0) (2024-04-25)
+
+
+### Bug Fixes
+
+* **examples:** fix drag preview for kanban and quiz ([4e20798](https://github.com/ng-dnd/ng-dnd/commit/4e207983dd008535549442e272e91554fe29ec7c))
+* **examples:** fix sortable quiz example ([46dceeb](https://github.com/ng-dnd/ng-dnd/commit/46dceebd7dbd5e36ad7922a421e798b7d1a0c758))
+* fix no provider for drilldown example ([6fa8994](https://github.com/ng-dnd/ng-dnd/commit/6fa89948ebd19a1a044ccf3d5b811d1f2921ce5c))
+
+
+
+
+
 ## [2.0.2](https://github.com/ng-dnd/ng-dnd/compare/v2.0.1...v2.0.2) (2022-08-06)
 
 **Note:** Version bump only for package examples
