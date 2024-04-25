@@ -57,7 +57,7 @@
     <h3>File</h3>
 </p>
 <p class="comment">
-    <code>src/directives/list.component.ts</code>
+    <code>src/directives/sortable-list.ts</code>
 </p>
 
 
@@ -102,9 +102,7 @@
             <tr>
                 <td class="col-md-3">providers</td>
                 <td class="col-md-9">
-                                <code><a href="../components/DndSortableList.html" target="_self" >{
-    provide: DndSortable, useExisting: DndSortableList,
-}</a></code>
+                                <code><a href="../components/DndSortableList.html" target="_self" >{ provide: DndSortable, useExisting: DndSortableList }</a></code>
                 </td>
             </tr>
 
@@ -114,7 +112,18 @@
                 <td class="col-md-9"><code>dnd-sortable-list</code></td>
             </tr>
 
+            <tr>
+                <td class="col-md-3">Standalone</td>
+                <td class="col-md-9"><code>true</code></td>
+            </tr>
 
+            <tr>
+                <td class="col-md-3">imports</td>
+                <td class="col-md-9">
+                            <code>NgFor</code>
+                            <code>NgTemplateOutlet</code>
+                </td>
+            </tr>
 
 
             <tr>
@@ -160,7 +169,6 @@
                     <td class="col-md-4">
                         <ul class="index-list">
                             <li>
-                                    <span class="modifier">Public</span>
                                 <a href="#children$" >children$</a>
                             </li>
                             <li>
@@ -182,7 +190,6 @@
                                 <a href="#acceptsType" >acceptsType</a>
                             </li>
                             <li>
-                                    <span class="modifier">Public</span>
                                 <a href="#contextFor" >contextFor</a>
                             </li>
                             <li>
@@ -436,7 +443,6 @@
                 <td class="col-md-4">
                     <a name="contextFor"></a>
                     <span class="name">
-                        <span class="modifier">Public</span>
                         <span ><b>contextFor</b></span>
                         <a href="#contextFor"><span class="icon ion-ios-link"></span></a>
                     </span>
@@ -444,8 +450,7 @@
             </tr>
             <tr>
                 <td class="col-md-4">
-                    <span class="modifier-icon icon ion-ios-reset"></span>
-                    <code>contextFor(data: Data, index: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank">number</a>)</code>
+<code>contextFor(data: Data, index: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank">number</a>)</code>
                 </td>
             </tr>
 
@@ -550,7 +555,6 @@
                 <td class="col-md-4">
                     <a name="children$"></a>
                     <span class="name">
-                            <span class="modifier">Public</span>
                         <span ><b>children$</b></span>
                         <a href="#children$"><span class="icon ion-ios-link"></span></a>
                     </span>

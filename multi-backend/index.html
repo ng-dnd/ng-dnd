@@ -41,13 +41,13 @@
 <p>Second, it gives you a convenient and easy way to render previews when the touch backend is in use.</p>
 <h2>Installation</h2>
 <div><pre class="line-numbers"><code class="language-sh">yarn add &#64;ng-dnd/multi-backend</code></pre></div><p>Then import the module and change your <code>DndModule</code> backend to a <strong><code>backendFactory</code></strong> like so:</p>
-<div><pre class="line-numbers"><code class="language-typescript">import { DndMultiBackendModule, createDefaultMultiBackend } from &#39;&#64;ng-dnd/multi-backend&#39;;
+<div><pre class="line-numbers"><code class="language-typescript">import { DndMultiBackendModule, MultiBackend, HTML5ToTouch } from &#39;&#64;ng-dnd/multi-backend&#39;;
 
 &#64;NgModule({
   imports: [
     // ...,
     DndMultiBackendModule,
-    DndModule.forRoot({ backendFactory: createDefaultMultiBackend }),
+    DndModule.forRoot({ backend: MultiBackend: options: HTML5ToTouch }),
   ],
 })
 export class AppModule {}</code></pre></div><h2>Normal usage</h2>
@@ -100,13 +100,43 @@ ngOnInit() {
   source.connectDragPreview(getEmptyImage());
 }</code></pre></div><h3>2. Disable the touch-backend-only check in the preview component</h3>
 <p>Simply pass allBackends as true to the preview.</p>
-<div><pre class="line-numbers"><code class="language-html">&lt;dnd-preview [allBackends]=&quot;true&quot;&gt; ... &lt;/dnd-preview&gt;</code></pre></div><h2>Custom backends and transitions</h2>
+<div><pre class="line-numbers"><code class="language-html">&lt;dnd-preview [allBackends]=&quot;true&quot;&gt;
+  ...
+&lt;/dnd-preview&gt;</code></pre></div><h2>Custom backends and transitions, e.g. supplying options to the <code>TouchBackend</code></h2>
 <p>You can also import anything from <code>dnd-multi-backend</code> and create your own
 transitions. Refer to the original documentation, or simply to the autocomplete
 through the re-exported types in this package.</p>
 <p>Remember that you will need to create an exported function and pass it as a
 <code>backendFactory</code> if you want to continue using Angular AOT compilation.</p>
+<div><pre class="line-numbers"><code class="language-typescript">import {
+  HTML5Backend,
+  MouseTransition,
+  MultiBackendOptions,
+  TouchBackend,
+  TouchBackendOptions,
+  TouchTransition,
+} from &#39;&#64;ng-dnd/multi-backend&#39;;
 
+// Replace HTML5ToTouch with this
+export const CustomTransitions: MultiBackendOptions = {
+  backends: [
+    {
+      id: &#39;html5&#39;,
+      backend: HTML5Backend,
+      transition: MouseTransition,
+    },
+    {
+      id: &#39;touch&#39;,
+      backend: TouchBackend,
+      options: {
+        enableMouseEvents: false,
+        // your options here
+      } as TouchBackendOptions,
+      transition: TouchTransition,
+      preview: true,
+    },
+  ],
+};</code></pre></div>
 
 
 

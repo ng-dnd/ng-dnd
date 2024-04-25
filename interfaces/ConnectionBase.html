@@ -159,7 +159,7 @@ duration. That would require the following pattern:</p>
       ...spec,
       hover: monitor =&gt; {
       subj.next();
-      spec.hover &amp;&amp; spec.hover(monitor);
+      spec.hover?.(monitor);
     }
   });
   // runs the callback until the returned connection

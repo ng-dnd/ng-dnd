@@ -188,9 +188,6 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                                 <a href="interfaces/AddSubscription.html" data-type="entity-link" >AddSubscription</a>
                             </li>
                             <li class="link">
-                                <a href="interfaces/BackendFactoryInput.html" data-type="entity-link" >BackendFactoryInput</a>
-                            </li>
-                            <li class="link">
                                 <a href="interfaces/BackendInput.html" data-type="entity-link" >BackendInput</a>
                             </li>
                             <li class="link">
