@@ -24,10 +24,10 @@
     "@ng-dnd/core": "^2.0.2"
   },
   "peerDependencies": {
-    "@angular/common": ">= 13.0.0",
-    "@angular/core": ">= 13.0.0",
-    "@ng-dnd/core": ">= 2.0.0",
-    "rxjs": ">= 7.0.0"
+    "@angular/common": ">=17.0.0",
+    "@angular/core": ">=17.0.0",
+    "@ng-dnd/core": ">=3.0.0",
+    "rxjs": ">=7.0.0"
   },
   "scripts": {
     "clean": "rimraf dist",
