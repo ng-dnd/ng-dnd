@@ -12,6 +12,55 @@
         <link rel="stylesheet" href="../styles/dark.css">
     </head>
     <body>
+          <script>
+               // Blocking script to avaoid flickering dark mode
+               // Dark mode toggle button
+               var useDark = window.matchMedia('(prefers-color-scheme: dark)');
+               var darkModeState = useDark.matches;
+               var $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               var $darkModeToggles = document.querySelectorAll('.dark-mode-switch');
+               var darkModeStateLocal = localStorage.getItem('compodoc_darkmode-state');
+
+               function checkToggle(check) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].checked = check;
+                    }
+               }
+
+               function toggleDarkMode(state) {
+                    if (window.localStorage) {
+                         localStorage.setItem('compodoc_darkmode-state', state);
+                    }
+
+                    checkToggle(state);
+
+                    const hasClass = document.body.classList.contains('dark');
+
+                    if (state) {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.add('dark');
+                         }
+                         if (!hasClass) {
+                              document.body.classList.add('dark');
+                         }
+                    } else {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.remove('dark');
+                         }
+                         if (hasClass) {
+                              document.body.classList.remove('dark');
+                         }
+                    }
+               }
+
+               useDark.addEventListener('change', function (evt) {
+                    toggleDarkMode(evt.matches);
+               });
+               if (darkModeStateLocal) {
+                    darkModeState = darkModeStateLocal === 'true';
+               }
+               toggleDarkMode(darkModeState);
+          </script>
 
         <div class="navbar navbar-default navbar-fixed-top d-block d-sm-none">
             <a href="../" class="navbar-brand">@ng-dnd/sortable documentation</a>
@@ -191,7 +240,7 @@
                 <td class="col-md-4">
                     <a name="beginDrag"></a>
                     <span class="name">
-                        <span class="modifier">Optional</span>
+                            <span class="modifier">Optional</span>
                         <span ><b>beginDrag</b></span>
                         <a href="#beginDrag"><span class="icon ion-ios-link"></span></a>
                     </span>
@@ -208,57 +257,55 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-description"><p>Optional; some implementations do not need beginDrag.</p>
+                        <div class="io-description"><p>Optional; some implementations do not need beginDrag.</p>
 </div>
 
-                    <div class="io-description">
-                        <b>Parameters :</b>
-                        
-                        <table class="params">
-                            <thead>
-                                <tr>
-                                    <td>Name</td>
-                                    <td>Type</td>
-                                    <td>Optional</td>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>item</td>
-                                    <td>
-                                                <code><a href="../interfaces/DraggedItem.html" target="_self" >DraggedItem&lt;Data&gt;</a></code>
-                                    </td>
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>item</td>
+                                            <td>
+                                                            <code><a href="../interfaces/DraggedItem.html" target="_self" >DraggedItem&lt;Data&gt;</a></code>
+                                            </td>
 
-                                    <td>
-                                        No
-                                    </td>
-
-
-                                </tr>
-                                <tr>
-                                    <td>monitor</td>
-                                    <td>
-                                            <code>DragSourceMonitor&lt;void | void&gt;</code>
-                                    </td>
-
-                                    <td>
-                                        No
-                                    </td>
+                                            <td>
+                                                    No
+                                            </td>
 
 
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                    <div>
-                    </div>
-                    <div class="io-description">
-                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+                                        </tr>
+                                        <tr>
+                                                <td>monitor</td>
+                                            <td>
+                                                        <code>DragSourceMonitor&lt;void | void&gt;</code>
+                                            </td>
 
-                    </div>
-                    <div class="io-description">
-                        
-                    </div>
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
                 </td>
             </tr>
         </tbody>
@@ -269,7 +316,7 @@
                 <td class="col-md-4">
                     <a name="canDrag"></a>
                     <span class="name">
-                        <span class="modifier">Optional</span>
+                            <span class="modifier">Optional</span>
                         <span ><b>canDrag</b></span>
                         <a href="#canDrag"><span class="icon ion-ios-link"></span></a>
                     </span>
@@ -286,72 +333,70 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-description"><p>Optional; you may override default <code>() =&gt; true</code>.</p>
+                        <div class="io-description"><p>Optional; you may override default <code>() =&gt; true</code>.</p>
 <p>When used with the <code>[dndSortableExternal]</code> directive, the first two arguments will be undefined,
 because the data has not yet been created and external items are not associated with a list.
 You should be able to decide <code>canDrag</code> without these.</p>
 </div>
 
-                    <div class="io-description">
-                        <b>Parameters :</b>
-                        
-                        <table class="params">
-                            <thead>
-                                <tr>
-                                    <td>Name</td>
-                                    <td>Type</td>
-                                    <td>Optional</td>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>data</td>
-                                    <td>
-                                            <code>Data</code>
-                                    </td>
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>data</td>
+                                            <td>
+                                                        <code>Data</code>
+                                            </td>
 
-                                    <td>
-                                        No
-                                    </td>
-
-
-                                </tr>
-                                <tr>
-                                    <td>listId</td>
-                                    <td>
-                                                <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
-                                    </td>
-
-                                    <td>
-                                        No
-                                    </td>
+                                            <td>
+                                                    No
+                                            </td>
 
 
-                                </tr>
-                                <tr>
-                                    <td>monitor</td>
-                                    <td>
-                                            <code>DragSourceMonitor&lt;void | void&gt;</code>
-                                    </td>
+                                        </tr>
+                                        <tr>
+                                                <td>listId</td>
+                                            <td>
+                                                            <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+                                            </td>
 
-                                    <td>
-                                        No
-                                    </td>
+                                            <td>
+                                                    No
+                                            </td>
 
 
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                    <div>
-                    </div>
-                    <div class="io-description">
-                        <b>Returns : </b>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
+                                        </tr>
+                                        <tr>
+                                                <td>monitor</td>
+                                            <td>
+                                                        <code>DragSourceMonitor&lt;void | void&gt;</code>
+                                            </td>
 
-                    </div>
-                    <div class="io-description">
-                        
-                    </div>
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
                 </td>
             </tr>
         </tbody>
@@ -362,7 +407,7 @@ You should be able to decide <code>canDrag</code> without these.</p>
                 <td class="col-md-4">
                     <a name="canDrop"></a>
                     <span class="name">
-                        <span class="modifier">Optional</span>
+                            <span class="modifier">Optional</span>
                         <span ><b>canDrop</b></span>
                         <a href="#canDrop"><span class="icon ion-ios-link"></span></a>
                     </span>
@@ -379,58 +424,56 @@ You should be able to decide <code>canDrag</code> without these.</p>
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-description"><p>Optional; you may override default <code>() =&gt; true</code>.
+                        <div class="io-description"><p>Optional; you may override default <code>() =&gt; true</code>.
 Inspect <code>item.hover</code> for where it is hovering.</p>
 </div>
 
-                    <div class="io-description">
-                        <b>Parameters :</b>
-                        
-                        <table class="params">
-                            <thead>
-                                <tr>
-                                    <td>Name</td>
-                                    <td>Type</td>
-                                    <td>Optional</td>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>item</td>
-                                    <td>
-                                                <code><a href="../interfaces/DraggedItem.html" target="_self" >DraggedItem&lt;Data&gt;</a></code>
-                                    </td>
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>item</td>
+                                            <td>
+                                                            <code><a href="../interfaces/DraggedItem.html" target="_self" >DraggedItem&lt;Data&gt;</a></code>
+                                            </td>
 
-                                    <td>
-                                        No
-                                    </td>
-
-
-                                </tr>
-                                <tr>
-                                    <td>monitor</td>
-                                    <td>
-                                                <code><a href="../interfaces/DraggedItem.html" target="_self" >DropTargetMonitor&lt;DraggedItem&lt;Data&gt;&gt;</a></code>
-                                    </td>
-
-                                    <td>
-                                        No
-                                    </td>
+                                            <td>
+                                                    No
+                                            </td>
 
 
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                    <div>
-                    </div>
-                    <div class="io-description">
-                        <b>Returns : </b>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
+                                        </tr>
+                                        <tr>
+                                                <td>monitor</td>
+                                            <td>
+                                                            <code><a href="../interfaces/DraggedItem.html" target="_self" >DropTargetMonitor&lt;DraggedItem&lt;Data&gt;&gt;</a></code>
+                                            </td>
 
-                    </div>
-                    <div class="io-description">
-                        
-                    </div>
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
                 </td>
             </tr>
         </tbody>
@@ -441,7 +484,7 @@ Inspect <code>item.hover</code> for where it is hovering.</p>
                 <td class="col-md-4">
                     <a name="createData"></a>
                     <span class="name">
-                        <span class="modifier">Optional</span>
+                            <span class="modifier">Optional</span>
                         <span ><b>createData</b></span>
                         <a href="#createData"><span class="icon ion-ios-link"></span></a>
                     </span>
@@ -458,14 +501,14 @@ Inspect <code>item.hover</code> for where it is hovering.</p>
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-description"><p>Used for external data sources only.</p>
+                        <div class="io-description"><p>Used for external data sources only.</p>
 <p>Must produce a new object, with some Data which will be unique for the given trackBy function.</p>
 </div>
 
-                    <div class="io-description">
-                        <b>Returns : </b>    <code>Data</code>
+                        <div class="io-description">
+                            <b>Returns : </b>    <code>Data</code>
 
-                    </div>
+                        </div>
                 </td>
             </tr>
         </tbody>
@@ -492,57 +535,55 @@ Inspect <code>item.hover</code> for where it is hovering.</p>
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-description"><p>Required; because if you don&#39;t have a drop function, what are you even doing?</p>
+                        <div class="io-description"><p>Required; because if you don&#39;t have a drop function, what are you even doing?</p>
 </div>
 
-                    <div class="io-description">
-                        <b>Parameters :</b>
-                        
-                        <table class="params">
-                            <thead>
-                                <tr>
-                                    <td>Name</td>
-                                    <td>Type</td>
-                                    <td>Optional</td>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>item</td>
-                                    <td>
-                                                <code><a href="../interfaces/DraggedItem.html" target="_self" >DraggedItem&lt;Data&gt;</a></code>
-                                    </td>
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>item</td>
+                                            <td>
+                                                            <code><a href="../interfaces/DraggedItem.html" target="_self" >DraggedItem&lt;Data&gt;</a></code>
+                                            </td>
 
-                                    <td>
-                                        No
-                                    </td>
-
-
-                                </tr>
-                                <tr>
-                                    <td>monitor</td>
-                                    <td>
-                                                <code><a href="../interfaces/DraggedItem.html" target="_self" >DropTargetMonitor&lt;DraggedItem&lt;Data&gt;&gt;</a></code>
-                                    </td>
-
-                                    <td>
-                                        No
-                                    </td>
+                                            <td>
+                                                    No
+                                            </td>
 
 
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                    <div>
-                    </div>
-                    <div class="io-description">
-                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+                                        </tr>
+                                        <tr>
+                                                <td>monitor</td>
+                                            <td>
+                                                            <code><a href="../interfaces/DraggedItem.html" target="_self" >DropTargetMonitor&lt;DraggedItem&lt;Data&gt;&gt;</a></code>
+                                            </td>
 
-                    </div>
-                    <div class="io-description">
-                        
-                    </div>
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
                 </td>
             </tr>
         </tbody>
@@ -569,57 +610,55 @@ Inspect <code>item.hover</code> for where it is hovering.</p>
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-description"><p>Required; you must reset and remove any temporarily added data from the drag.</p>
+                        <div class="io-description"><p>Required; you must reset and remove any temporarily added data from the drag.</p>
 </div>
 
-                    <div class="io-description">
-                        <b>Parameters :</b>
-                        
-                        <table class="params">
-                            <thead>
-                                <tr>
-                                    <td>Name</td>
-                                    <td>Type</td>
-                                    <td>Optional</td>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>item</td>
-                                    <td>
-                                                <code><a href="../interfaces/DraggedItem.html" target="_self" >DraggedItem&lt;Data&gt;</a></code>
-                                    </td>
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>item</td>
+                                            <td>
+                                                            <code><a href="../interfaces/DraggedItem.html" target="_self" >DraggedItem&lt;Data&gt;</a></code>
+                                            </td>
 
-                                    <td>
-                                        No
-                                    </td>
-
-
-                                </tr>
-                                <tr>
-                                    <td>monitor</td>
-                                    <td>
-                                                <code><a href="../interfaces/DraggedItem.html" target="_self" >DragSourceMonitor&lt;DraggedItem&lt;Data&gt;&gt;</a></code>
-                                    </td>
-
-                                    <td>
-                                        No
-                                    </td>
+                                            <td>
+                                                    No
+                                            </td>
 
 
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                    <div>
-                    </div>
-                    <div class="io-description">
-                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+                                        </tr>
+                                        <tr>
+                                                <td>monitor</td>
+                                            <td>
+                                                            <code><a href="../interfaces/DraggedItem.html" target="_self" >DragSourceMonitor&lt;DraggedItem&lt;Data&gt;&gt;</a></code>
+                                            </td>
 
-                    </div>
-                    <div class="io-description">
-                        
-                    </div>
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
                 </td>
             </tr>
         </tbody>
@@ -630,7 +669,7 @@ Inspect <code>item.hover</code> for where it is hovering.</p>
                 <td class="col-md-4">
                     <a name="getList"></a>
                     <span class="name">
-                        <span class="modifier">Optional</span>
+                            <span class="modifier">Optional</span>
                         <span ><b>getList</b></span>
                         <a href="#getList"><span class="icon ion-ios-link"></span></a>
                     </span>
@@ -647,47 +686,45 @@ Inspect <code>item.hover</code> for where it is hovering.</p>
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-description"><p>Optional if you provided <code>[ssSortableChildren],</code> otherwise required.
+                        <div class="io-description"><p>Optional if you provided <code>[ssSortableChildren],</code> otherwise required.
 NOTE: return an Observable! If you don&#39;t have one already, use <code>[ssSortableChildren]</code>.
 A typical use is with an @ngrx/store: <code>getList: _listId =&gt; this.store.select(...)</code></p>
 </div>
 
-                    <div class="io-description">
-                        <b>Parameters :</b>
-                        
-                        <table class="params">
-                            <thead>
-                                <tr>
-                                    <td>Name</td>
-                                    <td>Type</td>
-                                    <td>Optional</td>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>listId</td>
-                                    <td>
-                                                <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
-                                    </td>
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>listId</td>
+                                            <td>
+                                                            <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+                                            </td>
 
-                                    <td>
-                                        No
-                                    </td>
+                                            <td>
+                                                    No
+                                            </td>
 
 
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                    <div>
-                    </div>
-                    <div class="io-description">
-                        <b>Returns : </b>    <code>Observable&lt;Iterable&lt;Data&gt;&gt;</code>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>    <code>Observable&lt;Iterable&lt;Data&gt;&gt;</code>
 
-                    </div>
-                    <div class="io-description">
-                        
-                    </div>
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
                 </td>
             </tr>
         </tbody>
@@ -714,7 +751,7 @@ A typical use is with an @ngrx/store: <code>getList: _listId =&gt; this.store.se
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-description"><p>Required.</p>
+                        <div class="io-description"><p>Required.</p>
 <p>After <code>hover</code>, the element you picked up (= <em>transit</em>) must be:</p>
 <ol>
 <li>under the mouse; and</li>
@@ -723,54 +760,52 @@ A typical use is with an @ngrx/store: <code>getList: _listId =&gt; this.store.se
 </ol>
 </div>
 
-                    <div class="io-description">
-                        <b>Parameters :</b>
-                        
-                        <table class="params">
-                            <thead>
-                                <tr>
-                                    <td>Name</td>
-                                    <td>Type</td>
-                                    <td>Optional</td>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>item</td>
-                                    <td>
-                                                <code><a href="../interfaces/DraggedItem.html" target="_self" >DraggedItem&lt;Data&gt;</a></code>
-                                    </td>
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>item</td>
+                                            <td>
+                                                            <code><a href="../interfaces/DraggedItem.html" target="_self" >DraggedItem&lt;Data&gt;</a></code>
+                                            </td>
 
-                                    <td>
-                                        No
-                                    </td>
-
-
-                                </tr>
-                                <tr>
-                                    <td>monitor</td>
-                                    <td>
-                                                <code><a href="../interfaces/DraggedItem.html" target="_self" >DropTargetMonitor&lt;DraggedItem&lt;Data&gt;&gt;</a></code>
-                                    </td>
-
-                                    <td>
-                                        No
-                                    </td>
+                                            <td>
+                                                    No
+                                            </td>
 
 
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                    <div>
-                    </div>
-                    <div class="io-description">
-                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+                                        </tr>
+                                        <tr>
+                                                <td>monitor</td>
+                                            <td>
+                                                            <code><a href="../interfaces/DraggedItem.html" target="_self" >DropTargetMonitor&lt;DraggedItem&lt;Data&gt;&gt;</a></code>
+                                            </td>
 
-                    </div>
-                    <div class="io-description">
-                        
-                    </div>
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
                 </td>
             </tr>
         </tbody>
@@ -781,7 +816,7 @@ A typical use is with an @ngrx/store: <code>getList: _listId =&gt; this.store.se
                 <td class="col-md-4">
                     <a name="isDragging"></a>
                     <span class="name">
-                        <span class="modifier">Optional</span>
+                            <span class="modifier">Optional</span>
                         <span ><b>isDragging</b></span>
                         <a href="#isDragging"><span class="icon ion-ios-link"></span></a>
                     </span>
@@ -798,7 +833,7 @@ A typical use is with an @ngrx/store: <code>getList: _listId =&gt; this.store.se
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-description"><p>Optional; you may override the default &#39;same trackBy&#39; implementation.</p>
+                        <div class="io-description"><p>Optional; you may override the default &#39;same trackBy&#39; implementation.</p>
 <p>isDragging determines which card on the ground will regard itself as
 &quot;the same as the one in flight&quot;. It must return true for exactly one
 card at a time, and that card MUST be placed under the most recently
@@ -807,7 +842,7 @@ hovered DraggedItem.</p>
 determine whether it is under the mouse (and therefore should not emit
 hover events); you will get a deluge of incorrect hover events.</p>
 <p>By default, it is defined as:</p>
-<div><pre class="line-numbers"><code class="language-typescript">trackBy(ground) === trackBy(inFlight.data)</code></pre></div><p>If you want to be able to copy cards around, and there&#39;s an extra clone
+<b>Example :</b><div><pre class="line-numbers"><code class="language-typescript">trackBy(ground) === trackBy(inFlight.data)</code></pre></div><p>If you want to be able to copy cards around, and there&#39;s an extra clone
 in transit around the board, you have to be careful to implement
 isDragging correctly, or ensure that any clones have a different
 <code>trackBy()</code> result. Note, however, that the item in <code>beginDrag</code> is the
@@ -815,59 +850,57 @@ original, so simply giving clones a different <code>id</code> is not typically
 enough; the clone will not respond to <code>isDragging</code>, the original will
 (and you want to move the clone).</p>
 <p>Therefore, one solution is as follows:</p>
-<div><pre class="line-numbers"><code class="language-typescript">isDragging: (ground, inFlight) =&gt; {
+<b>Example :</b><div><pre class="line-numbers"><code class="language-typescript">isDragging: (ground, inFlight) =&gt; {
   let flyingId = this.isCopying ? CARD_ID_WHEN_COPYING : inFlight.data.id;
   return ground.id === flyingId;
 }</code></pre></div></div>
 
-                    <div class="io-description">
-                        <b>Parameters :</b>
-                        
-                        <table class="params">
-                            <thead>
-                                <tr>
-                                    <td>Name</td>
-                                    <td>Type</td>
-                                    <td>Optional</td>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>ground</td>
-                                    <td>
-                                            <code>Data</code>
-                                    </td>
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>ground</td>
+                                            <td>
+                                                        <code>Data</code>
+                                            </td>
 
-                                    <td>
-                                        No
-                                    </td>
-
-
-                                </tr>
-                                <tr>
-                                    <td>inFlight</td>
-                                    <td>
-                                                <code><a href="../interfaces/DraggedItem.html" target="_self" >DraggedItem&lt;Data&gt;</a></code>
-                                    </td>
-
-                                    <td>
-                                        No
-                                    </td>
+                                            <td>
+                                                    No
+                                            </td>
 
 
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                    <div>
-                    </div>
-                    <div class="io-description">
-                        <b>Returns : </b>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
+                                        </tr>
+                                        <tr>
+                                                <td>inFlight</td>
+                                            <td>
+                                                            <code><a href="../interfaces/DraggedItem.html" target="_self" >DraggedItem&lt;Data&gt;</a></code>
+                                            </td>
 
-                    </div>
-                    <div class="io-description">
-                        
-                    </div>
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
                 </td>
             </tr>
         </tbody>
@@ -894,46 +927,44 @@ enough; the clone will not respond to <code>isDragging</code>, the original will
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-description"><p>Required. Must produce a different value for every available Data.
+                        <div class="io-description"><p>Required. Must produce a different value for every available Data.
 Usually, this will be <code>data =&gt; data.id</code>.</p>
 </div>
 
-                    <div class="io-description">
-                        <b>Parameters :</b>
-                        
-                        <table class="params">
-                            <thead>
-                                <tr>
-                                    <td>Name</td>
-                                    <td>Type</td>
-                                    <td>Optional</td>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>data</td>
-                                    <td>
-                                            <code>Data</code>
-                                    </td>
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>data</td>
+                                            <td>
+                                                        <code>Data</code>
+                                            </td>
 
-                                    <td>
-                                        No
-                                    </td>
+                                            <td>
+                                                    No
+                                            </td>
 
 
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                    <div>
-                    </div>
-                    <div class="io-description">
-                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
 
-                    </div>
-                    <div class="io-description">
-                        
-                    </div>
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
                 </td>
             </tr>
         </tbody>
@@ -1073,6 +1104,19 @@ String or symbol, if that&#39;s not clear from the documentation output..</p>
             var COMPODOC_CURRENT_PAGE_URL = 'SortableSpec.html';
             var MAX_SEARCH_RESULTS = 15;
        </script>
+
+       <script>
+               $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               checkToggle(darkModeState);
+               if ($darkModeToggleSwitchers.length > 0) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].addEventListener('change', function (event) {
+                              darkModeState = !darkModeState;
+                              toggleDarkMode(darkModeState);
+                         });
+                    }
+               }
+          </script>
 
        <script src="../js/libs/custom-elements.min.js"></script>
        <script src="../js/libs/lit-html.js"></script>

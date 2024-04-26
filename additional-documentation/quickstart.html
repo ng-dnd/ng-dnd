@@ -12,6 +12,55 @@
         <link rel="stylesheet" href="../styles/dark.css">
     </head>
     <body>
+          <script>
+               // Blocking script to avaoid flickering dark mode
+               // Dark mode toggle button
+               var useDark = window.matchMedia('(prefers-color-scheme: dark)');
+               var darkModeState = useDark.matches;
+               var $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               var $darkModeToggles = document.querySelectorAll('.dark-mode-switch');
+               var darkModeStateLocal = localStorage.getItem('compodoc_darkmode-state');
+
+               function checkToggle(check) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].checked = check;
+                    }
+               }
+
+               function toggleDarkMode(state) {
+                    if (window.localStorage) {
+                         localStorage.setItem('compodoc_darkmode-state', state);
+                    }
+
+                    checkToggle(state);
+
+                    const hasClass = document.body.classList.contains('dark');
+
+                    if (state) {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.add('dark');
+                         }
+                         if (!hasClass) {
+                              document.body.classList.add('dark');
+                         }
+                    } else {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.remove('dark');
+                         }
+                         if (hasClass) {
+                              document.body.classList.remove('dark');
+                         }
+                    }
+               }
+
+               useDark.addEventListener('change', function (evt) {
+                    toggleDarkMode(evt.matches);
+               });
+               if (darkModeStateLocal) {
+                    darkModeState = darkModeStateLocal === 'true';
+               }
+               toggleDarkMode(darkModeState);
+          </script>
 
         <div class="navbar navbar-default navbar-fixed-top d-block d-sm-none">
             <a href="../" class="navbar-brand">@ng-dnd/core documentation</a>
@@ -52,10 +101,10 @@
 
 
 <h2>Installation</h2>
-<div><pre class="line-numbers"><code class="language-sh">yarn add &#64;ng-dnd/core react-dnd-html5-backend</code></pre></div><p>You might consider <code>@ng-dnd/multi-backend</code> instead of the HTML5
+<b>Example :</b><div><pre class="line-numbers"><code class="language-sh">yarn add &#64;ng-dnd/core react-dnd-html5-backend</code></pre></div><p>You might consider <code>@ng-dnd/multi-backend</code> instead of the HTML5
 backend, because it allows adding touch support as well.</p>
 <p>Then import <code>DndModule</code> and provide the backend:</p>
-<div><pre class="line-numbers"><code class="language-typescript">import { DndModule } from &#39;&#64;ng-dnd/core&#39;;
+<b>Example :</b><div><pre class="line-numbers"><code class="language-typescript">import { DndModule } from &#39;&#64;ng-dnd/core&#39;;
 import { HTML5Backend } from &#39;react-dnd-html5-backend&#39;;
 
 &#64;NgModule({
@@ -112,7 +161,7 @@ kinds of interaction. The <code>@ng-dnd</code> version includes a preview compon
 <p>Note also that you will need to use an exported function
 to provide the backend, to retain AOT compatibility, if it requires assembly.
 <code>MultiBackend</code>, for example, can be used like so:</p>
-<div><pre class="line-numbers"><code class="language-typescript">export function createBackend() {
+<b>Example :</b><div><pre class="line-numbers"><code class="language-typescript">export function createBackend() {
     return MultiBackend(HTML5ToTouch);
 }
 &#64;NgModule({
@@ -126,7 +175,7 @@ to provide the backend, to retain AOT compatibility, if it requires assembly.
 <p><strong>Troubleshooting steps</strong></p>
 <ol>
 <li><p>Check you are importing the backend and renaming any default exports.</p>
-<div><pre class="line-numbers"><code class="language-none">import { HTML5Backend } from &#39;react-dnd-html5-backend&#39;;
+<b>Example :</b><div><pre class="line-numbers"><code class="language-none">import { HTML5Backend } from &#39;react-dnd-html5-backend&#39;;
 import { SomeImaginaryBackendWithNamedExports } from &#39;some-imaginary-backend&#39;;</code></pre></div><p>Generally, make sure you are importing the backend correctly. If it does not
 provide Typescript definitions, you might have to read the documentation or
 browse the source code.</p>
@@ -141,7 +190,7 @@ like <code>MultiBackend</code> or any backend that allows <code>SomeBackend({ op
 like <code>TouchBackend</code>. <a href="#touch-support-and-alternate-backends">See above</a>.</p>
 <h3>In the spec callbacks, my component doesn&#39;t have any properties, and it can&#39;t call <code>this.method()</code>!</h3>
 <p>Make sure you use the arrow function syntax (<code>() =&gt;</code>) in your specs so <code>this</code> will refer to your component. Example:</p>
-<div><pre class="line-numbers"><code class="language-typescript">paperCount = 3;
+<b>Example :</b><div><pre class="line-numbers"><code class="language-typescript">paperCount = 3;
 limitedSupplyOfPaper = this.dnd.dragSource(&#39;PAPER&#39;, {
   // use shorthand for one-liners that return a value
   canDrag: () =&gt; this.paperCount &gt; 0,
@@ -184,6 +233,19 @@ type of <code>this</code> to be <code>any</code>.</p>
             var COMPODOC_CURRENT_PAGE_URL = 'quickstart.html';
             var MAX_SEARCH_RESULTS = 15;
        </script>
+
+       <script>
+               $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               checkToggle(darkModeState);
+               if ($darkModeToggleSwitchers.length > 0) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].addEventListener('change', function (event) {
+                              darkModeState = !darkModeState;
+                              toggleDarkMode(darkModeState);
+                         });
+                    }
+               }
+          </script>
 
        <script src="../js/libs/custom-elements.min.js"></script>
        <script src="../js/libs/lit-html.js"></script>

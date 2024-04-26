@@ -12,6 +12,55 @@
         <link rel="stylesheet" href="../styles/dark.css">
     </head>
     <body>
+          <script>
+               // Blocking script to avaoid flickering dark mode
+               // Dark mode toggle button
+               var useDark = window.matchMedia('(prefers-color-scheme: dark)');
+               var darkModeState = useDark.matches;
+               var $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               var $darkModeToggles = document.querySelectorAll('.dark-mode-switch');
+               var darkModeStateLocal = localStorage.getItem('compodoc_darkmode-state');
+
+               function checkToggle(check) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].checked = check;
+                    }
+               }
+
+               function toggleDarkMode(state) {
+                    if (window.localStorage) {
+                         localStorage.setItem('compodoc_darkmode-state', state);
+                    }
+
+                    checkToggle(state);
+
+                    const hasClass = document.body.classList.contains('dark');
+
+                    if (state) {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.add('dark');
+                         }
+                         if (!hasClass) {
+                              document.body.classList.add('dark');
+                         }
+                    } else {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.remove('dark');
+                         }
+                         if (hasClass) {
+                              document.body.classList.remove('dark');
+                         }
+                    }
+               }
+
+               useDark.addEventListener('change', function (evt) {
+                    toggleDarkMode(evt.matches);
+               });
+               if (darkModeStateLocal) {
+                    darkModeState = darkModeStateLocal === 'true';
+               }
+               toggleDarkMode(darkModeState);
+          </script>
 
         <div class="navbar navbar-default navbar-fixed-top d-block d-sm-none">
             <a href="../" class="navbar-brand">@ng-dnd/core documentation</a>
@@ -131,7 +180,7 @@ discussion of these type parameters at <a href="../interfaces/DragSourceSpec.htm
                 <td class="col-md-4">
                     <a name="canDrop"></a>
                     <span class="name">
-                        <span class="modifier">Optional</span>
+                            <span class="modifier">Optional</span>
                         <span ><b>canDrop</b></span>
                         <a href="#canDrop"><span class="icon ion-ios-link"></span></a>
                     </span>
@@ -148,7 +197,7 @@ discussion of these type parameters at <a href="../interfaces/DragSourceSpec.htm
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-description"><p>Queries your component to determine whether an item can be dropped on this target.</p>
+                        <div class="io-description"><p>Queries your component to determine whether an item can be dropped on this target.</p>
 <p><strong>NOTE: runs outside Angular change detection.</strong> This is for performance
 reasons. You shouldn&#39;t be making changes to your component here anyway. If
 you do change your component inside this callback, it may not appear
@@ -157,42 +206,40 @@ performance degradation.</p>
 <p>Default, when not specified, is <code>true</code>.</p>
 </div>
 
-                    <div class="io-description">
-                        <b>Parameters :</b>
-                        
-                        <table class="params">
-                            <thead>
-                                <tr>
-                                    <td>Name</td>
-                                    <td>Type</td>
-                                    <td>Optional</td>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>monitor</td>
-                                    <td>
-                                                <code><a href="../classes/Target.html" target="_self" >DropTargetMonitor&lt;Item | DropResult&gt;</a></code>
-                                    </td>
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>monitor</td>
+                                            <td>
+                                                            <code><a href="../classes/Target.html" target="_self" >DropTargetMonitor&lt;Item | DropResult&gt;</a></code>
+                                            </td>
 
-                                    <td>
-                                        No
-                                    </td>
+                                            <td>
+                                                    No
+                                            </td>
 
 
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                    <div>
-                    </div>
-                    <div class="io-description">
-                        <b>Returns : </b>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
 
-                    </div>
-                    <div class="io-description">
-                        
-                    </div>
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
                 </td>
             </tr>
         </tbody>
@@ -203,7 +250,7 @@ performance degradation.</p>
                 <td class="col-md-4">
                     <a name="drop"></a>
                     <span class="name">
-                        <span class="modifier">Optional</span>
+                            <span class="modifier">Optional</span>
                         <span ><b>drop</b></span>
                         <a href="#drop"><span class="icon ion-ios-link"></span></a>
                     </span>
@@ -220,7 +267,7 @@ performance degradation.</p>
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-description"><p>Called when a compatible item is dropped on the target. You may either
+                        <div class="io-description"><p>Called when a compatible item is dropped on the target. You may either
 return nothing, or a plain object.</p>
 <p>If you return an object, it is going to become the drop result and will be
 available to the drag source in its <a href="../interfaces/DragSourceSpec.html#endDrag">DragSourceSpec</a> method as
@@ -234,42 +281,40 @@ method and the source&#39;s <code>endDrag()</code> method are good places to fir
 <p>This method will not be called if <code>canDrop()</code> is defined and returns <code>false</code>.</p>
 </div>
 
-                    <div class="io-description">
-                        <b>Parameters :</b>
-                        
-                        <table class="params">
-                            <thead>
-                                <tr>
-                                    <td>Name</td>
-                                    <td>Type</td>
-                                    <td>Optional</td>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>monitor</td>
-                                    <td>
-                                                <code><a href="../classes/Target.html" target="_self" >DropTargetMonitor&lt;Item | DropResult&gt;</a></code>
-                                    </td>
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>monitor</td>
+                                            <td>
+                                                            <code><a href="../classes/Target.html" target="_self" >DropTargetMonitor&lt;Item | DropResult&gt;</a></code>
+                                            </td>
 
-                                    <td>
-                                        No
-                                    </td>
+                                            <td>
+                                                    No
+                                            </td>
 
 
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                    <div>
-                    </div>
-                    <div class="io-description">
-                        <b>Returns : </b>    <code>DropResult | void</code>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>    <code>DropResult | void</code>
 
-                    </div>
-                    <div class="io-description">
-                        
-                    </div>
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
                 </td>
             </tr>
         </tbody>
@@ -280,7 +325,7 @@ method and the source&#39;s <code>endDrag()</code> method are good places to fir
                 <td class="col-md-4">
                     <a name="hover"></a>
                     <span class="name">
-                        <span class="modifier">Optional</span>
+                            <span class="modifier">Optional</span>
                         <span ><b>hover</b></span>
                         <a href="#hover"><span class="icon ion-ios-link"></span></a>
                     </span>
@@ -297,46 +342,44 @@ method and the source&#39;s <code>endDrag()</code> method are good places to fir
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-description"><p>Called frequently while the mouse hovers over the owner drop target while
+                        <div class="io-description"><p>Called frequently while the mouse hovers over the owner drop target while
 dragging a relevant item.</p>
 </div>
 
-                    <div class="io-description">
-                        <b>Parameters :</b>
-                        
-                        <table class="params">
-                            <thead>
-                                <tr>
-                                    <td>Name</td>
-                                    <td>Type</td>
-                                    <td>Optional</td>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>monitor</td>
-                                    <td>
-                                                <code><a href="../classes/Target.html" target="_self" >DropTargetMonitor&lt;Item | DropResult&gt;</a></code>
-                                    </td>
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>monitor</td>
+                                            <td>
+                                                            <code><a href="../classes/Target.html" target="_self" >DropTargetMonitor&lt;Item | DropResult&gt;</a></code>
+                                            </td>
 
-                                    <td>
-                                        No
-                                    </td>
+                                            <td>
+                                                    No
+                                            </td>
 
 
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                    <div>
-                    </div>
-                    <div class="io-description">
-                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
 
-                    </div>
-                    <div class="io-description">
-                        
-                    </div>
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
                 </td>
             </tr>
         </tbody>
@@ -384,6 +427,19 @@ dragging a relevant item.</p>
             var COMPODOC_CURRENT_PAGE_URL = 'DropTargetSpec.html';
             var MAX_SEARCH_RESULTS = 15;
        </script>
+
+       <script>
+               $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               checkToggle(darkModeState);
+               if ($darkModeToggleSwitchers.length > 0) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].addEventListener('change', function (event) {
+                              darkModeState = !darkModeState;
+                              toggleDarkMode(darkModeState);
+                         });
+                    }
+               }
+          </script>
 
        <script src="../js/libs/custom-elements.min.js"></script>
        <script src="../js/libs/lit-html.js"></script>

@@ -1,12 +1,19 @@
-@import './reset.css';
-@import './bootstrap.min.css';
-@import './bootstrap-card.css';
-@import './font-awesome.min.css';
-@import './ionicons.min.css';
-@import './compodoc.css';
+@import url('./reset.css');
+@import url('./bootstrap.min.css');
+@import url('./bootstrap-card.css');
+@import url('./font-awesome.min.css');
+@import url('./ionicons.min.css');
+@import url('./compodoc.css');
 
 /* @import "./prism.css"; */
-@import './tablesort.css';
+@import url('./tablesort.css');
+
+/* fix layout on mobile */
+@media screen and (width < 768px) {
+  .hidden-xs {
+    display: none;
+  }
+}
 
 html,
 body {
@@ -195,7 +202,6 @@ pre[class*='language-'] {
 .token.property,
 .token.regex,
 .token.inserted {
-  color: #36acaa;
   color: #905;
 }
 

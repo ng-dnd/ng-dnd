@@ -12,6 +12,55 @@
         <link rel="stylesheet" href="../styles/dark.css">
     </head>
     <body>
+          <script>
+               // Blocking script to avaoid flickering dark mode
+               // Dark mode toggle button
+               var useDark = window.matchMedia('(prefers-color-scheme: dark)');
+               var darkModeState = useDark.matches;
+               var $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               var $darkModeToggles = document.querySelectorAll('.dark-mode-switch');
+               var darkModeStateLocal = localStorage.getItem('compodoc_darkmode-state');
+
+               function checkToggle(check) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].checked = check;
+                    }
+               }
+
+               function toggleDarkMode(state) {
+                    if (window.localStorage) {
+                         localStorage.setItem('compodoc_darkmode-state', state);
+                    }
+
+                    checkToggle(state);
+
+                    const hasClass = document.body.classList.contains('dark');
+
+                    if (state) {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.add('dark');
+                         }
+                         if (!hasClass) {
+                              document.body.classList.add('dark');
+                         }
+                    } else {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.remove('dark');
+                         }
+                         if (hasClass) {
+                              document.body.classList.remove('dark');
+                         }
+                    }
+               }
+
+               useDark.addEventListener('change', function (evt) {
+                    toggleDarkMode(evt.matches);
+               });
+               if (darkModeStateLocal) {
+                    darkModeState = darkModeStateLocal === 'true';
+               }
+               toggleDarkMode(darkModeState);
+          </script>
 
         <div class="navbar navbar-default navbar-fixed-top d-block d-sm-none">
             <a href="../" class="navbar-brand">@ng-dnd/core documentation</a>
@@ -79,7 +128,7 @@
 Limitations in TypeScript may prevent inferring this in many circumstances,
 and it will default to <code>{}</code>. It is best if you are strong-typing to pass a
 type parameter like so:</p>
-<div><pre class="line-numbers"><code class="language-typescript">interface MyDraggedItemType { id: number; }
+<b>Example :</b><div><pre class="line-numbers"><code class="language-typescript">interface MyDraggedItemType { id: number; }
 // ...
 source = this.dnd.dragSource&lt;MyDraggedItemType&gt;(..., {
     beginDrag: monitor =&gt; ({ id: this.id })
@@ -87,7 +136,7 @@ source = this.dnd.dragSource&lt;MyDraggedItemType&gt;(..., {
 It is the type of the object returned by <code>monitor.getDropResult()</code> during <code>endDrag()</code>.
 Note that your backend may assign some extra properties. You should define a
 <code>DropResult</code> type that recognises these, such as:</p>
-<div><pre class="line-numbers"><code class="language-typescript">interface HTML5DropResult { dropEffect: string; }
+<b>Example :</b><div><pre class="line-numbers"><code class="language-typescript">interface HTML5DropResult { dropEffect: string; }
 interface MyDropResult extends HTML5DropResult { id: number; }
 target = this.dnd.dropTarget&lt;..., MyDropResult&gt;(..., {
     drop: monitor =&gt; ({ id: this.id })
@@ -178,7 +227,7 @@ source = this.dnd.dragSource&lt;... MyDropResult&gt;(..., {
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-description"><p>Required. When the dragging starts, <code>beginDrag</code> is called. You <strong>must</strong> return
+                        <div class="io-description"><p>Required. When the dragging starts, <code>beginDrag</code> is called. You <strong>must</strong> return
 a plain JavaScript object describing the data being dragged. What you
 return is the <em>only</em> information available to the drop targets about the
 drag source so it&#39;s important to pick the minimal data they need to know.
@@ -187,42 +236,40 @@ should try very hard to avoid doing this because it couples the drag
 sources and drop targets. It&#39;s a good idea to return something like <code>{ id: this.id }</code> from this method.</p>
 </div>
 
-                    <div class="io-description">
-                        <b>Parameters :</b>
-                        
-                        <table class="params">
-                            <thead>
-                                <tr>
-                                    <td>Name</td>
-                                    <td>Type</td>
-                                    <td>Optional</td>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>monitor</td>
-                                    <td>
-                                                <code><a href="../classes/Source.html" target="_self" >DragSourceMonitor&lt;void | void&gt;</a></code>
-                                    </td>
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>monitor</td>
+                                            <td>
+                                                            <code><a href="../classes/Source.html" target="_self" >DragSourceMonitor&lt;void | void&gt;</a></code>
+                                            </td>
 
-                                    <td>
-                                        No
-                                    </td>
+                                            <td>
+                                                    No
+                                            </td>
 
 
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                    <div>
-                    </div>
-                    <div class="io-description">
-                        <b>Returns : </b>    <code>Item</code>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>    <code>Item</code>
 
-                    </div>
-                    <div class="io-description">
-                        
-                    </div>
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
                 </td>
             </tr>
         </tbody>
@@ -233,7 +280,7 @@ sources and drop targets. It&#39;s a good idea to return something like <code>{ 
                 <td class="col-md-4">
                     <a name="canDrag"></a>
                     <span class="name">
-                        <span class="modifier">Optional</span>
+                            <span class="modifier">Optional</span>
                         <span ><b>canDrag</b></span>
                         <a href="#canDrag"><span class="icon ion-ios-link"></span></a>
                     </span>
@@ -250,46 +297,44 @@ sources and drop targets. It&#39;s a good idea to return something like <code>{ 
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-description"><p>Optional. Queries your component to determine whether this source can be
+                        <div class="io-description"><p>Optional. Queries your component to determine whether this source can be
 dragged. Default returns true; this is often sufficient.</p>
 </div>
 
-                    <div class="io-description">
-                        <b>Parameters :</b>
-                        
-                        <table class="params">
-                            <thead>
-                                <tr>
-                                    <td>Name</td>
-                                    <td>Type</td>
-                                    <td>Optional</td>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>monitor</td>
-                                    <td>
-                                                <code><a href="../classes/Source.html" target="_self" >DragSourceMonitor&lt;void | void&gt;</a></code>
-                                    </td>
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>monitor</td>
+                                            <td>
+                                                            <code><a href="../classes/Source.html" target="_self" >DragSourceMonitor&lt;void | void&gt;</a></code>
+                                            </td>
 
-                                    <td>
-                                        No
-                                    </td>
+                                            <td>
+                                                    No
+                                            </td>
 
 
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                    <div>
-                    </div>
-                    <div class="io-description">
-                        <b>Returns : </b>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
 
-                    </div>
-                    <div class="io-description">
-                        
-                    </div>
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
                 </td>
             </tr>
         </tbody>
@@ -300,7 +345,7 @@ dragged. Default returns true; this is often sufficient.</p>
                 <td class="col-md-4">
                     <a name="endDrag"></a>
                     <span class="name">
-                        <span class="modifier">Optional</span>
+                            <span class="modifier">Optional</span>
                         <span ><b>endDrag</b></span>
                         <a href="#endDrag"><span class="icon ion-ios-link"></span></a>
                     </span>
@@ -317,48 +362,46 @@ dragged. Default returns true; this is often sufficient.</p>
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-description"><p>Optional. Notifies your component when dragging ends.</p>
+                        <div class="io-description"><p>Optional. Notifies your component when dragging ends.</p>
 <p>This is a good place to fire actions or modify a component. You will often
 want to check <a href="../interfaces/DragSourceMonitor.html#didDrop">DragSourceMonitor</a> and <a href="../interfaces/DragSourceMonitor.html#getDropResult">DragSourceMonitor</a> for more
 details.</p>
 </div>
 
-                    <div class="io-description">
-                        <b>Parameters :</b>
-                        
-                        <table class="params">
-                            <thead>
-                                <tr>
-                                    <td>Name</td>
-                                    <td>Type</td>
-                                    <td>Optional</td>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>monitor</td>
-                                    <td>
-                                                <code><a href="../classes/Source.html" target="_self" >DragSourceMonitor&lt;Item | DropResult&gt;</a></code>
-                                    </td>
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>monitor</td>
+                                            <td>
+                                                            <code><a href="../classes/Source.html" target="_self" >DragSourceMonitor&lt;Item | DropResult&gt;</a></code>
+                                            </td>
 
-                                    <td>
-                                        No
-                                    </td>
+                                            <td>
+                                                    No
+                                            </td>
 
 
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                    <div>
-                    </div>
-                    <div class="io-description">
-                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
 
-                    </div>
-                    <div class="io-description">
-                        
-                    </div>
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
                 </td>
             </tr>
         </tbody>
@@ -369,7 +412,7 @@ details.</p>
                 <td class="col-md-4">
                     <a name="isDragging"></a>
                     <span class="name">
-                        <span class="modifier">Optional</span>
+                            <span class="modifier">Optional</span>
                         <span ><b>isDragging</b></span>
                         <a href="#isDragging"><span class="icon ion-ios-link"></span></a>
                     </span>
@@ -386,7 +429,7 @@ details.</p>
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-description"><p>By default, only the drag source that initiated the drag operation is
+                        <div class="io-description"><p>By default, only the drag source that initiated the drag operation is
  considered to be dragging. You might override this by matching on the
  <a href="../interfaces/DragSourceMonitor.html#getItem">DragSourceMonitor</a>.id and your component&#39;s id, or similar. Do this if the
  original component may be unmounted during the dragging and later
@@ -402,42 +445,40 @@ immediately, and if you use <code>NgZone.run()</code> then you may experience
 performance degradation.</p>
 </div>
 
-                    <div class="io-description">
-                        <b>Parameters :</b>
-                        
-                        <table class="params">
-                            <thead>
-                                <tr>
-                                    <td>Name</td>
-                                    <td>Type</td>
-                                    <td>Optional</td>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>monitor</td>
-                                    <td>
-                                                <code><a href="../classes/Source.html" target="_self" >DragSourceMonitor&lt;Item | void&gt;</a></code>
-                                    </td>
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>monitor</td>
+                                            <td>
+                                                            <code><a href="../classes/Source.html" target="_self" >DragSourceMonitor&lt;Item | void&gt;</a></code>
+                                            </td>
 
-                                    <td>
-                                        No
-                                    </td>
+                                            <td>
+                                                    No
+                                            </td>
 
 
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                    <div>
-                    </div>
-                    <div class="io-description">
-                        <b>Returns : </b>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
 
-                    </div>
-                    <div class="io-description">
-                        
-                    </div>
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
                 </td>
             </tr>
         </tbody>
@@ -485,6 +526,19 @@ performance degradation.</p>
             var COMPODOC_CURRENT_PAGE_URL = 'DragSourceSpec.html';
             var MAX_SEARCH_RESULTS = 15;
        </script>
+
+       <script>
+               $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               checkToggle(darkModeState);
+               if ($darkModeToggleSwitchers.length > 0) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].addEventListener('change', function (event) {
+                              darkModeState = !darkModeState;
+                              toggleDarkMode(darkModeState);
+                         });
+                    }
+               }
+          </script>
 
        <script src="../js/libs/custom-elements.min.js"></script>
        <script src="../js/libs/lit-html.js"></script>

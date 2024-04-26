@@ -12,6 +12,55 @@
         <link rel="stylesheet" href="../styles/dark.css">
     </head>
     <body>
+          <script>
+               // Blocking script to avaoid flickering dark mode
+               // Dark mode toggle button
+               var useDark = window.matchMedia('(prefers-color-scheme: dark)');
+               var darkModeState = useDark.matches;
+               var $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               var $darkModeToggles = document.querySelectorAll('.dark-mode-switch');
+               var darkModeStateLocal = localStorage.getItem('compodoc_darkmode-state');
+
+               function checkToggle(check) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].checked = check;
+                    }
+               }
+
+               function toggleDarkMode(state) {
+                    if (window.localStorage) {
+                         localStorage.setItem('compodoc_darkmode-state', state);
+                    }
+
+                    checkToggle(state);
+
+                    const hasClass = document.body.classList.contains('dark');
+
+                    if (state) {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.add('dark');
+                         }
+                         if (!hasClass) {
+                              document.body.classList.add('dark');
+                         }
+                    } else {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.remove('dark');
+                         }
+                         if (hasClass) {
+                              document.body.classList.remove('dark');
+                         }
+                    }
+               }
+
+               useDark.addEventListener('change', function (evt) {
+                    toggleDarkMode(evt.matches);
+               });
+               if (darkModeStateLocal) {
+                    darkModeState = darkModeStateLocal === 'true';
+               }
+               toggleDarkMode(darkModeState);
+          </script>
 
         <div class="navbar navbar-default navbar-fixed-top d-block d-sm-none">
             <a href="../" class="navbar-brand">@ng-dnd/core documentation</a>
@@ -84,7 +133,7 @@ You do not have to connect it to a DOM element if that&#39;s all you want.</p>
                 <h3>Extends</h3>
             </p>
             <p class="comment">
-                        <code><a href="../interfaces/ConnectionBase.html" target="_self" >ConnectionBase</a></code>
+                            <code><a href="../interfaces/ConnectionBase.html" target="_self" >ConnectionBase</a></code>
             </p>
 
         <section data-compodoc="block-index">
@@ -157,65 +206,63 @@ You do not have to connect it to a DOM element if that&#39;s all you want.</p>
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-description"><p>This function allows you to connect a DOM node to your <code>DragSource</code> as a <strong>preview</strong>.
+                        <div class="io-description"><p>This function allows you to connect a DOM node to your <code>DragSource</code> as a <strong>preview</strong>.
 You will not usually need to call this directly;
 it is more easily handled by the directives.</p>
 <p>You might use an <code>ElementRef.nativeElement</code>, or even an
 <a href="https://developer.mozilla.org/en-US/docs/Web/API/HTMLImageElement/Image"><code>Image</code></a>.</p>
-<div><pre class="line-numbers"><code class="language-ts">const img = new Image();
+<b>Example :</b><div><pre class="line-numbers"><code class="language-ts">const img = new Image();
 img.onload = this.source.connectDragPreview(img);
 img.src = &#39;...&#39;;</code></pre></div><p>The subscription returned is automatically unsubscribed when the connection is made.
 This may be immediate if the <code>DragSource</code> already has a type.</p>
 </div>
 
-                    <div class="io-description">
-                        <b>Parameters :</b>
-                        
-                        <table class="params">
-                            <thead>
-                                <tr>
-                                    <td>Name</td>
-                                    <td>Type</td>
-                                    <td>Optional</td>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>elementOrNode</td>
-                                    <td>
-                                            <code>Node</code>
-                                    </td>
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>elementOrNode</td>
+                                            <td>
+                                                        <code>Node</code>
+                                            </td>
 
-                                    <td>
-                                        No
-                                    </td>
-
-
-                                </tr>
-                                <tr>
-                                    <td>options</td>
-                                    <td>
-                                                <code><a href="../interfaces/DragPreviewOptions.html" target="_self" >DragPreviewOptions</a></code>
-                                    </td>
-
-                                    <td>
-                                        Yes
-                                    </td>
+                                            <td>
+                                                    No
+                                            </td>
 
 
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                    <div>
-                    </div>
-                    <div class="io-description">
-                        <b>Returns : </b>    <code>Subscription</code>
+                                        </tr>
+                                        <tr>
+                                                <td>options</td>
+                                            <td>
+                                                            <code><a href="../interfaces/DragPreviewOptions.html" target="_self" >DragPreviewOptions</a></code>
+                                            </td>
 
-                    </div>
-                    <div class="io-description">
-                        
-                    </div>
+                                            <td>
+                                                    Yes
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>    <code>Subscription</code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
                 </td>
             </tr>
         </tbody>
@@ -242,61 +289,59 @@ This may be immediate if the <code>DragSource</code> already has a type.</p>
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-description"><p>This function allows you to connect a DOM node to your <code>DragSource</code>.
+                        <div class="io-description"><p>This function allows you to connect a DOM node to your <code>DragSource</code>.
 You will not usually need to call this directly;
 it is more easily handled by the directives.</p>
 <p>The subscription returned is automatically unsubscribed when the connection is made.
 This may be immediate if the <code>DragSource</code> already has a type.</p>
 </div>
 
-                    <div class="io-description">
-                        <b>Parameters :</b>
-                        
-                        <table class="params">
-                            <thead>
-                                <tr>
-                                    <td>Name</td>
-                                    <td>Type</td>
-                                    <td>Optional</td>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>elementOrNode</td>
-                                    <td>
-                                            <code>Node</code>
-                                    </td>
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>elementOrNode</td>
+                                            <td>
+                                                        <code>Node</code>
+                                            </td>
 
-                                    <td>
-                                        No
-                                    </td>
-
-
-                                </tr>
-                                <tr>
-                                    <td>options</td>
-                                    <td>
-                                                <code><a href="../interfaces/DragSourceOptions.html" target="_self" >DragSourceOptions</a></code>
-                                    </td>
-
-                                    <td>
-                                        Yes
-                                    </td>
+                                            <td>
+                                                    No
+                                            </td>
 
 
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                    <div>
-                    </div>
-                    <div class="io-description">
-                        <b>Returns : </b>    <code>Subscription</code>
+                                        </tr>
+                                        <tr>
+                                                <td>options</td>
+                                            <td>
+                                                            <code><a href="../interfaces/DragSourceOptions.html" target="_self" >DragSourceOptions</a></code>
+                                            </td>
 
-                    </div>
-                    <div class="io-description">
-                        
-                    </div>
+                                            <td>
+                                                    Yes
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>    <code>Subscription</code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
                 </td>
             </tr>
         </tbody>
@@ -323,14 +368,14 @@ This may be immediate if the <code>DragSource</code> already has a type.</p>
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-description"><p>Returns the drag source ID that can be used to simulate the drag and drop events
+                        <div class="io-description"><p>Returns the drag source ID that can be used to simulate the drag and drop events
 with the testing backend.</p>
 </div>
 
-                    <div class="io-description">
-                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
 
-                    </div>
+                        </div>
                 </td>
             </tr>
         </tbody>
@@ -357,7 +402,7 @@ with the testing backend.</p>
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-description"><p>Use this method to have a dynamically typed source. If no type has
+                        <div class="io-description"><p>Use this method to have a dynamically typed source. If no type has
 previously been set, it creates the subscription and allows the
 <code>[dragSource]</code> DOM element to be connected. If you do not need to
 dynamically update the type, you can set it once via the
@@ -365,7 +410,7 @@ dynamically update the type, you can set it once via the
 <p>If you wish to have a dynamic type based on an <code>@Input()</code> property, for
 example, you must call <code>setType()</code> in either of your component&#39;s
 <code>ngOnInit</code> or <code>ngOnChanges</code> methods:</p>
-<div><pre class="line-numbers"><code class="language-typescript">&#64;Input() type: string;
+<b>Example :</b><div><pre class="line-numbers"><code class="language-typescript">&#64;Input() type: string;
 &#64;Input() model: { parentId: number; name: string; };
 target = this.dnd.dragSource(null, {
   // ...
@@ -376,49 +421,47 @@ ngOnChanges() {
   // or create groupings on the fly
   this.target.setType(&quot;PARENT_&quot; + this.model.parentId.toString());
 }</code></pre></div><p>It may be more convenient or easier to understand if you write:</p>
-<div><pre class="line-numbers"><code class="language-typescript">&#64;Input() set type(t) {
+<b>Example :</b><div><pre class="line-numbers"><code class="language-typescript">&#64;Input() set type(t) {
   this.source.setType(t);
 }
 source = this.dnd.dragSource(null, {
   beginDrag: () =&gt; ({ ... })
 });</code></pre></div></div>
 
-                    <div class="io-description">
-                        <b>Parameters :</b>
-                        
-                        <table class="params">
-                            <thead>
-                                <tr>
-                                    <td>Name</td>
-                                    <td>Type</td>
-                                    <td>Optional</td>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>type</td>
-                                    <td>
-                                            <code>string | symbol</code>
-                                    </td>
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>type</td>
+                                            <td>
+                                                        <code>string | symbol</code>
+                                            </td>
 
-                                    <td>
-                                        No
-                                    </td>
+                                            <td>
+                                                    No
+                                            </td>
 
 
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                    <div>
-                    </div>
-                    <div class="io-description">
-                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
 
-                    </div>
-                    <div class="io-description">
-                        
-                    </div>
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
                 </td>
             </tr>
         </tbody>
@@ -466,6 +509,19 @@ source = this.dnd.dragSource(null, {
             var COMPODOC_CURRENT_PAGE_URL = 'DragSource.html';
             var MAX_SEARCH_RESULTS = 15;
        </script>
+
+       <script>
+               $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               checkToggle(darkModeState);
+               if ($darkModeToggleSwitchers.length > 0) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].addEventListener('change', function (event) {
+                              darkModeState = !darkModeState;
+                              toggleDarkMode(darkModeState);
+                         });
+                    }
+               }
+          </script>
 
        <script src="../js/libs/custom-elements.min.js"></script>
        <script src="../js/libs/lit-html.js"></script>

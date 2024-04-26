@@ -12,6 +12,55 @@
         <link rel="stylesheet" href="../../styles/dark.css">
     </head>
     <body>
+          <script>
+               // Blocking script to avaoid flickering dark mode
+               // Dark mode toggle button
+               var useDark = window.matchMedia('(prefers-color-scheme: dark)');
+               var darkModeState = useDark.matches;
+               var $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               var $darkModeToggles = document.querySelectorAll('.dark-mode-switch');
+               var darkModeStateLocal = localStorage.getItem('compodoc_darkmode-state');
+
+               function checkToggle(check) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].checked = check;
+                    }
+               }
+
+               function toggleDarkMode(state) {
+                    if (window.localStorage) {
+                         localStorage.setItem('compodoc_darkmode-state', state);
+                    }
+
+                    checkToggle(state);
+
+                    const hasClass = document.body.classList.contains('dark');
+
+                    if (state) {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.add('dark');
+                         }
+                         if (!hasClass) {
+                              document.body.classList.add('dark');
+                         }
+                    } else {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.remove('dark');
+                         }
+                         if (hasClass) {
+                              document.body.classList.remove('dark');
+                         }
+                    }
+               }
+
+               useDark.addEventListener('change', function (evt) {
+                    toggleDarkMode(evt.matches);
+               });
+               if (darkModeStateLocal) {
+                    darkModeState = darkModeStateLocal === 'true';
+               }
+               toggleDarkMode(darkModeState);
+          </script>
 
         <div class="navbar navbar-default navbar-fixed-top d-block d-sm-none">
             <a href="../../" class="navbar-brand">@ng-dnd/core documentation</a>
@@ -85,12 +134,12 @@ common.</p>
 <p>First, inject
 <a href="../../injectables/DndService.html">DndService</a>,
 into your component.</p>
-<div><pre class="line-numbers"><code class="language-typescript">constructor(private dnd: DndService) { ... }</code></pre></div><p>Then, use one of the methods
+<b>Example :</b><div><pre class="line-numbers"><code class="language-typescript">constructor(private dnd: DndService) { ... }</code></pre></div><p>Then, use one of the methods
 <a href="../../injectables/DndService.html#dragSource">DndService#dragSource</a>,
 <a href="../../injectables/DndService.html#dropTarget">DndService#dropTarget</a>
 to create one and store it as an instance variable, and make sure to tear down
 the connection in <code>ngOnDestroy</code>.</p>
-<div><pre class="line-numbers"><code class="language-typescript">source = this.dnd.dragSource(&quot;CAT&quot;, {
+<b>Example :</b><div><pre class="line-numbers"><code class="language-typescript">source = this.dnd.dragSource(&quot;CAT&quot;, {
   beginDrag: (monitor) =&gt; ({ id: this.cat.id })
   // ...
 });
@@ -112,7 +161,7 @@ destroyed. If you don&#39;t, you will have strange problems.</p>
 <p><strong>The easy way is to call
 <a href="../../interfaces/ConnectionBase.html#unsubscribe"><code>.unsubscribe()</code></a></strong> on the
 connection object in <code>ngOnDestroy</code>.</p>
-<div><pre class="line-numbers"><code class="language-typescript">ngOnDestroy() {
+<b>Example :</b><div><pre class="line-numbers"><code class="language-typescript">ngOnDestroy() {
     this.source.unsubscribe();
     this.target.unsubscribe();
     this.layer.unsubscribe();
@@ -124,7 +173,7 @@ maintain, there are more powerful ways of unsubscribing to many things at once.<
 <p>You can create an RxJS <code>Subscription</code> object in your component, and call
 <code>Subscription.add(conn)</code> with your connection. There is a convenience parameter
 on each of the <code>DndService</code> methods which will do this for you.</p>
-<div><pre class="line-numbers"><code class="language-typescript">import { Subscription } from &#39;rxjs&#39;;
+<b>Example :</b><div><pre class="line-numbers"><code class="language-typescript">import { Subscription } from &#39;rxjs&#39;;
 
 // ...
 
@@ -186,6 +235,19 @@ the whole component.)</p>
             var COMPODOC_CURRENT_PAGE_URL = '1.-creating-connections.html';
             var MAX_SEARCH_RESULTS = 15;
        </script>
+
+       <script>
+               $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               checkToggle(darkModeState);
+               if ($darkModeToggleSwitchers.length > 0) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].addEventListener('change', function (event) {
+                              darkModeState = !darkModeState;
+                              toggleDarkMode(darkModeState);
+                         });
+                    }
+               }
+          </script>
 
        <script src="../../js/libs/custom-elements.min.js"></script>
        <script src="../../js/libs/lit-html.js"></script>

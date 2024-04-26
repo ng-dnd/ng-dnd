@@ -12,6 +12,55 @@
         <link rel="stylesheet" href="../styles/dark.css">
     </head>
     <body>
+          <script>
+               // Blocking script to avaoid flickering dark mode
+               // Dark mode toggle button
+               var useDark = window.matchMedia('(prefers-color-scheme: dark)');
+               var darkModeState = useDark.matches;
+               var $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               var $darkModeToggles = document.querySelectorAll('.dark-mode-switch');
+               var darkModeStateLocal = localStorage.getItem('compodoc_darkmode-state');
+
+               function checkToggle(check) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].checked = check;
+                    }
+               }
+
+               function toggleDarkMode(state) {
+                    if (window.localStorage) {
+                         localStorage.setItem('compodoc_darkmode-state', state);
+                    }
+
+                    checkToggle(state);
+
+                    const hasClass = document.body.classList.contains('dark');
+
+                    if (state) {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.add('dark');
+                         }
+                         if (!hasClass) {
+                              document.body.classList.add('dark');
+                         }
+                    } else {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.remove('dark');
+                         }
+                         if (hasClass) {
+                              document.body.classList.remove('dark');
+                         }
+                    }
+               }
+
+               useDark.addEventListener('change', function (evt) {
+                    toggleDarkMode(evt.matches);
+               });
+               if (darkModeStateLocal) {
+                    darkModeState = darkModeStateLocal === 'true';
+               }
+               toggleDarkMode(darkModeState);
+          </script>
 
         <div class="navbar navbar-default navbar-fixed-top d-block d-sm-none">
             <a href="../" class="navbar-brand">@ng-dnd/core documentation</a>
@@ -65,7 +114,7 @@ docs</a> on
 reference. If you know how to use <code>react-dnd</code> already, then this should show you
 most of it. If you don&#39;t know <code>react-dnd</code>, this will help you read <a href="https://react-dnd.github.io/react-dnd/docs/tutorial">the example code demos</a> in the <code>react-dnd</code> documentation.</p>
 <p>Here&#39;s a basic example in React:</p>
-<div><pre class="line-numbers"><code class="language-javascript">let itemSourceSpec = {
+<b>Example :</b><div><pre class="line-numbers"><code class="language-javascript">let itemSourceSpec = {
   beginDrag: (props, monitor) =&gt; {
     return { someProperty: props.someProperty };
   },
@@ -93,7 +142,7 @@ export class MyComponent extends React.Component {
     );
   }
 }</code></pre></div><p>And here&#39;s the Angular translation:</p>
-<div><pre class="line-numbers"><code class="language-typescript">&#64;Component({
+<b>Example :</b><div><pre class="line-numbers"><code class="language-typescript">&#64;Component({
   template: `
     &lt;div [dragSource]=&quot;itemSource&quot;&gt;
       {{ someProperty }}
@@ -218,6 +267,19 @@ done. See <code>DragSource.setType</code> for more information.</p>
             var COMPODOC_CURRENT_PAGE_URL = 'translating-react-code.html';
             var MAX_SEARCH_RESULTS = 15;
        </script>
+
+       <script>
+               $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               checkToggle(darkModeState);
+               if ($darkModeToggleSwitchers.length > 0) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].addEventListener('change', function (event) {
+                              darkModeState = !darkModeState;
+                              toggleDarkMode(darkModeState);
+                         });
+                    }
+               }
+          </script>
 
        <script src="../js/libs/custom-elements.min.js"></script>
        <script src="../js/libs/lit-html.js"></script>

@@ -12,6 +12,55 @@
         <link rel="stylesheet" href="../styles/dark.css">
     </head>
     <body>
+          <script>
+               // Blocking script to avaoid flickering dark mode
+               // Dark mode toggle button
+               var useDark = window.matchMedia('(prefers-color-scheme: dark)');
+               var darkModeState = useDark.matches;
+               var $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               var $darkModeToggles = document.querySelectorAll('.dark-mode-switch');
+               var darkModeStateLocal = localStorage.getItem('compodoc_darkmode-state');
+
+               function checkToggle(check) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].checked = check;
+                    }
+               }
+
+               function toggleDarkMode(state) {
+                    if (window.localStorage) {
+                         localStorage.setItem('compodoc_darkmode-state', state);
+                    }
+
+                    checkToggle(state);
+
+                    const hasClass = document.body.classList.contains('dark');
+
+                    if (state) {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.add('dark');
+                         }
+                         if (!hasClass) {
+                              document.body.classList.add('dark');
+                         }
+                    } else {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.remove('dark');
+                         }
+                         if (hasClass) {
+                              document.body.classList.remove('dark');
+                         }
+                    }
+               }
+
+               useDark.addEventListener('change', function (evt) {
+                    toggleDarkMode(evt.matches);
+               });
+               if (darkModeStateLocal) {
+                    darkModeState = darkModeStateLocal === 'true';
+               }
+               toggleDarkMode(darkModeState);
+          </script>
 
         <div class="navbar navbar-default navbar-fixed-top d-block d-sm-none">
             <a href="../" class="navbar-brand">@ng-dnd/core documentation</a>
@@ -81,7 +130,7 @@
                 <h3>Extends</h3>
             </p>
             <p class="comment">
-                        <code><a href="../interfaces/MonitorBase.html" target="_self" >MonitorBase</a></code>
+                            <code><a href="../interfaces/MonitorBase.html" target="_self" >MonitorBase</a></code>
             </p>
 
         <section data-compodoc="block-index">
@@ -154,20 +203,20 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-description"><p>Returns <code>true</code> if <strong>NO drag operation is in progress</strong>, and the owner&#39;s
+                        <div class="io-description"><p>Returns <code>true</code> if <strong>NO drag operation is in progress</strong>, and the owner&#39;s
 <code>canDrag()</code> returns <code>true</code> or is not defined.</p>
 <p>Note that <code>canDrag</code> doesn&#39;t blindly return what you supplied in
 <a href="../interfaces/DragSourceSpec.html#canDrag">DragSourceSpec</a>, so it isn&#39;t very useful as a general
 source-is-enabled/disabled flag.</p>
 <p>Instead, keep your <code>canDrag</code> logic simple, and replicate it in your template.</p>
-<div><pre class="line-numbers"><code class="language-html">&lt;div [style.background]=&quot;someProperty ? &#39;yellow&#39; : &#39;grey&#39;&quot;&gt; content &lt;/div&gt;</code></pre></div><div><pre class="line-numbers"><code class="language-typescript">{
+<b>Example :</b><div><pre class="line-numbers"><code class="language-html">&lt;div [style.background]=&quot;someProperty ? &#39;yellow&#39; : &#39;grey&#39;&quot;&gt; content &lt;/div&gt;</code></pre></div><b>Example :</b><div><pre class="line-numbers"><code class="language-typescript">{
   canDrag: () =&gt; this.someProperty
 }</code></pre></div></div>
 
-                    <div class="io-description">
-                        <b>Returns : </b>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
 
-                    </div>
+                        </div>
                 </td>
             </tr>
         </tbody>
@@ -194,16 +243,16 @@ source-is-enabled/disabled flag.</p>
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-description"><p>Returns <code>true</code> if some drop target handled the <code>drop</code> event; <code>false</code>
+                        <div class="io-description"><p>Returns <code>true</code> if some drop target handled the <code>drop</code> event; <code>false</code>
 otherwise. Even if a target did not return a drop result, <code>didDrop()</code>
 returns true. Use it inside <code>endDrag()</code> to test whether any drop target
 has handled the drop. Returns <code>false</code> if called outside <code>endDrag()</code>.</p>
 </div>
 
-                    <div class="io-description">
-                        <b>Returns : </b>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
 
-                    </div>
+                        </div>
                 </td>
             </tr>
         </tbody>
@@ -230,7 +279,7 @@ has handled the drop. Returns <code>false</code> if called outside <code>endDrag
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-description"><p>Returns a plain object representing the last recorded drop result. The
+                        <div class="io-description"><p>Returns a plain object representing the last recorded drop result. The
 drop targets may optionally specify it by returning an object from their
 <code>drop()</code> methods. When a chain of <code>drop()</code> is dispatched for the nested
 targets, bottom up, any parent that explicitly returns its own result from
@@ -238,10 +287,10 @@ targets, bottom up, any parent that explicitly returns its own result from
 Returns <code>null</code> if called outside <code>endDrag()</code>.</p>
 </div>
 
-                    <div class="io-description">
-                        <b>Returns : </b>    <code>DropResult</code>
+                        <div class="io-description">
+                            <b>Returns : </b>    <code>DropResult</code>
 
-                    </div>
+                        </div>
                 </td>
             </tr>
         </tbody>
@@ -268,14 +317,14 @@ Returns <code>null</code> if called outside <code>endDrag()</code>.</p>
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-description"><p>Returns <code>true</code> if a drag operation is in progress, and either the owner
+                        <div class="io-description"><p>Returns <code>true</code> if a drag operation is in progress, and either the owner
 initiated the drag, or its <code>isDragging()</code> is defined and returns true.</p>
 </div>
 
-                    <div class="io-description">
-                        <b>Returns : </b>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
 
-                    </div>
+                        </div>
                 </td>
             </tr>
         </tbody>
@@ -323,6 +372,19 @@ initiated the drag, or its <code>isDragging()</code> is defined and returns true
             var COMPODOC_CURRENT_PAGE_URL = 'DragSourceMonitor.html';
             var MAX_SEARCH_RESULTS = 15;
        </script>
+
+       <script>
+               $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               checkToggle(darkModeState);
+               if ($darkModeToggleSwitchers.length > 0) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].addEventListener('change', function (event) {
+                              darkModeState = !darkModeState;
+                              toggleDarkMode(darkModeState);
+                         });
+                    }
+               }
+          </script>
 
        <script src="../js/libs/custom-elements.min.js"></script>
        <script src="../js/libs/lit-html.js"></script>
