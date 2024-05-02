@@ -10,7 +10,7 @@ import { ExampleLinkComponent } from '@app/utility/example-link.component';
     <p>Welcome to <code>&#64;ng-dnd</code>.</p>
     <p>
       This is a re-implementation of the original, classic
-      <a href="http://react-dnd.github.io/react-dnd/examples-chessboard-tutorial-app.html">react-dnd demo</a>.
+      <a href="https://react-dnd.github.io/react-dnd/examples/tutorial">react-dnd demo</a>.
     </p>
     <p>
       The whole tutorial has been re-written so you can
