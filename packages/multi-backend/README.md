@@ -1,6 +1,6 @@
 #### Go back to [`@ng-dnd/core`](../)
 
-# @ng-dnd/multi-beckend
+# @ng-dnd/multi-backend
 
 [![Build Status](https://www.travis-ci.com/ng-dnd/ng-dnd.svg?branch=main)](https://www.travis-ci.com/ng-dnd/ng-dnd)
 [![npm](https://img.shields.io/npm/v/@ng-dnd/core.svg)](https://www.npmjs.com/package/@ng-dnd/core)
