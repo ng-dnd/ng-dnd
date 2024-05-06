@@ -45,7 +45,7 @@ Next, follow the [Quickstart](./additional-documentation/quickstart.html) and ch
 
 Instead of building maximally-ergonomic solutions to simple use cases, `react-dnd` and `@ng-dnd` provide an abstraction over most things you could want to do with drag and drop. They are lower-level building blocks that make it easy to implement some very complex interactions. They assign no specific meaning to a drag/drop operation. You get to define what happens when a drag starts or ends or hovers. Here are some ambitious examples:
 
-- The [traditional `react-dnd` tutorial](http://react-dnd.github.io/react-dnd/examples-chessboard-tutorial-app.html), a chess board with movable pieces and rules
+- The [traditional `react-dnd` tutorial](https://react-dnd.github.io/react-dnd/examples/tutorial), a chess board with movable pieces and rules
 - Deleting items by dragging them to a 'trash can', like in the macOS dock.
 - Stamping out a template by dragging the template into a work area
 - Merging two items by dragging one on top of the other
