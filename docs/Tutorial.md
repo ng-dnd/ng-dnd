@@ -10,7 +10,7 @@ three components:
 - `SquareComponent`, just one black or white square on the board
 - `BoardComponent`, 64 squares.
 
-[orig]: http://react-dnd.github.io/react-dnd/docs-tutorial.html
+[orig]: https://react-dnd.github.io/react-dnd/docs/tutorial
 
 This tutorial assumes you are familiar with the basics of Angular (version 2+).
 It also assumes you have read the [Quickstart](./quickstart.html) guide, and have attached the
