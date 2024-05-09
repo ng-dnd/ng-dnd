@@ -21,12 +21,25 @@ import { DndSortableModule } from '@ng-dnd/sortable';
 
 @NgModule({
   imports: [
-    // ...
+    // ...,
     // DndModule.forRoot( ... ),
     DndSortableModule,
   ],
 })
 export class AppModule {}
+```
+
+**The standalone components are available from 3.0.**
+
+```typescript
+import { DndSortable, DndSortableList, ... } from '@ng-dnd/sortable';
+
+@Component({
+  // ...,
+  standalone: true,
+  imports: [DndSortable, DndSortableList, ...],
+})
+export class AppComponent {}
 ```
 
 ## A sortable with _truly ridiculous_ levels of customizability

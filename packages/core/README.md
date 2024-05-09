@@ -43,7 +43,7 @@ Next, follow the [Quickstart](./additional-documentation/quickstart.html) and ch
 
 ## What can you do with it?
 
-Instead of building maximally-ergonomic solutions to simple use cases, `react-dnd` and `@ng-dnd` provide an abstraction over most things you could want to do with drag and drop. They are lower-level building blocks that make it easy to implement some very complex interactions. They assign no specific meaning to a drag/drop operation. You get to define what happens when a drag starts or ends or hovers. Here are some ambitious examples:
+Instead of building maximally-ergonomic solutions to simple use cases, `react-dnd` and `ng-dnd` provide an abstraction over most things you could want to do with drag and drop. They are lower-level building blocks that make it easy to implement some very complex interactions. They assign no specific meaning to a drag/drop operation. You get to define what happens when a drag starts or ends or hovers. Here are some ambitious examples:
 
 - The [traditional `react-dnd` tutorial](https://react-dnd.github.io/react-dnd/examples/tutorial), a chess board with movable pieces and rules
 - Deleting items by dragging them to a 'trash can', like in the macOS dock.
@@ -58,15 +58,15 @@ Instead of building maximally-ergonomic solutions to simple use cases, `react-dn
 
 ## Alternatives
 
-It is important to note that for bare-bones sortable lists, where you have a mutable array of simple values, you don't necessarily need the superpowers in this library. There are plenty of cookie-cutter solutions out there, like the quite powerful [`ng2-dnd`](https://github.com/akserg/ng2-dnd) or [`ng2-dragula`](https://github.com/valor-software/ng2-dragula), which may get you to your deadline faster than learning and using `@ng-dnd`. But be warned; you may find yourself wanting more dragging power once you get a taste. In fact, this package was born when [@cormacrelf](https://github.com/cormacrelf) got sick of maintaining `ng2-dragula` and watching users struggle to implement what `react-dnd` was born for.
+It is important to note that for bare-bones sortable lists, where you have a mutable array of simple values, you don't necessarily need the superpowers in this library. There are plenty of cookie-cutter solutions out there, like the quite powerful [`ng2-dnd`](https://github.com/akserg/ng2-dnd) or [`ng2-dragula`](https://github.com/valor-software/ng2-dragula), which may get you to your deadline faster than learning and using `ng-dnd`. But be warned; you may find yourself wanting more dragging power once you get a taste. In fact, this package was born when [@cormacrelf](https://github.com/cormacrelf) got sick of maintaining `ng2-dragula` and watching users struggle to implement what `react-dnd` was born for.
 
 If Angular and React aren't your thing, there's also [`vue-react-dnd`](https://github.com/jenshaase/vue-react-dnd).
 
 ## Issues
 
-Not all issues are `@ng-dnd`-related. If you think you found a bug in `dnd-core` or with the HTML5 backend, those issues belong on [that codebase](https://github.com/react-dnd/react-dnd) with their many contributors and wealth of experience. If there is a problem with another backend you are using, file an issue with that backend so you can get more specific help and so that the community can benefit.
+Not all issues are `ng-dnd`-related. If you think you found a bug in `dnd-core` or with the HTML5 backend, those issues belong on [that codebase](https://github.com/react-dnd/react-dnd) with their many contributors and wealth of experience. If there is a problem with another backend you are using, file an issue with that backend so you can get more specific help and so that the community can benefit.
 
-Issues and potential improvements to `@ng-dnd` are discussed on [GitHub](https://github.com/ng-dnd/ng-dnd).
+Issues and potential improvements to `ng-dnd` are discussed on [GitHub](https://github.com/ng-dnd/ng-dnd).
 
 ## License
 

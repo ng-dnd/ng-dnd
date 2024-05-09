@@ -33,6 +33,31 @@ import { DndMultiBackendModule, MultiBackend, HTML5ToTouch } from '@ng-dnd/multi
 export class AppModule {}
 ```
 
+**The `provideDnd` and standalone components are available from 3.0.**
+
+```typescript
+import { provideDnd } from '@ng-dnd/core';
+import { MultiBackend, HTML5ToTouch } from '@ng-dnd/multi-backend';
+
+export const appConfig: ApplicationConfig = {
+  providers: [
+    // ...,
+    provideDnd({ backend: MultiBackend: options: HTML5ToTouch }),
+  ],
+};
+```
+
+```typescript
+import { DndPreview } from '@ng-dnd/multi-backend';
+
+@Component({
+  // ...,
+  standalone: true,
+  imports: [DndPreview],
+})
+export class AppComponent {}
+```
+
 ## Normal usage
 
 You will want to render previews. The `<dnd-preview>` component is very helpful.

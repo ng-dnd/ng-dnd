@@ -7,7 +7,7 @@ import { ExampleLinkComponent } from '@app/utility/example-link.component';
   template: `
     <app-example-link path="chessboard"></app-example-link>
 
-    <p>Welcome to <code>&#64;ng-dnd</code>.</p>
+    <p>Welcome to <code>ng-dnd</code>.</p>
     <p>
       This is a re-implementation of the original, classic
       <a href="https://react-dnd.github.io/react-dnd/examples/tutorial">react-dnd demo</a>.
