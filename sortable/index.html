@@ -92,12 +92,20 @@
 
 &#64;NgModule({
   imports: [
-    // ...
+    // ...,
     // DndModule.forRoot( ... ),
     DndSortableModule,
   ],
 })
-export class AppModule {}</code></pre></div><h2>A sortable with <em>truly ridiculous</em> levels of customizability</h2>
+export class AppModule {}</code></pre></div><p><strong>The standalone components are available from 3.0.</strong></p>
+<b>Example :</b><div><pre class="line-numbers"><code class="language-typescript">import { DndSortable, DndSortableList, ... } from &#39;&#64;ng-dnd/sortable&#39;;
+
+&#64;Component({
+  // ...,
+  standalone: true,
+  imports: [DndSortable, DndSortableList, ...],
+})
+export class AppComponent {}</code></pre></div><h2>A sortable with <em>truly ridiculous</em> levels of customizability</h2>
 <p>This is different from the hundreds of other sortable libraries, because it is extremely pared back, and makes almost no limiting choices. This is NOT opinionated software.</p>
 <ul>
 <li>It does <strong>no list operations for you</strong>. You drive the reordering and reverting yourself.</li>

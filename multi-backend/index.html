@@ -99,7 +99,23 @@
     DndModule.forRoot({ backend: MultiBackend: options: HTML5ToTouch }),
   ],
 })
-export class AppModule {}</code></pre></div><h2>Normal usage</h2>
+export class AppModule {}</code></pre></div><p><strong>The <code>provideDnd</code> and standalone components are available from 3.0.</strong></p>
+<b>Example :</b><div><pre class="line-numbers"><code class="language-typescript">import { provideDnd } from &#39;&#64;ng-dnd/core&#39;;
+import { MultiBackend, HTML5ToTouch } from &#39;&#64;ng-dnd/multi-backend&#39;;
+
+export const appConfig: ApplicationConfig = {
+  providers: [
+    // ...,
+    provideDnd({ backend: MultiBackend: options: HTML5ToTouch }),
+  ],
+};</code></pre></div><b>Example :</b><div><pre class="line-numbers"><code class="language-typescript">import { DndPreview } from &#39;&#64;ng-dnd/multi-backend&#39;;
+
+&#64;Component({
+  // ...,
+  standalone: true,
+  imports: [DndPreview],
+})
+export class AppComponent {}</code></pre></div><h2>Normal usage</h2>
 <p>You will want to render previews. The <code>&lt;dnd-preview&gt;</code> component is very helpful.</p>
 <ol>
 <li>Create a <code>&lt;dnd-preview&gt;</code></li>
