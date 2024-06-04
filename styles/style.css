@@ -8,13 +8,6 @@
 /* @import "./prism.css"; */
 @import url('./tablesort.css');
 
-/* fix layout on mobile */
-@media screen and (width < 768px) {
-  .hidden-xs {
-    display: none;
-  }
-}
-
 html,
 body {
   font-family:
