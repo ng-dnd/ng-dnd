@@ -5,7 +5,7 @@ import { FixedHeightComponent } from './fixed-height.component';
 @Component({
   selector: 'simple-sortable-container',
   template: `
-    <app-example-link path="sortable/fixed-height"></app-example-link>
+    <app-example-link path="sortable/fixed-height" />
 
     <p>
       If you know all the elements have the same height, then you can swap out the hover algorithm
@@ -17,7 +17,7 @@ import { FixedHeightComponent } from './fixed-height.component';
       <code>dndSortable</code>
     </p>
 
-    <app-fixed-sortable></app-fixed-sortable>
+    <app-fixed-sortable />
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
   standalone: true,

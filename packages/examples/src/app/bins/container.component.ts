@@ -7,7 +7,7 @@ import { TrashComponent } from './trash.component';
 
 @Component({
   template: `
-    <app-example-link path="bins"></app-example-link>
+    <app-example-link path="bins" />
 
     <p>This example demonstrates:</p>
     <ul>
@@ -18,35 +18,33 @@ import { TrashComponent } from './trash.component';
 
     <dnd-preview>
       <ng-template let-type let-item="item">
-        <app-trash [type]="type" [inFlight]="true"></app-trash>
+        <app-trash [type]="type" [inFlight]="true" />
       </ng-template>
     </dnd-preview>
 
     <div class="bins">
-      <app-trash-pile type="PAPER"></app-trash-pile>
-      <app-trash-pile type="ENVELOPE"></app-trash-pile>
-      <app-trash-pile type="PARCEL"></app-trash-pile>
+      <app-trash-pile type="PAPER" />
+      <app-trash-pile type="ENVELOPE" />
+      <app-trash-pile type="PARCEL" />
     </div>
     <div class="bins">
-      <app-bin name="recycle" [accepts]="['PAPER', 'ENVELOPE']"></app-bin>
-      <app-bin name="mailbox" [accepts]="['PARCEL', 'ENVELOPE']"></app-bin>
+      <app-bin name="recycle" [accepts]="['PAPER', 'ENVELOPE']" />
+      <app-bin name="mailbox" [accepts]="['PARCEL', 'ENVELOPE']" />
     </div>
   `,
-  styles: [
-    `
-      .bins {
-        margin-top: 20px;
-        display: flex;
-      }
-      .bins > * {
-        flex: 1;
-        min-width: 100px;
-      }
-      .bins > *:not(:last-child) {
-        margin-right: 4px;
-      }
-    `,
-  ],
+  styles: `
+    .bins {
+      margin-top: 20px;
+      display: flex;
+    }
+    .bins > * {
+      flex: 1;
+      min-width: 100px;
+    }
+    .bins > *:not(:last-child) {
+      margin-right: 4px;
+    }
+  `,
   standalone: true,
   imports: [
     DndMultiBackendModule,

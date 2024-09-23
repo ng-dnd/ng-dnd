@@ -13,9 +13,9 @@ const monthSelector = createSelector(startDateSelector, startDate => {
 
 @Component({
   selector: 'cal-container',
-  changeDetection: ChangeDetectionStrategy.OnPush,
   templateUrl: './container.component.html',
-  styleUrls: ['./container.component.scss'],
+  styleUrl: './container.component.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush,
   standalone: true,
   imports: [ExampleLinkComponent, CalendarComponent, AsyncPipe],
 })

@@ -6,7 +6,7 @@ import { CopyTargetComponent } from './copy-target.component';
 @Component({
   selector: 'de-container',
   template: `
-    <app-example-link path="html5/drop-effects"></app-example-link>
+    <app-example-link path="html5/drop-effects" />
     <p>
       When you are using the HTML5 backend, you can use native HTML5 drop effects to convey what
       kind of operation a user is performing through the icon next to their cursor.
@@ -23,11 +23,11 @@ import { CopyTargetComponent } from './copy-target.component';
       the object returned from <code>monitor.getDropResult()</code>. You can then access is with
       <code>result.dropEffect</code>.
     </p>
-    <de-box (dropped)="lastEffect = $event"></de-box>
-    <de-box force="copy" (dropped)="lastEffect = $event"></de-box>
-    <de-box force="move" (dropped)="lastEffect = $event"></de-box>
-    <de-box force="link" (dropped)="lastEffect = $event"></de-box>
-    <de-box force="none" (dropped)="lastEffect = $event"></de-box>
+    <de-box (dropped)="lastEffect = $event" />
+    <de-box force="copy" (dropped)="lastEffect = $event" />
+    <de-box force="move" (dropped)="lastEffect = $event" />
+    <de-box force="link" (dropped)="lastEffect = $event" />
+    <de-box force="none" (dropped)="lastEffect = $event" />
     <de-copy-target>
       @if (lastEffect) {
         <p>

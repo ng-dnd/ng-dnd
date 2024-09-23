@@ -5,34 +5,32 @@ import { BoxComponent } from '../box.component';
   selector: 'app-box-drag-preview',
   template: `
     <div class="phresh">
-      <app-box [title]="title"></app-box>
+      <app-box [title]="title" />
     </div>
   `,
-  styles: [
-    `
-      :host {
-        display: inline-block;
+  styles: `
+    :host {
+      display: inline-block;
+    }
+    @keyframes animatedBackground {
+      from {
+        background: yellow;
       }
-      @keyframes animatedBackground {
-        from {
-          background: yellow;
-        }
-        to {
-          background: white;
-        }
-      }
-      .phresh {
+      to {
         background: white;
-        transform: rotate(-10deg);
-        overflow: hidden;
-        animation-name: animatedBackground;
-        animation-duration: 0.7s;
-        animation-iteration-count: infinite;
-        animation-timing-function: linear;
-        animation-direction: alternate;
       }
-    `,
-  ],
+    }
+    .phresh {
+      background: white;
+      transform: rotate(-10deg);
+      overflow: hidden;
+      animation-name: animatedBackground;
+      animation-duration: 0.7s;
+      animation-iteration-count: infinite;
+      animation-timing-function: linear;
+      animation-direction: alternate;
+    }
+  `,
   standalone: true,
   imports: [BoxComponent],
 })

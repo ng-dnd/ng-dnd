@@ -22,7 +22,6 @@ import { DndModule, DndService } from '@ng-dnd/core';
       </div>
     }
   `,
-  styles: [``],
   standalone: true,
   imports: [DndModule, AsyncPipe, JsonPipe],
 })

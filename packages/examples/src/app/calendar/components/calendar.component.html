@@ -13,7 +13,7 @@
   @for (week of weeks$ | async; track trackWeek($index, week)) {
     <div class="week">
       @for (day of week.days; track trackDay($index, day)) {
-        <cal-day [day]="day"></cal-day>
+        <cal-day [day]="day" />
       }
     </div>
   }

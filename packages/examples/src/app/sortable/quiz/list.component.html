@@ -5,7 +5,7 @@
       In this case, we will 'morph' into a <quiz-section> when
       we're over the work area. -->
       @if (item.isInternal || item.hover.listId === 'WORK_AREA') {
-        <quiz-section [question]="item.data" [preview]="true"></quiz-section>
+        <quiz-section [question]="item.data" [preview]="true" />
       } @else {
         <div class="external" [style]="item.size.style()">
           {{ item.data.templateDescription }}
@@ -41,14 +41,12 @@
         *dndSortableTemplate="let context"
         [dndSortableRender]="context"
         #r="dndSortableRender"
-        [question]="r.data" (edit)="edit($event)">
-      </quiz-section>
+        [question]="r.data" (edit)="edit($event)" />
     </dnd-sortable-list>
   </div>
 
   <div class="printout">
     <h3>... then try the quiz out</h3>
-    <app-printout [formElements]="list">
-    </app-printout>
+    <app-printout [formElements]="list" />
   </div>
 </div>

@@ -7,7 +7,7 @@ import { HandleComponent } from './handle.component';
   selector: 'app-nested-targets',
   template: `
     <div>
-      <app-example-link path="html5/handles-previews"></app-example-link>
+      <app-example-link path="html5/handles-previews" />
       <p>
         Ng-DnD lets you specify which element will be draggable, and which one will actually be the
         preview that follows your mouse.
@@ -17,20 +17,18 @@ import { HandleComponent } from './handle.component';
         source, you get a handle.
       </p>
       <p>You can also connect an Image node as the preview, once it has loaded.</p>
-      <handle></handle>
-      <custom-preview></custom-preview>
+      <handle />
+      <custom-preview />
     </div>
   `,
-  styles: [
-    `
-      .nested-targets-wrapper {
-        display: flex;
-      }
-      .nested-targets-wrapper > * {
-        margin: 20px;
-      }
-    `,
-  ],
+  styles: `
+    .nested-targets-wrapper {
+      display: flex;
+    }
+    .nested-targets-wrapper > * {
+      margin: 20px;
+    }
+  `,
   standalone: true,
   imports: [ExampleLinkComponent, HandleComponent, CustomPreviewComponent],
 })

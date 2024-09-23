@@ -4,15 +4,13 @@ import { DndModule, DndService } from '@ng-dnd/core';
 @Component({
   selector: 'touch-item',
   template: `<div class="firefox-bug" [style.background]="color || 'red'"></div>`,
-  styles: [
-    `
-      div {
-        width: 400px;
-        height: 300px;
-        margin: 16px;
-      }
-    `,
-  ],
+  styles: `
+    div {
+      width: 400px;
+      height: 300px;
+      margin: 16px;
+    }
+  `,
   standalone: true,
 })
 export class ItemComponent {
@@ -23,17 +21,15 @@ export class ItemComponent {
   selector: 'touch-draggable-item',
   template: `
     <div [dragSource]="itemSource">
-      <touch-item [color]="color"></touch-item>
+      <touch-item [color]="color" />
     </div>
   `,
-  styles: [
-    `
-      div {
-        display: inline;
-        width: auto;
-      }
-    `,
-  ],
+  styles: `
+    div {
+      display: inline;
+      width: auto;
+    }
+  `,
   standalone: true,
   imports: [DndModule, ItemComponent],
 })

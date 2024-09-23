@@ -11,7 +11,7 @@ import { BeginDragExistingEvent, EndDragExistingEvent } from '../store/calendar.
 @Component({
   selector: 'cal-event',
   templateUrl: './event.component.html',
-  styleUrls: ['./event.component.scss'],
+  styleUrl: './event.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
   standalone: true,
   imports: [DndModule, AsyncPipe],

@@ -13,19 +13,17 @@ interface DropResult {
       Drag me ( <code>{{ force ? force : 'default behaviour' }}</code> )
     </p>
   `,
-  styles: [
-    `
-      p {
-        display: inline-block;
-        padding: 0.5em;
-        border: 1px dashed #333;
-        margin: 0;
-        margin-bottom: 8px;
-        margin-right: 8px;
-        background: #fff;
-      }
-    `,
-  ],
+  styles: `
+    p {
+      display: inline-block;
+      padding: 0.5em;
+      border: 1px dashed #333;
+      margin: 0;
+      margin-bottom: 8px;
+      margin-right: 8px;
+      background: #fff;
+    }
+  `,
   standalone: true,
   imports: [DndModule],
 })

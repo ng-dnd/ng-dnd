@@ -12,7 +12,7 @@ interface SimpleData {
 
 @Component({
   selector: 'app-simple-sortable',
-  styleUrls: ['./simple.component.scss'],
+  styleUrl: './simple.component.scss',
   templateUrl: './simple.component.html',
   standalone: true,
   imports: [DndModule, DndSortableModule, DndMultiBackendModule, AsyncPipe],

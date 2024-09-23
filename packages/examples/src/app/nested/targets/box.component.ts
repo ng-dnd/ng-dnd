@@ -10,22 +10,20 @@ import { ItemTypes } from './item-types';
       <p>Drag this!</p>
     </div>
   `,
-  styles: [
-    `
-      div {
-        border: 1px dashed #777;
-        background: #fff;
-        padding: 0.5rem 1rem;
-        width: 8rem;
-        margin-bottom: 1rem;
-      }
-      p {
-        display: inline-block;
-        padding: 3px;
-        margin: 0;
-      }
-    `,
-  ],
+  styles: `
+    div {
+      border: 1px dashed #777;
+      background: #fff;
+      padding: 0.5rem 1rem;
+      width: 8rem;
+      margin-bottom: 1rem;
+    }
+    p {
+      display: inline-block;
+      padding: 3px;
+      margin: 0;
+    }
+  `,
   standalone: true,
   imports: [DndModule, AsyncPipe],
 })

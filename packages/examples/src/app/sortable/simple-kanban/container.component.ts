@@ -15,7 +15,7 @@ import { Card } from './specs';
 @Component({
   selector: 'kanban-container',
   templateUrl: './container.component.html',
-  styleUrls: ['./container.component.scss'],
+  styleUrl: './container.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
   standalone: true,
   imports: [ExampleLinkComponent, KanbanBoardComponent],

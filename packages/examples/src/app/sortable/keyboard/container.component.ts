@@ -6,7 +6,7 @@ import { SummaryComponent } from './summary.component';
 @Component({
   selector: 'rxsort-container',
   template: `
-    <app-example-link path="sortable/keyboard"></app-example-link>
+    <app-example-link path="sortable/keyboard" />
     <p>
       This one uses an <code>&#64;ngrx/store</code> with Immutable.js data. This is very convenient,
       since Immutable.js has its own 'insert' and 'remove' operations.
@@ -28,19 +28,17 @@ import { SummaryComponent } from './summary.component';
       </li>
     </ul>
 
-    <rxsort-summary></rxsort-summary>
+    <rxsort-summary />
     <div class="sep"></div>
-    <rxsort-sortable></rxsort-sortable>
+    <rxsort-sortable />
   `,
-  styles: [
-    `
-      .sep {
-        border-bottom: 1px solid #999;
-        margin-bottom: 8px;
-        max-width: 700px;
-      }
-    `,
-  ],
+  styles: `
+    .sep {
+      border-bottom: 1px solid #999;
+      margin-bottom: 8px;
+      max-width: 700px;
+    }
+  `,
   standalone: true,
   imports: [ExampleLinkComponent, SummaryComponent, SimpleComponent],
 })

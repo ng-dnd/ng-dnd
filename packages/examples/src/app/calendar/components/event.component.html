@@ -12,9 +12,7 @@
   @if (event.isAllDay && event.startsThisWeek(day)) {
     <div class="event-handle event-handle--left" [dragSource]="resizeStart"></div>
   }
-  <div class="event-text">
-    {{ event.title }}
-  </div>
+  <div class="event-text">{{ event.title }}</div>
   @if (event.isAllDay && event.endsThisWeek(day)) {
     <div class="event-handle event-handle--right" [dragSource]="resizeEnd"></div>
   }

@@ -50,8 +50,8 @@ const equalsValidator: (x: any) => ValidatorFn = x => c => {
               <div>
                 <h4>Enter your Name and Student Id</h4>
                 <form [formGroup]="section.input">
-                  <label> Name <input formControlName="name" /></label>
-                  <label> Student ID <input formControlName="studentId" /></label>
+                  <label>Name <input formControlName="name" /></label>
+                  <label>Student ID <input formControlName="studentId" /></label>
                   @if (section.input.get('studentId'); as studentId) {
                     <div class="alert alert-danger">
                       @if (
@@ -71,16 +71,14 @@ const equalsValidator: (x: any) => ValidatorFn = x => c => {
       }
     </div>
   `,
-  styles: [
-    `
-      .ng-valid:not(form) {
-        border-left: 5px solid #42a948; /* green */
-      }
-      .ng-invalid:not(form) {
-        border-left: 5px solid #a94442; /* red */
-      }
-    `,
-  ],
+  styles: `
+    .ng-valid:not(form) {
+      border-left: 5px solid #42a948; /* green */
+    }
+    .ng-invalid:not(form) {
+      border-left: 5px solid #a94442; /* red */
+    }
+  `,
   standalone: true,
   imports: [ReactiveFormsModule],
 })

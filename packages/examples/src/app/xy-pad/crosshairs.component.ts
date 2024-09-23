@@ -22,7 +22,7 @@ import { Component, Input } from '@angular/core';
       <span class="label">{{ math.round(x) }}</span>
     </div>
   `,
-  styleUrls: ['./crosshairs.component.scss'],
+  styleUrl: './crosshairs.component.scss',
   standalone: true,
 })
 export class CrosshairsComponent {

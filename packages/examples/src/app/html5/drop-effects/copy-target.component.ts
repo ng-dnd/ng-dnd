@@ -11,25 +11,23 @@ import { ItemTypes } from './item-types';
         Drag one of the above boxes. Hold 'alt' when dragging the default one to make it a copy.
       </p>
       @if ((canDrop$ | async) !== true) {
-        <ng-content></ng-content>
+        <ng-content />
       } @else {
         <p>Drop here</p>
       }
     </div>
   `,
-  styles: [
-    `
-      .target {
-        max-width: 300px;
-        height: 200px;
-        background: #ddd;
-        padding: 1em;
-      }
-      .over {
-        background: #bbb;
-      }
-    `,
-  ],
+  styles: `
+    .target {
+      max-width: 300px;
+      height: 200px;
+      background: #ddd;
+      padding: 1em;
+    }
+    .over {
+      background: #bbb;
+    }
+  `,
   standalone: true,
   imports: [DndModule, AsyncPipe],
 })

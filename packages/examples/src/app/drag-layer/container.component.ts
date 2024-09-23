@@ -6,9 +6,9 @@ import { DragContainerComponent } from './drag-container/drag-container.componen
 @Component({
   selector: 'app-drag-layer-container',
   template: `
-    <app-example-link path="drag-layer"></app-example-link>
-    <app-custom-drag-layer></app-custom-drag-layer>
-    <app-drag-container></app-drag-container>
+    <app-example-link path="drag-layer" />
+    <app-custom-drag-layer />
+    <app-drag-container />
   `,
   standalone: true,
   imports: [ExampleLinkComponent, CustomDragLayerComponent, DragContainerComponent],

@@ -11,7 +11,7 @@ import { Spill } from './store';
 @Component({
   selector: 'kanban-container',
   templateUrl: './container.component.html',
-  styleUrls: ['./container.component.scss'],
+  styleUrl: './container.component.scss',
   standalone: true,
   imports: [ExampleLinkComponent, KanbanBoardComponent],
 })

@@ -7,15 +7,9 @@ import { DraggableBoxComponent } from '../draggable-box/draggable-box.component'
   selector: 'app-drag-container',
   template: `
     <div [style]="styles" [dropTarget]="boxTarget">
-      <app-draggable-box
-        [left]="x"
-        [top]="y"
-        [id]="23"
-        title="this box is titled"
-      ></app-draggable-box>
+      <app-draggable-box [left]="x" [top]="y" [id]="23" title="this box is titled" />
     </div>
   `,
-  styles: [],
   standalone: true,
   imports: [DndModule, DraggableBoxComponent],
 })

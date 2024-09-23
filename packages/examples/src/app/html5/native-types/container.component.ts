@@ -6,7 +6,7 @@ import { TargetComponent } from './target.component';
 @Component({
   selector: 'native-container',
   template: `
-    <app-example-link path="html5/native-types"></app-example-link>
+    <app-example-link path="html5/native-types" />
     <p>
       When you are using the HTML5 backend, you can accept three native types: files, URLs, and
       text.
@@ -23,21 +23,19 @@ import { TargetComponent } from './target.component';
       </native-target>
     </div>
   `,
-  styles: [
-    `
-      .flex {
-        display: flex;
-        flex-wrap: wrap;
-        margin: -8px;
-      }
-      .flex > * {
-        flex: 1;
-      }
-      .flex > * {
-        margin: 8px;
-      }
-    `,
-  ],
+  styles: `
+    .flex {
+      display: flex;
+      flex-wrap: wrap;
+      margin: -8px;
+    }
+    .flex > * {
+      flex: 1;
+    }
+    .flex > * {
+      margin: 8px;
+    }
+  `,
   standalone: true,
   imports: [ExampleLinkComponent, TargetComponent],
 })

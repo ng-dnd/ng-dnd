@@ -18,7 +18,7 @@ import { ItemTypes } from './item-types';
       </div>
     }
   `,
-  styleUrls: ['./dustbin.component.scss'],
+  styleUrl: './dustbin.component.scss',
   standalone: true,
   imports: [DndModule, AsyncPipe],
 })

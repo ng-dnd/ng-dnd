@@ -17,8 +17,7 @@ import { _lifted, _render, _selected } from './store/selectors';
 
 @Component({
   selector: 'rxsort-sortable',
-  styleUrls: ['./simple.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush,
+  styleUrl: './simple.component.scss',
   template: `
     <table dndSortable class="list" [spec]="rxSpec" #sortable="dndSortable">
       <thead>
@@ -47,6 +46,7 @@ import { _lifted, _render, _selected } from './store/selectors';
       </tbody>
     </table>
   `,
+  changeDetection: ChangeDetectionStrategy.OnPush,
   standalone: true,
   imports: [DndModule, DndSortableModule, AsyncPipe],
 })

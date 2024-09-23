@@ -8,7 +8,7 @@ import { DragContainerComponent } from './drag-container/drag-container.componen
 @Component({
   selector: 'xy-drag-layer-container',
   template: `
-    <app-example-link path="xy-pad"></app-example-link>
+    <app-example-link path="xy-pad" />
     <div class="flex">
       <div>
         <xy-drag-container
@@ -18,8 +18,7 @@ import { DragContainerComponent } from './drag-container/drag-container.componen
           [incrementPx]="pixels"
           (endDrag)="dragEnded()"
           (moved)="latestLocation = $event"
-        >
-        </xy-drag-container>
+        />
         <p>
           <label><input type="checkbox" [(ngModel)]="snapToGrid" /> Snap to grid </label>
         </p>
@@ -28,21 +27,19 @@ import { DragContainerComponent } from './drag-container/drag-container.componen
         </p>
       </div>
       <div class="pad">
-        <xy-cube [transform]="cubeTransform" [x]="x" [y]="y" (endDrag)="dragEnded()"></xy-cube>
+        <xy-cube [transform]="cubeTransform" [x]="x" [y]="y" (endDrag)="dragEnded()" />
       </div>
     </div>
   `,
-  styles: [
-    `
-      .flex {
-        display: flex;
-        flex-wrap: wrap;
-      }
-      .pad {
-        padding: 80px;
-      }
-    `,
-  ],
+  styles: `
+    .flex {
+      display: flex;
+      flex-wrap: wrap;
+    }
+    .pad {
+      padding: 80px;
+    }
+  `,
   standalone: true,
   imports: [
     ExampleLinkComponent,

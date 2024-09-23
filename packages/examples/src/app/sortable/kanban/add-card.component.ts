@@ -13,20 +13,18 @@ import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
       />
     </form>
   `,
-  styles: [
-    `
-      .title {
-        box-sizing: border-box;
-        border: none;
-        width: 100%;
-        background: rgba(0, 0, 0, 0);
-        padding: 6px 8px;
-      }
-      .title:focus {
-        background: #fff;
-      }
-    `,
-  ],
+  styles: `
+    .title {
+      box-sizing: border-box;
+      border: none;
+      width: 100%;
+      background: rgba(0, 0, 0, 0);
+      padding: 6px 8px;
+    }
+    .title:focus {
+      background: #fff;
+    }
+  `,
   standalone: true,
   imports: [ReactiveFormsModule],
 })

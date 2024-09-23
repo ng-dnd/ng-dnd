@@ -20,29 +20,27 @@ interface NativeFile {
       <p>
         Accepts <code>{{ type }}</code>
       </p>
-      <ng-content></ng-content>
+      <ng-content />
       @if (dropped) {
         <pre>{{ dropped | json }}</pre>
       }
     </div>
   `,
-  styles: [
-    `
-      :host {
-        min-width: 200px;
-      }
-      .target {
-        padding: 8px;
-        background: #ddd;
-        min-height: 140px;
-        min-width: 0;
-      }
-      pre {
-        overflow-x: auto;
-        min-width: 0;
-      }
-    `,
-  ],
+  styles: `
+    :host {
+      min-width: 200px;
+    }
+    .target {
+      padding: 8px;
+      background: #ddd;
+      min-height: 140px;
+      min-width: 0;
+    }
+    pre {
+      overflow-x: auto;
+      min-width: 0;
+    }
+  `,
   standalone: true,
   imports: [DndModule, JsonPipe],
 })

@@ -55,14 +55,12 @@
   } @else {
     <div class="cards-container">
       @for (card of list.cards; track trackById(i, card); let i = $index) {
-        <kanban-card [card]="card">
-        </kanban-card>
+        <kanban-card [card]="card" />
       }
     </div>
   }
 
   <!-- A simple version for when we're dragging -->
 
-  <kanban-add-card (add)="addCard.emit($event)">
-  </kanban-add-card>
+  <kanban-add-card (add)="addCard.emit($event)" />
 </div>

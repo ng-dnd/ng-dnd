@@ -12,19 +12,14 @@ import { TrashComponent } from './trash.component';
         <span>({{ remain }} left)</span>
       </p>
       <div [dragSource]="trashSource" [class.dragging]="c.isDragging && remain > 1">
-        <app-trash
-          [type]="type"
-          [empty]="remain === 0 || (c.isDragging && remain === 1)"
-        ></app-trash>
+        <app-trash [type]="type" [empty]="remain === 0 || (c.isDragging && remain === 1)" />
       </div>
     }
   `,
-  styles: [
-    `
-      .dragging {
-      }
-    `,
-  ],
+  styles: `
+    .dragging {
+    }
+  `,
   standalone: true,
   imports: [DndModule, TrashComponent, AsyncPipe],
 })

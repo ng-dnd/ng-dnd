@@ -52,8 +52,7 @@
   <ng-template #plain>
     <div class="cards-container">
       @for (card of list.cards; track trackById(i, card); let i = $index) {
-        <kanban-card [card]="card">
-        </kanban-card>
+        <kanban-card [card]="card" />
       }
     </div>
   </ng-template>

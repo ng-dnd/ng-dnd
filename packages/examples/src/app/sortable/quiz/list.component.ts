@@ -9,8 +9,8 @@ import { SectionComponent } from './section.component';
 
 @Component({
   selector: 'app-external-sortable',
-  styleUrls: ['./list.component.scss'],
   templateUrl: './list.component.html',
+  styleUrl: './list.component.scss',
   standalone: true,
   imports: [
     DndModule,

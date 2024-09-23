@@ -8,7 +8,7 @@ import { Card } from '../card';
       <p>{{ card.title }}</p>
     </div>
   `,
-  styleUrls: ['./kanban-card.component.scss'],
+  styleUrl: './kanban-card.component.scss',
   standalone: true,
 })
 export class KanbanCardComponent {

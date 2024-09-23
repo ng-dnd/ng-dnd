@@ -13,9 +13,9 @@ import { TrashCanComponent } from '../trash-can.component';
 
 @Component({
   selector: 'kanban-board',
-  changeDetection: ChangeDetectionStrategy.OnPush,
   templateUrl: './kanban-board.component.html',
-  styleUrls: ['./kanban-board.component.scss'],
+  styleUrl: './kanban-board.component.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush,
   standalone: true,
   imports: [
     DndMultiBackendModule,

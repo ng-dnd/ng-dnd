@@ -47,7 +47,7 @@ import { TreeService } from './tree.service';
       </li>
     }
   `,
-  styleUrls: ['./folder.component.scss'],
+  styleUrl: './folder.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
   standalone: true,
   imports: [DndModule, AsyncPipe],

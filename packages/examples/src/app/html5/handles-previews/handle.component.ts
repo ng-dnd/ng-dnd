@@ -13,31 +13,29 @@ import { ItemTypes } from './item-types';
       </p>
     </div>
   `,
-  styles: [
-    `
-      div {
-        border: 1px dashed #777;
-        background: #fff;
-        padding: 0.5rem 1rem;
-        margin-bottom: 0.5rem;
-        background-color: white;
-        width: 8rem;
-      }
-      .handle {
-        cursor: move;
-        width: 14px;
-        height: 14px;
-        background: darkgreen;
-        display: inline-block;
-      }
-      div,
-      p {
-        display: inline-block;
-        padding: 3px;
-        margin: 0;
-      }
-    `,
-  ],
+  styles: `
+    div {
+      border: 1px dashed #777;
+      background: #fff;
+      padding: 0.5rem 1rem;
+      margin-bottom: 0.5rem;
+      background-color: white;
+      width: 8rem;
+    }
+    .handle {
+      cursor: move;
+      width: 14px;
+      height: 14px;
+      background: darkgreen;
+      display: inline-block;
+    }
+    div,
+    p {
+      display: inline-block;
+      padding: 3px;
+      margin: 0;
+    }
+  `,
   standalone: true,
   imports: [DndModule, AsyncPipe],
 })

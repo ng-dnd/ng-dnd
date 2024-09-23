@@ -11,9 +11,9 @@ import { CalendarDayComponent } from './day.component';
 
 @Component({
   selector: 'cal-calendar',
-  changeDetection: ChangeDetectionStrategy.OnPush,
   templateUrl: './calendar.component.html',
-  styleUrls: ['./calendar.component.scss'],
+  styleUrl: './calendar.component.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush,
   standalone: true,
   imports: [CalendarDayComponent, AsyncPipe],
 })

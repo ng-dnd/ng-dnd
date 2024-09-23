@@ -9,7 +9,7 @@ import { TreeService } from './tree.service';
 @Component({
   selector: 'drilldown-container',
   template: `
-    <app-example-link path="drilldown"></app-example-link>
+    <app-example-link path="drilldown" />
     <p>
       Hover over a folder to temporarily drill down. Click normally on a folder to open or close it.
     </p>
@@ -22,18 +22,16 @@ import { TreeService } from './tree.service';
       Last dropped on <code> {{ keys ? keys.join(' > ') : '(never)' }} </code>
     </p>
     <p>
-      <drilldown-source (beginDrag)="beginDrag()" (endDrag)="endDrag()"></drilldown-source>
+      <drilldown-source (beginDrag)="beginDrag()" (endDrag)="endDrag()" />
     </p>
-    <drilldown-folder [keys]="[]"></drilldown-folder>
+    <drilldown-folder [keys]="[]" />
   `,
-  styles: [
-    `
-      :host {
-        display: block;
-        min-height: 600px;
-      }
-    `,
-  ],
+  styles: `
+    :host {
+      display: block;
+      min-height: 600px;
+    }
+  `,
   standalone: true,
   imports: [ExampleLinkComponent, NgLetDirective, BoxComponent, FolderComponent, AsyncPipe],
 })

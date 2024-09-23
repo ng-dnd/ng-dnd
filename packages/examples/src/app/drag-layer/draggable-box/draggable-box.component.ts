@@ -9,7 +9,7 @@ import { BoxComponent } from '../box.component';
   selector: 'app-draggable-box',
   template: `
     <div class="draggable-box" [dragSource]="source" [style]="getStyles(!!(isDragging$ | async))">
-      <app-box [title]="title"></app-box>
+      <app-box [title]="title" />
     </div>
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,

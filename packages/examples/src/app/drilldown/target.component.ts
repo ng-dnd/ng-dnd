@@ -14,30 +14,28 @@ import { ItemTypes } from './itemTypes';
             {{ 'dropped' + (hasDroppedOnChild ? ' on child' : '') }}
           </p>
         }
-        <ng-content></ng-content>
+        <ng-content />
       </div>
     }
   `,
-  styles: [
-    `
-      p {
-        margin: 0;
-        padding: 2px;
-      }
-      .box {
-        border: 1px solid rgba(0, 0, 0, 0.2);
-        min-height: 8rem;
-        min-width: 8rem;
-        color: white;
-        padding: 2rem;
-        padding-top: 1rem;
-        margin: 1rem;
-        text-align: center;
-        font-size: 1rem;
-        background-color: rgba(0, 0, 0, 0.5);
-      }
-    `,
-  ],
+  styles: `
+    p {
+      margin: 0;
+      padding: 2px;
+    }
+    .box {
+      border: 1px solid rgba(0, 0, 0, 0.2);
+      min-height: 8rem;
+      min-width: 8rem;
+      color: white;
+      padding: 2rem;
+      padding-top: 1rem;
+      margin: 1rem;
+      text-align: center;
+      font-size: 1rem;
+      background-color: rgba(0, 0, 0, 0.5);
+    }
+  `,
   standalone: true,
   imports: [DndModule, AsyncPipe],
 })

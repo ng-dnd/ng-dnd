@@ -10,31 +10,27 @@ import { KnightComponent } from './knight.component';
     <div class="board">
       @if (knightPosition$ | async; as kp) {
         @for (i of sixtyFour; track i) {
-          <div>
-            @if (xy(i); as pos) {
-              <app-board-square [position]="pos">
-                @if (pos.x === kp.x && pos.y === kp.y) {
-                  <app-knight></app-knight>
-                }
-              </app-board-square>
-            }
-          </div>
+          @if (xy(i); as pos) {
+            <app-board-square [position]="pos">
+              @if (pos.x === kp.x && pos.y === kp.y) {
+                <app-knight />
+              }
+            </app-board-square>
+          }
         }
       }
     </div>
   `,
-  styles: [
-    `
-      .board {
-        width: 100%;
-        height: 100%;
-        border: 1px solid black;
-        display: grid;
-        grid-template-columns: repeat(8, 12.5%);
-        grid-template-rows: repeat(8, 12.5%);
-      }
-    `,
-  ],
+  styles: `
+    .board {
+      width: 100%;
+      height: 100%;
+      border: 1px solid black;
+      display: grid;
+      grid-template-columns: repeat(8, 12.5%);
+      grid-template-rows: repeat(8, 12.5%);
+    }
+  `,
   standalone: true,
   imports: [BoardSquareComponent, KnightComponent, AsyncPipe],
 })

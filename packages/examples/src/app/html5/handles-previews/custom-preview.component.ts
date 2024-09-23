@@ -10,25 +10,23 @@ import { ItemTypes } from './item-types';
       <p>Drag this for image preview</p>
     </div>
   `,
-  styles: [
-    `
-      div {
-        border: 1px dashed #777;
-        background: #fff;
-        padding: 0.5rem 1rem;
-        margin-bottom: 0.5rem;
-        background-color: white;
-        width: 8rem;
-        cursor: move;
-      }
-      div,
-      p {
-        display: inline-block;
-        padding: 3px;
-        margin: 0;
-      }
-    `,
-  ],
+  styles: `
+    div {
+      border: 1px dashed #777;
+      background: #fff;
+      padding: 0.5rem 1rem;
+      margin-bottom: 0.5rem;
+      background-color: white;
+      width: 8rem;
+      cursor: move;
+    }
+    div,
+    p {
+      display: inline-block;
+      padding: 3px;
+      margin: 0;
+    }
+  `,
   standalone: true,
   imports: [DndModule, AsyncPipe],
 })

@@ -2,12 +2,10 @@
   <ng-template let-type let-item="item">
     @switch (type) {
       @case (ItemTypes.CARD) {
-        <kanban-card [card]="item.data" [preview]="true" [style]="item.size.style()">
-        </kanban-card>
+        <kanban-card [card]="item.data" [preview]="true" [style]="item.size.style()" />
       }
       @case (ItemTypes.LIST) {
-        <kanban-list [list]="item.data" [preview]="true" [style]="item.size.style()">
-        </kanban-list>
+        <kanban-list [list]="item.data" [preview]="true" [style]="item.size.style()" />
       }
     }
   </ng-template>
@@ -65,6 +63,6 @@ you pass context down to [dndSortableRender].
 </dnd-sortable-list>
 
 <div class="trash-zone">
-  <kanban-trash-can (dropped)="removeCard($event)"></kanban-trash-can>
-  <kanban-external></kanban-external>
+  <kanban-trash-can (dropped)="removeCard($event)" />
+  <kanban-external />
 </div>

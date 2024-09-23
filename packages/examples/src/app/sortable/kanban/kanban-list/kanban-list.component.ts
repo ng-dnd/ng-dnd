@@ -19,8 +19,8 @@ import { SortableSpecService } from '../specs';
 @Component({
   selector: 'kanban-list',
   templateUrl: './kanban-list.component.html',
+  styleUrl: './kanban-list.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  styleUrls: ['./kanban-list.component.scss'],
   standalone: true,
   imports: [DndModule, DndSortableModule, KanbanCardComponent, AddCardComponent, AsyncPipe],
 })

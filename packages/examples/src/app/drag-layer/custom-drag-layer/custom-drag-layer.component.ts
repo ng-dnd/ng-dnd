@@ -18,28 +18,26 @@ interface Offset {
         <div [style]="forStyle$ | async">
           @switch (c.itemType) {
             @case ('BOX') {
-              <app-box-drag-preview [title]="c.item.title"></app-box-drag-preview>
+              <app-box-drag-preview [title]="c.item.title" />
             }
           }
         </div>
       }
     }
   `,
+  styles: `
+    :host {
+      display: block;
+      position: fixed;
+      pointer-events: none;
+      z-index: 100;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+    }
+  `,
   changeDetection: ChangeDetectionStrategy.OnPush,
-  styles: [
-    `
-      :host {
-        display: block;
-        position: fixed;
-        pointer-events: none;
-        z-index: 100;
-        left: 0;
-        top: 0;
-        width: 100%;
-        height: 100%;
-      }
-    `,
-  ],
   standalone: true,
   imports: [BoxDragPreviewComponent, AsyncPipe],
 })

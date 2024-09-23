@@ -15,25 +15,23 @@ import { Colors } from './colors';
       <label>
         <input type="checkbox" value="forbid" (change)="toggle()" name="toggle" /> Forbid drag
       </label>
-      <ng-content select="app-blue-or-yellow"></ng-content>
+      <ng-content select="app-blue-or-yellow" />
     </div>
   `,
-  styles: [
-    `
-      :host {
-        display: block;
-        color: #777;
-      }
-      .pushright {
-        margin-top: 15px;
-        padding: 15px;
-        border: 1px dashed #777;
-      }
-      .dragging {
-        opacity: 0.5;
-      }
-    `,
-  ],
+  styles: `
+    :host {
+      display: block;
+      color: #777;
+    }
+    .pushright {
+      margin-top: 15px;
+      padding: 15px;
+      border: 1px dashed #777;
+    }
+    .dragging {
+      opacity: 0.5;
+    }
+  `,
   standalone: true,
   imports: [DndModule, AsyncPipe],
 })

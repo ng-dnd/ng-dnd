@@ -19,36 +19,34 @@ import { SpotComponent } from '../spot.component';
   template: `
     <div class="root" [dragSource]="source" [style]="getRootStyles(isDragging$ | async)">
       <div class="draggable-node">
-        <xy-box></xy-box>
+        <xy-box />
       </div>
       <div class="fullsize"></div>
     </div>
     @if ((isDragging$ | async) !== true) {
-      <xy-crosshairs [x]="spot.x" [y]="spot.y"></xy-crosshairs>
+      <xy-crosshairs [x]="spot.x" [y]="spot.y" />
     }
   `,
-  styles: [
-    `
-      .root {
-        cursor: move;
-      }
-      xy-crosshairs,
-      .draggable-node {
-        pointer-events: none;
-        position: absolute;
-      }
-      xy-crosshairs {
-        margin-top: 16px;
-      }
-      .fullsize {
-        position: absolute;
-        left: -400px;
-        top: -400px;
-        width: 800px;
-        height: 800px;
-      }
-    `,
-  ],
+  styles: `
+    .root {
+      cursor: move;
+    }
+    xy-crosshairs,
+    .draggable-node {
+      pointer-events: none;
+      position: absolute;
+    }
+    xy-crosshairs {
+      margin-top: 16px;
+    }
+    .fullsize {
+      position: absolute;
+      left: -400px;
+      top: -400px;
+      width: 800px;
+      height: 800px;
+    }
+  `,
   changeDetection: ChangeDetectionStrategy.OnPush,
   standalone: true,
   imports: [DndModule, SpotComponent, CrosshairsComponent, AsyncPipe],

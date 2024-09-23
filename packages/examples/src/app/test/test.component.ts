@@ -4,8 +4,7 @@ import { DndModule, DndService } from '@ng-dnd/core';
 
 @Component({
   selector: 'app-test',
-  template: ` <p [dragSource]="source" [class.dragging]="isDragging$ | async">test works!</p> `,
-  styles: [],
+  template: `<p [dragSource]="source" [class.dragging]="isDragging$ | async">test works!</p>`,
   standalone: true,
   imports: [DndModule, AsyncPipe],
 })

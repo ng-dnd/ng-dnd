@@ -31,20 +31,20 @@ interface Collected {
     @if (collect$ | async; as c) {
       @if (c.isDragging) {
         @if (crossStyle$ | async; as cross) {
-          <xy-crosshairs [x]="cross.x" [y]="cross.y"></xy-crosshairs>
+          <xy-crosshairs [x]="cross.x" [y]="cross.y" />
         }
         <div [style]="movingStyle$ | async">
           @switch (c.itemType) {
             @case ('SPOT') {
-              <xy-box-drag-preview></xy-box-drag-preview>
+              <xy-box-drag-preview />
             }
           }
         </div>
       }
     }
   `,
+  styleUrl: './custom-drag-layer.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  styleUrls: ['./custom-drag-layer.component.scss'],
   standalone: true,
   imports: [CrosshairsComponent, BoxDragPreviewComponent, AsyncPipe],
 })

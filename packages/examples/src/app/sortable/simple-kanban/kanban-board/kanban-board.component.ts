@@ -9,7 +9,7 @@ import { Card, SortableSpecService } from '../specs';
 @Component({
   selector: 'kanban-board',
   templateUrl: './kanban-board.component.html',
-  styleUrls: ['./kanban-board.component.scss'],
+  styleUrl: './kanban-board.component.scss',
   standalone: true,
   imports: [DndMultiBackendModule, DndSortableModule, KanbanCardComponent, KanbanListComponent],
 })

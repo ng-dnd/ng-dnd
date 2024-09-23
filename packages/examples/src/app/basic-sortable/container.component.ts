@@ -6,7 +6,7 @@ import { BasicSortableComponent } from './basic-sortable.component';
 @Component({
   selector: 'basic-sortable-container',
   template: `
-    <app-example-link path="basic-sortable"></app-example-link>
+    <app-example-link path="basic-sortable" />
 
     <p>You can make a sortable by:</p>
 
@@ -41,7 +41,7 @@ import { BasicSortableComponent } from './basic-sortable.component';
       <a [routerLink]="['/sortable', 'simple']">Simple list</a>.
     </p>
 
-    <basic-sortable></basic-sortable>
+    <basic-sortable />
   `,
   standalone: true,
   imports: [RouterLink, ExampleLinkComponent, BasicSortableComponent],

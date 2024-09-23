@@ -12,24 +12,19 @@ import { SquareComponent } from './square.component';
   template: `
     <div class="wrapper" [dropTarget]="target">
       <app-square [black]="black">
-        <ng-content></ng-content>
+        <ng-content />
       </app-square>
       @if (showOverlay$ | async) {
         <div class="overlay" [style]="overlayStyle$ | async"></div>
       }
     </div>
   `,
-  styles: [
-    `
-      :host,
-      .wrapper {
-        display: block;
-        position: relative;
-        width: 100%;
-        height: 100%;
-      }
-    `,
-  ],
+  styles: `
+    .wrapper {
+      position: relative;
+      height: 100%;
+    }
+  `,
   standalone: true,
   imports: [DndModule, SquareComponent, AsyncPipe],
 })

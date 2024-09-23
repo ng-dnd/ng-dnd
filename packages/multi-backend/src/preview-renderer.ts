@@ -15,23 +15,21 @@ import { map } from 'rxjs/operators';
   selector: 'dnd-preview-renderer',
   template: `
     <div [style]="style$ | async">
-      <ng-content></ng-content>
+      <ng-content />
     </div>
   `,
-  styles: [
-    `
-      :host {
-        display: block;
-        position: fixed;
-        pointer-events: none;
-        z-index: 100;
-        left: 0;
-        top: 0;
-        width: 100%;
-        height: 100%;
-      }
-    `,
-  ],
+  styles: `
+    :host {
+      display: block;
+      position: fixed;
+      pointer-events: none;
+      z-index: 100;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+    }
+  `,
   changeDetection: ChangeDetectionStrategy.OnPush,
   standalone: true,
   imports: [AsyncPipe],

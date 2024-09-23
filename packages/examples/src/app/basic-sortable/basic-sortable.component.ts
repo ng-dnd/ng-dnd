@@ -10,14 +10,12 @@ interface Card {
 @Component({
   selector: 'basic-sortable',
   templateUrl: './basic-sortable.component.html',
-  styles: [
-    `
-      .sorted {
-        width: 100%;
-        max-width: 400px;
-      }
-    `,
-  ],
+  styles: `
+    .sorted {
+      width: 100%;
+      max-width: 400px;
+    }
+  `,
   standalone: true,
   imports: [DndMultiBackendModule, CardComponent, CardInnerDirective],
 })

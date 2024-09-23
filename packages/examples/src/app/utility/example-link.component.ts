@@ -4,29 +4,25 @@ import { Component, Input } from '@angular/core';
   selector: 'app-example-link',
   template: `
     <p>
-      <a [href]="link" target="_blank">
-        <i class="fab fa-github"></i> View the source on GitHub
-      </a>
+      <a [href]="link" target="_blank"><i class="fab fa-github"></i> View the source on GitHub</a>
     </p>
   `,
-  styles: [
-    `
-      .fab {
-        color: black;
-      }
-      p {
-        margin-top: 0;
-      }
-      a {
-        padding: 8px;
-        display: inline-block;
-        background: rgba(68, 72, 224, 0.14);
-        background: #e5e2fa;
-        background: #e2ecfa;
-        text-decoration: none;
-      }
-    `,
-  ],
+  styles: `
+    .fab {
+      color: black;
+    }
+    p {
+      margin-top: 0;
+    }
+    a {
+      padding: 8px;
+      display: inline-block;
+      background: rgba(68, 72, 224, 0.14);
+      background: #e5e2fa;
+      background: #e2ecfa;
+      text-decoration: none;
+    }
+  `,
   standalone: true,
 })
 export class ExampleLinkComponent {

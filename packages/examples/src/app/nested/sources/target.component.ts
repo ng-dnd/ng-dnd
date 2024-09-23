@@ -21,23 +21,21 @@ import { Colors } from './colors';
       }
     </div>
   `,
-  styles: [
-    `
-      .box {
-        font-size: 120%;
-        color: #777;
-        margin-top: 15px;
-        max-width: 300px;
-        height: 200px;
-        padding: 20px;
-        border: 1px dashed #777;
-        text-align: center;
-      }
-      .fade {
-        opacity: 0.5;
-      }
-    `,
-  ],
+  styles: `
+    .box {
+      font-size: 120%;
+      color: #777;
+      margin-top: 15px;
+      max-width: 300px;
+      height: 200px;
+      padding: 20px;
+      border: 1px dashed #777;
+      text-align: center;
+    }
+    .fade {
+      opacity: 0.5;
+    }
+  `,
   standalone: true,
   imports: [DndModule, AsyncPipe],
 })

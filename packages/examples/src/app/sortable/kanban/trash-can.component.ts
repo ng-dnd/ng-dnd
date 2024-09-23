@@ -7,14 +7,9 @@ import { ItemTypes } from './item-types';
 
 @Component({
   selector: 'kanban-trash-can',
-  changeDetection: ChangeDetectionStrategy.OnPush,
   template: `
     @if (collect$ | async; as c) {
-      <div
-        class="trash-can"
-        [class.isOver]="c.isOver"
-        [dropTarget]="target"
-        >
+      <div class="trash-can" [class.isOver]="c.isOver" [dropTarget]="target">
         <div>
           <i class="fas fa-trash-alt"></i>
           <span>Drop here to delete</span>
@@ -22,35 +17,34 @@ import { ItemTypes } from './item-types';
         <div class="space" [style]="getStyle(c.isOver, c.item!)"></div>
       </div>
     }
-    `,
-  styles: [
-    `
-      .fas {
-        margin-right: 8px;
-      }
-      .trash-can {
-        margin: 8px;
-        padding: 8px;
-        font-weight: 700;
-        text-shadow: 1px 1px rgba(255, 255, 255, 0.2);
-        border-radius: 4px;
-        border: 1px dashed #333;
-        text-align: center;
-        transform-origin: 100% 100%;
-        transition: transform 50ms ease-out;
-      }
-      .space {
-        height: 0;
-        width: 0;
-        transition: all 50ms ease-out;
-      }
-      .isOver {
-        transition: transform 50ms ease-in;
-        background: rgba(255, 255, 255, 0.4);
-        transform: scale(1.2);
-      }
-    `,
-  ],
+  `,
+  styles: `
+    .fas {
+      margin-right: 8px;
+    }
+    .trash-can {
+      margin: 8px;
+      padding: 8px;
+      font-weight: 700;
+      text-shadow: 1px 1px rgba(255, 255, 255, 0.2);
+      border-radius: 4px;
+      border: 1px dashed #333;
+      text-align: center;
+      transform-origin: 100% 100%;
+      transition: transform 50ms ease-out;
+    }
+    .space {
+      height: 0;
+      width: 0;
+      transition: all 50ms ease-out;
+    }
+    .isOver {
+      transition: transform 50ms ease-in;
+      background: rgba(255, 255, 255, 0.4);
+      transform: scale(1.2);
+    }
+  `,
+  changeDetection: ChangeDetectionStrategy.OnPush,
   standalone: true,
   imports: [DndModule, AsyncPipe],
 })

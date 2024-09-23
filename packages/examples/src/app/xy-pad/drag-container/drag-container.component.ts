@@ -18,13 +18,12 @@ import { Spot } from '../spot';
       @for (i of gridlines; track i) {
         <div class="gridline vertical" [style.left.px]="px * i - 1"></div>
       }
-      <xy-draggable-box [spot]="spot" (endDrag)="dragEnded($event)"></xy-draggable-box>
+      <xy-draggable-box [spot]="spot" (endDrag)="dragEnded($event)" />
     </div>
 
-    <xy-custom-drag-layer [snapToGrid]="snapToGrid" [incrementPx]="px" (moved)="emitEach($event)">
-    </xy-custom-drag-layer>
+    <xy-custom-drag-layer [snapToGrid]="snapToGrid" [incrementPx]="px" (moved)="emitEach($event)" />
   `,
-  styleUrls: ['./drag-container.component.scss'],
+  styleUrl: './drag-container.component.scss',
   standalone: true,
   imports: [DndModule, DraggableBoxComponent, CustomDragLayerComponent],
 })

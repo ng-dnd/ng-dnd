@@ -8,7 +8,7 @@ import { Card, CardList, SortableSpecService } from '../specs';
 @Component({
   selector: 'kanban-list',
   templateUrl: './kanban-list.component.html',
-  styleUrls: ['./kanban-list.component.scss'],
+  styleUrl: './kanban-list.component.scss',
   standalone: true,
   imports: [DndModule, DndSortableModule, KanbanCardComponent, AsyncPipe],
 })

@@ -47,7 +47,7 @@ import { CalendarEventComponent } from './event.component';
       </h3>
 
       @for (e of events$ | async; track unique($index, e)) {
-        <cal-event [event]="e" [draggingNew]="!!(isDragging$ | async)" [day]="day"></cal-event>
+        <cal-event [event]="e" [draggingNew]="!!(isDragging$ | async)" [day]="day" />
       }
 
       <div
@@ -61,14 +61,12 @@ import { CalendarEventComponent } from './event.component';
       ></div>
     </div>
   `,
-  styles: [
-    `
-      :host,
-      .day {
-        display: contents;
-      }
-    `,
-  ],
+  styles: `
+    :host,
+    .day {
+      display: contents;
+    }
+  `,
   changeDetection: ChangeDetectionStrategy.OnPush,
   standalone: true,
   imports: [DndModule, CalendarEventComponent, AsyncPipe],

@@ -7,7 +7,7 @@ import { horseImage } from './horseImage';
 @Component({
   selector: 'app-knight',
   template: `<span [dragSource]="knightSource" [class.dragging]="isDragging$ | async">♘</span>`,
-  styleUrls: ['./knight.component.scss'],
+  styleUrl: './knight.component.scss',
   standalone: true,
   imports: [DndModule, AsyncPipe],
 })

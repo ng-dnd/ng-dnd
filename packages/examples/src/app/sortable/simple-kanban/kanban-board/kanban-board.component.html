@@ -2,12 +2,10 @@
   <ng-template let-type let-item="item">
     @switch (type) {
       @case (ItemTypes.CARD) {
-        <kanban-card [card]="item.data" [preview]="true" [style]="item.size.style()">
-        </kanban-card>
+        <kanban-card [card]="item.data" [preview]="true" [style]="item.size.style()" />
       }
       @case (ItemTypes.LIST) {
-        <kanban-list [list]="item.data" [preview]="true" [style]="item.size.style()">
-        </kanban-list>
+        <kanban-list [list]="item.data" [preview]="true" [style]="item.size.style()" />
       }
     }
   </ng-template>

@@ -16,19 +16,16 @@ import { SortableSpecService } from './specs';
         [card]="card"
         [dragSource]="ext.source"
         [noHTML5Preview]="true"
-      >
-      </kanban-card>
+      />
     </div>
   `,
-  styles: [
-    `
-      .ext {
-        margin-right: 8px;
-        margin-bottom: 8px;
-        display: inline-block;
-      }
-    `,
-  ],
+  styles: `
+    .ext {
+      margin-right: 8px;
+      margin-bottom: 8px;
+      display: inline-block;
+    }
+  `,
   standalone: true,
   imports: [KanbanCardComponent, DndSortableModule, DndModule],
 })

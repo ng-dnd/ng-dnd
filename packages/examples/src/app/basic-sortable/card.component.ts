@@ -39,25 +39,22 @@ export class CardInnerDirective {}
       [style.opacity]="opacity$ | async"
     >
       <div class="border">
-        <ng-container *ngTemplateOutlet="cardInnerTemplate; context: { $implicit: card }">
-        </ng-container>
+        <ng-container *ngTemplateOutlet="cardInnerTemplate; context: { $implicit: card }" />
       </div>
     </div>
   `,
   // Note: don't use margins, use padding. This way, there are no gaps to hover over.
-  styles: [
-    `
-      .card {
-        margin-bottom: 0.25rem;
-        background-color: white;
-        cursor: move;
-      }
-      .border {
-        padding: 0.5rem 1rem;
-        border: 1px dashed gray;
-      }
-    `,
-  ],
+  styles: `
+    .card {
+      margin-bottom: 0.25rem;
+      background-color: white;
+      cursor: move;
+    }
+    .border {
+      padding: 0.5rem 1rem;
+      border: 1px dashed gray;
+    }
+  `,
   changeDetection: ChangeDetectionStrategy.OnPush,
   standalone: true,
   imports: [DndModule, NgTemplateOutlet, AsyncPipe],

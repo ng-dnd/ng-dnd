@@ -17,12 +17,11 @@ import { MathFormComponent } from './math-form.component';
       <span class="section-handle" [dragSource]="render?.source!" [noHTML5Preview]="true">
         &#9776;
       </span>
-    
+
       <div class="section-content">
         @switch (question.formType) {
           @case ('Math') {
-            <app-math-form [data]="getMathQuestion()" (edit)="edit.emit($event)">
-            </app-math-form>
+            <app-math-form [data]="getMathQuestion()" (edit)="edit.emit($event)" />
           }
           @case ('Name') {
             <div>Student enters their name/student id</div>
@@ -31,7 +30,7 @@ import { MathFormComponent } from './math-form.component';
       </div>
     </div>
     `,
-  styleUrls: ['./section.component.scss'],
+  styleUrl: './section.component.scss',
   standalone: true,
   imports: [DndModule, MathFormComponent, AsyncPipe],
 })
