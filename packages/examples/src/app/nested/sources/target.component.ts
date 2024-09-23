@@ -1,4 +1,4 @@
-import { AsyncPipe, NgIf } from '@angular/common';
+import { AsyncPipe } from '@angular/common';
 import { Component, OnDestroy } from '@angular/core';
 import { DndModule, DndService } from '@ng-dnd/core';
 import { map } from 'rxjs/operators';
@@ -14,11 +14,11 @@ import { Colors } from './colors';
       [style.background-color]="draggingColor$ | async"
     >
       <p>Drop here.</p>
-      <ng-container *ngIf="(canDrop$ | async) !== true && !!lastDroppedColor">
+      @if ((canDrop$ | async) !== true && !!lastDroppedColor) {
         <p [style.background-color]="backgroundColor" [style.padding.px]="5">
           Last dropped: {{ lastDroppedColor }}
         </p>
-      </ng-container>
+      }
     </div>
   `,
   styles: [
@@ -39,7 +39,7 @@ import { Colors } from './colors';
     `,
   ],
   standalone: true,
-  imports: [DndModule, NgIf, AsyncPipe],
+  imports: [DndModule, AsyncPipe],
 })
 export class TargetBoxComponent implements OnDestroy {
   Colors = Colors;

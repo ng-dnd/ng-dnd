@@ -1,19 +1,21 @@
 <div class="event"
-     [style]="{ 'grid-column-end': 'span ' + span }"
-     [class.event--pointernone]="event.temp || (draggingEvent$|async)"
-     [class.event--allday]="event.isAllDay"
-     [class.event--drag]="event.temp || (draggingEvent$|async)"
-     [class.event--start]="event.startsThisWeek(day)"
-     [class.event--end]="event.endsThisWeek(day)"
-     [title]="event.title"
-     [dragSource]="source"
-     [noHTML5Preview]="true">
+  [style]="{ 'grid-column-end': 'span ' + span }"
+  [class.event--pointernone]="event.temp || (draggingEvent$|async)"
+  [class.event--allday]="event.isAllDay"
+  [class.event--drag]="event.temp || (draggingEvent$|async)"
+  [class.event--start]="event.startsThisWeek(day)"
+  [class.event--end]="event.endsThisWeek(day)"
+  [title]="event.title"
+  [dragSource]="source"
+  [noHTML5Preview]="true">
 
-  <div class="event-handle event-handle--left" *ngIf="event.isAllDay && event.startsThisWeek(day)"
-       [dragSource]="resizeStart"></div>
+  @if (event.isAllDay && event.startsThisWeek(day)) {
+    <div class="event-handle event-handle--left" [dragSource]="resizeStart"></div>
+  }
   <div class="event-text">
     {{ event.title }}
   </div>
-  <div class="event-handle event-handle--right" *ngIf="event.isAllDay && event.endsThisWeek(day)"
-       [dragSource]="resizeEnd"></div>
+  @if (event.isAllDay && event.endsThisWeek(day)) {
+    <div class="event-handle event-handle--right" [dragSource]="resizeEnd"></div>
+  }
 </div>

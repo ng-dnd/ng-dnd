@@ -1,4 +1,3 @@
-import { NgIf } from '@angular/common';
 import { Component } from '@angular/core';
 import { ExampleLinkComponent } from '@app/utility/example-link.component';
 import { BoxComponent } from './box.component';
@@ -30,13 +29,15 @@ import { CopyTargetComponent } from './copy-target.component';
     <de-box force="link" (dropped)="lastEffect = $event"></de-box>
     <de-box force="none" (dropped)="lastEffect = $event"></de-box>
     <de-copy-target>
-      <p *ngIf="lastEffect">
-        Dropped with the <code>{{ lastEffect }}</code> effect.
-      </p>
+      @if (lastEffect) {
+        <p>
+          Dropped with the <code>{{ lastEffect }}</code> effect.
+        </p>
+      }
     </de-copy-target>
   `,
   standalone: true,
-  imports: [ExampleLinkComponent, BoxComponent, CopyTargetComponent, NgIf],
+  imports: [ExampleLinkComponent, BoxComponent, CopyTargetComponent],
 })
 export class ContainerComponent {
   lastEffect = '';

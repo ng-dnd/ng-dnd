@@ -1,4 +1,3 @@
-import { NgIf } from '@angular/common';
 import { Component, EventEmitter, Input, OnChanges, Output } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { MathQuestion } from './Question';
@@ -20,12 +19,14 @@ import { MathQuestion } from './Question';
         </label>
       </div>
       <div>
-        <input type="submit" value="Save question" *ngIf="form.dirty" />
+        @if (form.dirty) {
+          <input type="submit" value="Save question" />
+        }
       </div>
     </form>
   `,
   standalone: true,
-  imports: [ReactiveFormsModule, NgIf],
+  imports: [ReactiveFormsModule],
 })
 export class MathFormComponent implements OnChanges {
   @Input() data!: MathQuestion;

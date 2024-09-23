@@ -1,4 +1,4 @@
-import { AsyncPipe, NgIf } from '@angular/common';
+import { AsyncPipe } from '@angular/common';
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 import { DndModule, DndService, DragSourceSpec } from '@ng-dnd/core';
 import { Store, createSelector } from '@ngrx/store';
@@ -14,7 +14,7 @@ import { BeginDragExistingEvent, EndDragExistingEvent } from '../store/calendar.
   styleUrls: ['./event.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
   standalone: true,
-  imports: [DndModule, NgIf, AsyncPipe],
+  imports: [DndModule, AsyncPipe],
 })
 export class CalendarEventComponent {
   @Input() event!: CalendarEvent;

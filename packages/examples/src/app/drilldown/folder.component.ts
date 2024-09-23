@@ -1,4 +1,4 @@
-import { AsyncPipe, NgFor, NgIf } from '@angular/common';
+import { AsyncPipe } from '@angular/common';
 import {
   ChangeDetectionStrategy,
   Component,
@@ -17,16 +17,13 @@ import { TreeService } from './tree.service';
 @Component({
   selector: 'drilldown-folder',
   template: `
-    <ng-container *ngIf="keys.length === 0; else node">
+    @if (keys.length === 0) {
       <ul [class.has-children]="anyChildren$ | async">
-        <drilldown-folder
-          *ngFor="let c of children$ | async; trackBy: tracker"
-          [keys]="keys.concat([c])"
-        >
-        </drilldown-folder>
+        @for (c of children$ | async; track tracker($index, c)) {
+          <drilldown-folder [keys]="keys.concat([c])"></drilldown-folder>
+        }
       </ul>
-    </ng-container>
-    <ng-template #node>
+    } @else {
       <li
         [class.root]="keys.length === 0"
         [class.is-open]="isOpen$ | async"
@@ -34,30 +31,26 @@ import { TreeService } from './tree.service';
         [class.has-children]="anyChildren$ | async"
       >
         <div [dropTarget]="target" (click)="toggle()">
-          <b *ngIf="anyChildren$ | async; else leaf">{{ ownKey }} ...</b>
-          <ng-template #leaf>
+          @if (anyChildren$ | async) {
+            <b>{{ ownKey }} ...</b>
+          } @else {
             {{ ownKey }}
-          </ng-template>
+          }
         </div>
-
-        <ul
-          [class.root]="keys.length === 0"
-          *ngIf="isOpen$ | async"
-          [class.has-children]="anyChildren$ | async"
-        >
-          <drilldown-folder
-            *ngFor="let c of children$ | async; trackBy: tracker"
-            [keys]="keys.concat([c])"
-          >
-          </drilldown-folder>
-        </ul>
+        @if (isOpen$ | async) {
+          <ul [class.root]="keys.length === 0" [class.has-children]="anyChildren$ | async">
+            @for (c of children$ | async; track tracker($index, c)) {
+              <drilldown-folder [keys]="keys.concat([c])"></drilldown-folder>
+            }
+          </ul>
+        }
       </li>
-    </ng-template>
+    }
   `,
   styleUrls: ['./folder.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
   standalone: true,
-  imports: [NgIf, NgFor, DndModule, AsyncPipe],
+  imports: [DndModule, AsyncPipe],
 })
 export class FolderComponent implements OnInit, OnDestroy {
   @Input() keys: string[] = [];

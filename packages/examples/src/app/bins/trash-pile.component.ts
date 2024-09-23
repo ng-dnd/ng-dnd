@@ -1,4 +1,4 @@
-import { AsyncPipe, NgIf } from '@angular/common';
+import { AsyncPipe } from '@angular/common';
 import { Component, Input, OnChanges, OnDestroy } from '@angular/core';
 import { DndModule, DndService } from '@ng-dnd/core';
 import { TrashComponent } from './trash.component';
@@ -6,9 +6,10 @@ import { TrashComponent } from './trash.component';
 @Component({
   selector: 'app-trash-pile',
   template: `
-    <ng-container *ngIf="collected$ | async as c">
+    @if (collected$ | async; as c) {
       <p>
-        <button (click)="litter()">add more</button> <span>({{ remain }} left)</span>
+        <button (click)="litter()">add more</button>
+        <span>({{ remain }} left)</span>
       </p>
       <div [dragSource]="trashSource" [class.dragging]="c.isDragging && remain > 1">
         <app-trash
@@ -16,7 +17,7 @@ import { TrashComponent } from './trash.component';
           [empty]="remain === 0 || (c.isDragging && remain === 1)"
         ></app-trash>
       </div>
-    </ng-container>
+    }
   `,
   styles: [
     `
@@ -25,7 +26,7 @@ import { TrashComponent } from './trash.component';
     `,
   ],
   standalone: true,
-  imports: [DndModule, NgIf, TrashComponent, AsyncPipe],
+  imports: [DndModule, TrashComponent, AsyncPipe],
 })
 export class TrashPileComponent implements OnChanges, OnDestroy {
   @Input() type = '';

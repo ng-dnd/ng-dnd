@@ -1,9 +1,10 @@
-import { AsyncPipe, NgFor } from '@angular/common';
+import { AsyncPipe } from '@angular/common';
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { Store, select } from '@ngrx/store';
 import { CalendarState } from 'app/calendar/store/calendar.reducer';
 import { Week } from 'app/calendar/week';
 import { Moment } from 'moment-mini-ts';
+import { Observable } from 'rxjs';
 import { ResetCalendar } from '../store/calendar.actions';
 import { weeksSelector } from '../store/selectors';
 import { CalendarDayComponent } from './day.component';
@@ -14,10 +15,10 @@ import { CalendarDayComponent } from './day.component';
   templateUrl: './calendar.component.html',
   styleUrls: ['./calendar.component.scss'],
   standalone: true,
-  imports: [NgFor, CalendarDayComponent, AsyncPipe],
+  imports: [CalendarDayComponent, AsyncPipe],
 })
 export class CalendarComponent implements OnInit {
-  weeks$ = this.store.pipe(select(weeksSelector)) as any;
+  weeks$ = this.store.pipe(select(weeksSelector)) as Observable<any>;
 
   constructor(private store: Store<CalendarState>) {}
 

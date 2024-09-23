@@ -1,4 +1,4 @@
-import { AsyncPipe, NgFor, NgIf } from '@angular/common';
+import { AsyncPipe } from '@angular/common';
 import { Component } from '@angular/core';
 import { BoardSquareComponent } from './board-square.component';
 import { GameService } from './game.service';
@@ -8,13 +8,19 @@ import { KnightComponent } from './knight.component';
   selector: 'app-board',
   template: `
     <div class="board">
-      <ng-container *ngIf="knightPosition$ | async as kp">
-        <div *ngFor="let i of sixtyFour">
-          <app-board-square *ngIf="xy(i) as pos" [position]="pos">
-            <app-knight *ngIf="pos.x === kp.x && pos.y === kp.y"></app-knight>
-          </app-board-square>
-        </div>
-      </ng-container>
+      @if (knightPosition$ | async; as kp) {
+        @for (i of sixtyFour; track i) {
+          <div>
+            @if (xy(i); as pos) {
+              <app-board-square [position]="pos">
+                @if (pos.x === kp.x && pos.y === kp.y) {
+                  <app-knight></app-knight>
+                }
+              </app-board-square>
+            }
+          </div>
+        }
+      }
     </div>
   `,
   styles: [
@@ -30,7 +36,7 @@ import { KnightComponent } from './knight.component';
     `,
   ],
   standalone: true,
-  imports: [NgIf, NgFor, BoardSquareComponent, KnightComponent, AsyncPipe],
+  imports: [BoardSquareComponent, KnightComponent, AsyncPipe],
 })
 export class BoardComponent {
   sixtyFour = new Array(64).fill(0).map((_, i) => i);

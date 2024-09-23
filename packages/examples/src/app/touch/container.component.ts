@@ -1,4 +1,3 @@
-import { NgSwitch, NgSwitchCase } from '@angular/common';
 import { Component } from '@angular/core';
 import { ExampleLinkComponent } from '@app/utility/example-link.component';
 import { DndMultiBackendModule } from '@ng-dnd/multi-backend';
@@ -17,9 +16,11 @@ import { ItemTypes } from './itemTypes';
 
       <dnd-preview>
         <ng-template let-type let-item="item">
-          <ng-container [ngSwitch]="type">
-            <touch-item *ngSwitchCase="ItemTypes.ITEM" [color]="item.color"></touch-item>
-          </ng-container>
+          @switch (type) {
+            @case (ItemTypes.ITEM) {
+              <touch-item [color]="item.color"></touch-item>
+            }
+          }
         </ng-template>
       </dnd-preview>
 
@@ -29,14 +30,7 @@ import { ItemTypes } from './itemTypes';
     </div>
   `,
   standalone: true,
-  imports: [
-    ExampleLinkComponent,
-    DndMultiBackendModule,
-    NgSwitch,
-    NgSwitchCase,
-    ItemComponent,
-    DraggableItemComponent,
-  ],
+  imports: [ExampleLinkComponent, DndMultiBackendModule, ItemComponent, DraggableItemComponent],
 })
 export class ContainerComponent {
   ItemTypes = ItemTypes;

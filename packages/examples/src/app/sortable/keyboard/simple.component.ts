@@ -1,4 +1,4 @@
-import { AsyncPipe, NgFor } from '@angular/common';
+import { AsyncPipe } from '@angular/common';
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { DndModule } from '@ng-dnd/core';
 import { DndSortableModule, NgRxSortable } from '@ng-dnd/sortable';
@@ -28,26 +28,27 @@ import { _lifted, _render, _selected } from './store/selectors';
         </tr>
       </thead>
       <tbody>
-        <tr
-          *ngFor="let blob of sortable.children$ | async; let i = index"
-          [dndSortableRender]="sortable.contextFor(blob, i)"
-          #render="dndSortableRender"
-          [dragSource]="render.source"
-          [class.blob--placeholder]="render.isDragging$ | async"
-          [class.blob--selected]="blob.id === (selected$ | async)"
-          [class.blob--lifted]="blob.id === (lifted$ | async)"
-          (click)="click(blob)"
-        >
-          <td class="hash">
-            <code>{{ blob.hash }}</code>
-          </td>
-          <td>{{ blob.content }}</td>
-        </tr>
+        @for (blob of sortable.children$ | async; track blob; let i = $index) {
+          <tr
+            [dndSortableRender]="sortable.contextFor(blob, i)"
+            #render="dndSortableRender"
+            [dragSource]="render.source"
+            [class.blob--placeholder]="render.isDragging$ | async"
+            [class.blob--selected]="blob.id === (selected$ | async)"
+            [class.blob--lifted]="blob.id === (lifted$ | async)"
+            (click)="click(blob)"
+          >
+            <td class="hash">
+              <code>{{ blob.hash }}</code>
+            </td>
+            <td>{{ blob.content }}</td>
+          </tr>
+        }
       </tbody>
     </table>
   `,
   standalone: true,
-  imports: [DndModule, DndSortableModule, NgFor, AsyncPipe],
+  imports: [DndModule, DndSortableModule, AsyncPipe],
 })
 export class SimpleComponent {
   rxSpec = new NgRxSortable<Blob>(this.store, ActionTypes.SORT, {

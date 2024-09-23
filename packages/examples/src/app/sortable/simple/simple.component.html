@@ -1,26 +1,26 @@
 <dnd-preview [allBackends]="true">
   <ng-template let-type let-item="item">
-    <ng-container [ngSwitch]="type">
-      <div class="priority" *ngSwitchCase="'PRIORITY'" [style]="item.size.style()">
-        <pre>{{item.index+1}}. {{ item.data.name }}</pre>
-      </div>
-    </ng-container>
+    @switch (type) {
+      @case ('PRIORITY') {
+        <div class="priority" [style]="item.size.style()">
+          <pre>{{item.index+1}}. {{ item.data.name }}</pre>
+        </div>
+      }
+    }
   </ng-template>
 </dnd-preview>
 
 <div class="list">
   <h4>Contoso company-wide priority list</h4>
 
-  <dnd-sortable-list listId="simple-demo"
-                     [children]="tempList"
-                     [spec]="simpleSpec">
+  <dnd-sortable-list listId="simple-demo" [children]="tempList" [spec]="simpleSpec">
     <ng-template dndSortableTemplate let-context>
       <!-- dndSortableRender configures a DragSource for you, but you have to attach it. -->
       <div class="priority"
-           [dndSortableRender]="context"
-           #render="dndSortableRender"
-           [class.priority--placeholder]="render.isDragging$|async"
-           [dragSource]="render.source" [noHTML5Preview]="true">
+        [dndSortableRender]="context"
+        #render="dndSortableRender"
+        [class.priority--placeholder]="render.isDragging$|async"
+        [dragSource]="render.source" [noHTML5Preview]="true">
         <!-- <<< attached here! -->
         <pre>{{render.index+1}}. {{ render.data.name }}</pre>
       </div>

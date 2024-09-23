@@ -1,61 +1,63 @@
 <dnd-preview [allBackends]="true">
   <ng-template let-type let-item="item">
-    <ng-container [ngSwitch]="type">
-      <kanban-card *ngSwitchCase="ItemTypes.CARD" [card]="item.data" [preview]="true"
-                   [style]="item.size.style()">
-      </kanban-card>
-      <kanban-list *ngSwitchCase="ItemTypes.LIST" [list]="item.data" [preview]="true"
-                   [style]="item.size.style()">
-      </kanban-list>
-    </ng-container>
+    @switch (type) {
+      @case (ItemTypes.CARD) {
+        <kanban-card [card]="item.data" [preview]="true" [style]="item.size.style()">
+        </kanban-card>
+      }
+      @case (ItemTypes.LIST) {
+        <kanban-list [list]="item.data" [preview]="true" [style]="item.size.style()">
+        </kanban-list>
+      }
+    }
   </ng-template>
 </dnd-preview>
 
 <!--
-    This is the 'sugared' version.
-    Use dnd-sortable-list, and give it a template for how to
-    render each element. It will handle creating the `*ngFor`
-    for you, from the list the spec provides, and will help
-    you pass context down to [dndSortableRender].
+This is the 'sugared' version.
+Use dnd-sortable-list, and give it a template for how to
+render each element. It will handle creating the `*ngFor`
+for you, from the list the spec provides, and will help
+you pass context down to [dndSortableRender].
 --->
 
 <dnd-sortable-list class="kanban-root"
-                   [hoverTrigger]="hoverTrigger"
-                   [listId]="888"
-                   [children]="specs.tree"
-                   [spec]="specs.boardSpec"
-                   [horizontal]="true">
+  [hoverTrigger]="hoverTrigger"
+  [listId]="888"
+  [children]="specs.tree"
+  [spec]="specs.boardSpec"
+  [horizontal]="true">
   <!-- 'horizontal' makes the hover behave differently. You need CSS to complete the job.
-        .kanban-root must still be like a block element, so no collapsing float containers.
-        Flexbox/CSS Grid are great. -->
+  .kanban-root must still be like a block element, so no collapsing float containers.
+  Flexbox/CSS Grid are great. -->
 
   <!-- The dnd-sortable-list component stamps out one dndSortableTemplate
-       for each item in yourSpec.getList(). -->
+  for each item in yourSpec.getList(). -->
   <ng-template dndSortableTemplate let-context>
     <!-- context is everything the dndSortableRender needs to do its job.
-         It includes 'data' and 'index', which are just from an *ngFor of your spec's getList(). -->
+    It includes 'data' and 'index', which are just from an *ngFor of your spec's getList(). -->
     <kanban-list [dndSortableRender]="context"
-                 [list]="context.data"
-                 (addCard)="addCard(context.data.id, $event)">
+      [list]="context.data"
+      (addCard)="addCard(context.data.id, $event)">
 
       <!-- is this kanban-list draggable? NOT YET.
 
-          -   because dndSortableRender doesn't know which DOM element should be
-              draggable (maybe you want a drag handle), it lets us decide by
-              giving us `render.source`, a DragSource object that is already
-              configured. You are responsible for connecting it to the DOM.
-              If you weren't using child components, you might just do:
+      -   because dndSortableRender doesn't know which DOM element should be
+      draggable (maybe you want a drag handle), it lets us decide by
+      giving us `render.source`, a DragSource object that is already
+      configured. You are responsible for connecting it to the DOM.
+      If you weren't using child components, you might just do:
 
-              <div class="each-child"
-                  [dndSortableRender]="context"
-                  #render="dndSortableRender"
-                  [dragSource]="render.source"></div>
+      <div class="each-child"
+        [dndSortableRender]="context"
+        #render="dndSortableRender"
+      [dragSource]="render.source"></div>
 
-          -   you can either get the directive using `#render="dndSortableRender"`,
-              or inject SkyhookSortableRenderer<KanbanList> into KanbanListComponent.
+      -   you can either get the directive using `#render="dndSortableRender"`,
+      or inject SkyhookSortableRenderer<KanbanList> into KanbanListComponent.
 
-          -   we did the latter here, because we want a 'drag handle' inside kanban-list.
-              the other way is demonstrated with the list of cards inside kanban-list.
+      -   we did the latter here, because we want a 'drag handle' inside kanban-list.
+      the other way is demonstrated with the list of cards inside kanban-list.
       -->
 
     </kanban-list>

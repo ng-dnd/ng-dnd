@@ -1,4 +1,4 @@
-import { AsyncPipe, NgIf } from '@angular/common';
+import { AsyncPipe } from '@angular/common';
 import { Component, Input, OnDestroy } from '@angular/core';
 import { DndModule, DndService } from '@ng-dnd/core';
 import { ItemTypes } from './item-types';
@@ -6,21 +6,21 @@ import { ItemTypes } from './item-types';
 @Component({
   selector: 'app-nested-targets-dustbin',
   template: `
-    <ng-container *ngIf="collected$ | async as c">
+    @if (collected$ | async; as c) {
       <div [dropTarget]="target" class="box" [style.background-color]="getColor(c)">
         <p>{{ greedy ? 'greedy' : 'not greedy' }}</p>
-
-        <p *ngIf="hasDroppedOnChild || hasDropped">
-          {{ 'dropped' + (hasDroppedOnChild ? ' on child' : '') }}
-        </p>
-
+        @if (hasDroppedOnChild || hasDropped) {
+          <p>
+            {{ 'dropped' + (hasDroppedOnChild ? ' on child' : '') }}
+          </p>
+        }
         <ng-content select="app-nested-targets-dustbin"></ng-content>
       </div>
-    </ng-container>
+    }
   `,
   styleUrls: ['./dustbin.component.scss'],
   standalone: true,
-  imports: [NgIf, DndModule, AsyncPipe],
+  imports: [DndModule, AsyncPipe],
 })
 export class DustbinComponent implements OnDestroy {
   @Input() greedy = false;

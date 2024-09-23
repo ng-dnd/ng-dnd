@@ -1,4 +1,4 @@
-import { AsyncPipe, NgIf, NgSwitch, NgSwitchCase } from '@angular/common';
+import { AsyncPipe } from '@angular/common';
 import {
   AfterViewInit,
   ChangeDetectionStrategy,
@@ -28,30 +28,25 @@ interface Collected {
 @Component({
   selector: 'xy-custom-drag-layer',
   template: `
-    <ng-container *ngIf="collect$ | async as c">
-      <ng-container *ngIf="c.isDragging">
-        <xy-crosshairs *ngIf="crossStyle$ | async as cross" [x]="cross.x" [y]="cross.y">
-        </xy-crosshairs>
-
+    @if (collect$ | async; as c) {
+      @if (c.isDragging) {
+        @if (crossStyle$ | async; as cross) {
+          <xy-crosshairs [x]="cross.x" [y]="cross.y"></xy-crosshairs>
+        }
         <div [style]="movingStyle$ | async">
-          <ng-container [ngSwitch]="c.itemType">
-            <xy-box-drag-preview *ngSwitchCase="'SPOT'"> </xy-box-drag-preview>
-          </ng-container>
+          @switch (c.itemType) {
+            @case ('SPOT') {
+              <xy-box-drag-preview></xy-box-drag-preview>
+            }
+          }
         </div>
-      </ng-container>
-    </ng-container>
+      }
+    }
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
   styleUrls: ['./custom-drag-layer.component.scss'],
   standalone: true,
-  imports: [
-    NgIf,
-    NgSwitch,
-    NgSwitchCase,
-    CrosshairsComponent,
-    BoxDragPreviewComponent,
-    AsyncPipe,
-  ],
+  imports: [CrosshairsComponent, BoxDragPreviewComponent, AsyncPipe],
 })
 export class CustomDragLayerComponent implements AfterViewInit, OnDestroy {
   @Input() snapToGrid = false;

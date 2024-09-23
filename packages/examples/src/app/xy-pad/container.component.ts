@@ -21,14 +21,14 @@ import { DragContainerComponent } from './drag-container/drag-container.componen
         >
         </xy-drag-container>
         <p>
-          <label> <input type="checkbox" [(ngModel)]="snapToGrid" /> Snap to grid </label>
+          <label><input type="checkbox" [(ngModel)]="snapToGrid" /> Snap to grid </label>
         </p>
         <p>
-          <label> <input type="number" [(ngModel)]="pixels" /> Pixels per gridline </label>
+          <label><input type="number" [(ngModel)]="pixels" /> Pixels per gridline </label>
         </p>
       </div>
       <div class="pad">
-        <xy-cube [transform]="cubeTransform" [x]="x" [y]="y" (endDrag)="dragEnded()"> </xy-cube>
+        <xy-cube [transform]="cubeTransform" [x]="x" [y]="y" (endDrag)="dragEnded()"></xy-cube>
       </div>
     </div>
   `,

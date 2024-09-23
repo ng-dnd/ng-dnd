@@ -1,18 +1,22 @@
 <dnd-preview [allBackends]="true">
   <ng-template let-type let-item="item">
-    <ng-container *ngIf="type === 'QUIZ_QUESTION'">
+    @if (type === 'QUIZ_QUESTION') {
       <!-- You can react to which listId the mouse is hovering over
-           In this case, we will 'morph' into a <quiz-section> when
-           we're over the work area. -->
-      <ng-container *ngIf="item.isInternal || item.hover.listId === 'WORK_AREA'; else external">
+      In this case, we will 'morph' into a <quiz-section> when
+      we're over the work area. -->
+      @if (item.isInternal || item.hover.listId === 'WORK_AREA') {
         <quiz-section [question]="item.data" [preview]="true"></quiz-section>
-      </ng-container>
+      } @else {
+        <div class="external" [style]="item.size.style()">
+          {{ item.data.templateDescription }}
+        </div>
+      }
       <ng-template #external>
         <div class="external" [style]="item.size.style()">
           {{ item.data.templateDescription }}
         </div>
       </ng-template>
-    </ng-container>
+    }
   </ng-template>
 </dnd-preview>
 
@@ -20,24 +24,24 @@
   <div class="templates">
     <h3>Drag templates</h3>
     <div class="templates-flex">
-      <div *ngFor="let qt of questionTemplates" class="external"
-           [dndSortableExternal]="qt.spec" #ext="dndSortableExternal"
-           [dragSource]="ext.source" [noHTML5Preview]="true">
-        {{ qt.description }}
-      </div>
+      @for (qt of questionTemplates; track qt) {
+        <div class="external"
+          [dndSortableExternal]="qt.spec" #ext="dndSortableExternal"
+          [dragSource]="ext.source" [noHTML5Preview]="true">
+          {{ qt.description }}
+        </div>
+      }
     </div>
   </div>
 
   <div class="work-area">
     <h3>...into here; edit them</h3>
-    <dnd-sortable-list class="list" listId="WORK_AREA"
-                       [spec]="spec"
-                       [children]="tempList">
+    <dnd-sortable-list class="list" listId="WORK_AREA" [spec]="spec" [children]="tempList">
       <quiz-section [style.display]="'block'"
-                    *dndSortableTemplate="let context"
-                    [dndSortableRender]="context"
-                    #r="dndSortableRender"
-                    [question]="r.data" (edit)="edit($event)">
+        *dndSortableTemplate="let context"
+        [dndSortableRender]="context"
+        #r="dndSortableRender"
+        [question]="r.data" (edit)="edit($event)">
       </quiz-section>
     </dnd-sortable-list>
   </div>

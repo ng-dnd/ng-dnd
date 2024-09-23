@@ -1,4 +1,4 @@
-import { NgFor, NgTemplateOutlet } from '@angular/common';
+import { NgTemplateOutlet } from '@angular/common';
 import {
   AfterContentInit,
   AfterViewInit,
@@ -22,10 +22,9 @@ import { DndSortableTemplate, TemplateContext } from './sortable-template';
 @Component({
   selector: 'dnd-sortable-list',
   template: `
-    <ng-container *ngFor="let card of children; let i = index; trackBy: trackById">
-      <ng-container *ngTemplateOutlet="template; context: { $implicit: contextFor(card, i) }">
-      </ng-container>
-    </ng-container>
+    @for (card of children; let i = $index; track trackById(i, card)) {
+      <ng-container *ngTemplateOutlet="template; context: { $implicit: contextFor(card, i) }" />
+    }
   `,
   styles: [
     `
@@ -38,7 +37,7 @@ import { DndSortableTemplate, TemplateContext } from './sortable-template';
   // allow injecting the directive and getting the component
   providers: [{ provide: DndSortable, useExisting: DndSortableList }],
   standalone: true,
-  imports: [NgFor, NgTemplateOutlet],
+  imports: [NgTemplateOutlet],
 })
 export class DndSortableList<Data>
   extends DndSortable<Data>
@@ -62,7 +61,7 @@ export class DndSortableList<Data>
   }
 
   /** @ignore */
-  trackById = (_: number, data: Data) => {
+  trackById = (_index: number, data: Data) => {
     return this.spec.trackBy(data);
   };
 

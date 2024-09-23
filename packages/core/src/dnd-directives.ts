@@ -21,12 +21,12 @@ export class AbstractDndDirective implements OnChanges, OnDestroy {
   /** @ignore */
   constructor(
     protected elRef: ElementRef,
-    private zone: NgZone
+    private ngZone: NgZone
   ) {}
 
   ngOnChanges() {
     invariant(typeof this.connection === 'object' && !Array.isArray(this.connection), explanation);
-    this.zone.runOutsideAngular(() => {
+    this.ngZone.runOutsideAngular(() => {
       // discard an unresolved connection request
       // in the case where the previous one succeeded, deferredRequest is
       // already closed.

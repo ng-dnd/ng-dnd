@@ -1,4 +1,4 @@
-import { AsyncPipe, NgIf, NgSwitch, NgSwitchCase } from '@angular/common';
+import { AsyncPipe } from '@angular/common';
 import { ChangeDetectionStrategy, Component, OnDestroy, OnInit } from '@angular/core';
 import { DndService } from '@ng-dnd/core';
 import { filter, map } from 'rxjs/operators';
@@ -13,15 +13,17 @@ interface Offset {
 @Component({
   selector: 'app-custom-drag-layer',
   template: `
-    <ng-container *ngIf="collect$ | async as c">
-      <div *ngIf="c.isDragging" [style]="forStyle$ | async">
-        <ng-container [ngSwitch]="c.itemType">
-          <ng-container *ngSwitchCase="'BOX'">
-            <app-box-drag-preview [title]="c.item.title"></app-box-drag-preview>
-          </ng-container>
-        </ng-container>
-      </div>
-    </ng-container>
+    @if (collect$ | async; as c) {
+      @if (c.isDragging) {
+        <div [style]="forStyle$ | async">
+          @switch (c.itemType) {
+            @case ('BOX') {
+              <app-box-drag-preview [title]="c.item.title"></app-box-drag-preview>
+            }
+          }
+        </div>
+      }
+    }
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
   styles: [
@@ -39,7 +41,7 @@ interface Offset {
     `,
   ],
   standalone: true,
-  imports: [NgIf, NgSwitch, NgSwitchCase, BoxDragPreviewComponent, AsyncPipe],
+  imports: [BoxDragPreviewComponent, AsyncPipe],
 })
 export class CustomDragLayerComponent implements OnInit, OnDestroy {
   constructor(private dnd: DndService) {}

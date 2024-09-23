@@ -1,4 +1,4 @@
-import { AsyncPipe, NgFor } from '@angular/common';
+import { AsyncPipe } from '@angular/common';
 import {
   AfterViewInit,
   ChangeDetectionStrategy,
@@ -46,13 +46,9 @@ import { CalendarEventComponent } from './event.component';
         }}</span>
       </h3>
 
-      <cal-event
-        *ngFor="let e of events$ | async; trackBy: unique"
-        [event]="e"
-        [draggingNew]="!!(isDragging$ | async)"
-        [day]="day"
-      >
-      </cal-event>
+      @for (e of events$ | async; track unique($index, e)) {
+        <cal-event [event]="e" [draggingNew]="!!(isDragging$ | async)" [day]="day"></cal-event>
+      }
 
       <div
         #pad
@@ -75,7 +71,7 @@ import { CalendarEventComponent } from './event.component';
   ],
   changeDetection: ChangeDetectionStrategy.OnPush,
   standalone: true,
-  imports: [DndModule, NgFor, CalendarEventComponent, AsyncPipe],
+  imports: [DndModule, CalendarEventComponent, AsyncPipe],
 })
 export class CalendarDayComponent implements OnInit, OnDestroy, AfterViewInit {
   @Input() day!: Date;

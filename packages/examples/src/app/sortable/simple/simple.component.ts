@@ -1,4 +1,4 @@
-import { AsyncPipe, NgSwitch, NgSwitchCase } from '@angular/common';
+import { AsyncPipe } from '@angular/common';
 import { Component } from '@angular/core';
 import { DndModule } from '@ng-dnd/core';
 import { DndMultiBackendModule } from '@ng-dnd/multi-backend';
@@ -15,14 +15,7 @@ interface SimpleData {
   styleUrls: ['./simple.component.scss'],
   templateUrl: './simple.component.html',
   standalone: true,
-  imports: [
-    DndModule,
-    DndSortableModule,
-    DndMultiBackendModule,
-    NgSwitch,
-    NgSwitchCase,
-    AsyncPipe,
-  ],
+  imports: [DndModule, DndSortableModule, DndMultiBackendModule, AsyncPipe],
 })
 export class SimpleComponent {
   fake = () => faker.fake('{{hacker.adjective}} the {{hacker.abbreviation}} {{hacker.noun}}');

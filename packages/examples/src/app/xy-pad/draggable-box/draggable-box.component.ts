@@ -1,4 +1,4 @@
-import { AsyncPipe, NgIf } from '@angular/common';
+import { AsyncPipe } from '@angular/common';
 import {
   ChangeDetectionStrategy,
   Component,
@@ -23,8 +23,9 @@ import { SpotComponent } from '../spot.component';
       </div>
       <div class="fullsize"></div>
     </div>
-    <xy-crosshairs *ngIf="(isDragging$ | async) !== true" [x]="spot.x" [y]="spot.y">
-    </xy-crosshairs>
+    @if ((isDragging$ | async) !== true) {
+      <xy-crosshairs [x]="spot.x" [y]="spot.y"></xy-crosshairs>
+    }
   `,
   styles: [
     `
@@ -50,7 +51,7 @@ import { SpotComponent } from '../spot.component';
   ],
   changeDetection: ChangeDetectionStrategy.OnPush,
   standalone: true,
-  imports: [DndModule, NgIf, SpotComponent, CrosshairsComponent, AsyncPipe],
+  imports: [DndModule, SpotComponent, CrosshairsComponent, AsyncPipe],
 })
 export class DraggableBoxComponent implements OnInit, OnDestroy {
   @Input() spot!: Spot;

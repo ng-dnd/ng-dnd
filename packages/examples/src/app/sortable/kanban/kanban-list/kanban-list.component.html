@@ -1,67 +1,67 @@
 <div class="list"
-     [class.list--preview]="preview"
-     [class.list--placeholder]="render?.isDragging$ | async">
+  [class.list--preview]="preview"
+  [class.list--placeholder]="render?.isDragging$ | async">
 
   <!-- Attach to the h3 as a drag handle.
-        The ItemTypes.LIST provided on the board component is applied automatically.
-        If render?.source is null, the dragSource directive does nothing.
+  The ItemTypes.LIST provided on the board component is applied automatically.
+  If render?.source is null, the dragSource directive does nothing.
   -->
-  <div class="handle"
-       [dragSource]="render?.source!"
-       [noHTML5Preview]="true">
+  <div class="handle" [dragSource]="render?.source!" [noHTML5Preview]="true">
     <h3>{{list.title}}</h3>
   </div>
 
 
   <!-- TODO: note that .cards-container has a min-height so you can hover/drop
-       even when it's empty -->
+  even when it's empty -->
 
   <!--
-      This is the 'desugared' style, where you render an *ngFor explicitly.
-      It's useful for integrating with other libraries like Material,
-      hopefully. Other libraries love to include *ngFor themselves, but it
-      should be clear you can attach `dndSortable` to whatever element you want,
-      and then `dndSortableRender` to any of its children, even if they are not
-      direct children or if some other library only lets you change the item
-      template. You can even put a header element inside.
+  This is the 'desugared' style, where you render an *ngFor explicitly.
+  It's useful for integrating with other libraries like Material,
+  hopefully. Other libraries love to include *ngFor themselves, but it
+  should be clear you can attach `dndSortable` to whatever element you want,
+  and then `dndSortableRender` to any of its children, even if they are not
+  direct children or if some other library only lets you change the item
+  template. You can even put a header element inside.
 
-      Do not use both `dnd-sortable-list` AND `dndSortable` -- you will get
-      double drop events!
+  Do not use both `dnd-sortable-list` AND `dndSortable` -- you will get
+  double drop events!
   -->
 
-  <div *ngIf="render; else plain"
-       class="cards-container"
-       dndSortable
-       [spec]="specs.listSpec"
-       [listId]="list.id"
-       #clist="dndSortable">
-    <!-- note the assignment of the dndSortable directive to a template
-         variable, clist, so we can use it below. It can generate the
-         required context for dndSortableRender. -->
-
-    <kanban-card *ngFor="let card of list.cards; let i = index; trackBy: trackById"
-                 [card]="card"
-                 [dndSortableRender]="clist.contextFor(card, i)"
-                 #render="dndSortableRender"
-                 [dragSource]="render.source"
-                 [noHTML5Preview]="true"
-                 [placeholder]="!!(render.isDragging$|async)">
-      <!-- This time, we aren't doing drag handles, so we just attached
-           render.source directly to kanban-card by pulling #render out.
-           You can do it whichever way suits.
-      -->
-    </kanban-card>
-
-  </div>
+  @if (render) {
+    <div
+      class="cards-container"
+      dndSortable
+      [spec]="specs.listSpec"
+      [listId]="list.id"
+      #clist="dndSortable">
+      <!-- note the assignment of the dndSortable directive to a template
+      variable, clist, so we can use it below. It can generate the
+      required context for dndSortableRender. -->
+      @for (card of list.cards; track trackById(i, card); let i = $index) {
+        <kanban-card
+          [card]="card"
+          [dndSortableRender]="clist.contextFor(card, i)"
+          #render="dndSortableRender"
+          [dragSource]="render.source"
+          [noHTML5Preview]="true"
+          [placeholder]="!!(render.isDragging$|async)">
+          <!-- This time, we aren't doing drag handles, so we just attached
+          render.source directly to kanban-card by pulling #render out.
+          You can do it whichever way suits.
+          -->
+        </kanban-card>
+      }
+    </div>
+  } @else {
+    <div class="cards-container">
+      @for (card of list.cards; track trackById(i, card); let i = $index) {
+        <kanban-card [card]="card">
+        </kanban-card>
+      }
+    </div>
+  }
 
   <!-- A simple version for when we're dragging -->
-  <ng-template #plain>
-    <div class="cards-container">
-      <kanban-card *ngFor="let card of list.cards; let i = index; trackBy: trackById"
-                   [card]="card">
-      </kanban-card>
-    </div>
-  </ng-template>
 
   <kanban-add-card (add)="addCard.emit($event)">
   </kanban-add-card>

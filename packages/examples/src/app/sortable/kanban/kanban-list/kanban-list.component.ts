@@ -1,4 +1,4 @@
-import { AsyncPipe, NgFor, NgIf } from '@angular/common';
+import { AsyncPipe } from '@angular/common';
 import {
   ChangeDetectionStrategy,
   Component,
@@ -22,15 +22,7 @@ import { SortableSpecService } from '../specs';
   changeDetection: ChangeDetectionStrategy.OnPush,
   styleUrls: ['./kanban-list.component.scss'],
   standalone: true,
-  imports: [
-    DndModule,
-    DndSortableModule,
-    NgIf,
-    NgFor,
-    KanbanCardComponent,
-    AddCardComponent,
-    AsyncPipe,
-  ],
+  imports: [DndModule, DndSortableModule, KanbanCardComponent, AddCardComponent, AsyncPipe],
 })
 export class KanbanListComponent implements OnInit {
   @Input() list!: KanbanList;

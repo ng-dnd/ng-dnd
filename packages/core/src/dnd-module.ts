@@ -35,13 +35,13 @@ export function unpackBackendForEs5Users(backendOrModule: any) {
 // @dynamic
 export function managerFactory(
   backendFactory: BackendFactory,
-  zone: NgZone,
+  ngZone: NgZone,
   context: unknown,
   backendOptions?: unknown,
   debugMode?: boolean
 ): DragDropManager {
   backendFactory = unpackBackendForEs5Users(backendFactory);
-  return zone.runOutsideAngular(() =>
+  return ngZone.runOutsideAngular(() =>
     createDragDropManager(backendFactory, context, backendOptions, debugMode)
   );
 }

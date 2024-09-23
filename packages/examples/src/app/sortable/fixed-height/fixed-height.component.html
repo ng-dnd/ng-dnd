@@ -1,10 +1,12 @@
 <dnd-preview [allBackends]="true">
   <ng-template let-type let-item="item">
-    <ng-container [ngSwitch]="type">
-      <div class="fixer" *ngSwitchCase="'FIXER'" [style]="item.size.style()">
-        <pre>{{item.index+1}}. {{ item.data.name }}</pre>
-      </div>
-    </ng-container>
+    @switch (type) {
+      @case ('FIXER') {
+        <div class="fixer" [style]="item.size.style()">
+          <pre>{{item.index+1}}. {{ item.data.name }}</pre>
+        </div>
+      }
+    }
   </ng-template>
 </dnd-preview>
 
@@ -12,17 +14,17 @@
   <h4>Broken things to fix</h4>
 
   <dnd-sortable-list listId="simple-demo"
-                     [hoverTrigger]="hoverTrigger"
-                     [children]="tempList"
-                     [spec]="simpleSpec">
+    [hoverTrigger]="hoverTrigger"
+    [children]="tempList"
+    [spec]="simpleSpec">
     <!-- ALTERS THE HOVER ALGORITHM -->
     <ng-template dndSortableTemplate let-context>
       <!-- dndSortableRender configures a DragSource for you, but you have to attach it. -->
       <div class="fixer"
-           [dndSortableRender]="context"
-           #render="dndSortableRender"
-           [class.fixer--placeholder]="render.isDragging$|async"
-           [dragSource]="render.source" [noHTML5Preview]="true">
+        [dndSortableRender]="context"
+        #render="dndSortableRender"
+        [class.fixer--placeholder]="render.isDragging$|async"
+        [dragSource]="render.source" [noHTML5Preview]="true">
         <!-- <<< attached here! -->
         <pre>{{render.index+1}}. {{ render.data.name }}</pre>
       </div>

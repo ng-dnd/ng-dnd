@@ -1,4 +1,3 @@
-import { NgSwitch, NgSwitchCase } from '@angular/common';
 import { Component } from '@angular/core';
 import { DndMultiBackendModule } from '@ng-dnd/multi-backend';
 import { DndSortableModule, DraggedItem, HoverTrigger } from '@ng-dnd/sortable';
@@ -12,14 +11,7 @@ import { Card, SortableSpecService } from '../specs';
   templateUrl: './kanban-board.component.html',
   styleUrls: ['./kanban-board.component.scss'],
   standalone: true,
-  imports: [
-    DndMultiBackendModule,
-    DndSortableModule,
-    NgSwitch,
-    NgSwitchCase,
-    KanbanCardComponent,
-    KanbanListComponent,
-  ],
+  imports: [DndMultiBackendModule, DndSortableModule, KanbanCardComponent, KanbanListComponent],
 })
 export class KanbanBoardComponent {
   ItemTypes = ItemTypes;

@@ -1,4 +1,4 @@
-import { AsyncPipe, NgIf } from '@angular/common';
+import { AsyncPipe } from '@angular/common';
 import { Component } from '@angular/core';
 import { DndModule, DndService } from '@ng-dnd/core';
 import { ItemTypes } from './item-types';
@@ -10,10 +10,11 @@ import { ItemTypes } from './item-types';
       <p>
         Drag one of the above boxes. Hold 'alt' when dragging the default one to make it a copy.
       </p>
-      <ng-content *ngIf="(canDrop$ | async) !== true; else dropHere"></ng-content>
-      <ng-template #dropHere>
+      @if ((canDrop$ | async) !== true) {
+        <ng-content></ng-content>
+      } @else {
         <p>Drop here</p>
-      </ng-template>
+      }
     </div>
   `,
   styles: [
@@ -30,7 +31,7 @@ import { ItemTypes } from './item-types';
     `,
   ],
   standalone: true,
-  imports: [DndModule, NgIf, AsyncPipe],
+  imports: [DndModule, AsyncPipe],
 })
 export class CopyTargetComponent {
   target = this.dnd.dropTarget(ItemTypes.COPYABLE_ITEM, {});

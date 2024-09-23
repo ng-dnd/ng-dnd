@@ -1,4 +1,4 @@
-import { AsyncPipe, NgIf, NgTemplateOutlet } from '@angular/common';
+import { AsyncPipe, NgTemplateOutlet } from '@angular/common';
 import {
   ChangeDetectionStrategy,
   Component,
@@ -41,23 +41,24 @@ export interface PreviewTemplateContext {
 @Component({
   selector: 'dnd-preview',
   template: `
-    <ng-container *ngIf="previewEnabled$ | async">
-      <dnd-preview-renderer *ngIf="collect$ | async as c">
-        <ng-container *ngIf="c.isDragging">
-          <ng-container
-            *ngTemplateOutlet="
-              content;
-              context: { $implicit: c.itemType, type: c.itemType, item: c.item }
-            "
-          >
-          </ng-container>
-        </ng-container>
-      </dnd-preview-renderer>
-    </ng-container>
+    @if (previewEnabled$ | async) {
+      @if (collect$ | async; as c) {
+        <dnd-preview-renderer>
+          @if (c.isDragging) {
+            <ng-container
+              *ngTemplateOutlet="
+                content;
+                context: { $implicit: c.itemType, type: c.itemType, item: c.item }
+              "
+            />
+          }
+        </dnd-preview-renderer>
+      }
+    }
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
   standalone: true,
-  imports: [AsyncPipe, NgIf, NgTemplateOutlet, DndPreviewRenderer],
+  imports: [AsyncPipe, NgTemplateOutlet, DndPreviewRenderer],
 })
 export class DndPreview implements PreviewListener, OnInit, OnDestroy {
   /** Disables the check for whether the current MultiBackend wants the preview enabled */

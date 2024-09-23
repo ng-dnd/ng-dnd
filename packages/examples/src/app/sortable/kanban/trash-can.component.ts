@@ -1,4 +1,4 @@
-import { AsyncPipe, NgIf } from '@angular/common';
+import { AsyncPipe } from '@angular/common';
 import { ChangeDetectionStrategy, Component, EventEmitter, Output } from '@angular/core';
 import { DndModule, DndService } from '@ng-dnd/core';
 import { DraggedItem } from '@ng-dnd/sortable';
@@ -9,19 +9,20 @@ import { ItemTypes } from './item-types';
   selector: 'kanban-trash-can',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: `
-    <div
-      *ngIf="collect$ | async as c"
-      class="trash-can"
-      [class.isOver]="c.isOver"
-      [dropTarget]="target"
-    >
-      <div>
-        <i class="fas fa-trash-alt"></i>
-        <span>Drop here to delete</span>
+    @if (collect$ | async; as c) {
+      <div
+        class="trash-can"
+        [class.isOver]="c.isOver"
+        [dropTarget]="target"
+        >
+        <div>
+          <i class="fas fa-trash-alt"></i>
+          <span>Drop here to delete</span>
+        </div>
+        <div class="space" [style]="getStyle(c.isOver, c.item!)"></div>
       </div>
-      <div class="space" [style]="getStyle(c.isOver, c.item!)"></div>
-    </div>
-  `,
+    }
+    `,
   styles: [
     `
       .fas {
@@ -51,7 +52,7 @@ import { ItemTypes } from './item-types';
     `,
   ],
   standalone: true,
-  imports: [DndModule, NgIf, AsyncPipe],
+  imports: [DndModule, AsyncPipe],
 })
 export class TrashCanComponent {
   @Output() dropped = new EventEmitter<DraggedItem<Card>>();

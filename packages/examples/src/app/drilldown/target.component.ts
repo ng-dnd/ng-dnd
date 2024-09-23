@@ -1,4 +1,4 @@
-import { AsyncPipe, NgIf } from '@angular/common';
+import { AsyncPipe } from '@angular/common';
 import { Component, Input, OnDestroy } from '@angular/core';
 import { DndModule, DndService } from '@ng-dnd/core';
 import { ItemTypes } from './itemTypes';
@@ -6,17 +6,17 @@ import { ItemTypes } from './itemTypes';
 @Component({
   selector: 'drilldown-target',
   template: `
-    <ng-container *ngIf="collected$ | async as c">
+    @if (collected$ | async; as c) {
       <div [dropTarget]="target" class="box" [style.background-color]="getColor(c)">
         <p>{{ greedy ? 'greedy' : 'not greedy' }}</p>
-
-        <p *ngIf="hasDroppedOnChild || hasDropped">
-          {{ 'dropped' + (hasDroppedOnChild ? ' on child' : '') }}
-        </p>
-
+        @if (hasDroppedOnChild || hasDropped) {
+          <p>
+            {{ 'dropped' + (hasDroppedOnChild ? ' on child' : '') }}
+          </p>
+        }
         <ng-content></ng-content>
       </div>
-    </ng-container>
+    }
   `,
   styles: [
     `
@@ -39,7 +39,7 @@ import { ItemTypes } from './itemTypes';
     `,
   ],
   standalone: true,
-  imports: [NgIf, DndModule, AsyncPipe],
+  imports: [DndModule, AsyncPipe],
 })
 export class TargetComponent implements OnDestroy {
   @Input() greedy = false;

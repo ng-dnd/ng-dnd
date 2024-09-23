@@ -1,33 +1,30 @@
-import { AsyncPipe, JsonPipe, NgIf } from '@angular/common';
+import { AsyncPipe, JsonPipe } from '@angular/common';
 import { Component, Input, OnDestroy, OnInit } from '@angular/core';
 import { DndModule, DndService } from '@ng-dnd/core';
 
 @Component({
   selector: 'app-bin',
   template: `
-    <div
-      *ngIf="collected$ | async as c"
-      class="dustbin pad"
-      [dropTarget]="trashTarget"
-      [style]="getStyles(c)"
-    >
-      <p>
-        <b>
-          {{ c.canDrop ? 'drop ' + c.itemType + ' in the' : '' }}
-          {{ c.isOver && !hasCapacity ? 'cannot drop, ' : '' }}
-          {{ name }}
-          {{ hasCapacity ? '' : ' is full!' }}
-        </b>
-      </p>
-      <p>
-        <button (click)="empty()">empty {{ name }}</button>
-      </p>
-      <pre>{{ trashes | json }}</pre>
-    </div>
+    @if (collected$ | async; as c) {
+      <div class="dustbin pad" [dropTarget]="trashTarget" [style]="getStyles(c)">
+        <p>
+          <b>
+            {{ c.canDrop ? 'drop ' + c.itemType + ' in the' : '' }}
+            {{ c.isOver && !hasCapacity ? 'cannot drop, ' : '' }}
+            {{ name }}
+            {{ hasCapacity ? '' : ' is full!' }}
+          </b>
+        </p>
+        <p>
+          <button (click)="empty()">empty {{ name }}</button>
+        </p>
+        <pre>{{ trashes | json }}</pre>
+      </div>
+    }
   `,
   styles: [``],
   standalone: true,
-  imports: [DndModule, NgIf, AsyncPipe, JsonPipe],
+  imports: [DndModule, AsyncPipe, JsonPipe],
 })
 export class BinComponent implements OnInit, OnDestroy {
   @Input() name = '';

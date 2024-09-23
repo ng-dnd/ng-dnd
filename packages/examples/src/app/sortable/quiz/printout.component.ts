@@ -1,4 +1,3 @@
-import { NgFor, NgIf, NgSwitch, NgSwitchCase } from '@angular/common';
 import { Component, Input } from '@angular/core';
 import {
   FormControl,
@@ -22,44 +21,54 @@ const equalsValidator: (x: any) => ValidatorFn = x => c => {
   selector: 'app-printout',
   template: `
     <div class="printout-page">
-      <div class="printout-elem" *ngFor="let section of sections">
-        <ng-container [ngSwitch]="section.question.formType">
-          <div *ngSwitchCase="'Math'">
-            <h4>{{ getQuestion(section) }}</h4>
-            <form [formGroup]="section.input">
-              <input formControlName="answer" type="number" />
-              <div *ngIf="section.input.get('answer') as answer" class="alert alert-danger">
-                <div
-                  *ngIf="
-                    answer.invalid && (answer.touched || answer.dirty) && answer.errors?.incorrect
-                  "
-                >
-                  That's not quite right.
-                </div>
-                <div *ngIf="answer.valid">Correct!</div>
+      @for (section of sections; track section) {
+        <div class="printout-elem">
+          @switch (section.question.formType) {
+            @case ('Math') {
+              <div>
+                <h4>{{ getQuestion(section) }}</h4>
+                <form [formGroup]="section.input">
+                  <input formControlName="answer" type="number" />
+                  @if (section.input.get('answer'); as answer) {
+                    <div class="alert alert-danger">
+                      @if (
+                        answer.invalid &&
+                        (answer.touched || answer.dirty) &&
+                        answer.errors?.incorrect
+                      ) {
+                        <div>That's not quite right.</div>
+                      }
+                      @if (answer.valid) {
+                        <div>Correct!</div>
+                      }
+                    </div>
+                  }
+                </form>
               </div>
-            </form>
-          </div>
-          <div *ngSwitchCase="'Name'">
-            <h4>Enter your Name and Student Id</h4>
-            <form [formGroup]="section.input">
-              <label> Name <input formControlName="name" /> </label>
-              <label> Student ID <input formControlName="studentId" /> </label>
-              <div *ngIf="section.input.get('studentId') as studentId" class="alert alert-danger">
-                <div
-                  *ngIf="
-                    studentId.invalid &&
-                    (studentId.touched || studentId.dirty) &&
-                    studentId.errors?.pattern
-                  "
-                >
-                  Please enter a student ID in the form 's1234'.
-                </div>
+            }
+            @case ('Name') {
+              <div>
+                <h4>Enter your Name and Student Id</h4>
+                <form [formGroup]="section.input">
+                  <label> Name <input formControlName="name" /></label>
+                  <label> Student ID <input formControlName="studentId" /></label>
+                  @if (section.input.get('studentId'); as studentId) {
+                    <div class="alert alert-danger">
+                      @if (
+                        studentId.invalid &&
+                        (studentId.touched || studentId.dirty) &&
+                        studentId.errors?.pattern
+                      ) {
+                        <div>Please enter a student ID in the form 's1234'.</div>
+                      }
+                    </div>
+                  }
+                </form>
               </div>
-            </form>
-          </div>
-        </ng-container>
-      </div>
+            }
+          }
+        </div>
+      }
     </div>
   `,
   styles: [
@@ -73,7 +82,7 @@ const equalsValidator: (x: any) => ValidatorFn = x => c => {
     `,
   ],
   standalone: true,
-  imports: [NgIf, NgFor, NgSwitch, NgSwitchCase, ReactiveFormsModule],
+  imports: [ReactiveFormsModule],
 })
 export class PrintoutComponent {
   sections: Section[] = [];

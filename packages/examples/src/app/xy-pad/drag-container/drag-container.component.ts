@@ -1,4 +1,3 @@
-import { NgFor } from '@angular/common';
 import { Component, EventEmitter, Input, OnDestroy, Output } from '@angular/core';
 import { DndModule, DndService, Offset } from '@ng-dnd/core';
 import { CustomDragLayerComponent } from '../custom-drag-layer/custom-drag-layer.component';
@@ -13,12 +12,12 @@ import { Spot } from '../spot';
     <div class="scanline"></div>
 
     <div [dropTarget]="boxTarget" class="square">
-      <div
-        *ngFor="let i of gridlines"
-        class="gridline horizontal"
-        [style.top.px]="px * i - 1"
-      ></div>
-      <div *ngFor="let i of gridlines" class="gridline vertical" [style.left.px]="px * i - 1"></div>
+      @for (i of gridlines; track i) {
+        <div class="gridline horizontal" [style.top.px]="px * i - 1"></div>
+      }
+      @for (i of gridlines; track i) {
+        <div class="gridline vertical" [style.left.px]="px * i - 1"></div>
+      }
       <xy-draggable-box [spot]="spot" (endDrag)="dragEnded($event)"></xy-draggable-box>
     </div>
 
@@ -27,7 +26,7 @@ import { Spot } from '../spot';
   `,
   styleUrls: ['./drag-container.component.scss'],
   standalone: true,
-  imports: [DndModule, NgFor, DraggableBoxComponent, CustomDragLayerComponent],
+  imports: [DndModule, DraggableBoxComponent, CustomDragLayerComponent],
 })
 export class DragContainerComponent implements OnDestroy {
   @Input() x = 50;

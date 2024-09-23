@@ -1,4 +1,3 @@
-import { NgSwitch, NgSwitchCase } from '@angular/common';
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { DndMultiBackendModule } from '@ng-dnd/multi-backend';
 import { DndSortableModule, DraggedItem, HoverTrigger } from '@ng-dnd/sortable';
@@ -21,8 +20,6 @@ import { TrashCanComponent } from '../trash-can.component';
   imports: [
     DndMultiBackendModule,
     DndSortableModule,
-    NgSwitch,
-    NgSwitchCase,
     KanbanCardComponent,
     KanbanListComponent,
     KanbanExternalComponent,

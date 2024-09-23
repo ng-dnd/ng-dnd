@@ -10,7 +10,11 @@
     <div class="week-day">Sunday</div>
   </div>
 
-  <div class="week" *ngFor="let week of weeks$|async; trackBy: trackWeek">
-    <cal-day *ngFor="let day of week.days; trackBy: trackDay" [day]="day"></cal-day>
-  </div>
+  @for (week of weeks$ | async; track trackWeek($index, week)) {
+    <div class="week">
+      @for (day of week.days; track trackDay($index, day)) {
+        <cal-day [day]="day"></cal-day>
+      }
+    </div>
+  }
 </div>

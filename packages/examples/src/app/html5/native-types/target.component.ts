@@ -1,4 +1,4 @@
-import { JsonPipe, NgIf } from '@angular/common';
+import { JsonPipe } from '@angular/common';
 import { Component, Input, OnDestroy } from '@angular/core';
 import { DndModule, DndService } from '@ng-dnd/core';
 import { NativeTypes } from 'react-dnd-html5-backend';
@@ -21,7 +21,9 @@ interface NativeFile {
         Accepts <code>{{ type }}</code>
       </p>
       <ng-content></ng-content>
-      <pre *ngIf="dropped">{{ dropped | json }}</pre>
+      @if (dropped) {
+        <pre>{{ dropped | json }}</pre>
+      }
     </div>
   `,
   styles: [
@@ -42,7 +44,7 @@ interface NativeFile {
     `,
   ],
   standalone: true,
-  imports: [DndModule, NgIf, JsonPipe],
+  imports: [DndModule, JsonPipe],
 })
 export class TargetComponent implements OnDestroy {
   @Input() type = '';
