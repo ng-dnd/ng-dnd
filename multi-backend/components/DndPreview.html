@@ -170,7 +170,6 @@ What you put in that template is up to you, but in most cases this will be:</p>
                 <td class="col-md-3">imports</td>
                 <td class="col-md-9">
                             <code>AsyncPipe</code>
-                            <code>NgIf</code>
                             <code>NgTemplateOutlet</code>
                                 <code><a href="../components/DndPreviewRenderer.html" target="_self" >DndPreviewRenderer</a></code>
                 </td>
@@ -180,19 +179,20 @@ What you put in that template is up to you, but in most cases this will be:</p>
 
             <tr>
                 <td class="col-md-3">template</td>
-                <td class="col-md-9"><pre class="line-numbers"><code class="language-html">&lt;ng-container *ngIf&#x3D;&quot;previewEnabled$ | async&quot;&gt;
-  &lt;dnd-preview-renderer *ngIf&#x3D;&quot;collect$ | async as c&quot;&gt;
-    &lt;ng-container *ngIf&#x3D;&quot;c.isDragging&quot;&gt;
-      &lt;ng-container
-        *ngTemplateOutlet&#x3D;&quot;
-          content;
-          context: { $implicit: c.itemType, type: c.itemType, item: c.item }
-        &quot;
-      &gt;
-      &lt;/ng-container&gt;
-    &lt;/ng-container&gt;
-  &lt;/dnd-preview-renderer&gt;
-&lt;/ng-container&gt;
+                <td class="col-md-9"><pre class="line-numbers"><code class="language-html">@if (previewEnabled$ | async) {
+  @if (collect$ | async; as c) {
+    &lt;dnd-preview-renderer&gt;
+      @if (c.isDragging) {
+        &lt;ng-container
+          *ngTemplateOutlet&#x3D;&quot;
+            content;
+            context: { $implicit: c.itemType, type: c.itemType, item: c.item }
+          &quot;
+        /&gt;
+      }
+    &lt;/dnd-preview-renderer&gt;
+  }
+}
 </code></pre></td>
             </tr>
 
@@ -286,7 +286,7 @@ What you put in that template is up to you, but in most cases this will be:</p>
 <script src="../js/libs/htmlparser.js"></script>
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
-        var COMPONENT_TEMPLATE = '<div><ng-container *ngIf="previewEnabled$ | async">  <dnd-preview-renderer *ngIf="collect$ | async as c">    <ng-container *ngIf="c.isDragging">      <ng-container        *ngTemplateOutlet="          content;          context: { $implicit: c.itemType, type: c.itemType, item: c.item }        "      >      </ng-container>    </ng-container>  </dnd-preview-renderer></ng-container></div>'
+        var COMPONENT_TEMPLATE = '<div>@if (previewEnabled$ | async) {  @if (collect$ | async; as c) {    <dnd-preview-renderer>      @if (c.isDragging) {        <ng-container          *ngTemplateOutlet="            content;            context: { $implicit: c.itemType, type: c.itemType, item: c.item }          "        />      }    </dnd-preview-renderer>  }}</div>'
     var COMPONENTS = [{'name': 'DndPreview', 'selector': 'dnd-preview'},{'name': 'DndPreviewRenderer', 'selector': 'dnd-preview-renderer'}];
     var DIRECTIVES = [];
     var ACTUAL_COMPONENT = {'name': 'DndPreview'};

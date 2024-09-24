@@ -171,7 +171,6 @@
             <tr>
                 <td class="col-md-3">imports</td>
                 <td class="col-md-9">
-                            <code>NgFor</code>
                             <code>NgTemplateOutlet</code>
                 </td>
             </tr>
@@ -180,18 +179,17 @@
             <tr>
                 <td class="col-md-3">styles</td>
                 <td class="col-md-9"><code>
-      :host {
-        display: block;
-      }
-    </code></td>
+    :host {
+      display: block;
+    }
+  </code></td>
             </tr>
 
             <tr>
                 <td class="col-md-3">template</td>
-                <td class="col-md-9"><pre class="line-numbers"><code class="language-html">&lt;ng-container *ngFor&#x3D;&quot;let card of children; let i &#x3D; index; trackBy: trackById&quot;&gt;
-  &lt;ng-container *ngTemplateOutlet&#x3D;&quot;template; context: { $implicit: contextFor(card, i) }&quot;&gt;
-  &lt;/ng-container&gt;
-&lt;/ng-container&gt;
+                <td class="col-md-9"><pre class="line-numbers"><code class="language-html">@for (card of children; let i &#x3D; $index; track trackById(i, card)) {
+  &lt;ng-container *ngTemplateOutlet&#x3D;&quot;template; context: { $implicit: contextFor(card, i) }&quot; /&gt;
+}
 </code></pre></td>
             </tr>
 
@@ -665,10 +663,10 @@
 
     <div class="tab-pane fade " id="styleData">
             <pre class="line-numbers"><code class="language-scss">
-      :host {
-        display: block;
-      }
-    
+    :host {
+      display: block;
+    }
+  
 </code></pre>
     </div>
 
@@ -680,7 +678,7 @@
 <script src="../js/libs/htmlparser.js"></script>
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
-        var COMPONENT_TEMPLATE = '<div><ng-container *ngFor="let card of children; let i = index; trackBy: trackById">  <ng-container *ngTemplateOutlet="template; context: { $implicit: contextFor(card, i) }">  </ng-container></ng-container></div>'
+        var COMPONENT_TEMPLATE = '<div>@for (card of children; let i = $index; track trackById(i, card)) {  <ng-container *ngTemplateOutlet="template; context: { $implicit: contextFor(card, i) }" />}</div>'
     var COMPONENTS = [{'name': 'DndSortableList', 'selector': 'dnd-sortable-list'}];
     var DIRECTIVES = [{'name': 'DndSortable', 'selector': '[dndSortable]'},{'name': 'DndSortableExternal', 'selector': '[dndSortableExternal]'},{'name': 'DndSortableRenderer', 'selector': '[dndSortableRender]'},{'name': 'DndSortableTemplate', 'selector': '[dndSortableTemplate]'}];
     var ACTUAL_COMPONENT = {'name': 'DndSortableList'};

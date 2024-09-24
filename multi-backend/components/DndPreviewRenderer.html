@@ -174,23 +174,23 @@ the drag in progress and how far it has travelled.</p>
             <tr>
                 <td class="col-md-3">styles</td>
                 <td class="col-md-9"><code>
-      :host {
-        display: block;
-        position: fixed;
-        pointer-events: none;
-        z-index: 100;
-        left: 0;
-        top: 0;
-        width: 100%;
-        height: 100%;
-      }
-    </code></td>
+    :host {
+      display: block;
+      position: fixed;
+      pointer-events: none;
+      z-index: 100;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+    }
+  </code></td>
             </tr>
 
             <tr>
                 <td class="col-md-3">template</td>
                 <td class="col-md-9"><pre class="line-numbers"><code class="language-html">&lt;div [style]&#x3D;&quot;style$ | async&quot;&gt;
-  &lt;ng-content&gt;&lt;/ng-content&gt;
+  &lt;ng-content /&gt;
 &lt;/div&gt;
 </code></pre></td>
             </tr>
@@ -222,17 +222,17 @@ the drag in progress and how far it has travelled.</p>
 
     <div class="tab-pane fade " id="styleData">
             <pre class="line-numbers"><code class="language-scss">
-      :host {
-        display: block;
-        position: fixed;
-        pointer-events: none;
-        z-index: 100;
-        left: 0;
-        top: 0;
-        width: 100%;
-        height: 100%;
-      }
-    
+    :host {
+      display: block;
+      position: fixed;
+      pointer-events: none;
+      z-index: 100;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+    }
+  
 </code></pre>
     </div>
 
@@ -244,7 +244,7 @@ the drag in progress and how far it has travelled.</p>
 <script src="../js/libs/htmlparser.js"></script>
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
-        var COMPONENT_TEMPLATE = '<div><div [style]="style$ | async">  <ng-content></ng-content></div></div>'
+        var COMPONENT_TEMPLATE = '<div><div [style]="style$ | async">  <ng-content /></div></div>'
     var COMPONENTS = [{'name': 'DndPreview', 'selector': 'dnd-preview'},{'name': 'DndPreviewRenderer', 'selector': 'dnd-preview-renderer'}];
     var DIRECTIVES = [];
     var ACTUAL_COMPONENT = {'name': 'DndPreviewRenderer'};
