@@ -15,10 +15,8 @@ import { Component, Input } from '@angular/core';
       margin-top: 0;
     }
     a {
-      padding: 8px;
       display: inline-block;
-      background: rgba(68, 72, 224, 0.14);
-      background: #e5e2fa;
+      padding: 8px;
       background: #e2ecfa;
       text-decoration: none;
     }

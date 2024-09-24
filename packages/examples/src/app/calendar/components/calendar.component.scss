@@ -2,11 +2,6 @@
 
 @use 'sass:math';
 
-*,
-:host ::ng-deep * {
-  box-sizing: border-box;
-}
-
 .month {
   font-size: 12px;
   line-height: 14px;

@@ -12,7 +12,6 @@ interface Card {
   templateUrl: './basic-sortable.component.html',
   styles: `
     .sorted {
-      width: 100%;
       max-width: 400px;
     }
   `,

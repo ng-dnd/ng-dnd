@@ -7,7 +7,6 @@
 
 .wrapper ::ng-deep router-outlet + * {
   flex: 1;
-  flex-grow: 1;
   padding: 16px;
 }
 
@@ -17,19 +16,12 @@ p.menu {
 
 ul {
   padding: 0;
-}
 
-.outer * {
-  list-style: none;
-}
-
-.outer li {
-  margin-bottom: 6px;
-}
-
-nav li {
-  min-width: 170px;
-  max-width: 240px;
+  li {
+    min-width: 170px;
+    max-width: 240px;
+    margin-bottom: 6px;
+  }
 }
 
 header {

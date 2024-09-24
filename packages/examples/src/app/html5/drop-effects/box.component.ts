@@ -18,9 +18,7 @@ interface DropResult {
       display: inline-block;
       padding: 0.5em;
       border: 1px dashed #333;
-      margin: 0;
-      margin-bottom: 8px;
-      margin-right: 8px;
+      margin: 0 8px 8px 0;
       background: #fff;
     }
   `,

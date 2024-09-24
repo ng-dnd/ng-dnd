@@ -7,33 +7,24 @@ import { ItemTypes } from './item-types';
   selector: 'handle',
   template: `
     <div [dragPreview]="source" [style.opacity]="opacity | async">
-      <p>
-        <span class="handle" [dragSource]="source"></span>
-        Drag this by the handle
-      </p>
+      <span class="handle" [dragSource]="source"></span>
+      Drag this by the handle
     </div>
   `,
   styles: `
     div {
-      border: 1px dashed #777;
-      background: #fff;
-      padding: 0.5rem 1rem;
-      margin-bottom: 0.5rem;
-      background-color: white;
+      display: inline-block;
       width: 8rem;
+      padding: 6px;
+      background-color: white;
+      border: 1px dashed #777;
     }
     .handle {
-      cursor: move;
+      display: inline-block;
       width: 14px;
       height: 14px;
       background: darkgreen;
-      display: inline-block;
-    }
-    div,
-    p {
-      display: inline-block;
-      padding: 3px;
-      margin: 0;
+      cursor: move;
     }
   `,
   standalone: true,

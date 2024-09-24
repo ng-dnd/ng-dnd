@@ -7,23 +7,15 @@ import { ItemTypes } from './itemTypes';
   selector: 'drilldown-source',
   template: `
     <div [dragSource]="source" [style.opacity]="opacity | async">
-      <p>Drag this!</p>
+      <span>Drag this!</span>
     </div>
   `,
   styles: `
     div {
-      border: 1px dashed #777;
-      background: #fff;
-      padding: 0.5rem 1rem;
-      margin-bottom: 0.5rem;
-      background-color: white;
       width: 8rem;
-    }
-    div,
-    p {
-      display: inline-block;
-      padding: 3px;
-      margin: 0;
+      padding: 6px;
+      background-color: white;
+      border: 1px dashed #777;
     }
   `,
   standalone: true,

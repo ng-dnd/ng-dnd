@@ -29,9 +29,6 @@ import { ExampleLinkComponent } from '@app/utility/example-link.component';
     </div>
   `,
   styles: `
-    :host ::ng-deep * {
-      box-sizing: border-box;
-    }
     .max-container {
       max-width: 560px;
     }

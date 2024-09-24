@@ -34,11 +34,9 @@ interface NativeFile {
       padding: 8px;
       background: #ddd;
       min-height: 140px;
-      min-width: 0;
     }
     pre {
       overflow-x: auto;
-      min-width: 0;
     }
   `,
   standalone: true,

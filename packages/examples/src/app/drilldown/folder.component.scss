@@ -1,35 +1,11 @@
 $elbow-color: #444;
 
 :host ::ng-deep {
-  // * {
-  //     box-sizing: border-box;
-  // }
   * {
     margin: 0;
     padding: 0;
   }
-  // .root {
-  //     display: inline-block;
-  //     margin: 2em 0;
-  //     padding: 0;
-  //     min-width: 300px;
-  // }
-  // li {
-  // border-left: 1px solid #333;
-  // border-right: 1px solid #333;
-  // list-style: none;
-  // padding: 0.5em 1em;
-  // }
-  // .root > :host:first-child > li {
-  //     border-top: 1px solid #333;
-  // }
-  // .root > :host:last-child > li,
-  // .root > :host:last-child li:last-child,
-  // :host:not(:last-child) > ul.has-children,
-  // :host:not(:last-child) > li
-  //  {
-  //     border-bottom: 1px solid #333;
-  // }
+
   li.has-children {
     background: lightgoldenrodyellow;
     cursor: pointer;
@@ -43,9 +19,7 @@ $elbow-color: #444;
   li.is-over > div {
     background: #d1c072;
   }
-  // li.is-open {
-  //     border-bottom: 1px solid #333;
-  // }
+
   ul {
     margin: 0 0 0 20px;
     list-style: none;

@@ -2,10 +2,7 @@ $accent: #33e8d5;
 
 .crosshair {
   position: absolute;
-  border-width: 0;
-  border-style: solid;
-  // border-color: darken($accent, 20);
-  border-color: $accent;
+  border: 0 solid $accent;
 }
 
 .crosshair.horizontal {

@@ -7,21 +7,16 @@ import { ItemTypes } from './item-types';
   selector: 'app-nested-targets-box',
   template: `
     <div [dragSource]="source" [style.opacity]="opacity | async">
-      <p>Drag this!</p>
+      <span>Drag this!</span>
     </div>
   `,
   styles: `
     div {
-      border: 1px dashed #777;
-      background: #fff;
-      padding: 0.5rem 1rem;
       width: 8rem;
+      padding: 0.5rem 1rem;
       margin-bottom: 1rem;
-    }
-    p {
-      display: inline-block;
-      padding: 3px;
-      margin: 0;
+      background: #fff;
+      border: 1px dashed #777;
     }
   `,
   standalone: true,

@@ -1,7 +1,6 @@
 @use '../../styles/css-lock' as *;
 
 span {
-  font-weight: 400;
   @include css-lock(
     $min-size: 14,
     $max-size: 50,

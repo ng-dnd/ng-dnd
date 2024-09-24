@@ -13,11 +13,6 @@ import { _overallHash, _unstableHash } from './store/selectors';
       Hash of the stable list: <code>{{ stable$ | async }}</code>
     </p>
   `,
-  styles: `
-    p {
-      margin-top: 0;
-    }
-  `,
   standalone: true,
   imports: [AsyncPipe],
 })

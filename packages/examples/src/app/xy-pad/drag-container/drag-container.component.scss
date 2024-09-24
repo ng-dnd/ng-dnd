@@ -27,9 +27,7 @@ $accent: #33e8d5;
 
 .gridline {
   position: absolute;
-  border-width: 0;
-  border-style: solid;
-  border-color: color.adjust($accent, $lightness: -20%);
+  border: 0 solid color.adjust($accent, $lightness: -20%);
 }
 
 .gridline.horizontal {

@@ -3,9 +3,8 @@ import {
   ChangeDetectionStrategy,
   Component,
   Input,
-  NgZone,
   OnDestroy,
-  OnInit,
+  OnInit
 } from '@angular/core';
 import { DndModule, DndService } from '@ng-dnd/core';
 import { Observable } from 'rxjs';
@@ -86,8 +85,7 @@ export class FolderComponent implements OnInit, OnDestroy {
 
   constructor(
     public tree: TreeService,
-    private dnd: DndService,
-    private ngZone: NgZone
+    private dnd: DndService
   ) {}
 
   ngOnInit() {
