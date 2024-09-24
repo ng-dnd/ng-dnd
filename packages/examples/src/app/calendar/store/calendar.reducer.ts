@@ -1,12 +1,15 @@
 import { CalendarActions, CalendarActionTypes } from './calendar.actions';
 import { List, Record } from 'immutable';
 import { CalendarEvent, Diff } from 'app/calendar/event';
-import * as moment from 'moment-mini-ts';
+import * as _moment from 'moment-mini-ts';
+import { default as _rollupMoment } from 'moment-mini-ts';
 import * as faker from 'faker';
+
+const moment = _rollupMoment || _moment;
 
 export interface CalendarState {
   events: List<CalendarEvent>;
-  startDate: moment.Moment;
+  startDate: _moment.Moment;
   inFlight: CalendarEvent | null;
   original: CalendarEvent | null;
   diff: Diff;

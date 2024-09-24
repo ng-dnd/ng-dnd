@@ -1,6 +1,9 @@
 import { Record } from 'immutable';
-import * as moment from 'moment-mini-ts';
+import * as _moment from 'moment-mini-ts';
+import { default as _rollupMoment } from 'moment-mini-ts';
 import { getEndOfWeek, daysBetween, sameWeek } from './date-utils';
+
+const moment = _rollupMoment || _moment;
 
 let uniqueId = 0;
 

@@ -33,7 +33,8 @@
         "packages/*/index.ts"
       ]
     },
-    "useDefineForClassFields": false
+    "useDefineForClassFields": false,
+    "allowSyntheticDefaultImports": true
   },
   "exclude": [
     "tools",
