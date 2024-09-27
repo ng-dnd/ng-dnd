@@ -1,5 +1,5 @@
 import { JsonPipe } from '@angular/common';
-import { Component, Input, OnDestroy } from '@angular/core';
+import { ChangeDetectorRef, Component, Input, OnDestroy } from '@angular/core';
 import { DndModule, DndService } from '@ng-dnd/core';
 import { NativeTypes } from 'react-dnd-html5-backend';
 
@@ -57,10 +57,11 @@ export class TargetComponent implements OnDestroy {
       } else {
         this.dropped = item;
       }
+      this.cdr.detectChanges();
     },
   });
 
-  constructor(private dnd: DndService) {}
+  constructor(private dnd: DndService, private cdr: ChangeDetectorRef) {}
 
   ngOnDestroy() {
     this.target.unsubscribe();

@@ -5,13 +5,11 @@ import { DragSourceMonitor } from '../source-monitor';
 export class Source implements DragSource {
   constructor(
     private spec: DragSourceSpec<any>,
-    private zone: Zone,
     private monitor: DragSourceMonitor<any, any>
   ) {}
 
   withChangeDetection<T>(fn: () => T): T {
     const x = fn();
-    this.zone.scheduleMicroTask('DragSource', () => {});
     return x;
   }
 
@@ -50,8 +48,8 @@ export class Source implements DragSource {
   }
 }
 
-export function createSourceFactory(spec: DragSourceSpec<any>, zone: Zone) {
+export function createSourceFactory(spec: DragSourceSpec<any>) {
   return function createSource(monitor: DragSourceMonitor): DragSource {
-    return new Source(spec, zone, monitor);
+    return new Source(spec, monitor);
   };
 }

@@ -1,11 +1,10 @@
 import { DropTarget } from 'dnd-core';
-import { DropTargetMonitor } from '../target-monitor';
 import { DropTargetSpec } from '../drop-target-specification';
+import { DropTargetMonitor } from '../target-monitor';
 
 export class Target implements DropTarget {
   constructor(
     private spec: DropTargetSpec,
-    private zone: Zone,
     private monitor: DropTargetMonitor
   ) {
     this.monitor = monitor;
@@ -13,7 +12,6 @@ export class Target implements DropTarget {
 
   withChangeDetection<T>(fn: () => T): T {
     const x = fn();
-    this.zone.scheduleMicroTask('DropTarget', () => {});
     return x;
   }
 
@@ -50,8 +48,8 @@ export class Target implements DropTarget {
   }
 }
 
-export function createTargetFactory(spec: DropTargetSpec, zone: Zone) {
+export function createTargetFactory(spec: DropTargetSpec) {
   return function createTarget(monitor: any): DropTarget {
-    return new Target(spec, zone, monitor);
+    return new Target(spec, monitor);
   };
 }

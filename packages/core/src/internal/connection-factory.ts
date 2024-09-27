@@ -1,7 +1,7 @@
 import { NgZone } from '@angular/core';
 import { Backend, DragDropManager } from 'dnd-core';
 import { BehaviorSubject, Observable, ReplaySubject, Subscription, TeardownLogic } from 'rxjs';
-import { distinctUntilChanged, map, switchMap, take } from 'rxjs/operators';
+import { distinctUntilChanged, map, switchMap, take, tap } from 'rxjs/operators';
 import { TYPE_DYNAMIC } from '../tokens';
 import { TypeOrTypeArray } from '../type-ish';
 import { invariant } from './invariant';
@@ -18,7 +18,6 @@ import {
 import { DragSourceMonitor } from '../source-monitor';
 import { DropTargetMonitor } from '../target-monitor';
 import { Connector } from './createSourceConnector';
-import { scheduleMicroTaskAfter } from './scheduleMicroTaskAfter';
 
 export interface FactoryArgs<TMonitor, TConnector> {
   createHandler: (handlerMonitor: any) => any;
@@ -65,7 +64,7 @@ export class Connection<TMonitor extends DragSourceMonitor | DropTargetMonitor, 
   constructor(
     private factoryArgs: FactoryArgs<TMonitor, TConnector>,
     private manager: DragDropManager,
-    private dndZone: Zone,
+    private ngZone: NgZone,
     initialType: TypeOrTypeArray | undefined
   ) {
     invariant(
@@ -102,10 +101,8 @@ export class Connection<TMonitor extends DragSourceMonitor | DropTargetMonitor, 
       map(mapFn),
       // don't emit EVERY time the firehose says something changed, only when the interesting state changes
       distinctUntilChanged(areCollectsEqual),
-      // this schedules a single batch change detection run after all the listeners have heard their newest value
-      // thus all changes resulting from subscriptions to this are caught by the
-      // change detector.
-      scheduleMicroTaskAfter(this.dndZone, this.onUpdate)
+      // TODO: how to reduce the frequency of change detection?
+      tap(this.onUpdate)
     );
   }
 
@@ -115,9 +112,8 @@ export class Connection<TMonitor extends DragSourceMonitor | DropTargetMonitor, 
 
   connect(fn: (connector: TConnector) => void) {
     const subscription = this.resolvedType$.pipe(take(1)).subscribe(() => {
-      // must run inside dndZone, so things like timers firing after a long hover with touch backend
-      // will cause change detection (via executing a macro or event task)
-      this.dndZone.run(() => {
+      // must run inside ngZone otherwise the zone app may have small issue
+      this.ngZone.run(() => {
         fn(this.handlerConnector.hooks);
       });
     });
@@ -153,9 +149,8 @@ export class Connection<TMonitor extends DragSourceMonitor | DropTargetMonitor, 
   }
 
   setTypes(type: TypeOrTypeArray) {
-    // must run inside dndZone, so things like timers firing after a long hover with touch backend
-    // will cause change detection (via executing a macro or event task)
-    this.dndZone.run(() => {
+    // must run outside ngZone
+    this.ngZone.runOutsideAngular(() => {
       this.receiveType(type);
       this.resolvedType$.next(1);
     });
@@ -228,7 +223,7 @@ export interface SourceConstructor<Item = unknown, DropResult = unknown> {
   new (
     factoryArgs: FactoryArgs<DragSourceMonitor, DragSourceConnector>,
     manager: DragDropManager,
-    dndZone: Zone,
+    ngZone: NgZone,
     initialType: string | symbol | undefined
   ): DragSource<Item, DropResult>;
 }
@@ -236,7 +231,7 @@ export interface TargetConstructor {
   new (
     factoryArgs: FactoryArgs<DropTargetMonitor, DropTargetConnector>,
     manager: DragDropManager,
-    dndZone: Zone,
+    ngZone: NgZone,
     initialType: TypeOrTypeArray | undefined
   ): DropTarget;
 }

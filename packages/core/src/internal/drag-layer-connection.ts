@@ -1,10 +1,9 @@
-import { Subscription, Observable, BehaviorSubject, TeardownLogic } from 'rxjs';
 import { DragDropManager, Unsubscribe } from 'dnd-core';
+import { BehaviorSubject, Observable, Subscription, TeardownLogic } from 'rxjs';
+import { distinctUntilChanged, map } from 'rxjs/operators';
 import { DragLayer } from '../connection-types';
 import { DragLayerMonitor } from '../layer-monitor';
 import { areCollectsEqual } from '../utils/areCollectsEqual';
-import { map, distinctUntilChanged } from 'rxjs/operators';
-import { scheduleMicroTaskAfter } from './scheduleMicroTaskAfter';
 
 export class DragLayerConnectionClass implements DragLayer {
   unsubscribeFromOffsetChange: Unsubscribe;
@@ -12,7 +11,7 @@ export class DragLayerConnectionClass implements DragLayer {
   private readonly collector$: BehaviorSubject<DragLayerMonitor>;
   private subscription = new Subscription();
 
-  constructor(private manager: DragDropManager, private zone: Zone) {
+  constructor(private manager: DragDropManager) {
     const monitor = this.manager.getMonitor();
     this.collector$ = new BehaviorSubject<DragLayerMonitor>(monitor);
     this.unsubscribeFromOffsetChange = monitor.subscribeToOffsetChange(this.handleOffsetChange);
@@ -38,11 +37,7 @@ export class DragLayerConnectionClass implements DragLayer {
   };
 
   listen<P>(mapFn: (monitor: DragLayerMonitor) => P): Observable<P> {
-    return this.collector$.pipe(
-      map(mapFn),
-      distinctUntilChanged(areCollectsEqual),
-      scheduleMicroTaskAfter(this.zone)
-    );
+    return this.collector$.pipe(map(mapFn), distinctUntilChanged(areCollectsEqual));
   }
 
   unsubscribe() {

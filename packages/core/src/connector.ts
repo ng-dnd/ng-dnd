@@ -3,7 +3,6 @@
  */
 /** a second comment */
 
-/// <reference types="zone.js" />
 import { Inject, Injectable, NgZone } from '@angular/core';
 import { DragDropManager } from 'dnd-core';
 import { DRAG_DROP_MANAGER, TYPE_DYNAMIC } from './tokens';
@@ -60,47 +59,6 @@ export interface AddSubscription extends SubscriptionLike {
 @Injectable({ providedIn: 'root' })
 export class DndService {
   /** @ignore */
-  private dndZone = Zone.root.fork({
-    name: 'dndZone',
-    onHasTask: (_parentZoneDelegate, _currentZone, _targetZone, state) => {
-      // when we've | drained the microTask queue; or                    | ... run a change detection cycle.
-      //            | executed or cancelled a macroTask (eg a timer); or |
-      //            | handled an event                                   |
-
-      // note: we must use ngZone.run() instead of ApplicationRef.tick()
-      // this is because
-      // 1. this callback runs outside the angular zone
-      // 2. therefore if you use appRef.tick(), the event handlers set up during the tick() are
-      //    not in the angular zone, even though anything set up during tick() should be
-      // 3. therefore you get regular (click) handlers from templates running in dndZone
-      //    and not causing change detection
-
-      // Also, now we watch for macroTasks as well.
-      // This means if we set up timers in the dnd zone, they will fire and cause change
-      // detection. Useful if doing .listen(...).delay(1000) and the resulting asynchronous
-      // subscribers.
-      // Appropriately, we run more setup handlers in dndZone now.
-      //
-      // Proper event handlers (set up by the backend) don't trigger any, because dndZone
-      // only cares about # of handlers changing => 0. But if we care about them, it will be
-      // through listen(), updates to which will schedule a microTask.
-
-      if (!state[state.change]) {
-        this.ngZone.run(() => {
-          // noop, but causes change detection (i.e. onLeave)
-        });
-      }
-    },
-    // onInvokeTask: (zoneDelegate, currentZone, targetZone, task, applyThis, applyArgs) => {
-    // }
-    // onScheduleTask(parentZoneDelegate, currentZone, targetZone, task) {
-    //   return parentZoneDelegate.scheduleTask(targetZone, task);
-    // },
-    // onInvoke: (parentZoneDelegate, currentZone, targetZone, delegate, applyThis, applyArgs, source) => {
-    // }
-  });
-
-  /** @ignore */
   constructor(
     @Inject(DRAG_DROP_MANAGER) private manager: DragDropManager,
     private ngZone: NgZone
@@ -118,9 +76,8 @@ export class DndService {
     spec: DropTargetSpec<Item, DropResult>,
     subscription?: AddSubscription
   ): DropTarget<Item, DropResult> {
-    // return this.ngZone.runOutsideAngular(() => {
-    return this.dndZone.run(() => {
-      const createTarget = createTargetFactory(spec, this.dndZone);
+    return this.ngZone.runOutsideAngular(() => {
+      const createTarget = createTargetFactory(spec);
 
       const conn = new TargetConnection(
         {
@@ -130,9 +87,9 @@ export class DndService {
           createConnector: createTargetConnector,
         },
         this.manager,
-        this.dndZone,
+        this.ngZone,
         types || TYPE_DYNAMIC
-      );
+      ) as DropTarget<Item, DropResult>;
 
       if (subscription) {
         subscription.add(conn);
@@ -169,9 +126,9 @@ export class DndService {
     spec: DragSourceSpec<Item, DropResult>,
     subscription?: AddSubscription
   ): DragSource<Item, DropResult> {
-    // return this.ngZone.runOutsideAngular(() => {
-    return this.dndZone.run(() => {
-      const createSource = createSourceFactory(spec, this.dndZone);
+    return this.ngZone.runOutsideAngular(() => {
+      const createSource = createSourceFactory(spec);
+
       const conn = new SourceConnection(
         {
           createHandler: createSource,
@@ -180,9 +137,10 @@ export class DndService {
           createConnector: createSourceConnector,
         },
         this.manager,
-        this.dndZone,
+        this.ngZone,
         type || TYPE_DYNAMIC
-      );
+      ) as DragSource<Item, DropResult>;
+
       if (subscription) {
         subscription.add(conn);
       }
@@ -194,9 +152,9 @@ export class DndService {
    * This method creates a {@link DragLayer} object
    */
   public dragLayer<Item = any>(subscription?: AddSubscription): DragLayer<Item> {
-    // return this.ngZone.runOutsideAngular(() => {
-    return this.dndZone.run(() => {
-      const conn = new DragLayerConnectionClass(this.manager, this.dndZone);
+    return this.ngZone.runOutsideAngular(() => {
+      const conn = new DragLayerConnectionClass(this.manager);
+
       if (subscription) {
         subscription.add(conn);
       }
