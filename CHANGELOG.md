@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [4.0.0](https://github.com/ng-dnd/ng-dnd/compare/v3.1.0...v4.0.0) (2024-09-29)
+
+
+### Features
+
+* add support for zoneless ([#17](https://github.com/ng-dnd/ng-dnd/issues/17)) ([ab4c70a](https://github.com/ng-dnd/ng-dnd/commit/ab4c70adc6f8e9aa8f6f1aa90822be45600d82c6))
+
+
+
+
+
 # [3.1.0](https://github.com/ng-dnd/ng-dnd/compare/v3.0.0...v3.1.0) (2024-09-23)
 
 **Note:** Version bump only for package @ng-dnd/monorepo

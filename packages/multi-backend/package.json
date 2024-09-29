@@ -1,6 +1,6 @@
 {
   "name": "@ng-dnd/multi-backend",
-  "version": "3.1.0",
+  "version": "4.0.0",
   "description": "Multiple backend for Angular DnD",
   "publishConfig": {
     "access": "public"
@@ -21,7 +21,7 @@
     "tslib": "^2.7.0"
   },
   "devDependencies": {
-    "@ng-dnd/core": "^3.1.0"
+    "@ng-dnd/core": "^4.0.0"
   },
   "peerDependencies": {
     "@angular/common": ">=18.0.0",
