@@ -14,15 +14,15 @@
     "ngx-dnd"
   ],
   "dependencies": {
-    "tslib": "^2.3.0"
+    "tslib": "^2.7.0"
   },
   "devDependencies": {
     "@ng-dnd/core": "^3.1.0"
   },
   "peerDependencies": {
-    "@angular/common": ">=17.0.0",
-    "@angular/core": ">=17.0.0",
-    "@ng-dnd/core": ">=3.0.0",
+    "@angular/common": ">=18.0.0",
+    "@angular/core": ">=18.0.0",
+    "@ng-dnd/core": ">=4.0.0",
     "rxjs": ">=7.0.0"
   },
   "scripts": {
