@@ -16,7 +16,6 @@ import { TrashCanComponent } from '../trash-can.component';
   templateUrl: './kanban-board.component.html',
   styleUrl: './kanban-board.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  standalone: true,
   imports: [
     DndMultiBackendModule,
     DndSortableModule,

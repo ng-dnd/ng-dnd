@@ -27,7 +27,6 @@ import { ItemTypes } from './item-types';
       cursor: move;
     }
   `,
-  standalone: true,
   imports: [DndModule, AsyncPipe],
 })
 export class HandleComponent implements OnDestroy {

@@ -10,7 +10,6 @@ import { DragContainerComponent } from './drag-container/drag-container.componen
     <app-custom-drag-layer />
     <app-drag-container />
   `,
-  standalone: true,
   imports: [ExampleLinkComponent, CustomDragLayerComponent, DragContainerComponent],
 })
 export class ContainerComponent {}

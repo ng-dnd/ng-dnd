@@ -46,7 +46,6 @@ import { ExampleLinkComponent } from '@app/utility/example-link.component';
       height: 100%;
     }
   `,
-  standalone: true,
   imports: [ExampleLinkComponent, BoardComponent],
 })
 export class ContainerComponent {}

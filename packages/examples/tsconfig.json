@@ -6,8 +6,8 @@
     "baseUrl": "./src",
     "strict": true,
     "sourceMap": true,
+    "esModuleInterop": true,
     "declaration": false,
-    "downlevelIteration": true,
     "module": "ES2022",
     "moduleResolution": "node",
     "experimentalDecorators": true,
@@ -28,8 +28,7 @@
         "../../*/index.ts"
       ]
     },
-    "useDefineForClassFields": false,
-    "allowSyntheticDefaultImports": true
+    "useDefineForClassFields": false
   },
   "angularCompilerOptions": {
     "enableI18nLegacyMessageIdFormat": false,

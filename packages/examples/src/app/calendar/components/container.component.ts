@@ -16,7 +16,6 @@ const monthSelector = createSelector(startDateSelector, startDate => {
   templateUrl: './container.component.html',
   styleUrl: './container.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  standalone: true,
   imports: [ExampleLinkComponent, CalendarComponent, AsyncPipe],
 })
 export class CalendarContainerComponent {

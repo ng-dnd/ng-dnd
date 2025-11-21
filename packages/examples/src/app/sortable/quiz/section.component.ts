@@ -13,7 +13,7 @@ import { MathFormComponent } from './math-form.component';
       [class.section--placeholder]="render?.isDragging$ | async"
       [class.section--preview]="preview"
       [dragPreview]="render?.source!"
-      >
+    >
       <span class="section-handle" [dragSource]="render?.source!" [noHTML5Preview]="true">
         &#9776;
       </span>
@@ -29,9 +29,8 @@ import { MathFormComponent } from './math-form.component';
         }
       </div>
     </div>
-    `,
+  `,
   styleUrl: './section.component.scss',
-  standalone: true,
   imports: [DndModule, MathFormComponent, AsyncPipe],
 })
 export class SectionComponent {

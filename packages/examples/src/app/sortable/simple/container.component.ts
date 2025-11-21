@@ -15,7 +15,6 @@ import { ExampleLinkComponent } from '@app/utility/example-link.component';
     <app-simple-sortable />
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
-  standalone: true,
   imports: [ExampleLinkComponent, SimpleComponent],
 })
 export class ContainerComponent {}

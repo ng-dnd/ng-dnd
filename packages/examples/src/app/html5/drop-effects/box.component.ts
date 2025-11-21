@@ -22,7 +22,6 @@ interface DropResult {
       background: #fff;
     }
   `,
-  standalone: true,
   imports: [DndModule],
 })
 export class BoxComponent {

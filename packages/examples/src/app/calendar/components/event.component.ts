@@ -13,7 +13,6 @@ import { BeginDragExistingEvent, EndDragExistingEvent } from '../store/calendar.
   templateUrl: './event.component.html',
   styleUrl: './event.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  standalone: true,
   imports: [DndModule, AsyncPipe],
 })
 export class CalendarEventComponent {

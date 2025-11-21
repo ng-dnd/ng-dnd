@@ -47,7 +47,6 @@ import { _lifted, _render, _selected } from './store/selectors';
     </table>
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
-  standalone: true,
   imports: [DndModule, DndSortableModule, AsyncPipe],
 })
 export class SimpleComponent {

@@ -36,7 +36,6 @@ import { CopyTargetComponent } from './copy-target.component';
       }
     </de-copy-target>
   `,
-  standalone: true,
   imports: [ExampleLinkComponent, BoxComponent, CopyTargetComponent],
 })
 export class ContainerComponent {

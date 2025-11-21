@@ -26,7 +26,6 @@ import { SortableSpecService } from './specs';
       display: inline-block;
     }
   `,
-  standalone: true,
   imports: [KanbanCardComponent, DndSortableModule, DndModule],
 })
 export class KanbanExternalComponent {

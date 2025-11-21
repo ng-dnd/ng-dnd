@@ -14,7 +14,6 @@ interface SimpleData {
   selector: 'app-simple-sortable',
   styleUrl: './simple.component.scss',
   templateUrl: './simple.component.html',
-  standalone: true,
   imports: [DndModule, DndSortableModule, DndMultiBackendModule, AsyncPipe],
 })
 export class SimpleComponent {

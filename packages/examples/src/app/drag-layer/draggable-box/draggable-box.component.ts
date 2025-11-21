@@ -13,7 +13,6 @@ import { BoxComponent } from '../box.component';
     </div>
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
-  standalone: true,
   imports: [DndModule, BoxComponent, AsyncPipe],
 })
 export class DraggableBoxComponent implements OnInit, OnDestroy {

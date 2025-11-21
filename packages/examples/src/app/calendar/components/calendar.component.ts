@@ -14,7 +14,6 @@ import { CalendarDayComponent } from './day.component';
   templateUrl: './calendar.component.html',
   styleUrl: './calendar.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  standalone: true,
   imports: [CalendarDayComponent, AsyncPipe],
 })
 export class CalendarComponent implements OnInit {

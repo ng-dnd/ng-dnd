@@ -79,7 +79,6 @@ const equalsValidator: (x: any) => ValidatorFn = x => c => {
       border-left: 5px solid #a94442; /* red */
     }
   `,
-  standalone: true,
   imports: [ReactiveFormsModule],
 })
 export class PrintoutComponent {

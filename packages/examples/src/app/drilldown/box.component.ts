@@ -18,7 +18,6 @@ import { ItemTypes } from './itemTypes';
       border: 1px dashed #777;
     }
   `,
-  standalone: true,
   imports: [DndModule, AsyncPipe],
 })
 export class BoxComponent implements OnDestroy {

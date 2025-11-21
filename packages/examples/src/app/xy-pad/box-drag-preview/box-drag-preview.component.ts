@@ -34,7 +34,6 @@ import { SpotComponent } from '../spot.component';
       animation-direction: alternate;
     }
   `,
-  standalone: true,
   imports: [SpotComponent],
 })
 export class BoxDragPreviewComponent {}

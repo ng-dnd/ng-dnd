@@ -35,7 +35,6 @@ import { DustbinComponent } from './dustbin.component';
       margin-right: 10px;
     }
   `,
-  standalone: true,
   imports: [ExampleLinkComponent, BoxComponent, DustbinComponent],
 })
 export class ContainerComponent {}

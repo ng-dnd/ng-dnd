@@ -43,7 +43,6 @@ import { TreeService } from './tree.service';
   `,
   styleUrl: './folder.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  standalone: true,
   imports: [DndModule, AsyncPipe],
 })
 export class FolderComponent implements OnInit, OnDestroy {

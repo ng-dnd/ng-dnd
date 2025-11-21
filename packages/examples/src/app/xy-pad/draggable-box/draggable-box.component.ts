@@ -48,7 +48,6 @@ import { SpotComponent } from '../spot.component';
     }
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
-  standalone: true,
   imports: [DndModule, SpotComponent, CrosshairsComponent, AsyncPipe],
 })
 export class DraggableBoxComponent implements OnInit, OnDestroy {

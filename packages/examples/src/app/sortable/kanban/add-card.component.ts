@@ -25,7 +25,6 @@ import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
       background: #fff;
     }
   `,
-  standalone: true,
   imports: [ReactiveFormsModule],
 })
 export class AddCardComponent {

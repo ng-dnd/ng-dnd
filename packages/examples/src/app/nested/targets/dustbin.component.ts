@@ -19,7 +19,6 @@ import { ItemTypes } from './item-types';
     }
   `,
   styleUrl: './dustbin.component.scss',
-  standalone: true,
   imports: [DndModule, AsyncPipe],
 })
 export class DustbinComponent implements OnDestroy {

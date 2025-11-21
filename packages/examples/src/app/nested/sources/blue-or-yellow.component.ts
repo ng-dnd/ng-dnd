@@ -32,7 +32,6 @@ import { Colors } from './colors';
       opacity: 0.5;
     }
   `,
-  standalone: true,
   imports: [DndModule, AsyncPipe],
 })
 export class BlueOrYellowComponent implements OnDestroy {

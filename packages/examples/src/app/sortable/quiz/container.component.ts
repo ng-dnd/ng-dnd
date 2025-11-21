@@ -21,7 +21,6 @@ import { ListComponent } from './list.component';
 
     <app-external-sortable />
   `,
-  standalone: true,
   imports: [ExampleLinkComponent, ListComponent],
 })
 export class ContainerComponent {}

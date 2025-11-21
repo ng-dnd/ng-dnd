@@ -8,7 +8,6 @@ import { horseImage } from './horseImage';
   selector: 'app-knight',
   template: `<span [dragSource]="knightSource" [class.dragging]="isDragging$ | async">♘</span>`,
   styleUrl: './knight.component.scss',
-  standalone: true,
   imports: [DndModule, AsyncPipe],
 })
 export class KnightComponent implements OnInit, OnDestroy {

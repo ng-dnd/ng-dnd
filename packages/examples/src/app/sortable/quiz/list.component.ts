@@ -11,7 +11,6 @@ import { SectionComponent } from './section.component';
   selector: 'app-external-sortable',
   templateUrl: './list.component.html',
   styleUrl: './list.component.scss',
-  standalone: true,
   imports: [
     DndModule,
     DndSortableModule,

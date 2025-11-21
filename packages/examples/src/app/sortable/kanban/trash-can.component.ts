@@ -45,7 +45,6 @@ import { ItemTypes } from './item-types';
     }
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
-  standalone: true,
   imports: [DndModule, AsyncPipe],
 })
 export class TrashCanComponent {

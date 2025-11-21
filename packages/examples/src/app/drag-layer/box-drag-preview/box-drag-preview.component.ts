@@ -31,7 +31,6 @@ import { BoxComponent } from '../box.component';
       animation-direction: alternate;
     }
   `,
-  standalone: true,
   imports: [BoxComponent],
 })
 export class BoxDragPreviewComponent implements OnInit {

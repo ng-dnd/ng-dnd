@@ -32,7 +32,6 @@ import { TreeService } from './tree.service';
       min-height: 600px;
     }
   `,
-  standalone: true,
   imports: [ExampleLinkComponent, NgLetDirective, BoxComponent, FolderComponent, AsyncPipe],
 })
 export class ContainerComponent {

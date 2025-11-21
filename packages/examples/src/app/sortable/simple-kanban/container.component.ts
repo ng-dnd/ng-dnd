@@ -17,7 +17,6 @@ import { Card } from './specs';
   templateUrl: './container.component.html',
   styleUrl: './container.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  standalone: true,
   imports: [ExampleLinkComponent, KanbanBoardComponent],
 })
 export class ContainerComponent implements AfterViewInit, OnDestroy {

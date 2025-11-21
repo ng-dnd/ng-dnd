@@ -31,7 +31,6 @@ import { KnightComponent } from './knight.component';
       grid-template-rows: repeat(8, 12.5%);
     }
   `,
-  standalone: true,
   imports: [BoardSquareComponent, KnightComponent, AsyncPipe],
 })
 export class BoardComponent {

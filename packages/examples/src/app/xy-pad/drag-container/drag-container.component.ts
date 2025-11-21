@@ -24,7 +24,6 @@ import { Spot } from '../spot';
     <xy-custom-drag-layer [snapToGrid]="snapToGrid" [incrementPx]="px" (moved)="emitEach($event)" />
   `,
   styleUrl: './drag-container.component.scss',
-  standalone: true,
   imports: [DndModule, DraggableBoxComponent, CustomDragLayerComponent],
 })
 export class DragContainerComponent implements OnDestroy {

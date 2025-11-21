@@ -25,7 +25,6 @@ import { SquareComponent } from './square.component';
       height: 100%;
     }
   `,
-  standalone: true,
   imports: [DndModule, SquareComponent, AsyncPipe],
 })
 export class BoardSquareComponent implements OnDestroy {

@@ -40,7 +40,6 @@ import { DragContainerComponent } from './drag-container/drag-container.componen
       padding: 80px;
     }
   `,
-  standalone: true,
   imports: [
     ExampleLinkComponent,
     DragContainerComponent,

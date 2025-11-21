@@ -14,7 +14,6 @@ interface SimpleData {
   selector: 'app-fixed-sortable',
   templateUrl: './fixed-height.component.html',
   styleUrl: './fixed-height.component.scss',
-  standalone: true,
   imports: [DndModule, DndSortableModule, DndMultiBackendModule, AsyncPipe],
 })
 export class FixedHeightComponent {

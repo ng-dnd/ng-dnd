@@ -56,7 +56,6 @@ export class CardInnerDirective {}
     }
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
-  standalone: true,
   imports: [DndModule, NgTemplateOutlet, AsyncPipe],
 })
 export class CardComponent implements OnDestroy {

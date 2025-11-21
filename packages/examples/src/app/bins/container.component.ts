@@ -45,7 +45,6 @@ import { TrashComponent } from './trash.component';
       margin-right: 4px;
     }
   `,
-  standalone: true,
   imports: [
     DndMultiBackendModule,
     ExampleLinkComponent,

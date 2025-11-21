@@ -22,7 +22,6 @@ import { DndModule, DndService } from '@ng-dnd/core';
       </div>
     }
   `,
-  standalone: true,
   imports: [DndModule, AsyncPipe, JsonPipe],
 })
 export class BinComponent implements OnInit, OnDestroy {

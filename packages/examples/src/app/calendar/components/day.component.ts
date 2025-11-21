@@ -68,7 +68,6 @@ import { CalendarEventComponent } from './event.component';
     }
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
-  standalone: true,
   imports: [DndModule, CalendarEventComponent, AsyncPipe],
 })
 export class CalendarDayComponent implements OnInit, OnDestroy, AfterViewInit {

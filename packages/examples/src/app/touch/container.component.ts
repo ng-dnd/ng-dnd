@@ -29,7 +29,6 @@ import { ItemTypes } from './itemTypes';
       <touch-draggable-item />
     </div>
   `,
-  standalone: true,
   imports: [ExampleLinkComponent, DndMultiBackendModule, ItemComponent, DraggableItemComponent],
 })
 export class ContainerComponent {

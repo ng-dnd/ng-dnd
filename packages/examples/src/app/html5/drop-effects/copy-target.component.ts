@@ -28,7 +28,6 @@ import { ItemTypes } from './item-types';
       background: #bbb;
     }
   `,
-  standalone: true,
   imports: [DndModule, AsyncPipe],
 })
 export class CopyTargetComponent {

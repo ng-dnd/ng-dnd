@@ -45,7 +45,6 @@ interface Collected {
   `,
   styleUrl: './custom-drag-layer.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  standalone: true,
   imports: [CrosshairsComponent, BoxDragPreviewComponent, AsyncPipe],
 })
 export class CustomDragLayerComponent implements AfterViewInit, OnDestroy {

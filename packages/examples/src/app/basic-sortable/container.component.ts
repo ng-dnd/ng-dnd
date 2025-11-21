@@ -43,7 +43,6 @@ import { BasicSortableComponent } from './basic-sortable.component';
 
     <basic-sortable />
   `,
-  standalone: true,
   imports: [RouterLink, ExampleLinkComponent, BasicSortableComponent],
 })
 export class ContainerComponent {}

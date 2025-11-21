@@ -30,7 +30,6 @@ export class ItemComponent {
       width: auto;
     }
   `,
-  standalone: true,
   imports: [DndModule, ItemComponent],
 })
 export class DraggableItemComponent {

@@ -10,7 +10,6 @@ import { DraggableBoxComponent } from '../draggable-box/draggable-box.component'
       <app-draggable-box [left]="x" [top]="y" [id]="23" title="this box is titled" />
     </div>
   `,
-  standalone: true,
   imports: [DndModule, DraggableBoxComponent],
 })
 export class DragContainerComponent implements OnInit, OnDestroy {

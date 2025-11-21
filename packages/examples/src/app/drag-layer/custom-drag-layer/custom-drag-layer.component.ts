@@ -38,7 +38,6 @@ interface Offset {
     }
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
-  standalone: true,
   imports: [BoxDragPreviewComponent, AsyncPipe],
 })
 export class CustomDragLayerComponent implements OnInit, OnDestroy {

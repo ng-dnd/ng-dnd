@@ -20,7 +20,6 @@ import { TrashComponent } from './trash.component';
     .dragging {
     }
   `,
-  standalone: true,
   imports: [DndModule, TrashComponent, AsyncPipe],
 })
 export class TrashPileComponent implements OnChanges, OnDestroy {

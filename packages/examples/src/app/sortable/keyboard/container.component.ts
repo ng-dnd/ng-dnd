@@ -39,7 +39,6 @@ import { SummaryComponent } from './summary.component';
       max-width: 700px;
     }
   `,
-  standalone: true,
   imports: [ExampleLinkComponent, SummaryComponent, SimpleComponent],
 })
 export class ContainerComponent {}

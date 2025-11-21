@@ -20,7 +20,6 @@ import { FixedHeightComponent } from './fixed-height.component';
     <app-fixed-sortable />
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
-  standalone: true,
   imports: [ExampleLinkComponent, FixedHeightComponent],
 })
 export class ContainerComponent {}

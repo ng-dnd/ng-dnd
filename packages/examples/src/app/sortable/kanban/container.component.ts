@@ -12,7 +12,6 @@ import { Spill } from './store';
   selector: 'kanban-container',
   templateUrl: './container.component.html',
   styleUrl: './container.component.scss',
-  standalone: true,
   imports: [ExampleLinkComponent, KanbanBoardComponent],
 })
 export class ContainerComponent implements AfterViewInit, OnDestroy {

@@ -15,7 +15,6 @@ interface Card {
       max-width: 400px;
     }
   `,
-  standalone: true,
   imports: [DndMultiBackendModule, CardComponent, CardInnerDirective],
 })
 export class BasicSortableComponent {

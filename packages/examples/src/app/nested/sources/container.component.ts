@@ -32,7 +32,6 @@ import { TargetBoxComponent } from './target.component';
       margin-right: 20px;
     }
   `,
-  standalone: true,
   imports: [ExampleLinkComponent, BlueOrYellowComponent, TargetBoxComponent],
 })
 export class ContainerComponent {

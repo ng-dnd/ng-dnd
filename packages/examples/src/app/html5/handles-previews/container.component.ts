@@ -29,7 +29,6 @@ import { HandleComponent } from './handle.component';
       margin: 20px;
     }
   `,
-  standalone: true,
   imports: [ExampleLinkComponent, HandleComponent, CustomPreviewComponent],
 })
 export class ContainerComponent {}

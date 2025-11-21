@@ -7,7 +7,6 @@ import { environment } from '../environments/environment';
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',
-  standalone: true,
   imports: [HotkeyModule, RouterLinkActive, RouterLink, RouterOutlet],
 })
 export class AppComponent {

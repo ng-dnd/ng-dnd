@@ -36,7 +36,6 @@ import { TargetComponent } from './target.component';
       margin: 8px;
     }
   `,
-  standalone: true,
   imports: [ExampleLinkComponent, TargetComponent],
 })
 export class ContainerComponent {

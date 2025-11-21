@@ -25,7 +25,6 @@ import { MathQuestion } from './Question';
       </div>
     </form>
   `,
-  standalone: true,
   imports: [ReactiveFormsModule],
 })
 export class MathFormComponent implements OnChanges {

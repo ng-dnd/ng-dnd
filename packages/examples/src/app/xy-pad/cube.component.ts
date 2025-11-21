@@ -65,7 +65,6 @@ import { Spot } from './spot';
       background: #b0121b;
     }
   `,
-  standalone: true,
   imports: [DndModule],
 })
 export class CubeComponent {

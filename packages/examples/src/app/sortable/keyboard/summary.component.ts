@@ -13,7 +13,6 @@ import { _overallHash, _unstableHash } from './store/selectors';
       Hash of the stable list: <code>{{ stable$ | async }}</code>
     </p>
   `,
-  standalone: true,
   imports: [AsyncPipe],
 })
 export class SummaryComponent {

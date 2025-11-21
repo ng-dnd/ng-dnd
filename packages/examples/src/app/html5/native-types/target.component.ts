@@ -39,7 +39,6 @@ interface NativeFile {
       overflow-x: auto;
     }
   `,
-  standalone: true,
   imports: [DndModule, JsonPipe],
 })
 export class TargetComponent implements OnDestroy {
@@ -61,7 +60,10 @@ export class TargetComponent implements OnDestroy {
     },
   });
 
-  constructor(private dnd: DndService, private cdr: ChangeDetectorRef) {}
+  constructor(
+    private dnd: DndService,
+    private cdr: ChangeDetectorRef
+  ) {}
 
   ngOnDestroy() {
     this.target.unsubscribe();
