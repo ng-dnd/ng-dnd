@@ -12,7 +12,7 @@ export interface SpillConfiguration<Data> {
 
 export function spillTarget<Data>(
   dnd: DndService,
-  types: string | symbol | Array<string | symbol> | null,
+  types: string | symbol | (string | symbol)[] | null,
   config: SpillConfiguration<Data>
 ): DropTarget<DraggedItem<Data>> {
   const mutate = (item: DraggedItem<Data> | null) => {

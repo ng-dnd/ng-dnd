@@ -6,7 +6,7 @@ export interface KanbanList {
   title: string;
   cards: Cards;
 }
-export type KanbanBoard = ReadonlyArray<KanbanList>;
+export type KanbanBoard = readonly KanbanList[];
 // We're using NgRx, so we have to do immutable-only list operations.
 
 // you could use this helper library, but if you're really gunning for @ngrx,
@@ -15,11 +15,11 @@ export type KanbanBoard = ReadonlyArray<KanbanList>;
 
 // splice is an awkward API that doesn't return the result, it returns an array of deleted elements
 // this is better and stops you making that mistake
-function withMutations<T>(ts: ReadonlyArray<T>, update: (ts: T[]) => void): ReadonlyArray<T> {
+function withMutations<T>(ts: readonly T[], update: (ts: T[]) => void): readonly T[] {
   // shallow clone
-  const lists = ts.slice(0) as Array<T>;
+  const lists = ts.slice(0) as T[];
   update(lists);
-  return lists as ReadonlyArray<T>;
+  return lists as readonly T[];
 }
 
 function updateCards(board: KanbanBoard, listId: number, f: (cards: Card[]) => void) {

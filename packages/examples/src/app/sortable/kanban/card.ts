@@ -4,4 +4,4 @@ export interface Card {
   isCopy?: boolean;
 }
 
-export type Cards = ReadonlyArray<Card>;
+export type Cards = readonly Card[];

@@ -1,11 +1,5 @@
 import { AsyncPipe } from '@angular/common';
-import {
-  ChangeDetectionStrategy,
-  Component,
-  Input,
-  OnDestroy,
-  OnInit
-} from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input, OnDestroy, OnInit } from '@angular/core';
 import { DndModule, DndService } from '@ng-dnd/core';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
@@ -19,7 +13,7 @@ import { TreeService } from './tree.service';
     @if (keys.length === 0) {
       <ul [class.has-children]="anyChildren$ | async">
         @for (c of children$ | async; track tracker($index, c)) {
-          <drilldown-folder [keys]="keys.concat([c])"></drilldown-folder>
+          <drilldown-folder [keys]="keys.concat([c])" />
         }
       </ul>
     } @else {
@@ -29,7 +23,8 @@ import { TreeService } from './tree.service';
         [class.is-over]="isOver$ | async"
         [class.has-children]="anyChildren$ | async"
       >
-        <div [dropTarget]="target" (click)="toggle()">
+        <!-- TODO: use button -->
+        <div [dropTarget]="target" (click)="toggle()" aria-hidden="true">
           @if (anyChildren$ | async) {
             <b>{{ ownKey }} ...</b>
           } @else {
@@ -39,7 +34,7 @@ import { TreeService } from './tree.service';
         @if (isOpen$ | async) {
           <ul [class.root]="keys.length === 0" [class.has-children]="anyChildren$ | async">
             @for (c of children$ | async; track tracker($index, c)) {
-              <drilldown-folder [keys]="keys.concat([c])"></drilldown-folder>
+              <drilldown-folder [keys]="keys.concat([c])" />
             }
           </ul>
         }

@@ -5,7 +5,7 @@ import { ListComponent } from './list.component';
 @Component({
   selector: 'quiz-container',
   template: `
-    <app-example-link path="sortable/quiz"></app-example-link>
+    <app-example-link path="sortable/quiz" />
     <p>
       This example does the same list operations as the 'Simple list' example, but it does them with
       <code>immer</code> just to shake things up.
@@ -19,7 +19,7 @@ import { ListComponent } from './list.component';
       morph as you drag templates over the work area and out again.
     </p>
 
-    <app-external-sortable></app-external-sortable>
+    <app-external-sortable />
   `,
   standalone: true,
   imports: [ExampleLinkComponent, ListComponent],

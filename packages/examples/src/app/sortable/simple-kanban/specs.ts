@@ -3,12 +3,12 @@ import { SortableSpec, DraggedItem } from '@ng-dnd/sortable';
 import { ItemTypes } from './item-types';
 import { produce } from 'immer';
 
-export type CardTree = Array<CardList>;
+export type CardTree = CardList[];
 
 export interface CardList {
   id: number;
   title: string;
-  cards: Array<Card>;
+  cards: Card[];
 }
 
 export interface Card {

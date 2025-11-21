@@ -14,7 +14,7 @@ import { ItemTypes } from './item-types';
             {{ 'dropped' + (hasDroppedOnChild ? ' on child' : '') }}
           </p>
         }
-        <ng-content select="app-nested-targets-dustbin"></ng-content>
+        <ng-content select="app-nested-targets-dustbin" />
       </div>
     }
   `,
@@ -38,7 +38,8 @@ export class DustbinComponent implements OnDestroy {
         return;
       }
 
-      (this.hasDropped = true), (this.hasDroppedOnChild = hasDroppedOnChild);
+      this.hasDropped = true;
+      this.hasDroppedOnChild = hasDroppedOnChild;
     },
   });
 

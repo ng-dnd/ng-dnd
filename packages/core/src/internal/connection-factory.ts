@@ -219,22 +219,18 @@ export class Connection<TMonitor extends DragSourceMonitor | DropTargetMonitor, 
   }
 }
 
-export interface SourceConstructor<Item = unknown, DropResult = unknown> {
-  new (
+export type SourceConstructor<Item = unknown, DropResult = unknown> = new (
     factoryArgs: FactoryArgs<DragSourceMonitor, DragSourceConnector>,
     manager: DragDropManager,
     ngZone: NgZone,
     initialType: string | symbol | undefined
-  ): DragSource<Item, DropResult>;
-}
-export interface TargetConstructor {
-  new (
+  ) => DragSource<Item, DropResult>;
+export type TargetConstructor = new (
     factoryArgs: FactoryArgs<DropTargetMonitor, DropTargetConnector>,
     manager: DragDropManager,
     ngZone: NgZone,
     initialType: TypeOrTypeArray | undefined
-  ): DropTarget;
-}
+  ) => DropTarget;
 
 export const TargetConnection = Connection as TargetConstructor;
 export const SourceConnection = Connection as SourceConstructor;
