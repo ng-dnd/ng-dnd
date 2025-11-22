@@ -334,6 +334,13 @@
   dependencies:
     tslib "^2.3.0"
 
+"@angular/platform-browser-dynamic@^19.2.15":
+  version "19.2.15"
+  resolved "https://registry.yarnpkg.com/@angular/platform-browser-dynamic/-/platform-browser-dynamic-19.2.15.tgz#3fcc613e73d0a4ed8ea768bece6baf7142b884a3"
+  integrity sha512-dKy0SS395FCh8cW9AQ8nf4Wn3XlONaH7z50T1bGxm3eOoRqjxJYyIeIlEbDdJakMz4QPR3dGr81HleZd8TJumQ==
+  dependencies:
+    tslib "^2.3.0"
+
 "@angular/platform-browser@^19.2.15":
   version "19.2.15"
   resolved "https://registry.npmjs.org/@angular/platform-browser/-/platform-browser-19.2.15.tgz"
@@ -10792,9 +10799,9 @@ jest-leak-detector@^29.7.0:
     jest-get-type "^29.6.3"
     pretty-format "^29.7.0"
 
-jest-localstorage-mock@^2.4.19:
+jest-localstorage-mock@^2.4.26:
   version "2.4.26"
-  resolved "https://registry.npmjs.org/jest-localstorage-mock/-/jest-localstorage-mock-2.4.26.tgz"
+  resolved "https://registry.yarnpkg.com/jest-localstorage-mock/-/jest-localstorage-mock-2.4.26.tgz#7d57fb3555f2ed5b7ed16fd8423fd81f95e9e8db"
   integrity sha512-owAJrYnjulVlMIXOYQIPRCCn3MmqI3GzgfZCXdD3/pmwrIvFMXcKVWZ+aMc44IzaASapg0Z4SEFxR+v5qxDA2w==
 
 jest-matcher-utils@^29.7.0:
@@ -10836,7 +10843,7 @@ jest-pnp-resolver@^1.2.2:
   resolved "https://registry.npmjs.org/jest-pnp-resolver/-/jest-pnp-resolver-1.2.3.tgz"
   integrity sha512-+3NpwQEnRoIBtx4fyhblQDPgJI0H1IEIkX7ShLUjPGA7TtUTvI1oiKi3SR4oBR0hQhQR80l4WAe5RrXBwWMA8w==
 
-jest-preset-angular@^14.4.0:
+jest-preset-angular@^14.6.0:
   version "14.6.2"
   resolved "https://registry.yarnpkg.com/jest-preset-angular/-/jest-preset-angular-14.6.2.tgz#1a00058550bfee4746506254a80eaf2690465f34"
   integrity sha512-QWnjfXrnYJX65D+iZXBrdQ0ABHSo6DGvcmL3dGYOdF+V2ZhDlqJwKTmt7nyiOcORPdCL+20P8y+Q1mmnjZTHKQ==
