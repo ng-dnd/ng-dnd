@@ -25,7 +25,6 @@ interface DraggingCard {
 
 @Directive({
   selector: '[cardInner]',
-  standalone: true,
 })
 export class CardInnerDirective {}
 

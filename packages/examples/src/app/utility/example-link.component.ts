@@ -21,7 +21,6 @@ import { Component, Input } from '@angular/core';
       text-decoration: none;
     }
   `,
-  standalone: true,
 })
 export class ExampleLinkComponent {
   @Input() path = '';

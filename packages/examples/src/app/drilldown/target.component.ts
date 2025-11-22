@@ -36,7 +36,6 @@ import { ItemTypes } from './itemTypes';
       background-color: rgba(0, 0, 0, 0.5);
     }
   `,
-  standalone: true,
   imports: [DndModule, AsyncPipe],
 })
 export class TargetComponent implements OnDestroy {
@@ -55,7 +54,7 @@ export class TargetComponent implements OnDestroy {
         return;
       }
 
-      (this.hasDropped = true), (this.hasDroppedOnChild = hasDroppedOnChild);
+      ((this.hasDropped = true), (this.hasDroppedOnChild = hasDroppedOnChild));
     },
   });
 

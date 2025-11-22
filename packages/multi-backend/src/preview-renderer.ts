@@ -31,7 +31,6 @@ import { map } from 'rxjs/operators';
     }
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
-  standalone: true,
   imports: [AsyncPipe],
 })
 export class DndPreviewRenderer implements OnDestroy {

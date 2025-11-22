@@ -36,7 +36,6 @@ import { DndSortable, DndSortableList, ... } from '@ng-dnd/sortable';
 
 @Component({
   // ...,
-  standalone: true,
   imports: [DndSortable, DndSortableList, ...],
 })
 export class AppComponent {}

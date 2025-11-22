@@ -7,7 +7,6 @@ export const EXTERNAL_LIST_ID: symbol = Symbol('EXTERNAL_LIST_ID');
 @Directive({
   selector: '[dndSortableExternal]',
   exportAs: 'dndSortableExternal',
-  standalone: true,
 })
 export class DndSortableExternal<Data> implements OnChanges, OnDestroy {
   @Input('dndSortableExternal') spec!: SortableSpec<Data>;

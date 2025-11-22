@@ -9,7 +9,6 @@ import { Card } from '../card';
     </div>
   `,
   styleUrl: './kanban-card.component.scss',
-  standalone: true,
 })
 export class KanbanCardComponent {
   @Input() card!: Card;

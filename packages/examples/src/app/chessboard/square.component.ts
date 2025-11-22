@@ -13,7 +13,6 @@ import { Component, Input } from '@angular/core';
       text-align: center;
     }
   `,
-  standalone: true,
 })
 export class SquareComponent {
   @Input() black = false;

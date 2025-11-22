@@ -10,7 +10,6 @@ export class NgLetContext {
 
 @Directive({
   selector: '[ngLet]',
-  standalone: true,
 })
 export class NgLetDirective implements OnInit {
   private _context = new NgLetContext();

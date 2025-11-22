@@ -25,7 +25,6 @@ import { Input, Component, ChangeDetectionStrategy } from '@angular/core';
     }
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
-  standalone: true,
 })
 export class TrashComponent {
   @Input() type = '';

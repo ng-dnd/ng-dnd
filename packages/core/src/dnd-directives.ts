@@ -52,7 +52,6 @@ export class AbstractDndDirective implements OnChanges, OnDestroy {
  */
 @Directive({
   selector: '[dropTarget]',
-  standalone: true,
 })
 export class DropTargetDirective extends AbstractDndDirective implements OnChanges {
   protected connection: DropTarget | undefined;
@@ -85,7 +84,6 @@ export class DropTargetDirective extends AbstractDndDirective implements OnChang
 /** Allows you to connect a {@link DragSource} to an element in a component template. */
 @Directive({
   selector: '[dragSource]',
-  standalone: true,
 })
 export class DragSourceDirective extends AbstractDndDirective implements OnChanges {
   protected connection: DragSource<any> | undefined;
@@ -131,7 +129,6 @@ export class DragSourceDirective extends AbstractDndDirective implements OnChang
  */
 @Directive({
   selector: '[dragPreview]',
-  standalone: true,
 })
 export class DragPreviewDirective extends AbstractDndDirective implements OnChanges {
   protected connection: DragSource<any> | undefined;

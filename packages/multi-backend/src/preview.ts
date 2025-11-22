@@ -57,7 +57,6 @@ export interface PreviewTemplateContext {
     }
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
-  standalone: true,
   imports: [AsyncPipe, NgTemplateOutlet, DndPreviewRenderer],
 })
 export class DndPreview implements PreviewListener, OnInit, OnDestroy {

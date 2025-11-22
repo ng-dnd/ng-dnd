@@ -34,7 +34,6 @@ import { DndSortableTemplate, TemplateContext } from './sortable-template';
   changeDetection: ChangeDetectionStrategy.OnPush,
   // allow injecting the directive and getting the component
   providers: [{ provide: DndSortable, useExisting: DndSortableList }],
-  standalone: true,
   imports: [NgTemplateOutlet],
 })
 export class DndSortableList<Data>

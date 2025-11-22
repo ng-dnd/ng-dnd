@@ -17,7 +17,6 @@ import { DraggedItem, HoverTrigger, RenderContext, SortableSpec } from '../types
 @Directive({
   selector: '[dndSortable]',
   exportAs: 'dndSortable',
-  standalone: true,
 })
 export class DndSortable<Data> implements OnChanges, OnInit, AfterViewInit, OnDestroy {
   @Input() listId: any = Math.random().toString();

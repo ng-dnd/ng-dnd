@@ -25,7 +25,6 @@ const _scheduleMicroTaskPolyfill: (f: () => void) => any =
 @Directive({
   selector: '[dndSortableRender]',
   exportAs: 'dndSortableRender',
-  standalone: true,
 })
 export class DndSortableRenderer<Data> implements OnChanges, OnInit, AfterViewInit, OnDestroy {
   @Input('dndSortableRender') context!: RenderContext<Data>;

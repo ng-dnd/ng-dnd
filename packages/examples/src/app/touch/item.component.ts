@@ -11,7 +11,6 @@ import { DndModule, DndService } from '@ng-dnd/core';
       margin: 16px;
     }
   `,
-  standalone: true,
 })
 export class ItemComponent {
   @Input() color = '';

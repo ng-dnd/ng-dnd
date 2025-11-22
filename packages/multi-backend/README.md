@@ -52,7 +52,6 @@ import { DndPreview } from '@ng-dnd/multi-backend';
 
 @Component({
   // ...,
-  standalone: true,
   imports: [DndPreview],
 })
 export class AppComponent {}
@@ -139,9 +138,7 @@ ngOnInit() {
 Simply pass allBackends as true to the preview.
 
 ```html
-<dnd-preview [allBackends]="true">
-  ...
-</dnd-preview>
+<dnd-preview [allBackends]="true"> ... </dnd-preview>
 ```
 
 ## Custom backends and transitions, e.g. supplying options to the `TouchBackend`
