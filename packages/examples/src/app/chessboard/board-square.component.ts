@@ -1,5 +1,5 @@
 import { AsyncPipe } from '@angular/common';
-import { Component, Input, OnDestroy } from '@angular/core';
+import { Component, Input, OnDestroy, inject } from '@angular/core';
 import { DndModule, DndService } from '@ng-dnd/core';
 import { map } from 'rxjs/operators';
 import { ItemTypes } from './constants';
@@ -28,6 +28,9 @@ import { SquareComponent } from './square.component';
   imports: [DndModule, SquareComponent, AsyncPipe],
 })
 export class BoardSquareComponent implements OnDestroy {
+  private dnd = inject(DndService);
+  private game = inject(GameService);
+
   @Input() position!: Coord;
 
   get black() {
@@ -75,11 +78,6 @@ export class BoardSquareComponent implements OnDestroy {
       };
     })
   );
-
-  constructor(
-    private dnd: DndService,
-    private game: GameService
-  ) {}
 
   ngOnDestroy() {
     this.target.unsubscribe();

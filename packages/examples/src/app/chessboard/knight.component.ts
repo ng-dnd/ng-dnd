@@ -1,5 +1,5 @@
 import { AsyncPipe } from '@angular/common';
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit, inject } from '@angular/core';
 import { DndModule, DndService } from '@ng-dnd/core';
 import { ItemTypes } from './constants';
 import { horseImage } from './horseImage';
@@ -11,13 +11,13 @@ import { horseImage } from './horseImage';
   imports: [DndModule, AsyncPipe],
 })
 export class KnightComponent implements OnInit, OnDestroy {
+  private dnd = inject(DndService);
+
   knightSource = this.dnd.dragSource(ItemTypes.KNIGHT, {
     beginDrag: () => ({}),
   });
 
   isDragging$ = this.knightSource.listen(m => m.isDragging());
-
-  constructor(private dnd: DndService) {}
 
   ngOnInit() {
     const img = new Image();

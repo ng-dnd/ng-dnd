@@ -1,5 +1,5 @@
 import { AsyncPipe } from '@angular/common';
-import { ChangeDetectionStrategy, Component, OnDestroy, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnDestroy, OnInit, inject } from '@angular/core';
 import { DndService } from '@ng-dnd/core';
 import { filter, map } from 'rxjs/operators';
 import { BoxDragPreviewComponent } from '../box-drag-preview/box-drag-preview.component';
@@ -41,7 +41,7 @@ interface Offset {
   imports: [BoxDragPreviewComponent, AsyncPipe],
 })
 export class CustomDragLayerComponent implements OnInit, OnDestroy {
-  constructor(private dnd: DndService) {}
+  private dnd = inject(DndService);
 
   dragLayer = this.dnd.dragLayer();
 

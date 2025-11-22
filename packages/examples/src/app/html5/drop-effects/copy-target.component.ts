@@ -1,5 +1,5 @@
 import { AsyncPipe } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { DndModule, DndService } from '@ng-dnd/core';
 import { ItemTypes } from './item-types';
 
@@ -31,10 +31,10 @@ import { ItemTypes } from './item-types';
   imports: [DndModule, AsyncPipe],
 })
 export class CopyTargetComponent {
+  private dnd = inject(DndService);
+
   target = this.dnd.dropTarget(ItemTypes.COPYABLE_ITEM, {});
 
   canDrop$ = this.target.listen(m => m.canDrop());
   over$ = this.target.listen(m => m.isOver() && m.canDrop());
-
-  constructor(private dnd: DndService) {}
 }

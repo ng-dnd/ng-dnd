@@ -1,5 +1,5 @@
 import { AsyncPipe } from '@angular/common';
-import { Component, EventEmitter, Input, Optional, Output } from '@angular/core';
+import { Component, EventEmitter, Input, Output, inject } from '@angular/core';
 import { DndModule } from '@ng-dnd/core';
 import { DndSortableRenderer } from '@ng-dnd/sortable';
 import { MathQuestion, Question } from './Question';
@@ -34,11 +34,12 @@ import { MathFormComponent } from './math-form.component';
   imports: [DndModule, MathFormComponent, AsyncPipe],
 })
 export class SectionComponent {
+  render? = inject<DndSortableRenderer<Question>>(DndSortableRenderer, { optional: true });
+
   @Input() question!: Question;
   @Input() preview = false;
   @Output() edit = new EventEmitter();
   getMathQuestion() {
     return this.question as MathQuestion;
   }
-  constructor(@Optional() public render?: DndSortableRenderer<Question>) {}
 }

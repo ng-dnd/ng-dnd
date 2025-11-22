@@ -1,5 +1,5 @@
 import { AsyncPipe } from '@angular/common';
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { DndModule } from '@ng-dnd/core';
 import { DndSortableModule, NgRxSortable } from '@ng-dnd/sortable';
 import { Store } from '@ngrx/store';
@@ -50,6 +50,9 @@ import { _lifted, _render, _selected } from './store/selectors';
   imports: [DndModule, DndSortableModule, AsyncPipe],
 })
 export class SimpleComponent {
+  private store = inject<Store<unknown>>(Store);
+  private hotkeys = inject(HotkeysService);
+
   rxSpec = new NgRxSortable<Blob>(this.store, ActionTypes.SORT, {
     type: 'BLOB',
     trackBy: x => x.id,
@@ -59,10 +62,7 @@ export class SimpleComponent {
   selected$ = this.store.select(_selected as any);
   lifted$ = this.store.select(_lifted as any);
 
-  constructor(
-    private store: Store<unknown>,
-    private hotkeys: HotkeysService
-  ) {
+  constructor() {
     this.hotkeys.add(
       new Hotkey(
         'enter',

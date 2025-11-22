@@ -1,5 +1,12 @@
 import { AsyncPipe } from '@angular/common';
-import { ChangeDetectionStrategy, Component, Input, OnDestroy, OnInit } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  Input,
+  OnDestroy,
+  OnInit,
+  inject,
+} from '@angular/core';
 import { DndModule, DndService } from '@ng-dnd/core';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
@@ -46,6 +53,9 @@ import { TreeService } from './tree.service';
   imports: [DndModule, AsyncPipe],
 })
 export class FolderComponent implements OnInit, OnDestroy {
+  tree = inject(TreeService);
+  private dnd = inject(DndService);
+
   @Input() keys: string[] = [];
 
   get ownKey() {
@@ -76,11 +86,6 @@ export class FolderComponent implements OnInit, OnDestroy {
   });
 
   isOver$ = this.target.listen(m => m.isOver() && m.canDrop());
-
-  constructor(
-    public tree: TreeService,
-    private dnd: DndService
-  ) {}
 
   ngOnInit() {
     this.children$ = this.tree.getChildren(this.keys);

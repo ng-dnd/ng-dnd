@@ -1,5 +1,5 @@
 import { AsyncPipe } from '@angular/common';
-import { Component, Input, OnChanges, OnDestroy } from '@angular/core';
+import { Component, Input, OnChanges, OnDestroy, inject } from '@angular/core';
 import { DndModule, DndService } from '@ng-dnd/core';
 import { TrashComponent } from './trash.component';
 
@@ -23,6 +23,8 @@ import { TrashComponent } from './trash.component';
   imports: [DndModule, TrashComponent, AsyncPipe],
 })
 export class TrashPileComponent implements OnChanges, OnDestroy {
+  private dnd = inject(DndService);
+
   @Input() type = '';
   remain = 5;
   count = 0;
@@ -64,8 +66,6 @@ export class TrashPileComponent implements OnChanges, OnDestroy {
   //   {{coll.itemType || 'not dragging' }}
   //   more content
   // </ng-container>
-
-  constructor(private dnd: DndService) {}
 
   ngOnChanges() {
     this.trashSource.setType(this.type);

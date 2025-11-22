@@ -1,5 +1,5 @@
 import { AsyncPipe } from '@angular/common';
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { ExampleLinkComponent } from '@app/utility/example-link.component';
 import { Store, createSelector } from '@ngrx/store';
 import { NextMonth, PrevMonth } from 'app/calendar/store/calendar.actions';
@@ -19,9 +19,9 @@ const monthSelector = createSelector(startDateSelector, startDate => {
   imports: [ExampleLinkComponent, CalendarComponent, AsyncPipe],
 })
 export class CalendarContainerComponent {
-  month$ = this.store.select(monthSelector);
+  private store = inject<Store<State>>(Store);
 
-  constructor(private store: Store<State>) {}
+  month$ = this.store.select(monthSelector);
 
   prevMonth() {
     this.store.dispatch(new PrevMonth());

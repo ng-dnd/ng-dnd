@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, OnDestroy, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnDestroy, Output, inject } from '@angular/core';
 import { DndModule, DndService, Offset } from '@ng-dnd/core';
 import { CustomDragLayerComponent } from '../custom-drag-layer/custom-drag-layer.component';
 import { snapToGrid } from '../custom-drag-layer/snapToGrid';
@@ -27,6 +27,8 @@ import { Spot } from '../spot';
   imports: [DndModule, DraggableBoxComponent, CustomDragLayerComponent],
 })
 export class DragContainerComponent implements OnDestroy {
+  private dnd = inject(DndService);
+
   @Input() x = 50;
   @Input() y = 100;
 
@@ -54,7 +56,7 @@ export class DragContainerComponent implements OnDestroy {
 
   boxTarget = this.dnd.dropTarget('BOX', {});
 
-  constructor(private dnd: DndService) {
+  constructor() {
     this.incrementPx = 25;
   }
 

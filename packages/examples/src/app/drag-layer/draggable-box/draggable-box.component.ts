@@ -1,5 +1,12 @@
 import { AsyncPipe } from '@angular/common';
-import { ChangeDetectionStrategy, Component, Input, OnDestroy, OnInit } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  Input,
+  OnDestroy,
+  OnInit,
+  inject,
+} from '@angular/core';
 import { DndModule, DndService } from '@ng-dnd/core';
 import { getEmptyImage } from 'react-dnd-html5-backend';
 import { BoxWithLocation } from '../BoxWithLocation';
@@ -16,6 +23,8 @@ import { BoxComponent } from '../box.component';
   imports: [DndModule, BoxComponent, AsyncPipe],
 })
 export class DraggableBoxComponent implements OnInit, OnDestroy {
+  private dnd = inject(DndService);
+
   @Input() id!: number;
   @Input() title!: string;
   @Input() left!: number;
@@ -29,8 +38,6 @@ export class DraggableBoxComponent implements OnInit, OnDestroy {
   });
 
   isDragging$ = this.source.listen(m => m.isDragging());
-
-  constructor(private dnd: DndService) {}
 
   ngOnInit() {
     this.source.connectDragPreview(getEmptyImage(), {

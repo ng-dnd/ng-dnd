@@ -10,6 +10,7 @@ import {
   OnDestroy,
   Output,
   TemplateRef,
+  inject,
 } from '@angular/core';
 import { DndModule, DndService } from '@ng-dnd/core';
 
@@ -58,6 +59,9 @@ export class CardInnerDirective {}
   imports: [DndModule, NgTemplateOutlet, AsyncPipe],
 })
 export class CardComponent implements OnDestroy {
+  private elRef = inject(ElementRef);
+  private dnd = inject(DndService);
+
   @Output() beginDrag: EventEmitter<void> = new EventEmitter<void>();
   @Output() endDrag = new EventEmitter<boolean>();
   @Output() handleMove = new EventEmitter<[number, number]>();
@@ -136,11 +140,6 @@ export class CardComponent implements OnDestroy {
   isDragging$ = this.cardSource.listen(m => m.isDragging());
 
   opacity$ = this.cardSource.listen(monitor => (monitor.isDragging() ? 0.2 : 1));
-
-  constructor(
-    private elRef: ElementRef,
-    private dnd: DndService
-  ) {}
 
   moveCard(a: number, b: number) {
     this.handleMove.emit([a, b]);

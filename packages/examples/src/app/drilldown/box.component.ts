@@ -1,5 +1,5 @@
 import { AsyncPipe } from '@angular/common';
-import { Component, EventEmitter, OnDestroy, Output } from '@angular/core';
+import { Component, EventEmitter, OnDestroy, Output, inject } from '@angular/core';
 import { DndModule, DndService } from '@ng-dnd/core';
 import { ItemTypes } from './itemTypes';
 
@@ -21,6 +21,8 @@ import { ItemTypes } from './itemTypes';
   imports: [DndModule, AsyncPipe],
 })
 export class BoxComponent implements OnDestroy {
+  private dnd = inject(DndService);
+
   @Output() beginDrag = new EventEmitter<void>();
   @Output() endDrag = new EventEmitter<void>();
 
@@ -35,8 +37,6 @@ export class BoxComponent implements OnDestroy {
   });
 
   opacity = this.source.listen(m => (m.isDragging() ? 0.4 : 1));
-
-  constructor(private dnd: DndService) {}
 
   ngOnDestroy() {
     this.source.unsubscribe();

@@ -1,5 +1,5 @@
 import { AsyncPipe } from '@angular/common';
-import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnInit, inject } from '@angular/core';
 import { Store, select } from '@ngrx/store';
 import { CalendarState } from 'app/calendar/store/calendar.reducer';
 import { Week } from 'app/calendar/week';
@@ -17,9 +17,9 @@ import { CalendarDayComponent } from './day.component';
   imports: [CalendarDayComponent, AsyncPipe],
 })
 export class CalendarComponent implements OnInit {
-  weeks$ = this.store.pipe(select(weeksSelector)) as Observable<any>;
+  private store = inject<Store<CalendarState>>(Store);
 
-  constructor(private store: Store<CalendarState>) {}
+  weeks$ = this.store.pipe(select(weeksSelector)) as Observable<any>;
 
   trackWeek(_: number, week: Week) {
     return week.uniqueId;

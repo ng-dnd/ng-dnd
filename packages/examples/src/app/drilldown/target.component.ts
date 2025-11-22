@@ -1,5 +1,5 @@
 import { AsyncPipe } from '@angular/common';
-import { Component, Input, OnDestroy } from '@angular/core';
+import { Component, Input, OnDestroy, inject } from '@angular/core';
 import { DndModule, DndService } from '@ng-dnd/core';
 import { ItemTypes } from './itemTypes';
 
@@ -39,6 +39,8 @@ import { ItemTypes } from './itemTypes';
   imports: [DndModule, AsyncPipe],
 })
 export class TargetComponent implements OnDestroy {
+  private dnd = inject(DndService);
+
   @Input() greedy = false;
 
   hasDropped = false;
@@ -72,8 +74,6 @@ export class TargetComponent implements OnDestroy {
       return 'darkgreen';
     }
   }
-
-  constructor(private dnd: DndService) {}
 
   ngOnDestroy() {
     this.target.unsubscribe();

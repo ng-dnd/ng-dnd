@@ -1,5 +1,5 @@
 import { AsyncPipe } from '@angular/common';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
 import { DndModule, DndService } from '@ng-dnd/core';
 
 @Component({
@@ -8,6 +8,8 @@ import { DndModule, DndService } from '@ng-dnd/core';
   imports: [DndModule, AsyncPipe],
 })
 export class TestComponent implements OnInit {
+  private dnd = inject(DndService);
+
   dropped = false;
   endDrag = false;
 
@@ -27,8 +29,6 @@ export class TestComponent implements OnInit {
   });
 
   isDragging$ = this.source.listen(m => m.isDragging());
-
-  constructor(private dnd: DndService) {}
 
   ngOnInit() {}
 }

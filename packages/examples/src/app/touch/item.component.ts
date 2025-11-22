@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, inject } from '@angular/core';
 import { DndModule, DndService } from '@ng-dnd/core';
 
 @Component({
@@ -32,9 +32,10 @@ export class ItemComponent {
   imports: [DndModule, ItemComponent],
 })
 export class DraggableItemComponent {
+  private dnd = inject(DndService);
+
   @Input() color = '';
   itemSource = this.dnd.dragSource('ITEM', {
     beginDrag: () => ({ color: this.color }),
   });
-  constructor(private dnd: DndService) {}
 }

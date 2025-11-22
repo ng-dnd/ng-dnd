@@ -7,6 +7,7 @@ import {
   OnDestroy,
   OnInit,
   Output,
+  inject,
 } from '@angular/core';
 import { DndModule, DndService } from '@ng-dnd/core';
 import { getEmptyImage } from 'react-dnd-html5-backend';
@@ -51,6 +52,8 @@ import { SpotComponent } from '../spot.component';
   imports: [DndModule, SpotComponent, CrosshairsComponent, AsyncPipe],
 })
 export class DraggableBoxComponent implements OnInit, OnDestroy {
+  private dnd = inject(DndService);
+
   @Input() spot!: Spot;
   @Output() endDrag = new EventEmitter<Spot>();
 
@@ -67,8 +70,6 @@ export class DraggableBoxComponent implements OnInit, OnDestroy {
   });
 
   isDragging$ = this.source.listen(m => m.isDragging());
-
-  constructor(private dnd: DndService) {}
 
   ngOnInit() {
     this.source.connectDragPreview(getEmptyImage(), {

@@ -1,5 +1,5 @@
 import { AsyncPipe } from '@angular/common';
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit, inject } from '@angular/core';
 import { DndModule, DndService } from '@ng-dnd/core';
 import { ItemTypes } from './item-types';
 
@@ -23,13 +23,13 @@ import { ItemTypes } from './item-types';
   imports: [DndModule, AsyncPipe],
 })
 export class CustomPreviewComponent implements OnInit, OnDestroy {
+  private dnd = inject(DndService);
+
   source = this.dnd.dragSource(ItemTypes.BOX, {
     beginDrag: () => ({}),
   });
 
   opacity$ = this.source.listen(m => (m.isDragging() ? 0.4 : 1));
-
-  constructor(private dnd: DndService) {}
 
   ngOnInit() {
     const img = new Image();

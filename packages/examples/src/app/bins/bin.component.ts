@@ -1,5 +1,5 @@
 import { AsyncPipe, JsonPipe } from '@angular/common';
-import { Component, Input, OnDestroy, OnInit } from '@angular/core';
+import { Component, Input, OnDestroy, OnInit, inject } from '@angular/core';
 import { DndModule, DndService } from '@ng-dnd/core';
 
 @Component({
@@ -25,6 +25,8 @@ import { DndModule, DndService } from '@ng-dnd/core';
   imports: [DndModule, AsyncPipe, JsonPipe],
 })
 export class BinComponent implements OnInit, OnDestroy {
+  private dnd = inject(DndService);
+
   @Input() name = '';
   @Input() accepts: string[] = ['TRASH'];
   trashes: string[] = [];
@@ -50,8 +52,6 @@ export class BinComponent implements OnInit, OnDestroy {
     canDrop: m.canDrop(),
     itemType: m.getItemType() as string, // TODO: type
   }));
-
-  constructor(private dnd: DndService) {}
 
   getStyles({ isOver, canDrop }: { isOver: boolean; canDrop: boolean }) {
     return {

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { DndModule } from '@ng-dnd/core';
 import { DndSortableModule, SortableSpec } from '@ng-dnd/sortable';
 import { Card } from './card';
@@ -29,6 +29,8 @@ import { SortableSpecService } from './specs';
   imports: [KanbanCardComponent, DndSortableModule, DndModule],
 })
 export class KanbanExternalComponent {
+  private specs = inject(SortableSpecService);
+
   ItemTypes = ItemTypes;
 
   // create some dummy data to pass to kanban-card
@@ -57,6 +59,4 @@ export class KanbanExternalComponent {
       };
     },
   };
-
-  constructor(private specs: SortableSpecService) {}
 }

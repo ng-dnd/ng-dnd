@@ -1,4 +1,4 @@
-import { Component, OnDestroy } from '@angular/core';
+import { Component, OnDestroy, inject } from '@angular/core';
 import { DndModule, DndService } from '@ng-dnd/core';
 import { DndMultiBackendModule } from '@ng-dnd/multi-backend';
 import { DndSortableModule, DraggedItem, SortableSpec, spillTarget } from '@ng-dnd/sortable';
@@ -20,7 +20,8 @@ import { SectionComponent } from './section.component';
   ],
 })
 export class ListComponent implements OnDestroy {
-  constructor(private dnd: DndService) {}
+  private dnd = inject(DndService);
+
   // on hover, this will swap out the hover.listId
   // so our <dnd-preview> knows when to morph back
   spill = spillTarget<Question>(this.dnd, 'QUIZ_QUESTION', {

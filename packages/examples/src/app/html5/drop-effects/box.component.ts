@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, EventEmitter, Input, Output, inject } from '@angular/core';
 import { DndModule, DndService } from '@ng-dnd/core';
 import { ItemTypes } from './item-types';
 
@@ -25,6 +25,8 @@ interface DropResult {
   imports: [DndModule],
 })
 export class BoxComponent {
+  private dnd = inject(DndService);
+
   @Output() dropped = new EventEmitter<string>();
   @Input() force?: any;
 
@@ -37,6 +39,4 @@ export class BoxComponent {
       }
     },
   });
-
-  constructor(private dnd: DndService) {}
 }

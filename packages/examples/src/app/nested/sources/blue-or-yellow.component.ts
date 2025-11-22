@@ -1,5 +1,5 @@
 import { AsyncPipe } from '@angular/common';
-import { Component, Input, OnDestroy } from '@angular/core';
+import { Component, Input, OnDestroy, inject } from '@angular/core';
 import { DndModule, DndService } from '@ng-dnd/core';
 import { Colors } from './colors';
 
@@ -35,6 +35,8 @@ import { Colors } from './colors';
   imports: [DndModule, AsyncPipe],
 })
 export class BlueOrYellowComponent implements OnDestroy {
+  private dnd = inject(DndService);
+
   Colors = Colors;
 
   backgroundColor = '';
@@ -62,8 +64,6 @@ export class BlueOrYellowComponent implements OnDestroy {
   toggle() {
     this.forbid = !this.forbid;
   }
-
-  constructor(private dnd: DndService) {}
 
   ngOnDestroy() {
     this.source.unsubscribe();

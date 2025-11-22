@@ -1,5 +1,5 @@
 import { AsyncPipe } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { ExampleLinkComponent } from '@app/utility/example-link.component';
 import { NgLetDirective } from '@app/utility/ngLet.directive';
 import { BoxComponent } from './box.component';
@@ -35,9 +35,9 @@ import { TreeService } from './tree.service';
   imports: [ExampleLinkComponent, NgLetDirective, BoxComponent, FolderComponent, AsyncPipe],
 })
 export class ContainerComponent {
-  lastDrop$ = this.tree.select(s => s.lastDrop);
+  private tree = inject(TreeService);
 
-  constructor(private tree: TreeService) {}
+  lastDrop$ = this.tree.select(s => s.lastDrop);
 
   beginDrag() {
     this.tree.beginDrag();

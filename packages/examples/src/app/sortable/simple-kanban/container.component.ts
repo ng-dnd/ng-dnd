@@ -4,6 +4,7 @@ import {
   Component,
   ElementRef,
   OnDestroy,
+  inject,
 } from '@angular/core';
 import { ExampleLinkComponent } from '@app/utility/example-link.component';
 import { DndService } from '@ng-dnd/core';
@@ -20,6 +21,9 @@ import { Card } from './specs';
   imports: [ExampleLinkComponent, KanbanBoardComponent],
 })
 export class ContainerComponent implements AfterViewInit, OnDestroy {
+  private dnd = inject(DndService);
+  private el = inject(ElementRef);
+
   // this emits a 'hover' only once when you move over the spill area
   // and again if you move over another drop target and come back.
   // note: uses isOver({shallow:true}), so you can stack other targets on top
@@ -30,11 +34,6 @@ export class ContainerComponent implements AfterViewInit, OnDestroy {
     // can also add a drop method, useful for 'remove on spill' functionality
     // drop: item => this.store.dispatch(new RemoveCard(item))
   });
-
-  constructor(
-    private dnd: DndService,
-    private el: ElementRef
-  ) {}
 
   ngAfterViewInit() {
     // spill = anywhere in this container component

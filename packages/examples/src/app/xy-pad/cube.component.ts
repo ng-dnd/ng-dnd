@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, EventEmitter, Input, Output, inject } from '@angular/core';
 import { DndModule, DndService } from '@ng-dnd/core';
 import { Spot } from './spot';
 
@@ -68,6 +68,8 @@ import { Spot } from './spot';
   imports: [DndModule],
 })
 export class CubeComponent {
+  private dnd = inject(DndService);
+
   @Input() transform = '';
   @Input() x!: number;
   @Input() y!: number;
@@ -80,5 +82,4 @@ export class CubeComponent {
       this.endDrag.emit();
     },
   });
-  constructor(private dnd: DndService) {}
 }

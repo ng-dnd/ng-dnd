@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { DndMultiBackendModule } from '@ng-dnd/multi-backend';
 import { DndSortableModule, DraggedItem, HoverTrigger } from '@ng-dnd/sortable';
 import { Store } from '@ngrx/store';
@@ -26,13 +26,11 @@ import { TrashCanComponent } from '../trash-can.component';
   ],
 })
 export class KanbanBoardComponent {
+  private store = inject<Store<unknown>>(Store);
+  specs = inject(SortableSpecService);
+
   ItemTypes = ItemTypes;
   hoverTrigger = HoverTrigger.fixed;
-
-  constructor(
-    private store: Store<unknown>,
-    public specs: SortableSpecService
-  ) {}
 
   addCard(listId: number, title: string) {
     this.store.dispatch(new AddCard(listId, title));

@@ -1,5 +1,5 @@
 import { AsyncPipe } from '@angular/common';
-import { ChangeDetectionStrategy, Component, EventEmitter, Output } from '@angular/core';
+import { ChangeDetectionStrategy, Component, EventEmitter, Output, inject } from '@angular/core';
 import { DndModule, DndService } from '@ng-dnd/core';
 import { DraggedItem } from '@ng-dnd/sortable';
 import { Card } from './card';
@@ -48,6 +48,8 @@ import { ItemTypes } from './item-types';
   imports: [DndModule, AsyncPipe],
 })
 export class TrashCanComponent {
+  private dnd = inject(DndService);
+
   @Output() dropped = new EventEmitter<DraggedItem<Card>>();
 
   target = this.dnd.dropTarget<DraggedItem<Card>>(ItemTypes.CARD, {
@@ -63,8 +65,6 @@ export class TrashCanComponent {
     item: m.getItem(),
     isOver: m.isOver() && m.canDrop(),
   }));
-
-  constructor(private dnd: DndService) {}
 
   getStyle(isOver: boolean, item: DraggedItem<Card>) {
     if (!isOver || !item) {

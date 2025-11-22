@@ -1,5 +1,5 @@
 import { AsyncPipe } from '@angular/common';
-import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input, inject } from '@angular/core';
 import { DndModule, DndService, DragSourceSpec } from '@ng-dnd/core';
 import { Store, createSelector } from '@ngrx/store';
 import { State } from 'app/reducers';
@@ -16,6 +16,9 @@ import { BeginDragExistingEvent, EndDragExistingEvent } from '../store/calendar.
   imports: [DndModule, AsyncPipe],
 })
 export class CalendarEventComponent {
+  private dnd = inject(DndService);
+  private store = inject<Store<State>>(Store);
+
   @Input() event!: CalendarEvent;
   @Input() draggingNew = false;
   @Input() day!: Date;
@@ -65,9 +68,4 @@ export class CalendarEventComponent {
       },
     };
   }
-
-  constructor(
-    private dnd: DndService,
-    private store: Store<State>
-  ) {}
 }

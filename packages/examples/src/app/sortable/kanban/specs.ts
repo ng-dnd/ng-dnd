@@ -1,4 +1,4 @@
-import { Injectable, OnDestroy } from '@angular/core';
+import { Injectable, OnDestroy, inject } from '@angular/core';
 import { NgRxSortable } from '@ng-dnd/sortable';
 import { KanbanList } from './lists';
 import { Card } from './card';
@@ -9,6 +9,8 @@ import { filter } from 'rxjs/operators';
 
 @Injectable()
 export class SortableSpecService implements OnDestroy {
+  store = inject<Store<unknown>>(Store);
+
   // These specs will pull data from our store with the provided getList
   // functions. Then they will fire actions on this.store with the type
   // provided, which we handle above.
@@ -68,8 +70,6 @@ export class SortableSpecService implements OnDestroy {
       return ground.id === flyingId;
     },
   });
-
-  constructor(public store: Store<unknown>) {}
 
   // usually services don't get destroyed, but if it is, we will be ON IT.
   ngOnDestroy() {

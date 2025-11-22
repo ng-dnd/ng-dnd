@@ -5,8 +5,8 @@ import {
   EventEmitter,
   Input,
   OnInit,
-  Optional,
   Output,
+  inject,
 } from '@angular/core';
 import { DndModule } from '@ng-dnd/core';
 import { DndSortableModule, DndSortableRenderer } from '@ng-dnd/sortable';
@@ -24,6 +24,12 @@ import { SortableSpecService } from '../specs';
   imports: [DndModule, DndSortableModule, KanbanCardComponent, AddCardComponent, AsyncPipe],
 })
 export class KanbanListComponent implements OnInit {
+  // You can inject any attached directives in a component
+  // - When in the <dnd-preview>, the directive isn't attached, so make it @Optional()
+  // - Also must be public if you're using it in your template, until the Ivy renderer lands
+  specs = inject(SortableSpecService);
+  render? = inject<DndSortableRenderer<KanbanList>>(DndSortableRenderer, { optional: true });
+
   @Input() list!: KanbanList;
   @Input() preview = false;
   @Output() addCard = new EventEmitter<string>();
@@ -32,14 +38,6 @@ export class KanbanListComponent implements OnInit {
   // there is a shortcut for m.isDragging() for use in a template, called render?.isDragging$
   placeholder$ = this.render && this.render.source.listen(m => m.isDragging());
   isOver$ = this.render && this.render.target.listen(m => m.canDrop() && m.isOver());
-
-  // You can inject any attached directives in a component
-  // - When in the <dnd-preview>, the directive isn't attached, so make it @Optional()
-  // - Also must be public if you're using it in your template, until the Ivy renderer lands
-  constructor(
-    public specs: SortableSpecService,
-    @Optional() public render?: DndSortableRenderer<KanbanList>
-  ) {}
 
   ngOnInit() {}
 

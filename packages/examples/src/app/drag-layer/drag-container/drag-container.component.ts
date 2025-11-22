@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit, inject } from '@angular/core';
 import { DndModule, DndService } from '@ng-dnd/core';
 import { BoxWithLocation } from '../BoxWithLocation';
 import { DraggableBoxComponent } from '../draggable-box/draggable-box.component';
@@ -13,6 +13,8 @@ import { DraggableBoxComponent } from '../draggable-box/draggable-box.component'
   imports: [DndModule, DraggableBoxComponent],
 })
 export class DragContainerComponent implements OnInit, OnDestroy {
+  private dnd = inject(DndService);
+
   x = 30;
   y = 90;
 
@@ -34,8 +36,6 @@ export class DragContainerComponent implements OnInit, OnDestroy {
       this.moveBox(item.id, item.left + delta.x, item.top + delta.y);
     },
   });
-
-  constructor(private dnd: DndService) {}
 
   moveBox(id: any, x: number, y: number) {
     this.x = x;

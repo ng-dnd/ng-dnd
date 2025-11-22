@@ -8,6 +8,7 @@ import {
   Input,
   OnDestroy,
   Output,
+  inject,
 } from '@angular/core';
 import { DndService, Offset } from '@ng-dnd/core';
 import { filter, map } from 'rxjs/operators';
@@ -48,6 +49,9 @@ interface Collected {
   imports: [CrosshairsComponent, BoxDragPreviewComponent, AsyncPipe],
 })
 export class CustomDragLayerComponent implements AfterViewInit, OnDestroy {
+  private dnd = inject(DndService);
+  private el = inject(ElementRef);
+
   @Input() snapToGrid = false;
 
   snappingFunction = snapToGrid(32);
@@ -82,11 +86,6 @@ export class CustomDragLayerComponent implements AfterViewInit, OnDestroy {
     map(c => this.getCrosshairStyles(c)),
     filter(a => a != null)
   );
-
-  constructor(
-    private dnd: DndService,
-    private el: ElementRef
-  ) {}
 
   absToRelative(abs: Offset): Offset {
     return abs && minus(abs, this.rect);

@@ -1,5 +1,5 @@
 import { AsyncPipe } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { BoardSquareComponent } from './board-square.component';
 import { GameService } from './game.service';
 import { KnightComponent } from './knight.component';
@@ -34,11 +34,11 @@ import { KnightComponent } from './knight.component';
   imports: [BoardSquareComponent, KnightComponent, AsyncPipe],
 })
 export class BoardComponent {
+  private game = inject(GameService);
+
   sixtyFour = new Array(64).fill(0).map((_, i) => i);
 
   knightPosition$ = this.game.knightPosition$;
-
-  constructor(private game: GameService) {}
 
   xy(i: number) {
     return {

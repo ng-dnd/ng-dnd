@@ -1,5 +1,5 @@
 import { AsyncPipe } from '@angular/common';
-import { Component, OnDestroy } from '@angular/core';
+import { Component, OnDestroy, inject } from '@angular/core';
 import { DndModule, DndService } from '@ng-dnd/core';
 import { map } from 'rxjs/operators';
 import { Colors } from './colors';
@@ -39,6 +39,8 @@ import { Colors } from './colors';
   imports: [DndModule, AsyncPipe],
 })
 export class TargetBoxComponent implements OnDestroy {
+  private dnd = inject(DndService);
+
   Colors = Colors;
 
   lastDroppedColor = '';
@@ -53,8 +55,6 @@ export class TargetBoxComponent implements OnDestroy {
   canDrop$ = this.target.listen(m => m.canDrop());
   fade$ = this.target.listen(m => m.canDrop() && !m.isOver());
   draggingColor$ = this.target.listen(m => m.getItemType()).pipe(map(t => this.cssColor(t!)));
-
-  constructor(private dnd: DndService) {}
 
   cssColor(c: string | symbol) {
     switch (c) {

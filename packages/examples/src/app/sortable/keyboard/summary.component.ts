@@ -1,5 +1,5 @@
 import { AsyncPipe } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { State } from './store/reducer';
 import { _overallHash, _unstableHash } from './store/selectors';
@@ -16,7 +16,8 @@ import { _overallHash, _unstableHash } from './store/selectors';
   imports: [AsyncPipe],
 })
 export class SummaryComponent {
+  private store = inject<Store<State>>(Store);
+
   unstable$ = this.store.select(_unstableHash);
   stable$ = this.store.select(_overallHash);
-  constructor(private store: Store<State>) {}
 }

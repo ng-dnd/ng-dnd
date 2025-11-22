@@ -8,6 +8,7 @@ import {
   OnDestroy,
   OnInit,
   ViewChild,
+  inject,
 } from '@angular/core';
 import { DndModule, DndService } from '@ng-dnd/core';
 import { Store, createSelector } from '@ngrx/store';
@@ -71,6 +72,9 @@ import { CalendarEventComponent } from './event.component';
   imports: [DndModule, CalendarEventComponent, AsyncPipe],
 })
 export class CalendarDayComponent implements OnInit, OnDestroy, AfterViewInit {
+  private dnd = inject(DndService);
+  private store = inject<Store<State>>(Store);
+
   @Input() day!: Date;
 
   today!: Date;
@@ -157,11 +161,6 @@ export class CalendarDayComponent implements OnInit, OnDestroy, AfterViewInit {
   subs = new Subscription();
   forceStart$ = new Subject<void>();
   forceThreshold$ = new Subject<void>();
-
-  constructor(
-    private dnd: DndService,
-    private store: Store<State>
-  ) {}
 
   intradayEvent() {
     this.store.dispatch(
