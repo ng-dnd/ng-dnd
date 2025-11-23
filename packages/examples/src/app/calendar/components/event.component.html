@@ -1,14 +1,15 @@
-<div class="event"
+<div
+  class="event"
   [style]="{ 'grid-column-end': 'span ' + span }"
-  [class.event--pointernone]="event.temp || (draggingEvent$|async)"
+  [class.event--pointernone]="event.temp || (draggingEvent$ | async)"
   [class.event--allday]="event.isAllDay"
-  [class.event--drag]="event.temp || (draggingEvent$|async)"
+  [class.event--drag]="event.temp || (draggingEvent$ | async)"
   [class.event--start]="event.startsThisWeek(day)"
   [class.event--end]="event.endsThisWeek(day)"
   [title]="event.title"
   [dragSource]="source"
-  [noHTML5Preview]="true">
-
+  [noHTML5Preview]="true"
+>
   @if (event.isAllDay && event.startsThisWeek(day)) {
     <div class="event-handle event-handle--left" [dragSource]="resizeStart"></div>
   }

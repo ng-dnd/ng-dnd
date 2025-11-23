@@ -1,15 +1,15 @@
-<div class="list"
+<div
+  class="list"
   [class.list--preview]="preview"
-  [class.list--placeholder]="render?.isDragging$ | async">
-
+  [class.list--placeholder]="render?.isDragging$ | async"
+>
   <!-- Attach to the h3 as a drag handle.
   The ItemTypes.LIST provided on the board component is applied automatically.
   If render?.source is null, the dragSource directive does nothing.
   -->
   <div class="handle" [dragSource]="render?.source!" [noHTML5Preview]="true">
-    <h3>{{list.title}}</h3>
+    <h3>{{ list.title }}</h3>
   </div>
-
 
   <!-- TODO: note that .cards-container has a min-height so you can hover/drop
   even when it's empty -->
@@ -27,25 +27,26 @@
   double drop events!
   -->
 
-  <dnd-sortable-list class="cards-container"
+  <dnd-sortable-list
+    class="cards-container"
     [spec]="specs.listSpec"
     [children]="list.cards"
-    [listId]="list.id">
-
+    [listId]="list.id"
+  >
     <ng-template dndSortableTemplate let-context>
-      <kanban-card [dndSortableRender]="context"
+      <kanban-card
+        [dndSortableRender]="context"
         #render="dndSortableRender"
         [dragSource]="render.source"
         [card]="context.data"
         [noHTML5Preview]="true"
-        [placeholder]="!!(render.isDragging$|async)">
-        <!-- This time, we aren't doing drag handles, so we just attached
-        render.source directly to kanban-card by pulling #render out.
-        You can do it whichever way suits.
-        -->
-      </kanban-card>
+        [placeholder]="!!(render.isDragging$ | async)"
+      />
+      <!-- This time, we aren't doing drag handles, so we just attached
+      render.source directly to kanban-card by pulling #render out.
+      You can do it whichever way suits.
+      -->
     </ng-template>
-
   </dnd-sortable-list>
 
   <!-- A simple version for when we're dragging -->

@@ -28,7 +28,7 @@ export class KanbanListComponent implements OnInit {
   // - When in the <dnd-preview>, the directive isn't attached, so make it @Optional()
   // - Also must be public if you're using it in your template, until the Ivy renderer lands
   specs = inject(SortableSpecService);
-  render? = inject<DndSortableRenderer<KanbanList>>(DndSortableRenderer, { optional: true });
+  render = inject<DndSortableRenderer<KanbanList>>(DndSortableRenderer, { optional: true });
 
   @Input() list!: KanbanList;
   @Input() preview = false;

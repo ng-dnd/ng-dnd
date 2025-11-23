@@ -34,7 +34,7 @@ import { MathFormComponent } from './math-form.component';
   imports: [DndModule, MathFormComponent, AsyncPipe],
 })
 export class SectionComponent {
-  render? = inject<DndSortableRenderer<Question>>(DndSortableRenderer, { optional: true });
+  render = inject<DndSortableRenderer<Question>>(DndSortableRenderer, { optional: true });
 
   @Input() question!: Question;
   @Input() preview = false;

@@ -3,7 +3,7 @@
     @switch (type) {
       @case ('PRIORITY') {
         <div class="priority" [style]="item.size.style()">
-          <pre>{{item.index+1}}. {{ item.data.name }}</pre>
+          <pre>{{ item.index + 1 }}. {{ item.data.name }}</pre>
         </div>
       }
     }
@@ -16,13 +16,16 @@
   <dnd-sortable-list listId="simple-demo" [children]="tempList" [spec]="simpleSpec">
     <ng-template dndSortableTemplate let-context>
       <!-- dndSortableRender configures a DragSource for you, but you have to attach it. -->
-      <div class="priority"
+      <div
+        class="priority"
         [dndSortableRender]="context"
         #render="dndSortableRender"
-        [class.priority--placeholder]="render.isDragging$|async"
-        [dragSource]="render.source" [noHTML5Preview]="true">
+        [class.priority--placeholder]="render.isDragging$ | async"
+        [dragSource]="render.source"
+        [noHTML5Preview]="true"
+      >
         <!-- <<< attached here! -->
-        <pre>{{render.index+1}}. {{ render.data.name }}</pre>
+        <pre>{{ render.index + 1 }}. {{ render.data.name }}</pre>
       </div>
     </ng-template>
   </dnd-sortable-list>

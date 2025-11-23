@@ -4,7 +4,9 @@
     100
   ],
   "html.format.wrapLineLength": 100,
-  "html.format.wrapAttributes": "preserve-aligned",
+  "[html]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
   "[javascript]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },

@@ -25,9 +25,13 @@
     <h3>Drag templates</h3>
     <div class="templates-flex">
       @for (qt of questionTemplates; track qt) {
-        <div class="external"
-          [dndSortableExternal]="qt.spec" #ext="dndSortableExternal"
-          [dragSource]="ext.source" [noHTML5Preview]="true">
+        <div
+          class="external"
+          [dndSortableExternal]="qt.spec"
+          #ext="dndSortableExternal"
+          [dragSource]="ext.source"
+          [noHTML5Preview]="true"
+        >
           {{ qt.description }}
         </div>
       }
@@ -37,11 +41,14 @@
   <div class="work-area">
     <h3>...into here; edit them</h3>
     <dnd-sortable-list class="list" listId="WORK_AREA" [spec]="spec" [children]="tempList">
-      <quiz-section [style.display]="'block'"
+      <quiz-section
+        [style.display]="'block'"
         *dndSortableTemplate="let context"
         [dndSortableRender]="context"
         #r="dndSortableRender"
-        [question]="r.data" (edit)="edit($event)" />
+        [question]="r.data"
+        (edit)="edit($event)"
+      />
     </dnd-sortable-list>
   </div>
 

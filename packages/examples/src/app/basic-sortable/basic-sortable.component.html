@@ -5,7 +5,7 @@
       @switch (type) {
         @case ('CARD') {
           <app-card [card]="findCard(item.id)">
-            <span *cardInner="let card">{{item.index+1}} {{card.text}}</span>
+            <span *cardInner="let card">{{ item.index + 1 }} {{ card.text }}</span>
           </app-card>
         }
       }
@@ -21,8 +21,9 @@
       [card]="card"
       (handleMove)="moveCard($event)"
       (beginDrag)="beginDrag()"
-      (endDrag)="endDrag($event)">
-      <span *cardInner="let card">{{card.text}}</span>
+      (endDrag)="endDrag($event)"
+    >
+      <span *cardInner="let card">{{ card.text }}</span>
     </app-card>
   }
 </div>
