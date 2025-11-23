@@ -1,4 +1,4 @@
-import { Directive, ElementRef, Input, OnChanges, OnDestroy } from '@angular/core';
+import { Directive, ElementRef, inject, Input, OnChanges, OnDestroy } from '@angular/core';
 import { DndService, DragSource } from '@ng-dnd/core';
 import { DraggedItem, Size, SortableSpec } from '../types';
 
@@ -9,6 +9,9 @@ export const EXTERNAL_LIST_ID: symbol = Symbol('EXTERNAL_LIST_ID');
   exportAs: 'dndSortableExternal',
 })
 export class DndSortableExternal<Data> implements OnChanges, OnDestroy {
+  private dnd = inject(DndService);
+  private el = inject<ElementRef<Element>>(ElementRef);
+
   @Input('dndSortableExternal') spec!: SortableSpec<Data>;
 
   /**
@@ -19,10 +22,7 @@ export class DndSortableExternal<Data> implements OnChanges, OnDestroy {
   source: DragSource<DraggedItem<Data>>;
 
   /** @ignore */
-  constructor(
-    private dnd: DndService,
-    private el: ElementRef<Element>
-  ) {
+  constructor() {
     this.source = this.dnd.dragSource<DraggedItem<Data>>(null, {
       canDrag: monitor => {
         if (this.spec.canDrag) {

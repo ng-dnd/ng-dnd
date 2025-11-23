@@ -1,4 +1,4 @@
-import { DragDropMonitor, Identifier } from 'dnd-core';
+import { DragDropManager, DragDropMonitor, Identifier } from 'dnd-core';
 import { DragSourceMonitor } from '../source-monitor';
 import { invariant } from './invariant';
 
@@ -9,7 +9,7 @@ class DragSourceMonitorClass implements DragSourceMonitor {
   internalMonitor: DragDropMonitor;
   sourceId: Identifier | undefined;
 
-  constructor(manager: any) {
+  constructor(manager: DragDropManager) {
     this.internalMonitor = manager.getMonitor();
   }
 
@@ -84,6 +84,6 @@ class DragSourceMonitorClass implements DragSourceMonitor {
   }
 }
 
-export function createSourceMonitor(manager: any): DragSourceMonitor {
+export function createSourceMonitor(manager: DragDropManager): DragSourceMonitor {
   return new DragSourceMonitorClass(manager);
 }

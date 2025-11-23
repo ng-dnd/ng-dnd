@@ -1,4 +1,4 @@
-import { Directive, ElementRef, Input, NgZone, OnChanges, OnDestroy } from '@angular/core';
+import { Directive, ElementRef, inject, Input, NgZone, OnChanges, OnDestroy } from '@angular/core';
 
 import { invariant } from './internal/invariant';
 
@@ -17,12 +17,8 @@ const explanation =
 export class AbstractDndDirective implements OnChanges, OnDestroy {
   protected connection: any;
   private deferredRequest = new Subscription();
-
-  /** @ignore */
-  constructor(
-    protected elRef: ElementRef,
-    private ngZone: NgZone
-  ) {}
+  protected elRef = inject(ElementRef);
+  private ngZone = inject(NgZone);
 
   ngOnChanges() {
     invariant(typeof this.connection === 'object' && !Array.isArray(this.connection), explanation);

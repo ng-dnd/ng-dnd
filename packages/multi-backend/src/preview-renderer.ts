@@ -1,5 +1,5 @@
 import { AsyncPipe } from '@angular/common';
-import { ChangeDetectionStrategy, Component, OnDestroy } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject, OnDestroy } from '@angular/core';
 import { DndService, Offset } from '@ng-dnd/core';
 import { map } from 'rxjs/operators';
 
@@ -34,6 +34,8 @@ import { map } from 'rxjs/operators';
   imports: [AsyncPipe],
 })
 export class DndPreviewRenderer implements OnDestroy {
+  private dnd = inject(DndService);
+
   /** @ignore */
   private layer = this.dnd.dragLayer();
 
@@ -63,9 +65,6 @@ export class DndPreviewRenderer implements OnDestroy {
       };
     })
   );
-
-  /** @ignore */
-  constructor(private dnd: DndService) {}
 
   /** @ignore */
   ngOnDestroy() {

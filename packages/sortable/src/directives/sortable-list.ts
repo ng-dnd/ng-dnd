@@ -3,10 +3,8 @@ import {
   AfterContentInit,
   AfterViewInit,
   ChangeDetectionStrategy,
-  ChangeDetectorRef,
   Component,
   ContentChildren,
-  ElementRef,
   Input,
   OnChanges,
   OnDestroy,
@@ -15,7 +13,6 @@ import {
   SimpleChanges,
   TemplateRef,
 } from '@angular/core';
-import { DndService } from '@ng-dnd/core';
 import { DndSortable } from './sortable';
 import { DndSortableTemplate, TemplateContext } from './sortable-template';
 
@@ -50,11 +47,6 @@ export class DndSortableList<Data>
     if (ql.length > 0) {
       this.template = ql.first;
     }
-  }
-
-  /** @ignore */
-  constructor(dnd: DndService, el: ElementRef<HTMLElement>, cdr: ChangeDetectorRef) {
-    super(dnd, el, cdr);
   }
 
   /** @ignore */

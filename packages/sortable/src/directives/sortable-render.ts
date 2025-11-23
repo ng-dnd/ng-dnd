@@ -2,6 +2,7 @@ import {
   AfterViewInit,
   Directive,
   ElementRef,
+  inject,
   Input,
   OnChanges,
   OnDestroy,
@@ -27,6 +28,9 @@ const _scheduleMicroTaskPolyfill: (f: () => void) => any =
   exportAs: 'dndSortableRender',
 })
 export class DndSortableRenderer<Data> implements OnChanges, OnInit, AfterViewInit, OnDestroy {
+  private dnd = inject(DndService);
+  private el = inject<ElementRef<HTMLElement>>(ElementRef);
+
   @Input('dndSortableRender') context!: RenderContext<Data>;
 
   get data() {
@@ -83,10 +87,7 @@ export class DndSortableRenderer<Data> implements OnChanges, OnInit, AfterViewIn
   isDragging$: Observable<boolean>;
 
   /** @ignore */
-  constructor(
-    private dnd: DndService,
-    private el: ElementRef<HTMLElement>
-  ) {
+  constructor() {
     this.target = this.dnd.dropTarget<DraggedItem<Data>>(
       null,
       {

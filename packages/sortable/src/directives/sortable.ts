@@ -3,6 +3,7 @@ import {
   ChangeDetectorRef,
   Directive,
   ElementRef,
+  inject,
   Input,
   OnChanges,
   OnDestroy,
@@ -19,6 +20,10 @@ import { DraggedItem, HoverTrigger, RenderContext, SortableSpec } from '../types
   exportAs: 'dndSortable',
 })
 export class DndSortable<Data> implements OnChanges, OnInit, AfterViewInit, OnDestroy {
+  protected cdr = inject(ChangeDetectorRef);
+  protected dnd = inject(DndService);
+  protected el = inject<ElementRef<HTMLElement>>(ElementRef);
+
   @Input() listId: any = Math.random().toString();
   @Input() horizontal = false;
   @Input() spec!: SortableSpec<Data>;
@@ -48,11 +53,7 @@ export class DndSortable<Data> implements OnChanges, OnInit, AfterViewInit, OnDe
   target: DropTarget<DraggedItem<Data>>;
 
   /** @ignore */
-  constructor(
-    protected dnd: DndService,
-    protected el: ElementRef<HTMLElement>,
-    protected cdr: ChangeDetectorRef
-  ) {
+  constructor() {
     this.target = this.dnd.dropTarget<DraggedItem<Data>>(
       null,
       {

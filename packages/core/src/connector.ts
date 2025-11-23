@@ -3,8 +3,7 @@
  */
 /** a second comment */
 
-import { Inject, Injectable, NgZone } from '@angular/core';
-import { DragDropManager } from 'dnd-core';
+import { inject, Injectable, NgZone } from '@angular/core';
 import { DRAG_DROP_MANAGER, TYPE_DYNAMIC } from './tokens';
 
 import { DropTargetSpec } from './drop-target-specification';
@@ -58,11 +57,8 @@ export interface AddSubscription extends SubscriptionLike {
  */
 @Injectable({ providedIn: 'root' })
 export class DndService {
-  /** @ignore */
-  constructor(
-    @Inject(DRAG_DROP_MANAGER) private manager: DragDropManager,
-    private ngZone: NgZone
-  ) {}
+  private manager = inject(DRAG_DROP_MANAGER);
+  private ngZone = inject(NgZone);
 
   /**
    * This drop target will only react to the items produced by the drag sources

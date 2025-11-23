@@ -3,14 +3,13 @@ import {
   ChangeDetectionStrategy,
   Component,
   ContentChild,
-  Inject,
+  inject,
   Input,
   OnDestroy,
   OnInit,
   TemplateRef,
 } from '@angular/core';
-import { DRAG_DROP_MANAGER, DndService } from '@ng-dnd/core';
-import { DragDropManager } from 'dnd-core';
+import { DndService, DRAG_DROP_MANAGER } from '@ng-dnd/core';
 import { MultiBackendSwitcher, PreviewListener } from 'dnd-multi-backend';
 import { BehaviorSubject } from 'rxjs';
 import { DndPreviewRenderer } from './preview-renderer';
@@ -60,6 +59,9 @@ export interface PreviewTemplateContext {
   imports: [AsyncPipe, NgTemplateOutlet, DndPreviewRenderer],
 })
 export class DndPreview implements PreviewListener, OnInit, OnDestroy {
+  private dnd = inject(DndService);
+  private manager = inject(DRAG_DROP_MANAGER);
+
   /** Disables the check for whether the current MultiBackend wants the preview enabled */
   @Input() allBackends = false;
 
@@ -89,10 +91,7 @@ export class DndPreview implements PreviewListener, OnInit, OnDestroy {
   warned = false;
 
   /** @ignore */
-  constructor(
-    private dnd: DndService,
-    @Inject(DRAG_DROP_MANAGER) private manager: DragDropManager
-  ) {
+  constructor() {
     if (this.manager == null) {
       this.warn('no drag and drop manager defined, are you sure you imported DndModule?');
     } else {
