@@ -1,5 +1,5 @@
 import { NgZone } from '@angular/core';
-import { Backend, DragDropManager } from 'dnd-core';
+import { Backend, DragDropManager, Identifier } from 'dnd-core';
 import { BehaviorSubject, Observable, ReplaySubject, Subscription, TeardownLogic } from 'rxjs';
 import { distinctUntilChanged, map, switchMap, take, tap } from 'rxjs/operators';
 import { TYPE_DYNAMIC } from '../tokens';
@@ -28,7 +28,7 @@ export interface FactoryArgs<TMonitor, TConnector> {
     handler: any,
     manager: DragDropManager
   ) => {
-    handlerId: any;
+    handlerId: Identifier;
     unregister: Subscription | ((...args: any[]) => void);
   };
 }
@@ -37,7 +37,7 @@ export class Connection<TMonitor extends DragSourceMonitor | DropTargetMonitor, 
   // immutable after instantiation
   private readonly handlerMonitor: any;
   private readonly handlerConnector: Connector<TConnector>;
-  private readonly handler: any;
+  private readonly handler: Identifier;
 
   /** The stream of all change events from the internal subscription's handleChange */
   private readonly collector$: BehaviorSubject<TMonitor>;
@@ -46,7 +46,7 @@ export class Connection<TMonitor extends DragSourceMonitor | DropTargetMonitor, 
 
   // mutable state
   private currentType?: TypeOrTypeArray;
-  private handlerId: any;
+  private handlerId!: Identifier;
 
   /**
    * This one is created and destroyed once per type or list of types.
@@ -156,7 +156,7 @@ export class Connection<TMonitor extends DragSourceMonitor | DropTargetMonitor, 
     });
   }
 
-  setType(type: string | symbol) {
+  setType(type: Identifier) {
     this.setTypes(type);
   }
 
@@ -220,17 +220,17 @@ export class Connection<TMonitor extends DragSourceMonitor | DropTargetMonitor, 
 }
 
 export type SourceConstructor<Item = unknown, DropResult = unknown> = new (
-    factoryArgs: FactoryArgs<DragSourceMonitor, DragSourceConnector>,
-    manager: DragDropManager,
-    ngZone: NgZone,
-    initialType: string | symbol | undefined
-  ) => DragSource<Item, DropResult>;
+  factoryArgs: FactoryArgs<DragSourceMonitor, DragSourceConnector>,
+  manager: DragDropManager,
+  ngZone: NgZone,
+  initialType: Identifier | undefined
+) => DragSource<Item, DropResult>;
 export type TargetConstructor = new (
-    factoryArgs: FactoryArgs<DropTargetMonitor, DropTargetConnector>,
-    manager: DragDropManager,
-    ngZone: NgZone,
-    initialType: TypeOrTypeArray | undefined
-  ) => DropTarget;
+  factoryArgs: FactoryArgs<DropTargetMonitor, DropTargetConnector>,
+  manager: DragDropManager,
+  ngZone: NgZone,
+  initialType: TypeOrTypeArray | undefined
+) => DropTarget;
 
-export const TargetConnection = Connection as TargetConstructor;
 export const SourceConnection = Connection as SourceConstructor;
+export const TargetConnection = Connection as TargetConstructor;

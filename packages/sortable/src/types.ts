@@ -33,8 +33,8 @@ export interface SortableSpec<Data, Type = string | symbol> {
   trackBy(data: Data): any;
 
   /**
-   * Optional if you provided `[ssSortableChildren],` otherwise required.
-   * NOTE: return an Observable! If you don't have one already, use `[ssSortableChildren]`.
+   * Optional if you provided `[dndSortableChildren],` otherwise required.
+   * NOTE: return an Observable! If you don't have one already, use `[dndSortableChildren]`.
    * A typical use is with an @ngrx/store: `getList: _listId => this.store.select(...)`
    */
   getList?(listId: any): Observable<Iterable<Data>>;
@@ -114,7 +114,10 @@ export interface SortableSpec<Data, Type = string | symbol> {
 }
 
 export class Size {
-  constructor(public width: number, public height: number) {}
+  constructor(
+    public width: number,
+    public height: number
+  ) {}
   style() {
     return {
       width: this.width + 'px',
@@ -147,6 +150,6 @@ export interface RenderContext<Data> {
   index: number;
   horizontal: boolean;
   hoverTrigger: HoverTrigger;
-  listId: number;
+  listId: number | string | symbol;
   spec: SortableSpec<Data>;
 }

@@ -1,6 +1,6 @@
-import { invariant } from './invariant';
-import { DragDropMonitor, Identifier } from 'dnd-core';
+import { DragDropManager, DragDropMonitor, Identifier } from 'dnd-core';
 import { DropTargetMonitor } from '../target-monitor';
+import { invariant } from './invariant';
 
 let isCallingCanDrop = false;
 
@@ -8,7 +8,7 @@ class DropTargetMonitorClass implements DropTargetMonitor {
   internalMonitor: DragDropMonitor;
   targetId: Identifier | undefined;
 
-  constructor(manager: any) {
+  constructor(manager: DragDropManager) {
     this.internalMonitor = manager.getMonitor();
   }
 
@@ -72,6 +72,6 @@ class DropTargetMonitorClass implements DropTargetMonitor {
   }
 }
 
-export function createTargetMonitor(manager: any): DropTargetMonitor {
+export function createTargetMonitor(manager: DragDropManager): DropTargetMonitor {
   return new DropTargetMonitorClass(manager);
 }

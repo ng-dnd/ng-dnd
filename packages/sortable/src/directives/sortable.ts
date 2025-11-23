@@ -24,7 +24,7 @@ export class DndSortable<Data> implements OnChanges, OnInit, AfterViewInit, OnDe
   protected dnd = inject(DndService);
   protected el = inject<ElementRef<HTMLElement>>(ElementRef);
 
-  @Input() listId: any = Math.random().toString();
+  @Input() listId: number | string | symbol = Math.random().toString();
   @Input() horizontal = false;
   @Input() spec!: SortableSpec<Data>;
   @Input() children?: Iterable<Data>;

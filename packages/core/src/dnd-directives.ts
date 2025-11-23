@@ -1,4 +1,5 @@
 import { Directive, ElementRef, inject, Input, NgZone, OnChanges, OnDestroy } from '@angular/core';
+import { Identifier } from 'dnd-core';
 
 import { invariant } from './internal/invariant';
 
@@ -90,7 +91,7 @@ export class DragSourceDirective extends AbstractDndDirective implements OnChang
    * Shortcut for setting a type on the connection.
    * Lets you use Angular binding to do it. Runs {@link DragSource#setType}.
    */
-  @Input('dragSourceType') dragSourceType?: string | symbol;
+  @Input('dragSourceType') dragSourceType?: Identifier;
   /** Pass an options object as you would to {@link DragSource#connectDragSource}. */
   @Input('dragSourceOptions') dragSourceOptions?: DragSourceOptions;
   /**

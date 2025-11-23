@@ -10,14 +10,15 @@ import {
   TemplateRef,
 } from '@angular/core';
 import { DndService, DRAG_DROP_MANAGER } from '@ng-dnd/core';
+import { Identifier } from 'dnd-core';
 import { MultiBackendSwitcher, PreviewListener } from 'dnd-multi-backend';
 import { BehaviorSubject } from 'rxjs';
 import { DndPreviewRenderer } from './preview-renderer';
 
 export interface PreviewTemplateContext {
   /** same as type */
-  $implicit: string | symbol;
-  type: string | symbol;
+  $implicit: Identifier;
+  type: Identifier;
   item: any;
 }
 

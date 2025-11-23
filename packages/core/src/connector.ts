@@ -4,6 +4,7 @@
 /** a second comment */
 
 import { inject, Injectable, NgZone } from '@angular/core';
+import { Identifier } from 'dnd-core';
 import { DRAG_DROP_MANAGER, TYPE_DYNAMIC } from './tokens';
 
 import { DropTargetSpec } from './drop-target-specification';
@@ -118,7 +119,7 @@ export class DndService {
    * connection to.
    */
   public dragSource<Item, DropResult = unknown>(
-    type: string | symbol | null,
+    type: Identifier | null,
     spec: DragSourceSpec<Item, DropResult>,
     subscription?: AddSubscription
   ): DragSource<Item, DropResult> {

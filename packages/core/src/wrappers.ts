@@ -1,9 +1,10 @@
 import { DragSource, DragSourceSpec, DropTarget, DropTargetSpec } from '@ng-dnd/core';
+import { Identifier } from 'dnd-core';
 
-export type Types = string | symbol | (string | symbol)[];
+export type Types = Identifier | Identifier[];
 
 export type DragSourceFactory<Item, DropResult = unknown, SpecAdditions = unknown> = (
-  types: string | symbol,
+  types: Identifier,
   spec: DragSourceSpec<Item> & SpecAdditions
 ) => DragSource<Item, DropResult>;
 

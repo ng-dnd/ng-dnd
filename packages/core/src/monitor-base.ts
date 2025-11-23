@@ -1,9 +1,10 @@
+import { Identifier } from 'dnd-core';
 import { Offset } from './type-ish';
 
 /** The methods common to all monitor classes. */
 export interface MonitorBase<Item> {
   /** The type of the item in transit. Returns `null` if no item is being dragged. */
-  getItemType(): string | symbol | null;
+  getItemType(): Identifier | null;
 
   /**
    * The item in transit, if any. This is what you returned from

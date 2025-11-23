@@ -11,22 +11,34 @@ export enum SortableEvents {
 
 export class BeginDragAction<AT, T> {
   readonly event = SortableEvents.BeginDrag;
-  constructor(public readonly type: AT, public readonly item: DraggedItem<T>) {}
+  constructor(
+    public readonly type: AT,
+    public readonly item: DraggedItem<T>
+  ) {}
 }
 
 export class HoverAction<AT, T> {
   readonly event = SortableEvents.Hover;
-  constructor(public readonly type: AT, public readonly item: DraggedItem<T>) {}
+  constructor(
+    public readonly type: AT,
+    public readonly item: DraggedItem<T>
+  ) {}
 }
 
 export class DropAction<AT, T> {
   readonly event = SortableEvents.Drop;
-  constructor(public readonly type: AT, public readonly item: DraggedItem<T>) {}
+  constructor(
+    public readonly type: AT,
+    public readonly item: DraggedItem<T>
+  ) {}
 }
 
 export class EndDragAction<AT, T> {
   readonly event = SortableEvents.EndDrag;
-  constructor(public readonly type: AT, public readonly item: DraggedItem<T>) {}
+  constructor(
+    public readonly type: AT,
+    public readonly item: DraggedItem<T>
+  ) {}
 }
 
 export type SortableAction<AT, D> =

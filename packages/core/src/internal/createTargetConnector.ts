@@ -4,7 +4,7 @@ import { Connector } from './createSourceConnector';
 import { Reconnector } from './Reconnector';
 
 export class TargetConnector implements Connector<DropTargetConnector> {
-  private currentHandlerId: any;
+  private currentHandlerId: Identifier | null = null;
 
   private dropTarget = new Reconnector<void>((handlerId, node, options) => {
     return this.backend.connectDropTarget(handlerId, node, options);

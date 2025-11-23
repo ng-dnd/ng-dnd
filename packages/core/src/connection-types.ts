@@ -3,12 +3,13 @@
  */
 /** a second comment */
 
-import { DropTargetMonitor } from './target-monitor';
-import { DragSourceMonitor } from './source-monitor';
-import { TypeOrTypeArray } from './type-ish';
+import { Identifier } from 'dnd-core';
+import { Observable, Subscription, SubscriptionLike, TeardownLogic } from 'rxjs';
+import { DragPreviewOptions, DragSourceOptions } from './connectors';
 import { DragLayerMonitor } from './layer-monitor';
-import { DragSourceOptions, DragPreviewOptions } from './connectors';
-import { Observable, TeardownLogic, Subscription, SubscriptionLike } from 'rxjs';
+import { DragSourceMonitor } from './source-monitor';
+import { DropTargetMonitor } from './target-monitor';
+import { TypeOrTypeArray } from './type-ish';
 
 /**
  * A base type to represent a DOM connection.
@@ -115,7 +116,7 @@ export interface DropTarget<Item = unknown, DropResult = unknown>
    * Returns the drop target ID that can be used to simulate the drag and drop events
    * with the testing backend.
    */
-  getHandlerId(): any;
+  getHandlerId(): Identifier;
 }
 
 /**
@@ -164,7 +165,7 @@ export interface DragSource<Item, DropResult = unknown>
    * ```
    *
    */
-  setType(type: string | symbol): void;
+  setType(type: Identifier): void;
 
   /**
    * This function allows you to connect a DOM node to your `DragSource`.
@@ -199,7 +200,7 @@ export interface DragSource<Item, DropResult = unknown>
    * Returns the drag source ID that can be used to simulate the drag and drop events
    * with the testing backend.
    */
-  getHandlerId(): any;
+  getHandlerId(): Identifier;
 }
 
 /**

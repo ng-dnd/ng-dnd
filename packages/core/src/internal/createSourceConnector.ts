@@ -10,7 +10,7 @@ export interface Connector<TConnector> {
 }
 
 export class SourceConnector implements Connector<DragSourceConnector> {
-  private currentHandlerId: any;
+  private currentHandlerId: Identifier | null = null;
 
   private dragSource = new Reconnector<DragSourceOptions>((handlerId, node, options) => {
     return this.backend.connectDragSource(handlerId, node, options);

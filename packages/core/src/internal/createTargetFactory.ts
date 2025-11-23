@@ -15,7 +15,7 @@ export class Target implements DropTarget {
     return x;
   }
 
-  receiveMonitor(monitor: any) {
+  receiveMonitor(monitor: DropTargetMonitor) {
     this.monitor = monitor;
   }
 
@@ -49,7 +49,7 @@ export class Target implements DropTarget {
 }
 
 export function createTargetFactory(spec: DropTargetSpec) {
-  return function createTarget(monitor: any): DropTarget {
+  return function createTarget(monitor: DropTargetMonitor): DropTarget {
     return new Target(spec, monitor);
   };
 }
