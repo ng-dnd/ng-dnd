@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [4.1.0](https://github.com/ng-dnd/ng-dnd/compare/v4.0.0...v4.1.0) (2025-11-24)
+
+
+### Bug Fixes
+
+* fix with eslint rules ([235cf1b](https://github.com/ng-dnd/ng-dnd/commit/235cf1b1b7e46b1b80bf87474b11bfd203bdc52f))
+
+
+
+
+
 # [4.0.0](https://github.com/ng-dnd/ng-dnd/compare/v3.1.0...v4.0.0) (2024-09-29)
 
 
