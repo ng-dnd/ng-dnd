@@ -235,12 +235,6 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                             <li class="link">
                                 <a href="interfaces/Offset.html" data-type="entity-link" >Offset</a>
                             </li>
-                            <li class="link">
-                                <a href="interfaces/SourceConstructor.html" data-type="entity-link" >SourceConstructor</a>
-                            </li>
-                            <li class="link">
-                                <a href="interfaces/TargetConstructor.html" data-type="entity-link" >TargetConstructor</a>
-                            </li>
                         </ul>
                     </li>
                     <li class="chapter">

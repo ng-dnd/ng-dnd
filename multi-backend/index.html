@@ -114,7 +114,6 @@ export const appConfig: ApplicationConfig = {
 
 &#64;Component({
   // ...,
-  standalone: true,
   imports: [DndPreview],
 })
 export class AppComponent {}</code></pre></div><h2>Normal usage</h2>
@@ -167,9 +166,7 @@ ngOnInit() {
   source.connectDragPreview(getEmptyImage());
 }</code></pre></div><h3>2. Disable the touch-backend-only check in the preview component</h3>
 <p>Simply pass allBackends as true to the preview.</p>
-<b>Example :</b><div><pre class="line-numbers"><code class="language-html">&lt;dnd-preview [allBackends]=&quot;true&quot;&gt;
-  ...
-&lt;/dnd-preview&gt;</code></pre></div><h2>Custom backends and transitions, e.g. supplying options to the <code>TouchBackend</code></h2>
+<b>Example :</b><div><pre class="line-numbers"><code class="language-html">&lt;dnd-preview [allBackends]=&quot;true&quot;&gt; ... &lt;/dnd-preview&gt;</code></pre></div><h2>Custom backends and transitions, e.g. supplying options to the <code>TouchBackend</code></h2>
 <p>You can also import anything from <code>dnd-multi-backend</code> and create your own
 transitions. Refer to the original documentation, or simply to the autocomplete
 through the re-exported types in this package.</p>
