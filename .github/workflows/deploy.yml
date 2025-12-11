@@ -22,15 +22,10 @@ jobs:
       - name: Install dependencies
         run: yarn
 
-      - name: Create travis env
-        env:
-          TRAVIS: true
-          TRAVIS_BRANCH: main
-          TRAVIS_PULL_REQUEST: false
-        run: echo "Set travis environment variables"
-
       - name: Build docs
-        run: ./build-docs.sh
+        run: |
+          export TRAVIS=true TRAVIS_BRANCH=main TRAVIS_PULL_REQUEST=false
+          ./build-docs.sh
 
       - name: Deploy to gh-pages
         uses: peaceiris/actions-gh-pages@v3
