@@ -23,7 +23,11 @@ jobs:
         run: yarn
 
       - name: Create travis env
-        run: export TRAVIS=true TRAVIS_BRANCH=main TRAVIS_PULL_REQUEST=false
+        env:
+          TRAVIS: true
+          TRAVIS_BRANCH: main
+          TRAVIS_PULL_REQUEST: false
+        run: echo "Set travis environment variables"
 
       - name: Build docs
         run: ./build-docs.sh
