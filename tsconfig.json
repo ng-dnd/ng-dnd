@@ -8,7 +8,7 @@
       "ES2022",
       "dom"
     ],
-    "moduleResolution": "node",
+    "moduleResolution": "bundler",
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
     "skipLibCheck": true,
