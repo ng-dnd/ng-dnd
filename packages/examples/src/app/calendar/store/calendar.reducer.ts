@@ -1,6 +1,6 @@
 import { CalendarActions, CalendarActionTypes } from './calendar.actions';
 import { List, Record } from 'immutable';
-import { CalendarEvent, Diff } from 'app/calendar/event';
+import { CalendarEventModel, Diff } from 'app/calendar/event';
 import * as _moment from 'moment-mini-ts';
 import { default as _rollupMoment } from 'moment-mini-ts';
 import * as faker from 'faker';
@@ -8,10 +8,10 @@ import * as faker from 'faker';
 const moment = _rollupMoment || _moment;
 
 export interface CalendarState {
-  events: List<CalendarEvent>;
+  events: List<CalendarEventModel>;
   startDate: _moment.Moment;
-  inFlight: CalendarEvent | null;
-  original: CalendarEvent | null;
+  inFlight: CalendarEventModel | null;
+  original: CalendarEventModel | null;
   diff: Diff;
 }
 
@@ -19,19 +19,19 @@ const dayOne = moment().startOf('month');
 
 export const CalendarStateRecord = Record({
   events: List([
-    CalendarEvent.standard(
+    CalendarEventModel.standard(
       `Meeting with ${faker.name.findName()}`,
       dayOne.clone().add({ days: 3, hours: 13 }).toDate()
     ),
-    CalendarEvent.allDay(
+    CalendarEventModel.allDay(
       'Conference in Berlin',
       dayOne.clone().add({ days: 7 }).toDate(),
       dayOne.clone().add({ days: 11 }).toDate()
     ),
   ]),
   startDate: dayOne,
-  inFlight: null as unknown as CalendarEvent,
-  original: null as unknown as CalendarEvent,
+  inFlight: null as unknown as CalendarEventModel,
+  original: null as unknown as CalendarEventModel,
   diff: new Diff(),
 });
 
@@ -44,7 +44,7 @@ export function reducer(state = new CalendarStateRecord(), action: CalendarActio
     case CalendarActionTypes.BeginDragNewEvent: {
       return state.set(
         'inFlight',
-        CalendarEvent.allDay(
+        CalendarEventModel.allDay(
           `Conference in ${faker.address.city()}`,
           action.start,
           action.start

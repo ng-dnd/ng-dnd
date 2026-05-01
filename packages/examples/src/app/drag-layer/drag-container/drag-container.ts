@@ -1,0 +1,50 @@
+import { Component, OnDestroy, OnInit, inject } from '@angular/core';
+import { DndModule, DndService } from '@ng-dnd/core';
+import { BoxWithLocation } from '../BoxWithLocation';
+import { DraggableBox } from '../draggable-box/draggable-box';
+
+@Component({
+  selector: 'app-drag-container',
+  template: `
+    <div [style]="styles" [dropTarget]="boxTarget">
+      <app-draggable-box [left]="x" [top]="y" [id]="23" title="this box is titled" />
+    </div>
+  `,
+  imports: [DndModule, DraggableBox],
+})
+export class DragContainer implements OnInit, OnDestroy {
+  private dnd = inject(DndService);
+
+  x = 30;
+  y = 90;
+
+  styles = {
+    minHeight: '300px',
+    maxWidth: '400px',
+    maxHeight: '400px',
+    width: '100%',
+    height: '100%',
+    boxSizing: 'border-box',
+    border: '1px solid black',
+    position: 'relative',
+  };
+
+  boxTarget = this.dnd.dropTarget<BoxWithLocation>('BOX', {
+    drop: monitor => {
+      const delta = monitor.getDifferenceFromInitialOffset()!;
+      const item = monitor.getItem()!;
+      this.moveBox(item.id, item.left + delta.x, item.top + delta.y);
+    },
+  });
+
+  moveBox(id: any, x: number, y: number) {
+    this.x = x;
+    this.y = y;
+  }
+
+  ngOnInit() {}
+
+  ngOnDestroy() {
+    this.boxTarget.unsubscribe();
+  }
+}

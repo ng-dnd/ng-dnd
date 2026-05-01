@@ -1,7 +1,7 @@
 import {
   ApplicationConfig,
   importProvidersFrom,
-  provideExperimentalZonelessChangeDetection,
+  provideZonelessChangeDetection,
   provideZoneChangeDetection,
 } from '@angular/core';
 import {
@@ -23,7 +23,7 @@ import { routes } from './routes';
 export const appConfig: ApplicationConfig = {
   providers: [
     // provideZoneChangeDetection({ eventCoalescing: true }),
-    provideExperimentalZonelessChangeDetection(),
+    provideZonelessChangeDetection(),
     provideRouter(routes, withPreloading(PreloadAllModules), withHashLocation()),
     importProvidersFrom([
       StoreRootModule,

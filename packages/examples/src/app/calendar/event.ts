@@ -23,7 +23,7 @@ export class Diff extends Record({
   }
 }
 
-export class CalendarEvent extends Record({
+export class CalendarEventModel extends Record({
   uniqueId: 0,
   temp: false,
   isAllDay: false,
@@ -36,7 +36,7 @@ export class CalendarEvent extends Record({
     _1pm.setHours(13);
     const _2pm = new Date(start.getTime());
     _2pm.setHours(14);
-    return new CalendarEvent({
+    return new CalendarEventModel({
       uniqueId: uniqueId++,
       start: _1pm,
       end: _1pm,
@@ -45,7 +45,7 @@ export class CalendarEvent extends Record({
   }
 
   static allDay(title: string, start: Date, end: Date) {
-    return new CalendarEvent({
+    return new CalendarEventModel({
       uniqueId: uniqueId++,
       isAllDay: true,
       start: new Date(start.getTime()),
@@ -54,7 +54,8 @@ export class CalendarEvent extends Record({
     });
   }
 
-  /** Whether an event spills over to the next week
+  /**
+   * Whether an event spills over to the next week
    * Returns true if it does, and the day who is asking is a monday
    */
   spill(day: Date): boolean {

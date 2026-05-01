@@ -1,5 +1,5 @@
 import { Action } from '@ngrx/store';
-import { CalendarEvent } from '../event';
+import { CalendarEventModel } from '../event';
 
 export enum CalendarActionTypes {
   NewEvent = '[Calendar] CREATE_EVENT',
@@ -22,7 +22,7 @@ export enum CalendarActionTypes {
 
 export class NewEvent implements Action {
   readonly type = CalendarActionTypes.NewEvent;
-  constructor(public event: CalendarEvent) {}
+  constructor(public event: CalendarEventModel) {}
 }
 
 export class BeginDragNewEvent implements Action {

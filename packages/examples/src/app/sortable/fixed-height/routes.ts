@@ -1,4 +1,4 @@
 import { Routes } from '@angular/router';
-import { ContainerComponent } from './container.component';
+import { Container } from './container';
 
-export const routes: Routes = [{ path: '', component: ContainerComponent }];
+export const routes: Routes = [{ path: '', component: Container }];

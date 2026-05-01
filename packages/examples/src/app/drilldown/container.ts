@@ -1,0 +1,49 @@
+import { AsyncPipe } from '@angular/common';
+import { Component, inject } from '@angular/core';
+import { ExampleLink } from '@app/utility/example-link';
+import { NgLetDirective } from '@app/utility/ngLet.directive';
+import { Box } from './box';
+import { Folder } from './folder';
+import { TreeService } from './tree.service';
+
+@Component({
+  selector: 'drilldown-container',
+  template: `
+    <app-example-link path="drilldown" />
+    <p>
+      Hover over a folder to temporarily drill down. Click normally on a folder to open or close it.
+    </p>
+    <p>
+      This example uses a wrapper around <code>DndService#dropTarget</code>, that listens to
+      dnd-core hover events and fires a callback when you have hovered long enough. This is a clean
+      pattern for extending <code>&#64;ng-dnd/core</code> in a reusable way.
+    </p>
+    <p *ngLet="lastDrop$ | async as keys">
+      Last dropped on <code> {{ keys ? keys.join(' > ') : '(never)' }} </code>
+    </p>
+    <p>
+      <drilldown-source (beginDrag)="beginDrag()" (endDrag)="endDrag()" />
+    </p>
+    <drilldown-folder [keys]="[]" />
+  `,
+  styles: `
+    :host {
+      display: block;
+      min-height: 600px;
+    }
+  `,
+  imports: [ExampleLink, NgLetDirective, Box, Folder, AsyncPipe],
+})
+export class Container {
+  private tree = inject(TreeService);
+
+  lastDrop$ = this.tree.select(s => s.lastDrop);
+
+  beginDrag() {
+    this.tree.beginDrag();
+  }
+
+  endDrag() {
+    this.tree.endDrag();
+  }
+}

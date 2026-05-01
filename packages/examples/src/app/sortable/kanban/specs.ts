@@ -1,6 +1,6 @@
 import { Injectable, OnDestroy, inject } from '@angular/core';
 import { NgRxSortable } from '@ng-dnd/sortable';
-import { KanbanList } from './lists';
+import { KanbanListModel } from './lists';
 import { Card } from './card';
 import { ItemTypes } from './item-types';
 import { Store, select } from '@ngrx/store';
@@ -16,7 +16,7 @@ export class SortableSpecService implements OnDestroy {
   // provided, which we handle above.
   //                                      (fire on this, with this action type)
   //                                       vvvvvvvvvv    vvvvvvvvvvvvvvvvvvvv
-  boardSpec = new NgRxSortable<KanbanList>(this.store, ActionTypes.SortList, {
+  boardSpec = new NgRxSortable<KanbanListModel>(this.store, ActionTypes.SortList, {
     type: ItemTypes.LIST,
     trackBy: list => list.id,
     getList: _listId => this.store.pipe(select(_render) as any),

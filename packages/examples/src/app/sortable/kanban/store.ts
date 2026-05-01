@@ -4,8 +4,8 @@ import { DraggedItem, SortableAction, SortableEvents } from '@ng-dnd/sortable';
 
 // our list operations
 import {
-  KanbanList,
-  KanbanBoard,
+  KanbanListModel,
+  KanbanBoardModel,
   initialBoard,
   insertList,
   removeList,
@@ -23,14 +23,17 @@ export enum ActionTypes {
 }
 
 // Define an action for each of the sortables your reducer will be handling
-// An NgRxSortable (see kanban-board.component.ts) will produce actions like these.
-export type SortList = SortableAction<ActionTypes.SortList, KanbanList>;
+// An NgRxSortable (see kanban-board.ts) will produce actions like these.
+export type SortList = SortableAction<ActionTypes.SortList, KanbanListModel>;
 export type SortCard = SortableAction<ActionTypes.SortCard, Card>;
 
 // Some extra actions to do more things
 export class AddCard {
   readonly type = ActionTypes.AddCard;
-  constructor(public listId: number, public title: string) {}
+  constructor(
+    public listId: number,
+    public title: string
+  ) {}
 }
 export class RemoveCard {
   readonly type = ActionTypes.RemoveCard;
@@ -45,14 +48,14 @@ export class Spill {
 type Actions = SortList | SortCard | AddCard | RemoveCard | Spill;
 
 export interface BoardState {
-  /** This is the clean state, a list of KanbanList objects. */
-  board: KanbanBoard;
+  /** This is the clean state, a list of KanbanListModel objects. */
+  board: KanbanBoardModel;
   /** Holds a modified version of `board` that DOESN'T contain whatever item is in-flight,
    * or null if no item has currently been picked up from a sortable. */
-  draggingBoard: KanbanBoard | null;
+  draggingBoard: KanbanBoardModel | null;
   // Hold in-flight items in state so we can inject them back into draggingBoard, in a selector
   cardInFlight: DraggedItem<Card> | null;
-  listInFlight: DraggedItem<KanbanList> | null;
+  listInFlight: DraggedItem<KanbanListModel> | null;
   nextId: number;
   spilledCard: boolean;
   isCopying: boolean;

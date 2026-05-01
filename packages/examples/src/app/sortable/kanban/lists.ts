@@ -1,12 +1,13 @@
 import * as faker from 'faker';
 import { Card, Cards } from './card';
 
-export interface KanbanList {
+export interface KanbanListModel {
   id: number;
   title: string;
   cards: Cards;
 }
-export type KanbanBoard = readonly KanbanList[];
+
+export type KanbanBoardModel = readonly KanbanListModel[];
 // We're using NgRx, so we have to do immutable-only list operations.
 
 // you could use this helper library, but if you're really gunning for @ngrx,
@@ -22,7 +23,7 @@ function withMutations<T>(ts: readonly T[], update: (ts: T[]) => void): readonly
   return lists as readonly T[];
 }
 
-function updateCards(board: KanbanBoard, listId: number, f: (cards: Card[]) => void) {
+function updateCards(board: KanbanBoardModel, listId: number, f: (cards: Card[]) => void) {
   const fromListIdx = board.findIndex(b => b.id === listId);
   if (fromListIdx === -1) {
     return board;
@@ -36,31 +37,31 @@ function updateCards(board: KanbanBoard, listId: number, f: (cards: Card[]) => v
   });
 }
 
-export function insertList(board: KanbanBoard, list: KanbanList, index: number) {
+export function insertList(board: KanbanBoardModel, list: KanbanListModel, index: number) {
   return withMutations(board, ls => {
     ls.splice(index, 0, list);
   });
 }
 
-export function removeList(board: KanbanBoard, index: number) {
+export function removeList(board: KanbanBoardModel, index: number) {
   return withMutations(board, ls => {
     ls.splice(index, 1);
   });
 }
 
-export function removeCard(board: KanbanBoard, listId: number, index: number) {
+export function removeCard(board: KanbanBoardModel, listId: number, index: number) {
   return updateCards(board, listId, cards => {
     cards.splice(index, 1);
   });
 }
 
-export function insertCard(board: KanbanBoard, card: Card, listId: number, index: number) {
+export function insertCard(board: KanbanBoardModel, card: Card, listId: number, index: number) {
   return updateCards(board, listId, cards => {
     cards.splice(index, 0, card);
   });
 }
 
-export const initialBoard: KanbanBoard = [
+export const initialBoard: KanbanBoardModel = [
   {
     id: 0,
     title: 'To Do',
