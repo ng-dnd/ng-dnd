@@ -1,7 +1,7 @@
 import { createFeatureSelector, createSelector } from '@ngrx/store';
-import { CalendarState } from './calendar.reducer';
-import { Week } from 'app/calendar/week';
 import { List } from 'immutable';
+import { Week } from '../week';
+import { CalendarState } from './calendar.reducer';
 
 export const calendarFeature = createFeatureSelector<CalendarState>('calendar');
 

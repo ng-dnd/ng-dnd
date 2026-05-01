@@ -1,9 +1,9 @@
-import { CalendarActions, CalendarActionTypes } from './calendar.actions';
+import * as faker from 'faker';
 import { List, Record } from 'immutable';
-import { CalendarEventModel, Diff } from 'app/calendar/event';
 import * as _moment from 'moment-mini-ts';
 import { default as _rollupMoment } from 'moment-mini-ts';
-import * as faker from 'faker';
+import { CalendarEventModel, Diff } from '../event';
+import { CalendarActions, CalendarActionTypes } from './calendar.actions';
 
 const moment = _rollupMoment || _moment;
 

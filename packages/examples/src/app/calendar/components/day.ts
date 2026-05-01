@@ -12,14 +12,14 @@ import {
 } from '@angular/core';
 import { DndModule, DndService } from '@ng-dnd/core';
 import { Store, createSelector } from '@ngrx/store';
-import { CalendarEventModel } from 'app/calendar/event';
-import { State } from 'app/reducers';
 import * as faker from 'faker';
 import { List } from 'immutable';
 import * as Pressure from 'pressure';
 import { Observable, Subject, Subscription } from 'rxjs';
 import { switchMap, take } from 'rxjs/operators';
+import { State } from '../../reducers';
 import { daysBetween } from '../date-utils';
+import { CalendarEventModel } from '../event';
 import { ItemTypes } from '../item-types';
 import {
   BeginDragNewEvent,

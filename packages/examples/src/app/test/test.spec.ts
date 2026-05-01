@@ -25,7 +25,7 @@ describe(Test.name, () => {
   beforeEach(waitForAsync(() => {
     const manager = TestBed.inject(DRAG_DROP_MANAGER);
     backend = manager.getBackend();
-    fixture = TestBed.create(Test);
+    fixture = TestBed.createComponent(Test);
     component = fixture.componentInstance;
     fixture.detectChanges();
     source = component.source.getHandlerId();

@@ -2,8 +2,8 @@ import { AsyncPipe } from '@angular/common';
 import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { ExampleLink } from '@app/utility/example-link';
 import { Store, createSelector } from '@ngrx/store';
-import { NextMonth, PrevMonth } from 'app/calendar/store/calendar.actions';
-import { State } from 'app/reducers';
+import { State } from '../../reducers';
+import { NextMonth, PrevMonth } from '../store/calendar.actions';
 import { startDateSelector } from '../store/selectors';
 import { Calendar } from './calendar';
 

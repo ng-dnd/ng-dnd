@@ -1,12 +1,12 @@
 import { AsyncPipe } from '@angular/common';
 import { ChangeDetectionStrategy, Component, OnInit, inject } from '@angular/core';
 import { Store, select } from '@ngrx/store';
-import { CalendarState } from 'app/calendar/store/calendar.reducer';
-import { Week } from 'app/calendar/week';
 import { Moment } from 'moment-mini-ts';
 import { Observable } from 'rxjs';
 import { ResetCalendar } from '../store/calendar.actions';
+import { CalendarState } from '../store/calendar.reducer';
 import { weeksSelector } from '../store/selectors';
+import { Week } from '../week';
 import { CalendarDay } from './day';
 
 @Component({
