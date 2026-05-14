@@ -1,6 +1,8 @@
 @use '../../styles/css-lock' as *;
 
 span {
+  cursor: move;
+
   @include css-lock(
     $min-size: 14,
     $max-size: 50,
@@ -17,10 +19,8 @@ span {
     $property: line-height,
     $unit: px
   );
-
-  cursor: move;
 }
 
 .dragging {
-  opacity: .25;
+  opacity: 0.25;
 }
